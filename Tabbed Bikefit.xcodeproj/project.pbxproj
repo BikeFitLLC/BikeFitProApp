@@ -1,0 +1,504 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5D8531CA1759CD6600934E68 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D8531C91759CD6600934E68 /* UIKit.framework */; };
+		5D8531CC1759CD6600934E68 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D8531CB1759CD6600934E68 /* Foundation.framework */; };
+		5D8531CE1759CD6600934E68 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D8531CD1759CD6600934E68 /* CoreGraphics.framework */; };
+		5D8531D41759CD6600934E68 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5D8531D21759CD6600934E68 /* InfoPlist.strings */; };
+		5D8531D61759CD6600934E68 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8531D51759CD6600934E68 /* main.m */; };
+		5D8531DA1759CD6600934E68 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8531D91759CD6600934E68 /* AppDelegate.m */; };
+		5D8531DC1759CD6600934E68 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D8531DB1759CD6600934E68 /* Default.png */; };
+		5D8531DE1759CD6600934E68 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D8531DD1759CD6600934E68 /* Default@2x.png */; };
+		5D8531E01759CD6600934E68 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D8531DF1759CD6600934E68 /* Default-568h@2x.png */; };
+		5D8531E31759CD6600934E68 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D8531E11759CD6600934E68 /* MainStoryboard_iPhone.storyboard */; };
+		5D8531E61759CD6600934E68 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D8531E41759CD6600934E68 /* MainStoryboard_iPad.storyboard */; };
+		5D8531E91759CD6600934E68 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8531E81759CD6600934E68 /* FirstViewController.m */; };
+		5D8531EB1759CD6600934E68 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D8531EA1759CD6600934E68 /* first.png */; };
+		5D8531ED1759CD6600934E68 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D8531EC1759CD6600934E68 /* first@2x.png */; };
+		5D8531F01759CD6600934E68 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8531EF1759CD6600934E68 /* SecondViewController.m */; };
+		5D8531F21759CD6600934E68 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D8531F11759CD6600934E68 /* second.png */; };
+		5D8531F41759CD6600934E68 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D8531F31759CD6600934E68 /* second@2x.png */; };
+		5D8531FC1759CD6600934E68 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D8531FB1759CD6600934E68 /* SenTestingKit.framework */; };
+		5D8531FD1759CD6600934E68 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D8531C91759CD6600934E68 /* UIKit.framework */; };
+		5D8531FE1759CD6600934E68 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D8531CB1759CD6600934E68 /* Foundation.framework */; };
+		5D8532061759CD6600934E68 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5D8532041759CD6600934E68 /* InfoPlist.strings */; };
+		5D8532091759CD6600934E68 /* Tabbed_BikefitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8532081759CD6600934E68 /* Tabbed_BikefitTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5D8531FF1759CD6600934E68 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5D8531BE1759CD6600934E68 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5D8531C51759CD6600934E68;
+			remoteInfo = "Tabbed Bikefit";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5D8531C61759CD6600934E68 /* Tabbed Bikefit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tabbed Bikefit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D8531C91759CD6600934E68 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		5D8531CB1759CD6600934E68 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		5D8531CD1759CD6600934E68 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		5D8531D11759CD6600934E68 /* Tabbed Bikefit-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tabbed Bikefit-Info.plist"; sourceTree = "<group>"; };
+		5D8531D31759CD6600934E68 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5D8531D51759CD6600934E68 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5D8531D71759CD6600934E68 /* Tabbed Bikefit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tabbed Bikefit-Prefix.pch"; sourceTree = "<group>"; };
+		5D8531D81759CD6600934E68 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		5D8531D91759CD6600934E68 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		5D8531DB1759CD6600934E68 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		5D8531DD1759CD6600934E68 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		5D8531DF1759CD6600934E68 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		5D8531E21759CD6600934E68 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		5D8531E51759CD6600934E68 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		5D8531E71759CD6600934E68 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
+		5D8531E81759CD6600934E68 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		5D8531EA1759CD6600934E68 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
+		5D8531EC1759CD6600934E68 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
+		5D8531EE1759CD6600934E68 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		5D8531EF1759CD6600934E68 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		5D8531F11759CD6600934E68 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
+		5D8531F31759CD6600934E68 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
+		5D8531FA1759CD6600934E68 /* Tabbed BikefitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tabbed BikefitTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D8531FB1759CD6600934E68 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		5D8532031759CD6600934E68 /* Tabbed BikefitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tabbed BikefitTests-Info.plist"; sourceTree = "<group>"; };
+		5D8532051759CD6600934E68 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5D8532071759CD6600934E68 /* Tabbed_BikefitTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tabbed_BikefitTests.h; sourceTree = "<group>"; };
+		5D8532081759CD6600934E68 /* Tabbed_BikefitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tabbed_BikefitTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5D8531C31759CD6600934E68 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D8531CA1759CD6600934E68 /* UIKit.framework in Frameworks */,
+				5D8531CC1759CD6600934E68 /* Foundation.framework in Frameworks */,
+				5D8531CE1759CD6600934E68 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5D8531F61759CD6600934E68 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D8531FC1759CD6600934E68 /* SenTestingKit.framework in Frameworks */,
+				5D8531FD1759CD6600934E68 /* UIKit.framework in Frameworks */,
+				5D8531FE1759CD6600934E68 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5D8531BD1759CD6600934E68 = {
+			isa = PBXGroup;
+			children = (
+				5D8531CF1759CD6600934E68 /* Tabbed Bikefit */,
+				5D8532011759CD6600934E68 /* Tabbed BikefitTests */,
+				5D8531C81759CD6600934E68 /* Frameworks */,
+				5D8531C71759CD6600934E68 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5D8531C71759CD6600934E68 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5D8531C61759CD6600934E68 /* Tabbed Bikefit.app */,
+				5D8531FA1759CD6600934E68 /* Tabbed BikefitTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5D8531C81759CD6600934E68 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5D8531C91759CD6600934E68 /* UIKit.framework */,
+				5D8531CB1759CD6600934E68 /* Foundation.framework */,
+				5D8531CD1759CD6600934E68 /* CoreGraphics.framework */,
+				5D8531FB1759CD6600934E68 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5D8531CF1759CD6600934E68 /* Tabbed Bikefit */ = {
+			isa = PBXGroup;
+			children = (
+				5D8531D81759CD6600934E68 /* AppDelegate.h */,
+				5D8531D91759CD6600934E68 /* AppDelegate.m */,
+				5D8531E11759CD6600934E68 /* MainStoryboard_iPhone.storyboard */,
+				5D8531E41759CD6600934E68 /* MainStoryboard_iPad.storyboard */,
+				5D8531E71759CD6600934E68 /* FirstViewController.h */,
+				5D8531E81759CD6600934E68 /* FirstViewController.m */,
+				5D8531EA1759CD6600934E68 /* first.png */,
+				5D8531EC1759CD6600934E68 /* first@2x.png */,
+				5D8531EE1759CD6600934E68 /* SecondViewController.h */,
+				5D8531EF1759CD6600934E68 /* SecondViewController.m */,
+				5D8531F11759CD6600934E68 /* second.png */,
+				5D8531F31759CD6600934E68 /* second@2x.png */,
+				5D8531D01759CD6600934E68 /* Supporting Files */,
+			);
+			path = "Tabbed Bikefit";
+			sourceTree = "<group>";
+		};
+		5D8531D01759CD6600934E68 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5D8531D11759CD6600934E68 /* Tabbed Bikefit-Info.plist */,
+				5D8531D21759CD6600934E68 /* InfoPlist.strings */,
+				5D8531D51759CD6600934E68 /* main.m */,
+				5D8531D71759CD6600934E68 /* Tabbed Bikefit-Prefix.pch */,
+				5D8531DB1759CD6600934E68 /* Default.png */,
+				5D8531DD1759CD6600934E68 /* Default@2x.png */,
+				5D8531DF1759CD6600934E68 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5D8532011759CD6600934E68 /* Tabbed BikefitTests */ = {
+			isa = PBXGroup;
+			children = (
+				5D8532071759CD6600934E68 /* Tabbed_BikefitTests.h */,
+				5D8532081759CD6600934E68 /* Tabbed_BikefitTests.m */,
+				5D8532021759CD6600934E68 /* Supporting Files */,
+			);
+			path = "Tabbed BikefitTests";
+			sourceTree = "<group>";
+		};
+		5D8532021759CD6600934E68 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5D8532031759CD6600934E68 /* Tabbed BikefitTests-Info.plist */,
+				5D8532041759CD6600934E68 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5D8531C51759CD6600934E68 /* Tabbed Bikefit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5D85320C1759CD6600934E68 /* Build configuration list for PBXNativeTarget "Tabbed Bikefit" */;
+			buildPhases = (
+				5D8531C21759CD6600934E68 /* Sources */,
+				5D8531C31759CD6600934E68 /* Frameworks */,
+				5D8531C41759CD6600934E68 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Tabbed Bikefit";
+			productName = "Tabbed Bikefit";
+			productReference = 5D8531C61759CD6600934E68 /* Tabbed Bikefit.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5D8531F91759CD6600934E68 /* Tabbed BikefitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5D85320F1759CD6600934E68 /* Build configuration list for PBXNativeTarget "Tabbed BikefitTests" */;
+			buildPhases = (
+				5D8531F51759CD6600934E68 /* Sources */,
+				5D8531F61759CD6600934E68 /* Frameworks */,
+				5D8531F71759CD6600934E68 /* Resources */,
+				5D8531F81759CD6600934E68 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5D8532001759CD6600934E68 /* PBXTargetDependency */,
+			);
+			name = "Tabbed BikefitTests";
+			productName = "Tabbed BikefitTests";
+			productReference = 5D8531FA1759CD6600934E68 /* Tabbed BikefitTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5D8531BE1759CD6600934E68 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Alfonso Lopez";
+			};
+			buildConfigurationList = 5D8531C11759CD6600934E68 /* Build configuration list for PBXProject "Tabbed Bikefit" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 5D8531BD1759CD6600934E68;
+			productRefGroup = 5D8531C71759CD6600934E68 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5D8531C51759CD6600934E68 /* Tabbed Bikefit */,
+				5D8531F91759CD6600934E68 /* Tabbed BikefitTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5D8531C41759CD6600934E68 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D8531D41759CD6600934E68 /* InfoPlist.strings in Resources */,
+				5D8531DC1759CD6600934E68 /* Default.png in Resources */,
+				5D8531DE1759CD6600934E68 /* Default@2x.png in Resources */,
+				5D8531E01759CD6600934E68 /* Default-568h@2x.png in Resources */,
+				5D8531E31759CD6600934E68 /* MainStoryboard_iPhone.storyboard in Resources */,
+				5D8531E61759CD6600934E68 /* MainStoryboard_iPad.storyboard in Resources */,
+				5D8531EB1759CD6600934E68 /* first.png in Resources */,
+				5D8531ED1759CD6600934E68 /* first@2x.png in Resources */,
+				5D8531F21759CD6600934E68 /* second.png in Resources */,
+				5D8531F41759CD6600934E68 /* second@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5D8531F71759CD6600934E68 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D8532061759CD6600934E68 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5D8531F81759CD6600934E68 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5D8531C21759CD6600934E68 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D8531D61759CD6600934E68 /* main.m in Sources */,
+				5D8531DA1759CD6600934E68 /* AppDelegate.m in Sources */,
+				5D8531E91759CD6600934E68 /* FirstViewController.m in Sources */,
+				5D8531F01759CD6600934E68 /* SecondViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5D8531F51759CD6600934E68 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D8532091759CD6600934E68 /* Tabbed_BikefitTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5D8532001759CD6600934E68 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5D8531C51759CD6600934E68 /* Tabbed Bikefit */;
+			targetProxy = 5D8531FF1759CD6600934E68 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5D8531D21759CD6600934E68 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5D8531D31759CD6600934E68 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		5D8531E11759CD6600934E68 /* MainStoryboard_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5D8531E21759CD6600934E68 /* en */,
+			);
+			name = MainStoryboard_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		5D8531E41759CD6600934E68 /* MainStoryboard_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5D8531E51759CD6600934E68 /* en */,
+			);
+			name = MainStoryboard_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		5D8532041759CD6600934E68 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5D8532051759CD6600934E68 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5D85320A1759CD6600934E68 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5D85320B1759CD6600934E68 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5D85320D1759CD6600934E68 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Tabbed Bikefit/Tabbed Bikefit-Prefix.pch";
+				INFOPLIST_FILE = "Tabbed Bikefit/Tabbed Bikefit-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		5D85320E1759CD6600934E68 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Tabbed Bikefit/Tabbed Bikefit-Prefix.pch";
+				INFOPLIST_FILE = "Tabbed Bikefit/Tabbed Bikefit-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		5D8532101759CD6600934E68 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Tabbed Bikefit.app/Tabbed Bikefit";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Tabbed Bikefit/Tabbed Bikefit-Prefix.pch";
+				INFOPLIST_FILE = "Tabbed BikefitTests/Tabbed BikefitTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		5D8532111759CD6600934E68 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Tabbed Bikefit.app/Tabbed Bikefit";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Tabbed Bikefit/Tabbed Bikefit-Prefix.pch";
+				INFOPLIST_FILE = "Tabbed BikefitTests/Tabbed BikefitTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5D8531C11759CD6600934E68 /* Build configuration list for PBXProject "Tabbed Bikefit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5D85320A1759CD6600934E68 /* Debug */,
+				5D85320B1759CD6600934E68 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5D85320C1759CD6600934E68 /* Build configuration list for PBXNativeTarget "Tabbed Bikefit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5D85320D1759CD6600934E68 /* Debug */,
+				5D85320E1759CD6600934E68 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		5D85320F1759CD6600934E68 /* Build configuration list for PBXNativeTarget "Tabbed BikefitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5D8532101759CD6600934E68 /* Debug */,
+				5D8532111759CD6600934E68 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5D8531BE1759CD6600934E68 /* Project object */;
+}

@@ -7,12 +7,28 @@
 //
 
 #import "AppDelegate.h"
+#import "AthletePropertyModel.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    //if we crashed last
+    if([[NSUserDefaults standardUserDefaults] objectForKey:@"lastemail"])
+    {
+        [AthletePropertyModel loadAthlete:[[NSUserDefaults standardUserDefaults] objectForKey:@"lastemail"]];
+    }
+    
+    //Setup crash detection
+    struct sigaction signalAction;
+    memset(&signalAction, 0, sizeof(signalAction));
+    signalAction.sa_handler = &HandleSignal;
+    
+    sigaction(SIGABRT, &signalAction, NULL);
+    sigaction(SIGILL, &signalAction, NULL);
+    sigaction(SIGBUS, &signalAction, NULL);
     return YES;
 }
 							
@@ -41,6 +57,18 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+void HandleException(NSException *exception) {
+    NSLog(@"App crashing with exception: %@", exception);
+    //Save somewhere that your app has crashed.
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:true]  forKey:@"crashRecovery"];
+}
+
+void HandleSignal(int signal) {
+    NSLog(@"We received a signal: %d", signal);
+    //Save somewhere that your app has crashed.
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:true] forKey:@"crashRecovery"];
 }
 
 @end

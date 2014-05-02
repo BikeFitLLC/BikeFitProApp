@@ -20,25 +20,31 @@
 {
     NSString *key = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITTER_KEY_KEY];
     
-    if(key != nil)
+    if(key != nil && [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_ONLINEMODE_KEY])
     {
+        [[AmazonClientManager ddb] setEndpoint:[AmazonEndpoints ddbEndpoint:US_WEST_2]];
+        [[AmazonClientManager s3] setEndpoint:[AmazonEndpoints s3Endpoint:US_WEST_2]];
+        
         DynamoDBAttributeValue *fitterKey = [[DynamoDBAttributeValue alloc] initWithS:key];
         DynamoDBGetItemRequest *request = [[DynamoDBGetItemRequest alloc]initWithTableName:@"fitters"
                                                                                 andKey:[NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                                                                        fitterKey, @"FitterKey",
+                                                                                        fitterKey, USER_DEFAULTS_FITTER_KEY_KEY,
                                                                                         nil]];
         request.consistentRead = YES;
     
         @try {
-            [[AmazonClientManager ddb] setEndpoint: [AmazonEndpoints ddbEndpoint:US_WEST_2]];
             DynamoDBGetItemResponse *response = [[AmazonClientManager ddb] getItem:request];
-
+            
+            //TODO: add a field called "active" to the database. THen here check
+            //for it to be true.
             //if all was successful, update the last email property in case of crasehs
+            /*
             [[NSUserDefaults standardUserDefaults]
-                        setObject:[[[response item] objectForKey:@"Email"] s]
-                        forKey:USER_DEFAULTS_USERNAME_KEY
+                        setObject:[[[response item] objectForKey:AWS_FIT_ATTRIBUTE_FITID] s]
+                        forKey:USER_DEFAULTS_FITID_KEY
                     ];
             [[NSUserDefaults standardUserDefaults] synchronize];
+             */
             return true;
         }
         @catch (AmazonServiceException *exception) {
@@ -71,7 +77,6 @@
             AmazonCredentials *creds = [[AmazonCredentials alloc] initWithAccessKey:AWS_ACCESS_KEY
                                                                       withSecretKey:AWS_SECRET_KEY];
             s3 = [[AmazonS3Client alloc] initWithCredentials:creds];
-            [s3 setEndpoint:@"http://s3-us-west-2.amazonaws.com"];
         });
         return s3;
     }

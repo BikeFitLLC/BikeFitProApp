@@ -8,6 +8,6 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
-@interface Tabbed_BikefitTests : SenTestCase
+@interface AthletePropertyModelTests : SenTestCase
 
 @end

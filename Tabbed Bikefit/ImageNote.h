@@ -10,7 +10,7 @@
 
 @interface ImageNote : FitNote
 {
-    NSURL *imageUrl;
+    //NSURL *imageUrl;
     UIBezierPath *path;
     
     NSString *s3Key;

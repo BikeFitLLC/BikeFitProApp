@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "AthletePropertyModel.h"
+#import "BikefitConstants.h"
 
 @implementation AppDelegate
 
@@ -18,7 +19,14 @@
     //if we crashed last
     if([[NSUserDefaults standardUserDefaults] objectForKey:@"lastemail"])
     {
-        [AthletePropertyModel loadAthlete:[[NSUserDefaults standardUserDefaults] objectForKey:@"lastemail"]];
+        [AthletePropertyModel loadAthleteFromAWS:[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITID_KEY]];
+    }
+    
+    //default to online mode on.
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_ONLINEMODE_KEY])
+    {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_ONLINEMODE_KEY];
+        [[NSUserDefaults standardUserDefaults] synchronize];
     }
     
     //Setup crash detection

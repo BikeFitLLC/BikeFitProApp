@@ -10,10 +10,11 @@
 #import "FitNote.h"
 #import "NoteViewController.h"
 
-@interface TextFitNoteViewController : NoteViewController
+@interface TextFitNoteViewController : NoteViewController <UIPickerViewDelegate, UIPickerViewDataSource>
 {
     
     IBOutlet UITextField *textField;
+    IBOutlet UIPickerView *saddleNotePicker;
 }
 
 - (IBAction) addBtnPressed:(id)sender;

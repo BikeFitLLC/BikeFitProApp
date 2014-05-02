@@ -10,22 +10,17 @@
 
 @interface AthletePropertyModel : NSObject{
 }
-//+ (NSString *) awsUsername;
-//+ (NSString *) awsPassword;
-
 
 @property(nonatomic, retain) NSMutableDictionary *athleteProperties;
+
 + (bool)setProperty:(NSString*)propertyName value:(id)value;
 + (id)getProperty:(NSString*)propertyName;
-+ (void)saveAthlete;
-+ (void) loadAthlete:(NSString*) athletePath;
-+ (void) newAthlete;
 
-+ (void) loadAthleteFromAWS:(NSString*) athleteItem;
-+ (NSMutableArray *) getAthletesFromAws;
 
-+ (void) initAWS;
-+(void) logOutAWS;
-+ (void) setCredentialsWithUsername:(NSString*)username andPassword:(NSString*)password;
++ (void)newAthlete;
+
++ (void)saveAthleteToAWS;
++ (void)loadAthleteFromAWS:(NSString*) athleteItem;
++ (NSMutableDictionary *) getAthletesFromAws;
 
 @end

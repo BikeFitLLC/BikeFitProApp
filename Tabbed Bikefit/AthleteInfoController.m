@@ -41,7 +41,7 @@
 }
 
 -(IBAction) save{
-    [AthletePropertyModel saveAthlete];
+    [AthletePropertyModel saveAthleteToAWS];
 }
 
 -(IBAction) newAthlete{

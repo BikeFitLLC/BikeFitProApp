@@ -60,7 +60,7 @@
 		5D8531FD1759CD6600934E68 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D8531C91759CD6600934E68 /* UIKit.framework */; };
 		5D8531FE1759CD6600934E68 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D8531CB1759CD6600934E68 /* Foundation.framework */; };
 		5D8532061759CD6600934E68 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5D8532041759CD6600934E68 /* InfoPlist.strings */; };
-		5D8532091759CD6600934E68 /* Tabbed_BikefitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8532081759CD6600934E68 /* Tabbed_BikefitTests.m */; };
+		5D8532091759CD6600934E68 /* AthletePropertyModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8532081759CD6600934E68 /* AthletePropertyModelTests.m */; };
 		5D8A05CB18C181A1005FF2B0 /* ShoulderAngleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8A05CA18C181A1005FF2B0 /* ShoulderAngleViewController.m */; };
 		5D9322D1190B301600E54006 /* LegAngleViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9322D0190B301600E54006 /* LegAngleViewViewController.m */; };
 		5D9904B118ECD52500FE5765 /* AngleImageViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9904B018ECD52500FE5765 /* AngleImageViewerViewController.m */; };
@@ -80,6 +80,7 @@
 		5DAC945B18CE7A6A00EFEDC7 /* ShoulderAngleNote.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DAC945A18CE7A6A00EFEDC7 /* ShoulderAngleNote.m */; };
 		5DB3607518C694DA00191385 /* KopsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DB3607418C694DA00191385 /* KopsViewController.m */; };
 		5DB3607818C6A28F00191385 /* KopsNote.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DB3607718C6A28F00191385 /* KopsNote.m */; };
+		5DB52F161912B9F300297201 /* KW_front_laser_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DB52F151912B9F300297201 /* KW_front_laser_2.png */; };
 		5DBC20C418E4E24900BF5957 /* ImageViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DBC20C318E4E24900BF5957 /* ImageViewerViewController.m */; };
 		5DD2940D17FA8276005E707D /* AthletePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD2940C17FA8276005E707D /* AthletePickerViewController.m */; };
 		5DD2941417FBBD7F005E707D /* AngleFinderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD2941317FBBD7F005E707D /* AngleFinderViewController.m */; };
@@ -178,8 +179,8 @@
 		5D8531FB1759CD6600934E68 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		5D8532031759CD6600934E68 /* bikefitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "bikefitTests-Info.plist"; sourceTree = "<group>"; };
 		5D8532051759CD6600934E68 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		5D8532071759CD6600934E68 /* Tabbed_BikefitTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tabbed_BikefitTests.h; sourceTree = "<group>"; };
-		5D8532081759CD6600934E68 /* Tabbed_BikefitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tabbed_BikefitTests.m; sourceTree = "<group>"; };
+		5D8532071759CD6600934E68 /* AthletePropertyModelTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AthletePropertyModelTests.h; sourceTree = "<group>"; };
+		5D8532081759CD6600934E68 /* AthletePropertyModelTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AthletePropertyModelTests.m; sourceTree = "<group>"; };
 		5D8A05C918C181A1005FF2B0 /* ShoulderAngleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoulderAngleViewController.h; sourceTree = "<group>"; };
 		5D8A05CA18C181A1005FF2B0 /* ShoulderAngleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoulderAngleViewController.m; sourceTree = "<group>"; };
 		5D9322CF190B301600E54006 /* LegAngleViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LegAngleViewViewController.h; path = ../../../../../Documents/LegAngleViewViewController.h; sourceTree = "<group>"; };
@@ -216,6 +217,7 @@
 		5DB3607418C694DA00191385 /* KopsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KopsViewController.m; sourceTree = "<group>"; };
 		5DB3607618C6A28F00191385 /* KopsNote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KopsNote.h; sourceTree = "<group>"; };
 		5DB3607718C6A28F00191385 /* KopsNote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KopsNote.m; sourceTree = "<group>"; };
+		5DB52F151912B9F300297201 /* KW_front_laser_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = KW_front_laser_2.png; path = ../../../../velopez/KW_front_laser_2.png; sourceTree = "<group>"; };
 		5DBC20C218E4E24900BF5957 /* ImageViewerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewerViewController.h; sourceTree = "<group>"; };
 		5DBC20C318E4E24900BF5957 /* ImageViewerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewerViewController.m; sourceTree = "<group>"; };
 		5DC7915718417DFB00A71D51 /* AWSSNS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSSNS.framework; path = "../../../Downloads/aws-ios-sdk-1.7.0/AWSSNS.framework"; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 		5DC7915B18417E2F00A71D51 /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSS3.framework; path = "../../../Downloads/aws-ios-sdk-1.7.0/AWSS3.framework"; sourceTree = "<group>"; };
 		5DC79C8B1846C56300A71D51 /* AWSSES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSSES.framework; path = "../../../Downloads/aws-ios-sdk-1.7.0/AWSSES.framework"; sourceTree = "<group>"; };
 		5DC79C8C1846C56300A71D51 /* AWSSimpleDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSSimpleDB.framework; path = "../../../Downloads/aws-ios-sdk-1.7.0/AWSSimpleDB.framework"; sourceTree = "<group>"; };
+		5DC93039191400E400EB733C /* AwsCredentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AwsCredentials.h; sourceTree = "<group>"; };
 		5DD2940B17FA8276005E707D /* AthletePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AthletePickerViewController.h; sourceTree = "<group>"; };
 		5DD2940C17FA8276005E707D /* AthletePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AthletePickerViewController.m; sourceTree = "<group>"; };
 		5DD2941217FBBD7F005E707D /* AngleFinderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AngleFinderViewController.h; sourceTree = "<group>"; };
@@ -308,6 +311,7 @@
 		5D57675717F5172B0017CF87 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5D9E2157185CE8A0006BA0B3 /* Note Classes */,
 				5D57674E17F5028E0017CF87 /* AthletePropertyModel.h */,
 				5D57674F17F5028E0017CF87 /* AthletePropertyModel.m */,
 				5D3BC32E190AB41B003E8613 /* GlobalOperationQueueManager.h */,
@@ -316,14 +320,6 @@
 				5D6F99D2190B4D4D00558C99 /* AmazonClientManager.m */,
 			);
 			name = Model;
-			sourceTree = "<group>";
-		};
-		5D6F3A8E18145F5A001BD897 /* Notes */ = {
-			isa = PBXGroup;
-			children = (
-				5D9E2157185CE8A0006BA0B3 /* Note Classes */,
-			);
-			name = Notes;
 			sourceTree = "<group>";
 		};
 		5D8531BD1759CD6600934E68 = {
@@ -387,17 +383,11 @@
 		5D8531CF1759CD6600934E68 /* Tabbed Bikefit */ = {
 			isa = PBXGroup;
 			children = (
-				5D6F99CF190B453700558C99 /* BikeFitBadge.png */,
-				5D6F99CD190B44BB00558C99 /* recordButton.png */,
-				5D6F99C9190B448600558C99 /* arrowleft.png */,
-				5D6F99CA190B448600558C99 /* arrowright.png */,
 				5D3BC334190AD9AB003E8613 /* BikefitConstants.h */,
-				5D6F3A9418146C7E001BD897 /* BikeFitIcon-72x72.png */,
-				5D6F3A9218146C1F001BD897 /* BikeFitIcon.png */,
+				5DC93039191400E400EB733C /* AwsCredentials.h */,
 				5D8531D81759CD6600934E68 /* AppDelegate.h */,
 				5D8531D91759CD6600934E68 /* AppDelegate.m */,
 				5D57675517F516B40017CF87 /* ViewControllers */,
-				5D6F3A8E18145F5A001BD897 /* Notes */,
 				5D57675717F5172B0017CF87 /* Model */,
 				5D57675617F516E60017CF87 /* Interface */,
 				5D8531D01759CD6600934E68 /* Supporting Files */,
@@ -408,6 +398,13 @@
 		5D8531D01759CD6600934E68 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5DB52F151912B9F300297201 /* KW_front_laser_2.png */,
+				5D6F3A9418146C7E001BD897 /* BikeFitIcon-72x72.png */,
+				5D6F3A9218146C1F001BD897 /* BikeFitIcon.png */,
+				5D6F99CF190B453700558C99 /* BikeFitBadge.png */,
+				5D6F99CD190B44BB00558C99 /* recordButton.png */,
+				5D6F99C9190B448600558C99 /* arrowleft.png */,
+				5D6F99CA190B448600558C99 /* arrowright.png */,
 				5D8531EA1759CD6600934E68 /* first.png */,
 				5D8531EC1759CD6600934E68 /* first@2x.png */,
 				5D8531F11759CD6600934E68 /* second.png */,
@@ -426,8 +423,8 @@
 		5D8532011759CD6600934E68 /* Tabbed BikefitTests */ = {
 			isa = PBXGroup;
 			children = (
-				5D8532071759CD6600934E68 /* Tabbed_BikefitTests.h */,
-				5D8532081759CD6600934E68 /* Tabbed_BikefitTests.m */,
+				5D8532071759CD6600934E68 /* AthletePropertyModelTests.h */,
+				5D8532081759CD6600934E68 /* AthletePropertyModelTests.m */,
 				5D8532021759CD6600934E68 /* Supporting Files */,
 			);
 			path = "Tabbed BikefitTests";
@@ -629,6 +626,7 @@
 			files = (
 				5D6F99D0190B453700558C99 /* BikeFitBadge.png in Resources */,
 				5D8531D41759CD6600934E68 /* InfoPlist.strings in Resources */,
+				5DB52F161912B9F300297201 /* KW_front_laser_2.png in Resources */,
 				5D8531DC1759CD6600934E68 /* Default.png in Resources */,
 				5D8531DE1759CD6600934E68 /* Default@2x.png in Resources */,
 				5D8531E01759CD6600934E68 /* Default-568h@2x.png in Resources */,
@@ -723,7 +721,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D8532091759CD6600934E68 /* Tabbed_BikefitTests.m in Sources */,
+				5D8532091759CD6600934E68 /* AthletePropertyModelTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -870,16 +868,14 @@
 		5D8532101759CD6600934E68 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Tabbed Bikefit.app/Tabbed Bikefit";
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Tabbed Bikefit/Tabbed Bikefit-Prefix.pch";
+				GCC_PREFIX_HEADER = "Tabbed Bikefit/bikefit-Prefix.pch";
 				INFOPLIST_FILE = "Tabbed BikefitTests/bikefitTests-Info.plist";
 				PRODUCT_NAME = bikefitTests;
-				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -887,16 +883,14 @@
 		5D8532111759CD6600934E68 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Tabbed Bikefit.app/Tabbed Bikefit";
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Tabbed Bikefit/Tabbed Bikefit-Prefix.pch";
+				GCC_PREFIX_HEADER = "Tabbed Bikefit/bikefit-Prefix.pch";
 				INFOPLIST_FILE = "Tabbed BikefitTests/bikefitTests-Info.plist";
 				PRODUCT_NAME = bikefitTests;
-				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;

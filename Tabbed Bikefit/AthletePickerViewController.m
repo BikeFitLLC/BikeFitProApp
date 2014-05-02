@@ -8,10 +8,11 @@
 
 #import "AthletePickerViewController.h"
 #import "AthletePropertyModel.h"
+#import "BikefitConstants.h"
 
 @interface AthletePickerViewController (){
-    NSMutableArray *athleteFiles;
-    NSMutableArray *awsNames;
+    NSMutableDictionary *fits;
+    NSArray *fitIds;
 }
 
 @end
@@ -32,7 +33,7 @@
     [super viewDidLoad];
     [athleteTableView setDataSource:self];
     [athleteTableView setDelegate:self];
-    athleteFiles = [[NSMutableArray alloc] init];
+    //fits = [[NSMutableArray alloc] init];
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
@@ -49,31 +50,15 @@
 
 -(void)loadAthleteFileNames:(NSString *)path
 {
-    /*
-    //-----> LIST ALL FILES <-----//
-    NSLog(@"LISTING ALL FILES FOUND");
-    
-    int count;
-    
-    NSArray *directoryContent = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:path error:NULL];
-    for (count = 0; count < (int)[directoryContent count]; count++)
-    {
-        [athleteFiles  addObject:[directoryContent objectAtIndex:count]];
-    }
-    */
-    awsNames = [AthletePropertyModel getAthletesFromAws];
-    for(NSString *athleteName in awsNames)
-    {
-        [athleteFiles addObject: athleteName];
-    }
-    //return directoryContent;
+    fits = [AthletePropertyModel getAthletesFromAws];
+    fitIds = [fits allKeys];
 }
 
 - (IBAction) close
 {
     NSIndexPath *indexPath = [athleteTableView indexPathForSelectedRow];
-    NSString *key =  [[[athleteTableView cellForRowAtIndexPath:indexPath] textLabel] text];
-//    NSString *athleteName = [awsNames objectForKey:key];
+    NSString *key =  [fitIds objectAtIndex:[indexPath row]];
+
     [AthletePropertyModel loadAthleteFromAWS:key];
     
     [self.navigationController popViewControllerAnimated:YES];
@@ -90,7 +75,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [athleteFiles count];
+    return [fits count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -98,7 +83,16 @@
     static NSString *CellIdentifier = @"name";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    cell.textLabel.text = [athleteFiles objectAtIndex:[indexPath row]];
+    NSString *fitid = [fitIds objectAtIndex:[indexPath row]];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@ - %@",
+                           [[fits objectForKey:fitid] objectForKey:AWS_FIT_ATTRIBUTE_FIRSTNAME],
+                           [[fits objectForKey:fitid] objectForKey:AWS_FIT_ATTRIBUTE_LASTNAME],
+                           [[fits objectForKey:fitid] objectForKey:AWS_FIT_ATTRIBUTE_EMAIL]];
+    
+    if([[fits objectForKey:fitid] objectForKey:FIT_ATTRIBUTE_FROMFILESYSTEM])
+    {
+        cell.backgroundColor = [UIColor redColor];
+    }
     
     return cell;
 }

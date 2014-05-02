@@ -6,9 +6,11 @@
 //  Copyright (c) 2013 Alfonso Lopez. All rights reserved.
 //
 
-#import "Tabbed_BikefitTests.h"
+#import "AthletePropertyModelTests.h"
 
-@implementation Tabbed_BikefitTests
+#import "AthletePropertyModel.h"
+
+@implementation AthletePropertyModelTests
 
 - (void)setUp
 {
@@ -24,8 +26,9 @@
     [super tearDown];
 }
 
-- (void)testExample
+- (void)SetPropertyTest
 {
+    //[AthletePropertyModel setProperty:@"test"];
     STFail(@"Unit tests are not implemented yet in Tabbed BikefitTests");
 }
 

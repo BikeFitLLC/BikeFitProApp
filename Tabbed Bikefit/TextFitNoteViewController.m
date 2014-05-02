@@ -9,6 +9,9 @@
 #import "TextFitNoteViewController.h"
 
 @interface TextFitNoteViewController ()
+{
+    NSMutableArray *automaticNotesList;
+}
 
 @end
 
@@ -26,6 +29,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [saddleNotePicker setDelegate:self];
+    automaticNotesList = [[NSMutableArray alloc] init];
+
+    [automaticNotesList addObject:@"Saddle Up"];
+    [automaticNotesList addObject:@"Saddle Down"];
+    [automaticNotesList addObject:@"Saddle Forward"];
+    [automaticNotesList addObject:@"Saddle Saddle Back"];
+    [automaticNotesList addObject:@"Moved Foot Lateral"];
+    [automaticNotesList addObject:@"Moved Foot Medial"];
 	// Do any additional setup after loading the view.
 }
 
@@ -41,6 +53,29 @@
     [bikeInfo addNote:note];
     
     [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+#pragma UIPickerView Delegate and DataSource methods
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return [automaticNotesList count];
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return [automaticNotesList objectAtIndex:row];
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    [textField setText:[automaticNotesList objectAtIndex:row]]; 
+    
 }
 
 @end

@@ -85,11 +85,13 @@
 
 -(void)uploadVideoToAWS
 {
+    if([AmazonClientManager verifyUserKey])
+    {
     @try {
         // Upload image data.  Remember to set the content type.
         s3Key = [[NSUUID UUID] UUIDString];
         //"@" symbols aren't allowed in bucket names
-        s3Bucket = [[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_USERNAME_KEY] stringByReplacingOccurrencesOfString:@"@" withString:@"at"];
+        s3Bucket = [[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITID_KEY] stringByReplacingOccurrencesOfString:@"@" withString:@"at"];
         
         //Gets alist of existing buckets and if this user doesn't have one yet
         //it creates one.
@@ -122,6 +124,7 @@
     }
     @catch (AmazonClientException *exception) {
         NSLog(@"Exception Uploading Image Note Image to AWS: %@", [exception description]);
+    }
     }
 }
 -(void)setVideoUrl:(NSURL *)url

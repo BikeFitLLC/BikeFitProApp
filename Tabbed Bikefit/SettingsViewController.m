@@ -9,6 +9,7 @@
 #import "SettingsViewController.h"
 #import "AthletePropertyModel.h"
 #import "BikefitConstants.h"
+#import "AmazonClientManager.h"
 
 @interface SettingsViewController ()
 
@@ -42,6 +43,8 @@
 - (IBAction) saveSettings
 {
     [[NSUserDefaults standardUserDefaults] setObject:fitterKeyField.text forKey:USER_DEFAULTS_FITTER_KEY_KEY];
+    [[AmazonClientManager credProvider] refresh];
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 

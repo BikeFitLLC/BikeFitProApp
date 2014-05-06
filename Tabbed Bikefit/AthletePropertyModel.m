@@ -59,7 +59,9 @@ static NSMutableDictionary *athleteProperties;
                                     forKey:AWS_FIT_ATTRIBUTE_LASTUPDATED];
         
     
-        DynamoDBPutItemRequest *putRequest = [[DynamoDBPutItemRequest alloc] initWithTableName:@"fits" andItem:athleteItem];
+        NSString *fitterID = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITTERID_KEY];
+        NSString *tableName = [NSString stringWithFormat:AWS_FIT_TABLE_NAME_FORMAT,fitterID ];
+        DynamoDBPutItemRequest *putRequest = [[DynamoDBPutItemRequest alloc] initWithTableName:tableName andItem:athleteItem];
     
         @try{
             [[AmazonClientManager ddb] putItem:putRequest];
@@ -107,20 +109,10 @@ static NSMutableDictionary *athleteProperties;
         AmazonDynamoDBClient *ddb = [AmazonClientManager ddb];
     
         //Creat a DynamoDB condition that only matches this fitter's fits
-        NSString *fitterKey = [[NSUserDefaults standardUserDefaults] stringForKey:USER_DEFAULTS_FITTER_KEY_KEY];
-        DynamoDBAttributeValue *fitterKeyAttribute = [[DynamoDBAttributeValue alloc] initWithS:fitterKey];
+        NSString *fitterID = [[NSUserDefaults standardUserDefaults] stringForKey:USER_DEFAULTS_FITTERID_KEY];
+        NSString *fitsTableName = [NSString stringWithFormat:AWS_FIT_TABLE_NAME_FORMAT, fitterID];
         
-        DynamoDBCondition *fitterCondition = [[DynamoDBCondition alloc] init];
-        [fitterCondition addAttributeValueList:fitterKeyAttribute];
-        [fitterCondition setComparisonOperator:@"EQ"];
-        
-        DynamoDBCondition *fitidCondition = [[DynamoDBCondition alloc] init];
-        [fitidCondition setComparisonOperator:@"NOT_NULL"];
-    
-        //Create a DynamoDB Request that will get the fields we want to return
-        DynamoDBScanRequest *request = [[DynamoDBScanRequest alloc] initWithTableName:@"fits"];
-        [[request scanFilter] setObject:fitterCondition forKey:AWS_FIT_ATTRIBUTE_FITTERKEY];
-        [[request scanFilter] setObject:fitidCondition forKey:AWS_FIT_ATTRIBUTE_FITID];
+        DynamoDBScanRequest *request = [[DynamoDBScanRequest alloc] initWithTableName:fitsTableName];
         
         request.attributesToGet = [[NSMutableArray alloc] initWithObjects:
                                    AWS_FIT_ATTRIBUTE_FITID,
@@ -134,12 +126,12 @@ static NSMutableDictionary *athleteProperties;
         DynamoDBScanResponse *response;
     
         @try{
-            NSLog(@"Querying AWS for athletes for the Fitter Key%@", fitterKey);
+            NSLog(@"Querying AWS for athletes for the FitterID %@", fitterID);
             response = [ddb scan:request];
         }
         @catch (AmazonServiceException *e)
         {
-            NSLog(@"Error Retrieving Fits for Fitter Key %@ - %@", fitterKey, [e description]);
+            NSLog(@"Error Retrieving Fits for FitterID %@ - %@", fitterID, [e description]);
         }
         
         //Now that we have retrieved the fit items from AWS, put them into the dictionary
@@ -175,15 +167,8 @@ static NSMutableDictionary *athleteProperties;
                 [athleteAttributes setObject:[localFileDictionary valueForKey:key] forKey:key];
             }
             [athleteAttributes setObject:[NSNumber numberWithBool:true] forKey:FIT_ATTRIBUTE_FROMFILESYSTEM];
-            
-            //Dont' include local files from other fitter keys
-            if(![[athleteAttributes objectForKey:AWS_FIT_ATTRIBUTE_FITTERKEY]
-                isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITTER_KEY_KEY]])
-            {
-                continue;
-            }
-            
             bool addLocalFile = YES;
+            
             //if aws returned this same fit, compare the last updated dates and keep the newest version
             if([athletes objectForKey:fitid])
             {
@@ -207,14 +192,14 @@ static NSMutableDictionary *athleteProperties;
 //Loads the model with the athlete info at the given
 //aws item (DDB)
 ////////////////////////////////////////////////////
-+ (void) loadAthleteFromAWS:(NSString*) FitID
++ (void) loadAthleteFromAWS:(NSString*) fitID
 {
-    [[NSUserDefaults standardUserDefaults] setObject:FitID forKey:USER_DEFAULTS_FITID_KEY];
+    [[NSUserDefaults standardUserDefaults] setObject:fitID forKey:USER_DEFAULTS_FITID_KEY];
     
     //First get the local filesystem version, if it exists
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *path = [paths objectAtIndex:0];
-    NSData *data = [[NSData alloc] initWithContentsOfFile:[path stringByAppendingString:[NSString stringWithFormat:@"/%@.fit",FitID]]];
+    NSData *data = [[NSData alloc] initWithContentsOfFile:[path stringByAppendingString:[NSString stringWithFormat:@"/%@.fit",fitID]]];
     athleteProperties = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     if(!athleteProperties)
     {
@@ -224,14 +209,14 @@ static NSMutableDictionary *athleteProperties;
     //then get the cloud version of the fit and if it's more up to date, load that one.
     if([AmazonClientManager verifyUserKey])
     {
-        NSString *fitterKey = [[NSUserDefaults standardUserDefaults] stringForKey:USER_DEFAULTS_FITTER_KEY_KEY];
+        NSString *fitterID = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITTERID_KEY];
+        NSString *tableName = [NSString stringWithFormat:AWS_FIT_TABLE_NAME_FORMAT,fitterID];
         
-        DynamoDBAttributeValue *fitterKeyAttribute = [[DynamoDBAttributeValue alloc] initWithS:fitterKey];
-        DynamoDBAttributeValue *fitIDAttribute = [[DynamoDBAttributeValue alloc] initWithS:FitID];
+        DynamoDBAttributeValue *fitIDAttribute = [[DynamoDBAttributeValue alloc] initWithS:fitID];
+
         //create a ddb request for the item for this fit id
-        DynamoDBGetItemRequest *request = [[DynamoDBGetItemRequest alloc]initWithTableName:@"fits"
+        DynamoDBGetItemRequest *request = [[DynamoDBGetItemRequest alloc]initWithTableName:tableName
                                             andKey:[NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                                    fitterKeyAttribute, AWS_FIT_ATTRIBUTE_FITTERKEY,
                                                     fitIDAttribute, AWS_FIT_ATTRIBUTE_FITID,
                                                     nil]];
         request.consistentRead = YES;
@@ -253,11 +238,18 @@ static NSMutableDictionary *athleteProperties;
                     }
                     else
                     {
-                        [athleteProperties setObject:[[[response item] objectForKey:propertyName] s] forKey:propertyName];
+                        @try
+                        {
+                            [athleteProperties setObject:[[[response item] objectForKey:propertyName] s] forKey:propertyName];
+                        }
+                        @catch(NSException *r)
+                        {
+                            NSLog(@"Couldn't set property %@ while unarchiving from aws", propertyName);
+                        }
                     }
                 }
                 //if all was successful, update the last email property in case of crasehs
-                [[NSUserDefaults standardUserDefaults] setObject:FitID forKey:USER_DEFAULTS_FITID_KEY];
+                [[NSUserDefaults standardUserDefaults] setObject:fitID forKey:USER_DEFAULTS_FITID_KEY];
                 [[NSUserDefaults standardUserDefaults] synchronize];
                 return;
             }

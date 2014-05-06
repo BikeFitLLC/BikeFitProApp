@@ -10,6 +10,7 @@
 #import <AWSRuntime/AWSRuntime.h>
 #import <AWSS3/AWSS3.h>
 #import <AWSDynamoDB/AWSDynamoDB.h>
+#import "CredentialProvider.h"
 
 @interface AmazonClientManager : NSObject
 {
@@ -20,5 +21,6 @@
 
 + (AmazonDynamoDBClient *)ddb;
 + (AmazonS3Client *)s3;
++ (CredentialProvider *)credProvider;
 
 @end

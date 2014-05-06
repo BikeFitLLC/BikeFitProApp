@@ -1,5 +1,3 @@
-#include "AwsCredentials.h"
-
 #define S3_IMAGE_URL_FORMAT @"http://s3-us-west-2.amazonaws.com/%@/%@"
 #define FILESYSTEM_IMAGE_FILENAME_FORMAT @"%@/%@"
 

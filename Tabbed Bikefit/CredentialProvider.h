@@ -12,6 +12,13 @@
 @interface CredentialProvider : NSObject <AmazonCredentialsProvider>
 {
     AmazonCredentials *creds;
+    NSDate *tokenExpiration;
 }
+
+- (void) clear;
+
+- (bool) isLoggedIn;
+
+-(bool) isTokenValid;
 
 @end

@@ -26,6 +26,7 @@
 #import "KopsViewController.h"
 #import "ImageViewerViewController.h"
 #import "AngleImageViewerViewController.h"
+#import "VarusViewerViewController.h"
 
 
 @interface BikeInfoViewController ()
@@ -92,6 +93,21 @@
 
     
     
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    
+    [leftNotesTable
+        scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:[leftNotes count] inSection:0]
+        atScrollPosition:UITableViewScrollPositionBottom
+        animated:YES
+     ];
+    [rightNotesTable
+     scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:[rightNotes count] inSection:0]
+     atScrollPosition:UITableViewScrollPositionBottom
+     animated:YES
+     ];
 }
 
 - (void)didReceiveMemoryWarning
@@ -180,10 +196,10 @@
         UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:@"Note Type" delegate:self
                                         cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil
                                         otherButtonTitles:
-                                            @"Pedal Spindle Fore/Aft Note",
+                                            @"Text Note",
+                                            @"Cleat Fore/Aft Note",
                                             @"Cleat Medial/Lateral Note",
                                             @"Forefoot Varus Tilt",
-                                            @"Text Note",
                                             @"Knee Angle",
                                             @"Shoulder Angle",
                                             @"Foot Pressure",
@@ -224,22 +240,24 @@
     return @"Error";
 }
 
+
+
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     NSString *segueIdentifier = @"";
     switch (buttonIndex)
     {
         case 0:
-            segueIdentifier = @"addspindlenotesegue";
+            segueIdentifier = @"addtextnotesegue";
             break;
         case 1:
-            segueIdentifier = @"addkneenotesegue";
+            segueIdentifier = @"addspindlenotesegue";
             break;
         case 2:
-            segueIdentifier = @"addvarusnotesegue";
+            segueIdentifier = @"addkneenotesegue";
             break;
         case 3:
-            segueIdentifier = @"addtextnotesegue";
+            segueIdentifier = @"addvarusnotesegue";
             break;
         case 4:
             segueIdentifier = @"addanglenotesegue";
@@ -264,6 +282,15 @@
     [selectedNotes addObject:note];
     [AthletePropertyModel setProperty:@"LeftNotes" value:leftNotes];
     [AthletePropertyModel setProperty:@"RightNotes" value:rightNotes];
+}
+
+///////////////////////////////////////////////////////////////////////
+//returns whether or no the currenetly selected column is for left side notes
+//if false then the right side notes are selected
+////////////////////////////////////////////////////////////////////////
+- (bool) leftNotesSelected
+{
+    return selectedNotes == leftNotes;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -329,10 +356,12 @@
     }
     else if([ident isEqualToString:@"ViewVarusNote"])
     {
-        ImageViewerViewController *vc = [segue destinationViewController];
+        VarusViewerViewController *vc = [segue destinationViewController];
         VarusNote *noteToView = [selectedNotes objectAtIndex:[selectedIndexPath row]];
 
         [vc setImage:[UIImage imageWithData:[noteToView getImage]]];
+        [vc setOverlayPath:[noteToView path]];
+        [vc setVarusAngle:[noteToView angle]];
 
     }
     else if([ident isEqualToString:@"ViewKopsNote"])

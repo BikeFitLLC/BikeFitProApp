@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <LoginWithAmazon/LoginWithAmazon.h>
 
 @interface AMZNAuthorizeUserDelegate : NSObject
 

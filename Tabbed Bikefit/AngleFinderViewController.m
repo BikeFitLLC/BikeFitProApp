@@ -42,7 +42,7 @@
     angleLabel.font = [UIFont fontWithName:@"Helvetica" size:100.0];
     angleLabel.text = [NSString stringWithFormat:@"%d°", (int)(angle/0.0174532925)];
     
-    labelText = @"Leg Angle";
+    labelText = @"Angle";
     vertexIndex = 0;
     //capture = false;
     //displayedImageIndex = 0;
@@ -56,6 +56,7 @@
     [self.view addGestureRecognizer:panGesture];
 
 }
+
 
 /*
  Handles the dragging movement for the angle finder
@@ -160,6 +161,7 @@
                        c:[[imageView.vertices objectAtIndex:2] CGPointValue]
                         ];
     [angleLabel setText:[NSString stringWithFormat:@"%d°",(int)([imageView angle] * 57.2957795)]];
+    [saveButton setHidden:false];
 }
 
 - (IBAction)saveAngle

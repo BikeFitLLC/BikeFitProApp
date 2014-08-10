@@ -40,19 +40,21 @@
 {
     [super viewDidAppear:animated];
     
-    CGRect bounds = CGRectMake(0,0,720, 1280);// self.view.layer.bounds;
-    //[previewImage setBounds:bounds];
-    [self.view setBounds:bounds];
-    [self.view setFrame:bounds];
+    //CGRect bounds = CGRectMake(0,0,720, 1024);// self.view.layer.bounds;
+    //[self.view setFrame:bounds];
+    //[self.view setFrame:bounds];
+    
+    //[previewImage setFrame:bounds];
+    
     [imageView setImage:image];
-    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    imageView.contentMode = UIViewContentModeScaleAspectFill;
     
-    [imageView setBounds:bounds];
-    [imageView setFrame:bounds];
-    [imageView setCenter:CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds))];
-    
+    //[imageView setBounds:bounds];
+    //[imageView setFrame:bounds];
+    //[imageView setCenter:CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds))];
     if(overlayPath)
     {
+        
         [previewImage setOverlayPath:overlayPath];
         [previewImage setNeedsDisplay];
     }

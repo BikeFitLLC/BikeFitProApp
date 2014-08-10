@@ -21,7 +21,7 @@
 @synthesize s3Bucket;
 
 + (NSString*)labelText {
-    return @"Leg Angle";
+    return @"Cleat Medial/Lateral";
 }
 
 - (UITableViewCell *) populateTableCell:(UITableViewCell *)cell
@@ -89,32 +89,21 @@
     {
     @try {
         // Upload image data.  Remember to set the content type.
-        s3Key = [[NSUUID UUID] UUIDString];
-        //"@" symbols aren't allowed in bucket names
-        s3Bucket = [[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITID_KEY] stringByReplacingOccurrencesOfString:@"@" withString:@"at"];
+        s3Key = [NSString stringWithFormat:@"%@/%@",
+                 [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITID_KEY],
+                 [[NSUUID UUID] UUIDString]];
         
-        //Gets alist of existing buckets and if this user doesn't have one yet
-        //it creates one.
-        NSArray *buckets = [[AmazonClientManager s3] listBuckets];
-        if([buckets indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
-            S3Bucket *bucket = (S3Bucket*)obj;
-            return [[bucket name] isEqualToString:s3Bucket];
-        }] == NSNotFound)
-        {
-            //After searching through the bucket we didn't find this user's bucket.  So create it.
-            S3CreateBucketRequest *createRequest = [[S3CreateBucketRequest alloc] initWithName:s3Bucket andRegion:[S3Region USWest2]];
-            [[AmazonClientManager s3] createBucket:createRequest];
-        }
+        s3Bucket = [[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITTERID_KEY] lowercaseString];
         
         S3PutObjectRequest *por = [[S3PutObjectRequest alloc] initWithKey:s3Key inBucket:s3Bucket];
         
         por.contentType = @"video/quicktime"; // use "image/png" here if you are uploading a png
         por.cannedACL   = [S3CannedACL publicRead];
-        por.data        = [NSData dataWithContentsOfURL:videoUrl];
+        por.data        = [NSData dataWithContentsOfURL:localVideoUrl];
         //por.delegate    = self; // Don't need this line if you don't care about hearing a response.
         
         // Put the image data into the specified s3 bucket and object.
-        [[AmazonClientManager s3] putObject:por];
+        [[AmazonClientManager s3TransferManager] upload:por];
         
         videoUrl= [[NSURL alloc] initWithString:
                     [NSString stringWithFormat:S3_IMAGE_URL_FORMAT,
@@ -129,23 +118,32 @@
 }
 -(void)setVideoUrl:(NSURL *)url
 {
-    videoUrl = url;
-    [self queueVideoUpload];
+    localVideoUrl = url;
+    [self uploadVideoToAWS];
 }
 
 -(NSURL *)getVideoUrl
 {
-    return videoUrl;
+    NSError *err;
+    if ([localVideoUrl checkResourceIsReachableAndReturnError:&err] == NO)
+    {
+        NSLog(@"KnewViewNote: local file no longer exists, going to aws copy");
+        return videoUrl;
+    }
+    
+    return localVideoUrl;
 }
 #pragma mark - NSCoding support
 -(void)encodeWithCoder:(NSCoder*)encoder {
     
     [encoder encodeObject:self.path forKey:@"kneepath"];
-    [encoder encodeObject:self.videoUrl forKey:@"videoUrl"];
+    [encoder encodeObject:videoUrl forKey:@"videoUrl"];
+    [encoder encodeObject:localVideoUrl forKey:@"localVideoUrl"];
 }
 
 -(id)initWithCoder:(NSCoder*)decoder {
 
+    localVideoUrl = [decoder decodeObjectForKey:@"localVideoUrl"];
     path = [decoder decodeObjectForKey:@"kneepath"];
     videoUrl = [decoder decodeObjectForKey:@"videoUrl"];
 

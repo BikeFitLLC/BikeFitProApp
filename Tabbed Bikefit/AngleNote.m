@@ -21,16 +21,30 @@
     CGRect rect = CGRectMake(0.0, 0.0, 50.0, 50.0);
     UIGraphicsBeginImageContext(rect.size); //now it's here.
     
-    UIBezierPath *bezier = [UIBezierPath bezierPathWithRect:rect];
-    CGFloat startx = cosf(angle-1.57079633) * 29;
-    CGFloat starty = sinf(angle-1.57079633) * 20;
+    UIBezierPath *border = [UIBezierPath bezierPathWithRect:rect];
+    //Draw a border
+    [border setLineWidth:3.0];
+    [border setLineJoinStyle:kCGLineJoinBevel];
+    [border stroke];
     
-    [bezier moveToPoint:CGPointMake(25 - startx, 25 - starty)];
-    [bezier addLineToPoint:CGPointMake(25, 25)];
-    [bezier addLineToPoint:CGPointMake(25, 45)];
-    [bezier setLineWidth:3.0];
-    [bezier setLineJoinStyle:kCGLineJoinBevel];
-    [bezier stroke];
+    CGFloat scaleX = .05;
+    CGFloat scaleY = .05;
+    
+    CGAffineTransform transform = CGAffineTransformMakeScale(scaleX, scaleY);
+    
+    if(!path)
+    {
+        path = [[UIBezierPath alloc] init];
+    }
+    
+    //Draw Scaled down version of the knee path
+    CGPathRef intermediatePath = CGPathCreateCopyByTransformingPath(path.CGPath, &transform);
+    UIBezierPath *transformedPath = [[UIBezierPath alloc] init];
+    transformedPath.CGPath = intermediatePath;
+    
+    [transformedPath setLineWidth:3.0];
+    [transformedPath setLineJoinStyle:kCGLineJoinBevel];
+    [transformedPath stroke];
 
     UIImage *angleImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsPopContext();

@@ -11,9 +11,11 @@
 @interface FitNote : NSObject <NSCoding>
 {
     NSString *text;
+    bool leftFoot;
 }
 
 @property NSString *text;
+@property bool leftFoot;
 
 - (UITableViewCell *) populateTableCell:(UITableViewCell *)cell;
 

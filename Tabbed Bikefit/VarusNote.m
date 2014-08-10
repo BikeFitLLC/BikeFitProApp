@@ -13,7 +13,7 @@
 
 - (UITableViewCell *) populateTableCell:(UITableViewCell *)cell
 {
-    cell.textLabel.text = [NSString stringWithFormat:@"Ankle Tilt: %f", angle*57.2957795];
+    cell.textLabel.text = [NSString stringWithFormat:@"ForeFoot Varus Tilt: %f", angle*57.2957795];
     return cell;
 }
 

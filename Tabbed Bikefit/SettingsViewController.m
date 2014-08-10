@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Alfonso Lopez. All rights reserved.
 //
 
+#import "AMZNAuthorizeUserDelegate.h"
+
 #import "SettingsViewController.h"
 #import "AthletePropertyModel.h"
 #import "BikefitConstants.h"
@@ -29,7 +31,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    fitterKeyField.text = [[NSUserDefaults standardUserDefaults] stringForKey:USER_DEFAULTS_FITTER_KEY_KEY];
+    //fitterKeyField.text = [[NSUserDefaults standardUserDefaults] stringForKey:USER_DEFAULTS_FITTER_KEY_KEY];
     onlineModeSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_ONLINEMODE_KEY] boolValue];
     [onlineModeSwitch addTarget:self action:@selector(toggleOnlineSwitch:) forControlEvents:UIControlEventValueChanged];
 }
@@ -42,7 +44,7 @@
 
 - (IBAction) saveSettings
 {
-    [[NSUserDefaults standardUserDefaults] setObject:fitterKeyField.text forKey:USER_DEFAULTS_FITTER_KEY_KEY];
+    //[[NSUserDefaults standardUserDefaults] setObject:fitterKeyField.text forKey:USER_DEFAULTS_FITTER_KEY_KEY];
     [[AmazonClientManager credProvider] refresh];
     
     [self.navigationController popViewControllerAnimated:YES];

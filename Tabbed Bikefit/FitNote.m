@@ -13,6 +13,8 @@
      NSOperationQueue* aQueue;
 }
 @synthesize text;
+@synthesize leftFoot;
+
 - (UITableViewCell *) populateTableCell:(UITableViewCell *)cell
 {
     cell.textLabel.text = text;

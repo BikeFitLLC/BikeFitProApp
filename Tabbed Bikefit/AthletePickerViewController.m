@@ -51,7 +51,23 @@
 -(void)loadAthleteFileNames:(NSString *)path
 {
     fits = [AthletePropertyModel getAthletesFromAws];
-    fitIds = [fits allKeys];
+    fitIds = [fits keysSortedByValueUsingComparator: ^(id obj1, id obj2){
+        float date1 = [[(NSDictionary *)obj1 objectForKey:AWS_FIT_ATTRIBUTE_LASTUPDATED] floatValue];
+        float date2 = [[(NSDictionary *)obj2 objectForKey:AWS_FIT_ATTRIBUTE_LASTUPDATED] floatValue];
+
+        if (date1 < date2)
+        {
+            return (NSComparisonResult)NSOrderedDescending;
+        }
+        if(date2 < date1)
+        {
+            return (NSComparisonResult)NSOrderedAscending;
+        }
+        
+        return NSOrderedSame;
+        
+        
+    }];
 }
 
 - (IBAction) close

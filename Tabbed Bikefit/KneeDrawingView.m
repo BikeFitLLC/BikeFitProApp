@@ -23,6 +23,7 @@
 @synthesize path;
 @synthesize lazerPath;
 @synthesize startPoint;
+@synthesize drawingEnabled;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -35,6 +36,8 @@
         
         startPoint.x = self.bounds.size.width /2;
         startPoint.y = 0;
+        
+        drawingEnabled = true;
         
         //////////Setup motion structures//////////////////
         
@@ -108,28 +111,31 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if(!path)
+    if(drawingEnabled)
     {
-        path = [[UIBezierPath alloc]init];
+        if(!path)
+        {
+            path = [[UIBezierPath alloc]init];
+        }
+        
+        [path removeAllPoints];
+        UITouch *mytouch=[[touches allObjects] objectAtIndex:0];
+        [path moveToPoint:[mytouch locationInView:self]];
     }
-    
-    [path removeAllPoints];
-    UITouch *mytouch=[[touches allObjects] objectAtIndex:0];
-    [path moveToPoint:[mytouch locationInView:self]];
     return;
 }
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;
 {
-   
-    UITouch *mytouch=[[touches allObjects] objectAtIndex:0];
-    [path addLineToPoint:[mytouch locationInView:self]];
-    [self setNeedsDisplay];
-    return;
+   if(drawingEnabled)
+   {
+        UITouch *mytouch=[[touches allObjects] objectAtIndex:0];
+        [path addLineToPoint:[mytouch locationInView:self]];
+        [self setNeedsDisplay];
+   }
+        return;
 }
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
 {
     return;
 }
-
-
 @end

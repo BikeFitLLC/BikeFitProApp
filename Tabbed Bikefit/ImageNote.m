@@ -7,7 +7,6 @@
 //
 
 #import "ImageNote.h"
-#import "AmazonClientManager.h"
 #import "GlobalOperationQueueManager.h"
 #import "BikeFitConstants.h"
 
@@ -45,40 +44,56 @@
     [[goqp queue] addOperation:uploadOperation];
 }
 
+//////////////////////////////////////////////////////
+//AmazonServiceDelegate methods (for asynch calls to aws
+/////////////////////////////////////////////////////////
+- (void)request:(AmazonServiceRequest *)request didFailWithServiceException:(NSException *)exception
+{
+    NSLog(@"%@", [exception description]);
+}
+
+- (void)request:(AmazonServiceRequest *)request didFailWithError:(NSError *)error
+{
+    NSLog(@"%@", [error description]);
+}
+
+- (void)request:(AmazonServiceRequest *)request didReceiveResponse:(NSURLResponse *)response
+{
+    return;
+}
 
 ///////////////////////////////////////////////////////
 //Uploads this notes image to s3.  called asnychronously
 ///////////////////////////////////////////////////////
+/*deprecated
 -(void) uploadImageToAws
 {
     if([AmazonClientManager verifyUserKey])
     {
         @try {
-            //Gets alist of existing buckets and if this user doesn't have one yet
-            //it creates one.
-            NSArray *buckets = [[AmazonClientManager s3] listBuckets];
-            if([buckets indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
-                S3Bucket *bucket = (S3Bucket*)obj;
-                return [[bucket name] isEqualToString:s3Bucket];
-            }] == NSNotFound)
+            ///get a list of buckets
+            //S3ListBucketsRequest *listBucketsRequest = [[S3ListBucketsRequest alloc] init];
+            //S3ListBucketsResponse *listBucketsResponse = [[AmazonClientManager s3] listBuckets:listBucketsRequest];
+            //NSMutableArray *buckets = [[listBucketsResponse listBucketsResult] buckets];
+            
+           // if([buckets indexOfObject:s3Bucket] == NSNotFound)
             {
-                //After searching through the bucket we didn't find this user's bucket.  So create it.
-                S3CreateBucketRequest *createRequest =
-                    [[S3CreateBucketRequest alloc] initWithName:s3Bucket andRegion:[S3Region USWest2]];
-                [[AmazonClientManager s3] createBucket:createRequest];
+                //TODO: create the bucket?
             }
+            
             
             S3PutObjectRequest *por = [[S3PutObjectRequest alloc] initWithKey:s3Key inBucket:s3Bucket];
             
             por.contentType = @"image/jpeg"; // use "image/png" here if you are uploading a png
             por.cannedACL   = [S3CannedACL publicRead];
             por.data        = image;
-            //por.delegate    = self; // Don't need this line if you don't care about hearing a response.
+            //[por setDelegate: self]; // Don't need this line if you don't care about hearing a response.
             
             // Put the image data into the specified s3 bucket and object.
+            NSLog(@"Writing to S3 Bucket: %@  Key: %@", s3Bucket, s3Key);
             [[AmazonClientManager s3] putObject:por];
         }
-        @catch (AmazonClientException *exception) {
+        @catch (AmazonServiceException *exception) {
             NSLog(@"Exception Uploading Image Note Image to AWS: %@", [exception description]);
         }
     }
@@ -95,6 +110,7 @@
         }
     }
 }
+ */
 
 ///////////////////////////////////////////////////////
 //Downloads this note's image from S3
@@ -113,14 +129,13 @@
         }
         @catch(AmazonServiceException *e)
         {
-            NSLog(@"Unable To Download Image from AWS. Attempting Filesystem: %@", [e description]);
+            NSLog(@"Unable To Download Image from AWS. Attempting Filesystem for Key:%@ in Bucket:%@ %@",s3Key, s3Bucket, [e description]);
         }
     }
     ////////////this is a weird codeflow that is probably bad design.
     //the following code will only run if aws is unavailable or if
     //the attempt to get the image from aws failed.   I think it's wonky since the
     //return statement above is being used almost like a goto....
-    NSError *error = [[NSError alloc] init];
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *filepath = [paths objectAtIndex:0];
     NSString *filename = [NSString stringWithFormat:FILESYSTEM_IMAGE_FILENAME_FORMAT, s3Bucket,s3Key];
@@ -142,11 +157,47 @@
     image = imageData;
     
     //Upload image data.  Remember to set the content type.
-    s3Key = [[NSUUID UUID] UUIDString];
-    s3Bucket = [[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITID_KEY] lowercaseString];
+    s3Key = [NSString stringWithFormat:@"%@/%@",
+                       [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITID_KEY],
+                       [[NSUUID UUID] UUIDString]];
+    
+    s3Bucket = [[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITTERID_KEY] lowercaseString];
 
     //kick off upload to aws s3 or save to filesystem
-    [self queueImageUpload];
+    if([AmazonClientManager verifyUserKey])
+    {
+        S3PutObjectRequest *por = [[S3PutObjectRequest alloc] initWithKey:s3Key inBucket:s3Bucket];
+        
+        por.contentType = @"image/jpeg"; // use "image/png" here if you are uploading a png
+        por.cannedACL   = [S3CannedACL publicRead];
+        por.data        = image;
+        por.delegate    = self;
+    
+        [[AmazonClientManager s3TransferManager] upload:por];
+    }
+    else
+    {
+        NSError *error = [[NSError alloc] init];
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *filepath = [paths objectAtIndex:0];
+        NSString *fitPath = [filepath stringByAppendingString:[NSString stringWithFormat:@"/%@",s3Bucket]];
+        
+        fitPath = [fitPath stringByAppendingString:[NSString stringWithFormat:@"/%@", [[s3Key componentsSeparatedByString:@"/"] objectAtIndex:0]]];
+
+        if(![[NSFileManager defaultManager] fileExistsAtPath:fitPath])
+        {
+            [[NSFileManager defaultManager] createDirectoryAtPath:fitPath withIntermediateDirectories:NO attributes:nil error:&error];
+        }
+        NSString *filename = [filepath stringByAppendingString:
+                              [NSString stringWithFormat:FILESYSTEM_IMAGE_FILENAME_FORMAT, s3Bucket,s3Key]
+                              ];
+        bool success = [image writeToFile:filename options:NSDataWritingAtomic error:&error];
+        if(!success)
+        {
+            NSLog(@"Error Saving to File System: %@", [error description]);
+        }
+    }
+    //[self queueImageUpload];
 
 }
 
@@ -168,6 +219,8 @@
     self.path = [decoder decodeObjectForKey:@"path"];
     
     [self queueImageDownload];
+    
     return self;
 }
+
 @end

@@ -13,13 +13,14 @@
 #import <LoginWithAmazon/LoginWithAmazon.h>
 
 #import "AMZNAuthorizeUserDelegate.h"
+#import "AMZNGetAccessTokenDelegate.h"
 #import "AMZNGetProfileDelegate.h"
 
 @implementation AMZNAuthorizeUserDelegate
 
 - (id)initWithParentController:(AMZNLoginController*)aViewController {
     if(self = [super init]) {
-        parentViewController = [aViewController retain];
+        parentViewController = aViewController;
     }
     
     return self;
@@ -32,9 +33,9 @@
 - (void)requestDidSucceed:(APIResult *)apiResult {
     // Your code after the user authorizes Application for requested scopes.
     
-    // You can now load new view controller with user identifying information as the user is now successfully signed in or simple get the user profile information if the authorization was for "profile" scope.
+    // You can now loadx` new view controller with user identifying information as the user is now successfully signed in or simple get the user profile information if the authorization was for "profile" scope.
     
-    AMZNGetProfileDelegate* delegate = [[[AMZNGetProfileDelegate alloc] initWithParentController:parentViewController] autorelease];
+    AMZNGetProfileDelegate* delegate = [[AMZNGetProfileDelegate alloc] initWithParentController:parentViewController];
     [AIMobileLib getProfile:delegate];
 }
 
@@ -44,7 +45,7 @@
 - (void)requestDidFail:(APIError *)errorResponse {
     // Your code when the authorization fails.
     
-    [[[[UIAlertView alloc] initWithTitle:@"" message:[NSString stringWithFormat:@"User authorization failed with message: %@", errorResponse.error.message] delegate:nil cancelButtonTitle:@"OK"otherButtonTitles:nil] autorelease] show];
+    [[[UIAlertView alloc] initWithTitle:@"" message:[NSString stringWithFormat:@"User authorization failed with message: %@", errorResponse.error.message] delegate:nil cancelButtonTitle:@"OK"otherButtonTitles:nil] show];
 }
 
 

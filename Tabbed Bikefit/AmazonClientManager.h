@@ -21,6 +21,7 @@
 
 + (AmazonDynamoDBClient *)ddb;
 + (AmazonS3Client *)s3;
++ (S3TransferManager *)s3TransferManager;
 + (CredentialProvider *)credProvider;
 
 @end

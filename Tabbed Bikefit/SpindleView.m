@@ -25,10 +25,9 @@
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
-    
     //spindleYPosition = 300.0;
     // Drawing code
-    boxPath = [UIBezierPath bezierPathWithRect:CGRectMake(0, 397, 768, 120 )];
+    boxPath = [UIBezierPath bezierPathWithRect:CGRectMake(0, 400, 768, 200 )];
     [boxPath moveToPoint:CGPointMake(0, spindleYPosition)];
     [boxPath addLineToPoint:CGPointMake(770, spindleYPosition)];
     

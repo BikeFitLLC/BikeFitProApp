@@ -11,12 +11,14 @@
  */
 
 #import "AMZNLogoutDelegate.h"
+#import "AmazonClientManager.h"
+#import "BikefitConstants.h"
 
 @implementation AMZNLogoutDelegate
 
 - (id)initWithParentController:(AMZNLoginController*)aViewController {
     if(self = [super init]) {
-        parentViewController = [aViewController retain];
+        parentViewController = aViewController;
     }
     
     return self;
@@ -29,7 +31,7 @@
 - (void)requestDidFail:(APIError *)errorResponse {
     // Your additional logic after the SDK failed to clear the authorization state.
     
-    [[[[UIAlertView alloc] initWithTitle:@"" message:[NSString stringWithFormat:@"User Logout failed with message: %@", errorResponse.error.message] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] autorelease] show];
+    [[[UIAlertView alloc] initWithTitle:@"" message:[NSString stringWithFormat:@"User Logout failed with message: %@", errorResponse.error.message] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
 }
 
 /*
@@ -37,12 +39,11 @@
  */
 - (void)requestDidSucceed:(APIResult *)apiResult {
     // Your additional logic after the user authorization state is cleared.
+    [[AmazonClientManager credProvider] clear];
+    [AthletePropertyModel newAthlete];
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:USER_DEFAULTS_USERNAME_KEY];
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:USER_DEFAULTS_AMZN_TOKEN_KEY];
     
     [parentViewController showLogInPage];
-}
-
-- (void)dealloc {
-    [parentViewController release];
-    [super dealloc];
 }
 @end

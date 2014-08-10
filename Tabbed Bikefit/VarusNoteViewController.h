@@ -13,6 +13,9 @@
 @interface VarusNoteViewController : VideoNoteViewController <UIGestureRecognizerDelegate>
 {
     IBOutlet UILabel *angleLabel;
+    IBOutlet UIImageView *leftLegImageView;
+    IBOutlet UIImageView *rightLegImageView;
+    IBOutlet UIImageView *ffmdImageView;
 
 }
 

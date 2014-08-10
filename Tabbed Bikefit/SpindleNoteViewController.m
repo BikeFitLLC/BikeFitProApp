@@ -37,6 +37,21 @@
 	// Do any additional setup after loading the view.
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if([bikeInfo leftNotesSelected])
+    {
+        [leftFootGraphic setHidden:false];
+        [rightFootGraphic setHidden:true];
+    }
+    else
+    {
+        [leftFootGraphic setHidden:true];
+        [rightFootGraphic setHidden:false];
+    }
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

@@ -18,5 +18,6 @@
 }
 
 - (void) addNote:(FitNote*)note;
+- (bool) leftNotesSelected;
 
 @end

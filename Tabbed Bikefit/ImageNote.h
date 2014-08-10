@@ -7,8 +7,9 @@
 //
 
 #import "FitNote.h"
+#import "AmazonClientManager.h"
 
-@interface ImageNote : FitNote
+@interface ImageNote : FitNote <AmazonServiceRequestDelegate>
 {
     //NSURL *imageUrl;
     UIBezierPath *path;
@@ -23,6 +24,6 @@
 @property UIBezierPath *path;
 
 
--(void)queueImageUpload;
--(void) uploadImageToAws;
+//-(void)queueImageUpload;
+//-(void) uploadImageToAws;
 @end

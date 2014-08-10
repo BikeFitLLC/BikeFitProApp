@@ -19,6 +19,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [concerns setDelegate:self];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moveViewUpForKeyboard:) name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moveViewDownForKeyboard:) name:UIKeyboardDidHideNotification object:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -38,6 +41,13 @@
     NSString *propertyName = [self propertyNameFromTag:field.tag];
     [AthletePropertyModel setProperty:propertyName value:field.text];
     return;
+}
+
+- (void)textViewDidChange:(UITextView *)textView
+{
+    NSString *propertyName = [self propertyNameFromTag:textView.tag];
+    [AthletePropertyModel setProperty:propertyName value:textView.text];
+    
 }
 
 -(IBAction) save{

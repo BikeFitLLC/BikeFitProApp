@@ -16,6 +16,7 @@
     UIBezierPath *lazerPath;
     CGPoint startingPoint;
     NSURL *videoUrl;
+    NSURL *localVideoUrl;
     NSString *s3Key;
     NSString *S3Bucket;
     

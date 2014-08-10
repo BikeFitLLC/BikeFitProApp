@@ -13,7 +13,7 @@
 
 - (UITableViewCell *) populateTableCell:(UITableViewCell *)cell
 {
-    cell.textLabel.text = @"Test";
+    cell.textLabel.text = @"Cleat Fore-Aft";
     
     CGRect rect = CGRectMake(0.0, 0.0, 50.0, 50.0);
     
@@ -28,7 +28,7 @@
     
     //Set the scale we will transorm too
     CGFloat scaleX = .05;
-    CGFloat scaleY = .2;
+    CGFloat scaleY = .13;
     
     CGAffineTransform transform = CGAffineTransformMakeScale(scaleX, scaleY);
     CGAffineTransform translation = CGAffineTransformMakeTranslation(100, -300);

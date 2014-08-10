@@ -35,7 +35,9 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    
     [super viewDidAppear:animated];
+    
     if(videoUrl)
     {
         [self stopCapturing];
@@ -84,6 +86,8 @@
     [nextImageButton setHidden:NO];
     [previousImageButton setHidden:NO];
     [saveButton setHidden:NO];
+    [lazerLeftButton setHidden:NO];
+    [lazerRightButton setHidden:NO];
     [recordButton setHidden:YES];
     
 }

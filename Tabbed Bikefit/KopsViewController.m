@@ -47,4 +47,10 @@
     [bikeInfo addNote:note];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
+
+- (void) stopCapturing
+{
+    [super stopCapturing];
+    [(KneeDrawingView *) previewImage setDrawingEnabled:false];
+}
 @end

@@ -14,11 +14,14 @@
 #import <Foundation/Foundation.h>
 
 @interface AMZNLoginController : UIViewController
+{
+    IBOutlet UISwitch *onlineModeSwitch;
+}
 
 @property (retain, nonatomic) IBOutlet UIButton *loginButton;
 @property (retain, nonatomic) IBOutlet UITextView *infoField;
-@property (retain, nonatomic) IBOutlet UIBarButtonItem *logoutButton;
-@property (retain, nonatomic) IBOutlet UINavigationItem *navigationItem;
+@property (retain, nonatomic) IBOutlet UIButton *logoutButton;
+//@property (retain, nonatomic) IBOutlet UINavigationItem *navigationItem;
 
 @property(retain) NSDictionary* userProfile;
 

@@ -266,8 +266,8 @@ static NSMutableDictionary *athleteProperties;
 {
     athleteProperties = [[NSMutableDictionary alloc] init];
     [athleteProperties setObject:[[NSUUID UUID] UUIDString] forKey:AWS_FIT_ATTRIBUTE_FITID];
-    NSString *fitterKey = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITTER_KEY_KEY];
-    [athleteProperties setObject:fitterKey forKey:AWS_FIT_ATTRIBUTE_FITTERKEY];
+    //NSString *fitterKey = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITTER_KEY_KEY];
+    //[athleteProperties setObject:fitterKey forKey:AWS_FIT_ATTRIBUTE_FITTERKEY];
     
 }
 

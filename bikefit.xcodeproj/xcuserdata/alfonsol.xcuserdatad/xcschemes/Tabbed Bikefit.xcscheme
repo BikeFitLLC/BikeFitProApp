@@ -90,8 +90,8 @@
       buildConfiguration = "Debug">
    </AnalyzeAction>
    <ArchiveAction
-      buildConfiguration = "Release"
-      customArchiveName = "bikefit"
+      buildConfiguration = "Debug"
+      customArchiveName = "BikeFit Beta 1"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

@@ -46,8 +46,8 @@
     
     [note setAngle:[(LegAngleImageView*)previewImage angle]];
     [note setVertices:[(LegAngleImageView*)previewImage vertices]];
-    //[note setPath:[(LegAngleImageView *)previewImage path]];
-    //[note setArcPath:[(LegAngleImageView *)previewImage arcPath]];
+    [note setPath:[(LegAngleImageView *)previewImage path]];
+
     [note setImage:UIImageJPEGRepresentation([self imageFromCurrentTime], 1)];
     
     

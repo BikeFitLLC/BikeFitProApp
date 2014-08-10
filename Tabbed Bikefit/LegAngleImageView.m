@@ -131,7 +131,7 @@
     [super drawRect:rect];
     
     brushPattern = [UIColor yellowColor];
-    path.LineWidth = 10;
+    path.LineWidth = 2;
     [brushPattern setStroke];
     [path strokeWithBlendMode:kCGBlendModeNormal alpha:1.0];
     
@@ -148,7 +148,7 @@
     [circle3 fillWithBlendMode:kCGBlendModeNormal alpha:circleAlpha];
     
     
-    arcPath.lineWidth = 5;
+    arcPath.lineWidth = 2;
     float dashPattern[] = {5,5};
     [arcPath setLineDash:dashPattern count:2 phase:4.0];
     [arcPath strokeWithBlendMode:kCGBlendModeNormal alpha:1.0];

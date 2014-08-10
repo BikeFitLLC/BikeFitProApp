@@ -10,6 +10,10 @@
 #import "AthletePropertyModel.h"
 #import "BikefitConstants.h"
 
+#import "AMZNGetAccessTokenDelegate.h"
+
+#import <LoginWithAmazon/LoginWithAmazon.h>
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -17,16 +21,24 @@
     // Override point for customization after application launch.
     
     //if we crashed last
-    if([[NSUserDefaults standardUserDefaults] objectForKey:@"lastemail"])
-    {
-        [AthletePropertyModel loadAthleteFromAWS:[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITID_KEY]];
-    }
+    //if([[NSUserDefaults standardUserDefaults] objectForKey:@"lastemail"])
+    //{
+      //  [AthletePropertyModel loadAthleteFromAWS:[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITID_KEY]];
+    //}
     
+    NSString *email = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITTERID_KEY];
     //default to online mode on.
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_ONLINEMODE_KEY])
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_ONLINEMODE_KEY] == nil)
     {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_ONLINEMODE_KEY];
         [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    
+    //if online mode is on, try to get a token from amazon
+    if([[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_ONLINEMODE_KEY] boolValue])
+    {
+        AMZNGetAccessTokenDelegate* delegate = [[AMZNGetAccessTokenDelegate alloc] initWithParentController:nil];
+        [AIMobileLib getAccessTokenForScopes:[NSArray arrayWithObject:@"profile"] withOverrideParams:nil delegate:delegate];
     }
     
     //Setup crash detection
@@ -65,6 +77,17 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    // Pass on the url to the SDK to parse authorization code from the url.
+    BOOL isValidRedirectLogInURL = [AIMobileLib handleOpenURL:url sourceApplication:sourceApplication];
+    
+    if(!isValidRedirectLogInURL)
+        return NO;
+    
+    // App may also want to handle url
+    return YES;
 }
 
 void HandleException(NSException *exception) {

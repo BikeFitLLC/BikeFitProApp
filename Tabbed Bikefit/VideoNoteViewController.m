@@ -40,6 +40,14 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    CGRect bounds = self.view.bounds;
+    //Place all the buttons
+    [saveButton setHidden:true];
+    [saveButton setCenter:CGPointMake(bounds.size.width * .4, bounds.size.height *.4)];
+    [nextImageButton setHidden:true];
+    [previousImageButton setHidden:true];
+    [nextImageButton setCenter:CGPointMake(bounds.size.width *.9, CGRectGetMidY(bounds))];
+    [previousImageButton setCenter:CGPointMake(bounds.size.width *.1, CGRectGetMidY(bounds))];
 }
 - (void)viewDidLoad
 {
@@ -47,21 +55,15 @@
 	interval = 1;
     videoEnabled = true;
     
-    CGRect bounds = CGRectMake(0,0,720, 1280);// self.view.layer.bounds;
+    CGRect bounds = CGRectMake(0,0,720, 1024);// self.view.layer.bounds;
     [self.view setBounds:bounds];
     [previewImage setBounds:bounds];
-    
-    //Place all the buttons
-    [saveButton setCenter:CGPointMake(bounds.size.width * .1, bounds.size.height *.4)];
-    [nextImageButton setCenter:CGPointMake(bounds.size.width *.9, CGRectGetMidY(bounds))];
-    [previousImageButton setCenter:CGPointMake(bounds.size.width *.1, CGRectGetMidY(bounds))];
 }
 
 - (void) viewDidAppear:(BOOL)animated
 {
     if(videoEnabled)
     {
-        
         if(videoUrl)
         {
             [previewImage setOverlayPath:overlayPath];
@@ -78,6 +80,11 @@
             });
         }
     }
+}
+- (void) viewDidLayoutSubviews
+{
+
+    
 }
 
 - (void) viewDidDisappear:(BOOL)animated
@@ -142,7 +149,7 @@
 
     CGRect bounds = self.view.bounds;
 	[previewLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
-    [previewLayer setBounds:bounds];
+    [previewLayer setFrame:bounds];
     [previewLayer setPosition:CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds))];
     [[previewLayer connection] setVideoOrientation:AVCaptureVideoOrientationPortrait];
     
@@ -159,7 +166,8 @@
 ////////////////////////////////////////////////
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection
 {
- 
+    @try {
+        
     if(capture)
     {
         if(assetWriter.status != AVAssetWriterStatusWriting)
@@ -167,10 +175,24 @@
             [assetWriter startWriting];
             [assetWriter startSessionAtSourceTime:CMSampleBufferGetPresentationTimeStamp(sampleBuffer)];
         }
-
-        if(![assetInput appendSampleBuffer:sampleBuffer])
+        
+        if (!CMSampleBufferDataIsReady(sampleBuffer))
         {
-            NSLog(@"Dropped Frame: %d",assetWriter.status);
+            NSLog(@"sampleBuffer data is not ready");
+            return;
+        }
+        else if([assetWriter.inputs count] != 1)
+        {
+            NSLog(@"AssetWriter has unexpected number of inputs: %d. Skipping Frame", [assetWriter.inputs count]);
+        }
+        else if(![assetWriter.inputs[0] isReadyForMoreMediaData])
+        {
+            NSLog(@"AssetInput not ready for data.  Skipping frame.");
+            
+        }
+        else if(![assetWriter.inputs[0] appendSampleBuffer:sampleBuffer])
+        {
+            NSLog(@"Dropped Frame");
         }
         else
         {
@@ -196,7 +218,71 @@
         //[imageView setNeedsDisplay];
         
     }
+        
+    }
+    @catch(NSException *e)
+    {
+        NSLog(@"Exception Loading Frame: %@", [e description]);
+    }
     return;
+}
+
+/////////////////////////////////////////////////////////////////
+//Switches between front and back camera
+/////////////////////////////////////////////////////////////////
+-(IBAction)switchCameraTapped:(id)sender
+{
+    //Change camera source
+    if(session)
+    {
+        AVCaptureInput* currentCameraInput = [session.inputs objectAtIndex:0];
+        
+        //Get new input
+        AVCaptureDevice *newCamera = nil;
+        if(((AVCaptureDeviceInput*)currentCameraInput).device.position == AVCaptureDevicePositionBack)
+        {
+            newCamera = [self cameraWithPosition:AVCaptureDevicePositionFront];
+            [[self previewLayer] setTransform:CATransform3DMakeRotation(M_PI, 0.0f, 1.0f, 0.0f)];
+        }
+        else
+        {
+            newCamera = [self cameraWithPosition:AVCaptureDevicePositionBack];
+            [[self previewLayer] setTransform:CATransform3DMakeRotation(0, 0.0f, 1.0f, 0.0f)];
+        }
+        
+        //Add input to session
+        NSError *error;
+        AVCaptureDeviceInput *newVideoInput = [[AVCaptureDeviceInput alloc] initWithDevice:newCamera error:&error];
+        if(error)
+        {
+            NSLog(@"Error creating new video input: %@", [error description]);
+        }
+        
+        if([session canAddInput:newVideoInput])
+        {
+            //Indicate that some changes will be made to the session
+            [session beginConfiguration];
+                [session removeInput:currentCameraInput];
+                [session addInput:newVideoInput];
+                [[[session.outputs objectAtIndex:0] connectionWithMediaType:AVMediaTypeVideo]setVideoOrientation:AVCaptureVideoOrientationPortrait];
+            
+            [session commitConfiguration];
+        }
+        else{
+            //this happens if the front camera isn't going to work. so set the transform back to neutral
+            [[self previewLayer] setTransform:CATransform3DMakeRotation(0, 0.0f, 1.0f, 0.0f)];
+        }
+    }
+}
+// Find a camera with the specified AVCaptureDevicePosition, returning nil if one is not found
+- (AVCaptureDevice *) cameraWithPosition:(AVCaptureDevicePosition) position
+{
+    NSArray *devices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
+    for (AVCaptureDevice *device in devices)
+    {
+        if ([device position] == position) return device;
+    }
+    return nil;
 }
 
 ////////////////////////////////////////////////
@@ -204,9 +290,9 @@
 ////////////////////////////////////////////////
 - (IBAction)capture
 {
+    [recordButton setEnabled:false];
     timer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(stopCapturing)
                                            userInfo:nil repeats:NO];
-    capture = true;
     NSError *error;
 
     NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
@@ -217,6 +303,10 @@
     [fileManager removeItemAtPath:[videoUrl path] error:NULL];
     
     assetWriter = [AVAssetWriter assetWriterWithURL:videoUrl fileType:AVFileTypeQuickTimeMovie error:&error];
+    if(error)
+    {
+        NSLog(@"Error creating AssetWriter: %@", [error description]);
+    }
     
     NSDictionary* settings = [NSDictionary dictionaryWithObjectsAndKeys:
                               AVVideoCodecH264, AVVideoCodecKey,
@@ -228,9 +318,12 @@
                               [NSNumber numberWithInt:1280], AVVideoHeightKey,
                               nil];
     
-    assetInput = [[AVAssetWriterInput alloc] initWithMediaType:AVMediaTypeVideo outputSettings:settings];
+    AVAssetWriterInput *assInput = [[AVAssetWriterInput alloc] initWithMediaType:AVMediaTypeVideo outputSettings:settings];
     assetInput.expectsMediaDataInRealTime = YES;
-    [assetWriter addInput:assetInput];
+    [assetWriter addInput:assInput];
+    NSLog(@"Asset Input added. AssetWriter now has %d inputs", [assetWriter.inputs count]);
+    
+    capture = true;
 }
 
 ////////////////////////////////////////
@@ -284,7 +377,7 @@
 
     CGRect bounds = self.view.bounds;
     [playerLayer setFrame:bounds];
-    [playerLayer setBounds:bounds];
+    //[playerLayer setBounds:bounds];
     [playerLayer setPosition:CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds))];
     [playerLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
    
@@ -347,6 +440,7 @@
 - (IBAction)takePhoto
 {
     //this will be checked in captureOutput method
+    [saveButton setHidden:NO];
     takingPhoto = true;
 }
 

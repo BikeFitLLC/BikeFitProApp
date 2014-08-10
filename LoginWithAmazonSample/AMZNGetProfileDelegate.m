@@ -11,12 +11,14 @@
  */
 
 #import "AMZNGetProfileDelegate.h"
+#import "BikefitConstants.h"
+#import "AMZNGetAccessTokenDelegate.h"
 
 @implementation AMZNGetProfileDelegate
 
 - (id)initWithParentController:(AMZNLoginController*)aViewController {
     if(self = [super init]) {
-        parentViewController = [aViewController retain];
+        parentViewController = aViewController;
     }
     
     return self;
@@ -26,7 +28,20 @@
 - (void)requestDidSucceed:(APIResult *)apiResult {
     // Get profile request succeded. Use the profile information to achieve various use cases like showing a simple welcome message.
 
-    parentViewController.userProfile = (NSDictionary*)apiResult.result;
+    //Set the username and amazon userid
+    NSDictionary *userProfile = (NSDictionary*)apiResult.result;
+    
+    [[NSUserDefaults standardUserDefaults] setObject:[[userProfile objectForKey:@"email"] lowercaseString] forKey:USER_DEFAULTS_USERNAME_KEY];
+    [[NSUserDefaults standardUserDefaults] setObject:[userProfile objectForKey:@"name"] forKey:USER_DEFAULTS_FITTERNAME_KEY];
+    
+    //We have the profile, now lets get the access token
+    AMZNGetAccessTokenDelegate* tokenDelegate =
+    [[AMZNGetAccessTokenDelegate alloc] initWithParentController:parentViewController];
+    [AIMobileLib getAccessTokenForScopes:[NSArray arrayWithObject:@"profile"]
+                      withOverrideParams:nil
+                                delegate:tokenDelegate];
+    
+    parentViewController.userProfile = userProfile;
     [parentViewController loadSignedInUser];
 }
 
@@ -40,13 +55,8 @@
     }
     else {
         // Handle other errors
-        [[[[UIAlertView alloc] initWithTitle:@"" message:[NSString stringWithFormat:@"Error occured with message: %@", errorResponse.error.message] delegate:nil cancelButtonTitle:@"OK"otherButtonTitles:nil] autorelease] show];
+        [[[UIAlertView alloc] initWithTitle:@"" message:[NSString stringWithFormat:@"Error occured with message: %@", errorResponse.error.message] delegate:nil cancelButtonTitle:@"OK"otherButtonTitles:nil] show];
     }
 }
 
--(void)dealloc {
-    [parentViewController release];
-    [super dealloc];
-    
-}
 @end

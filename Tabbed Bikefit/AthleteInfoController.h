@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AthleteInfoController : UIViewController {
+@interface AthleteInfoController : UIViewController <UITextViewDelegate>{
     IBOutlet UITextField *firstName;
     IBOutlet UITextField *lastName;
     IBOutlet UITextField *email;

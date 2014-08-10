@@ -12,7 +12,11 @@
 #import "KneeViewNote.h"
 #import "VideoNoteViewController.h"
 
-@interface KneeViewController : VideoNoteViewController <AVCaptureVideoDataOutputSampleBufferDelegate>{
+@interface KneeViewController : VideoNoteViewController <AVCaptureVideoDataOutputSampleBufferDelegate>
+{
+    
+    IBOutlet UIButton *lazerLeftButton;
+    IBOutlet UIButton *lazerRightButton;
 
 }
 

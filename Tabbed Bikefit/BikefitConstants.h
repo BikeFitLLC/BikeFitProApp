@@ -1,14 +1,17 @@
 #define S3_IMAGE_URL_FORMAT @"http://s3-us-west-2.amazonaws.com/%@/%@"
-#define FILESYSTEM_IMAGE_FILENAME_FORMAT @"%@/%@"
+#define FILESYSTEM_IMAGE_FILENAME_FORMAT @"/%@/%@"
 
 #define USER_DEFAULTS_AWS_ACCESS_KEY_KEY @"AccessKey"
 #define USER_DEFAULTS_AWS_SECRET_KEY_KEY @"SecretKey"
 #define USER_DEFAULTS_AWS_EXPIRATION @"Expiration"
-#define USER_DEFAULTS_FITTER_KEY_KEY @"FitterKey"
+//#define USER_DEFAULTS_FITTER_KEY_KEY @"FitterKey"
 #define USER_DEFAULTS_FITTERID_KEY @"FitterID"
 #define USER_DEFAULTS_USERNAME_KEY @"username"
+#define USER_DEFAULTS_FITTERNAME_KEY @"fittername"
+#define USER_DEFAULTS_AMZN_TOKEN_KEY @"amzntoken"
 #define USER_DEFAULTS_FITID_KEY @"FitID"
 #define USER_DEFAULTS_ONLINEMODE_KEY @"onlinemode"
+#define USER_DEFAULTS_ACCOUNT_ACTIVE_KEY @"accountactive"
 
 #define AWS_FIT_ATTRIBUTE_FITID @"FitID"
 #define AWS_FIT_ATTRIBUTE_FIRSTNAME @"FirstName"
@@ -24,4 +27,5 @@
 
 #define AWS_FIT_TABLE_NAME_FORMAT @"%@-fits"
 
-#define TOKEN_VENDING_MACHINE_URL_FORMAT @"http://tvm-env-gkdffig78p.elasticbeanstalk.com/?FitterKey=%@"
+#define TOKEN_VENDING_MACHINE_URL_FORMAT @"https://tvm.velopezdigital.com/?Email=%@&Name=%@&Token=%@"
+//#define TOKEN_VENDING_MACHINE_URL_FORMAT @"http://192.168.0.101:8000/?Email=%@&Name=%@&Token=%@"

@@ -14,11 +14,14 @@
     UIBezierPath *path;
     UIBezierPath *lazerPath;
     CGPoint startPoint;
+    
+    bool drawingEnabled;
 }
 
 @property UIBezierPath *path;
 @property UIBezierPath *lazerPath;
 @property CGPoint startPoint;
+@property bool drawingEnabled;
 
 - (void) moveLazer:(int)numPixels;
 -(void) stopLazer;

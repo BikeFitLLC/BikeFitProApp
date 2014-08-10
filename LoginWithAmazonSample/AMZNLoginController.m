@@ -17,29 +17,28 @@
 #import "AMZNGetProfileDelegate.h"
 #import "AMZNAuthorizeUserDelegate.h"
 #import "AMZNLogoutDelegate.h"
+#import "AmazonClientManager.h"
+#import "BikefitConstants.h"
 
 @implementation AMZNLoginController
 
-@synthesize userProfile, navigationItem, logoutButton, loginButton, infoField;
+@synthesize userProfile, /*navigationItem,*/ logoutButton, loginButton, infoField;
 
-NSString* userLoggedOutMessage = @"Welcome to Login with Amazon!\nIf this is your first time logging in, you will be asked to give permission for this application to access your profile data.";
-NSString* userLoggedInMessage = @"Welcome, %@ \n Your email is %@.";
+NSString* userLoggedOutMessage = @"Welcome, BikeFit Pro!\n";
+
+NSString* userLoggedInMessage = @"Logged In As %@";
 BOOL isUserSignedIn;
 
 - (IBAction)onLogInButtonClicked:(id)sender {
-    // Make authorize call to SDK to get authorization from the user. While making the call you can specify the scopes for which the user authorization is needed.
-    
+    // Make authorize call to SDK to get authorization from the user.
     // Requesting 'profile' scopes for the current user.
     NSArray *requestScopes = [NSArray arrayWithObject:@"profile"];
-    
     AMZNAuthorizeUserDelegate* delegate = [[AMZNAuthorizeUserDelegate alloc] initWithParentController:self];
-    
     [AIMobileLib authorizeUserForScopes:requestScopes delegate:delegate];
 }
 
 - (IBAction)logoutButtonClicked:(id)sender {
-    AMZNLogoutDelegate* delegate = [[[AMZNLogoutDelegate alloc] initWithParentController:self] autorelease];
-    
+    AMZNLogoutDelegate* delegate = [[AMZNLogoutDelegate alloc] initWithParentController:self];
     [AIMobileLib clearAuthorizationState:delegate];
 }
 
@@ -49,28 +48,57 @@ BOOL isUserSignedIn;
 
 #pragma mark View controller specific functions
 - (void)checkIsUserSignedIn {
-    AMZNGetAccessTokenDelegate* delegate = [[[AMZNGetAccessTokenDelegate alloc] initWithParentController:self] autorelease];
+    AMZNGetAccessTokenDelegate* delegate = [[AMZNGetAccessTokenDelegate alloc] initWithParentController:self];
     [AIMobileLib getAccessTokenForScopes:[NSArray arrayWithObject:@"profile"] withOverrideParams:nil delegate:delegate];
 }
 
 - (void)loadSignedInUser {
-    isUserSignedIn = true;
+    //isUserSignedIn = true;
     self.loginButton.hidden = true;
-    self.navigationItem.rightBarButtonItem = self.logoutButton;
-    self.infoField.text = [NSString stringWithFormat:@"Welcome, %@ \n Your email is %@.", [userProfile objectForKey:@"name"], [userProfile objectForKey:@"email"]];
+    //self.navigationItem.rightBarButtonItem = self.logoutButton;
+   // NSString *email = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_USERNAME_KEY];
+    NSString *name = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITTERNAME_KEY];
+    
+    self.infoField.text = [NSString stringWithFormat:@"Logged In As %@", name];
+    self.infoField.font = [UIFont fontWithName:@"Gill Sans" size:48.0];
+    self.infoField.textColor = [UIColor grayColor];
+    self.infoField.textAlignment = NSTextAlignmentCenter;
     self.infoField.hidden = false;
+    
+    logoutButton.hidden = false;
 }
 
 - (void)showLogInPage {
     isUserSignedIn = false;
     self.loginButton.hidden = false;
-    self.navigationItem.rightBarButtonItem = nil;
-    self.infoField.text = userLoggedOutMessage;
-    self.infoField.hidden = false;
+    self.logoutButton.hidden = true;
+    
+    onlineModeSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_ONLINEMODE_KEY] boolValue];
+    [onlineModeSwitch addTarget:self action:@selector(toggleOnlineSwitch:) forControlEvents:UIControlEventValueChanged];
+    
+    if(onlineModeSwitch.on)
+    {
+        self.infoField.text = userLoggedOutMessage;
+        self.infoField.hidden = false;
+        self.loginButton.enabled = true;
+    }
+    else
+    {
+        self.infoField.text = @"Offline Mode";
+        self.infoField.hidden = false;
+        self.loginButton.enabled = false;
+    }
+    
+    self.infoField.font = [UIFont fontWithName:@"Gill Sans" size:48.0];
+    self.infoField.textColor = [UIColor grayColor];
+    self.infoField.textAlignment = NSTextAlignmentCenter;
+    
+    
+    
 }
 
 - (void)viewDidLoad {
-    if (isUserSignedIn)
+    if ([[AmazonClientManager credProvider] isLoggedIn])
         [self loadSignedInUser];
     else
         [self showLogInPage];
@@ -87,14 +115,25 @@ BOOL isUserSignedIn;
     }
 }
 
+////////////////////////////////////////////
+//Called with the onlineMode toggle switch changes
+//state
+////////////////////////////////////////////
+- (void) toggleOnlineSwitch:(id)sender
+{
+    UISwitch *sendinSwitch = sender;
+    [[NSUserDefaults standardUserDefaults] setBool:sendinSwitch.on forKey:USER_DEFAULTS_ONLINEMODE_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [self showLogInPage];
+}
+
 - (void)dealloc {
-    self.navigationItem = nil;
+    //self.navigationItem = nil;
     self.infoField = nil;
     self.loginButton = nil;
     self.logoutButton = nil;
     self.userProfile = nil;
     
-    [super dealloc];
 }
 
 @end

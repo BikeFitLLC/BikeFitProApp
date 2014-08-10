@@ -27,11 +27,11 @@
 - (void)drawRect:(CGRect)rect
 {
     // Drawing code
-    [super drawRect:rect];
+  
     
     //Setup the lazer line
-    UIBezierPath *redPath= [[UIBezierPath alloc] init];
-    redPath.LineWidth = 3;
+    self.overlayPath = [[UIBezierPath alloc] init];
+    self.overlayPath.LineWidth = 3;
     
     //Add the dragging circle
     UIBezierPath *anglePath = [[UIBezierPath alloc] init];
@@ -48,24 +48,24 @@
     startPoint.x = self.bounds.size.width /2;
     startPoint.y = 0;
     
-    [redPath moveToPoint:startPoint];
+    [self.overlayPath moveToPoint:startPoint];
     CGPoint newPoint;
     CGFloat laserLength = 1500.0;
     newPoint.x = startPoint.x;
     newPoint.y = laserLength;
-    [redPath addLineToPoint:newPoint];
+    [self.overlayPath addLineToPoint:newPoint];
     
-    [redPath moveToPoint:CGPointMake(0, barYPosition)];
-    [redPath addLineToPoint:CGPointMake(768, barYPosition)];
+    //[self.overlayPath moveToPoint:CGPointMake(0, barYPosition)];
+    //[self.overlayPath addLineToPoint:CGPointMake(768, barYPosition)];
     
-    [redPath appendPath:[UIBezierPath bezierPathWithRect:[self getBarDragRect]]];
-    //[redPath moveToPoint:CGPointMake(startPointLocation.x, startPointLocation.y+10)];
-    //[redPath addLineToPoint:CGPointMake(startPointLocation.x, startPointLocation.y-10)];
+    [self.overlayPath appendPath:[UIBezierPath bezierPathWithRect:[self getBarDragRect]]];
+
+    [self.overlayPath appendPath:anglePath];
     
     UIColor *brushPattern = [UIColor redColor];
     [brushPattern setStroke];
-    [redPath stroke];
-    [anglePath stroke];
+    //[self.overlayPath stroke];
+    [super drawRect:rect];
 }
 
 ///////////////////////////////////

@@ -14,6 +14,7 @@
     CGPoint endPointLocation;
     CGPoint startPointLocation;
     CGPoint oldStartPointLocation; //use to save the old position during pan gestures
+    CGPoint oldEndPointLocation;
     CGFloat barYPosition;
     CGFloat angle;
 }
@@ -37,12 +38,14 @@
     angleLabel.font = [UIFont fontWithName:@"Helvetica" size:100.0];
     
     barYPosition = 820;
-    startPointLocation = CGPointMake(300, barYPosition);
+    startPointLocation = CGPointMake(0, barYPosition);
     [(VarusDrawingView *)previewImage setStartPointLocation:startPointLocation];
     [(VarusDrawingView *)previewImage setBarYPosition:barYPosition];
     
-    endPointLocation = CGPointMake(400,600);
+    endPointLocation = CGPointMake(768,barYPosition);
     [(VarusDrawingView *)previewImage setEndPointLocation:endPointLocation];
+    
+    
 
     
     //Add tap recognition to the view
@@ -53,9 +56,33 @@
     panGesture.maximumNumberOfTouches = 2;
     [panGesture setDelegate:self];
 
-    [self.view addGestureRecognizer:tapGesture];
+    //[self.view addGestureRecognizer:tapGesture];
     [self.view addGestureRecognizer:panGesture];
 
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if( [bikeInfo leftNotesSelected])
+    {
+        [leftLegImageView setHidden:false];
+        [rightLegImageView setHidden:true];
+    }
+    else
+    {
+        [leftLegImageView setHidden:true];
+        [rightLegImageView setHidden:false];
+    }
+    
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    ffmdImageView.layer.anchorPoint = CGPointMake(0.5, 0.15);
+    [ffmdImageView setCenter:CGPointMake(previewImage.bounds.size.width/2, startPointLocation.y+31)];
 }
 
 - (void)didReceiveMemoryWarning
@@ -99,16 +126,18 @@
         if(sender.state == UIGestureRecognizerStateBegan)
         {
             oldStartPointLocation = startPointLocation;
+            oldEndPointLocation = endPointLocation;
+            
         }
         if(sender.state == UIGestureRecognizerStateChanged)
         {
             CGPoint translation = [sender translationInView:[self view]];
             
-            barYPosition = oldStartPointLocation.y + translation.y;
-            [(VarusDrawingView *)previewImage setBarYPosition:barYPosition];
-            startPointLocation.y = oldStartPointLocation.y + translation.y;
-            startPointLocation.x = oldStartPointLocation.x + translation.x;
+            startPointLocation = CGPointMake(0, (oldStartPointLocation.y + translation.y));
             [(VarusDrawingView *)previewImage setStartPointLocation:startPointLocation];
+            
+            endPointLocation = CGPointMake(768,(oldEndPointLocation.y + translation.y));
+            [(VarusDrawingView *)previewImage setEndPointLocation:endPointLocation];
         }
         NSLog(@"Moving drag box");
         
@@ -117,20 +146,41 @@
     else if(location.y > endPointLocation.y - 50 && location.y < endPointLocation.y + 50 &&
        location.x > endPointLocation.x - 50 && location.x < endPointLocation.x + 50)
     {
-        endPointLocation = location;
+        startPointLocation = CGPointMake(0, startPointLocation.y + (endPointLocation.y - location.y));
+        [(VarusDrawingView *)previewImage setStartPointLocation:startPointLocation];
+        
+        endPointLocation = CGPointMake(768, location.y);
         [(VarusDrawingView *)previewImage setEndPointLocation:endPointLocation];
+        
+        [self calculateAngle];
+        
+        [ffmdImageView.layer setTransform:CATransform3DMakeRotation(-angle, 0, 0, 1.0 )];
+        //[ffmdImageView setTransform:rotateTransform];
     }
     
-    [self calculateAngle];
+    [ffmdImageView setCenter:CGPointMake(
+                                         previewImage.bounds.size.width/2,
+                                         (startPointLocation.y +endPointLocation.y)/2 + 31)];
+    
     [(VarusDrawingView *)previewImage setNeedsDisplay];
+
 
 
 }
 
 - (void) calculateAngle
 {
-    angle = atanf((barYPosition - endPointLocation.y)/(endPointLocation.x - startPointLocation.x));
-    angleLabel.text = [NSString stringWithFormat:@"%d", (int)(angle*57.2957795)];
+    angle = atanf((startPointLocation.y - endPointLocation.y)/(endPointLocation.x - startPointLocation.x));
+    int wholeAngle = (int)(angle*57.2957795);
+    if((wholeAngle < 0 && ![bikeInfo leftNotesSelected]) || (wholeAngle >= 0 && [bikeInfo leftNotesSelected]))
+    {
+       angleLabel.text = [NSString stringWithFormat:@"Varus - %d°", abs(wholeAngle)];
+    }
+    else
+    {
+        angleLabel.text = [NSString stringWithFormat:@"Valgus - %d°", abs(wholeAngle)];
+    }
+    
 }
 
 - (IBAction)saveAngle
@@ -139,6 +189,7 @@
 
     [note setAngle:angle];
     [note setImage:UIImageJPEGRepresentation(photo,.1)];
+    [note setPath:[previewImage overlayPath]];
     
     [self.bikeInfo addNote:note];
      

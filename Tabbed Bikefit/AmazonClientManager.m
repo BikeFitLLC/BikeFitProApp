@@ -18,13 +18,33 @@
 
 @implementation AmazonClientManager
 
+
+/*
+ Checks if credentials are good, if they are not attempts to refresh them and returns true
+ Otherwise returns false
+ 
+ it is safe to make AWS calls if this method returns true
+ */
 +(bool)verifyUserKey
 {
     bool isAWSActive = true;
-    isAWSActive = isAWSActive && [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITTER_KEY_KEY] !=nil;
+    isAWSActive = isAWSActive && [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_USERNAME_KEY] !=nil;
     isAWSActive = isAWSActive && [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_ONLINEMODE_KEY];
-    //isAWSActive = isAWSActive &&
-    return isAWSActive;
+    isAWSActive = isAWSActive && [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_ACCOUNT_ACTIVE_KEY];
+    
+    if(isAWSActive)
+    {
+        //check that our session token is still good (not expired)
+        if(![[AmazonClientManager credProvider] isTokenValid])
+        {
+            //if the token is not valid, refresh that bitch.
+            [[AmazonClientManager credProvider] refresh];
+        }
+        //TODO: Check for success of refresh.
+        return true;
+    }
+    
+    return false;
 }
 
 + (CredentialProvider *)credProvider
@@ -60,4 +80,15 @@
         });
         return s3;
     }
+
++ (S3TransferManager *)s3TransferManager
+{
+    static dispatch_once_t once;
+    static S3TransferManager *s3TransferManager;
+    dispatch_once(&once, ^{
+        s3TransferManager = [S3TransferManager new];
+        s3TransferManager.s3 = [AmazonClientManager s3];
+    });
+    return s3TransferManager;
+}
 @end

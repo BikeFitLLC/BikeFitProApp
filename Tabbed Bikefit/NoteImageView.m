@@ -40,7 +40,7 @@
     
     brushPattern = [UIColor yellowColor];
     [brushPattern setStroke];
-    overlayPath.lineWidth = 5;
+    overlayPath.lineWidth = 2;
     [overlayPath stroke];
 }
 

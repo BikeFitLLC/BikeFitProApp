@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>APIKey</key>
+	<string>eyJhbGciOiJSU0EtU0hBMjU2IiwidmVyIjoiMSJ9.eyJhcHBGYW1pbHlJZCI6ImFtem4xLmFwcGxpY2F0aW9uLmRhYWVmYzdjMTcwNTRjMDhhOTIxMjc2Zjc1YzlmN2VmIiwiaWQiOiJkMTdmOWRjZS0xOTEwLTExZTQtYTMxYS0wNTczMjAxZWZjM2QiLCJhcHBJZCI6ImFtem4xLmFwcGxpY2F0aW9uLWNsaWVudC5lYmVlMmY1MDg0NTQ0ZmZkODVmNWE1ODVlMzNjODBiYyIsImJ1bmRsZVNlZWRJZCI6ImNvbS52ZWxvcGV6LmJpa2VmaXQiLCJpc3MiOiJBbWF6b24iLCJidW5kbGVJZCI6ImNvbS52ZWxvcGV6LmJpa2VmaXQiLCJ2ZXIiOiIyIiwiYXBwVmFyaWFudElkIjoiYW16bjEuYXBwbGljYXRpb24tY2xpZW50LmViZWUyZjUwODQ1NDRmZmQ4NWY1YTU4NWUzM2M4MGJjIiwidHlwZSI6IkFQSUtleSIsImlhdCI6IjE0MDY4NTIwNzUzMDgiLCJjbGllbnRJZCI6ImFtem4xLmFwcGxpY2F0aW9uLW9hMi1jbGllbnQuZTAyMTBhZWVjZGU2NDg3NWFhYjM2MmM0ZTQ5NDBmYmEifQ==.AztpC//MRbD1t/txpnTUs7k4pONRp8eFHUcDxOHzEAj+1yH3Hd5NIUhl+lMeW2TVg7ckm0ic8LuI7jwWUp/wRgzcQulfu0SDN3+eY13jRYCRMEvGMNXpEv1ixtbrGVZ59Jg3Zp+89GuBfqSvtDF8msLKSh0lXV4gMHxdk/S1NlR1m84mqG62J8qtwW1LcAIP89jZz+s66rcRFWtkk1OuX2muVUTzJBekNrir+pAxZTaESPV495wcCd1nVqxKA2NLbvIHDefl6sEYHcPu4tTc0Kf824c2E8A5+kE/JhsLWIiQfAv+N3xydmTGsxNoXpn0OLVUfsjAmIzg5/dQi4DMGg==</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -9,18 +11,25 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIcons</key>
+	<dict/>
+	<key>CFBundleIcons~ipad</key>
 	<dict>
 		<key>CFBundlePrimaryIcon</key>
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
-				<string>BikeFitIcon.png</string>
-				<string>BikeFitIcon-72x72.png</string>
+				<string>BikeFitIcon-58x58</string>
+				<string>BikeFitIcon-29x29</string>
+				<string>BikeFitIcon-80x80</string>
+				<string>BikeFitIcon-40x40</string>
+				<string>BikeFitIcon-152x152</string>
+				<string>BikeFitIcon-76x76</string>
+				<string>BikeFitIcon-72x72</string>
 			</array>
 		</dict>
 	</dict>
 	<key>CFBundleIdentifier</key>
-	<string>2M3455ALB5.com.velopez.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>com.velopez.bikefit</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -28,15 +37,24 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>0.9</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.velopez.bikefit</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>amzn-com.velopez.bikefit</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
-	<string>1.0</string>
+	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>UIMainStoryboardFile</key>
-	<string>MainStoryboard_iPhone</string>
 	<key>UIMainStoryboardFile~ipad</key>
 	<string>MainStoryboard_iPad</string>
 	<key>UIRequiredDeviceCapabilities</key>

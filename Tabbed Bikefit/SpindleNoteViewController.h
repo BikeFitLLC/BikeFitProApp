@@ -13,6 +13,9 @@
 @interface SpindleNoteViewController : NoteViewController <UIGestureRecognizerDelegate>
 {
     IBOutlet SpindleView *spindleView;
+    
+    IBOutlet UIImageView *leftFootGraphic;
+    IBOutlet UIImageView *rightFootGraphic;
 }
 
 @end

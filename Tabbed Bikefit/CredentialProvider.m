@@ -64,6 +64,8 @@
                                     delegate:nil
                                     cancelButtonTitle:@"OK"otherButtonTitles:nil
           ] show];
+        
+        return;
     }
     
     if(error)
@@ -74,6 +76,8 @@
     }
     
     [[NSUserDefaults standardUserDefaults] setBool:true forKey:USER_DEFAULTS_ACCOUNT_ACTIVE_KEY];
+    [[NSUserDefaults standardUserDefaults] setBool:[[json objectForKey:@"trial"] boolValue] forKey:USER_DEFAULTS_IS_TRIAL_ACCOUNT];
+    
     
     creds = [[AmazonCredentials alloc]
              initWithAccessKey:[json objectForKey:@"accesskey"]
@@ -89,6 +93,7 @@
     
     //Now we have a good response from the TVM.  Populate credentials and Fitterid
     [[NSUserDefaults standardUserDefaults] setObject:[json objectForKey:@"fitterid"] forKey:USER_DEFAULTS_FITTERID_KEY];
+    //[[NSUserDefaults standardUserDefaults] setBool:true forKey:USER_DEFAULTS_ONLINEMODE_KEY];
     
 }
 

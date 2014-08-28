@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>483378DD-1F97-4FFF-8EFC-3FD9F3586D63</string>
+	<key>IDESourceControlProjectName</key>
+	<string>bikefit</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>5D554874-2EBE-4E00-8703-FC4CC1EAF077</key>
+		<string>https://github.com/alfonsol/velopez-bikefit-app.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>bikefit.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>5D554874-2EBE-4E00-8703-FC4CC1EAF077</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/alfonsol/velopez-bikefit-app.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>5D554874-2EBE-4E00-8703-FC4CC1EAF077</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>5D554874-2EBE-4E00-8703-FC4CC1EAF077</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Tabbed Bikefit</string>
+		</dict>
+	</array>
+</dict>
+</plist>

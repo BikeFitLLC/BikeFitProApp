@@ -13,7 +13,33 @@
 
 - (UITableViewCell *) populateTableCell:(UITableViewCell *)cell
 {
-    cell.textLabel.text = [NSString stringWithFormat:@"ForeFoot Varus Tilt: %f", angle*57.2957795];
+    //tells us if the angle is varus or valgus, based on the sign of it
+    NSString *varusValgus;
+    
+    if(self.leftFoot)
+    {
+        if(angle > 0)
+        {
+            varusValgus = @"Varus";
+        }
+        else
+        {
+            varusValgus = @"Valgus";
+        }
+    }
+    else
+    {
+        if(angle > 0)
+        {
+            varusValgus = @"Valgus";
+        }
+        else
+        {
+            varusValgus = @"Varus";
+        }
+    }
+    cell.textLabel.text = [NSString stringWithFormat:@"ForeFoot Tilt: %@ - %d°", varusValgus, (int)fabs(angle*57.2957795)];
+    cell.imageView.image = nil;
     return cell;
 }
 

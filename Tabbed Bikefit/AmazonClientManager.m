@@ -29,7 +29,7 @@
 {
     bool isAWSActive = true;
     isAWSActive = isAWSActive && [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_USERNAME_KEY] !=nil;
-    isAWSActive = isAWSActive && [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_ONLINEMODE_KEY];
+    //isAWSActive = isAWSActive && [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_ONLINEMODE_KEY];
     isAWSActive = isAWSActive && [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_ACCOUNT_ACTIVE_KEY];
     
     if(isAWSActive)

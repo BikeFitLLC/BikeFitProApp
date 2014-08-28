@@ -38,11 +38,6 @@
     [anglePath moveToPoint:startPointLocation];
     [anglePath addLineToPoint:endPointLocation];
     
-    [anglePath appendPath:[UIBezierPath bezierPathWithArcCenter:endPointLocation
-                                                            radius:30
-                                                            startAngle:0
-                                                            endAngle:2*3.141597
-                                                            clockwise:YES]];
     
     CGPoint startPoint;
     startPoint.x = self.bounds.size.width /2;
@@ -58,7 +53,6 @@
     //[self.overlayPath moveToPoint:CGPointMake(0, barYPosition)];
     //[self.overlayPath addLineToPoint:CGPointMake(768, barYPosition)];
     
-    [self.overlayPath appendPath:[UIBezierPath bezierPathWithRect:[self getBarDragRect]]];
 
     [self.overlayPath appendPath:anglePath];
     
@@ -68,13 +62,6 @@
     [super drawRect:rect];
 }
 
-///////////////////////////////////
-//returns a rect in the current view that represents the drag box
-///////////////////////////////////
--(CGRect)getBarDragRect
-{
-    return CGRectMake(startPointLocation.x, startPointLocation.y, 50, 100);
-}
 
 
 @end

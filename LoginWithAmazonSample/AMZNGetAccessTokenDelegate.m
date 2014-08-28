@@ -53,7 +53,8 @@
     }
     else {
         // Handle other errors
-        [[[UIAlertView alloc] initWithTitle:@"" message:[NSString stringWithFormat:@"Error occured with message: %@", errorResponse.error.message] delegate:nil cancelButtonTitle:@"OK"otherButtonTitles:nil]show];
+        [AthletePropertyModel setOfflineMode:true];
+        [[[UIAlertView alloc] initWithTitle:@"" message:[NSString stringWithFormat:@"Error occured with message: %@ - Entering Offline Mode", errorResponse.error.message] delegate:nil cancelButtonTitle:@"OK"otherButtonTitles:nil]show];
     }
 }
 

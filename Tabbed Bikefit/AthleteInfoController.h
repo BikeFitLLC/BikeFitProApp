@@ -8,26 +8,27 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AthleteInfoController : UIViewController <UITextViewDelegate>{
-    IBOutlet UITextField *firstName;
-    IBOutlet UITextField *lastName;
-    IBOutlet UITextField *email;
+@interface AthleteInfoController : UIViewController <UITextViewDelegate, UITableViewDataSource,
+                                                        UITableViewDelegate, UITextViewDelegate>
+{
+
+    NSMutableArray *propertyNames;
+    UITableView *infoTableView;
     
-    IBOutlet UITextField *address;
-    IBOutlet UITextField *bike;
-    IBOutlet UITextField *bikeSize;
-    IBOutlet UITextField *pedals;
-    IBOutlet UITextField *shoes;
-    IBOutlet UITextField *milesPerWeek;
-    IBOutlet UITextField *yearsCycling;
-    IBOutlet UITextField *cyclingType;
-    IBOutlet UITextField *saddle;
-    IBOutlet UITextView *concerns;
-
-
+    UILabel *firstNameLabel;
+    UILabel *lastNameLabel;
+    UILabel *emailLabel;
+    
+    UIView *inputView;
+    UITextView *propertyNameText;
+    UILabel *propertyNameLabel;
+    UITextView *propertyValueText;
+    UILabel *propertyValueLabel;
+    
+    IBOutlet UIBarButtonItem *clientListButton;
+    IBOutlet UIBarButtonItem *saveToWebButton;
     IBOutlet UIButton *saveButton;
 }
--(IBAction) onFieldChanged: (id) sender;
 -(IBAction) save;
 -(IBAction) newAthlete;
 //-(IBAction) moveView:(id)sender;

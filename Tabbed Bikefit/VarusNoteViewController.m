@@ -35,6 +35,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     angleLabel.font = [UIFont fontWithName:@"Helvetica" size:100.0];
     
     barYPosition = 820;
@@ -42,11 +43,24 @@
     [(VarusDrawingView *)previewImage setStartPointLocation:startPointLocation];
     [(VarusDrawingView *)previewImage setBarYPosition:barYPosition];
     
+    //Add images for dragbar
+    upDownImageView =[[UIImageView alloc] initWithFrame:CGRectMake(0,0,100,150)];
+    upDownImageView.image=[UIImage imageNamed:@"up_down_arrows.png"];
+    [self.view addSubview:upDownImageView];
+    
     endPointLocation = CGPointMake(768,barYPosition);
     [(VarusDrawingView *)previewImage setEndPointLocation:endPointLocation];
+    rotateArrowsImageView =[[UIImageView alloc] initWithFrame:CGRectMake(0,0,100,150)];
+    rotateArrowsImageView.image=[UIImage imageNamed:@"curved_arrows.png"];
+    [self.view addSubview:rotateArrowsImageView];
     
-    
+    ffmdImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,349,200)];
+    ffmdImageView.image = [UIImage imageNamed:@"FFMD_Dial_only-200.png"];
+    ffmdImageView.layer.anchorPoint = CGPointMake(0.5, 0.15);
+    [self.view addSubview:ffmdImageView];
 
+    //now that the dragbar images are added to the view, position them correctly
+    [self updateArrowImages];
     
     //Add tap recognition to the view
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGesture:)];
@@ -81,8 +95,7 @@
 {
     [super viewDidAppear:animated];
     
-    ffmdImageView.layer.anchorPoint = CGPointMake(0.5, 0.15);
-    [ffmdImageView setCenter:CGPointMake(previewImage.bounds.size.width/2, startPointLocation.y+31)];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -121,7 +134,7 @@
     CGPoint location = [sender locationInView:[self view]];
   
     //if the pan gesture is taking place in the "drag box" move the drag box along with it
-    if(CGRectContainsPoint([(VarusDrawingView *)previewImage getBarDragRect], location))
+    if(CGRectContainsPoint([upDownImageView frame], location))
     {
         if(sender.state == UIGestureRecognizerStateBegan)
         {
@@ -143,8 +156,7 @@
         
     }
     //othwerise, move the endpoint of the angle line
-    else if(location.y > endPointLocation.y - 50 && location.y < endPointLocation.y + 50 &&
-       location.x > endPointLocation.x - 50 && location.x < endPointLocation.x + 50)
+    else if(CGRectContainsPoint([rotateArrowsImageView frame], location))
     {
         startPointLocation = CGPointMake(0, startPointLocation.y + (endPointLocation.y - location.y));
         [(VarusDrawingView *)previewImage setStartPointLocation:startPointLocation];
@@ -155,17 +167,33 @@
         [self calculateAngle];
         
         [ffmdImageView.layer setTransform:CATransform3DMakeRotation(-angle, 0, 0, 1.0 )];
-        //[ffmdImageView setTransform:rotateTransform];
     }
+    
+    [self updateArrowImages];
+    
+    [(VarusDrawingView *)previewImage setNeedsDisplay];
+}
+
+//Updates thelocation of the arrow images (up-down and curved)
+- (void) updateArrowImages
+{
+    CGFloat x = endPointLocation.x - startPointLocation.x;
+    CGFloat hypotenuse = x/cosf(angle);
+    
+    CGFloat relativeEndpointY = sinf(angle) * fabsf(hypotenuse *.9);
+    CGFloat relativeEndpointX = cosf(angle) * fabsf(hypotenuse *.9);
+    NSLog(@"Created floats: %f - %f - For Angle: %f", relativeEndpointX, relativeEndpointY,angle);
+    
+    
+    [rotateArrowsImageView setCenter:CGPointMake(relativeEndpointX+startPointLocation.x, startPointLocation.y - relativeEndpointY)];
+    [rotateArrowsImageView.layer setTransform:CATransform3DMakeRotation(-angle, 0, 0, 1.0 )];
+    NSLog(@"rotated curved arrows");
+    upDownImageView.center = CGPointMake(startPointLocation.x+50, startPointLocation.y);
+    NSLog(@"moved updown arrows");
     
     [ffmdImageView setCenter:CGPointMake(
                                          previewImage.bounds.size.width/2,
                                          (startPointLocation.y +endPointLocation.y)/2 + 31)];
-    
-    [(VarusDrawingView *)previewImage setNeedsDisplay];
-
-
-
 }
 
 - (void) calculateAngle
@@ -186,6 +214,7 @@
 - (IBAction)saveAngle
 {
     VarusNote *note = [[VarusNote alloc] init];
+    [note setLeftFoot:[bikeInfo leftNotesSelected]];
 
     [note setAngle:angle];
     [note setImage:UIImageJPEGRepresentation(photo,.1)];

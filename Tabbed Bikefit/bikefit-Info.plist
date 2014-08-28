@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>APIKey</key>
-	<string>eyJhbGciOiJSU0EtU0hBMjU2IiwidmVyIjoiMSJ9.eyJhcHBGYW1pbHlJZCI6ImFtem4xLmFwcGxpY2F0aW9uLmRhYWVmYzdjMTcwNTRjMDhhOTIxMjc2Zjc1YzlmN2VmIiwiaWQiOiJkMTdmOWRjZS0xOTEwLTExZTQtYTMxYS0wNTczMjAxZWZjM2QiLCJhcHBJZCI6ImFtem4xLmFwcGxpY2F0aW9uLWNsaWVudC5lYmVlMmY1MDg0NTQ0ZmZkODVmNWE1ODVlMzNjODBiYyIsImJ1bmRsZVNlZWRJZCI6ImNvbS52ZWxvcGV6LmJpa2VmaXQiLCJpc3MiOiJBbWF6b24iLCJidW5kbGVJZCI6ImNvbS52ZWxvcGV6LmJpa2VmaXQiLCJ2ZXIiOiIyIiwiYXBwVmFyaWFudElkIjoiYW16bjEuYXBwbGljYXRpb24tY2xpZW50LmViZWUyZjUwODQ1NDRmZmQ4NWY1YTU4NWUzM2M4MGJjIiwidHlwZSI6IkFQSUtleSIsImlhdCI6IjE0MDY4NTIwNzUzMDgiLCJjbGllbnRJZCI6ImFtem4xLmFwcGxpY2F0aW9uLW9hMi1jbGllbnQuZTAyMTBhZWVjZGU2NDg3NWFhYjM2MmM0ZTQ5NDBmYmEifQ==.AztpC//MRbD1t/txpnTUs7k4pONRp8eFHUcDxOHzEAj+1yH3Hd5NIUhl+lMeW2TVg7ckm0ic8LuI7jwWUp/wRgzcQulfu0SDN3+eY13jRYCRMEvGMNXpEv1ixtbrGVZ59Jg3Zp+89GuBfqSvtDF8msLKSh0lXV4gMHxdk/S1NlR1m84mqG62J8qtwW1LcAIP89jZz+s66rcRFWtkk1OuX2muVUTzJBekNrir+pAxZTaESPV495wcCd1nVqxKA2NLbvIHDefl6sEYHcPu4tTc0Kf824c2E8A5+kE/JhsLWIiQfAv+N3xydmTGsxNoXpn0OLVUfsjAmIzg5/dQi4DMGg==</string>
+	<string>eyJhbGciOiJSU0EtU0hBMjU2IiwidmVyIjoiMSJ9.eyJhcHBGYW1pbHlJZCI6ImFtem4xLmFwcGxpY2F0aW9uLmRhYWVmYzdjMTcwNTRjMDhhOTIxMjc2Zjc1YzlmN2VmIiwiaWQiOiIyNjRmNzUyNC0yMjVhLTExZTQtYmJlNC1iOTY2MGVkYTgzMjUiLCJhcHBJZCI6ImFtem4xLmFwcGxpY2F0aW9uLWNsaWVudC5lYmVlMmY1MDg0NTQ0ZmZkODVmNWE1ODVlMzNjODBiYyIsImJ1bmRsZVNlZWRJZCI6ImNvbS52ZWxvcGV6LmJpa2VmaXQiLCJpc3MiOiJBbWF6b24iLCJidW5kbGVJZCI6ImNvbS52ZWxvcGV6LmJpa2VmaXQiLCJ2ZXIiOiIyIiwiYXBwVmFyaWFudElkIjoiYW16bjEuYXBwbGljYXRpb24tY2xpZW50LmViZWUyZjUwODQ1NDRmZmQ4NWY1YTU4NWUzM2M4MGJjIiwidHlwZSI6IkFQSUtleSIsImlhdCI6IjE0MDc4NzMxMzEzMjIiLCJjbGllbnRJZCI6ImFtem4xLmFwcGxpY2F0aW9uLW9hMi1jbGllbnQuZTAyMTBhZWVjZGU2NDg3NWFhYjM2MmM0ZTQ5NDBmYmEifQ==.j39eFtGsE/cz4eZwmX5upwznPM9+wp4QsdSUPaWzZe7SGX8iaEywpQ/n4IdzS/CVi9avwk9XaTcm5LOYe9urzexrNehaL1VU5sbJebr+lU1gQ19oD/XzbL8jHKqY1ZMhKWeeBUSYyKR67hTBAlFR3ITtWCyssluzqdB2J8STD9v8HlzGyJEDk4qBauvrKqHH9WwgKR451GhD57TNYiVMZ//gHJM7GuTg3BxsoKGgCXX0Eqdy+t2BGO+xtarZB4gjPRXmoncfn5b++uIpcCJAR7l50GYxrHLyRU7mpG7JbX1gTziQP0YIbhTUVLyhCMyuUdl54IL/iMi1PP612bwOhw==</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -13,21 +13,7 @@
 	<key>CFBundleIcons</key>
 	<dict/>
 	<key>CFBundleIcons~ipad</key>
-	<dict>
-		<key>CFBundlePrimaryIcon</key>
-		<dict>
-			<key>CFBundleIconFiles</key>
-			<array>
-				<string>BikeFitIcon-58x58</string>
-				<string>BikeFitIcon-29x29</string>
-				<string>BikeFitIcon-80x80</string>
-				<string>BikeFitIcon-40x40</string>
-				<string>BikeFitIcon-152x152</string>
-				<string>BikeFitIcon-76x76</string>
-				<string>BikeFitIcon-72x72</string>
-			</array>
-		</dict>
-	</dict>
+	<dict/>
 	<key>CFBundleIdentifier</key>
 	<string>com.velopez.bikefit</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -37,7 +23,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.9</string>
+	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>

@@ -502,11 +502,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "420852638.659841"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
             landmarkName = "+saveAthleteToAWS"
             landmarkType = "5">
          </BreakpointContent>
@@ -534,11 +534,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "420852638.659841"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
             landmarkName = "+saveAthleteToAWS"
             landmarkType = "5">
          </BreakpointContent>
@@ -646,11 +646,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/BikeInfoViewController.m"
-            timestampString = "427855746.680123"
+            timestampString = "430019944.714007"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "377"
-            endingLineNumber = "377"
+            startingLineNumber = "379"
+            endingLineNumber = "379"
             landmarkName = "@implementation BikeInfoViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -854,11 +854,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/VarusNoteViewController.m"
-            timestampString = "429051404.675546"
+            timestampString = "429837894.45437"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
             landmarkName = "-calculateAngle"
             landmarkType = "5">
             <Locations>
@@ -900,11 +900,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/VarusNoteViewController.m"
-            timestampString = "429051404.675546"
+            timestampString = "429837826.927658"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "-handleTapGesture:"
             landmarkType = "5">
          </BreakpointContent>
@@ -916,11 +916,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/VarusNoteViewController.m"
-            timestampString = "429051404.675546"
+            timestampString = "429837826.927658"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
             landmarkName = "-handleTapGesture:"
             landmarkType = "5">
          </BreakpointContent>
@@ -932,11 +932,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/VarusDrawingView.m"
-            timestampString = "419376412.569347"
+            timestampString = "429820851.635199"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "-drawRect:"
             landmarkType = "5">
          </BreakpointContent>
@@ -948,11 +948,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/VarusNoteViewController.m"
-            timestampString = "429051404.675546"
+            timestampString = "429837894.45437"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "194"
-            endingLineNumber = "194"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
             landmarkName = "-saveAngle"
             landmarkType = "5">
          </BreakpointContent>
@@ -980,7 +980,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/FitNote.m"
-            timestampString = "427855746.680123"
+            timestampString = "430938774.269043"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "29"
@@ -1042,11 +1042,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "420852638.659841"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
             landmarkName = "+getAthletesFromAws"
             landmarkType = "5">
             <Locations>
@@ -1102,11 +1102,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "420852638.659841"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
             landmarkName = "+getAthletesFromAws"
             landmarkType = "5">
          </BreakpointContent>
@@ -1198,11 +1198,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "420852638.659841"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
             landmarkName = "+getAthletesFromAws"
             landmarkType = "5">
          </BreakpointContent>
@@ -1214,11 +1214,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "420852638.659841"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
             landmarkName = "+getAthletesFromAws"
             landmarkType = "5">
          </BreakpointContent>
@@ -1230,11 +1230,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "420852638.659841"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
             landmarkName = "+getAthletesFromAws"
             landmarkType = "5">
          </BreakpointContent>
@@ -1246,11 +1246,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "420852638.659841"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
             landmarkName = "+getAthletesFromAws"
             landmarkType = "5">
          </BreakpointContent>
@@ -1262,11 +1262,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "420852638.659841"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
             landmarkName = "+getAthletesFromAws"
             landmarkType = "5">
          </BreakpointContent>
@@ -1310,11 +1310,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/BikeInfoViewController.m"
-            timestampString = "427855746.680123"
+            timestampString = "430019944.714007"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "365"
-            endingLineNumber = "365"
+            startingLineNumber = "367"
+            endingLineNumber = "367"
             landmarkName = "-prepareForSegue:sender:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1342,11 +1342,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "420853035.214601"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
             landmarkName = "+getAthletesFromAws"
             landmarkType = "5">
          </BreakpointContent>
@@ -1358,11 +1358,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "420908874.161107"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "254"
-            endingLineNumber = "254"
+            startingLineNumber = "258"
+            endingLineNumber = "258"
             landmarkName = "+loadAthleteFromAWS:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1374,11 +1374,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "420853035.214601"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
             landmarkName = "+loadAthleteFromAWS:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1390,11 +1390,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "420853035.214601"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "220"
-            endingLineNumber = "220"
+            startingLineNumber = "224"
+            endingLineNumber = "224"
             landmarkName = "+loadAthleteFromAWS:"
             landmarkType = "5">
             <Locations>
@@ -1450,11 +1450,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "420853035.214601"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "223"
-            endingLineNumber = "223"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
             landmarkName = "+loadAthleteFromAWS:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1466,11 +1466,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "420853035.214601"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "222"
-            endingLineNumber = "222"
+            startingLineNumber = "226"
+            endingLineNumber = "226"
             landmarkName = "+loadAthleteFromAWS:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1482,11 +1482,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "420853035.214601"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "189"
-            endingLineNumber = "189"
+            startingLineNumber = "193"
+            endingLineNumber = "193"
             landmarkName = "+getAthletesFromAws"
             landmarkType = "5">
          </BreakpointContent>
@@ -1498,11 +1498,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "420853035.214601"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "222"
-            endingLineNumber = "222"
+            startingLineNumber = "226"
+            endingLineNumber = "226"
             landmarkName = "+loadAthleteFromAWS:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1960,11 +1960,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/BikeInfoViewController.m"
-            timestampString = "427855746.680123"
+            timestampString = "430019944.714007"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "355"
-            endingLineNumber = "355"
+            startingLineNumber = "357"
+            endingLineNumber = "357"
             landmarkName = "-prepareForSegue:sender:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2120,11 +2120,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/BikeInfoViewController.m"
-            timestampString = "427855746.680123"
+            timestampString = "430019944.714007"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "359"
-            endingLineNumber = "359"
+            startingLineNumber = "361"
+            endingLineNumber = "361"
             landmarkName = "-prepareForSegue:sender:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2136,11 +2136,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/BikeInfoViewController.m"
-            timestampString = "427855746.680123"
+            timestampString = "430019944.714007"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "371"
-            endingLineNumber = "371"
+            startingLineNumber = "373"
+            endingLineNumber = "373"
             landmarkName = "-prepareForSegue:sender:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2168,11 +2168,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/VarusNoteViewController.m"
-            timestampString = "429051404.675546"
+            timestampString = "429837826.927658"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
             landmarkName = "-moveVertex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2184,11 +2184,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/VarusNoteViewController.m"
-            timestampString = "429051404.675546"
+            timestampString = "429837826.927658"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
             landmarkName = "-moveVertex:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2312,11 +2312,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "420908874.161107"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "258"
-            endingLineNumber = "258"
+            startingLineNumber = "262"
+            endingLineNumber = "262"
             landmarkName = "+loadAthleteFromAWS:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2328,11 +2328,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "420852638.659841"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
             landmarkName = "@implementation AthletePropertyModel"
             landmarkType = "3">
          </BreakpointContent>
@@ -2344,11 +2344,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "420852638.659841"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "+saveAthleteToFileSystem"
             landmarkType = "5">
          </BreakpointContent>
@@ -2360,11 +2360,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "420852638.659841"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
             landmarkName = "+saveAthleteToFileSystem"
             landmarkType = "5">
          </BreakpointContent>
@@ -2424,11 +2424,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "420852638.659841"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "+saveAthleteToFileSystem"
             landmarkType = "5">
          </BreakpointContent>
@@ -2440,27 +2440,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "420852638.659841"
+            timestampString = "430078681.690895"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
+            landmarkName = "+saveAthleteToFileSystem"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tabbed Bikefit/AthletePropertyModel.m"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "98"
             endingLineNumber = "98"
-            landmarkName = "+saveAthleteToFileSystem"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "420852638.659841"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
             landmarkName = "+saveAthleteToFileSystem"
             landmarkType = "5">
          </BreakpointContent>
@@ -2504,11 +2504,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/ImageNote.m"
-            timestampString = "427918463.754148"
+            timestampString = "430097596.349023"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "-setImage:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2520,11 +2520,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/ImageNote.m"
-            timestampString = "427918463.754148"
+            timestampString = "430097596.349023"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
             landmarkName = "@implementation ImageNote"
             landmarkType = "3">
          </BreakpointContent>
@@ -2536,11 +2536,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/ImageNote.m"
-            timestampString = "429049867.301894"
+            timestampString = "430097596.349023"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "223"
-            endingLineNumber = "223"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
             landmarkName = "-initWithCoder:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2552,11 +2552,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/ImageNote.m"
-            timestampString = "426467170.334741"
+            timestampString = "430097596.349023"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
             landmarkName = "-downloadImageFromAws"
             landmarkType = "5">
          </BreakpointContent>
@@ -2822,11 +2822,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/ImageNote.m"
-            timestampString = "429049867.301894"
+            timestampString = "430097596.349023"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "212"
-            endingLineNumber = "212"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
             landmarkName = "-encodeWithCoder:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2838,11 +2838,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/ImageNote.m"
-            timestampString = "429049867.301894"
+            timestampString = "430097596.349023"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "217"
-            endingLineNumber = "217"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
             landmarkName = "-initWithCoder:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2854,11 +2854,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/ImageNote.m"
-            timestampString = "426467170.334741"
+            timestampString = "430097596.349023"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "-downloadImageFromAws"
             landmarkType = "5">
          </BreakpointContent>
@@ -2870,11 +2870,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/ImageNote.m"
-            timestampString = "426467170.334741"
+            timestampString = "430097596.349023"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
             landmarkName = "-downloadImageFromAws"
             landmarkType = "5">
          </BreakpointContent>
@@ -2902,28 +2902,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/ImageNote.m"
-            timestampString = "427918463.754148"
+            timestampString = "430097596.349023"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "-setImage:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Tabbed Bikefit/AthleteInfoController.m"
-            timestampString = "428361020.236068"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "-onFieldChanged:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2998,11 +2982,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "420852638.659841"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
             landmarkName = "+saveAthleteToAWS"
             landmarkType = "5">
          </BreakpointContent>
@@ -3030,11 +3014,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "420852638.659841"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
+            startingLineNumber = "159"
+            endingLineNumber = "159"
             landmarkName = "+getAthletesFromAws"
             landmarkType = "5">
          </BreakpointContent>
@@ -3046,11 +3030,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "420908874.161107"
+            timestampString = "430099495.298376"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "267"
-            endingLineNumber = "267"
+            startingLineNumber = "272"
+            endingLineNumber = "272"
             landmarkName = "+newAthlete"
             landmarkType = "5">
          </BreakpointContent>
@@ -3062,11 +3046,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "420852638.659841"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "+saveAthleteToFileSystem"
             landmarkType = "5">
          </BreakpointContent>
@@ -3078,11 +3062,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "420853035.214601"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "199"
-            endingLineNumber = "199"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
             landmarkName = "+loadAthleteFromAWS:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3110,11 +3094,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "420852638.659841"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
             landmarkName = "+getAthletesFromAws"
             landmarkType = "5">
          </BreakpointContent>
@@ -3126,11 +3110,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "420853035.214601"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "228"
-            endingLineNumber = "228"
+            startingLineNumber = "232"
+            endingLineNumber = "232"
             landmarkName = "+loadAthleteFromAWS:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3142,11 +3126,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "420853035.214601"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "227"
-            endingLineNumber = "227"
+            startingLineNumber = "231"
+            endingLineNumber = "231"
             landmarkName = "+loadAthleteFromAWS:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3158,11 +3142,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "420853035.214601"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "200"
-            endingLineNumber = "200"
+            startingLineNumber = "204"
+            endingLineNumber = "204"
             landmarkName = "+loadAthleteFromAWS:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3174,11 +3158,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "420853035.214601"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "178"
-            endingLineNumber = "178"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
             landmarkName = "+getAthletesFromAws"
             landmarkType = "5">
          </BreakpointContent>
@@ -3190,11 +3174,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "420853035.214601"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "178"
-            endingLineNumber = "178"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
             landmarkName = "+getAthletesFromAws"
             landmarkType = "5">
          </BreakpointContent>
@@ -3206,11 +3190,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "420852638.659841"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
             landmarkName = "+getAthletesFromAws"
             landmarkType = "5">
          </BreakpointContent>
@@ -3222,11 +3206,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "420852638.659841"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
             landmarkName = "+getAthletesFromAws"
             landmarkType = "5">
          </BreakpointContent>
@@ -3238,27 +3222,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/ImageNote.m"
-            timestampString = "426467170.334741"
+            timestampString = "430097596.349023"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "@implementation ImageNote"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Tabbed Bikefit/ImageNote.m"
-            timestampString = "427918463.754148"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
             landmarkName = "-setImage:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3270,11 +3238,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/ImageNote.m"
-            timestampString = "426467170.334741"
+            timestampString = "430097596.349023"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
             landmarkName = "-downloadImageFromAws"
             landmarkType = "5">
          </BreakpointContent>
@@ -3286,11 +3254,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/ImageNote.m"
-            timestampString = "429049867.301894"
+            timestampString = "430097596.349023"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
+            startingLineNumber = "165"
+            endingLineNumber = "165"
             landmarkName = "-encodeWithCoder:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3302,11 +3270,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/ImageNote.m"
-            timestampString = "427918463.754148"
+            timestampString = "430097596.349023"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
             landmarkName = "-setImage:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3318,43 +3286,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/BikeInfoViewController.m"
-            timestampString = "427855746.680123"
+            timestampString = "430019944.714007"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "353"
+            endingLineNumber = "353"
+            landmarkName = "-prepareForSegue:sender:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tabbed Bikefit/BikeInfoViewController.m"
+            timestampString = "430019944.714007"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "352"
+            endingLineNumber = "352"
+            landmarkName = "-prepareForSegue:sender:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tabbed Bikefit/BikeInfoViewController.m"
+            timestampString = "430019944.714007"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "351"
             endingLineNumber = "351"
-            landmarkName = "-prepareForSegue:sender:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Tabbed Bikefit/BikeInfoViewController.m"
-            timestampString = "427855746.680123"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "350"
-            endingLineNumber = "350"
-            landmarkName = "-prepareForSegue:sender:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Tabbed Bikefit/BikeInfoViewController.m"
-            timestampString = "427855746.680123"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "349"
-            endingLineNumber = "349"
             landmarkName = "-prepareForSegue:sender:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3396,11 +3364,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "420852638.659841"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
             landmarkName = "+getAthletesFromAws"
             landmarkType = "5">
          </BreakpointContent>
@@ -3412,11 +3380,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "420852757.194038"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "+saveAthleteToAWS"
             landmarkType = "5">
          </BreakpointContent>
@@ -3428,11 +3396,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "420852904.926142"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
             landmarkName = "+getAthletesFromAws"
             landmarkType = "5">
          </BreakpointContent>
@@ -3444,11 +3412,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "420853074.544378"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "179"
-            endingLineNumber = "179"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
             landmarkName = "+getAthletesFromAws"
             landmarkType = "5">
          </BreakpointContent>
@@ -3460,11 +3428,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "420853075.972903"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "177"
-            endingLineNumber = "177"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
             landmarkName = "+getAthletesFromAws"
             landmarkType = "5">
          </BreakpointContent>
@@ -3476,11 +3444,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "420907661.183815"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
             landmarkName = "+loadAthleteFromAWS:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3492,11 +3460,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "420907881.526612"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "233"
-            endingLineNumber = "233"
+            startingLineNumber = "237"
+            endingLineNumber = "237"
             landmarkName = "+loadAthleteFromAWS:"
             landmarkType = "5">
          </BreakpointContent>
@@ -3572,11 +3540,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/CredentialProvider.m"
-            timestampString = "429306098.723156"
+            timestampString = "430935871.434099"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
             landmarkName = "-refresh"
             landmarkType = "5">
          </BreakpointContent>
@@ -3588,11 +3556,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "421014812.143517"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
             landmarkName = "+getAthletesFromAws"
             landmarkType = "5">
          </BreakpointContent>
@@ -3604,11 +3572,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/ImageNote.m"
-            timestampString = "426467170.334741"
+            timestampString = "430097596.349023"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
             landmarkName = "-downloadImageFromAws"
             landmarkType = "5">
          </BreakpointContent>
@@ -3635,45 +3603,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Tabbed Bikefit/ImageNote.m"
-            timestampString = "426467170.334741"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "@implementation ImageNote"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Tabbed Bikefit/ImageNote.m"
-            timestampString = "426467170.334741"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
-            landmarkName = "@implementation ImageNote"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "LoginWithAmazonSample/AMZNLoginController.m"
-            timestampString = "427070575.936953"
+            timestampString = "430936991.792142"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "-showLogInPage"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3876,11 +3812,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/CredentialProvider.m"
-            timestampString = "429306098.723156"
+            timestampString = "430935871.434099"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
             landmarkName = "-refresh"
             landmarkType = "5">
          </BreakpointContent>
@@ -3908,11 +3844,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/CredentialProvider.m"
-            timestampString = "429306098.723156"
+            timestampString = "430934851.369406"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "-refresh"
             landmarkType = "5">
          </BreakpointContent>
@@ -3940,11 +3876,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/CredentialProvider.m"
-            timestampString = "429306098.723156"
+            timestampString = "430934851.369406"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "-refresh"
             landmarkType = "5">
          </BreakpointContent>
@@ -3956,11 +3892,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/ImageNote.m"
-            timestampString = "427918463.754148"
+            timestampString = "430097596.349023"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
             landmarkName = "-downloadImageFromAws"
             landmarkType = "5">
          </BreakpointContent>
@@ -3972,11 +3908,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/ImageNote.m"
-            timestampString = "426467170.334741"
+            timestampString = "430097596.349023"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
             landmarkName = "-downloadImageFromAws"
             landmarkType = "5">
          </BreakpointContent>
@@ -3988,11 +3924,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/ImageNote.m"
-            timestampString = "429049867.301894"
+            timestampString = "430097596.349023"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
             landmarkName = "-getImage"
             landmarkType = "5">
          </BreakpointContent>
@@ -4004,11 +3940,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "422980156.999911"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "225"
-            endingLineNumber = "225"
+            startingLineNumber = "229"
+            endingLineNumber = "229"
             landmarkName = "+loadAthleteFromAWS:"
             landmarkType = "5">
          </BreakpointContent>
@@ -4020,12 +3956,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LoginWithAmazonSample/AMZNLoginController.m"
-            timestampString = "427070575.936953"
+            timestampString = "430936991.792142"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
-            landmarkName = "-toggleOnlineSwitch:"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4036,11 +3972,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LoginWithAmazonSample/AMZNLoginController.m"
-            timestampString = "427070575.936953"
+            timestampString = "430936991.792142"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
             landmarkName = "-showLogInPage"
             landmarkType = "5">
          </BreakpointContent>
@@ -4051,28 +3987,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Tabbed Bikefit/ImageNote.m"
-            timestampString = "426467170.334741"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "@implementation ImageNote"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "423693489.698568"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
             landmarkName = "+getAthletesFromAws"
             landmarkType = "5">
          </BreakpointContent>
@@ -4084,11 +4004,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "423693491.064713"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "183"
-            endingLineNumber = "183"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
             landmarkName = "+getAthletesFromAws"
             landmarkType = "5">
          </BreakpointContent>
@@ -4100,11 +4020,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "423693935.210082"
+            timestampString = "430078681.690895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
             landmarkName = "+saveAthleteToAWS"
             landmarkType = "5">
          </BreakpointContent>
@@ -4164,11 +4084,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/VarusNoteViewController.m"
-            timestampString = "429051404.675546"
+            timestampString = "429837894.45437"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
+            startingLineNumber = "221"
+            endingLineNumber = "221"
             landmarkName = "-saveAngle"
             landmarkType = "5">
          </BreakpointContent>
@@ -4292,11 +4212,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/VarusNoteViewController.m"
-            timestampString = "429051404.675546"
+            timestampString = "429837894.45437"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "191"
-            endingLineNumber = "191"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
             landmarkName = "-saveAngle"
             landmarkType = "5">
          </BreakpointContent>
@@ -4400,15 +4320,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LoginWithAmazonSample/AMZNGetAccessTokenDelegate.m"
-            timestampString = "427071815.068651"
+            timestampString = "430411764.985277"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
             landmarkName = "-requestDidFail:"
             landmarkType = "5">
          </BreakpointContent>
@@ -4485,11 +4405,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AppDelegate.m"
-            timestampString = "426030522.503526"
+            timestampString = "430934524.241626"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
             landmarkName = "-application:didFinishLaunchingWithOptions:"
             landmarkType = "5">
          </BreakpointContent>
@@ -4501,11 +4421,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AppDelegate.m"
-            timestampString = "426030522.503526"
+            timestampString = "430934524.241626"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
             landmarkName = "-application:didFinishLaunchingWithOptions:"
             landmarkType = "5">
          </BreakpointContent>
@@ -4517,7 +4437,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AppDelegate.m"
-            timestampString = "426030507.337851"
+            timestampString = "430934524.241626"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "30"
@@ -4533,11 +4453,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AppDelegate.m"
-            timestampString = "426030508.321844"
+            timestampString = "430934524.241626"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
             landmarkName = "-application:didFinishLaunchingWithOptions:"
             landmarkType = "5">
          </BreakpointContent>
@@ -4597,27 +4517,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/ImageNote.m"
-            timestampString = "426467170.334741"
+            timestampString = "430097596.349023"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
-            landmarkName = "@implementation ImageNote"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Tabbed Bikefit/ImageNote.m"
-            timestampString = "427918463.754148"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
             landmarkName = "-setImage:"
             landmarkType = "5">
          </BreakpointContent>
@@ -4629,11 +4533,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/ImageNote.m"
-            timestampString = "426467170.334741"
+            timestampString = "430097596.349023"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
             landmarkName = "-downloadImageFromAws"
             landmarkType = "5">
          </BreakpointContent>
@@ -4645,11 +4549,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/ImageNote.m"
-            timestampString = "427918463.754148"
+            timestampString = "430097596.349023"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
             landmarkName = "-setImage:"
             landmarkType = "5">
          </BreakpointContent>
@@ -4773,76 +4677,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/VarusNoteViewController.m"
-            timestampString = "429051404.675546"
+            timestampString = "429837826.927658"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "157"
-            endingLineNumber = "157"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
             landmarkName = "-moveVertex:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Tabbed Bikefit/AthleteInfoController.m"
-            timestampString = "428361020.236068"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
-            landmarkName = "-propertyNameFromTag:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Tabbed Bikefit/AthleteInfoController.m"
-            timestampString = "428361020.236068"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
-            landmarkName = "-propertyNameFromTag:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Tabbed Bikefit/AthleteInfoController.m"
-            timestampString = "428361020.236068"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
-            landmarkName = "-loadFieldsFromPropertyModel"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Tabbed Bikefit/AthleteInfoController.m"
-            timestampString = "428361001.582606"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
-            landmarkName = "-textViewDidChange:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -4933,11 +4773,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/ImageNote.m"
-            timestampString = "428550256.37985"
+            timestampString = "430097596.349023"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
             landmarkName = "-setImage:"
             landmarkType = "5">
          </BreakpointContent>
@@ -4949,11 +4789,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/ImageNote.m"
-            timestampString = "428550258.090156"
+            timestampString = "430097596.349023"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
             landmarkName = "-setImage:"
             landmarkType = "5">
          </BreakpointContent>
@@ -4965,11 +4805,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/ImageNote.m"
-            timestampString = "429049867.301894"
+            timestampString = "430097596.349023"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "187"
-            endingLineNumber = "187"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
             landmarkName = "-setImage:"
             landmarkType = "5">
          </BreakpointContent>
@@ -4981,11 +4821,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/ImageNote.m"
-            timestampString = "429049867.301894"
+            timestampString = "430097596.349023"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
             landmarkName = "-setImage:"
             landmarkType = "5">
          </BreakpointContent>
@@ -4997,11 +4837,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/ImageNote.m"
-            timestampString = "429049867.301894"
+            timestampString = "430097596.349023"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
             landmarkName = "-setImage:"
             landmarkType = "5">
          </BreakpointContent>
@@ -5051,6 +4891,326 @@
             startingLineNumber = "236"
             endingLineNumber = "236"
             landmarkName = "-switchCameraTapped:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tabbed Bikefit/ImageNote.m"
+            timestampString = "430097596.349023"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "-setImage:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tabbed Bikefit/VarusNoteViewController.m"
+            timestampString = "429837894.45437"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
+            landmarkName = "-updateArrowImages"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tabbed Bikefit/VarusNoteViewController.m"
+            timestampString = "429837894.45437"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
+            landmarkName = "-updateArrowImages"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tabbed Bikefit/VarusNote.m"
+            timestampString = "429836596.117261"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "-populateTableCell:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tabbed Bikefit/VarusNoteViewController.m"
+            timestampString = "429837894.45437"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "219"
+            endingLineNumber = "219"
+            landmarkName = "-saveAngle"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tabbed Bikefit/AthleteInfoController.m"
+            timestampString = "430439252.896601"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "-tableView:numberOfRowsInSection:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tabbed Bikefit/AthleteInfoController.m"
+            timestampString = "430097852.963985"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tabbed Bikefit/AthleteInfoController.m"
+            timestampString = "430439252.896601"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "264"
+            endingLineNumber = "264"
+            landmarkName = "-loadCleanPropertyList"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tabbed Bikefit/AthleteInfoController.m"
+            timestampString = "430439252.896601"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "270"
+            endingLineNumber = "270"
+            landmarkName = "-loadCleanPropertyList"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tabbed Bikefit/AthleteInfoController.m"
+            timestampString = "430439252.896601"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "277"
+            endingLineNumber = "277"
+            landmarkName = "-loadCleanPropertyList"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tabbed Bikefit/AthleteInfoController.m"
+            timestampString = "430439252.896601"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "224"
+            endingLineNumber = "224"
+            landmarkName = "-textViewDidEndEditing:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tabbed Bikefit/AthleteInfoController.m"
+            timestampString = "430439252.896601"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "279"
+            endingLineNumber = "279"
+            landmarkName = "-loadCleanPropertyList"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tabbed Bikefit/AthletePropertyModel.m"
+            timestampString = "430034776.702388"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "+saveAthleteToAWS"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tabbed Bikefit/AthletePropertyModel.m"
+            timestampString = "430078681.690895"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "+saveAthleteToAWS"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tabbed Bikefit/ImageNote.m"
+            timestampString = "430097596.349023"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
+            landmarkName = "-setImage:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tabbed Bikefit/AthleteInfoController.m"
+            timestampString = "430097753.869275"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "-viewWillAppear:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LoginWithAmazonSample/AMZNLoginController.m"
+            timestampString = "430936991.792142"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "-toggleOnlineSwitch:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tabbed Bikefit/CredentialProvider.m"
+            timestampString = "430163065.369709"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "-refresh"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tabbed Bikefit/CredentialProvider.m"
+            timestampString = "430935871.434099"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "-refresh"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Tabbed Bikefit/CredentialProvider.m"
+            timestampString = "430935740.980569"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "-refresh"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

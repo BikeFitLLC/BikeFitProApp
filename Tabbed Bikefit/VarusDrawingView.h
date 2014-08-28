@@ -20,6 +20,5 @@
 @property CGPoint startPointLocation;
 @property CGFloat barYPosition;
 
--(CGRect)getBarDragRect;
 
 @end

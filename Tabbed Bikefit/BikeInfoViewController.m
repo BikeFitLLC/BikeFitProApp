@@ -224,6 +224,8 @@
     {
         [self performSegueWithIdentifier:@"ViewVarusNote" sender:self];
     }
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section

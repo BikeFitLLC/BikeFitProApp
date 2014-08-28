@@ -10,8 +10,12 @@
 #define USER_DEFAULTS_FITTERNAME_KEY @"fittername"
 #define USER_DEFAULTS_AMZN_TOKEN_KEY @"amzntoken"
 #define USER_DEFAULTS_FITID_KEY @"FitID"
-#define USER_DEFAULTS_ONLINEMODE_KEY @"onlinemode"
+//#define USER_DEFAULTS_ONLINEMODE_KEY @"onlinemode"
 #define USER_DEFAULTS_ACCOUNT_ACTIVE_KEY @"accountactive"
+#define USER_DEFAULTS_IS_TRIAL_ACCOUNT @"istrialaccount"
+
+#define LOCAL_FILE_ID @"localfile"
+#define LOCAL_FITTER_ID @"localfitter"
 
 #define AWS_FIT_ATTRIBUTE_FITID @"FitID"
 #define AWS_FIT_ATTRIBUTE_FIRSTNAME @"FirstName"

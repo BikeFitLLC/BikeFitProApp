@@ -29,10 +29,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    angleLable.text = [NSString stringWithFormat:@"%f", varusAngle*57.2957795];
+    angleLable.font = [UIFont fontWithName:@"Helvetica" size:100.0];
+    angleLable.text = [NSString stringWithFormat:@"%d", (int)(varusAngle*57.2957795)];
 }
 
 - (void)didReceiveMemoryWarning

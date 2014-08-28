@@ -26,7 +26,7 @@
 
 NSString* userLoggedOutMessage = @"Welcome, BikeFit Pro!\n";
 
-NSString* userLoggedInMessage = @"Logged In As %@";
+//NSString* userLoggedInMessage = @"Logged In As %@";
 BOOL isUserSignedIn;
 
 - (IBAction)onLogInButtonClicked:(id)sender {
@@ -53,18 +53,27 @@ BOOL isUserSignedIn;
 }
 
 - (void)loadSignedInUser {
-    //isUserSignedIn = true;
     self.loginButton.hidden = true;
-    //self.navigationItem.rightBarButtonItem = self.logoutButton;
-   // NSString *email = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_USERNAME_KEY];
-    NSString *name = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITTERNAME_KEY];
     
-    self.infoField.text = [NSString stringWithFormat:@"Logged In As %@", name];
+    NSString *name = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITTERNAME_KEY];
+    bool isTrialUser = [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_IS_TRIAL_ACCOUNT];
+    
+    NSString *message;
+    if(isTrialUser)
+    {
+        message = [NSString stringWithFormat:@"Logged In As %@ \n This is a trial account. \n To Sign Up Contact education@bikefit.com", name];
+    }
+    else
+    {
+        message = [NSString stringWithFormat:@"Logged In As %@", name];
+    }
+
+    
+    self.infoField.text = message;
     self.infoField.font = [UIFont fontWithName:@"Gill Sans" size:48.0];
     self.infoField.textColor = [UIColor grayColor];
     self.infoField.textAlignment = NSTextAlignmentCenter;
     self.infoField.hidden = false;
-    
     logoutButton.hidden = false;
 }
 
@@ -72,22 +81,20 @@ BOOL isUserSignedIn;
     isUserSignedIn = false;
     self.loginButton.hidden = false;
     self.logoutButton.hidden = true;
+
     
-    onlineModeSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_ONLINEMODE_KEY] boolValue];
-    [onlineModeSwitch addTarget:self action:@selector(toggleOnlineSwitch:) forControlEvents:UIControlEventValueChanged];
-    
-    if(onlineModeSwitch.on)
+   //if(onlineModeSwitch.on)
     {
         self.infoField.text = userLoggedOutMessage;
         self.infoField.hidden = false;
         self.loginButton.enabled = true;
     }
-    else
+    /*else
     {
         self.infoField.text = @"Offline Mode";
         self.infoField.hidden = false;
         self.loginButton.enabled = false;
-    }
+    }*/
     
     self.infoField.font = [UIFont fontWithName:@"Gill Sans" size:48.0];
     self.infoField.textColor = [UIColor grayColor];
@@ -98,6 +105,8 @@ BOOL isUserSignedIn;
 }
 
 - (void)viewDidLoad {
+    [onlineModeSwitch addTarget:self action:@selector(toggleOnlineSwitch:) forControlEvents:UIControlEventValueChanged];
+    
     if ([[AmazonClientManager credProvider] isLoggedIn])
         [self loadSignedInUser];
     else
@@ -115,15 +124,19 @@ BOOL isUserSignedIn;
     }
 }
 
+-(void) viewWillAppear:(BOOL)animated
+{
+    //onlineModeSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_ONLINEMODE_KEY] boolValue];
+}
+
 ////////////////////////////////////////////
 //Called with the onlineMode toggle switch changes
 //state
 ////////////////////////////////////////////
 - (void) toggleOnlineSwitch:(id)sender
 {
-    UISwitch *sendinSwitch = sender;
-    [[NSUserDefaults standardUserDefaults] setBool:sendinSwitch.on forKey:USER_DEFAULTS_ONLINEMODE_KEY];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    UISwitch *sendingSwitch = sender;
+    [AthletePropertyModel setOfflineMode:!sendingSwitch.on];
     [self showLogInPage];
 }
 

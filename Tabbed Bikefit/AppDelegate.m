@@ -28,14 +28,16 @@
     
     NSString *email = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITTERID_KEY];
     //default to online mode on.
+    /*
     if ([[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_ONLINEMODE_KEY] == nil)
     {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_ONLINEMODE_KEY];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
+    */
     
     //if online mode is on, try to get a token from amazon
-    if([[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_ONLINEMODE_KEY] boolValue])
+    //if([[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_ONLINEMODE_KEY] boolValue])
     {
         AMZNGetAccessTokenDelegate* delegate = [[AMZNGetAccessTokenDelegate alloc] initWithParentController:nil];
         [AIMobileLib getAccessTokenForScopes:[NSArray arrayWithObject:@"profile"] withOverrideParams:nil delegate:delegate];

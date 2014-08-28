@@ -63,56 +63,6 @@
 }
 
 ///////////////////////////////////////////////////////
-//Uploads this notes image to s3.  called asnychronously
-///////////////////////////////////////////////////////
-/*deprecated
--(void) uploadImageToAws
-{
-    if([AmazonClientManager verifyUserKey])
-    {
-        @try {
-            ///get a list of buckets
-            //S3ListBucketsRequest *listBucketsRequest = [[S3ListBucketsRequest alloc] init];
-            //S3ListBucketsResponse *listBucketsResponse = [[AmazonClientManager s3] listBuckets:listBucketsRequest];
-            //NSMutableArray *buckets = [[listBucketsResponse listBucketsResult] buckets];
-            
-           // if([buckets indexOfObject:s3Bucket] == NSNotFound)
-            {
-                //TODO: create the bucket?
-            }
-            
-            
-            S3PutObjectRequest *por = [[S3PutObjectRequest alloc] initWithKey:s3Key inBucket:s3Bucket];
-            
-            por.contentType = @"image/jpeg"; // use "image/png" here if you are uploading a png
-            por.cannedACL   = [S3CannedACL publicRead];
-            por.data        = image;
-            //[por setDelegate: self]; // Don't need this line if you don't care about hearing a response.
-            
-            // Put the image data into the specified s3 bucket and object.
-            NSLog(@"Writing to S3 Bucket: %@  Key: %@", s3Bucket, s3Key);
-            [[AmazonClientManager s3] putObject:por];
-        }
-        @catch (AmazonServiceException *exception) {
-            NSLog(@"Exception Uploading Image Note Image to AWS: %@", [exception description]);
-        }
-    }
-    else //if aws is not available, save to the file system
-    {
-        NSError *error = [[NSError alloc] init];
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *filepath = [paths objectAtIndex:0];
-        NSString *filename = [NSString stringWithFormat:FILESYSTEM_IMAGE_FILENAME_FORMAT, s3Bucket,s3Key];
-        bool success = [image writeToFile:[filepath stringByAppendingString:filename] options:NSDataWritingAtomic error:&error];
-        if(!success)
-        {
-            NSLog(@"Error Saving to File System: %@", [error description]);
-        }
-    }
-}
- */
-
-///////////////////////////////////////////////////////
 //Downloads this note's image from S3
 ///////////////////////////////////////////////////////
 -(void) downloadImageFromAws
@@ -186,7 +136,11 @@
 
         if(![[NSFileManager defaultManager] fileExistsAtPath:fitPath])
         {
-            [[NSFileManager defaultManager] createDirectoryAtPath:fitPath withIntermediateDirectories:NO attributes:nil error:&error];
+            [[NSFileManager defaultManager] createDirectoryAtPath:fitPath withIntermediateDirectories:YES attributes:nil error:&error];
+            if(error)
+            {
+                NSLog(@"Error Creating Fit Directory: %@", [error description]);
+            }
         }
         NSString *filename = [filepath stringByAppendingString:
                               [NSString stringWithFormat:FILESYSTEM_IMAGE_FILENAME_FORMAT, s3Bucket,s3Key]

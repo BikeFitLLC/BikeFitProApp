@@ -16,6 +16,7 @@
 @interface AMZNLoginController : UIViewController
 {
     IBOutlet UISwitch *onlineModeSwitch;
+    UILabel *trialMemberLabel;
 }
 
 @property (retain, nonatomic) IBOutlet UIButton *loginButton;

@@ -49,7 +49,11 @@ static NSMutableDictionary *athleteProperties;
             }
             else
             {
-                [athleteItem setObject:[[DynamoDBAttributeValue alloc] initWithS:[athleteProperties objectForKey:propertyName]] forKey:propertyName];
+                NSString * propertyValue = [athleteProperties objectForKey:propertyName];
+                if( [propertyValue length] > 0 )
+                {
+                    [athleteItem setObject:[[DynamoDBAttributeValue alloc] initWithS:propertyValue] forKey:propertyName];
+                }
             }
         }
         ///Update the lastupdated timetamp
@@ -265,7 +269,24 @@ static NSMutableDictionary *athleteProperties;
 + (void) newAthlete
 {
     athleteProperties = [[NSMutableDictionary alloc] init];
-    [athleteProperties setObject:[[NSUUID UUID] UUIDString] forKey:AWS_FIT_ATTRIBUTE_FITID];
+    if([AmazonClientManager verifyUserKey])
+    {
+        //if we are actively logged in, create new files
+        [athleteProperties setObject:[[NSUUID UUID] UUIDString] forKey:AWS_FIT_ATTRIBUTE_FITID];
+    }
+    else
+    {
+        //otherwise, just use the same file.
+        [athleteProperties setObject:LOCAL_FILE_ID forKey:AWS_FIT_ATTRIBUTE_FITID];
+    }
+    [athleteProperties setObject:@"" forKey:@"YearsCycling"];
+    [athleteProperties setObject:@"" forKey:@"MilesPerWeek"];
+    [athleteProperties setObject:@"" forKey:@"Pedals"];
+    [athleteProperties setObject:@"" forKey:@"Bike"];
+    [athleteProperties setObject:@"" forKey:@"CyclingGoals"];
+    [athleteProperties setObject:@"" forKey:@"Email"];
+    [athleteProperties setObject:@"" forKey:@"LastName"];
+    [athleteProperties setObject:@"" forKey:@"FirstName"];
     //NSString *fitterKey = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITTER_KEY_KEY];
     //[athleteProperties setObject:fitterKey forKey:AWS_FIT_ATTRIBUTE_FITTERKEY];
     
@@ -279,6 +300,29 @@ static NSMutableDictionary *athleteProperties;
         return [athleteProperties objectForKey:propertyName];
     }
     return nil;
+}
+
++ (int)propertyCount
+{
+    return [athleteProperties count];
+}
+
++ (NSArray *) propertyNames
+{
+    return [athleteProperties allKeys];
+}
+
++ (void) setOfflineMode:(bool)offlineMode
+{
+    //[[NSUserDefaults standardUserDefaults] setBool:!offlineMode forKey:USER_DEFAULTS_ONLINEMODE_KEY];
+    
+    if(offlineMode)
+    {
+        [[NSUserDefaults standardUserDefaults] setObject:LOCAL_FILE_ID forKey:USER_DEFAULTS_FITID_KEY];
+        [[NSUserDefaults standardUserDefaults] setObject:LOCAL_FITTER_ID forKey:USER_DEFAULTS_FITTERID_KEY];
+    }
+    
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 

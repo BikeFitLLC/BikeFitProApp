@@ -14,6 +14,8 @@
 @interface FootBottomNoteViewController : NoteViewController
 {
     IBOutlet FootBottomView *footBottomView;
+    IBOutlet UIImageView *leftFootImage;
+    IBOutlet UIImageView *rightFootImage;
     
 }
 

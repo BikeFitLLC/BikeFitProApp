@@ -36,6 +36,20 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    if([bikeInfo leftNotesSelected])
+    {
+        [leftFootImage setHidden:false];
+        [rightFootImage setHidden:true];
+    }
+    else
+    {
+        [leftFootImage setHidden:true];
+        [rightFootImage setHidden:false];
+    }
+}
+
 - (IBAction) saveLocation:(id)sender
 {
     FootBottomNote *note = [[FootBottomNote alloc] init];

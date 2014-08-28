@@ -16,6 +16,8 @@
     IBOutlet UIImageView *leftLegImageView;
     IBOutlet UIImageView *rightLegImageView;
     IBOutlet UIImageView *ffmdImageView;
+    UIImageView *upDownImageView;
+    UIImageView *rotateArrowsImageView;
 
 }
 

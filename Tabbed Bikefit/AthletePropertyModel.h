@@ -13,6 +13,9 @@
 
 @property(nonatomic, retain) NSMutableDictionary *athleteProperties;
 
++ (int)propertyCount;
++ (NSArray *) propertyNames;
+
 + (bool)setProperty:(NSString*)propertyName value:(id)value;
 + (id)getProperty:(NSString*)propertyName;
 
@@ -22,5 +25,6 @@
 + (void)saveAthleteToAWS;
 + (void)loadAthleteFromAWS:(NSString*) athleteItem;
 + (NSMutableDictionary *) getAthletesFromAws;
++ (void) setOfflineMode:(bool)offlineMode;
 
 @end

@@ -27,10 +27,12 @@
 #pragma mark - NSCoding support
 -(void)encodeWithCoder:(NSCoder*)encoder {
     [encoder encodeObject:self.text forKey:@"text"];
+    [encoder encodeBool:self.leftFoot forKey:@"leftfoot"];
 }
 
 -(id)initWithCoder:(NSCoder*)decoder {
     self.text = [decoder decodeObjectForKey:@"text"];
+    self.leftFoot = [decoder decodeBoolForKey:@"leftfoot"];
     return self;
 }
 @end

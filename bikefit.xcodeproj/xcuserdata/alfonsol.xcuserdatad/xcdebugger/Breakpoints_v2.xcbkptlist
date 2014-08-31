@@ -4945,7 +4945,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/VarusNote.m"
@@ -5013,11 +5013,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthleteInfoController.m"
-            timestampString = "430439252.896601"
+            timestampString = "431029249.140226"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "264"
-            endingLineNumber = "264"
+            startingLineNumber = "279"
+            endingLineNumber = "279"
             landmarkName = "-loadCleanPropertyList"
             landmarkType = "5">
          </BreakpointContent>
@@ -5029,11 +5029,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthleteInfoController.m"
-            timestampString = "430439252.896601"
+            timestampString = "431029249.140226"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "270"
-            endingLineNumber = "270"
+            startingLineNumber = "285"
+            endingLineNumber = "285"
             landmarkName = "-loadCleanPropertyList"
             landmarkType = "5">
          </BreakpointContent>
@@ -5045,11 +5045,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthleteInfoController.m"
-            timestampString = "430439252.896601"
+            timestampString = "431029249.140226"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "277"
-            endingLineNumber = "277"
+            startingLineNumber = "292"
+            endingLineNumber = "292"
             landmarkName = "-loadCleanPropertyList"
             landmarkType = "5">
          </BreakpointContent>
@@ -5061,11 +5061,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthleteInfoController.m"
-            timestampString = "430439252.896601"
+            timestampString = "431029249.140226"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "224"
-            endingLineNumber = "224"
+            startingLineNumber = "239"
+            endingLineNumber = "239"
             landmarkName = "-textViewDidEndEditing:"
             landmarkType = "5">
          </BreakpointContent>
@@ -5077,11 +5077,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthleteInfoController.m"
-            timestampString = "430439252.896601"
+            timestampString = "431029249.140226"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "279"
-            endingLineNumber = "279"
+            startingLineNumber = "294"
+            endingLineNumber = "294"
             landmarkName = "-loadCleanPropertyList"
             landmarkType = "5">
          </BreakpointContent>

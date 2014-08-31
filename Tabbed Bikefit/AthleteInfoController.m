@@ -154,22 +154,24 @@
 {
     if(!inputView)
     {
+        
         inputView = [[UIView alloc] initWithFrame:self.view.frame];
         inputView.backgroundColor = [UIColor blackColor];
         inputView.alpha = .8;
         
-        propertyNameText = [[UITextView alloc] initWithFrame:CGRectMake(inputView.frame.size.width * .25,
-                                                                                    inputView.frame.size.height *.2,
-                                                                                    400,
-                                                                                    50)];
+        propertyNameText = [[UITextView alloc] initWithFrame:CGRectMake(
+                                                inputView.frame.size.width * .25,
+                                                inputView.frame.size.height *.2,
+                                                400,
+                                                50)];
         propertyNameText.backgroundColor = [UIColor whiteColor];
         propertyNameText.font = [UIFont fontWithName:@"ArialRoundedMTBold" size:24];
         [propertyNameText setDelegate:self];
         
-        propertyNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(50,150,200,100)];
+        propertyNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(35,150,200,100)];
         propertyNameLabel.font = [UIFont fontWithName:@"ArialRoundedMTBold" size:36];
         propertyNameLabel.textColor = [UIColor whiteColor];
-        propertyNameLabel.text = @"Name";
+        propertyNameLabel.text = @"Property";
         
         [inputView addSubview:propertyNameLabel];
         [inputView addSubview:propertyNameText];
@@ -196,15 +198,28 @@
         savePropertyButton.titleLabel.font = [UIFont fontWithName:@"ArialRoundedMTBold" size:24];
         [savePropertyButton addTarget:self action:@selector(hideInputView) forControlEvents:UIControlEventTouchUpInside];
         [inputView addSubview:savePropertyButton];
+        
+        inputViewMessageLabel = [[UILabel alloc] initWithFrame:CGRectMake(inputView.frame.size.width * .20,
+                                                                          inputView.frame.size.height *.01,
+                                                                          500,100)];
+        inputViewMessageLabel.font = [UIFont fontWithName:@"ArialRoundedMTBold" size:36];
+        inputViewMessageLabel.textColor = [UIColor whiteColor];
+        [inputView addSubview:inputViewMessageLabel];
     }
     
     if([indexPath row] != [propertyNames count])
     {
         propertyNameText.text = [propertyNames objectAtIndex:[indexPath row]];
+        propertyNameText.editable = false;
         propertyValueText.text = [AthletePropertyModel getProperty:[propertyNames objectAtIndex:[indexPath row]]];
+        
+        inputViewMessageLabel.text = @"Edit Property Value Below";
+
     }
     else
     {
+        inputViewMessageLabel.text = @"Add a New Property Below";
+        
         propertyNameText.text = @"";
         propertyValueText.text = @"";
     }

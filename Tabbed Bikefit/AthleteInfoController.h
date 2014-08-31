@@ -25,6 +25,8 @@
     UITextView *propertyValueText;
     UILabel *propertyValueLabel;
     
+    UILabel *inputViewMessageLabel;
+    
     IBOutlet UIBarButtonItem *clientListButton;
     IBOutlet UIBarButtonItem *saveToWebButton;
     IBOutlet UIButton *saveButton;

@@ -112,8 +112,8 @@
 		5DD68EF619808E0F00BCCCD9 /* 2_heels_left.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DD68EF519808E0F00BCCCD9 /* 2_heels_left.png */; };
 		5DD68EF819818DD200BCCCD9 /* FFMD_Dial_only.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DD68EF719818DD200BCCCD9 /* FFMD_Dial_only.png */; };
 		5DD68EFA19818F9E00BCCCD9 /* FFMD_Dial_only-200.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DD68EF919818F9E00BCCCD9 /* FFMD_Dial_only-200.png */; };
-		5DEA4BD51997E6830024C220 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DEA4BD31997E6830024C220 /* iTunesArtwork.png */; };
-		5DEA4BD61997E6830024C220 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DEA4BD41997E6830024C220 /* iTunesArtwork@2x.png */; };
+		5DEA4BD51997E6830024C220 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 5DEA4BD31997E6830024C220 /* iTunesArtwork */; };
+		5DEA4BD61997E6830024C220 /* iTunesArtwork@2x in Resources */ = {isa = PBXBuildFile; fileRef = 5DEA4BD41997E6830024C220 /* iTunesArtwork@2x */; };
 		5DEA4BD81997EA3A0024C220 /* BikeFitIcon-29x29.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DEA4BD71997EA3A0024C220 /* BikeFitIcon-29x29.png */; };
 		5DEA4BDA199B2EBB0024C220 /* Images-2.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DEA4BD9199B2EBB0024C220 /* Images-2.xcassets */; };
 		5DED8DFB17F8EA66004947FD /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DED8DFA17F8EA66004947FD /* AVFoundation.framework */; };
@@ -294,8 +294,8 @@
 		5DEA4BD01997E53E0024C220 /* 80x80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 80x80.png; sourceTree = "<group>"; };
 		5DEA4BD11997E5680024C220 /* 29x29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 29x29.png; sourceTree = "<group>"; };
 		5DEA4BD21997E5880024C220 /* 58x58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 58x58.png; sourceTree = "<group>"; };
-		5DEA4BD31997E6830024C220 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
-		5DEA4BD41997E6830024C220 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
+		5DEA4BD31997E6830024C220 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
+		5DEA4BD41997E6830024C220 /* iTunesArtwork@2x */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iTunesArtwork@2x"; sourceTree = "<group>"; };
 		5DEA4BD71997EA3A0024C220 /* BikeFitIcon-29x29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BikeFitIcon-29x29.png"; sourceTree = "<group>"; };
 		5DEA4BD9199B2EBB0024C220 /* Images-2.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = "Images-2.xcassets"; path = "bikefit/Images-2.xcassets"; sourceTree = "<group>"; };
 		5DED8DFA17F8EA66004947FD /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -409,8 +409,8 @@
 				5DEA4BD9199B2EBB0024C220 /* Images-2.xcassets */,
 				5DEA4BD21997E5880024C220 /* 58x58.png */,
 				5DEA4BD71997EA3A0024C220 /* BikeFitIcon-29x29.png */,
-				5DEA4BD31997E6830024C220 /* iTunesArtwork.png */,
-				5DEA4BD41997E6830024C220 /* iTunesArtwork@2x.png */,
+				5DEA4BD31997E6830024C220 /* iTunesArtwork */,
+				5DEA4BD41997E6830024C220 /* iTunesArtwork@2x */,
 				5DEA4BD11997E5680024C220 /* 29x29.png */,
 				5DEA4BD01997E53E0024C220 /* 80x80.png */,
 				5DEA4BCF1997E5190024C220 /* 40x40.png */,
@@ -749,7 +749,7 @@
 				5DB52F161912B9F300297201 /* KW_front_laser_2.png in Resources */,
 				5D8531DC1759CD6600934E68 /* Default.png in Resources */,
 				5D135A4519A7FACD00273076 /* plus-icon.png in Resources */,
-				5DEA4BD51997E6830024C220 /* iTunesArtwork.png in Resources */,
+				5DEA4BD51997E6830024C220 /* iTunesArtwork in Resources */,
 				5DD68EF419808E0400BCCCD9 /* 2_heel_right.png in Resources */,
 				5D8531DE1759CD6600934E68 /* Default@2x.png in Resources */,
 				5D8531E01759CD6600934E68 /* Default-568h@2x.png in Resources */,
@@ -778,7 +778,7 @@
 				5DD68EF019808B3300BCCCD9 /* Cog_15t.png in Resources */,
 				5D6F99CE190B44BB00558C99 /* recordButton.png in Resources */,
 				5DD68EF219808B8300BCCCD9 /* Cog_15t_29x29.png in Resources */,
-				5DEA4BD61997E6830024C220 /* iTunesArtwork@2x.png in Resources */,
+				5DEA4BD61997E6830024C220 /* iTunesArtwork@2x in Resources */,
 				5D6F3A9318146C1F001BD897 /* BikeFitIcon.png in Resources */,
 				5DD68EF619808E0F00BCCCD9 /* 2_heels_left.png in Resources */,
 				5D32380D1986F8BB008DA71D /* Ho_foot_Arches_left.png in Resources */,

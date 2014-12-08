@@ -258,20 +258,22 @@
             NSLog(@"Error creating new video input: %@", [error description]);
         }
         
-        if([session canAddInput:newVideoInput])
+        [session beginConfiguration];
         {
-            //Indicate that some changes will be made to the session
-            [session beginConfiguration];
-                [session removeInput:currentCameraInput];
+            [session removeInput:currentCameraInput];
+            if([session canAddInput:newVideoInput])
+            {
                 [session addInput:newVideoInput];
-                [[[session.outputs objectAtIndex:0] connectionWithMediaType:AVMediaTypeVideo]setVideoOrientation:AVCaptureVideoOrientationPortrait];
-            
-            [session commitConfiguration];
+                [[[session.outputs objectAtIndex:0] connectionWithMediaType:AVMediaTypeVideo]
+                                                    setVideoOrientation:AVCaptureVideoOrientationPortrait];
+            }
+            else{
+                //this happens if the front camera isn't going to work. so set the transform back to neutral
+                [session addInput:currentCameraInput];
+                [[self previewLayer] setTransform:CATransform3DMakeRotation(0, 0.0f, 1.0f, 0.0f)];
+            }
         }
-        else{
-            //this happens if the front camera isn't going to work. so set the transform back to neutral
-            [[self previewLayer] setTransform:CATransform3DMakeRotation(0, 0.0f, 1.0f, 0.0f)];
-        }
+        [session commitConfiguration];
     }
 }
 // Find a camera with the specified AVCaptureDevicePosition, returning nil if one is not found

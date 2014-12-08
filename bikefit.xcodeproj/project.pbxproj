@@ -8,13 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		00F813541A2ADE1300F1EA6D /* LegAngleViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F813531A2ADE1300F1EA6D /* LegAngleViewViewController.m */; };
+		00FF371A1A36302E00FD1E45 /* KW_front_laser_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 00FF37191A36302E00FD1E45 /* KW_front_laser_2.png */; };
+		00FF371C1A3630CE00FD1E45 /* measurementIcon-new-29x29.png in Resources */ = {isa = PBXBuildFile; fileRef = 00FF371B1A3630CE00FD1E45 /* measurementIcon-new-29x29.png */; };
+		00FF371E1A36310300FD1E45 /* Bike_road_diagram_ABCD.png in Resources */ = {isa = PBXBuildFile; fileRef = 00FF371D1A36310300FD1E45 /* Bike_road_diagram_ABCD.png */; };
 		5D003774195CF0B800BC9BBA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D003773195CF0B800BC9BBA /* Images.xcassets */; };
 		5D135A4519A7FACD00273076 /* plus-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D135A4419A7FACD00273076 /* plus-icon.png */; };
-		5D13DF9019DCADF400C2D8DA /* Bike_road_diagram_ABCD.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D13DF8F19DCADF400C2D8DA /* Bike_road_diagram_ABCD.png */; };
-		5D13DF9219DCBC6000C2D8DA /* measurements_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D13DF9119DCBC6000C2D8DA /* measurements_icon.png */; };
-		5D13DF9419DCFA3D00C2D8DA /* measurements_icon-29x29.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D13DF9319DCFA3D00C2D8DA /* measurements_icon-29x29.png */; };
-		5D13DF9619DCFAF300C2D8DA /* measurements_icon-29x29-bw.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D13DF9519DCFAF300C2D8DA /* measurements_icon-29x29-bw.png */; };
-		5D13DF9819DD0A0700C2D8DA /* measurementIcon-new-29x29.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D13DF9719DD0A0700C2D8DA /* measurementIcon-new-29x29.png */; };
 		5D192BBA17FE55ED0046CC16 /* LegAngleImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D192BB917FE55ED0046CC16 /* LegAngleImageView.m */; };
 		5D1AD208196B735900700F3E /* VarusViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1AD207196B735900700F3E /* VarusViewerViewController.m */; };
 		5D32380D1986F8BB008DA71D /* Ho_foot_Arches_left.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D32380C1986F8BB008DA71D /* Ho_foot_Arches_left.png */; };
@@ -94,7 +92,6 @@
 		5DB3AEE319CF419300604666 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5DB3AEE019CF419300604666 /* README.md */; };
 		5DB3AEE619D0C9A200604666 /* FinalNotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DB3AEE519D0C9A200604666 /* FinalNotesViewController.m */; };
 		5DB3AEE819D0CADD00604666 /* Bike_diagram_APP.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DB3AEE719D0CADD00604666 /* Bike_diagram_APP.png */; };
-		5DB52F161912B9F300297201 /* KW_front_laser_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DB52F151912B9F300297201 /* KW_front_laser_2.png */; };
 		5DBC20C418E4E24900BF5957 /* ImageViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DBC20C318E4E24900BF5957 /* ImageViewerViewController.m */; };
 		5DC304AB199E7A3700F0AECE /* up_down_arrows.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DC304AA199E7A3700F0AECE /* up_down_arrows.png */; };
 		5DC304AD199E7E8200F0AECE /* curved_arrows.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DC304AC199E7E8200F0AECE /* curved_arrows.png */; };
@@ -149,13 +146,11 @@
 /* Begin PBXFileReference section */
 		00F813521A2ADE1300F1EA6D /* LegAngleViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LegAngleViewViewController.h; sourceTree = "<group>"; };
 		00F813531A2ADE1300F1EA6D /* LegAngleViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LegAngleViewViewController.m; sourceTree = "<group>"; };
+		00FF37191A36302E00FD1E45 /* KW_front_laser_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KW_front_laser_2.png; sourceTree = "<group>"; };
+		00FF371B1A3630CE00FD1E45 /* measurementIcon-new-29x29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "measurementIcon-new-29x29.png"; sourceTree = "<group>"; };
+		00FF371D1A36310300FD1E45 /* Bike_road_diagram_ABCD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bike_road_diagram_ABCD.png; sourceTree = "<group>"; };
 		5D003773195CF0B800BC9BBA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = bikefit/Images.xcassets; sourceTree = "<group>"; };
 		5D135A4419A7FACD00273076 /* plus-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-icon.png"; sourceTree = "<group>"; };
-		5D13DF8F19DCADF400C2D8DA /* Bike_road_diagram_ABCD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Bike_road_diagram_ABCD.png; path = ../../../Image/Bike_road_diagram_ABCD.png; sourceTree = "<group>"; };
-		5D13DF9119DCBC6000C2D8DA /* measurements_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = measurements_icon.png; path = ../../../Image/measurements_icon.png; sourceTree = "<group>"; };
-		5D13DF9319DCFA3D00C2D8DA /* measurements_icon-29x29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "measurements_icon-29x29.png"; path = "../../../Image/measurements_icon-29x29.png"; sourceTree = "<group>"; };
-		5D13DF9519DCFAF300C2D8DA /* measurements_icon-29x29-bw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "measurements_icon-29x29-bw.png"; path = "../../../Image/measurements_icon-29x29-bw.png"; sourceTree = "<group>"; };
-		5D13DF9719DD0A0700C2D8DA /* measurementIcon-new-29x29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "measurementIcon-new-29x29.png"; path = "../../../Image/measurementIcon-new-29x29.png"; sourceTree = "<group>"; };
 		5D192BB817FE55ED0046CC16 /* LegAngleImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LegAngleImageView.h; sourceTree = "<group>"; };
 		5D192BB917FE55ED0046CC16 /* LegAngleImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LegAngleImageView.m; sourceTree = "<group>"; };
 		5D1AD206196B735900700F3E /* VarusViewerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VarusViewerViewController.h; sourceTree = "<group>"; };
@@ -275,7 +270,6 @@
 		5DB3AEE419D0C9A200604666 /* FinalNotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinalNotesViewController.h; sourceTree = "<group>"; };
 		5DB3AEE519D0C9A200604666 /* FinalNotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinalNotesViewController.m; sourceTree = "<group>"; };
 		5DB3AEE719D0CADD00604666 /* Bike_diagram_APP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bike_diagram_APP.png; sourceTree = "<group>"; };
-		5DB52F151912B9F300297201 /* KW_front_laser_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = KW_front_laser_2.png; path = ../../../../velopez/KW_front_laser_2.png; sourceTree = "<group>"; };
 		5DBC20C218E4E24900BF5957 /* ImageViewerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewerViewController.h; sourceTree = "<group>"; };
 		5DBC20C318E4E24900BF5957 /* ImageViewerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewerViewController.m; sourceTree = "<group>"; };
 		5DC304AA199E7A3700F0AECE /* up_down_arrows.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = up_down_arrows.png; sourceTree = "<group>"; };
@@ -505,11 +499,9 @@
 		5D8531D01759CD6600934E68 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				5D13DF9719DD0A0700C2D8DA /* measurementIcon-new-29x29.png */,
-				5D13DF9519DCFAF300C2D8DA /* measurements_icon-29x29-bw.png */,
-				5D13DF9319DCFA3D00C2D8DA /* measurements_icon-29x29.png */,
-				5D13DF9119DCBC6000C2D8DA /* measurements_icon.png */,
-				5D13DF8F19DCADF400C2D8DA /* Bike_road_diagram_ABCD.png */,
+				00FF371D1A36310300FD1E45 /* Bike_road_diagram_ABCD.png */,
+				00FF371B1A3630CE00FD1E45 /* measurementIcon-new-29x29.png */,
+				00FF37191A36302E00FD1E45 /* KW_front_laser_2.png */,
 				5DD1837819D878AB00A5B6CE /* Bike_road_diagram_APPP.png */,
 				5D135A4419A7FACD00273076 /* plus-icon.png */,
 				5DB3AEE719D0CADD00604666 /* Bike_diagram_APP.png */,
@@ -529,7 +521,6 @@
 				5DD68EF319808E0400BCCCD9 /* 2_heel_right.png */,
 				5DC304AC199E7E8200F0AECE /* curved_arrows.png */,
 				5DC304AA199E7A3700F0AECE /* up_down_arrows.png */,
-				5DB52F151912B9F300297201 /* KW_front_laser_2.png */,
 				5D6F3A9218146C1F001BD897 /* BikeFitIcon.png */,
 				5D6F99CF190B453700558C99 /* BikeFitBadge.png */,
 				5D6F99CD190B44BB00558C99 /* recordButton.png */,
@@ -796,9 +787,6 @@
 				5DEA4BD81997EA3A0024C220 /* BikeFitIcon-29x29.png in Resources */,
 				5DD1837919D878AB00A5B6CE /* Bike_road_diagram_APPP.png in Resources */,
 				5DD68EEC1980884400BCCCD9 /* info_button_29x29.png in Resources */,
-				5D13DF9819DD0A0700C2D8DA /* measurementIcon-new-29x29.png in Resources */,
-				5D13DF9619DCFAF300C2D8DA /* measurements_icon-29x29-bw.png in Resources */,
-				5DB52F161912B9F300297201 /* KW_front_laser_2.png in Resources */,
 				5D8531DC1759CD6600934E68 /* Default.png in Resources */,
 				5D135A4519A7FACD00273076 /* plus-icon.png in Resources */,
 				5DEA4BD51997E6830024C220 /* iTunesArtwork in Resources */,
@@ -806,11 +794,12 @@
 				5D8531DE1759CD6600934E68 /* Default@2x.png in Resources */,
 				5D8531E01759CD6600934E68 /* Default-568h@2x.png in Resources */,
 				5DD68EEA198086EA00BCCCD9 /* info_button.png in Resources */,
-				5D13DF9419DCFA3D00C2D8DA /* measurements_icon-29x29.png in Resources */,
 				5D8531E61759CD6600934E68 /* MainStoryboard_iPad.storyboard in Resources */,
 				5DD68EE81980862B00BCCCD9 /* BikeFit_logo_Horiz.png in Resources */,
+				00FF371C1A3630CE00FD1E45 /* measurementIcon-new-29x29.png in Resources */,
 				5DC9306019200D2000EB733C /* btnLWA_gold_209x48.png in Resources */,
 				5DD68EFA19818F9E00BCCCD9 /* FFMD_Dial_only-200.png in Resources */,
+				00FF371A1A36302E00FD1E45 /* KW_front_laser_2.png in Resources */,
 				5D6F99CC190B448600558C99 /* arrowright.png in Resources */,
 				5D003774195CF0B800BC9BBA /* Images.xcassets in Resources */,
 				5D549A411862A53A00B61A83 /* img_thumb_383809223.jpg in Resources */,
@@ -819,7 +808,6 @@
 				5DA7AE5618BEC79B00CA0DEB /* foot_fore_aft_measure.png in Resources */,
 				5DD68EF819818DD200BCCCD9 /* FFMD_Dial_only.png in Resources */,
 				5D32380F1986FA92008DA71D /* Ho_foot_Arches_right.png in Resources */,
-				5D13DF9219DCBC6000C2D8DA /* measurements_icon.png in Resources */,
 				5DD68EE41974747D00BCCCD9 /* FrontCameraIcon.png in Resources */,
 				5DD68EE2197473D300BCCCD9 /* FrontCameraIcon.jpg in Resources */,
 				5DC9306119200D2000EB733C /* btnLWA_gold_209x48_pressed.png in Resources */,
@@ -835,10 +823,10 @@
 				5DD68EF219808B8300BCCCD9 /* Cog_15t_29x29.png in Resources */,
 				5DB3AEE819D0CADD00604666 /* Bike_diagram_APP.png in Resources */,
 				5DEA4BD61997E6830024C220 /* iTunesArtwork@2x in Resources */,
+				00FF371E1A36310300FD1E45 /* Bike_road_diagram_ABCD.png in Resources */,
 				5D6F3A9318146C1F001BD897 /* BikeFitIcon.png in Resources */,
 				5DD68EF619808E0F00BCCCD9 /* 2_heels_left.png in Resources */,
 				5D32380D1986F8BB008DA71D /* Ho_foot_Arches_left.png in Resources */,
-				5D13DF9019DCADF400C2D8DA /* Bike_road_diagram_ABCD.png in Resources */,
 				5DC304AD199E7E8200F0AECE /* curved_arrows.png in Resources */,
 				5DB3AEE319CF419300604666 /* README.md in Resources */,
 				5DD68EEE198089A300BCCCD9 /* info_button_29x29_no_white.png in Resources */,

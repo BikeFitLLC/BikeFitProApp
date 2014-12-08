@@ -12,6 +12,7 @@
 #import "AmazonClientManager.h"
 #import "BikefitConstants.h"
 
+
 @interface AthleteInfoController ()
 
 @end
@@ -28,11 +29,34 @@
     [self newAthlete];
     
     //First Name Label Subview
-    firstNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(250,150,400,40)];
+    firstNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(250,100,400,40)];
     [self.view addSubview:firstNameLabel];
     [firstNameLabel setFont:[UIFont fontWithName:@"ArialRoundedMTBold" size:36]];
     [firstNameLabel setText:@"First"];
-
+    
+    //Create label to display the url for this fit
+    urlButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [urlButton setFrame:CGRectMake(450,150,100,50)];
+    [urlButton setTitle:@"View Fit" forState:UIControlStateNormal];
+    [urlButton addTarget:self
+               action:@selector(openFitUrl)
+     forControlEvents:UIControlEventTouchUpInside];
+    urlButton.hidden = YES;
+    urlButton.enabled = NO;
+    [self.view addSubview:urlButton];
+    
+    //Create label to display the url for this fit
+    emailFitButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [emailFitButton setFrame:CGRectMake(250,150,100,50)];
+    [emailFitButton setTitle:@"Email Fit" forState:UIControlStateNormal];
+    [emailFitButton addTarget:self
+                  action:@selector(emailFit)
+        forControlEvents:UIControlEventTouchUpInside];
+    emailFitButton.hidden = YES;
+    emailFitButton.enabled = NO;
+    [self.view addSubview:emailFitButton];
+    
+    [firstNameLabel setFont:[UIFont fontWithName:@"ArialRoundedMTBold" size:36]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -56,9 +80,32 @@
     {
         [clientListButton setEnabled:YES];
         [saveToWebButton setEnabled:YES];
+    }
+    
+    [self updateUrlButtons];
+}
+
+- (void) updateUrlButtons
+{
+    NSString *url = [AthletePropertyModel getProperty:AWS_FIT_ATTRIBUTE_URL];
+    if(url)
+    {
+        urlButton.hidden = NO;
+        urlButton.enabled = YES;
         
+        emailFitButton.hidden = NO;
+        emailFitButton.enabled = YES;
+    }
+    else
+    {
+        urlButton.hidden = YES;
+        urlButton.enabled = NO;
+        
+        emailFitButton.hidden = YES;
+        emailFitButton.enabled = NO;
     }
 }
+
 
 -(UITableView *) makeInfoTableView
 {
@@ -87,6 +134,7 @@
 
 -(IBAction) save{
     [AthletePropertyModel saveAthleteToAWS];
+    [self updateUrlButtons];
 }
 
 -(IBAction) newAthlete{
@@ -155,7 +203,7 @@
     if(!inputView)
     {
         
-        inputView = [[UIView alloc] initWithFrame:self.view.frame];
+        inputView = [[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width, self.view.frame.size.height)];
         inputView.backgroundColor = [UIColor blackColor];
         inputView.alpha = .8;
         
@@ -209,8 +257,8 @@
     
     if([indexPath row] != [propertyNames count])
     {
-        propertyNameText.text = [propertyNames objectAtIndex:[indexPath row]];
-        propertyNameText.editable = false;
+        propertyNameLabel.text = [propertyNames objectAtIndex:[indexPath row]];
+        propertyNameText.hidden = YES;
         propertyValueText.text = [AthletePropertyModel getProperty:[propertyNames objectAtIndex:[indexPath row]]];
         
         inputViewMessageLabel.text = @"Edit Property Value Below";
@@ -218,9 +266,12 @@
     }
     else
     {
-        inputViewMessageLabel.text = @"Add a New Property Below";
+        inputViewMessageLabel.text = @"Add a New Field Below";
         
         propertyNameText.text = @"";
+        propertyNameText.hidden = NO;
+        propertyNameLabel.text = @"Field";
+        ;
         propertyValueText.text = @"";
     }
     
@@ -234,12 +285,30 @@
 
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
-    if( textView == propertyNameText || textView == propertyValueText)
+    NSString *propertyName;
+    
+    if( textView == propertyNameText)
     {
-        [AthletePropertyModel setProperty:propertyNameText.text value:propertyValueText.text];
-        [self loadCleanPropertyList];
-        [infoTableView reloadData];
+        propertyName = propertyNameText.text;
     }
+    
+    if(textView == propertyValueText)
+    {
+        if(propertyNameText.hidden)
+        {
+            //use the label for peoperty name
+            propertyName = propertyNameLabel.text;
+        }
+        else
+        {
+            propertyName = propertyNameText.text;
+        }
+        
+    }
+    
+    [AthletePropertyModel setProperty:propertyName value:propertyValueText.text];
+    [self loadCleanPropertyList];
+    [infoTableView reloadData];
 
 }
 
@@ -255,6 +324,9 @@
                         @"FitterEmail",
                         @"FitID",
                         @"fitter",
+                        @"LeftNotesJSON",
+                        @"RightNotesJSON",
+                        @"FitUrl",
                         //Default properties
                          @"FirstName",
                          @"LastName",
@@ -299,6 +371,37 @@
     }
 }
 
+- (void) openFitUrl
+{
+    NSString *url = [[AthletePropertyModel getProperty:AWS_FIT_ATTRIBUTE_URL] lowercaseString];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+}
+
+- (void) emailFit
+{
+    emailController= [[MFMailComposeViewController alloc] init];
+    emailController.mailComposeDelegate = self;
+    NSString *fitterName = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITTERNAME_KEY];
+    NSString *url = [[AthletePropertyModel getProperty:AWS_FIT_ATTRIBUTE_URL] lowercaseString];
+    NSString *emailSubject = [NSString stringWithFormat:@"Your Fit from %@",fitterName];
+    NSString *emailMessage = [NSString stringWithFormat:@"Thanks for coming in! <br /><br /><a href=\"%@\">Click to view your fit</a>", url];
+    
+    [emailController setToRecipients:[NSArray arrayWithObject:[AthletePropertyModel getProperty:AWS_FIT_ATTRIBUTE_EMAIL ]]];
+    [emailController setSubject:emailSubject];
+    [emailController setMessageBody:emailMessage isHTML:YES];
+    if (emailController)
+    {
+        [self presentViewController:emailController animated:YES completion:NULL];
+    }
+}
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller
+          didFinishWithResult:(MFMailComposeResult)result
+                        error:(NSError *)error
+{
+    [emailController dismissViewControllerAnimated:YES completion:NULL];
+}
+
 -(IBAction) moveViewUpForKeyboard:(id)sender
 {
     const int movementDistance = -150; // tweak as needed
@@ -322,6 +425,9 @@
     self.view.frame = CGRectOffset(self.view.frame, 0, movementDistance);
     [UIView commitAnimations];
 }
+
+
+
 
 
 

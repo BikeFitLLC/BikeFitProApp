@@ -12,20 +12,24 @@
 	<dict>
 		<key>5D554874-2EBE-4E00-8703-FC4CC1EAF077</key>
 		<string>https://github.com/alfonsol/velopez-bikefit-app.git</string>
+		<key>ACDE5B8E80A1C9DAC31647FA6F368E94A0FD5F92</key>
+		<string>https://github.com/alfonsol/velopez-bikefit-app.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>bikefit.xcodeproj/project.xcworkspace</string>
+	<string>bikefit.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>5D554874-2EBE-4E00-8703-FC4CC1EAF077</key>
+		<string>../../../Tabbed Bikefit</string>
+		<key>ACDE5B8E80A1C9DAC31647FA6F368E94A0FD5F92</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/alfonsol/velopez-bikefit-app.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>5D554874-2EBE-4E00-8703-FC4CC1EAF077</string>
+	<string>ACDE5B8E80A1C9DAC31647FA6F368E94A0FD5F92</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -35,6 +39,14 @@
 			<string>5D554874-2EBE-4E00-8703-FC4CC1EAF077</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Tabbed Bikefit</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>ACDE5B8E80A1C9DAC31647FA6F368E94A0FD5F92</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Tabbed%20Bikefit</string>
 		</dict>
 	</array>
 </dict>

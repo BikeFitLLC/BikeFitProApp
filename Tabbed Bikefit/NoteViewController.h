@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BikeInfoViewController.h"
+#import "BikeFitViewController.h"
 
 @interface NoteViewController : UIViewController
 {
-    BikeInfoViewController * bikeInfo;
+    BikeFitViewController * bikeInfo;
 }
-@property BikeInfoViewController *bikeInfo;
+@property BikeFitViewController *bikeInfo;
 
 @end

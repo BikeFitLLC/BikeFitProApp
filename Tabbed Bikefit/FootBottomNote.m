@@ -80,5 +80,11 @@
     
     return self;
 }
+-(NSMutableDictionary *) getDictionary
+{
+    NSMutableDictionary *dictionary = [super getDictionary];
+    return dictionary;
+    
+}
 
 @end

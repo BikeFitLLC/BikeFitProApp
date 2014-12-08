@@ -12,6 +12,7 @@
 
 #import "AMZNGetProfileDelegate.h"
 #import "BikefitConstants.h"
+#import "AmazonClientManager.h"
 #import "AMZNGetAccessTokenDelegate.h"
 
 @implementation AMZNGetProfileDelegate
@@ -35,11 +36,9 @@
     [[NSUserDefaults standardUserDefaults] setObject:[userProfile objectForKey:@"name"] forKey:USER_DEFAULTS_FITTERNAME_KEY];
     
     //We have the profile, now lets get the access token
-    AMZNGetAccessTokenDelegate* tokenDelegate =
-    [[AMZNGetAccessTokenDelegate alloc] initWithParentController:parentViewController];
     [AIMobileLib getAccessTokenForScopes:[NSArray arrayWithObject:@"profile"]
                       withOverrideParams:nil
-                                delegate:tokenDelegate];
+                                delegate:[AmazonClientManager credProvider]];
     
     parentViewController.userProfile = userProfile;
     [parentViewController loadSignedInUser];

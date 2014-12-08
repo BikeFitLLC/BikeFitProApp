@@ -24,6 +24,8 @@
 @property UIBezierPath *path;
 
 
+-(NSMutableDictionary *) getDictionary;
+
 //-(void)queueImageUpload;
 //-(void) uploadImageToAws;
 @end

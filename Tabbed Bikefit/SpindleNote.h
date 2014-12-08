@@ -13,6 +13,8 @@
     UIBezierPath *path;
 }
 
+-(NSMutableDictionary *) getDictionary;
+
 @property UIBezierPath *path;
 
 @end

@@ -16,4 +16,11 @@
     cell.textLabel.text = [NSString stringWithFormat:@"%@: %d", labelText, (int)(angle/0.0174532925)];
     return cell;
 }
+
+-(NSMutableDictionary *) getDictionary
+{
+    NSMutableDictionary *dictionary = [super getDictionary];
+    return dictionary;
+    
+}
 @end

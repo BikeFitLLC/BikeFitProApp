@@ -32,6 +32,7 @@ BOOL isUserSignedIn;
 - (IBAction)onLogInButtonClicked:(id)sender {
     // Make authorize call to SDK to get authorization from the user.
     // Requesting 'profile' scopes for the current user.
+    [[AmazonClientManager credProvider] setIsLoggingIn:true];
     NSArray *requestScopes = [NSArray arrayWithObject:@"profile"];
     AMZNAuthorizeUserDelegate* delegate = [[AMZNAuthorizeUserDelegate alloc] initWithParentController:self];
     [AIMobileLib authorizeUserForScopes:requestScopes delegate:delegate];
@@ -61,7 +62,7 @@ BOOL isUserSignedIn;
     NSString *message;
     if(isTrialUser)
     {
-        message = [NSString stringWithFormat:@"Logged In As %@ \n This is a trial account. \n To Sign Up Contact education@bikefit.com", name];
+        message = [NSString stringWithFormat:@"Logged In As %@ \n Your 3 Month trial period has begun. \n To Sign Up Contact education@bikefit.com", name];
     }
     else
     {

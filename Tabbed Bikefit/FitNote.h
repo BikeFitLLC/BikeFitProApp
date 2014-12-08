@@ -18,5 +18,6 @@
 @property bool leftFoot;
 
 - (UITableViewCell *) populateTableCell:(UITableViewCell *)cell;
+-(NSMutableDictionary *) getDictionary;
 
 @end

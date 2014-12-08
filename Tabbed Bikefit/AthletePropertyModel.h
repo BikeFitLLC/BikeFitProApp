@@ -6,9 +6,11 @@
 //  Copyright (c) 2013 Alfonso Lopez. All rights reserved.
 //
 
+
 #import <Foundation/Foundation.h>
 
-@interface AthletePropertyModel : NSObject{
+@interface AthletePropertyModel : NSObject
+{
 }
 
 @property(nonatomic, retain) NSMutableDictionary *athleteProperties;

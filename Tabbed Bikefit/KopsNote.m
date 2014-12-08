@@ -52,4 +52,11 @@
 + (NSString*)labelText {
     return @"Knee Over Pedal Spindle";
 }
+
+-(NSMutableDictionary *) getDictionary
+{
+    NSMutableDictionary *dictionary = [super getDictionary];
+    return dictionary;
+    
+}
 @end

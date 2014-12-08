@@ -89,12 +89,6 @@
     {
     @try {
         // Upload image data.  Remember to set the content type.
-        s3Key = [NSString stringWithFormat:@"%@/%@",
-                 [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITID_KEY],
-                 [[NSUUID UUID] UUIDString]];
-        
-        s3Bucket = [[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITTERID_KEY] lowercaseString];
-        
         S3PutObjectRequest *por = [[S3PutObjectRequest alloc] initWithKey:s3Key inBucket:s3Bucket];
         
         por.contentType = @"video/quicktime"; // use "image/png" here if you are uploading a png
@@ -119,6 +113,13 @@
 -(void)setVideoUrl:(NSURL *)url
 {
     localVideoUrl = url;
+    
+    s3Key = [NSString stringWithFormat:@"%@/%@",
+             [[NSUserDefaults standardUserDefaults] objectForKey:AWS_FIT_ATTRIBUTE_FITID],
+             [[NSUUID UUID] UUIDString]];
+    
+    s3Bucket = [[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITTERID_KEY] lowercaseString];
+    
     [self uploadVideoToAWS];
 }
 
@@ -149,4 +150,21 @@
 
     return self;
 }
+
+-(NSMutableDictionary *) getDictionary
+{
+    NSMutableDictionary *dictionary = [super getDictionary];
+    if(self.s3Bucket)
+    {
+        [dictionary setObject:self.s3Bucket forKey:@"s3Bucket"];
+    }
+    if(self.s3Key)
+    {
+        [dictionary setObject:self.s3Key forKey:@"s3Key"];
+    }
+    return dictionary;
+    
+}
+
+
 @end

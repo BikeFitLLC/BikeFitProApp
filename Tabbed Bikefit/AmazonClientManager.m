@@ -29,22 +29,10 @@
 {
     bool isAWSActive = true;
     isAWSActive = isAWSActive && [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_USERNAME_KEY] !=nil;
-    //isAWSActive = isAWSActive && [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_ONLINEMODE_KEY];
     isAWSActive = isAWSActive && [[NSUserDefaults standardUserDefaults] boolForKey:USER_DEFAULTS_ACCOUNT_ACTIVE_KEY];
-    
-    if(isAWSActive)
-    {
-        //check that our session token is still good (not expired)
-        if(![[AmazonClientManager credProvider] isTokenValid])
-        {
-            //if the token is not valid, refresh that bitch.
-            [[AmazonClientManager credProvider] refresh];
-        }
-        //TODO: Check for success of refresh.
-        return true;
-    }
-    
-    return false;
+    isAWSActive = isAWSActive && [[AmazonClientManager credProvider] isTokenValid];
+
+    return isAWSActive;
 }
 
 + (CredentialProvider *)credProvider

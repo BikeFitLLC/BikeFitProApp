@@ -8,12 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import <AWSRuntime/AWSRuntime.h>
+#import <LoginWithAmazon/LoginWithAmazon.h>
 
-@interface CredentialProvider : NSObject <AmazonCredentialsProvider>
+@interface CredentialProvider : NSObject <AmazonCredentialsProvider,AIAuthenticationDelegate>
 {
     AmazonCredentials *creds;
     NSDate *tokenExpiration;
+    NSString *amznTokenString;
+    NSTimer *timer;
+    bool isLoggingIn;
 }
+@property bool isLoggingIn;
 
 - (void) clear;
 

@@ -49,7 +49,7 @@
 }
 
 @property UIBezierPath *overlayPath;
-@property BikeInfoViewController *bikeInfo;
+@property BikeFitViewController *bikeInfo;
 @property (nonatomic, retain) AVAssetWriter *assetWriter;
 @property (nonatomic, retain) AVAssetWriterInput *assetInput;
 @property (nonatomic, retain) AVCaptureVideoPreviewLayer *previewLayer;

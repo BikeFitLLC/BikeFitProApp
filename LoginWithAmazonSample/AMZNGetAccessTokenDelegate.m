@@ -29,8 +29,8 @@
     
 #pragma mark Implementation of getAccessTokenForScopes:withOverrideParams:delegate: delegates.
 - (void)requestDidSucceed:(APIResult *)apiResult {
-    [[NSUserDefaults standardUserDefaults] setObject:[apiResult result] forKey:USER_DEFAULTS_AMZN_TOKEN_KEY];
-    [[AmazonClientManager credProvider] refresh];
+    //[[NSUserDefaults standardUserDefaults] setObject:[apiResult result] forKey:USER_DEFAULTS_AMZN_TOKEN_KEY];
+    //[[AmazonClientManager credProvider] refresh];
     
     return;
 

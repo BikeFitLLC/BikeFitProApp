@@ -12,6 +12,10 @@
 #import "AmazonKeyChainWrapper.h"
 #import "FitNote.h"
 #import "BikefitConstants.h"
+#import "JSONKit.h"
+
+#import "AngleNote.h"
+#import "ShoulderAngleNote.h"
 
 @implementation AthletePropertyModel
 @synthesize athleteProperties;
@@ -24,7 +28,6 @@ static NSMutableDictionary *athleteProperties;
     {
         [AthletePropertyModel newAthlete];
     }
-    
     [athleteProperties setObject:value forKey:propertyName];
     
     //Save the property to the defaults in case of a crash
@@ -36,6 +39,8 @@ static NSMutableDictionary *athleteProperties;
 + (void)saveAthleteToAWS{
     if([AmazonClientManager verifyUserKey])
     {
+        [AthletePropertyModel addJSONNotes];
+        [AthletePropertyModel addFitURL];
 
         NSMutableDictionary *athleteItem = [[NSMutableDictionary alloc] init];
         
@@ -45,7 +50,7 @@ static NSMutableDictionary *athleteProperties;
             if([propertyName isEqualToString:(@"LeftNotes")] || [propertyName isEqualToString:@"RightNotes"])
             {
                 NSData* notesData = [NSKeyedArchiver archivedDataWithRootObject:[athleteProperties objectForKey:propertyName]];
-                [athleteItem setObject:[[DynamoDBAttributeValue alloc] initWithB:notesData] forKey:propertyName];
+                [athleteItem setObject:[[   DynamoDBAttributeValue alloc] initWithB:notesData] forKey:propertyName];
             }
             else
             {
@@ -83,8 +88,7 @@ static NSMutableDictionary *athleteProperties;
 {
     NSString *fitid = [athleteProperties objectForKey:AWS_FIT_ATTRIBUTE_FITID];
     
-    [[NSUserDefaults standardUserDefaults] setObject:fitid forKey:USER_DEFAULTS_FITID_KEY];
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    [athleteProperties setObject:fitid forKey:AWS_FIT_ATTRIBUTE_FITID];
     
     NSDate *now = [NSDate dateWithTimeIntervalSinceNow:0];
     [athleteProperties setObject:[NSString stringWithFormat:@"%f",[now timeIntervalSince1970]] forKey:AWS_FIT_ATTRIBUTE_LASTUPDATED];
@@ -124,7 +128,6 @@ static NSMutableDictionary *athleteProperties;
                                    AWS_FIT_ATTRIBUTE_LASTNAME,
                                    AWS_FIT_ATTRIBUTE_EMAIL,
                                    AWS_FIT_ATTRIBUTE_LASTUPDATED,
-                                   AWS_FIT_ATTRIBUTE_FITTERKEY,
                                    nil];
     
         DynamoDBScanResponse *response;
@@ -198,7 +201,7 @@ static NSMutableDictionary *athleteProperties;
 ////////////////////////////////////////////////////
 + (void) loadAthleteFromAWS:(NSString*) fitID
 {
-    [[NSUserDefaults standardUserDefaults] setObject:fitID forKey:USER_DEFAULTS_FITID_KEY];
+    [athleteProperties setObject:fitID forKey:AWS_FIT_ATTRIBUTE_FITID];
     
     //First get the local filesystem version, if it exists
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -213,7 +216,7 @@ static NSMutableDictionary *athleteProperties;
     //then get the cloud version of the fit and if it's more up to date, load that one.
     if([AmazonClientManager verifyUserKey])
     {
-        NSString *fitterID = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITTERID_KEY];
+        NSString *fitterID = [[NSUserDefaults standardUserDefaults] stringForKey:USER_DEFAULTS_FITTERID_KEY];
         NSString *tableName = [NSString stringWithFormat:AWS_FIT_TABLE_NAME_FORMAT,fitterID];
         
         DynamoDBAttributeValue *fitIDAttribute = [[DynamoDBAttributeValue alloc] initWithS:fitID];
@@ -253,8 +256,8 @@ static NSMutableDictionary *athleteProperties;
                     }
                 }
                 //if all was successful, update the last email property in case of crasehs
-                [[NSUserDefaults standardUserDefaults] setObject:fitID forKey:USER_DEFAULTS_FITID_KEY];
-                [[NSUserDefaults standardUserDefaults] synchronize];
+                [athleteProperties setObject:fitID forKey:AWS_FIT_ATTRIBUTE_FITID];
+
                 return;
             }
         }
@@ -272,11 +275,12 @@ static NSMutableDictionary *athleteProperties;
     if([AmazonClientManager verifyUserKey])
     {
         //if we are actively logged in, create new files
-        [athleteProperties setObject:[[NSUUID UUID] UUIDString] forKey:AWS_FIT_ATTRIBUTE_FITID];
+        [athleteProperties setObject:[[[NSUUID UUID] UUIDString] lowercaseString] forKey:AWS_FIT_ATTRIBUTE_FITID];
     }
     else
     {
         //otherwise, just use the same file.
+        [[NSUserDefaults standardUserDefaults] setObject:LOCAL_FITTER_ID forKey:USER_DEFAULTS_FITTERID_KEY];
         [athleteProperties setObject:LOCAL_FILE_ID forKey:AWS_FIT_ATTRIBUTE_FITID];
     }
     [athleteProperties setObject:@"" forKey:@"YearsCycling"];
@@ -314,15 +318,50 @@ static NSMutableDictionary *athleteProperties;
 
 + (void) setOfflineMode:(bool)offlineMode
 {
-    //[[NSUserDefaults standardUserDefaults] setBool:!offlineMode forKey:USER_DEFAULTS_ONLINEMODE_KEY];
-    
     if(offlineMode)
     {
-        [[NSUserDefaults standardUserDefaults] setObject:LOCAL_FILE_ID forKey:USER_DEFAULTS_FITID_KEY];
+        [[NSUserDefaults standardUserDefaults] setObject:LOCAL_FILE_ID forKey:AWS_FIT_ATTRIBUTE_FITID];
         [[NSUserDefaults standardUserDefaults] setObject:LOCAL_FITTER_ID forKey:USER_DEFAULTS_FITTERID_KEY];
     }
     
     [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (void)addJSONNotes
+{
+    NSMutableArray *leftJsonArray = [[NSMutableArray alloc] init];
+    NSArray *leftNotesArray = [athleteProperties objectForKey:@"LeftNotes"];
+    if(leftNotesArray)
+    {
+        for( FitNote *note in leftNotesArray)
+        {
+            [leftJsonArray addObject:[note getDictionary]];
+        }
+        [athleteProperties setObject:[leftJsonArray JSONString] forKey:@"LeftNotesJSON"];
+    }
+    
+    NSMutableArray *rightJsonArray = [[NSMutableArray alloc] init];
+    NSArray *rightNotesArray = [athleteProperties objectForKey:@"RightNotes"];
+    if(rightNotesArray)
+    {
+        for( FitNote *note in rightNotesArray)
+        {
+            [rightJsonArray addObject:[note getDictionary]];
+        }
+        NSString *json = [rightJsonArray JSONString];
+        [athleteProperties setObject:json forKey:@"RightNotesJSON"];
+    }
+}
+
++ (void) addFitURL
+{
+    NSString *fitterId = [[NSUserDefaults standardUserDefaults]objectForKey:USER_DEFAULTS_FITTERID_KEY];
+    NSString *fitId = [AthletePropertyModel getProperty:AWS_FIT_ATTRIBUTE_FITID];
+    if(fitterId && fitterId)
+    {
+        NSString *url = [NSString stringWithFormat:@"http://intake.velopez.com/f/%@/%@",fitterId,fitId];
+        [AthletePropertyModel setProperty:AWS_FIT_ATTRIBUTE_URL value:url];
+    }
 }
 
 

@@ -35,4 +35,19 @@
     self.leftFoot = [decoder decodeBoolForKey:@"leftfoot"];
     return self;
 }
+
+-(NSMutableDictionary *) getDictionary
+{
+    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc]init];
+    
+    [dictionary setObject:[NSNumber numberWithBool:self.leftFoot] forKey:@"leftfoot"];
+    if(self.text)
+    {
+        [dictionary setObject:self.text forKey:@"text"];
+    }
+    [dictionary setObject:NSStringFromClass(self.class) forKey:@"class"];
+
+    return dictionary;
+    
+}
 @end

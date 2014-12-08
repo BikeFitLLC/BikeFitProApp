@@ -79,4 +79,15 @@
     return [super initWithCoder:decoder];;
 }
 
+-(NSMutableDictionary *) getDictionary
+{
+    NSMutableDictionary *dictionary = [super getDictionary];
+    [dictionary setObject:[NSNumber numberWithFloat:self.angle ] forKey:@"angle"];
+    [dictionary setObject:self.labelText forKey:@"labelText"];
+    //[dictionary setObject:self.vertices forKey:@"vertices"];
+    
+    return dictionary;
+    
+}
+
 @end

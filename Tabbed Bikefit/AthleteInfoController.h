@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MFMailComposeViewController.h>
 
-@interface AthleteInfoController : UIViewController <UITextViewDelegate, UITableViewDataSource,
-                                                        UITableViewDelegate, UITextViewDelegate>
+@interface AthleteInfoController : UIViewController <UITableViewDataSource,
+                                                        UITableViewDelegate,
+                                                        UITextViewDelegate,
+                                                        MFMailComposeViewControllerDelegate>
 {
 
     NSMutableArray *propertyNames;
@@ -18,6 +21,8 @@
     UILabel *firstNameLabel;
     UILabel *lastNameLabel;
     UILabel *emailLabel;
+    UIButton *urlButton;
+    UIButton *emailFitButton;
     
     UIView *inputView;
     UITextView *propertyNameText;
@@ -30,6 +35,8 @@
     IBOutlet UIBarButtonItem *clientListButton;
     IBOutlet UIBarButtonItem *saveToWebButton;
     IBOutlet UIButton *saveButton;
+    
+    MFMailComposeViewController* emailController;
 }
 -(IBAction) save;
 -(IBAction) newAthlete;

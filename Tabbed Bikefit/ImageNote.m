@@ -108,8 +108,8 @@
     
     //Upload image data.  Remember to set the content type.
     s3Key = [NSString stringWithFormat:@"%@/%@",
-                       [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITID_KEY],
-                       [[NSUUID UUID] UUIDString]];
+                        [AthletePropertyModel getProperty:AWS_FIT_ATTRIBUTE_FITID],
+                        [[NSUUID UUID] UUIDString]];
     
     s3Bucket = [[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITTERID_KEY] lowercaseString];
 
@@ -136,8 +136,8 @@
 
         if(![[NSFileManager defaultManager] fileExistsAtPath:fitPath])
         {
-            [[NSFileManager defaultManager] createDirectoryAtPath:fitPath withIntermediateDirectories:YES attributes:nil error:&error];
-            if(error)
+            bool success = [[NSFileManager defaultManager] createDirectoryAtPath:fitPath withIntermediateDirectories:YES attributes:nil error:&error];
+            if(success == NO)
             {
                 NSLog(@"Error Creating Fit Directory: %@", [error description]);
             }
@@ -151,7 +151,6 @@
             NSLog(@"Error Saving to File System: %@", [error description]);
         }
     }
-    //[self queueImageUpload];
 
 }
 
@@ -175,6 +174,17 @@
     [self queueImageDownload];
     
     return self;
+}
+
+-(NSMutableDictionary *) getDictionary
+{
+    NSMutableDictionary *dictionary = [super getDictionary];
+    [dictionary setObject:self.s3Key forKey:@"s3Key"];
+    [dictionary setObject:self.s3Bucket forKey:@"s3Bucket"];
+    //[dictionary setObject:self.path forKey:@"path"];
+    
+    return dictionary;
+    
 }
 
 @end

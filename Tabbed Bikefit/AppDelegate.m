@@ -10,7 +10,8 @@
 #import "AthletePropertyModel.h"
 #import "BikefitConstants.h"
 
-#import "AMZNGetAccessTokenDelegate.h"
+//#import "AMZNGetAccessTokenDelegate.h"
+#import "AmazonClientManager.h"
 
 #import <LoginWithAmazon/LoginWithAmazon.h>
 
@@ -20,28 +21,11 @@
 {
     // Override point for customization after application launch.
     
-    //if we crashed last
-    //if([[NSUserDefaults standardUserDefaults] objectForKey:@"lastemail"])
-    //{
-      //  [AthletePropertyModel loadAthleteFromAWS:[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITID_KEY]];
-    //}
+    [AIMobileLib getAccessTokenForScopes:[NSArray arrayWithObject:@"profile"]
+                      withOverrideParams:nil
+                                delegate:[AmazonClientManager credProvider]];
     
-    NSString *email = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITTERID_KEY];
-    //default to online mode on.
-    /*
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_ONLINEMODE_KEY] == nil)
-    {
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:USER_DEFAULTS_ONLINEMODE_KEY];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }
-    */
-    
-    //if online mode is on, try to get a token from amazon
-    //if([[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_ONLINEMODE_KEY] boolValue])
-    {
-        AMZNGetAccessTokenDelegate* delegate = [[AMZNGetAccessTokenDelegate alloc] initWithParentController:nil];
-        [AIMobileLib getAccessTokenForScopes:[NSArray arrayWithObject:@"profile"] withOverrideParams:nil delegate:delegate];
-    }
+    [AthletePropertyModel newAthlete];
     
     //Setup crash detection
     struct sigaction signalAction;
@@ -69,6 +53,14 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    
+    //Refresh that token, ya'll!
+    if(![[AmazonClientManager credProvider] isLoggingIn] && ![[AmazonClientManager credProvider] isTokenValid])
+    {
+        [AIMobileLib getAccessTokenForScopes:[NSArray arrayWithObject:@"profile"]
+                          withOverrideParams:nil
+                                    delegate:[AmazonClientManager credProvider]];
+    }
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application

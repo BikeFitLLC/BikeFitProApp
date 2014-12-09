@@ -35,9 +35,9 @@
     [automaticNotesList addObject:@"Saddle Up"];
     [automaticNotesList addObject:@"Saddle Down"];
     [automaticNotesList addObject:@"Saddle Forward"];
-    [automaticNotesList addObject:@"Saddle Saddle Back"];
-    [automaticNotesList addObject:@"Moved Foot Lateral"];
-    [automaticNotesList addObject:@"Moved Foot Medial"];
+    [automaticNotesList addObject:@"Saddle Back"];
+    [automaticNotesList addObject:@"Foot Lateral"];
+    [automaticNotesList addObject:@"Foot Medial"];
 	// Do any additional setup after loading the view.
 }
 

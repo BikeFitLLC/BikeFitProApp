@@ -62,7 +62,7 @@ BOOL isUserSignedIn;
     NSString *message;
     if(isTrialUser)
     {
-        message = [NSString stringWithFormat:@"Logged In As %@ \n Your 3 Month trial period has begun. \n To Sign Up Contact education@bikefit.com", name];
+        message = [NSString stringWithFormat:@"Logged In As %@ \n \n In addition to the BikeFit App you receive 3 months free web services. \n\n To sign up for continued web services please contact education@bikefit.com", name];
     }
     else
     {
@@ -71,7 +71,7 @@ BOOL isUserSignedIn;
 
     
     self.infoField.text = message;
-    self.infoField.font = [UIFont fontWithName:@"Gill Sans" size:48.0];
+    self.infoField.font = [UIFont fontWithName:@"Gill Sans" size:32];
     self.infoField.textColor = [UIColor grayColor];
     self.infoField.textAlignment = NSTextAlignmentCenter;
     self.infoField.hidden = false;

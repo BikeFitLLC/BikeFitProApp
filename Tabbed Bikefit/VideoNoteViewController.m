@@ -100,6 +100,10 @@
     [reverseCameraButton addTarget:self action:@selector(switchCameraTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:reverseCameraButton];
     
+    takePhotoButton.titleLabel.font = [UIFont systemFontOfSize:18];
+    takePhotoButton.backgroundColor = [UIColor blackColor];
+    takePhotoButton.alpha = .5;
+    
 	interval = 1;
     videoEnabled = true;
     

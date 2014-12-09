@@ -35,6 +35,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [recordButton setHidden:TRUE];
     
     angleLabel.font = [UIFont fontWithName:@"Helvetica" size:100.0];
     
@@ -202,11 +203,11 @@
     int wholeAngle = (int)(angle*57.2957795);
     if((wholeAngle < 0 && ![bikeInfo leftNotesSelected]) || (wholeAngle >= 0 && [bikeInfo leftNotesSelected]))
     {
-       angleLabel.text = [NSString stringWithFormat:@"Varus - %d°", abs(wholeAngle)];
+       angleLabel.text = [NSString stringWithFormat:@"%d° Varus", abs(wholeAngle)];
     }
     else
     {
-        angleLabel.text = [NSString stringWithFormat:@"Valgus - %d°", abs(wholeAngle)];
+        angleLabel.text = [NSString stringWithFormat:@"%d Valgus°", abs(wholeAngle)];
     }
     
 }

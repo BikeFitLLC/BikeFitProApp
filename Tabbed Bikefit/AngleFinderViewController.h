@@ -15,8 +15,13 @@
 @interface AngleFinderViewController : VideoNoteViewController <UIScrollViewDelegate, UIGestureRecognizerDelegate>{
     
     IBOutlet UILabel *angleLabel;
-    NSString *labelText;
     IBOutlet UIScrollView *previewScroll;
+    
+    
+    NSString *labelText;
+    UIImageView *leftArrowImageView;
+    UIImageView *rightArrowImageView;
+    
     
     NSString *propertyName;
 }

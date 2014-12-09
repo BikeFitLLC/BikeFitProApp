@@ -20,10 +20,11 @@
     
     //User Interface
     IBOutlet UIView *previewView; //view that shows the camera video
-    IBOutlet UIButton *recordButton;
-    IBOutlet UIButton *nextImageButton;
-    IBOutlet UIButton *previousImageButton;
-    IBOutlet UIButton *saveButton;
+    UIButton *recordButton;
+    UIButton *nextImageButton;
+    UIButton *previousImageButton;
+    UIButton *saveButton;
+    UIButton *reverseCameraButton;
     IBOutlet UIButton *takePhotoButton;
     
     //AVCapture

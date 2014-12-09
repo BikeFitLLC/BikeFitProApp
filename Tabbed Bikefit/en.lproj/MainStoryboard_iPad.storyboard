@@ -431,28 +431,6 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="02V-uJ-zFF" customClass="NoteImageView">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAL-eV-vwG">
-                                        <rect key="frame" x="614" y="767" width="118" height="73"/>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" title="Next Image">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="nextImage" destination="jdh-5D-qbz" eventType="touchUpInside" id="RPQ-6F-BxC"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zhp-Xg-Cj9">
-                                        <rect key="frame" x="49" y="767" width="118" height="73"/>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" title="Previous Image">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="prevImage" destination="jdh-5D-qbz" eventType="touchUpInside" id="oVD-SU-lP6"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9wk-kj-fqJ">
                                         <rect key="frame" x="49" y="911" width="61" height="42"/>
                                         <state key="normal" title="Play">
@@ -539,65 +517,6 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2h5-iD-jaR" customClass="KneeDrawingView">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1280"/>
                                 <subviews>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="niB-1y-gPJ">
-                                        <rect key="frame" x="13" y="59" width="59" height="51"/>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal">
-                                            <attributedString key="attributedTitle">
-                                                <fragment content="Save">
-                                                    <attributes>
-                                                        <font key="NSFont" size="15" name="HelveticaNeue-Bold"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                        </state>
-                                        <connections>
-                                            <action selector="keepLine:" destination="xNd-bO-TqH" eventType="touchUpInside" id="JGo-lh-F8L"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cWO-8J-swy">
-                                        <rect key="frame" x="591" y="599" width="150" height="150"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" backgroundImage="recordButton.png">
-                                            <attributedString key="attributedTitle"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="capture" destination="xNd-bO-TqH" eventType="touchUpInside" id="kal-Gb-iAZ"/>
-                                        </connections>
-                                    </button>
-                                    <button hidden="YES" opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CxN-Vg-mUa">
-                                        <rect key="frame" x="524" y="299" width="256" height="256"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" backgroundImage="arrowright.png">
-                                            <attributedString key="attributedTitle"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="nextImage" destination="xNd-bO-TqH" eventType="touchUpInside" id="Tuj-Bv-i1K"/>
-                                        </connections>
-                                    </button>
-                                    <button hidden="YES" opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cKt-An-rXw">
-                                        <rect key="frame" x="0.0" y="299" width="256" height="256"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" backgroundImage="arrowleft.png">
-                                            <attributedString key="attributedTitle"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="prevImage" destination="xNd-bO-TqH" eventType="touchUpInside" id="vRL-uq-pdY"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bfg-B1-LKh">
-                                        <rect key="frame" x="23" y="162" width="49" height="53"/>
-                                        <state key="normal" backgroundImage="FrontCameraIcon.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="switchCameraTapped:" destination="xNd-bO-TqH" eventType="touchUpInside" id="s6D-kc-nWz"/>
-                                        </connections>
-                                    </button>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wgD-Gy-igV">
                                         <rect key="frame" x="591" y="808" width="145" height="65"/>
                                         <state key="normal" title="Toe Line -&gt;">
@@ -627,12 +546,8 @@
                     <connections>
                         <outlet property="lazerLeftButton" destination="PCS-2o-6qo" id="keG-uV-1DX"/>
                         <outlet property="lazerRightButton" destination="wgD-Gy-igV" id="pTw-Py-ahG"/>
-                        <outlet property="nextImageButton" destination="CxN-Vg-mUa" id="9Yw-ee-QKT"/>
                         <outlet property="previewImage" destination="2h5-iD-jaR" id="ILd-0y-Bc5"/>
                         <outlet property="previewView" destination="uaB-xN-wJY" id="AQS-sQ-53U"/>
-                        <outlet property="previousImageButton" destination="cKt-An-rXw" id="SVl-Zs-dmK"/>
-                        <outlet property="recordButton" destination="cWO-8J-swy" id="KYW-0o-YAE"/>
-                        <outlet property="saveButton" destination="niB-1y-gPJ" id="QK1-zg-gSn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4du-Jo-ufl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -727,53 +642,6 @@
                                             <action selector="moveLazerRight:" destination="PPw-Pc-d98" eventType="touchUpInside" id="TKR-ru-mZ9"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wje-F8-gBz">
-                                        <rect key="frame" x="602" y="104" width="141" height="65"/>
-                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" title="Save">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="keepLine:" destination="PPw-Pc-d98" eventType="touchUpInside" id="NIa-US-s0Y"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mgb-J5-Amw">
-                                        <rect key="frame" x="676" y="842" width="67" height="57"/>
-                                        <state key="normal" backgroundImage="FrontCameraIcon.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="switchCameraTapped:" destination="PPw-Pc-d98" eventType="touchUpInside" id="XuC-mU-aZ7"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4NB-m9-Rf2">
-                                        <rect key="frame" x="544" y="299" width="256" height="256"/>
-                                        <state key="normal" backgroundImage="arrowright.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="nextImage" destination="PPw-Pc-d98" eventType="touchUpInside" id="twe-LR-n5F"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xFP-dX-TZG">
-                                        <rect key="frame" x="10" y="299" width="256" height="256"/>
-                                        <state key="normal" backgroundImage="arrowleft.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="prevImage" destination="PPw-Pc-d98" eventType="touchUpInside" id="JEF-kG-ZtK"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h7a-dE-T6b">
-                                        <rect key="frame" x="593" y="343" width="150" height="150"/>
-                                        <state key="normal" backgroundImage="recordButton.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="capture" destination="PPw-Pc-d98" eventType="touchUpInside" id="HwR-DI-yL7"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
@@ -784,12 +652,8 @@
                     <connections>
                         <outlet property="lazerLeftButton" destination="1fD-cq-TaW" id="J15-zC-SRG"/>
                         <outlet property="lazerRightButton" destination="huy-iM-BSi" id="Qk0-3s-XdF"/>
-                        <outlet property="nextImageButton" destination="4NB-m9-Rf2" id="a2V-MO-lZN"/>
                         <outlet property="previewImage" destination="T6K-Pv-LWV" id="qkm-mj-jo0"/>
                         <outlet property="previewView" destination="Owo-6R-nwy" id="1Eg-bR-mek"/>
-                        <outlet property="previousImageButton" destination="xFP-dX-TZG" id="YSq-xo-aEP"/>
-                        <outlet property="recordButton" destination="h7a-dE-T6b" id="CBe-ij-KHu"/>
-                        <outlet property="saveButton" destination="wje-F8-gBz" id="PIU-ig-dPh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3r6-9m-iJl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -815,59 +679,12 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F8g-Ey-fe6" customClass="LegAngleImageView">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1280"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z3P-DO-LPN">
-                                        <rect key="frame" x="29" y="97" width="106" height="86"/>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" title="Save">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="saveAngle" destination="gr3-AI-7IN" eventType="touchUpInside" id="gui-aY-7BP"/>
-                                        </connections>
-                                    </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JTa-Cv-9VD">
                                         <rect key="frame" x="20" y="816" width="306" height="142"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <attributedString key="attributedText"/>
                                         <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dn0-TS-1G7">
-                                        <rect key="frame" x="570" y="488" width="150" height="150"/>
-                                        <state key="normal" backgroundImage="recordButton.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="capture" destination="gr3-AI-7IN" eventType="touchUpInside" id="ndh-5o-hjW"/>
-                                        </connections>
-                                    </button>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZbV-do-RIm">
-                                        <rect key="frame" x="20" y="374" width="138" height="139"/>
-                                        <state key="normal" backgroundImage="arrowleft.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="prevImage" destination="gr3-AI-7IN" eventType="touchUpInside" id="n7i-pb-sms"/>
-                                        </connections>
-                                    </button>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xPR-gf-gF4">
-                                        <rect key="frame" x="632" y="374" width="124" height="139"/>
-                                        <state key="normal" backgroundImage="arrowright.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="nextImage" destination="gr3-AI-7IN" eventType="touchUpInside" id="lMc-3s-2cz"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XEN-dZ-R1O">
-                                        <rect key="frame" x="354" y="69" width="60" height="63"/>
-                                        <state key="normal" backgroundImage="FrontCameraIcon.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="switchCameraTapped:" destination="gr3-AI-7IN" eventType="touchUpInside" id="mvp-yH-GTR"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
@@ -877,12 +694,8 @@
                     <navigationItem key="navigationItem" id="SF8-5M-bZZ"/>
                     <connections>
                         <outlet property="angleLabel" destination="JTa-Cv-9VD" id="Ecr-XE-kdU"/>
-                        <outlet property="nextImageButton" destination="xPR-gf-gF4" id="ZSi-lI-6q4"/>
                         <outlet property="previewImage" destination="F8g-Ey-fe6" id="kn9-dh-pvF"/>
                         <outlet property="previewView" destination="EXD-yg-Wm6" id="81B-qR-ANX"/>
-                        <outlet property="previousImageButton" destination="ZbV-do-RIm" id="0Dx-cG-Rm5"/>
-                        <outlet property="recordButton" destination="dn0-TS-1G7" id="qGG-s1-5WR"/>
-                        <outlet property="saveButton" destination="z3P-DO-LPN" id="TET-d1-bFs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uap-A2-zxg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1037,65 +850,12 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KS8-hk-4LM" customClass="LegAngleImageView">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1048"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rm1-QA-Emk">
-                                        <rect key="frame" x="631" y="124" width="117" height="38"/>
-                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal">
-                                            <attributedString key="attributedTitle">
-                                                <fragment content="Save">
-                                                    <attributes>
-                                                        <font key="NSFont" size="15" name="HelveticaNeue-Bold"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                        </state>
-                                        <connections>
-                                            <action selector="saveAngle" destination="EsE-H4-LXi" eventType="touchUpInside" id="eb0-e8-jLN"/>
-                                        </connections>
-                                    </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m9e-GH-E1C">
                                         <rect key="frame" x="52" y="691" width="492" height="242"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" alpha="0.40000000000000002" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="agd-8b-xIH">
-                                        <rect key="frame" x="600" y="609" width="143" height="144"/>
-                                        <state key="normal" backgroundImage="recordButton.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="capture" destination="EsE-H4-LXi" eventType="touchUpInside" id="ezr-yo-Qhr"/>
-                                        </connections>
-                                    </button>
-                                    <button hidden="YES" opaque="NO" alpha="0.40000000000000002" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1UA-WT-pLd">
-                                        <rect key="frame" x="620" y="380" width="139" height="143"/>
-                                        <state key="normal" backgroundImage="arrowright.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="nextImage" destination="EsE-H4-LXi" eventType="touchUpInside" id="bUq-MF-c2d"/>
-                                        </connections>
-                                    </button>
-                                    <button hidden="YES" opaque="NO" alpha="0.40000000000000002" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SBd-FE-CBq">
-                                        <rect key="frame" x="20" y="380" width="130" height="143"/>
-                                        <state key="normal" backgroundImage="arrowleft.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="prevImage" destination="EsE-H4-LXi" eventType="touchUpInside" id="RKM-M5-zhi"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0i-AC-Oit">
-                                        <rect key="frame" x="20" y="554" width="79" height="81"/>
-                                        <state key="normal" backgroundImage="FrontCameraIcon.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="switchCameraTapped:" destination="EsE-H4-LXi" eventType="touchUpInside" id="CgX-C9-eh4"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
@@ -1107,12 +867,8 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="angleLabel" destination="m9e-GH-E1C" id="hKU-TZ-27q"/>
-                        <outlet property="nextImageButton" destination="1UA-WT-pLd" id="R8a-9T-zSk"/>
                         <outlet property="previewImage" destination="KS8-hk-4LM" id="IC3-fJ-1TX"/>
                         <outlet property="previewView" destination="5lZ-P6-rP1" id="0kQ-Nf-EgW"/>
-                        <outlet property="previousImageButton" destination="SBd-FE-CBq" id="U1u-DY-m12"/>
-                        <outlet property="recordButton" destination="agd-8b-xIH" id="Rh9-so-jMq"/>
-                        <outlet property="saveButton" destination="Rm1-QA-Emk" id="RPu-5M-z6M"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gff-qb-TCY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1147,16 +903,12 @@
         <image name="BikeFitIcon-29x29.png" width="29" height="29"/>
         <image name="BikeFit_logo_Horiz.png" width="500" height="200"/>
         <image name="Cog_15t_29x29.png" width="29" height="29"/>
-        <image name="FrontCameraIcon.png" width="512" height="512"/>
         <image name="Ho_foot_Arches_left.png" width="768" height="1800"/>
         <image name="Ho_foot_Arches_right.png" width="768" height="1794"/>
         <image name="KW_front_laser_2.png" width="768" height="2194"/>
-        <image name="arrowleft.png" width="256" height="256"/>
-        <image name="arrowright.png" width="256" height="256"/>
         <image name="btnLWA_gold_209x48.png" width="209" height="48"/>
         <image name="info_button_29x29_no_white.png" width="28" height="28"/>
         <image name="measurementIcon-new-29x29.png" width="29" height="29"/>
-        <image name="recordButton.png" width="150" height="150"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

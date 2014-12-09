@@ -40,18 +40,66 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    CGRect bounds = self.view.bounds;
-    //Place all the buttons
+    
     [saveButton setHidden:true];
-    [saveButton setCenter:CGPointMake(bounds.size.width * .4, bounds.size.height *.4)];
     [nextImageButton setHidden:true];
     [previousImageButton setHidden:true];
-    [nextImageButton setCenter:CGPointMake(bounds.size.width *.9, CGRectGetMidY(bounds))];
-    [previousImageButton setCenter:CGPointMake(bounds.size.width *.1, CGRectGetMidY(bounds))];
+    [reverseCameraButton setHidden:true];
+    
 }
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //
+    //Setup the buttons and other stuff
+    //
+    recordButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    recordButton.frame = CGRectMake(0,0,200,75);
+    recordButton.titleLabel.font = [UIFont systemFontOfSize:24];
+    recordButton.backgroundColor = [UIColor blackColor];
+    recordButton.alpha = .5;
+    [recordButton setTitle:@"Record 5 Seconds" forState:UIControlStateNormal];
+    [recordButton setCenter:CGPointMake(self.view.bounds.size.width * .85,
+                                      self.view.bounds.size.height *.75)];
+    [recordButton addTarget:self action:@selector(capture) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:recordButton];
+    
+    saveButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    saveButton.frame = CGRectMake(0,0,150,75);
+    saveButton.titleLabel.font = [UIFont systemFontOfSize:24];
+    saveButton.backgroundColor = [UIColor blackColor];
+    saveButton.alpha = .5;
+    [saveButton setTitle:@"Save" forState:UIControlStateNormal];
+    [saveButton setCenter:CGPointMake(self.view.bounds.size.width * .8,
+                                      self.view.bounds.size.height *.15)];
+    [self.view addSubview:saveButton];
+    
+    previousImageButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    previousImageButton.frame = CGRectMake(0,0,100,100);
+    [previousImageButton setCenter:CGPointMake(self.view.bounds.size.width *.1, CGRectGetMidY(self.view.bounds))];
+    [previousImageButton setBackgroundImage:[UIImage imageNamed:@"arrowleft.png"] forState:UIControlStateNormal];
+    [previousImageButton addTarget:self action:@selector(prevImage) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:previousImageButton];
+    
+    nextImageButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    nextImageButton.frame = CGRectMake(0,0,100,100);
+    [nextImageButton setCenter:CGPointMake(self.view.bounds.size.width *.9, CGRectGetMidY(self.view.bounds))];
+    [nextImageButton setBackgroundImage:[UIImage imageNamed:@"arrowright.png"] forState:UIControlStateNormal];
+    [nextImageButton addTarget:self action:@selector(nextImage) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:nextImageButton];
+    
+    reverseCameraButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    reverseCameraButton.frame = CGRectMake(0,0,100,100);
+    reverseCameraButton.titleLabel.font = [UIFont systemFontOfSize:24];
+    reverseCameraButton.backgroundColor = [UIColor blackColor];
+    reverseCameraButton.alpha = .5;
+    [reverseCameraButton setBackgroundImage:[UIImage imageNamed:@"FrontCameraIcon.png"] forState:UIControlStateNormal];
+    [reverseCameraButton setCenter:CGPointMake(self.view.bounds.size.width * .9,
+                                        self.view.bounds.size.height *.85)];
+    [reverseCameraButton addTarget:self action:@selector(switchCameraTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:reverseCameraButton];
+    
 	interval = 1;
     videoEnabled = true;
     
@@ -72,6 +120,11 @@
             //if the videourl is set,  view it.
             player = [AVPlayer playerWithURL:videoUrl];
             [player.currentItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+            
+            //Also, enable the next and previous frame buttons
+            previousImageButton.hidden = NO;
+            nextImageButton.hidden = NO;
+            recordButton.hidden = YES;
         }
         else
         {
@@ -80,11 +133,6 @@
             });
         }
     }
-}
-- (void) viewDidLayoutSubviews
-{
-
-    
 }
 
 - (void) viewDidDisappear:(BOOL)animated
@@ -336,6 +384,7 @@
 {
     capture = false;
     recordButton.hidden = YES;
+    reverseCameraButton.hidden = YES;
     previousImageButton.hidden = NO;
     nextImageButton.hidden = NO;
     [assetInput markAsFinished];

@@ -39,13 +39,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [saveButton addTarget:self action:@selector(saveAngle) forControlEvents:UIControlEventTouchUpInside];
     angleLabel.font = [UIFont fontWithName:@"Helvetica" size:100.0];
     angleLabel.text = [NSString stringWithFormat:@"%d°", (int)(angle/0.0174532925)];
+    angleLabel.textColor = [UIColor whiteColor];
     
     labelText = @"Angle";
     vertexIndex = 0;
-    //capture = false;
-    //displayedImageIndex = 0;
     indexOfMovingPoint = -1;
     
     UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(moveVertex:)];

@@ -36,7 +36,7 @@
     [border setLineJoinStyle:kCGLineJoinBevel];
     [border stroke];
     
-    CGFloat scaleX = .05;
+    CGFloat scaleX = .10;
     CGFloat scaleY = .05;
     
     CGAffineTransform transform = CGAffineTransformMakeScale(scaleX, scaleY);
@@ -55,7 +55,7 @@
     UIBezierPath *transformedPath = [[UIBezierPath alloc] init];
     transformedPath.CGPath = intermediatePath;
     
-    [transformedPath setLineWidth:3.0];
+    [transformedPath setLineWidth:1.0];
     [transformedPath setLineJoinStyle:kCGLineJoinBevel];
     [transformedPath stroke];
     

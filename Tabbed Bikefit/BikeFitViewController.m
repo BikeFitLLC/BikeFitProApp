@@ -197,10 +197,9 @@
                                         cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil
                                         otherButtonTitles:
                                             @"Text Note",
-                                            @"Knee Angle",
+                                            @"Goniometer",
                                             @"Saddle Fore/Aft",
                                             @"Cleat Fore/Aft",
-                                            @"Shoulder Angle",
                                             @"Cleat Medial/Lateral (Stance width)",
                                             @"Foot Tilt",
                                             @"Foot Pressure",
@@ -262,15 +261,12 @@
             segueIdentifier = @"addspindlenotesegue";
             break;
         case 4:
-            segueIdentifier = @"addshoulderanglesegue";
-            break;
-        case 5:
             segueIdentifier = @"addkneenotesegue";
             break;
-        case 6:
+        case 5:
             segueIdentifier = @"addvarusnotesegue";
             break;
-        case 7:
+        case 6:
             segueIdentifier = @"addfootnotesegue";
             break;
     }
@@ -354,7 +350,13 @@
         AngleNote *noteToView = [selectedNotes objectAtIndex:[selectedIndexPath row]];
         
         [vc setImage:[UIImage imageWithData:[noteToView getImage]]];
-        [vc setVertices:[noteToView vertices]];
+        [vc setKneeVertices:noteToView.kneeVertices];
+        [vc setShoulderVertices:noteToView.shoulderVertices];
+        [vc setHipVertices:noteToView.hipVertices];
+        [vc setKneeAngle:[noteToView kneeAngle]];
+        [vc setShoulderAngle:[noteToView shoulderAngle]];
+        [vc setHipAngle:[noteToView hipAngle]];
+        
     }
     else if([ident isEqualToString:@"ViewVarusNote"])
     {

@@ -14,9 +14,9 @@
 
 @interface AngleFinderViewController : VideoNoteViewController <UIScrollViewDelegate, UIGestureRecognizerDelegate>{
     
-    IBOutlet UILabel *angleLabel;
-    IBOutlet UIScrollView *previewScroll;
-    
+    UIButton *kneeAngleButton;
+    UIButton *shoulderAngleButton;
+    UIButton *HipAngleButton;
     
     NSString *labelText;
     UIImageView *leftArrowImageView;
@@ -28,8 +28,6 @@
 
 @property NSString *propertyName;
 @property NSString *labelText;
-//@property NSMutableArray * vertices;
-@property float angle;
 
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer;
 - (void)setVertices:(NSMutableArray *)vertices;

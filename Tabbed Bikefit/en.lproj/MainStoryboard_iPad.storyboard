@@ -315,14 +315,6 @@
                             </imageView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QuO-eQ-YJw" customClass="LegAngleImageView">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1280"/>
-                                <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y6D-cr-sGZ">
-                                        <rect key="frame" x="49" y="828" width="276" height="134"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -330,7 +322,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="dPj-yE-IaO"/>
                     <connections>
-                        <outlet property="angleLabel" destination="Y6D-cr-sGZ" id="BgH-Tb-zdW"/>
                         <outlet property="drawingView" destination="QuO-eQ-YJw" id="OkH-oC-INx"/>
                         <outlet property="imageView" destination="MwT-no-OXx" id="R90-k5-Lj0"/>
                     </connections>
@@ -678,14 +669,6 @@
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F8g-Ey-fe6" customClass="LegAngleImageView">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1280"/>
-                                <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JTa-Cv-9VD">
-                                        <rect key="frame" x="20" y="816" width="306" height="142"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <attributedString key="attributedText"/>
-                                        <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    </label>
-                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -693,7 +676,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="SF8-5M-bZZ"/>
                     <connections>
-                        <outlet property="angleLabel" destination="JTa-Cv-9VD" id="Ecr-XE-kdU"/>
                         <outlet property="previewImage" destination="F8g-Ey-fe6" id="kn9-dh-pvF"/>
                         <outlet property="previewView" destination="EXD-yg-Wm6" id="81B-qR-ANX"/>
                     </connections>
@@ -849,14 +831,6 @@
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KS8-hk-4LM" customClass="LegAngleImageView">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1048"/>
-                                <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m9e-GH-E1C">
-                                        <rect key="frame" x="52" y="691" width="492" height="242"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -866,7 +840,6 @@
                     <navigationItem key="navigationItem" id="VHe-Xg-q4s"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
-                        <outlet property="angleLabel" destination="m9e-GH-E1C" id="hKU-TZ-27q"/>
                         <outlet property="previewImage" destination="KS8-hk-4LM" id="IC3-fJ-1TX"/>
                         <outlet property="previewView" destination="5lZ-P6-rP1" id="0kQ-Nf-EgW"/>
                     </connections>

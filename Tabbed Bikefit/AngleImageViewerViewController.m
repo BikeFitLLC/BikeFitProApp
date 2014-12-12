@@ -13,7 +13,13 @@
 @end
 
 @implementation AngleImageViewerViewController
-@synthesize vertices;
+@synthesize kneeVertices;
+@synthesize shoulderVertices;
+@synthesize hipVertices;
+
+@synthesize kneeAngle;
+@synthesize shoulderAngle;
+@synthesize hipAngle;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,6 +34,15 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    kneeAngleLabel = [[UILabel alloc] init];
+    CGFloat height = self.navigationController.navigationBar.frame.size.height + [UIApplication sharedApplication].statusBarFrame.size.height;
+    kneeAngleLabel.frame = CGRectMake(0,height,250,75);
+    kneeAngleLabel.font = [UIFont fontWithName:@"Helvetica" size:24];
+    kneeAngleLabel.backgroundColor = [UIColor blackColor];
+    kneeAngleLabel.alpha = .5;
+    kneeAngleLabel.numberOfLines = 2;
+    kneeAngleLabel.textColor = [UIColor yellowColor];
+    [self.view addSubview:kneeAngleLabel];
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,14 +55,30 @@
 {
     [super viewDidAppear:animated];
     
-    [drawingView setVertices:vertices];
-    [drawingView calculateAngle];
-    [drawingView drawAngle:[[drawingView.vertices objectAtIndex:0] CGPointValue]
-                                               b:[[drawingView.vertices objectAtIndex:1] CGPointValue]
-                                               c:[[drawingView.vertices objectAtIndex:2] CGPointValue]
-                                            ];
-    angleLabel.text = [NSString stringWithFormat:@"%d", (int)([drawingView angle] * 57.2957795)];
-    angleLabel.font = [UIFont fontWithName:@"Helvetica" size:100.0];
+    if(kneeVertices)
+    {
+        [drawingView setDrawKneePath:YES];
+        [drawingView setKneeVertices:kneeVertices];
+        //set the label contents
+        int intAngle = (int)(kneeAngle * 57.2957795);
+        NSString *kneeButtonText = [NSString stringWithFormat:@"Knee Flexion %d°\nKnee Angle %d° ",
+                                    180-intAngle,
+                                    intAngle];
+        kneeAngleLabel.text = kneeButtonText;
+    }
+    if(hipVertices)
+    {
+        [drawingView setDrawHipPath:YES];
+        [drawingView setHipVertices:hipVertices];
+    }
+    if(shoulderVertices)
+    {
+        [drawingView setDrawShoulderPath:YES];
+        [drawingView setShoulderVertices:shoulderVertices];
+    }
+    
+    
+    [drawingView setNeedsDisplay];
 }
 /*
 #pragma mark - Navigation

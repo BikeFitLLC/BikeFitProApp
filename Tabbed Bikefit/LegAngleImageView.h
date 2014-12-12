@@ -11,22 +11,27 @@
 
 @interface LegAngleImageView : NoteImageView
 {
-    UIBezierPath *path;
-    UIBezierPath *arcPath;
-    
-    NSMutableArray * vertices;
-    
-    float angle;
     bool clockwise;
     //int radius;
 }
 
-@property UIBezierPath *path;
-@property UIBezierPath *arcPath;
-@property NSMutableArray *vertices;
-@property float angle;
+@property bool drawKneePath;
+@property bool drawShoulderPath;
+@property bool drawHipPath;
 
-- (void) drawAngle:(CGPoint)a b:(CGPoint)b c:(CGPoint)c;
+@property UIBezierPath *kneePath;
+@property NSMutableArray *kneeVertices;
+
+@property UIBezierPath *shoulderPath;
+@property NSMutableArray *shoulderVertices;
+
+@property UIBezierPath *hipPath;
+@property NSMutableArray *hipVertices;
+
+@property float kneeAngle;
+@property float shoulderAngle;
+@property float hipAngle;
+
 - (void) clearAngle;
-- (void) calculateAngle;
+- (CGFloat) calculateAngleForPoints:(CGPoint)a b:(CGPoint)b c:(CGPoint)c;
 @end

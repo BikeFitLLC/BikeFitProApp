@@ -10,6 +10,7 @@ bikefit.xcodeproj/xcuserdata/velopez.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkp
 
 bikefit.xcodeproj/xcuserdata/velopez.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
 
+<<<<<<< HEAD
 *.xcbkptlist
 
 *.xcuserstate
@@ -21,3 +22,6 @@ bikefit.xcodeproj/xcuserdata/velopez.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkp
 *.xcuserstate
 
 *.xcbkptlist
+=======
+*.xcuserstate
+>>>>>>> Combine-Goniometer

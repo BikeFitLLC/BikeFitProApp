@@ -11,9 +11,17 @@
 
 @interface AngleImageViewerViewController : ImageViewerViewController
 {
-    IBOutlet UILabel *angleLabel;
+    UILabel *kneeAngleLabel;
+    UILabel *shoulderAngleLabel;
+    UILabel *hipAngleLabel;
+    
     IBOutlet LegAngleImageView *drawingView;
-    NSMutableArray * vertices;
 }
-@property NSMutableArray * vertices;
+@property NSMutableArray *kneeVertices;
+@property NSMutableArray *shoulderVertices;
+@property NSMutableArray *hipVertices;
+
+@property CGFloat kneeAngle;
+@property CGFloat shoulderAngle;
+@property CGFloat hipAngle;
 @end

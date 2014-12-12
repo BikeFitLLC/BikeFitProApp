@@ -69,7 +69,6 @@
 		5D8531FE1759CD6600934E68 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D8531CB1759CD6600934E68 /* Foundation.framework */; };
 		5D8532061759CD6600934E68 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5D8532041759CD6600934E68 /* InfoPlist.strings */; };
 		5D8532091759CD6600934E68 /* AthletePropertyModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8532081759CD6600934E68 /* AthletePropertyModelTests.m */; };
-		5D8A05CB18C181A1005FF2B0 /* ShoulderAngleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8A05CA18C181A1005FF2B0 /* ShoulderAngleViewController.m */; };
 		5D9904B118ECD52500FE5765 /* AngleImageViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9904B018ECD52500FE5765 /* AngleImageViewerViewController.m */; };
 		5D9E2155185BE370006BA0B3 /* AngleNote.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9E2154185BE370006BA0B3 /* AngleNote.m */; };
 		5D9E215A185CE8EE006BA0B3 /* KneeViewNote.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9E2159185CE8EE006BA0B3 /* KneeViewNote.m */; };
@@ -107,7 +106,7 @@
 		5DC9306119200D2000EB733C /* btnLWA_gold_209x48_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DC9305019200D2000EB733C /* btnLWA_gold_209x48_pressed.png */; };
 		5DD1837919D878AB00A5B6CE /* Bike_road_diagram_APPP.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DD1837819D878AB00A5B6CE /* Bike_road_diagram_APPP.png */; };
 		5DD2940D17FA8276005E707D /* AthletePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD2940C17FA8276005E707D /* AthletePickerViewController.m */; };
-		5DD2941417FBBD7F005E707D /* AngleFinderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD2941317FBBD7F005E707D /* AngleFinderViewController.m */; };
+		5DD2941417FBBD7F005E707D /* GoniometerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD2941317FBBD7F005E707D /* GoniometerViewController.m */; };
 		5DD68EE2197473D300BCCCD9 /* FrontCameraIcon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5DD68EE1197473D300BCCCD9 /* FrontCameraIcon.jpg */; };
 		5DD68EE41974747D00BCCCD9 /* FrontCameraIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DD68EE31974747D00BCCCD9 /* FrontCameraIcon.png */; };
 		5DD68EE6198083C600BCCCD9 /* BikeFit_verticle_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DD68EE5198083C600BCCCD9 /* BikeFit_verticle_logo.png */; };
@@ -229,8 +228,6 @@
 		5D8532051759CD6600934E68 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5D8532071759CD6600934E68 /* AthletePropertyModelTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AthletePropertyModelTests.h; sourceTree = "<group>"; };
 		5D8532081759CD6600934E68 /* AthletePropertyModelTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AthletePropertyModelTests.m; sourceTree = "<group>"; };
-		5D8A05C918C181A1005FF2B0 /* ShoulderAngleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoulderAngleViewController.h; sourceTree = "<group>"; };
-		5D8A05CA18C181A1005FF2B0 /* ShoulderAngleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoulderAngleViewController.m; sourceTree = "<group>"; };
 		5D9904AF18ECD52500FE5765 /* AngleImageViewerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AngleImageViewerViewController.h; sourceTree = "<group>"; };
 		5D9904B018ECD52500FE5765 /* AngleImageViewerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AngleImageViewerViewController.m; sourceTree = "<group>"; };
 		5D9E2153185BE370006BA0B3 /* AngleNote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AngleNote.h; sourceTree = "<group>"; };
@@ -293,8 +290,8 @@
 		5DD1837819D878AB00A5B6CE /* Bike_road_diagram_APPP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bike_road_diagram_APPP.png; sourceTree = "<group>"; };
 		5DD2940B17FA8276005E707D /* AthletePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AthletePickerViewController.h; sourceTree = "<group>"; };
 		5DD2940C17FA8276005E707D /* AthletePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AthletePickerViewController.m; sourceTree = "<group>"; };
-		5DD2941217FBBD7F005E707D /* AngleFinderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AngleFinderViewController.h; sourceTree = "<group>"; };
-		5DD2941317FBBD7F005E707D /* AngleFinderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AngleFinderViewController.m; sourceTree = "<group>"; };
+		5DD2941217FBBD7F005E707D /* GoniometerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoniometerViewController.h; sourceTree = "<group>"; };
+		5DD2941317FBBD7F005E707D /* GoniometerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoniometerViewController.m; sourceTree = "<group>"; };
 		5DD68EE1197473D300BCCCD9 /* FrontCameraIcon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FrontCameraIcon.jpg; sourceTree = "<group>"; };
 		5DD68EE31974747D00BCCCD9 /* FrontCameraIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FrontCameraIcon.png; sourceTree = "<group>"; };
 		5DD68EE5198083C600BCCCD9 /* BikeFit_verticle_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BikeFit_verticle_logo.png; sourceTree = "<group>"; };
@@ -601,8 +598,8 @@
 				5DA7AE5818BEC8A400CA0DEB /* NoteViewController.m */,
 				5DF59D3518B2C73E0065A8D1 /* VideoNoteViewController.h */,
 				5DF59D3618B2C73E0065A8D1 /* VideoNoteViewController.m */,
-				5DD2941217FBBD7F005E707D /* AngleFinderViewController.h */,
-				5DD2941317FBBD7F005E707D /* AngleFinderViewController.m */,
+				5DD2941217FBBD7F005E707D /* GoniometerViewController.h */,
+				5DD2941317FBBD7F005E707D /* GoniometerViewController.m */,
 				5D3B1E7717F76045004EB913 /* KneeViewController.h */,
 				5D3B1E7817F76045004EB913 /* KneeViewController.m */,
 			);
@@ -678,8 +675,6 @@
 				5DA7AE5318BEC45B00CA0DEB /* SpindleNoteViewController.m */,
 				00F813521A2ADE1300F1EA6D /* LegAngleViewViewController.h */,
 				00F813531A2ADE1300F1EA6D /* LegAngleViewViewController.m */,
-				5D8A05C918C181A1005FF2B0 /* ShoulderAngleViewController.h */,
-				5D8A05CA18C181A1005FF2B0 /* ShoulderAngleViewController.m */,
 				5DB3607318C694DA00191385 /* KopsViewController.h */,
 				5DB3607418C694DA00191385 /* KopsViewController.m */,
 			);
@@ -883,7 +878,7 @@
 				5D3B1E7917F76045004EB913 /* KneeViewController.m in Sources */,
 				5D3B1E7C17F76187004EB913 /* KneeDrawingView.m in Sources */,
 				5DD2940D17FA8276005E707D /* AthletePickerViewController.m in Sources */,
-				5DD2941417FBBD7F005E707D /* AngleFinderViewController.m in Sources */,
+				5DD2941417FBBD7F005E707D /* GoniometerViewController.m in Sources */,
 				5D192BBA17FE55ED0046CC16 /* LegAngleImageView.m in Sources */,
 				5D6F3A9118145FAC001BD897 /* BikeFitViewController.m in Sources */,
 				5DB3607818C6A28F00191385 /* KopsNote.m in Sources */,
@@ -892,7 +887,6 @@
 				5D7E1F4A18BC0F1500689276 /* VarusNote.m in Sources */,
 				5D9904B118ECD52500FE5765 /* AngleImageViewerViewController.m in Sources */,
 				5DB3607518C694DA00191385 /* KopsViewController.m in Sources */,
-				5D8A05CB18C181A1005FF2B0 /* ShoulderAngleViewController.m in Sources */,
 				5DA7AE6018BED17300CA0DEB /* SpindleNote.m in Sources */,
 				5D9E2161185FE897006BA0B3 /* FootBottomNoteViewController.m in Sources */,
 				00F813541A2ADE1300F1EA6D /* LegAngleViewViewController.m in Sources */,

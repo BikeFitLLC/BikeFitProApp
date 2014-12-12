@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Alfonso Lopez. All rights reserved.
 //
 
-#import "AngleFinderViewController.h"
+#import "GoniometerViewController.h"
 
-@interface LegAngleViewViewController : AngleFinderViewController
+@interface LegAngleViewViewController : GoniometerViewController
 {
 }
 

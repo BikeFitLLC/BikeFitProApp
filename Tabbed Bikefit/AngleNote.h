@@ -16,9 +16,13 @@
     NSMutableArray *vertices;
 }
 
-@property float angle;
-@property NSString* labelText;
-@property NSMutableArray *vertices;
+@property float kneeAngle;
+@property float shoulderAngle;
+@property float hipAngle;
+
+@property NSMutableArray *kneeVertices;
+@property NSMutableArray *shoulderVertices;
+@property NSMutableArray *hipVertices;
 
 - (UITableViewCell *) populateTableCell:(UITableViewCell *)cell;
 -(int) angleInDegrees;

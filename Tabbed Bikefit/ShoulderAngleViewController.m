@@ -45,8 +45,8 @@
     [note setLabelText:labelText];
     
     [note setAngle:[(LegAngleImageView*)previewImage angle]];
-    [note setVertices:[(LegAngleImageView*)previewImage vertices]];
-    [note setPath:[(LegAngleImageView *)previewImage path]];
+    [note setVertices:[(LegAngleImageView*)previewImage kneeVertices]];
+    [note setPath:[(LegAngleImageView *)previewImage kneePath]];
 
     [note setImage:UIImageJPEGRepresentation([self imageFromCurrentTime], 1)];
     

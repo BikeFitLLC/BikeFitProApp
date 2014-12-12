@@ -11,9 +11,9 @@
 #import "GlobalOperationQueueManager.h"//queue singleton for uploads to aws
 
 @implementation AngleNote
-@synthesize angle;
-@synthesize labelText;
-@synthesize vertices;
+@synthesize kneeVertices;
+@synthesize shoulderVertices;
+@synthesize hipVertices;
 
 
 - (UITableViewCell *) populateTableCell:(UITableViewCell *)cell
@@ -32,10 +32,16 @@
     
     CGAffineTransform transform = CGAffineTransformMakeScale(scaleX, scaleY);
     
-    if(!path)
-    {
-        path = [[UIBezierPath alloc] init];
-    }
+    path = [[UIBezierPath alloc] init];
+    [path moveToPoint:[[kneeVertices objectAtIndex:0] CGPointValue]];
+    [path addLineToPoint:[[kneeVertices objectAtIndex:1] CGPointValue]];
+    [path addLineToPoint:[[kneeVertices objectAtIndex:2] CGPointValue]];
+    [path moveToPoint:[[shoulderVertices objectAtIndex:0] CGPointValue]];
+    [path addLineToPoint:[[shoulderVertices objectAtIndex:1] CGPointValue]];
+    [path addLineToPoint:[[shoulderVertices objectAtIndex:2] CGPointValue]];
+    [path moveToPoint:[[hipVertices objectAtIndex:0] CGPointValue]];
+    [path addLineToPoint:[[hipVertices objectAtIndex:1] CGPointValue]];
+    [path addLineToPoint:[[hipVertices objectAtIndex:2] CGPointValue]];
     
     //Draw Scaled down version of the knee path
     CGPathRef intermediatePath = CGPathCreateCopyByTransformingPath(path.CGPath, &transform);
@@ -51,7 +57,31 @@
     UIGraphicsEndImageContext();
     cell.imageView.image = angleImage;
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%@: %d", labelText, 180 - (int)(angle/0.0174532925)];
+    NSMutableArray *cellLabelStringArray = [[NSMutableArray alloc] init];
+    if(kneeVertices)
+    {
+        int intAngle = (int)(self.kneeAngle * 57.2957795);
+        NSString *kneeString = [NSString stringWithFormat:@"Knee Flexion %d°\nKnee Angle %d° ",
+                                             180-intAngle,
+                                            intAngle];
+        [cellLabelStringArray addObject:kneeString];
+    }
+    if(shoulderVertices)
+    {
+        int intAngle = (int)(self.shoulderAngle * 57.2957795);
+        NSString *shoulderString = [NSString stringWithFormat:@"Shoulder Flexion %d° ", intAngle];
+        [cellLabelStringArray addObject:shoulderString];
+    }
+    if(hipVertices)
+    {
+        int intAngle = (int)(self.hipAngle * 57.2957795);
+        NSString *hipString = [NSString stringWithFormat:@"Hip Flexion %d° ", intAngle];
+        [cellLabelStringArray addObject:hipString];
+    }
+    
+    
+    cell.textLabel.numberOfLines = 4;
+    cell.textLabel.text = [cellLabelStringArray componentsJoinedByString:@"\n"];
     return cell;
 }
 
@@ -63,17 +93,32 @@
 #pragma mark - NSCoding support
 -(void)encodeWithCoder:(NSCoder*)encoder {
     [super encodeWithCoder:encoder];
-    [encoder encodeFloat:self.angle forKey:@"angle"];
-    [encoder encodeObject:self.labelText forKey:@"labelText"];
-    [encoder encodeObject:self.vertices forKey:@"vertices"];
-    //[encoder encodeObject:self.path forKey:@"path"];
+    [encoder encodeFloat:self.kneeAngle forKey:@"kneeAngle"];
+    [encoder encodeFloat:self.shoulderAngle forKey:@"shoulderAngle"];
+    [encoder encodeFloat:self.hipAngle forKey:@"hipAngle"];
     
+    [encoder encodeObject:self.kneeVertices forKey:@"kneeVertices"];
+    [encoder encodeObject:self.shoulderVertices forKey:@"shoulderVertices"];
+    [encoder encodeObject:self.hipVertices forKey:@"hipVertices"];
 }
 
 -(id)initWithCoder:(NSCoder*)decoder {
-    self.angle = [decoder decodeFloatForKey:@"angle"];
-    self.labelText = [decoder decodeObjectForKey:@"labelText"];
-    self.vertices = [decoder decodeObjectForKey:@"vertices"];
+    self.kneeAngle = [decoder decodeFloatForKey:@"angle"]; //legacy, do not erase
+    if( !self.kneeAngle)
+    {
+        self.kneeAngle = [decoder decodeFloatForKey:@"kneeAngle"];
+    }
+    self.shoulderAngle = [decoder decodeFloatForKey:@"shoulderAngle"];
+    self.hipAngle = [decoder decodeFloatForKey:@"hipAngle"];
+    
+    self.kneeVertices = [decoder decodeObjectForKey:@"vertices"];
+    if(!self.kneeVertices)
+    {
+        self.kneeVertices = [decoder decodeObjectForKey:@"kneeVertices"];
+    }
+    self.shoulderVertices = [decoder decodeObjectForKey:@"shoulderVertices"];
+    self.hipVertices = [decoder decodeObjectForKey:@"hipVertices"];
+    
     //self.path = [decoder decodeObjectForKey:@"path"];
     
     return [super initWithCoder:decoder];;
@@ -82,8 +127,7 @@
 -(NSMutableDictionary *) getDictionary
 {
     NSMutableDictionary *dictionary = [super getDictionary];
-    [dictionary setObject:[NSNumber numberWithFloat:self.angle ] forKey:@"angle"];
-    [dictionary setObject:self.labelText forKey:@"labelText"];
+    [dictionary setObject:[NSNumber numberWithFloat:self.kneeAngle ] forKey:@"angle"];
     //[dictionary setObject:self.vertices forKey:@"vertices"];
     
     return dictionary;

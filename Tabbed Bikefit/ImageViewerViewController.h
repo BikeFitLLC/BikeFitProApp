@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AngleFinderViewController.h"
+#import "GoniometerViewController.h"
 #import "LegAngleImageView.h"
 
 @interface ImageViewerViewController : UIViewController

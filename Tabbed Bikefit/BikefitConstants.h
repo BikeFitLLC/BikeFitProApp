@@ -7,7 +7,7 @@
 #define USER_DEFAULTS_FITTERID_KEY @"FitterID"
 #define USER_DEFAULTS_USERNAME_KEY @"username"
 #define USER_DEFAULTS_FITTERNAME_KEY @"fittername"
-//#define USER_DEFAULTS_FITID_KEY @"FitID"
+///#define USER_DEFAULTS_FITID_KEY @"FitID"
 #define USER_DEFAULTS_ACCOUNT_ACTIVE_KEY @"accountactive"
 #define USER_DEFAULTS_IS_TRIAL_ACCOUNT @"istrialaccount"
 

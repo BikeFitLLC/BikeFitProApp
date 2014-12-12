@@ -9,13 +9,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Tabbed Bikefit/ImageViewerViewController.m"
-            timestampString = "439017232.37979"
+            filePath = "Tabbed Bikefit/BikeFitTableViewCell.m"
+            timestampString = "440119336.587578"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
-            landmarkName = "-viewDidAppear:"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "-enableDeleting:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Tabbed Bikefit/VideoNoteViewController.m"
-            timestampString = "439843387.045508"
+            filePath = "Tabbed Bikefit/BikeFitTableViewCell.m"
+            timestampString = "440119336.587578"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "313"
-            endingLineNumber = "313"
-            landmarkName = "-switchCameraTapped:"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "-setDeleteEnabled:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,81 +41,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Tabbed Bikefit/VideoNoteViewController.m"
-            timestampString = "439843387.045508"
+            filePath = "Tabbed Bikefit/BikeFitTableViewCell.m"
+            timestampString = "440119336.587578"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "560"
-            endingLineNumber = "560"
-            landmarkName = "-prevImage"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Tabbed Bikefit/GoniometerViewController.m"
-            timestampString = "439944996.188182"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Tabbed Bikefit/LegAngleImageView.m"
-            timestampString = "440010831.39144"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
-            landmarkName = "-getArcForPoints:b:c:andAngle:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Tabbed Bikefit/AngleImageViewerViewController.m"
-            timestampString = "440036265.24289"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-<<<<<<< HEAD
-            landmarkName = "-didReceiveMemoryWarning"
-=======
-            landmarkName = "-viewDidLoad"
->>>>>>> Combine-Goniometer
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Tabbed Bikefit/GoniometerViewController.m"
-            timestampString = "440035809.301358"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "291"
-            endingLineNumber = "291"
-            landmarkName = "-saveAngle"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "-deleteSelf:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

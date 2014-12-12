@@ -27,6 +27,7 @@
 #import "ImageViewerViewController.h"
 #import "AngleImageViewerViewController.h"
 #import "VarusViewerViewController.h"
+#import "BikeFitTableViewCell.h"
 
 
 @interface BikeFitViewController ()
@@ -55,6 +56,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [leftNotesTable registerClass:[BikeFitTableViewCell class] forCellReuseIdentifier:@"measurementCell"];
+    [rightNotesTable registerClass:[BikeFitTableViewCell class] forCellReuseIdentifier:@"measurementCell"];
+    [leftNotesTable registerClass:[UITableViewCell class] forCellReuseIdentifier:@"addCell"];
+    [rightNotesTable registerClass:[UITableViewCell class] forCellReuseIdentifier:@"addCell"];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -139,37 +144,66 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"measurementCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
     if( tableView == leftNotesTable)
     {
         if( [indexPath row] == [leftNotes count])
         {
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"addCell" forIndexPath:indexPath];
             cell.imageView.image = nil;
             cell.textLabel.text = @"Tap To Add Note";
+            cell.backgroundColor = [UIColor clearColor];
+            return cell;
         }
         else
         {
+            BikeFitTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"measurementCell" forIndexPath:indexPath];
             [[leftNotes objectAtIndex:[indexPath row]] populateTableCell:cell];
+            [cell setDelegate:self];
+            cell.backgroundColor = [UIColor clearColor];
+            cell.backgroundView = [UIView new];
+            return cell;
         }
     }
     else
     {
         if( [indexPath row] == [rightNotes count])
         {
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"addCell" forIndexPath:indexPath];
             cell.imageView.image = nil;
             cell.textLabel.text = @"Tap To Add Note";
+            cell.backgroundColor = [UIColor clearColor];
+            return cell;
         }
         else
         {
+            BikeFitTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"measurementCell" forIndexPath:indexPath];
             [[rightNotes objectAtIndex:[indexPath row]] populateTableCell:cell];
+            [cell setDelegate:self];
+            cell.backgroundColor = [UIColor clearColor];
+            cell.backgroundView = [UIView new];
+            return cell;
         }
     }
-    cell.backgroundColor = [UIColor clearColor];
-    cell.backgroundView = [UIView new];
+}
+
+- (void)deleteNoteForCell:(BikeFitTableViewCell*)cell;
+{
     
-    return cell;
+    NSIndexPath *cellPath = [rightNotesTable indexPathForCell:cell];
+    NSMutableArray *notes = rightNotes;
+    if(!cellPath)
+    {
+        //is this cell wasn't in the rightnotestable, check the left
+        cellPath = [leftNotesTable indexPathForCell:cell];
+        notes = leftNotes;
+    }
+    if(cellPath)
+    {
+        [notes removeObjectAtIndex:[cellPath row]];
+        [rightNotesTable reloadData];
+        [leftNotesTable reloadData];
+    }
+    return;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -240,8 +274,6 @@
     
     return @"Error";
 }
-
-
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00A382F71A3B710100791FEE /* BikeFitTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A382F61A3B710100791FEE /* BikeFitTableViewCell.m */; };
 		00F813541A2ADE1300F1EA6D /* LegAngleViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F813531A2ADE1300F1EA6D /* LegAngleViewViewController.m */; };
 		00FF371A1A36302E00FD1E45 /* KW_front_laser_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 00FF37191A36302E00FD1E45 /* KW_front_laser_2.png */; };
 		00FF371C1A3630CE00FD1E45 /* measurementIcon-new-29x29.png in Resources */ = {isa = PBXBuildFile; fileRef = 00FF371B1A3630CE00FD1E45 /* measurementIcon-new-29x29.png */; };
@@ -143,6 +144,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00A382F51A3B710100791FEE /* BikeFitTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BikeFitTableViewCell.h; sourceTree = "<group>"; };
+		00A382F61A3B710100791FEE /* BikeFitTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BikeFitTableViewCell.m; sourceTree = "<group>"; };
 		00F813521A2ADE1300F1EA6D /* LegAngleViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LegAngleViewViewController.h; sourceTree = "<group>"; };
 		00F813531A2ADE1300F1EA6D /* LegAngleViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LegAngleViewViewController.m; sourceTree = "<group>"; };
 		00FF37191A36302E00FD1E45 /* KW_front_laser_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KW_front_laser_2.png; sourceTree = "<group>"; };
@@ -381,6 +384,8 @@
 				5DB3AEE519D0C9A200604666 /* FinalNotesViewController.m */,
 				5D6F3A8F18145FAC001BD897 /* BikeFitViewController.h */,
 				5D6F3A9018145FAC001BD897 /* BikeFitViewController.m */,
+				00A382F51A3B710100791FEE /* BikeFitTableViewCell.h */,
+				00A382F61A3B710100791FEE /* BikeFitTableViewCell.m */,
 				5DD2940E17FA8291005E707D /* AthleteInfo */,
 				5D9E215B185D0614006BA0B3 /* Note View Controllers */,
 			);
@@ -894,6 +899,7 @@
 				5D9E215A185CE8EE006BA0B3 /* KneeViewNote.m in Sources */,
 				5DC9305F19200D2000EB733C /* AMZNLogoutDelegate.m in Sources */,
 				5D9EA23A1859400300E63682 /* TextFitNoteViewController.m in Sources */,
+				00A382F71A3B710100791FEE /* BikeFitTableViewCell.m in Sources */,
 				5D7E1F4718BBE46E00689276 /* VarusDrawingView.m in Sources */,
 				5D7E1F4418BBE42B00689276 /* VarusNoteViewController.m in Sources */,
 				5D3BC333190AB605003E8613 /* ImageNote.m in Sources */,

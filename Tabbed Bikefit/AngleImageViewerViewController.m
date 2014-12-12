@@ -43,6 +43,24 @@
     kneeAngleLabel.numberOfLines = 2;
     kneeAngleLabel.textColor = [UIColor yellowColor];
     [self.view addSubview:kneeAngleLabel];
+    
+    shoulderAngleLabel = [[UILabel alloc] init];
+    shoulderAngleLabel.frame = CGRectMake(250,height,250,75);
+    shoulderAngleLabel.font = [UIFont fontWithName:@"Helvetica" size:24];
+    shoulderAngleLabel.backgroundColor = [UIColor blackColor];
+    shoulderAngleLabel.alpha = .5;
+    shoulderAngleLabel.numberOfLines = 2;
+    shoulderAngleLabel.textColor = [UIColor greenColor];
+    [self.view addSubview:shoulderAngleLabel];
+    
+    hipAngleLabel = [[UILabel alloc] init];
+    hipAngleLabel.frame = CGRectMake(500,height,250,75);
+    hipAngleLabel.font = [UIFont fontWithName:@"Helvetica" size:24];
+    hipAngleLabel.backgroundColor = [UIColor blackColor];
+    hipAngleLabel.alpha = .5;
+    hipAngleLabel.numberOfLines = 2;
+    hipAngleLabel.textColor = [UIColor blueColor];
+    [self.view addSubview:hipAngleLabel];
 }
 
 - (void)didReceiveMemoryWarning
@@ -68,11 +86,17 @@
     }
     if(hipVertices)
     {
+        int intAngle = (int)(kneeAngle * 57.2957795);
+        NSString *hipLabelText = [NSString stringWithFormat:@"Hip Flexion %d°",intAngle];
+        hipAngleLabel.text = hipLabelText;
         [drawingView setDrawHipPath:YES];
         [drawingView setHipVertices:hipVertices];
     }
     if(shoulderVertices)
     {
+        int intAngle = (int)(shoulderAngle * 57.2957795);
+        NSString *shoulderLabelText = [NSString stringWithFormat:@"Shoulder Flexion %d°",intAngle];
+        shoulderAngleLabel.text = shoulderLabelText;
         [drawingView setDrawShoulderPath:YES];
         [drawingView setShoulderVertices:shoulderVertices];
     }

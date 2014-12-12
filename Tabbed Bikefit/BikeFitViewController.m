@@ -17,7 +17,7 @@
 #import "KopsNote.h"
 
 #import "TextFitNoteViewController.h"
-#import "AngleFinderViewController.h"
+#import "GoniometerViewController.h"
 #import "KneeViewController.h"
 #import "FootBottomNoteViewController.h"
 #import "VarusNoteViewController.h"
@@ -304,7 +304,7 @@
     }
     else if([ident isEqualToString:@"addanglenotesegue"])
     {
-        AngleFinderViewController *vc =  [segue destinationViewController];
+        GoniometerViewController *vc =  [segue destinationViewController];
         [vc setBikeInfo:self];
     }
     else if([ident isEqualToString:@"addshoulderanglesegue"])

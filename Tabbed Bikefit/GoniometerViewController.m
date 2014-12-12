@@ -6,12 +6,12 @@
 //  Copyright (c) 2013 Alfonso Lopez. All rights reserved.
 //
 
-#import "AngleFinderViewController.h"
+#import "GoniometerViewController.h"
 #import "AthletePropertyModel.h"
 #import <QuartzCore/QuartzCore.h>
 #import <math.h>
 
-@interface AngleFinderViewController (){
+@interface GoniometerViewController (){
     int vertexIndex;
     int indexOfMovingPoint;
     NSMutableArray *movingVerticeArray;
@@ -20,7 +20,7 @@
 }
 @end
 
-@implementation AngleFinderViewController
+@implementation GoniometerViewController
 @synthesize propertyName;
 @synthesize labelText;
 

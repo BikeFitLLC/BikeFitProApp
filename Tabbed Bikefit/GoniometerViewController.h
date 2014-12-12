@@ -12,7 +12,7 @@
 #import "AngleNote.h"
 #import "VideoNoteViewController.h"
 
-@interface AngleFinderViewController : VideoNoteViewController <UIScrollViewDelegate, UIGestureRecognizerDelegate>{
+@interface GoniometerViewController : VideoNoteViewController <UIScrollViewDelegate, UIGestureRecognizerDelegate>{
     
     UIButton *kneeAngleButton;
     UIButton *shoulderAngleButton;

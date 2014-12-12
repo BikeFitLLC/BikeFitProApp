@@ -86,7 +86,7 @@
     }
     if(hipVertices)
     {
-        int intAngle = (int)(kneeAngle * 57.2957795);
+        int intAngle = (int)(hipAngle * 57.2957795);
         NSString *hipLabelText = [NSString stringWithFormat:@"Hip Flexion %d°",intAngle];
         hipAngleLabel.text = hipLabelText;
         [drawingView setDrawHipPath:YES];

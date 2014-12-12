@@ -72,7 +72,7 @@
         NSString *shoulderString = [NSString stringWithFormat:@"Shoulder Flexion %d° ", intAngle];
         [cellLabelStringArray addObject:shoulderString];
     }
-    if(shoulderVertices)
+    if(hipVertices)
     {
         int intAngle = (int)(self.hipAngle * 57.2957795);
         NSString *hipString = [NSString stringWithFormat:@"Hip Flexion %d° ", intAngle];

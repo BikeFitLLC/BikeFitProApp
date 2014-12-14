@@ -1047,7 +1047,7 @@
 					"\"$(SRCROOT)/../../../Downloads/aws-ios-sdk-1.7.0/ThirdParty/Amazon\"",
 				);
 				PRODUCT_NAME = bikefit;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "b6f23141-4a88-42ca-9b67-ebb6259b094a";
 				TARGETED_DEVICE_FAMILY = 2;
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
@@ -1081,7 +1081,7 @@
 					"\"$(SRCROOT)/../../../Downloads/aws-ios-sdk-1.7.0/ThirdParty/Amazon\"",
 				);
 				PRODUCT_NAME = bikefit;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "b6f23141-4a88-42ca-9b67-ebb6259b094a";
 				TARGETED_DEVICE_FAMILY = 2;
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;

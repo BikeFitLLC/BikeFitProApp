@@ -367,7 +367,7 @@ static NSMutableDictionary *athleteProperties;
     NSString *fitId = [AthletePropertyModel getProperty:AWS_FIT_ATTRIBUTE_FITID];
     if(fitterId && fitterId)
     {
-        NSString *url = [NSString stringWithFormat:@"http://intake.velopez.com/f/%@/%@",fitterId,fitId];
+        NSString *url = [NSString stringWithFormat:@"http://intake.bikefit.com/f/%@/%@",fitterId,fitId];
         [AthletePropertyModel setProperty:AWS_FIT_ATTRIBUTE_URL value:url];
     }
 }

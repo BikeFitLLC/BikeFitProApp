@@ -43,6 +43,9 @@ static NSMutableDictionary *athleteProperties;
         [AthletePropertyModel addFitURL];
 
         NSMutableDictionary *athleteItem = [[NSMutableDictionary alloc] init];
+        NSString *fitter = [[NSUserDefaults standardUserDefaults] stringForKey:USER_DEFAULTS_FITTERID_KEY];
+        [athleteItem setObject:[[DynamoDBAttributeValue alloc] initWithS:fitter]
+                     forKey:AWS_FIT_ATTRIBUTE_FITTERID];
         
         for(NSString *propertyName in athleteProperties)
         {
@@ -67,10 +70,7 @@ static NSMutableDictionary *athleteProperties;
                                     initWithS:[NSString stringWithFormat:@"%f",[now timeIntervalSince1970]]]
                                     forKey:AWS_FIT_ATTRIBUTE_LASTUPDATED];
         
-    
-        NSString *fitterID = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITTERID_KEY];
-        NSString *tableName = [NSString stringWithFormat:AWS_FIT_TABLE_NAME_FORMAT,fitterID ];
-        DynamoDBPutItemRequest *putRequest = [[DynamoDBPutItemRequest alloc] initWithTableName:tableName andItem:athleteItem];
+        DynamoDBPutItemRequest *putRequest = [[DynamoDBPutItemRequest alloc] initWithTableName:@"Fits" andItem:athleteItem];
     
         @try{
             [[AmazonClientManager ddb] putItem:putRequest];
@@ -118,9 +118,15 @@ static NSMutableDictionary *athleteProperties;
     
         //Creat a DynamoDB condition that only matches this fitter's fits
         NSString *fitterID = [[NSUserDefaults standardUserDefaults] stringForKey:USER_DEFAULTS_FITTERID_KEY];
-        NSString *fitsTableName = [NSString stringWithFormat:AWS_FIT_TABLE_NAME_FORMAT, fitterID];
+        NSString *fitsTableName = @"Fits";
         
-        DynamoDBScanRequest *request = [[DynamoDBScanRequest alloc] initWithTableName:fitsTableName];
+        DynamoDBCondition *condition = [DynamoDBCondition new];
+        condition.comparisonOperator = @"EQ";
+        DynamoDBAttributeValue *fitterIDAttributeValue = [[DynamoDBAttributeValue alloc] initWithS:fitterID];
+        [condition addAttributeValueList:fitterIDAttributeValue];
+        
+        DynamoDBQueryRequest *request = [[DynamoDBQueryRequest alloc] initWithTableName:fitsTableName];
+        request.keyConditions = [NSMutableDictionary dictionaryWithObject:condition forKey:@"FitterID"];
         
         request.attributesToGet = [[NSMutableArray alloc] initWithObjects:
                                    AWS_FIT_ATTRIBUTE_FITID,
@@ -130,11 +136,11 @@ static NSMutableDictionary *athleteProperties;
                                    AWS_FIT_ATTRIBUTE_LASTUPDATED,
                                    nil];
     
-        DynamoDBScanResponse *response;
+        DynamoDBQueryResponse *response;
     
         @try{
             NSLog(@"Querying AWS for athletes for the FitterID %@", fitterID);
-            response = [ddb scan:request];
+            response = [ddb query:request];
         }
         @catch (AmazonServiceException *e)
         {
@@ -217,14 +223,16 @@ static NSMutableDictionary *athleteProperties;
     if([AmazonClientManager verifyUserKey])
     {
         NSString *fitterID = [[NSUserDefaults standardUserDefaults] stringForKey:USER_DEFAULTS_FITTERID_KEY];
-        NSString *tableName = [NSString stringWithFormat:AWS_FIT_TABLE_NAME_FORMAT,fitterID];
+        NSString *tableName = @"Fits";//[NSString stringWithFormat:AWS_FIT_TABLE_NAME_FORMAT,fitterID];
         
         DynamoDBAttributeValue *fitIDAttribute = [[DynamoDBAttributeValue alloc] initWithS:fitID];
+        DynamoDBAttributeValue *fitterIDAttribute = [[DynamoDBAttributeValue alloc] initWithS:fitterID];
 
         //create a ddb request for the item for this fit id
         DynamoDBGetItemRequest *request = [[DynamoDBGetItemRequest alloc]initWithTableName:tableName
                                             andKey:[NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                                    fitIDAttribute, AWS_FIT_ATTRIBUTE_FITID,
+                                                    fitterIDAttribute, AWS_FIT_ATTRIBUTE_FITTERID,
+                                                    fitIDAttribute,  AWS_FIT_ATTRIBUTE_FITID,
                                                     nil]];
         request.consistentRead = YES;
     

@@ -73,6 +73,8 @@
 
     //[self.view addGestureRecognizer:tapGesture];
     [self.view addGestureRecognizer:panGesture];
+    
+    [saveButton addTarget:self action:@selector(saveAngle) forControlEvents:UIControlEventTouchUpInside];
 
 }
 

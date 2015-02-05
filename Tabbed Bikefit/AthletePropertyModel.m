@@ -12,7 +12,8 @@
 #import "AmazonKeyChainWrapper.h"
 #import "FitNote.h"
 #import "BikefitConstants.h"
-#import "JSONKit.h"
+#import <Foundation/Foundation.h>
+//#import "JSONKit.h"
 
 #import "AngleNote.h"
 #import "ShoulderAngleNote.h"
@@ -353,7 +354,10 @@ static NSMutableDictionary *athleteProperties;
         {
             [leftJsonArray addObject:[note getDictionary]];
         }
-        [athleteProperties setObject:[leftJsonArray JSONString] forKey:@"LeftNotesJSON"];
+        NSError *error;
+        NSData *leftNoteJSONData = [NSJSONSerialization dataWithJSONObject:leftJsonArray options:0 error:&error];
+        NSString *leftJSONString = [[NSString alloc] initWithData:leftNoteJSONData encoding:NSUTF8StringEncoding];
+        [athleteProperties setObject:leftJSONString forKey:@"LeftNotesJSON"];
     }
     
     NSMutableArray *rightJsonArray = [[NSMutableArray alloc] init];
@@ -364,8 +368,10 @@ static NSMutableDictionary *athleteProperties;
         {
             [rightJsonArray addObject:[note getDictionary]];
         }
-        NSString *json = [rightJsonArray JSONString];
-        [athleteProperties setObject:json forKey:@"RightNotesJSON"];
+        NSError *error;
+        NSData *rightNoteJSONData = [NSJSONSerialization dataWithJSONObject:rightJsonArray options:0 error:&error];
+        NSString *rightJSONString = [[NSString alloc] initWithData:rightNoteJSONData encoding:NSUTF8StringEncoding];
+        [athleteProperties setObject:rightJSONString forKey:@"RightNotesJSON"];
     }
 }
 

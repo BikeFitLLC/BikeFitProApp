@@ -87,9 +87,6 @@
 		5DAC945B18CE7A6A00EFEDC7 /* ShoulderAngleNote.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DAC945A18CE7A6A00EFEDC7 /* ShoulderAngleNote.m */; };
 		5DB3607518C694DA00191385 /* KopsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DB3607418C694DA00191385 /* KopsViewController.m */; };
 		5DB3607818C6A28F00191385 /* KopsNote.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DB3607718C6A28F00191385 /* KopsNote.m */; };
-		5DB3AEE119CF419300604666 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = 5DB3AEDD19CF419300604666 /* CHANGELOG.md */; };
-		5DB3AEE219CF419300604666 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DB3AEDF19CF419300604666 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -DNS_BLOCK_ASSERTIONS"; }; };
-		5DB3AEE319CF419300604666 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5DB3AEE019CF419300604666 /* README.md */; };
 		5DB3AEE619D0C9A200604666 /* FinalNotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DB3AEE519D0C9A200604666 /* FinalNotesViewController.m */; };
 		5DB3AEE819D0CADD00604666 /* Bike_diagram_APP.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DB3AEE719D0CADD00604666 /* Bike_diagram_APP.png */; };
 		5DBC20C418E4E24900BF5957 /* ImageViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DBC20C318E4E24900BF5957 /* ImageViewerViewController.m */; };
@@ -263,10 +260,6 @@
 		5DB3607418C694DA00191385 /* KopsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KopsViewController.m; sourceTree = "<group>"; };
 		5DB3607618C6A28F00191385 /* KopsNote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KopsNote.h; sourceTree = "<group>"; };
 		5DB3607718C6A28F00191385 /* KopsNote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KopsNote.m; sourceTree = "<group>"; };
-		5DB3AEDD19CF419300604666 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG.md; sourceTree = "<group>"; };
-		5DB3AEDE19CF419300604666 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
-		5DB3AEDF19CF419300604666 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
-		5DB3AEE019CF419300604666 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		5DB3AEE419D0C9A200604666 /* FinalNotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinalNotesViewController.h; sourceTree = "<group>"; };
 		5DB3AEE519D0C9A200604666 /* FinalNotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinalNotesViewController.m; sourceTree = "<group>"; };
 		5DB3AEE719D0CADD00604666 /* Bike_diagram_APP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bike_diagram_APP.png; sourceTree = "<group>"; };
@@ -493,7 +486,6 @@
 				5DC9304219200D2000EB733C /* LoginWithAmazonSample */,
 				5D57675617F516E60017CF87 /* Interface */,
 				5D8531D01759CD6600934E68 /* Supporting Files */,
-				5DB3AEDC19CF419300604666 /* JSONKit-master */,
 			);
 			path = "Tabbed Bikefit";
 			sourceTree = "<group>";
@@ -609,17 +601,6 @@
 				5D3B1E7817F76045004EB913 /* KneeViewController.m */,
 			);
 			name = "Base Controllers";
-			sourceTree = "<group>";
-		};
-		5DB3AEDC19CF419300604666 /* JSONKit-master */ = {
-			isa = PBXGroup;
-			children = (
-				5DB3AEDD19CF419300604666 /* CHANGELOG.md */,
-				5DB3AEDE19CF419300604666 /* JSONKit.h */,
-				5DB3AEDF19CF419300604666 /* JSONKit.m */,
-				5DB3AEE019CF419300604666 /* README.md */,
-			);
-			path = "JSONKit-master";
 			sourceTree = "<group>";
 		};
 		5DBC20C118E4E20D00BF5957 /* Viewers */ = {
@@ -814,7 +795,6 @@
 				5D8531ED1759CD6600934E68 /* first@2x.png in Resources */,
 				5DEA4BDA199B2EBB0024C220 /* Images-2.xcassets in Resources */,
 				5D8531F21759CD6600934E68 /* second.png in Resources */,
-				5DB3AEE119CF419300604666 /* CHANGELOG.md in Resources */,
 				5D8531F41759CD6600934E68 /* second@2x.png in Resources */,
 				5DC304AB199E7A3700F0AECE /* up_down_arrows.png in Resources */,
 				5DD68EE6198083C600BCCCD9 /* BikeFit_verticle_logo.png in Resources */,
@@ -828,7 +808,6 @@
 				5DD68EF619808E0F00BCCCD9 /* 2_heels_left.png in Resources */,
 				5D32380D1986F8BB008DA71D /* Ho_foot_Arches_left.png in Resources */,
 				5DC304AD199E7E8200F0AECE /* curved_arrows.png in Resources */,
-				5DB3AEE319CF419300604666 /* README.md in Resources */,
 				5DD68EEE198089A300BCCCD9 /* info_button_29x29_no_white.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -887,7 +866,6 @@
 				5D192BBA17FE55ED0046CC16 /* LegAngleImageView.m in Sources */,
 				5D6F3A9118145FAC001BD897 /* BikeFitViewController.m in Sources */,
 				5DB3607818C6A28F00191385 /* KopsNote.m in Sources */,
-				5DB3AEE219CF419300604666 /* JSONKit.m in Sources */,
 				5D9EA2371857EA2100E63682 /* FitNote.m in Sources */,
 				5D7E1F4A18BC0F1500689276 /* VarusNote.m in Sources */,
 				5D9904B118ECD52500FE5765 /* AngleImageViewerViewController.m in Sources */,
@@ -1023,10 +1001,7 @@
 		5D85320D1759CD6600934E68 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv7,
-					armv7s,
-				);
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1057,10 +1032,7 @@
 		5D85320E1759CD6600934E68 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					armv7,
-					armv7s,
-				);
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

@@ -50,34 +50,60 @@
 
 -(void)loadAthleteFileNames:(NSString *)path
 {
-    fits = [AthletePropertyModel getAthletesFromAws];
-    fitIds = [fits keysSortedByValueUsingComparator: ^(id obj1, id obj2){
-        float date1 = [[(NSDictionary *)obj1 objectForKey:AWS_FIT_ATTRIBUTE_LASTUPDATED] floatValue];
-        float date2 = [[(NSDictionary *)obj2 objectForKey:AWS_FIT_ATTRIBUTE_LASTUPDATED] floatValue];
+    [[AthletePropertyModel getAthletesFromAws] continueWithBlock:^id(BFTask *task) {
+        if(task.error)
+        {
+            NSLog(@"Error Retrieving Fits %@",[task description]);
+            return nil;
+        }
+        
+        fits = [[NSMutableDictionary alloc] init];
+        //Now that we have retrieved the fit items from AWS, put them into the dictionary
+        for(NSMutableDictionary *athleteItem in [task.result items])
+        {
+            NSMutableDictionary *athleteAttributes = [[NSMutableDictionary alloc] init];
+            for( NSString *key in athleteItem )
+            {
+                [athleteAttributes setObject:[[athleteItem valueForKey:key] S] forKey:key];
+            }
+            [fits setObject:athleteAttributes forKey:[[athleteItem valueForKey:AWS_FIT_ATTRIBUTE_FITID] S]];
+        }
+        
+        fitIds = [fits keysSortedByValueUsingComparator: ^(id obj1, id obj2){
+            float date1 = [[(NSDictionary *)obj1 objectForKey:AWS_FIT_ATTRIBUTE_LASTUPDATED] floatValue];
+            float date2 = [[(NSDictionary *)obj2 objectForKey:AWS_FIT_ATTRIBUTE_LASTUPDATED] floatValue];
+            
+            if (date1 < date2)
+            {
+                return (NSComparisonResult)NSOrderedDescending;
+            }
+            if(date2 < date1)
+            {
+                return (NSComparisonResult)NSOrderedAscending;
+            }
+            
+            return NSOrderedSame;
+        }];
 
-        if (date1 < date2)
-        {
-            return (NSComparisonResult)NSOrderedDescending;
-        }
-        if(date2 < date1)
-        {
-            return (NSComparisonResult)NSOrderedAscending;
-        }
-        
-        return NSOrderedSame;
-        
-        
+        //[athleteTableView reloadData];
+        [athleteTableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+        return nil;
     }];
-}
+    
+    }
 
 - (IBAction) close
 {
     NSIndexPath *indexPath = [athleteTableView indexPathForSelectedRow];
     NSString *key =  [fitIds objectAtIndex:[indexPath row]];
 
-    [AthletePropertyModel loadAthleteFromAWS:key];
-    
-    [self.navigationController popViewControllerAnimated:YES];
+    [[AthletePropertyModel loadAthleteFromAWS:key]
+        continueWithBlock:^id(BFTask *task)
+        {
+            [self.navigationController popViewControllerAnimated:YES];
+            return nil;
+        }];
+
 }
 
 #pragma mark - Table view data source

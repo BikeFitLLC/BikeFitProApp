@@ -8,6 +8,7 @@
 
 
 #import <Foundation/Foundation.h>
+#import "AmazonClientManager.h"
 
 @interface AthletePropertyModel : NSObject
 {
@@ -25,8 +26,8 @@
 + (void)newAthlete;
 
 + (void)saveAthleteToAWS;
-+ (void)loadAthleteFromAWS:(NSString*) athleteItem;
-+ (NSMutableDictionary *) getAthletesFromAws;
++ (BFTask *)loadAthleteFromAWS:(NSString*)fitID;
++ (BFTask *) getAthletesFromAws;
 + (void) setOfflineMode:(bool)offlineMode;
 
 @end

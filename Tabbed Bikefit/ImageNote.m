@@ -44,24 +44,6 @@
     [[goqp queue] addOperation:uploadOperation];
 }
 
-//////////////////////////////////////////////////////
-//AmazonServiceDelegate methods (for asynch calls to aws
-/////////////////////////////////////////////////////////
-- (void)request:(AmazonServiceRequest *)request didFailWithServiceException:(NSException *)exception
-{
-    NSLog(@"%@", [exception description]);
-}
-
-- (void)request:(AmazonServiceRequest *)request didFailWithError:(NSError *)error
-{
-    NSLog(@"%@", [error description]);
-}
-
-- (void)request:(AmazonServiceRequest *)request didReceiveResponse:(NSURLResponse *)response
-{
-    return;
-}
-
 ///////////////////////////////////////////////////////
 //Downloads this note's image from S3
 ///////////////////////////////////////////////////////
@@ -69,18 +51,21 @@
 {
     if([AmazonClientManager verifyUserKey])
     {
-        @try
-        {
-            S3GetObjectRequest *request = [[S3GetObjectRequest alloc] initWithKey:s3Key withBucket:s3Bucket];
-            S3GetObjectResponse *response = [[AmazonClientManager s3] getObject:request];
-    
-            image = [response body];
-            return;
-        }
-        @catch(AmazonServiceException *e)
-        {
-            NSLog(@"Unable To Download Image from AWS. Attempting Filesystem for Key:%@ in Bucket:%@ %@",s3Key, s3Bucket, [e description]);
-        }
+        AWSS3GetObjectRequest *request = [[AWSS3GetObjectRequest alloc] init];
+        request.key = s3Key;
+        request.bucket = s3Bucket;
+        
+       [[[AmazonClientManager s3] getObject:request] continueWithSuccessBlock:^id(BFTask *task) {
+           if (task.error)
+           {
+               NSLog(@"Error: %@", task.error);
+           }
+           AWSS3GetObjectOutput *output = task.result;
+           image = (NSData *)output.body;
+           return nil;
+       }];
+        
+        return;
     }
     ////////////this is a weird codeflow that is probably bad design.
     //the following code will only run if aws is unavailable or if
@@ -116,14 +101,27 @@
     //kick off upload to aws s3 or save to filesystem
     if([AmazonClientManager verifyUserKey])
     {
-        S3PutObjectRequest *por = [[S3PutObjectRequest alloc] initWithKey:s3Key inBucket:s3Bucket];
+        NSFileManager* fileManager = [NSFileManager defaultManager];
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsPath = [paths objectAtIndex:0];
+        NSString *filePath = [documentsPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@%@", s3Bucket,s3Key]];
+        [image writeToFile:filePath atomically:YES];
         
+        AWSS3TransferManagerUploadRequest *por = [[AWSS3TransferManagerUploadRequest alloc] init];
+        por.key = s3Key;
+        por.bucket = s3Bucket;
         por.contentType = @"image/jpeg"; // use "image/png" here if you are uploading a png
-        por.cannedACL   = [S3CannedACL publicRead];
-        por.data        = image;
-        por.delegate    = self;
+        por.ACL   = AWSS3ObjectCannedACLPublicRead;
+        por.body  = [NSURL URLWithString:filePath];
     
-        [[AmazonClientManager s3TransferManager] upload:por];
+        [[[AmazonClientManager s3TransferManager] upload:por] continueWithBlock:^id(BFTask *task) {
+            if (task.error)
+            {
+                NSLog(@"Error: %@", task.error);
+            }
+            [fileManager removeItemAtPath:filePath error:NULL];
+            return nil;
+        }];
     }
     else
     {

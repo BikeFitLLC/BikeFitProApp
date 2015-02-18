@@ -8,10 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		00A382F71A3B710100791FEE /* BikeFitTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A382F61A3B710100791FEE /* BikeFitTableViewCell.m */; };
+		00D3FE991A83D9AC0017BF1D /* libPods-AWSiOSSDKv2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00D3FE981A83D9AC0017BF1D /* libPods-AWSiOSSDKv2.a */; };
 		00F813541A2ADE1300F1EA6D /* LegAngleViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F813531A2ADE1300F1EA6D /* LegAngleViewViewController.m */; };
 		00FF371A1A36302E00FD1E45 /* KW_front_laser_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 00FF37191A36302E00FD1E45 /* KW_front_laser_2.png */; };
 		00FF371C1A3630CE00FD1E45 /* measurementIcon-new-29x29.png in Resources */ = {isa = PBXBuildFile; fileRef = 00FF371B1A3630CE00FD1E45 /* measurementIcon-new-29x29.png */; };
 		00FF371E1A36310300FD1E45 /* Bike_road_diagram_ABCD.png in Resources */ = {isa = PBXBuildFile; fileRef = 00FF371D1A36310300FD1E45 /* Bike_road_diagram_ABCD.png */; };
+		15A1A45A20C14CC733A34952 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46CFCBC17ED410940881046E /* libPods.a */; };
 		5D003774195CF0B800BC9BBA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D003773195CF0B800BC9BBA /* Images.xcassets */; };
 		5D135A4519A7FACD00273076 /* plus-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D135A4419A7FACD00273076 /* plus-icon.png */; };
 		5D192BBA17FE55ED0046CC16 /* LegAngleImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D192BB917FE55ED0046CC16 /* LegAngleImageView.m */; };
@@ -29,19 +31,6 @@
 		5D57675017F5028E0017CF87 /* AthletePropertyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D57674F17F5028E0017CF87 /* AthletePropertyModel.m */; };
 		5D6F3A9118145FAC001BD897 /* BikeFitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D6F3A9018145FAC001BD897 /* BikeFitViewController.m */; };
 		5D6F3A9318146C1F001BD897 /* BikeFitIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D6F3A9218146C1F001BD897 /* BikeFitIcon.png */; };
-		5D6F9992190B323800558C99 /* AWSAutoScaling.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6F9985190B323800558C99 /* AWSAutoScaling.framework */; };
-		5D6F9993190B323800558C99 /* AWSCloudWatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6F9986190B323800558C99 /* AWSCloudWatch.framework */; };
-		5D6F9994190B323800558C99 /* AWSDynamoDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6F9987190B323800558C99 /* AWSDynamoDB.framework */; };
-		5D6F9995190B323800558C99 /* AWSEC2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6F9988190B323800558C99 /* AWSEC2.framework */; };
-		5D6F9996190B323800558C99 /* AWSElasticLoadBalancing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6F9989190B323800558C99 /* AWSElasticLoadBalancing.framework */; };
-		5D6F9997190B323800558C99 /* AWSPersistence.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6F998A190B323800558C99 /* AWSPersistence.framework */; };
-		5D6F9998190B323800558C99 /* AWSRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6F998B190B323800558C99 /* AWSRuntime.framework */; };
-		5D6F9999190B323800558C99 /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6F998C190B323800558C99 /* AWSS3.framework */; };
-		5D6F999A190B323800558C99 /* AWSSecurityTokenService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6F998D190B323800558C99 /* AWSSecurityTokenService.framework */; };
-		5D6F999B190B323800558C99 /* AWSSES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6F998E190B323800558C99 /* AWSSES.framework */; };
-		5D6F999C190B323800558C99 /* AWSSimpleDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6F998F190B323800558C99 /* AWSSimpleDB.framework */; };
-		5D6F999D190B323800558C99 /* AWSSNS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6F9990190B323800558C99 /* AWSSNS.framework */; };
-		5D6F999E190B323800558C99 /* AWSSQS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D6F9991190B323800558C99 /* AWSSQS.framework */; };
 		5D6F99CB190B448600558C99 /* arrowleft.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D6F99C9190B448600558C99 /* arrowleft.png */; };
 		5D6F99CC190B448600558C99 /* arrowright.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D6F99CA190B448600558C99 /* arrowright.png */; };
 		5D6F99CE190B44BB00558C99 /* recordButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D6F99CD190B44BB00558C99 /* recordButton.png */; };
@@ -68,8 +57,6 @@
 		5D8531FC1759CD6600934E68 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D8531FB1759CD6600934E68 /* SenTestingKit.framework */; };
 		5D8531FD1759CD6600934E68 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D8531C91759CD6600934E68 /* UIKit.framework */; };
 		5D8531FE1759CD6600934E68 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D8531CB1759CD6600934E68 /* Foundation.framework */; };
-		5D8532061759CD6600934E68 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5D8532041759CD6600934E68 /* InfoPlist.strings */; };
-		5D8532091759CD6600934E68 /* AthletePropertyModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8532081759CD6600934E68 /* AthletePropertyModelTests.m */; };
 		5D9904B118ECD52500FE5765 /* AngleImageViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9904B018ECD52500FE5765 /* AngleImageViewerViewController.m */; };
 		5D9E2155185BE370006BA0B3 /* AngleNote.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9E2154185BE370006BA0B3 /* AngleNote.m */; };
 		5D9E215A185CE8EE006BA0B3 /* KneeViewNote.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9E2159185CE8EE006BA0B3 /* KneeViewNote.m */; };
@@ -143,11 +130,14 @@
 /* Begin PBXFileReference section */
 		00A382F51A3B710100791FEE /* BikeFitTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BikeFitTableViewCell.h; sourceTree = "<group>"; };
 		00A382F61A3B710100791FEE /* BikeFitTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BikeFitTableViewCell.m; sourceTree = "<group>"; };
+		00D3FE981A83D9AC0017BF1D /* libPods-AWSiOSSDKv2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-AWSiOSSDKv2.a"; path = "Pods/build/Debug-iphoneos/libPods-AWSiOSSDKv2.a"; sourceTree = "<group>"; };
 		00F813521A2ADE1300F1EA6D /* LegAngleViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LegAngleViewViewController.h; sourceTree = "<group>"; };
 		00F813531A2ADE1300F1EA6D /* LegAngleViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LegAngleViewViewController.m; sourceTree = "<group>"; };
 		00FF37191A36302E00FD1E45 /* KW_front_laser_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KW_front_laser_2.png; sourceTree = "<group>"; };
 		00FF371B1A3630CE00FD1E45 /* measurementIcon-new-29x29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "measurementIcon-new-29x29.png"; sourceTree = "<group>"; };
 		00FF371D1A36310300FD1E45 /* Bike_road_diagram_ABCD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bike_road_diagram_ABCD.png; sourceTree = "<group>"; };
+		2010E01299865D20785CF17A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		46CFCBC17ED410940881046E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D003773195CF0B800BC9BBA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = bikefit/Images.xcassets; sourceTree = "<group>"; };
 		5D135A4419A7FACD00273076 /* plus-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-icon.png"; sourceTree = "<group>"; };
 		5D192BB817FE55ED0046CC16 /* LegAngleImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LegAngleImageView.h; sourceTree = "<group>"; };
@@ -177,19 +167,6 @@
 		5D6F3A8F18145FAC001BD897 /* BikeFitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BikeFitViewController.h; sourceTree = "<group>"; };
 		5D6F3A9018145FAC001BD897 /* BikeFitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BikeFitViewController.m; sourceTree = "<group>"; };
 		5D6F3A9218146C1F001BD897 /* BikeFitIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BikeFitIcon.png; path = ../BikeFitIcon.png; sourceTree = "<group>"; };
-		5D6F9985190B323800558C99 /* AWSAutoScaling.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSAutoScaling.framework; path = "aws-ios-sdk-1.7.0/AWSAutoScaling.framework"; sourceTree = "<group>"; };
-		5D6F9986190B323800558C99 /* AWSCloudWatch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSCloudWatch.framework; path = "aws-ios-sdk-1.7.0/AWSCloudWatch.framework"; sourceTree = "<group>"; };
-		5D6F9987190B323800558C99 /* AWSDynamoDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSDynamoDB.framework; path = "aws-ios-sdk-1.7.0/AWSDynamoDB.framework"; sourceTree = "<group>"; };
-		5D6F9988190B323800558C99 /* AWSEC2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSEC2.framework; path = "aws-ios-sdk-1.7.0/AWSEC2.framework"; sourceTree = "<group>"; };
-		5D6F9989190B323800558C99 /* AWSElasticLoadBalancing.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSElasticLoadBalancing.framework; path = "aws-ios-sdk-1.7.0/AWSElasticLoadBalancing.framework"; sourceTree = "<group>"; };
-		5D6F998A190B323800558C99 /* AWSPersistence.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSPersistence.framework; path = "aws-ios-sdk-1.7.0/AWSPersistence.framework"; sourceTree = "<group>"; };
-		5D6F998B190B323800558C99 /* AWSRuntime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSRuntime.framework; path = "aws-ios-sdk-1.7.0/AWSRuntime.framework"; sourceTree = "<group>"; };
-		5D6F998C190B323800558C99 /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSS3.framework; path = "aws-ios-sdk-1.7.0/AWSS3.framework"; sourceTree = "<group>"; };
-		5D6F998D190B323800558C99 /* AWSSecurityTokenService.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSSecurityTokenService.framework; path = "aws-ios-sdk-1.7.0/AWSSecurityTokenService.framework"; sourceTree = "<group>"; };
-		5D6F998E190B323800558C99 /* AWSSES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSSES.framework; path = "aws-ios-sdk-1.7.0/AWSSES.framework"; sourceTree = "<group>"; };
-		5D6F998F190B323800558C99 /* AWSSimpleDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSSimpleDB.framework; path = "aws-ios-sdk-1.7.0/AWSSimpleDB.framework"; sourceTree = "<group>"; };
-		5D6F9990190B323800558C99 /* AWSSNS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSSNS.framework; path = "aws-ios-sdk-1.7.0/AWSSNS.framework"; sourceTree = "<group>"; };
-		5D6F9991190B323800558C99 /* AWSSQS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSSQS.framework; path = "aws-ios-sdk-1.7.0/AWSSQS.framework"; sourceTree = "<group>"; };
 		5D6F99C9190B448600558C99 /* arrowleft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrowleft.png; sourceTree = SOURCE_ROOT; };
 		5D6F99CA190B448600558C99 /* arrowright.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrowright.png; sourceTree = SOURCE_ROOT; };
 		5D6F99CD190B44BB00558C99 /* recordButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recordButton.png; sourceTree = SOURCE_ROOT; };
@@ -224,10 +201,6 @@
 		5D8531F31759CD6600934E68 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
 		5D8531FA1759CD6600934E68 /* bikefitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bikefitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D8531FB1759CD6600934E68 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		5D8532031759CD6600934E68 /* bikefitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "bikefitTests-Info.plist"; sourceTree = "<group>"; };
-		5D8532051759CD6600934E68 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		5D8532071759CD6600934E68 /* AthletePropertyModelTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AthletePropertyModelTests.h; sourceTree = "<group>"; };
-		5D8532081759CD6600934E68 /* AthletePropertyModelTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AthletePropertyModelTests.m; sourceTree = "<group>"; };
 		5D9904AF18ECD52500FE5765 /* AngleImageViewerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AngleImageViewerViewController.h; sourceTree = "<group>"; };
 		5D9904B018ECD52500FE5765 /* AngleImageViewerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AngleImageViewerViewController.m; sourceTree = "<group>"; };
 		5D9E2153185BE370006BA0B3 /* AngleNote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AngleNote.h; sourceTree = "<group>"; };
@@ -319,6 +292,7 @@
 		5DF59D3618B2C73E0065A8D1 /* VideoNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoNoteViewController.m; sourceTree = "<group>"; };
 		5DF59D3818B569030065A8D1 /* NoteImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteImageView.h; sourceTree = "<group>"; };
 		5DF59D3918B569030065A8D1 /* NoteImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteImageView.m; sourceTree = "<group>"; };
+		A011F97476B99F47FD651F26 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -326,21 +300,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00D3FE991A83D9AC0017BF1D /* libPods-AWSiOSSDKv2.a in Frameworks */,
 				5DC3140A19D8C7C400625E50 /* MessageUI.framework in Frameworks */,
 				5DC9303E1920058300EB733C /* LoginWithAmazon.framework in Frameworks */,
-				5D6F9992190B323800558C99 /* AWSAutoScaling.framework in Frameworks */,
-				5D6F9993190B323800558C99 /* AWSCloudWatch.framework in Frameworks */,
-				5D6F9994190B323800558C99 /* AWSDynamoDB.framework in Frameworks */,
-				5D6F9995190B323800558C99 /* AWSEC2.framework in Frameworks */,
-				5D6F9996190B323800558C99 /* AWSElasticLoadBalancing.framework in Frameworks */,
-				5D6F9997190B323800558C99 /* AWSPersistence.framework in Frameworks */,
-				5D6F9998190B323800558C99 /* AWSRuntime.framework in Frameworks */,
-				5D6F9999190B323800558C99 /* AWSS3.framework in Frameworks */,
-				5D6F999A190B323800558C99 /* AWSSecurityTokenService.framework in Frameworks */,
-				5D6F999B190B323800558C99 /* AWSSES.framework in Frameworks */,
-				5D6F999C190B323800558C99 /* AWSSimpleDB.framework in Frameworks */,
-				5D6F999D190B323800558C99 /* AWSSNS.framework in Frameworks */,
-				5D6F999E190B323800558C99 /* AWSSQS.framework in Frameworks */,
 				5DABBE0B184EC3A900309BAB /* CoreMotion.framework in Frameworks */,
 				5D4BE6C81841414F009289CB /* Security.framework in Frameworks */,
 				5D8531CC1759CD6600934E68 /* Foundation.framework in Frameworks */,
@@ -350,6 +312,7 @@
 				5DED8DFB17F8EA66004947FD /* AVFoundation.framework in Frameworks */,
 				5D8531CA1759CD6600934E68 /* UIKit.framework in Frameworks */,
 				5D8531CE1759CD6600934E68 /* CoreGraphics.framework in Frameworks */,
+				15A1A45A20C14CC733A34952 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,9 +390,9 @@
 				5DEA4BD9199B2EBB0024C220 /* Images-2.xcassets */,
 				5D003773195CF0B800BC9BBA /* Images.xcassets */,
 				5D8531CF1759CD6600934E68 /* Tabbed Bikefit */,
-				5D8532011759CD6600934E68 /* Tabbed BikefitTests */,
 				5D8531C81759CD6600934E68 /* Frameworks */,
 				5D8531C71759CD6600934E68 /* Products */,
+				FBC8E09C9B730E295F1D27B8 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -445,21 +408,9 @@
 		5D8531C81759CD6600934E68 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				00D3FE981A83D9AC0017BF1D /* libPods-AWSiOSSDKv2.a */,
 				5DC3140919D8C7C400625E50 /* MessageUI.framework */,
 				5DC9303D1920058300EB733C /* LoginWithAmazon.framework */,
-				5D6F9985190B323800558C99 /* AWSAutoScaling.framework */,
-				5D6F9986190B323800558C99 /* AWSCloudWatch.framework */,
-				5D6F9987190B323800558C99 /* AWSDynamoDB.framework */,
-				5D6F9988190B323800558C99 /* AWSEC2.framework */,
-				5D6F9989190B323800558C99 /* AWSElasticLoadBalancing.framework */,
-				5D6F998A190B323800558C99 /* AWSPersistence.framework */,
-				5D6F998B190B323800558C99 /* AWSRuntime.framework */,
-				5D6F998C190B323800558C99 /* AWSS3.framework */,
-				5D6F998D190B323800558C99 /* AWSSecurityTokenService.framework */,
-				5D6F998E190B323800558C99 /* AWSSES.framework */,
-				5D6F998F190B323800558C99 /* AWSSimpleDB.framework */,
-				5D6F9990190B323800558C99 /* AWSSNS.framework */,
-				5D6F9991190B323800558C99 /* AWSSQS.framework */,
 				5DABBE0A184EC3A800309BAB /* CoreMotion.framework */,
 				5DED8E0017F8F484004947FD /* CoreMedia.framework */,
 				5DED8DFE17F8F347004947FD /* CoreVideo.framework */,
@@ -471,6 +422,7 @@
 				5D8531CB1759CD6600934E68 /* Foundation.framework */,
 				5D8531CD1759CD6600934E68 /* CoreGraphics.framework */,
 				5D8531FB1759CD6600934E68 /* SenTestingKit.framework */,
+				46CFCBC17ED410940881046E /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -531,25 +483,6 @@
 				5D8531DB1759CD6600934E68 /* Default.png */,
 				5D8531DD1759CD6600934E68 /* Default@2x.png */,
 				5D8531DF1759CD6600934E68 /* Default-568h@2x.png */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		5D8532011759CD6600934E68 /* Tabbed BikefitTests */ = {
-			isa = PBXGroup;
-			children = (
-				5D8532071759CD6600934E68 /* AthletePropertyModelTests.h */,
-				5D8532081759CD6600934E68 /* AthletePropertyModelTests.m */,
-				5D8532021759CD6600934E68 /* Supporting Files */,
-			);
-			path = "Tabbed BikefitTests";
-			sourceTree = "<group>";
-		};
-		5D8532021759CD6600934E68 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				5D8532031759CD6600934E68 /* bikefitTests-Info.plist */,
-				5D8532041759CD6600934E68 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -686,6 +619,15 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		FBC8E09C9B730E295F1D27B8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A011F97476B99F47FD651F26 /* Pods.debug.xcconfig */,
+				2010E01299865D20785CF17A /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -693,9 +635,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5D85320C1759CD6600934E68 /* Build configuration list for PBXNativeTarget "bikefit" */;
 			buildPhases = (
+				CA739BF15001E094A541C40C /* Check Pods Manifest.lock */,
 				5D8531C21759CD6600934E68 /* Sources */,
 				5D8531C31759CD6600934E68 /* Frameworks */,
 				5D8531C41759CD6600934E68 /* Resources */,
+				BB5D023C3FAF6AB73F8E7CC6 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -732,7 +676,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastTestingUpgradeCheck = 0610;
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Alfonso Lopez";
 				TargetAttributes = {
 					5D8531C51759CD6600934E68 = {
@@ -816,7 +760,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D8532061759CD6600934E68 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -835,6 +778,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		BB5D023C3FAF6AB73F8E7CC6 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CA739BF15001E094A541C40C /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -896,7 +869,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D8532091759CD6600934E68 /* AthletePropertyModelTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -925,14 +897,6 @@
 				5D8531E51759CD6600934E68 /* en */,
 			);
 			name = MainStoryboard_iPad.storyboard;
-			sourceTree = "<group>";
-		};
-		5D8532041759CD6600934E68 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5D8532051759CD6600934E68 /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1000,8 +964,8 @@
 		};
 		5D85320D1759CD6600934E68 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A011F97476B99F47FD651F26 /* Pods.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1020,6 +984,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../Downloads/aws-ios-sdk-1.7.0/ThirdParty/Amazon\"",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
 				);
 				PRODUCT_NAME = bikefit;
 				PROVISIONING_PROFILE = "b6f23141-4a88-42ca-9b67-ebb6259b094a";
@@ -1031,8 +996,8 @@
 		};
 		5D85320E1759CD6600934E68 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2010E01299865D20785CF17A /* Pods.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1051,6 +1016,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../Downloads/aws-ios-sdk-1.7.0/ThirdParty/Amazon\"",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
 				);
 				PRODUCT_NAME = bikefit;
 				PROVISIONING_PROFILE = "b6f23141-4a88-42ca-9b67-ebb6259b094a";

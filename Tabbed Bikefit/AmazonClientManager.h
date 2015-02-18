@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <AWSRuntime/AWSRuntime.h>
-#import <AWSS3/AWSS3.h>
-#import <AWSDynamoDB/AWSDynamoDB.h>
+#import <AWSiOSSDKv2/AWSCore.h>
+#import "S3.h"
+#import "DynamoDB.h"
+//#import "AWSRuntime.h"
 #import "CredentialProvider.h"
 
 @interface AmazonClientManager : NSObject
@@ -19,9 +20,9 @@
 
 +(bool)verifyUserKey;
 
-+ (AmazonDynamoDBClient *)ddb;
-+ (AmazonS3Client *)s3;
-+ (S3TransferManager *)s3TransferManager;
++ (AWSDynamoDB *)ddb;
++ (AWSS3 *)s3;
++ (AWSS3TransferManager *)s3TransferManager;
 + (CredentialProvider *)credProvider;
 
 @end

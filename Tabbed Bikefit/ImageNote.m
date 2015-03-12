@@ -123,6 +123,7 @@
                 NSLog(@"Error: %@", task.error);
             }
             [[NSFileManager defaultManager] removeItemAtPath:fitPath error:NULL];
+            [AthletePropertyModel saveAthleteToAWS];
             return nil;
         }];
     }

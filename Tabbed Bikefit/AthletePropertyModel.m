@@ -38,6 +38,11 @@ static NSMutableDictionary *athleteProperties;
     
     //Save the property to the defaults in case of a crash
     [AthletePropertyModel saveAthleteToFileSystem];
+    if (![propertyName isEqualToString:AWS_FIT_ATTRIBUTE_FITID] &&
+        ![propertyName isEqualToString:AWS_FIT_ATTRIBUTE_URL] )
+    {
+        [AthletePropertyModel saveAthleteToAWS];
+    }
 
     return true;
 }

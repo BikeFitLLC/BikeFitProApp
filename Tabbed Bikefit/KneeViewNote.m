@@ -112,6 +112,7 @@
                         s3Key
                         ]];
             NSLog(@"Uploaded Video to AWS: %@", videoUrl);
+            [AthletePropertyModel saveAthleteToAWS];
             return task;
         }];
         

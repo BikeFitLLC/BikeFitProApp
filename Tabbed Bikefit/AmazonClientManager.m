@@ -7,9 +7,9 @@
 //
 
 #import "AmazonClientManager.h"
-#import <AWSRuntime/AWSRuntime.h>
-#import <AWSS3/AWSS3.h>
-#import <AWSDynamoDB/AWSDynamoDB.h>
+//#import <AWSRuntime/AWSRuntime.h>
+#import "AWSS3.h"
+#import "AWSDynamoDB.h"
 
 #import "CredentialProvider.h"
 
@@ -46,36 +46,36 @@
     return provider;
 }
 
-+ (AmazonDynamoDBClient *)ddb
++ (AWSDynamoDB *)ddb
 {
     static dispatch_once_t once;
-    static AmazonDynamoDBClient *ddb;
+    static AWSDynamoDB *ddb;
     
     dispatch_once(&once, ^{
-        ddb = [[AmazonDynamoDBClient alloc] initWithCredentialsProvider:[AmazonClientManager credProvider]];
-        [ddb setEndpoint:AMAZON_DDB_US_WEST_2_ENDPOINT];
+        ddb = [AWSDynamoDB defaultDynamoDB];
+        //[ddb setEndpoint:AMAZON_DDB_US_WEST_2_ENDPOINT];
     });
     return ddb;
 };
                                   
-+ (AmazonS3Client *)s3
++ (AWSS3 *)s3
     {
         static dispatch_once_t once;
-        static AmazonS3Client *s3;
+        static AWSS3 *s3;
         dispatch_once(&once, ^{
-            s3 = [[AmazonS3Client alloc] initWithCredentialsProvider:[AmazonClientManager credProvider]];
-            [s3 setEndpoint:AMAZON_S3_US_WEST_2_ENDPOINT];
+            s3 = [AWSS3 defaultS3];
+            //[s3 setEndpoint:AMAZON_S3_US_WEST_2_ENDPOINT];
         });
         return s3;
     }
 
-+ (S3TransferManager *)s3TransferManager
++ (AWSS3TransferManager *)s3TransferManager
 {
     static dispatch_once_t once;
-    static S3TransferManager *s3TransferManager;
+    static AWSS3TransferManager *s3TransferManager;
     dispatch_once(&once, ^{
-        s3TransferManager = [S3TransferManager new];
-        s3TransferManager.s3 = [AmazonClientManager s3];
+        s3TransferManager = [AWSS3TransferManager defaultS3TransferManager];
+        //s3TransferManager.s3 = [AmazonClientManager s3];
     });
     return s3TransferManager;
 }

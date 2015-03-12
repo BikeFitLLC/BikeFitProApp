@@ -14,6 +14,7 @@
 #define LOCAL_FILE_ID @"localfile"
 #define LOCAL_FITTER_ID @"localfitter"
 
+#define AWS_FIT_ATTRIBUTE_FITTERID @"FitterID"
 #define AWS_FIT_ATTRIBUTE_FITID @"FitID"
 #define AWS_FIT_ATTRIBUTE_FIRSTNAME @"FirstName"
 #define AWS_FIT_ATTRIBUTE_LASTNAME @"LastName"
@@ -28,5 +29,9 @@
 
 #define AWS_FIT_TABLE_NAME_FORMAT @"%@-fits"
 
-#define TOKEN_VENDING_MACHINE_URL_FORMAT @"https://tvm.velopezdigital.com/?Email=%@&Name=%@&Token=%@"
-//#define TOKEN_VENDING_MACHINE_URL_FORMAT @"http://192.168.1.16:8000/?Email=%@&Name=%@&Token=%@"
+#define S3_BUCKET @"8190ba10-d310-11e3-9c1a-0800200c9a66"
+
+//#define TOKEN_VENDING_MACHINE_URL_FORMAT @"https://tvm.velopezdigital.com/?Email=%@&Name=%@&Token=%@"
+//#define TOKEN_VENDING_MACHINE_URL_FORMAT @"http://127.0.0.1:8000/?Email=%@&Name=%@&Token=%@"
+#define TOKEN_VENDING_MACHINE_URL_FORMAT @"http://tvm2-env.elasticbeanstalk.com/?Email=%@&Name=%@&Token=%@"
+

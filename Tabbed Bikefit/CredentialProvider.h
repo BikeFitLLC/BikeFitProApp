@@ -7,18 +7,30 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <AWSRuntime/AWSRuntime.h>
+#import "AWSCore.h"
+#import "AWSCredentialsProvider.h"
+//#import <AWSRuntime/AWSRuntime.h>
 #import <LoginWithAmazon/LoginWithAmazon.h>
 
-@interface CredentialProvider : NSObject <AmazonCredentialsProvider,AIAuthenticationDelegate>
+@interface CredentialProvider : NSObject <AWSCredentialsProvider,AIAuthenticationDelegate>
 {
-    AmazonCredentials *creds;
     NSDate *tokenExpiration;
     NSString *amznTokenString;
     NSTimer *timer;
     bool isLoggingIn;
 }
+
 @property bool isLoggingIn;
+@property (nonatomic, readonly) NSString *accessKey;
+@property (nonatomic, readonly) NSString *secretKey;
+@property (nonatomic, readonly) NSString *sessionKey;
+
++ (instancetype)credentialsWithAccessKey:(NSString *)accessKey
+                               secretKey:(NSString *)secretKey sessionKey:(NSString*)sessionKey;
+- (instancetype)initWithAccessKey:(NSString *)accessKey
+                        secretKey:(NSString *)secretKey sessionKey:(NSString*)sessionKey;
+
+
 
 - (void) clear;
 

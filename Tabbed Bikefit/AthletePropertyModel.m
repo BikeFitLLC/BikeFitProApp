@@ -7,15 +7,21 @@
 //
 
 #import "AthletePropertyModel.h"
-#import <AWSDynamoDB/AWSDynamoDB.h>
+#import "DynamoDB.h"
 #import "AmazonClientManager.h"
-#import "AmazonKeyChainWrapper.h"
 #import "FitNote.h"
 #import "BikefitConstants.h"
-#import "JSONKit.h"
+#import <Foundation/Foundation.h>
 
 #import "AngleNote.h"
 #import "ShoulderAngleNote.h"
+
+//////////////////////////////////////////////////
+//Delegate Protocol for loadAthlete
+//////////////////////////////////////////////////
+@protocol LoadAthleteDelegate
+- (void) loadAthleteCompleted;
+@end
 
 @implementation AthletePropertyModel
 @synthesize athleteProperties;
@@ -43,42 +49,57 @@ static NSMutableDictionary *athleteProperties;
         [AthletePropertyModel addFitURL];
 
         NSMutableDictionary *athleteItem = [[NSMutableDictionary alloc] init];
+        NSString *fitter = [[NSUserDefaults standardUserDefaults] stringForKey:USER_DEFAULTS_FITTERID_KEY];
+        AWSDynamoDBAttributeValue *fitterAttribute = [[AWSDynamoDBAttributeValue alloc] init];
+        fitterAttribute.S = fitter;
+        [athleteItem setObject:fitter forKey:AWS_FIT_ATTRIBUTE_FITTERID];
         
         for(NSString *propertyName in athleteProperties)
         {
             //If it the note property, archive it first
             if([propertyName isEqualToString:(@"LeftNotes")] || [propertyName isEqualToString:@"RightNotes"])
             {
+                
                 NSData* notesData = [NSKeyedArchiver archivedDataWithRootObject:[athleteProperties objectForKey:propertyName]];
-                [athleteItem setObject:[[   DynamoDBAttributeValue alloc] initWithB:notesData] forKey:propertyName];
+                AWSDynamoDBAttributeValue *notesDataAttribute = [[AWSDynamoDBAttributeValue alloc] init];
+                notesDataAttribute.B = notesData;
+                [athleteItem setObject:notesDataAttribute forKey:propertyName];
+                 
             }
             else
             {
                 NSString * propertyValue = [athleteProperties objectForKey:propertyName];
                 if( [propertyValue length] > 0 )
                 {
-                    [athleteItem setObject:[[DynamoDBAttributeValue alloc] initWithS:propertyValue] forKey:propertyName];
+                    AWSDynamoDBAttributeValue *propertyAttribute = [[AWSDynamoDBAttributeValue alloc] init];
+                    propertyAttribute.S = propertyValue;
+
+                    [athleteItem setObject:propertyAttribute forKey:propertyName];
                 }
             }
         }
         ///Update the lastupdated timetamp
         NSDate *now = [NSDate dateWithTimeIntervalSinceNow:0];
-        [athleteItem setObject:[[DynamoDBAttributeValue alloc]
-                                    initWithS:[NSString stringWithFormat:@"%f",[now timeIntervalSince1970]]]
-                                    forKey:AWS_FIT_ATTRIBUTE_LASTUPDATED];
+        AWSDynamoDBAttributeValue *lastupdatedattribute = [[AWSDynamoDBAttributeValue alloc] init];
+        lastupdatedattribute.S =[NSString stringWithFormat:@"%f",[now timeIntervalSince1970]];
+        [athleteItem setObject:lastupdatedattribute forKey:AWS_FIT_ATTRIBUTE_LASTUPDATED];
         
-    
-        NSString *fitterID = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITTERID_KEY];
-        NSString *tableName = [NSString stringWithFormat:AWS_FIT_TABLE_NAME_FORMAT,fitterID ];
-        DynamoDBPutItemRequest *putRequest = [[DynamoDBPutItemRequest alloc] initWithTableName:tableName andItem:athleteItem];
-    
-        @try{
-            [[AmazonClientManager ddb] putItem:putRequest];
-        }
-        @catch (NSException *e) {
-            NSLog(@"Error Saving Athlete File to Cloud: %@", [e description]);
-            return;
-        }
+        AWSDynamoDBPutItemInput *putInput = [[AWSDynamoDBPutItemInput alloc] init];
+        putInput.tableName = @"Fits";
+        putInput.item = athleteItem;
+        
+        //AWSLogger.defaultLogger.logLevel = AWSLogLevelVerbose;
+        
+        [[[AmazonClientManager ddb] putItem:putInput]
+         
+         continueWithExecutor:[BFExecutor mainThreadExecutor] withBlock:^id(BFTask *task) {
+            if(task.error)
+            {
+                 NSLog(@"Error Saving Athlete File to Cloud: %@", task.error);
+            }
+            NSLog(@"Saved Athlete to Cloud");
+            return nil;
+        }];
     }
     return;
 }
@@ -108,21 +129,31 @@ static NSMutableDictionary *athleteProperties;
 ////////////////////////////////////////////////////
 //Gets a list of Athletes form AWS
 ////////////////////////////////////////////////////
-+ (NSMutableDictionary *) getAthletesFromAws
++ (BFTask *) getAthletesFromAws
 {
-    NSMutableDictionary *athletes = [[NSMutableDictionary alloc]init];
+    //NSMutableDictionary *athletes = [[NSMutableDictionary alloc]init];
     
-    if([AmazonClientManager verifyUserKey])
-    {
-        AmazonDynamoDBClient *ddb = [AmazonClientManager ddb];
+    //if([AmazonClientManager verifyUserKey])
+    //{
+        AWSDynamoDB *ddb = [AmazonClientManager ddb];
     
         //Creat a DynamoDB condition that only matches this fitter's fits
         NSString *fitterID = [[NSUserDefaults standardUserDefaults] stringForKey:USER_DEFAULTS_FITTERID_KEY];
-        NSString *fitsTableName = [NSString stringWithFormat:AWS_FIT_TABLE_NAME_FORMAT, fitterID];
+        NSString *fitsTableName = @"Fits";
         
-        DynamoDBScanRequest *request = [[DynamoDBScanRequest alloc] initWithTableName:fitsTableName];
+        AWSDynamoDBCondition *condition = [AWSDynamoDBCondition new];
+        condition.comparisonOperator = AWSDynamoDBComparisonOperatorEQ;
+        AWSDynamoDBAttributeValue *fitterIDAttributeValue = [AWSDynamoDBAttributeValue alloc];
         
-        request.attributesToGet = [[NSMutableArray alloc] initWithObjects:
+        fitterIDAttributeValue.S = fitterID;
+        condition.attributeValueList = [[NSArray alloc] initWithObjects:fitterIDAttributeValue, nil];
+        
+        AWSDynamoDBQueryInput *queryInput = [[AWSDynamoDBQueryInput alloc] init];
+        queryInput.tableName = fitsTableName;
+        
+        queryInput.keyConditions = [NSMutableDictionary dictionaryWithObject:condition forKey:@"FitterID"];
+        
+        queryInput.attributesToGet = [[NSMutableArray alloc] initWithObjects:
                                    AWS_FIT_ATTRIBUTE_FITID,
                                    AWS_FIT_ATTRIBUTE_FIRSTNAME,
                                    AWS_FIT_ATTRIBUTE_LASTNAME,
@@ -130,29 +161,12 @@ static NSMutableDictionary *athleteProperties;
                                    AWS_FIT_ATTRIBUTE_LASTUPDATED,
                                    nil];
     
-        DynamoDBScanResponse *response;
     
-        @try{
-            NSLog(@"Querying AWS for athletes for the FitterID %@", fitterID);
-            response = [ddb scan:request];
-        }
-        @catch (AmazonServiceException *e)
-        {
-            NSLog(@"Error Retrieving Fits for FitterID %@ - %@", fitterID, [e description]);
-        }
-        
-        //Now that we have retrieved the fit items from AWS, put them into the dictionary
-        for(NSMutableDictionary *athleteItem in [response items])
-        {
-            NSMutableDictionary *athleteAttributes = [[NSMutableDictionary alloc] init];
-            for( NSString *key in athleteItem )
-            {
-                [athleteAttributes setObject:[[athleteItem valueForKey:key] s] forKey:key];
-            }
-            [athletes setObject:athleteAttributes forKey:[[athleteItem valueForKey:AWS_FIT_ATTRIBUTE_FITID] s]];
-        }
-    } //end AWS block
+        NSLog(@"Querying AWS for athletes for the FitterID %@", fitterID);
+        return [ddb query:queryInput];
+    //} //end AWS block
 
+    /*
     //get local files
     NSError *error = [[NSError alloc] init];
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -193,13 +207,16 @@ static NSMutableDictionary *athleteProperties;
         }
     }
     return athletes;
+     */
 }
+
+
 
 //////////////////////////////////////////////////
 //Loads the model with the athlete info at the given
 //aws item (DDB)
 ////////////////////////////////////////////////////
-+ (void) loadAthleteFromAWS:(NSString*) fitID
++ (BFTask *) loadAthleteFromAWS:(NSString*) fitID
 {
     [athleteProperties setObject:fitID forKey:AWS_FIT_ATTRIBUTE_FITID];
     
@@ -217,29 +234,41 @@ static NSMutableDictionary *athleteProperties;
     if([AmazonClientManager verifyUserKey])
     {
         NSString *fitterID = [[NSUserDefaults standardUserDefaults] stringForKey:USER_DEFAULTS_FITTERID_KEY];
-        NSString *tableName = [NSString stringWithFormat:AWS_FIT_TABLE_NAME_FORMAT,fitterID];
+        NSString *tableName = @"Fits";//[NSString stringWithFormat:AWS_FIT_TABLE_NAME_FORMAT,fitterID];
         
-        DynamoDBAttributeValue *fitIDAttribute = [[DynamoDBAttributeValue alloc] initWithS:fitID];
+        AWSDynamoDBAttributeValue *fitIDAttribute = [AWSDynamoDBAttributeValue alloc];
+        fitIDAttribute.S = fitID;
+        AWSDynamoDBAttributeValue *fitterIDAttribute = [AWSDynamoDBAttributeValue alloc];
+        fitterIDAttribute.S = fitterID;
 
         //create a ddb request for the item for this fit id
-        DynamoDBGetItemRequest *request = [[DynamoDBGetItemRequest alloc]initWithTableName:tableName
-                                            andKey:[NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                                    fitIDAttribute, AWS_FIT_ATTRIBUTE_FITID,
-                                                    nil]];
-        request.consistentRead = YES;
-    
-        @try {
-            DynamoDBGetItemResponse *response = [[AmazonClientManager ddb] getItem:request];
-            
-            if([[[[response item] objectForKey:AWS_FIT_ATTRIBUTE_LASTUPDATED] s] doubleValue] >=
-                                [[self getProperty:AWS_FIT_ATTRIBUTE_LASTUPDATED] doubleValue])
+        AWSDynamoDBGetItemInput *input = [[AWSDynamoDBGetItemInput alloc] init];
+        input.tableName = tableName;
+        input.key =[NSMutableDictionary dictionaryWithObjectsAndKeys:
+                    fitterIDAttribute, AWS_FIT_ATTRIBUTE_FITTERID,
+                    fitIDAttribute,  AWS_FIT_ATTRIBUTE_FITID,
+                    nil];
+        
+        //input.consistentRead = true;
+        return [[[AmazonClientManager ddb] getItem:input] continueWithBlock:^id(BFTask *task) {
+            if(task.error)
             {
-                for(NSString *propertyName in [response item])
+                 NSLog(@"Error Loading Athlete File from AWS: %@", [task description]);
+                return nil;
+            }
+            AWSDynamoDBGetItemOutput *outPut = task.result;
+            NSDictionary *item = (NSDictionary *)outPut.item;
+            
+            if([[[item objectForKey:AWS_FIT_ATTRIBUTE_LASTUPDATED] S] doubleValue] >=
+               [[self getProperty:AWS_FIT_ATTRIBUTE_LASTUPDATED] doubleValue])
+            {
+                for(NSString *propertyName in item)
                 {
+                    
                     //If it the note property, unarchive it first
                     if([propertyName isEqualToString:(@"LeftNotes")] || [propertyName isEqualToString:@"RightNotes"])
                     {
-                        NSData* notesData = [[[response item] objectForKey:propertyName] b];
+                        NSData* notesData = [[item objectForKey:propertyName] B];
                         NSMutableDictionary *notes = [NSKeyedUnarchiver unarchiveObjectWithData:notesData];
                         [athleteProperties setObject:notes forKey:propertyName];
                     }
@@ -247,26 +276,24 @@ static NSMutableDictionary *athleteProperties;
                     {
                         @try
                         {
-                            [athleteProperties setObject:[[[response item] objectForKey:propertyName] s] forKey:propertyName];
+                            [athleteProperties setObject:[[item objectForKey:propertyName] S] forKey:propertyName];
                         }
                         @catch(NSException *r)
                         {
                             NSLog(@"Couldn't set property %@ while unarchiving from aws", propertyName);
                         }
                     }
+                    NSLog(@"property found: %@", propertyName);
                 }
                 //if all was successful, update the last email property in case of crasehs
                 [athleteProperties setObject:fitID forKey:AWS_FIT_ATTRIBUTE_FITID];
-
-                return;
+                
+                return task;
             }
-        }
-        @catch (AmazonServiceException *exception) {
-            NSLog(@"Error Loading Athlete File from AWS: %@", [exception description]);
-            return;
-        }
+            return task;
+        }];
     }
-    return;
+    return nil;
 }
 
 + (void) newAthlete
@@ -345,7 +372,10 @@ static NSMutableDictionary *athleteProperties;
         {
             [leftJsonArray addObject:[note getDictionary]];
         }
-        [athleteProperties setObject:[leftJsonArray JSONString] forKey:@"LeftNotesJSON"];
+        NSError *error;
+        NSData *leftNoteJSONData = [NSJSONSerialization dataWithJSONObject:leftJsonArray options:0 error:&error];
+        NSString *leftJSONString = [[NSString alloc] initWithData:leftNoteJSONData encoding:NSUTF8StringEncoding];
+        [athleteProperties setObject:leftJSONString forKey:@"LeftNotesJSON"];
     }
     
     NSMutableArray *rightJsonArray = [[NSMutableArray alloc] init];
@@ -356,8 +386,10 @@ static NSMutableDictionary *athleteProperties;
         {
             [rightJsonArray addObject:[note getDictionary]];
         }
-        NSString *json = [rightJsonArray JSONString];
-        [athleteProperties setObject:json forKey:@"RightNotesJSON"];
+        NSError *error;
+        NSData *rightNoteJSONData = [NSJSONSerialization dataWithJSONObject:rightJsonArray options:0 error:&error];
+        NSString *rightJSONString = [[NSString alloc] initWithData:rightNoteJSONData encoding:NSUTF8StringEncoding];
+        [athleteProperties setObject:rightJSONString forKey:@"RightNotesJSON"];
     }
 }
 

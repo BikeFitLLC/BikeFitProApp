@@ -18,7 +18,7 @@
     NSURL *videoUrl;
     NSURL *localVideoUrl;
     NSString *s3Key;
-    NSString *S3Bucket;
+    NSString *s3Bucket;
     
     int selectedFrameIndex;
 }

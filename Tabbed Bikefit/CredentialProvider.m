@@ -24,16 +24,26 @@
     return self;
 }
 
-- (AmazonCredentials *)credentials
++ (instancetype)credentialsWithAccessKey:(NSString *)accessKey
+                               secretKey:(NSString *)secretKey sessionKey:(NSString*)sessionKey
 {
-    if(!creds)
-    {
-        [self refresh];
-    }
-    return creds;
+    CredentialProvider *credentials = [[CredentialProvider alloc]initWithAccessKey:accessKey secretKey:secretKey sessionKey:sessionKey];
+    return credentials;
+    
 }
 
-- (void)refresh
+- (instancetype)initWithAccessKey:(NSString *)accessKey
+                        secretKey:(NSString *)secretKey sessionKey:(NSString*)sessionKey
+{
+    if (self = [super init]) {
+        _accessKey = accessKey;
+        _secretKey = secretKey;
+        _sessionKey = sessionKey;
+    }
+    return self;
+}
+
+- (BFTask *)refresh
 {
     NSString *email = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_USERNAME_KEY];
     NSString *name = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITTERNAME_KEY];
@@ -45,7 +55,7 @@
                                    delegate:nil
                           cancelButtonTitle:@"OK"otherButtonTitles:nil
           ] show];
-        return;
+        return nil;
     }
     
     //Setup the URl to the token vending machine
@@ -61,8 +71,8 @@
     if(error)
     {
         NSLog(@"Error getting credentials from TVM. %@", [error description]);
-        creds = [[AmazonCredentials alloc] init];
-        return;
+        //creds = [[AmazonCredentials alloc] init];
+        return nil;
     }
     
     //Extract our new credentials
@@ -78,14 +88,14 @@
                           cancelButtonTitle:@"OK"otherButtonTitles:nil
           ] show];
         
-        return;
+        return nil;
     }
     
     if(error)
     {
         NSLog(@"Error getting credentials from TVM: %@", [error description]);
-        creds = [[AmazonCredentials alloc] init];
-        return;
+        //creds = [[AmazonCredentials alloc] init];
+        return nil;
     }
     
     //if there is a current fit file open, check to make sure it has an id
@@ -100,11 +110,16 @@
     [[NSUserDefaults standardUserDefaults] setBool:[[json objectForKey:@"trial"] boolValue] forKey:USER_DEFAULTS_IS_TRIAL_ACCOUNT];
     
     
+    _accessKey = [json objectForKey:@"accesskey"];
+    _secretKey = [json objectForKey:@"secretkey"];
+    _sessionKey = [json objectForKey:@"token"];
+
+    /*
     creds = [[AmazonCredentials alloc]
              initWithAccessKey:[json objectForKey:@"accesskey"]
              withSecretKey:[json objectForKey:@"secretkey"]
              withSecurityToken:[json objectForKey:@"token"]];
-    
+    */
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
     [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT"]];
@@ -115,12 +130,12 @@
     //Now we have a good response from the TVM.  Populate credentials and Fitterid
     [[NSUserDefaults standardUserDefaults] setObject:[json objectForKey:@"fitterid"] forKey:USER_DEFAULTS_FITTERID_KEY];
     
-    return;
+    return nil;
 }
 
 - (bool) isLoggedIn
 {
-    return creds != nil;
+    return _accessKey != nil;
 }
 
 //////////////////////////////////////
@@ -154,7 +169,9 @@
 
 - (void) clear
 {
-    creds = nil;
+    _accessKey = nil;
+    _secretKey = nil;
+    _sessionKey = nil;
 }
 
 #pragma mark Implementation of getAccessTokenForScopes:withOverrideParams:delegate: delegates.

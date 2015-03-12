@@ -21,11 +21,19 @@
 {
     // Override point for customization after application launch.
     
-    [AIMobileLib getAccessTokenForScopes:[NSArray arrayWithObject:@"profile"]
-                      withOverrideParams:nil
-                                delegate:[AmazonClientManager credProvider]];
+    //[AIMobileLib getAccessTokenForScopes:[NSArray arrayWithObject:@"profile"]
+    //                  withOverrideParams:nil
+    //                            delegate:[AmazonClientManager credProvider]];
     
     [AthletePropertyModel newAthlete];
+    
+    //Setup AWS configuration
+    AWSServiceConfiguration *configuration = [AWSServiceConfiguration
+                                              configurationWithRegion:AWSRegionUSWest2
+                                              credentialsProvider:[AmazonClientManager credProvider]];
+    
+    [AWSServiceManager defaultServiceManager].defaultServiceConfiguration = configuration;
+    
     
     //Setup crash detection
     struct sigaction signalAction;

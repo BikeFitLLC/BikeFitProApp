@@ -29,6 +29,8 @@
 
 #define AWS_FIT_TABLE_NAME_FORMAT @"%@-fits"
 
+#define S3_BUCKET @"8190ba10-d310-11e3-9c1a-0800200c9a66"
+
 //#define TOKEN_VENDING_MACHINE_URL_FORMAT @"https://tvm.velopezdigital.com/?Email=%@&Name=%@&Token=%@"
 //#define TOKEN_VENDING_MACHINE_URL_FORMAT @"http://127.0.0.1:8000/?Email=%@&Name=%@&Token=%@"
 #define TOKEN_VENDING_MACHINE_URL_FORMAT @"http://tvm2-env.elasticbeanstalk.com/?Email=%@&Name=%@&Token=%@"

@@ -53,7 +53,7 @@
     {
         AWSS3GetObjectRequest *request = [[AWSS3GetObjectRequest alloc] init];
         request.key = s3Key;
-        request.bucket = s3Bucket;
+        request.bucket = self.s3Bucket;
         
        [[[AmazonClientManager s3] getObject:request] continueWithSuccessBlock:^id(BFTask *task) {
            if (task.error)
@@ -73,7 +73,7 @@
     //return statement above is being used almost like a goto....
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *filepath = [paths objectAtIndex:0];
-    NSString *filename = [NSString stringWithFormat:FILESYSTEM_IMAGE_FILENAME_FORMAT, s3Bucket,s3Key];
+    NSString *filename = [NSString stringWithFormat:FILESYSTEM_IMAGE_FILENAME_FORMAT, self.s3Bucket,s3Key];
     image = [NSData dataWithContentsOfFile:[filepath stringByAppendingString:filename]];
 
     if(!image)
@@ -92,62 +92,44 @@
     image = imageData;
     
     //Upload image data.  Remember to set the content type.
-    s3Key = [NSString stringWithFormat:@"%@/%@",
-                        [AthletePropertyModel getProperty:AWS_FIT_ATTRIBUTE_FITID],
-                        [[NSUUID UUID] UUIDString]];
+    s3Key =  [[NSUUID UUID] UUIDString];
+    s3Bucket = S3_BUCKET;
     
-    s3Bucket = [[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITTERID_KEY] lowercaseString];
+    NSError *error = [[NSError alloc] init];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *filepath = [paths objectAtIndex:0];
+    NSString *fitPath = [filepath stringByAppendingString:[NSString stringWithFormat:@"/%@",self.s3Key]];
+    
+    bool success = [image writeToFile:fitPath options:NSDataWritingAtomic error:&error];
+    if(!success)
+    {
+        NSLog(@"Error Saving to File System: %@", [error description]);
+    }
 
     //kick off upload to aws s3 or save to filesystem
     if([AmazonClientManager verifyUserKey])
     {
-        NSFileManager* fileManager = [NSFileManager defaultManager];
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *documentsPath = [paths objectAtIndex:0];
-        NSString *filePath = [documentsPath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@%@", s3Bucket,s3Key]];
-        [image writeToFile:filePath atomically:YES];
-        
         AWSS3TransferManagerUploadRequest *por = [[AWSS3TransferManagerUploadRequest alloc] init];
         por.key = s3Key;
-        por.bucket = s3Bucket;
+        por.bucket = self.s3Bucket;
         por.contentType = @"image/jpeg"; // use "image/png" here if you are uploading a png
         por.ACL   = AWSS3ObjectCannedACLPublicRead;
-        por.body  = [NSURL URLWithString:filePath];
+        por.body  = [NSURL fileURLWithPath:fitPath];
     
-        [[[AmazonClientManager s3TransferManager] upload:por] continueWithBlock:^id(BFTask *task) {
+        [[[AmazonClientManager s3TransferManager] upload:por] continueWithExecutor:[BFExecutor mainThreadExecutor]
+                                                                         withBlock:^id(BFTask *task) {
             if (task.error)
             {
                 NSLog(@"Error: %@", task.error);
             }
-            [fileManager removeItemAtPath:filePath error:NULL];
+            [[NSFileManager defaultManager] removeItemAtPath:fitPath error:NULL];
             return nil;
         }];
     }
     else
     {
-        NSError *error = [[NSError alloc] init];
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *filepath = [paths objectAtIndex:0];
-        NSString *fitPath = [filepath stringByAppendingString:[NSString stringWithFormat:@"/%@",s3Bucket]];
-        
-        fitPath = [fitPath stringByAppendingString:[NSString stringWithFormat:@"/%@", [[s3Key componentsSeparatedByString:@"/"] objectAtIndex:0]]];
 
-        if(![[NSFileManager defaultManager] fileExistsAtPath:fitPath])
-        {
-            bool success = [[NSFileManager defaultManager] createDirectoryAtPath:fitPath withIntermediateDirectories:YES attributes:nil error:&error];
-            if(success == NO)
-            {
-                NSLog(@"Error Creating Fit Directory: %@", [error description]);
-            }
-        }
-        NSString *filename = [filepath stringByAppendingString:
-                              [NSString stringWithFormat:FILESYSTEM_IMAGE_FILENAME_FORMAT, s3Bucket,s3Key]
-                              ];
-        bool success = [image writeToFile:filename options:NSDataWritingAtomic error:&error];
-        if(!success)
-        {
-            NSLog(@"Error Saving to File System: %@", [error description]);
-        }
+
     }
 
 }

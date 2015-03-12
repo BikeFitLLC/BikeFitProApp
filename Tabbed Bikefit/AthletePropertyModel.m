@@ -50,7 +50,7 @@ static NSMutableDictionary *athleteProperties;
 
         NSMutableDictionary *athleteItem = [[NSMutableDictionary alloc] init];
         NSString *fitter = [[NSUserDefaults standardUserDefaults] stringForKey:USER_DEFAULTS_FITTERID_KEY];
-        AWSDynamoDBAttributeValue *fitterAttribute = [AWSDynamoDBAttributeValue alloc];
+        AWSDynamoDBAttributeValue *fitterAttribute = [[AWSDynamoDBAttributeValue alloc] init];
         fitterAttribute.S = fitter;
         [athleteItem setObject:fitter forKey:AWS_FIT_ATTRIBUTE_FITTERID];
         
@@ -59,18 +59,20 @@ static NSMutableDictionary *athleteProperties;
             //If it the note property, archive it first
             if([propertyName isEqualToString:(@"LeftNotes")] || [propertyName isEqualToString:@"RightNotes"])
             {
+                
                 NSData* notesData = [NSKeyedArchiver archivedDataWithRootObject:[athleteProperties objectForKey:propertyName]];
-                AWSDynamoDBAttributeValue *notesDataAttribute = [AWSDynamoDBAttributeValue alloc];
+                AWSDynamoDBAttributeValue *notesDataAttribute = [[AWSDynamoDBAttributeValue alloc] init];
                 notesDataAttribute.B = notesData;
                 [athleteItem setObject:notesDataAttribute forKey:propertyName];
+                 
             }
             else
             {
                 NSString * propertyValue = [athleteProperties objectForKey:propertyName];
                 if( [propertyValue length] > 0 )
                 {
-                    AWSDynamoDBAttributeValue *propertyAttribute = [AWSDynamoDBAttributeValue alloc];
-                    fitterAttribute.S = propertyValue;
+                    AWSDynamoDBAttributeValue *propertyAttribute = [[AWSDynamoDBAttributeValue alloc] init];
+                    propertyAttribute.S = propertyValue;
 
                     [athleteItem setObject:propertyAttribute forKey:propertyName];
                 }
@@ -78,22 +80,26 @@ static NSMutableDictionary *athleteProperties;
         }
         ///Update the lastupdated timetamp
         NSDate *now = [NSDate dateWithTimeIntervalSinceNow:0];
-        AWSDynamoDBAttributeValue *lastupdatedattribute = [AWSDynamoDBAttributeValue alloc];
+        AWSDynamoDBAttributeValue *lastupdatedattribute = [[AWSDynamoDBAttributeValue alloc] init];
         lastupdatedattribute.S =[NSString stringWithFormat:@"%f",[now timeIntervalSince1970]];
         [athleteItem setObject:lastupdatedattribute forKey:AWS_FIT_ATTRIBUTE_LASTUPDATED];
         
-        AWSDynamoDBPutItemInput *putInput = [AWSDynamoDBPutItemInput alloc];
+        AWSDynamoDBPutItemInput *putInput = [[AWSDynamoDBPutItemInput alloc] init];
         putInput.tableName = @"Fits";
         putInput.item = athleteItem;
         
+        //AWSLogger.defaultLogger.logLevel = AWSLogLevelVerbose;
         
-            [[[AmazonClientManager ddb] putItem:putInput] continueWithBlock:^id(BFTask *task) {
-                if(task.error)
-                {
-                     NSLog(@"Error Saving Athlete File to Cloud: %@", task.description);
-                }
-                return nil;
-            }];
+        [[[AmazonClientManager ddb] putItem:putInput]
+         
+         continueWithExecutor:[BFExecutor mainThreadExecutor] withBlock:^id(BFTask *task) {
+            if(task.error)
+            {
+                 NSLog(@"Error Saving Athlete File to Cloud: %@", task.error);
+            }
+            NSLog(@"Saved Athlete to Cloud");
+            return nil;
+        }];
     }
     return;
 }
@@ -258,6 +264,7 @@ static NSMutableDictionary *athleteProperties;
             {
                 for(NSString *propertyName in item)
                 {
+                    
                     //If it the note property, unarchive it first
                     if([propertyName isEqualToString:(@"LeftNotes")] || [propertyName isEqualToString:@"RightNotes"])
                     {
@@ -276,6 +283,7 @@ static NSMutableDictionary *athleteProperties;
                             NSLog(@"Couldn't set property %@ while unarchiving from aws", propertyName);
                         }
                     }
+                    NSLog(@"property found: %@", propertyName);
                 }
                 //if all was successful, update the last email property in case of crasehs
                 [athleteProperties setObject:fitID forKey:AWS_FIT_ATTRIBUTE_FITID];

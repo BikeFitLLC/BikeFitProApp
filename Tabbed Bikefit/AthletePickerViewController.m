@@ -98,7 +98,7 @@
     NSString *key =  [fitIds objectAtIndex:[indexPath row]];
 
     [[AthletePropertyModel loadAthleteFromAWS:key]
-        continueWithBlock:^id(BFTask *task)
+        continueWithExecutor:[BFExecutor mainThreadExecutor] withBlock:^id(BFTask *task)
         {
             [self.navigationController popViewControllerAnimated:YES];
             return nil;

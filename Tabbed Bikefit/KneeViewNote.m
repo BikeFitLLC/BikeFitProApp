@@ -89,7 +89,7 @@
     {
         // Upload image data.  Remember to set the content type.
         AWSS3TransferManagerUploadRequest *uploadRequest = [AWSS3TransferManagerUploadRequest new];
-        uploadRequest.bucket = S3Bucket;
+        uploadRequest.bucket = s3Bucket;
         uploadRequest.key = s3Key;
         uploadRequest.contentType = @"video/quicktime"; // use "image/png" here if you are uploading a png
         uploadRequest.body        = localVideoUrl;
@@ -98,24 +98,31 @@
         //por.delegate    = self; // Don't need this line if you don't care about hearing a response.
         
         // Put the image data into the specified s3 bucket and object.
-        [[AmazonClientManager s3TransferManager] upload:uploadRequest];
+        [[[AmazonClientManager s3TransferManager] upload:uploadRequest] continueWithExecutor:[BFExecutor mainThreadExecutor]
+                                                                                   withBlock:^id(BFTask *task)
+        {
+            if (task.error)
+            {
+                NSLog(@"Error: %@", task.error);
+                return nil;
+            }
+            videoUrl= [[NSURL alloc] initWithString:
+                       [NSString stringWithFormat:S3_IMAGE_URL_FORMAT,
+                        s3Bucket,
+                        s3Key
+                        ]];
+            NSLog(@"Uploaded Video to AWS: %@", videoUrl);
+            return task;
+        }];
         
-        videoUrl= [[NSURL alloc] initWithString:
-                    [NSString stringWithFormat:S3_IMAGE_URL_FORMAT,
-                     s3Bucket,
-                     s3Key
-                     ]];
+       
     }
 }
 -(void)setVideoUrl:(NSURL *)url
 {
     localVideoUrl = url;
-    
-    s3Key = [NSString stringWithFormat:@"%@/%@",
-             [[NSUserDefaults standardUserDefaults] objectForKey:AWS_FIT_ATTRIBUTE_FITID],
-             [[NSUUID UUID] UUIDString]];
-    
-    s3Bucket = [[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITTERID_KEY] lowercaseString];
+    s3Key = [[NSUUID UUID] UUIDString];
+    s3Bucket = S3_BUCKET;
     
     [self uploadVideoToAWS];
 }

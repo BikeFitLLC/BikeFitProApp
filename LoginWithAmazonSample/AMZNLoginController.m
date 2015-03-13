@@ -76,6 +76,7 @@ BOOL isUserSignedIn;
     self.infoField.textAlignment = NSTextAlignmentCenter;
     self.infoField.hidden = false;
     logoutButton.hidden = false;
+    emailIntakeUrlButton.hidden = false;
 }
 
 - (void)showLogInPage {
@@ -108,6 +109,20 @@ BOOL isUserSignedIn;
 - (void)viewDidLoad {
     [onlineModeSwitch addTarget:self action:@selector(toggleOnlineSwitch:) forControlEvents:UIControlEventValueChanged];
     
+    //Create label to display the url for this fit
+    emailIntakeUrlButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [emailIntakeUrlButton setFrame:CGRectMake(300,600,200,50)];
+    emailIntakeUrlButton.titleLabel.font = [UIFont systemFontOfSize:24];
+    emailIntakeUrlButton.backgroundColor = [UIColor blackColor];
+    emailIntakeUrlButton.alpha = .5;
+    [emailIntakeUrlButton setTitle:@"Email Intake Form" forState:UIControlStateNormal];
+    [emailIntakeUrlButton addTarget:self
+                             action:@selector(emailIntakeUrl)
+                   forControlEvents:UIControlEventTouchUpInside];
+    emailIntakeUrlButton.hidden = YES;
+    emailIntakeUrlButton.enabled = YES;
+    [self.view addSubview:emailIntakeUrlButton];
+    
     if ([[AmazonClientManager credProvider] isLoggedIn])
         [self loadSignedInUser];
     else
@@ -125,9 +140,35 @@ BOOL isUserSignedIn;
     }
 }
 
+
+- (void) emailIntakeUrl
+{
+    emailController= [[MFMailComposeViewController alloc] init];
+    emailController.mailComposeDelegate = self;
+    NSString *fitterName = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITTERNAME_KEY];
+    NSString *url = [NSString stringWithFormat:@"http://intake.bikefit.com/?fitter=%@", [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_USERNAME_KEY]];
+    NSString *emailSubject = [NSString stringWithFormat:@"Intake Form for fit with %@",fitterName];
+    NSString *emailMessage = [NSString stringWithFormat:@"Please fill this out before your appointment. <br /><br /><a href=\"%@\">%@</a>", url,url];
+    
+    [emailController setToRecipients:[NSArray arrayWithObject:[AthletePropertyModel getProperty:AWS_FIT_ATTRIBUTE_EMAIL ]]];
+    [emailController setSubject:emailSubject];
+    [emailController setMessageBody:emailMessage isHTML:YES];
+    if (emailController)
+    {
+        [self presentViewController:emailController animated:YES completion:NULL];
+    }
+}
+
 -(void) viewWillAppear:(BOOL)animated
 {
-    //onlineModeSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_ONLINEMODE_KEY] boolValue];
+
+}
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller
+          didFinishWithResult:(MFMailComposeResult)result
+                        error:(NSError *)error
+{
+    [emailController dismissViewControllerAnimated:YES completion:NULL];
 }
 
 ////////////////////////////////////////////

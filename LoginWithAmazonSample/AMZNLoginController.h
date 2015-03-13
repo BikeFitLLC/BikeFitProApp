@@ -12,11 +12,14 @@
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
+#import <MessageUI/MFMailComposeViewController.h>
 
-@interface AMZNLoginController : UIViewController
+@interface AMZNLoginController : UIViewController <MFMailComposeViewControllerDelegate>
 {
     IBOutlet UISwitch *onlineModeSwitch;
     UILabel *trialMemberLabel;
+    UIButton *emailIntakeUrlButton;
+    MFMailComposeViewController* emailController;
 }
 
 @property (retain, nonatomic) IBOutlet UIButton *loginButton;

@@ -44,7 +44,7 @@
     [saveButton setHidden:true];
     [nextImageButton setHidden:true];
     [previousImageButton setHidden:true];
-    [reverseCameraButton setHidden:true];
+    //[reverseCameraButton setHidden:true];
     
 }
 - (void)viewDidLoad
@@ -89,15 +89,14 @@
     [nextImageButton addTarget:self action:@selector(nextImage) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:nextImageButton];
     
-    reverseCameraButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    reverseCameraButton.frame = CGRectMake(0,0,100,100);
-    reverseCameraButton.titleLabel.font = [UIFont systemFontOfSize:24];
-    reverseCameraButton.backgroundColor = [UIColor blackColor];
+    reverseCameraButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    reverseCameraButton.frame = CGRectMake(200,200,100,100);
     reverseCameraButton.alpha = .5;
     [reverseCameraButton setBackgroundImage:[UIImage imageNamed:@"FrontCameraIcon.png"] forState:UIControlStateNormal];
     [reverseCameraButton setCenter:CGPointMake(self.view.bounds.size.width * .9,
                                         self.view.bounds.size.height *.85)];
     [reverseCameraButton addTarget:self action:@selector(switchCameraTapped:) forControlEvents:UIControlEventTouchUpInside];
+    reverseCameraButton.hidden = false;
     [self.view addSubview:reverseCameraButton];
     
     takePhotoButton.titleLabel.font = [UIFont systemFontOfSize:18];

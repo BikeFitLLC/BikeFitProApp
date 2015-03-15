@@ -57,7 +57,7 @@ static NSMutableDictionary *athleteProperties;
         NSString *fitter = [[NSUserDefaults standardUserDefaults] stringForKey:USER_DEFAULTS_FITTERID_KEY];
         AWSDynamoDBAttributeValue *fitterAttribute = [[AWSDynamoDBAttributeValue alloc] init];
         fitterAttribute.S = fitter;
-        [athleteItem setObject:fitter forKey:AWS_FIT_ATTRIBUTE_FITTERID];
+        [athleteItem setObject:fitterAttribute forKey:AWS_FIT_ATTRIBUTE_FITTERID];
         
         for(NSString *propertyName in athleteProperties)
         {

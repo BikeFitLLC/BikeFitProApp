@@ -55,7 +55,35 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    UIImageView *cyclistImage = [[UIImageView alloc] init];
+    cyclistImage.frame = CGRectMake(
+                                 0,
+                                 0,
+                                 self.view.frame.size.width,
+                                 self.view.frame.size.height);
+    cyclistImage.alpha = .1;
+    cyclistImage.image = [UIImage imageNamed:@"KW_front_laser_2.png"];
+    [self.view addSubview:cyclistImage];
+
+    
+    
 	// Do any additional setup after loading the view.
+    rightNotesTable = [[UITableView alloc] init];
+    rightNotesTable.frame = CGRectMake(0,0,
+                                       self.view.frame.size.width *.5,
+                                       self.view.frame.size.height *.8);
+    rightNotesTable.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:rightNotesTable];
+    
+    // Do any additional setup after loading the view.
+    leftNotesTable = [[UITableView alloc] init];
+    leftNotesTable.frame = CGRectMake(self.view.frame.size.width *.5,
+                                       0,
+                                       self.view.frame.size.width *.5,
+                                       self.view.frame.size.height *.8);
+    leftNotesTable.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:leftNotesTable];
+
     [leftNotesTable registerClass:[BikeFitTableViewCell class] forCellReuseIdentifier:@"measurementCell"];
     [rightNotesTable registerClass:[BikeFitTableViewCell class] forCellReuseIdentifier:@"measurementCell"];
     [leftNotesTable registerClass:[UITableViewCell class] forCellReuseIdentifier:@"addCell"];
@@ -184,6 +212,11 @@
             return cell;
         }
     }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return self.view.frame.size.height *.1;
 }
 
 - (void)deleteNoteForCell:(BikeFitTableViewCell*)cell;

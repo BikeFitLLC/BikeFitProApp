@@ -109,9 +109,41 @@ BOOL isUserSignedIn;
 - (void)viewDidLoad {
     [onlineModeSwitch addTarget:self action:@selector(toggleOnlineSwitch:) forControlEvents:UIControlEventValueChanged];
     
+    UIImageView *logoImage = [[UIImageView alloc] init];
+    logoImage.frame = CGRectMake(
+                                 self.view.frame.size.width * .1,
+                                 0,
+                                 self.view.frame.size.width *.8,
+                                 self.view.frame.size.width *.3);
+    logoImage.image = [UIImage imageNamed:@"BikeFit_logo_Horiz.png"];
+    [self.view addSubview:logoImage];
+    
+    loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    loginButton.frame = CGRectMake(0,0,
+                                   209,
+                                   48);
+    [loginButton setBackgroundImage:[UIImage imageNamed:@"btnLWA_gold_209x48.png"] forState:UIControlStateNormal];
+    [loginButton setCenter:CGPointMake(
+                                       self.view.bounds.size.width * .5,
+                                       self.view.bounds.size.height *.5)];
+    [loginButton addTarget:self action:@selector(onLogInButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:loginButton];
+    
+    infoField = [[UITextView alloc] init];
+    infoField.frame = CGRectMake(
+                                self.view.frame.size.width * .5,
+                                self.view.frame.size.height * .3,
+                                self.view.frame.size.width *.5,
+                                self.view.frame.size.width *.5);
+
+    
     //Create label to display the url for this fit
     emailIntakeUrlButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [emailIntakeUrlButton setFrame:CGRectMake(300,600,200,50)];
+    [emailIntakeUrlButton setFrame:CGRectMake(
+                                              self.view.frame.size.width * .5,
+                                              self.view.frame.size.height * .8,
+                                              self.view.frame.size.width *.2,
+                                              self.view.frame.size.width *.1)];
     emailIntakeUrlButton.titleLabel.font = [UIFont systemFontOfSize:24];
     emailIntakeUrlButton.backgroundColor = [UIColor blackColor];
     emailIntakeUrlButton.alpha = .5;

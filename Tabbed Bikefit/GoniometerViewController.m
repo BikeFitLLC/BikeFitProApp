@@ -40,9 +40,14 @@
     [super viewDidLoad];
     [saveButton addTarget:self action:@selector(saveAngle) forControlEvents:UIControlEventTouchUpInside];
     
+    CGFloat oneThirdViewWidth = self.view.frame.size.width/3;
+    
     kneeAngleButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     CGFloat height = self.navigationController.navigationBar.frame.size.height + [UIApplication sharedApplication].statusBarFrame.size.height;
-    kneeAngleButton.frame = CGRectMake(0,height,250,75);
+    kneeAngleButton.frame = CGRectMake(0,
+                                       height,
+                                       oneThirdViewWidth,
+                                       75);
     kneeAngleButton.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:24];
     kneeAngleButton.backgroundColor = [UIColor blackColor];
     kneeAngleButton.alpha = .5;
@@ -54,7 +59,10 @@
     [self.view addSubview:kneeAngleButton];
     
     shoulderAngleButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    shoulderAngleButton.frame = CGRectMake(250,height,250,75);
+    shoulderAngleButton.frame = CGRectMake(oneThirdViewWidth,
+                                           height,
+                                           oneThirdViewWidth,
+                                           75);
     shoulderAngleButton.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:24];
     shoulderAngleButton.backgroundColor = [UIColor blackColor];
     shoulderAngleButton.alpha = .5;
@@ -66,7 +74,10 @@
     [self.view addSubview:shoulderAngleButton];
     
     HipAngleButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    HipAngleButton.frame = CGRectMake(500,height,250,75);
+    HipAngleButton.frame = CGRectMake(2*oneThirdViewWidth,
+                                      height,
+                                      oneThirdViewWidth,
+                                      75);
     HipAngleButton.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:24];
     HipAngleButton.backgroundColor = [UIColor blackColor];
     HipAngleButton.alpha = .5;

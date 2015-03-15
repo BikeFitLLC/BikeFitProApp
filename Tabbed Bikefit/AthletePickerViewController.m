@@ -31,9 +31,28 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    athleteTableView = [[UITableView alloc] init];
+    athleteTableView.frame = CGRectMake(0,
+                                        0,
+                                        self.view.frame.size.width,
+                                        self.view.frame.size.height * .6);
     [athleteTableView setDataSource:self];
     [athleteTableView setDelegate:self];
-    //fits = [[NSMutableArray alloc] init];
+    [athleteTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"athletecell"];
+    [self.view addSubview:athleteTableView];
+    
+    UIButton *loadButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    loadButton.frame = CGRectMake(0,0,
+                                  self.view.frame.size.width *.2,
+                                  self.view.frame.size.width *.1);
+    loadButton.titleLabel.font = [UIFont systemFontOfSize:24];
+    loadButton.backgroundColor = [UIColor blackColor];
+    loadButton.alpha = .5;
+    [loadButton setTitle:@"Load" forState:UIControlStateNormal];
+    [loadButton setCenter:CGPointMake(self.view.bounds.size.width * .5,
+                                      self.view.bounds.size.height *.7)];
+    [loadButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:loadButton];
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
@@ -122,10 +141,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"name";
+    static NSString *CellIdentifier = @"athletecell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     NSString *fitid = [fitIds objectAtIndex:[indexPath row]];
+    cell.textLabel.adjustsFontSizeToFitWidth = YES;
     cell.textLabel.text = [NSString stringWithFormat:@"%@ %@ - %@",
                            [[fits objectForKey:fitid] objectForKey:AWS_FIT_ATTRIBUTE_FIRSTNAME],
                            [[fits objectForKey:fitid] objectForKey:AWS_FIT_ATTRIBUTE_LASTNAME],

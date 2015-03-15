@@ -23,15 +23,29 @@
 {
     [super viewDidLoad];
     
+    UIImageView *logoImage = [[UIImageView alloc] init];
+    logoImage.frame = CGRectMake(
+                                 self.view.frame.size.width * .1,
+                                 0,
+                                 self.view.frame.size.width *.8,
+                                 self.view.frame.size.width *.3);
+    logoImage.image = [UIImage imageNamed:@"BikeFit_logo_Horiz.png"];
+    [self.view addSubview:logoImage];
+    
     //setup subviews
     infoTableView = [self makeInfoTableView];
     [self.view addSubview: infoTableView];
     [self newAthlete];
     
     //First Name Label Subview
-    firstNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(250,100,400,40)];
+    firstNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(
+                                              self.view.frame.size.width * .2,
+                                              self.view.frame.size.height * .1,
+                                              self.view.frame.size.width *.6,
+                                              self.view.frame.size.width *.3)];
     [self.view addSubview:firstNameLabel];
     [firstNameLabel setFont:[UIFont fontWithName:@"ArialRoundedMTBold" size:36]];
+    firstNameLabel.adjustsFontSizeToFitWidth = YES;
     [firstNameLabel setText:@"First"];
     
     //Create label to display the url for this fit
@@ -110,9 +124,9 @@
 -(UITableView *) makeInfoTableView
 {
     CGFloat x = 0;
-    CGFloat y = 200;
+    CGFloat y = self.view.frame.size.width *.4;;
     CGFloat width = self.view.frame.size.width;
-    CGFloat height = self.view.frame.size.height - 400;
+    CGFloat height = self.view.frame.size.height * .4;
     CGRect tableFrame = CGRectMake(x, y, width, height);
     
     UITableView *tableView = [[UITableView alloc]initWithFrame:tableFrame style:UITableViewStylePlain];
@@ -216,7 +230,11 @@
         propertyNameText.font = [UIFont fontWithName:@"ArialRoundedMTBold" size:24];
         [propertyNameText setDelegate:self];
         
-        propertyNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(35,150,200,100)];
+        propertyNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(
+                                              inputView.frame.size.width * .25,
+                                              inputView.frame.size.height *.1,
+                                              inputView.frame.size.width * .6,
+                                              inputView.frame.size.height *.2)];
         propertyNameLabel.font = [UIFont fontWithName:@"ArialRoundedMTBold" size:36];
         propertyNameLabel.textColor = [UIColor whiteColor];
         propertyNameLabel.text = @"Property";
@@ -224,33 +242,43 @@
         [inputView addSubview:propertyNameLabel];
         [inputView addSubview:propertyNameText];
         
-        propertyValueText = [[UITextView alloc] initWithFrame:CGRectMake(inputView.frame.size.width * .25,
-                                                                                     inputView.frame.size.height *.3,
-                                                                                     400,
-                                                                                     400)];
+        propertyValueText = [[UITextView alloc] initWithFrame:CGRectMake(
+                                                               self.view.frame.size.width * .1,
+                                                               self.view.frame.size.height * .3,
+                                                               self.view.frame.size.width *.8,
+                                                               self.view.frame.size.width *.3)];
         propertyValueText.backgroundColor = [UIColor whiteColor];
         propertyValueText.font = [UIFont fontWithName:@"ArialRoundedMTBold" size:24];
         [propertyValueText setDelegate:self];
         
+        /*
         propertyValueLabel = [[UILabel alloc] initWithFrame:CGRectMake(50,225,200,100)];
         propertyValueLabel.font = [UIFont fontWithName:@"ArialRoundedMTBold" size:36];
         propertyValueLabel.textColor = [UIColor whiteColor];
         propertyValueLabel.text = @"Value";
-        
+        */
         [inputView addSubview:propertyValueText];
-        [inputView addSubview:propertyValueLabel];
+        //[inputView addSubview:propertyValueLabel];
         
         UIButton *savePropertyButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        savePropertyButton.frame = CGRectMake(0,0,100,200);
+        savePropertyButton.frame = CGRectMake(
+                                              self.view.frame.size.width * .4,
+                                              self.view.frame.size.height * .8,
+                                              self.view.frame.size.width *.2,
+                                              self.view.frame.size.width *.1);
         [savePropertyButton setTitle:@"Done" forState:UIControlStateNormal];
         savePropertyButton.titleLabel.font = [UIFont fontWithName:@"ArialRoundedMTBold" size:24];
         [savePropertyButton addTarget:self action:@selector(hideInputView) forControlEvents:UIControlEventTouchUpInside];
         [inputView addSubview:savePropertyButton];
         
-        inputViewMessageLabel = [[UILabel alloc] initWithFrame:CGRectMake(inputView.frame.size.width * .20,
-                                                                          inputView.frame.size.height *.01,
-                                                                          500,100)];
+        inputViewMessageLabel = [[UILabel alloc] initWithFrame:CGRectMake(
+                                                             self.view.frame.size.width * .1,
+                                                             0,
+                                                             self.view.frame.size.width *.8,
+                                                             self.view.frame.size.width *.3)];
+        
         inputViewMessageLabel.font = [UIFont fontWithName:@"ArialRoundedMTBold" size:36];
+        inputViewMessageLabel.adjustsFontSizeToFitWidth = YES;
         inputViewMessageLabel.textColor = [UIColor whiteColor];
         [inputView addSubview:inputViewMessageLabel];
     }

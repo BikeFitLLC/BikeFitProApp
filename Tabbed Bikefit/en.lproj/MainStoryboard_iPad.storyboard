@@ -34,28 +34,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N3k-nU-ZTe">
-                                <rect key="frame" x="101" y="316" width="585" height="392"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="Welcome ta;lsdjfal;skdjfal;skdjf;alsdkjf">
-                                        <attributes>
-                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SGk-KD-9Ix">
-                                <rect key="frame" x="229" y="509" width="310" height="74"/>
-                                <state key="normal" backgroundImage="btnLWA_gold_209x48.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="onLogInButtonClicked:" destination="3iX-Vr-jjj" eventType="touchUpInside" id="Fcj-jk-9M8"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hp7-VZ-eyd">
                                 <rect key="frame" x="27" y="935" width="49" height="30"/>
                                 <state key="normal" title="Logout">
@@ -65,9 +43,6 @@
                                     <action selector="logoutButtonClicked:" destination="3iX-Vr-jjj" eventType="touchUpInside" id="iKF-Zo-KT0"/>
                                 </connections>
                             </button>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="BikeFit_logo_Horiz.png" translatesAutoresizingMaskIntoConstraints="NO" id="aoQ-V8-mJM">
-                                <rect key="frame" x="143" y="-20" width="500" height="200"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -78,8 +53,6 @@
                     </toolbarItems>
                     <navigationItem key="navigationItem" id="NfY-Wd-NNs"/>
                     <connections>
-                        <outlet property="infoField" destination="N3k-nU-ZTe" id="3F5-g0-GzB"/>
-                        <outlet property="loginButton" destination="SGk-KD-9Ix" id="nqd-9y-VXZ"/>
                         <outlet property="logoutButton" destination="Hp7-VZ-eyd" id="KAa-bK-4ac"/>
                     </connections>
                 </viewController>
@@ -134,9 +107,6 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="BikeFit_logo_Horiz.png" translatesAutoresizingMaskIntoConstraints="NO" id="N8r-Bn-aRN">
-                                <rect key="frame" x="128" y="-27" width="500" height="184"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -229,51 +199,12 @@
                     <view key="view" contentMode="scaleToFill" id="g8d-qs-XcX">
                         <rect key="frame" x="0.0" y="64" width="768" height="911"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.10000000000000001" contentMode="center" fixedFrame="YES" image="KW_front_laser_2.png" translatesAutoresizingMaskIntoConstraints="NO" id="wBR-RZ-KyZ">
-                                <rect key="frame" x="3" y="-500" width="768" height="2194"/>
-                            </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="98" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="J2J-1P-igu">
-                                <rect key="frame" x="0.0" y="0.0" width="384" height="846"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell opaque="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="0.0" reuseIdentifier="measurementCell" rowHeight="98" id="kq4-e6-9re">
-                                        <rect key="frame" x="0.0" y="22" width="384" height="98"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kq4-e6-9re" id="9AG-B1-ytL">
-                                            <rect key="frame" x="0.0" y="0.0" width="384" height="97"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="98" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="6vd-q7-tLp">
-                                <rect key="frame" x="392" y="0.0" width="384" height="846"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell opaque="NO" contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="measurementCell" id="NAY-xI-fAI">
-                                        <rect key="frame" x="0.0" y="22" width="384" height="98"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NAY-xI-fAI" id="tB4-GB-1Ti">
-                                            <rect key="frame" x="0.0" y="0.0" width="384" height="97"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="BikeFit" id="raE-HP-o5s"/>
                     <navigationItem key="navigationItem" id="JCu-m0-GD3"/>
                     <connections>
-                        <outlet property="leftNotesTable" destination="6vd-q7-tLp" id="fhK-KX-h8b"/>
-                        <outlet property="rightNotesTable" destination="J2J-1P-igu" id="T3p-bC-JuW"/>
                         <segue destination="jdh-5D-qbz" kind="push" identifier="ViewKneeNote" id="jAu-g7-9Yv"/>
                         <segue destination="PEF-sN-dV4" kind="push" identifier="ViewAngleNote" id="9Wl-CM-y27"/>
                         <segue destination="BNN-9J-juH" kind="push" identifier="addfootnotesegue" id="MVA-UO-B3m"/>
@@ -868,12 +799,9 @@
         <image name="2_heel_right.png" width="768" height="1246"/>
         <image name="2_heels_left.png" width="768" height="1246"/>
         <image name="BikeFitIcon-29x29.png" width="29" height="29"/>
-        <image name="BikeFit_logo_Horiz.png" width="500" height="200"/>
         <image name="Cog_15t_29x29.png" width="29" height="29"/>
         <image name="Ho_foot_Arches_left.png" width="768" height="1800"/>
         <image name="Ho_foot_Arches_right.png" width="768" height="1794"/>
-        <image name="KW_front_laser_2.png" width="768" height="2194"/>
-        <image name="btnLWA_gold_209x48.png" width="209" height="48"/>
         <image name="info_button_29x29_no_white.png" width="28" height="28"/>
         <image name="measurementIcon-new-29x29.png" width="29" height="29"/>
     </resources>

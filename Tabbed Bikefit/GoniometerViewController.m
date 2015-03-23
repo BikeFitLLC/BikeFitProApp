@@ -40,6 +40,10 @@
     [super viewDidLoad];
     [saveButton addTarget:self action:@selector(saveAngle) forControlEvents:UIControlEventTouchUpInside];
     
+    previewImage = [[LegAngleImageView alloc] initWithFrame:self.view.frame];
+    previewImage.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:previewImage];
+    
     CGFloat oneThirdViewWidth = self.view.frame.size.width/3;
     
     kneeAngleButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -47,11 +51,12 @@
     kneeAngleButton.frame = CGRectMake(0,
                                        height,
                                        oneThirdViewWidth,
-                                       75);
+                                       oneThirdViewWidth * .3);
     kneeAngleButton.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:24];
     kneeAngleButton.backgroundColor = [UIColor blackColor];
     kneeAngleButton.alpha = .5;
     kneeAngleButton.titleLabel.numberOfLines = 2;
+    kneeAngleButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     [kneeAngleButton setTitleColor:[UIColor yellowColor] forState:UIControlStateNormal];
     [kneeAngleButton setTitle:@"Tap to add\nleg angle finder" forState:UIControlStateNormal];
     kneeAngleButton.hidden = YES;
@@ -62,11 +67,12 @@
     shoulderAngleButton.frame = CGRectMake(oneThirdViewWidth,
                                            height,
                                            oneThirdViewWidth,
-                                           75);
+                                           oneThirdViewWidth * .3);
     shoulderAngleButton.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:24];
     shoulderAngleButton.backgroundColor = [UIColor blackColor];
     shoulderAngleButton.alpha = .5;
     shoulderAngleButton.titleLabel.numberOfLines = 2;
+    shoulderAngleButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     [shoulderAngleButton setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
     [shoulderAngleButton setTitle:@"Tap to add\nshoulder angle finder" forState:UIControlStateNormal];
     shoulderAngleButton.hidden = YES;
@@ -77,11 +83,12 @@
     HipAngleButton.frame = CGRectMake(2*oneThirdViewWidth,
                                       height,
                                       oneThirdViewWidth,
-                                      75);
+                                      oneThirdViewWidth * .3);
     HipAngleButton.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:24];
     HipAngleButton.backgroundColor = [UIColor blackColor];
     HipAngleButton.alpha = .5;
     HipAngleButton.titleLabel.numberOfLines = 2;
+    HipAngleButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     [HipAngleButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [HipAngleButton setTitle:@"Tap to add\nhip angle finder" forState:UIControlStateNormal];
     HipAngleButton.hidden = YES;
@@ -276,18 +283,18 @@
     [super stopCapturing];
     LegAngleImageView *imageView = (LegAngleImageView *)previewImage;
     imageView.kneeVertices = [NSMutableArray arrayWithObjects:
-                                [NSValue valueWithCGPoint:CGPointMake(300,300)],
-                                [NSValue valueWithCGPoint:CGPointMake(400,400)],
-                                [NSValue valueWithCGPoint:CGPointMake(300,500)], nil];
+                                [NSValue valueWithCGPoint:CGPointMake(self.view.frame.size.width *.4,self.view.frame.size.height *.4)],
+                                [NSValue valueWithCGPoint:CGPointMake(self.view.frame.size.width *.6,self.view.frame.size.height *.6)],
+                                [NSValue valueWithCGPoint:CGPointMake(self.view.frame.size.width *.8,self.view.frame.size.height *.8)], nil];
     
     imageView.shoulderVertices = [NSMutableArray arrayWithObjects:
-                                [NSValue valueWithCGPoint:CGPointMake(400,300)],
-                                [NSValue valueWithCGPoint:CGPointMake(500,400)],
-                                [NSValue valueWithCGPoint:CGPointMake(600,500)], nil];
+                                  [NSValue valueWithCGPoint:CGPointMake(self.view.frame.size.width *.15,self.view.frame.size.height *.15)],
+                                  [NSValue valueWithCGPoint:CGPointMake(self.view.frame.size.width *.35,self.view.frame.size.height *.45)],
+                                  [NSValue valueWithCGPoint:CGPointMake(self.view.frame.size.width *.55,self.view.frame.size.height *.55)], nil];
     imageView.hipVertices = [NSMutableArray arrayWithObjects:
-                                [NSValue valueWithCGPoint:CGPointMake(400,400)],
-                                [NSValue valueWithCGPoint:CGPointMake(500,500)],
-                                [NSValue valueWithCGPoint:CGPointMake(600,600)], nil];
+                             [NSValue valueWithCGPoint:CGPointMake(self.view.frame.size.width *.6,self.view.frame.size.height *.6)],
+                             [NSValue valueWithCGPoint:CGPointMake(self.view.frame.size.width *.7,self.view.frame.size.height *.7)],
+                             [NSValue valueWithCGPoint:CGPointMake(self.view.frame.size.width *.8,self.view.frame.size.height *.8)], nil];
     [imageView setNeedsDisplay];
     
     [saveButton setHidden:false];

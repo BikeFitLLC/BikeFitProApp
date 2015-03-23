@@ -203,22 +203,9 @@
                     <view key="view" contentMode="scaleToFill" id="Mzm-5q-KAe">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0uj-mN-rrY">
-                                <rect key="frame" x="0.0" y="-128" width="775" height="1280"/>
-                            </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vIZ-58-JPP" customClass="LegAngleImageView">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="1280"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="pBH-o2-w3K"/>
-                    <connections>
-                        <outlet property="drawingView" destination="vIZ-58-JPP" id="FxR-1y-xBO"/>
-                        <outlet property="imageView" destination="0uj-mN-rrY" id="vyn-V8-NTb"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xyo-q7-UDm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -236,9 +223,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="seT-hD-zvV">
-                                <rect key="frame" x="0.0" y="-128" width="768" height="1280"/>
-                            </imageView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i93-Hs-PIT" customClass="NoteImageView">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1280"/>
                                 <subviews>
@@ -257,7 +241,6 @@
                     <navigationItem key="navigationItem" id="iuE-uG-Arb"/>
                     <connections>
                         <outlet property="angleLable" destination="rR4-xh-kzf" id="BSO-2r-P4f"/>
-                        <outlet property="imageView" destination="seT-hD-zvV" id="9Ek-nC-ooI"/>
                         <outlet property="previewImage" destination="i93-Hs-PIT" id="lYw-6g-Hp3"/>
                     </connections>
                 </viewController>
@@ -315,17 +298,6 @@
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aD3-Ka-eYn" customClass="NoteImageView">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QJL-04-MOy">
-                                        <rect key="frame" x="49" y="911" width="61" height="42"/>
-                                        <state key="normal" title="Play">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="play" destination="Y5e-F2-iwd" eventType="touchUpInside" id="ooX-an-gCA"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -601,12 +573,6 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uta-3q-sZk" customClass="VarusDrawingView">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <subviews>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.20000000298023224" contentMode="center" fixedFrame="YES" image="2_heel_right.png" translatesAutoresizingMaskIntoConstraints="NO" id="Xcx-T9-yZb">
-                                        <rect key="frame" x="0.0" y="-300" width="768" height="1246"/>
-                                    </imageView>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.20000000298023224" contentMode="center" fixedFrame="YES" image="2_heels_left.png" translatesAutoresizingMaskIntoConstraints="NO" id="MtE-79-Swe">
-                                        <rect key="frame" x="0.0" y="-300" width="768" height="1246"/>
-                                    </imageView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XLB-7G-1Nd">
                                         <rect key="frame" x="25" y="86" width="550" height="140"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -615,17 +581,6 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dpg-2u-xgf">
-                                        <rect key="frame" x="20" y="280" width="110" height="68"/>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="tintColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="Take Photo">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="takePhoto" destination="o3a-Ce-arL" eventType="touchUpInside" id="VAd-SA-wGC"/>
-                                        </connections>
-                                    </button>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V5z-06-bdn">
                                         <rect key="frame" x="543" y="108" width="137" height="84"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -646,12 +601,9 @@
                     <navigationItem key="navigationItem" id="HmP-ue-Dwu"/>
                     <connections>
                         <outlet property="angleLabel" destination="XLB-7G-1Nd" id="cJ9-nY-wHV"/>
-                        <outlet property="leftLegImageView" destination="MtE-79-Swe" id="2pX-zc-XdC"/>
                         <outlet property="previewImage" destination="uta-3q-sZk" id="sUE-KE-cCB"/>
                         <outlet property="previewView" destination="YYV-mj-RJT" id="f9W-KR-cjl"/>
-                        <outlet property="rightLegImageView" destination="Xcx-T9-yZb" id="Ez6-RQ-hTU"/>
                         <outlet property="saveButton" destination="V5z-06-bdn" id="6WD-hA-VAx"/>
-                        <outlet property="takePhotoButton" destination="Dpg-2u-xgf" id="sGt-EA-H2l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zI0-cN-tIc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -732,11 +684,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="ThF-V5-Ufb"/>
                     <navigationItem key="navigationItem" id="x13-Gg-YwZ"/>
+                    <keyCommands/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <connections>
-                        <outlet property="previewImage" destination="FTa-nf-Rkh" id="KpC-uv-yL8"/>
-                        <outlet property="previewView" destination="Jox-P6-Gxh" id="kwG-nL-Be9"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I7O-AB-8je" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -766,8 +715,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="2_heel_right.png" width="768" height="1246"/>
-        <image name="2_heels_left.png" width="768" height="1246"/>
         <image name="BikeFitIcon-29x29.png" width="29" height="29"/>
         <image name="Cog_15t_29x29.png" width="29" height="29"/>
         <image name="Ho_foot_Arches_left.png" width="768" height="1800"/>

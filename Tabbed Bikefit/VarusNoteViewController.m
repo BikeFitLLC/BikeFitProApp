@@ -36,26 +36,44 @@
 {
     [super viewDidLoad];
     [recordButton setHidden:TRUE];
+    leftLegImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"2_heels_left.png"]];
+    leftLegImageView.alpha = .2;
+    leftLegImageView.frame = self.view.frame;
+    [self.view addSubview:leftLegImageView];
+
+    rightLegImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"2_heel_right.png"]];
+    rightLegImageView.alpha = .2;
+    rightLegImageView.frame = self.view.frame;
+    [self.view addSubview:rightLegImageView];
     
     angleLabel.font = [UIFont fontWithName:@"Helvetica" size:100.0];
     
-    barYPosition = 820;
+    barYPosition = self.view.frame.size.height *.8;
     startPointLocation = CGPointMake(0, barYPosition);
     [(VarusDrawingView *)previewImage setStartPointLocation:startPointLocation];
     [(VarusDrawingView *)previewImage setBarYPosition:barYPosition];
     
     //Add images for dragbar
-    upDownImageView =[[UIImageView alloc] initWithFrame:CGRectMake(0,0,100,150)];
+    upDownImageView =[[UIImageView alloc] initWithFrame:CGRectMake(0,
+                                                                   0,
+                                                                   self.view.frame.size.width *.1,
+                                                                   self.view.frame.size.width * .2)];
     upDownImageView.image=[UIImage imageNamed:@"up_down_arrows.png"];
     [self.view addSubview:upDownImageView];
     
-    endPointLocation = CGPointMake(768,barYPosition);
+    endPointLocation = CGPointMake(self.view.frame.size.height * .7, barYPosition);
     [(VarusDrawingView *)previewImage setEndPointLocation:endPointLocation];
-    rotateArrowsImageView =[[UIImageView alloc] initWithFrame:CGRectMake(0,0,100,150)];
+    rotateArrowsImageView =[[UIImageView alloc] initWithFrame:CGRectMake(0,
+                                                                         0,
+                                                                         self.view.frame.size.width *.1,
+                                                                         self.view.frame.size.width * .2)];
     rotateArrowsImageView.image=[UIImage imageNamed:@"curved_arrows.png"];
     [self.view addSubview:rotateArrowsImageView];
     
-    ffmdImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,349,200)];
+    ffmdImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,
+                                                                  0,
+                                                                  self.view.frame.size.width *.1,
+                                                                  self.view.frame.size.width * .2)];
     ffmdImageView.image = [UIImage imageNamed:@"FFMD_Dial_only-200.png"];
     ffmdImageView.layer.anchorPoint = CGPointMake(0.5, 0.15);
     [self.view addSubview:ffmdImageView];

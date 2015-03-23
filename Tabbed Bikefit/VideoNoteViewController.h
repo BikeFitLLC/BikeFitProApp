@@ -25,6 +25,7 @@
     UIButton *previousImageButton;
     UIButton *saveButton;
     UIButton *reverseCameraButton;
+    UIButton *playButton;
     IBOutlet UIButton *takePhotoButton;
     
     //AVCapture

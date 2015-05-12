@@ -26,6 +26,7 @@
 #import "KopsViewController.h"
 #import "ImageViewerViewController.h"
 #import "AngleImageViewerViewController.h"
+#import "SaddleTiltNoteViewController.h"
 #import "VarusViewerViewController.h"
 #import "BikeFitTableViewCell.h"
 
@@ -237,6 +238,7 @@
                                             @"Cleat Medial/Lateral (Stance width)",
                                             @"Foot Tilt",
                                             @"Foot Pressure",
+                                            @"Saddle Tilt",
                                       nil];
         [actionSheet showInView:self.view];
     }
@@ -300,6 +302,9 @@
             break;
         case 6:
             segueIdentifier = @"addfootnotesegue";
+            break;
+        case 7:
+            segueIdentifier = @"addsaddletiltnotesegue";
             break;
     }
     if(![segueIdentifier isEqualToString:@""])
@@ -367,6 +372,11 @@
     else if([ident isEqualToString:@"addkopsnotesegue"])
     {
         KopsViewController *vc = [segue destinationViewController];
+        [vc setBikeInfo:self];
+    }
+    else if([ident isEqualToString:@"addsaddletiltnotesegue"])
+    {
+        SaddleTiltNoteViewController *vc = [segue destinationViewController];
         [vc setBikeInfo:self];
     }
     else if([ident isEqualToString:@"ViewKneeNote"])

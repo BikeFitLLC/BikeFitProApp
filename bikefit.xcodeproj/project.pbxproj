@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		00A382F71A3B710100791FEE /* BikeFitTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A382F61A3B710100791FEE /* BikeFitTableViewCell.m */; };
+		00B8E3751B0170A600A78EFA /* SaddleTiltNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B8E3741B0170A600A78EFA /* SaddleTiltNoteViewController.m */; };
+		00B8E3781B01758E00A78EFA /* SaddleTiltView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B8E3771B01758E00A78EFA /* SaddleTiltView.m */; };
+		00B8E37B1B01892F00A78EFA /* SaddleTiltNote.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B8E37A1B01892F00A78EFA /* SaddleTiltNote.m */; };
 		00D3FE991A83D9AC0017BF1D /* libPods-AWSiOSSDKv2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00D3FE981A83D9AC0017BF1D /* libPods-AWSiOSSDKv2.a */; };
 		00F813541A2ADE1300F1EA6D /* LegAngleViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F813531A2ADE1300F1EA6D /* LegAngleViewViewController.m */; };
 		00FF371A1A36302E00FD1E45 /* KW_front_laser_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 00FF37191A36302E00FD1E45 /* KW_front_laser_2.png */; };
@@ -130,6 +133,12 @@
 /* Begin PBXFileReference section */
 		00A382F51A3B710100791FEE /* BikeFitTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BikeFitTableViewCell.h; sourceTree = "<group>"; };
 		00A382F61A3B710100791FEE /* BikeFitTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BikeFitTableViewCell.m; sourceTree = "<group>"; };
+		00B8E3731B0170A600A78EFA /* SaddleTiltNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaddleTiltNoteViewController.h; sourceTree = "<group>"; };
+		00B8E3741B0170A600A78EFA /* SaddleTiltNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaddleTiltNoteViewController.m; sourceTree = "<group>"; };
+		00B8E3761B01758E00A78EFA /* SaddleTiltView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaddleTiltView.h; sourceTree = "<group>"; };
+		00B8E3771B01758E00A78EFA /* SaddleTiltView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaddleTiltView.m; sourceTree = "<group>"; };
+		00B8E3791B01892F00A78EFA /* SaddleTiltNote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaddleTiltNote.h; sourceTree = "<group>"; };
+		00B8E37A1B01892F00A78EFA /* SaddleTiltNote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaddleTiltNote.m; sourceTree = "<group>"; };
 		00D3FE981A83D9AC0017BF1D /* libPods-AWSiOSSDKv2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-AWSiOSSDKv2.a"; path = "Pods/build/Debug-iphoneos/libPods-AWSiOSSDKv2.a"; sourceTree = "<group>"; };
 		00F813521A2ADE1300F1EA6D /* LegAngleViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LegAngleViewViewController.h; sourceTree = "<group>"; };
 		00F813531A2ADE1300F1EA6D /* LegAngleViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LegAngleViewViewController.m; sourceTree = "<group>"; };
@@ -508,6 +517,8 @@
 				5DA7AE5F18BED17300CA0DEB /* SpindleNote.m */,
 				5DB3607618C6A28F00191385 /* KopsNote.h */,
 				5DB3607718C6A28F00191385 /* KopsNote.m */,
+				00B8E3791B01892F00A78EFA /* SaddleTiltNote.h */,
+				00B8E37A1B01892F00A78EFA /* SaddleTiltNote.m */,
 			);
 			name = "Note Classes";
 			sourceTree = "<group>";
@@ -596,6 +607,8 @@
 				00F813531A2ADE1300F1EA6D /* LegAngleViewViewController.m */,
 				5DB3607318C694DA00191385 /* KopsViewController.h */,
 				5DB3607418C694DA00191385 /* KopsViewController.m */,
+				00B8E3731B0170A600A78EFA /* SaddleTiltNoteViewController.h */,
+				00B8E3741B0170A600A78EFA /* SaddleTiltNoteViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -615,6 +628,8 @@
 				5D7E1F4618BBE46E00689276 /* VarusDrawingView.m */,
 				5DA7AE5B18BECCC800CA0DEB /* SpindleView.h */,
 				5DA7AE5C18BECCC800CA0DEB /* SpindleView.m */,
+				00B8E3761B01758E00A78EFA /* SaddleTiltView.h */,
+				00B8E3771B01758E00A78EFA /* SaddleTiltView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -839,14 +854,17 @@
 				5D192BBA17FE55ED0046CC16 /* LegAngleImageView.m in Sources */,
 				5D6F3A9118145FAC001BD897 /* BikeFitViewController.m in Sources */,
 				5DB3607818C6A28F00191385 /* KopsNote.m in Sources */,
+				00B8E3751B0170A600A78EFA /* SaddleTiltNoteViewController.m in Sources */,
 				5D9EA2371857EA2100E63682 /* FitNote.m in Sources */,
 				5D7E1F4A18BC0F1500689276 /* VarusNote.m in Sources */,
 				5D9904B118ECD52500FE5765 /* AngleImageViewerViewController.m in Sources */,
 				5DB3607518C694DA00191385 /* KopsViewController.m in Sources */,
 				5DA7AE6018BED17300CA0DEB /* SpindleNote.m in Sources */,
+				00B8E37B1B01892F00A78EFA /* SaddleTiltNote.m in Sources */,
 				5D9E2161185FE897006BA0B3 /* FootBottomNoteViewController.m in Sources */,
 				00F813541A2ADE1300F1EA6D /* LegAngleViewViewController.m in Sources */,
 				5DBC20C418E4E24900BF5957 /* ImageViewerViewController.m in Sources */,
+				00B8E3781B01758E00A78EFA /* SaddleTiltView.m in Sources */,
 				5D9E215A185CE8EE006BA0B3 /* KneeViewNote.m in Sources */,
 				5DC9305F19200D2000EB733C /* AMZNLogoutDelegate.m in Sources */,
 				5D9EA23A1859400300E63682 /* TextFitNoteViewController.m in Sources */,

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14C109" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="4">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <scenes>
         <!--Athlete Info-->
@@ -286,11 +286,31 @@
                         <segue destination="565-HD-WV3" kind="push" identifier="ViewVarusNote" id="gqd-os-5fh"/>
                         <segue destination="PPw-Pc-d98" kind="push" identifier="addkopsnotesegue" id="qr9-9e-QT6"/>
                         <segue destination="5rp-Lt-7kw" kind="push" identifier="ViewKopsNote" id="jcp-xU-qQH"/>
+                        <segue destination="O9X-JH-a5Z" kind="push" identifier="addsaddletiltnotesegue" id="jDg-UW-Atg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8En-y0-jNH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-764" y="4125"/>
+        </scene>
+        <!--Saddle Tilt Note View Controller-->
+        <scene sceneID="a34-86-JHK">
+            <objects>
+                <viewController id="O9X-JH-a5Z" customClass="SaddleTiltNoteViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kSv-PI-1FS"/>
+                        <viewControllerLayoutGuide type="bottom" id="4fF-qN-Ow7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="etJ-Td-6md" customClass="SaddleTiltView">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="JdG-kl-esj"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4rN-fz-9bm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="225" y="3570"/>
         </scene>
         <!--Angle Image Viewer View Controller-->
         <scene sceneID="uaU-65-39I">

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="KrY-cd-1qb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="KrY-cd-1qb">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <scenes>
         <!--Athlete Info-->
@@ -93,14 +93,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="De8-zg-Dqh">
-                                <rect key="frame" x="0.0" y="409" width="768" height="44"/>
+                                <rect key="frame" x="0.0" y="408" width="600" height="44"/>
                                 <items>
                                     <barButtonItem title="Client List" width="124" id="ByU-WN-6sI">
                                         <connections>
                                             <segue destination="fUe-ut-g7q" kind="push" identifier="clientlistsegue" id="onu-fe-MKZ"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="New Fit" width="361" id="wPi-PM-jUS">
+                                    <barButtonItem title="New Fit" width="125" id="wPi-PM-jUS">
                                         <connections>
                                             <action selector="newAthlete" destination="6uW-7z-7D4" id="GJr-1X-AnQ"/>
                                         </connections>

@@ -7,13 +7,16 @@
 //
 
 #import "FinalNotesViewController.h"
+#import "BikeFitTabBarController.h"
 
 @implementation FinalNotesViewController
 
 - (void) viewDidLoad
 {
     bikeDimensionsImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Bike_road_diagram_ABCD"]];
-    bikeDimensionsImage.frame = CGRectMake(0,30,750,527);
+    bikeDimensionsImage.frame = CGRectMake(0,30,
+                                           self.view.frame.size.width,
+                                           self.view.frame.size.height *.5 );
     [self.view addSubview:bikeDimensionsImage];
     
     dimensionsFieldNames = [[NSMutableArray alloc] initWithObjects:@"A: Saddle Height",
@@ -58,17 +61,17 @@
 
 -(UITableView *) makeDimensionTableView
 {
-    CGFloat x = 0;
-    CGFloat y = 600;
-    CGFloat width = self.view.frame.size.width;
-    CGFloat height = [dimensionsFieldNames count] * 60 + 100;
-    CGRect tableFrame = CGRectMake(x, y, width, height);
+    UITabBarController *tb = (BikeFitTabBarController *)self.parentViewController;
+    CGRect tableFrame = CGRectMake(0,
+                                   self.view.frame.size.height *.6,
+                                   self.view.frame.size.width,
+                                   self.view.frame.size.height *.4 - tb.tabBar.frame.size.height);
     
     UITableView *tableView = [[UITableView alloc]initWithFrame:tableFrame style:UITableViewStyleGrouped];
     
-    tableView.rowHeight = 60;
-    tableView.sectionFooterHeight = 22;
-    tableView.sectionHeaderHeight = 22;
+    tableView.rowHeight = self.view.frame.size.height *.07;
+    tableView.sectionFooterHeight = self.view.frame.size.height *.03;
+    tableView.sectionHeaderHeight = self.view.frame.size.height *.03;
     tableView.scrollEnabled = YES;
     tableView.showsVerticalScrollIndicator = YES;
     tableView.userInteractionEnabled = YES;
@@ -90,6 +93,8 @@
     if (!cell)
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell.textLabel.adjustsFontSizeToFitWidth = YES;
+        cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
     }
     else
     {

@@ -57,7 +57,6 @@
     previewView = [[UIView alloc] initWithFrame:self.view.frame];
     [self.view addSubview:previewView];
 
-
     //
     //Setup the buttons and other stuff
     //
@@ -134,6 +133,7 @@
     takePhotoButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     takePhotoButton.backgroundColor = [UIColor blackColor];
     takePhotoButton.alpha = .5;
+    takePhotoButton.hidden = YES;
     [takePhotoButton setTitle:@"Take Photo" forState:UIControlStateNormal];
     [takePhotoButton addTarget:self action:@selector(takePhoto) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:takePhotoButton];

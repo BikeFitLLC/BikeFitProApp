@@ -50,7 +50,11 @@
     
     //Create label to display the url for this fit
     urlButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [urlButton setFrame:CGRectMake(450,150,100,50)];
+    [urlButton setFrame:CGRectMake(
+                                   self.view.frame.size.width * .6,
+                                   self.view.frame.size.height * .1,
+                                   100,
+                                   50)];
     [urlButton setTitle:@"View Fit" forState:UIControlStateNormal];
     [urlButton addTarget:self
                action:@selector(openFitUrl)
@@ -61,7 +65,11 @@
     
     //Create label to display the url for this fit
     emailFitButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [emailFitButton setFrame:CGRectMake(250,150,100,50)];
+    [emailFitButton setFrame:CGRectMake(
+                                        self.view.frame.size.width * .1,
+                                        self.view.frame.size.height * .1,
+                                        100,
+                                        50)];
     [emailFitButton setTitle:@"Email Fit" forState:UIControlStateNormal];
     [emailFitButton addTarget:self
                   action:@selector(emailFit)
@@ -124,14 +132,14 @@
 -(UITableView *) makeInfoTableView
 {
     CGFloat x = 0;
-    CGFloat y = self.view.frame.size.width *.4;;
+    CGFloat y = self.view.frame.size.height *.3;
     CGFloat width = self.view.frame.size.width;
-    CGFloat height = self.view.frame.size.height * .4;
+    CGFloat height = toolbar.frame.origin.y - y; // - y - self.tabBarController.tabBar.frame.size.height - toolbar.frame.size.height;
     CGRect tableFrame = CGRectMake(x, y, width, height);
     
     UITableView *tableView = [[UITableView alloc]initWithFrame:tableFrame style:UITableViewStylePlain];
     
-    tableView.rowHeight = 60;
+    tableView.rowHeight = self.view.frame.size.height *.07;;
     tableView.sectionFooterHeight = 22;
     tableView.sectionHeaderHeight = 22;
     tableView.scrollEnabled = YES;

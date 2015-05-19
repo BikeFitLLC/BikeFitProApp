@@ -115,11 +115,12 @@
                     <navigationItem key="navigationItem" id="vsR-8a-KDp"/>
                     <connections>
                         <outlet property="clientListButton" destination="ByU-WN-6sI" id="pys-my-Vgv"/>
+                        <outlet property="toolbar" destination="De8-zg-Dqh" id="hpg-te-KR4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PjF-Cr-VYM" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1481" y="-1650"/>
+            <point key="canvasLocation" x="1601" y="-1666"/>
         </scene>
         <!--Athlete Picker View Controller-->
         <scene sceneID="oxU-6o-LGx">
@@ -562,14 +563,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YYV-mj-RJT">
-                                <rect key="frame" x="0.0" y="0.0" width="760" height="1040"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9YB-mf-YgG">
-                                <rect key="frame" x="174" y="295" width="420" height="435"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </imageView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uta-3q-sZk" customClass="VarusDrawingView">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <subviews>
@@ -581,17 +574,6 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V5z-06-bdn">
-                                        <rect key="frame" x="543" y="108" width="137" height="84"/>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="tintColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="Save Angle">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="saveAngle" destination="o3a-Ce-arL" eventType="touchUpInside" id="e8G-Xk-72P"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
@@ -602,8 +584,6 @@
                     <connections>
                         <outlet property="angleLabel" destination="XLB-7G-1Nd" id="cJ9-nY-wHV"/>
                         <outlet property="previewImage" destination="uta-3q-sZk" id="sUE-KE-cCB"/>
-                        <outlet property="previewView" destination="YYV-mj-RJT" id="f9W-KR-cjl"/>
-                        <outlet property="saveButton" destination="V5z-06-bdn" id="6WD-hA-VAx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zI0-cN-tIc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -671,12 +651,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jox-P6-Gxh">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="1137"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FTa-nf-Rkh" customClass="LegAngleImageView">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="1048"/>
+                                <rect key="frame" x="159" y="-137" width="768" height="1048"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>

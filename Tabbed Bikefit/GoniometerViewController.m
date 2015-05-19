@@ -44,6 +44,9 @@
     previewImage.backgroundColor = [UIColor clearColor];
     [self.view addSubview:previewImage];
     
+    [self.view bringSubviewToFront:recordButton];
+    [self.view bringSubviewToFront:saveButton];
+    
     CGFloat oneThirdViewWidth = self.view.frame.size.width/3;
     
     kneeAngleButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];

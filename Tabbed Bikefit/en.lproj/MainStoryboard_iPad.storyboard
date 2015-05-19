@@ -115,6 +115,7 @@
                     <navigationItem key="navigationItem" id="nTN-aB-RIu"/>
                     <connections>
                         <outlet property="clientListButton" destination="1Wn-F8-Awz" id="jEP-hr-pPd"/>
+                        <outlet property="toolbar" destination="2mw-Mf-Vld" id="aUz-GS-9Ng"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="10" sceneMemberID="firstResponder"/>

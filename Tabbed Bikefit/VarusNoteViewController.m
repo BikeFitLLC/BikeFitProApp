@@ -61,8 +61,6 @@
     upDownImageView.image=[UIImage imageNamed:@"up_down_arrows.png"];
     [self.view addSubview:upDownImageView];
     
-    endPointLocation = CGPointMake(self.view.frame.size.height * .7, barYPosition);
-    [(VarusDrawingView *)previewImage setEndPointLocation:endPointLocation];
     rotateArrowsImageView =[[UIImageView alloc] initWithFrame:CGRectMake(0,
                                                                          0,
                                                                          self.view.frame.size.width *.1,
@@ -77,6 +75,9 @@
     ffmdImageView.image = [UIImage imageNamed:@"FFMD_Dial_only-200.png"];
     ffmdImageView.layer.anchorPoint = CGPointMake(0.5, 0.15);
     [self.view addSubview:ffmdImageView];
+    
+    endPointLocation = CGPointMake(self.view.frame.size.height * .7, barYPosition);
+    [(VarusDrawingView *)previewImage setEndPointLocation:endPointLocation];
 
     //now that the dragbar images are added to the view, position them correctly
     [self updateArrowImages];

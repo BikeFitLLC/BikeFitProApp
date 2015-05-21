@@ -31,7 +31,7 @@
     
     //Setup the lazer line
     self.overlayPath = [[UIBezierPath alloc] init];
-    self.overlayPath.LineWidth = 3;
+    self.overlayPath.lineWidth = 3;
     
     //Add the dragging circle
     UIBezierPath *anglePath = [[UIBezierPath alloc] init];
@@ -40,7 +40,7 @@
     
     
     CGPoint startPoint;
-    startPoint.x = self.bounds.size.width /2;
+    startPoint.x = self.frame.size.width /2;
     startPoint.y = 0;
     
     [self.overlayPath moveToPoint:startPoint];

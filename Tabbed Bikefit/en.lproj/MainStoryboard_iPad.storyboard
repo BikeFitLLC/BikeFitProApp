@@ -626,64 +626,12 @@
                                 <rect key="frame" x="0.0" y="0.0" width="760" height="1040"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dlW-dR-vul">
-                                <rect key="frame" x="174" y="295" width="420" height="435"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mrE-ZK-XGv" customClass="VarusDrawingView">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                                <subviews>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.20000000000000001" contentMode="center" fixedFrame="YES" image="2_heel_right.png" translatesAutoresizingMaskIntoConstraints="NO" id="OEc-yv-dqP">
-                                        <rect key="frame" x="0.0" y="-300" width="768" height="1246"/>
-                                    </imageView>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.20000000000000001" contentMode="center" fixedFrame="YES" image="2_heels_left.png" translatesAutoresizingMaskIntoConstraints="NO" id="G0y-yF-h8Z">
-                                        <rect key="frame" x="0.0" y="-300" width="768" height="1246"/>
-                                    </imageView>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vwG-yz-bmO">
-                                        <rect key="frame" x="25" y="86" width="550" height="140"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <color key="tintColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nUy-1B-2ZB">
-                                        <rect key="frame" x="20" y="280" width="110" height="68"/>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="tintColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="Take Photo">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="takePhoto" destination="yHS-iz-szO" eventType="touchUpInside" id="0rh-pZ-Eu4"/>
-                                        </connections>
-                                    </button>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gDd-Aq-oZ2">
-                                        <rect key="frame" x="543" y="108" width="137" height="84"/>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="tintColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="Save Angle">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="saveAngle" destination="yHS-iz-szO" eventType="touchUpInside" id="VDf-Mb-eLL"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="A2k-16-WaB"/>
                     <connections>
-                        <outlet property="angleLabel" destination="vwG-yz-bmO" id="Zr8-wd-OVZ"/>
-                        <outlet property="leftLegImageView" destination="G0y-yF-h8Z" id="yCp-Ib-zSV"/>
-                        <outlet property="previewImage" destination="mrE-ZK-XGv" id="eZQ-A7-a9o"/>
                         <outlet property="previewView" destination="kAD-Li-Gys" id="TfM-sK-goc"/>
-                        <outlet property="rightLegImageView" destination="OEc-yv-dqP" id="goM-ih-yUy"/>
-                        <outlet property="saveButton" destination="gDd-Aq-oZ2" id="Vt6-gv-Ofr"/>
-                        <outlet property="takePhotoButton" destination="nUy-1B-2ZB" id="dDE-fU-IED"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xpU-Oo-OA2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -797,8 +745,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="2_heel_right.png" width="768" height="1246"/>
-        <image name="2_heels_left.png" width="768" height="1246"/>
         <image name="BikeFitIcon-29x29.png" width="29" height="29"/>
         <image name="Cog_15t_29x29.png" width="29" height="29"/>
         <image name="Ho_foot_Arches_left.png" width="768" height="1800"/>

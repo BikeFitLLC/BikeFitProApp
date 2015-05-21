@@ -134,7 +134,7 @@
     CGFloat x = 0;
     CGFloat y = self.view.frame.size.height *.3;
     CGFloat width = self.view.frame.size.width;
-    CGFloat height = toolbar.frame.origin.y - y; // - y - self.tabBarController.tabBar.frame.size.height - toolbar.frame.size.height;
+    CGFloat height = toolbar.frame.origin.y - y;
     CGRect tableFrame = CGRectMake(x, y, width, height);
     
     UITableView *tableView = [[UITableView alloc]initWithFrame:tableFrame style:UITableViewStylePlain];

@@ -532,6 +532,7 @@
 {
     //this will be checked in captureOutput method
     [saveButton setHidden:NO];
+    [takePhotoButton setHidden:YES];
     takingPhoto = true;
 }
 

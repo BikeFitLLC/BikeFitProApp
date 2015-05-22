@@ -49,9 +49,6 @@
     angleLabel.text = @"Angle";
     [self.view addSubview:angleLabel];
     
-    takePhotoButton.hidden = false;
-    [self.view bringSubviewToFront:takePhotoButton];
-    
     [recordButton setHidden:TRUE];
     leftLegImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"2_heels_left.png"]];
     leftLegImageView.alpha = .2;
@@ -76,6 +73,22 @@
     [(VarusDrawingView *)previewImage setBarYPosition:barYPosition];
     [self.view addSubview:previewImage];
     
+    [self.view bringSubviewToFront:takePhotoButton];
+    takePhotoButton.hidden = false;
+    takePhotoButton.frame = CGRectMake(self.view.frame.size.width *.7,
+                                       self.navigationController.navigationBar.frame.size.height,
+                                       self.view.frame.size.width *.3,
+                                       self.view.frame.size.height *.1);
+
+    [self.view bringSubviewToFront:saveButton];
+    saveButton.frame = CGRectMake(self.view.frame.size.width *.7,
+                                  self.navigationController.navigationBar.frame.size.height,
+                                  self.view.frame.size.width *.3,
+                                  self.view.frame.size.height *.1);
+    
+    [self.view bringSubviewToFront:reverseCameraButton];
+
+    
     //Add images for dragbar
     upDownImageView =[[UIImageView alloc] initWithFrame:CGRectMake(250,
                                                                    0,
@@ -93,8 +106,8 @@
     
     ffmdImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,
                                                                   0,
-                                                                  self.view.frame.size.width *.1,
-                                                                  self.view.frame.size.width * .2)];
+                                                                  self.view.frame.size.width *.3,
+                                                                  self.view.frame.size.width *.3/1.74)];
     ffmdImageView.image = [UIImage imageNamed:@"FFMD_Dial_only-200.png"];
     ffmdImageView.layer.anchorPoint = CGPointMake(0.5, 0.15);
     [self.view addSubview:ffmdImageView];

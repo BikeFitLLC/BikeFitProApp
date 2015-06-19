@@ -55,6 +55,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
     UIImageView *cyclistImage = [[UIImageView alloc] init];
     cyclistImage.frame = CGRectMake(
                                  0,
@@ -141,6 +144,12 @@
      atScrollPosition:UITableViewScrollPositionBottom
      animated:YES
      ];
+}
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated { //Implement this method
+    [super setEditing:editing animated:animated];
+    [rightNotesTable setEditing:editing animated:animated];
+    [leftNotesTable setEditing:editing animated:animated];
 }
 
 - (void)didReceiveMemoryWarning
@@ -306,6 +315,40 @@
     }
     
     return @"Error";
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath { //implement the delegate method
+    
+    if (editingStyle == UITableViewCellEditingStyleDelete)
+    {
+        if(tableView == leftNotesTable)
+        {
+            [leftNotes removeObjectAtIndex:indexPath.row];
+            [AthletePropertyModel setProperty:@"LeftNotes" value:leftNotes];
+        }
+        if(tableView == rightNotesTable)
+        {
+            [rightNotes removeObjectAtIndex:indexPath.row];
+            [AthletePropertyModel setProperty:@"RightNotes" value:rightNotes];
+        }
+        
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
+
+// Override to support conditional editing of the table view.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(tableView == leftNotesTable && [leftNotes count] == [indexPath row])
+    {
+        return NO;
+    }
+    if(tableView == rightNotesTable && [rightNotes count] == [indexPath row])
+    {
+        return NO;
+    }
+    
+    return YES;
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex

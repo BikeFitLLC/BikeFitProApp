@@ -131,6 +131,21 @@ static NSMutableDictionary *athleteProperties;
     }
 }
 
++ (BFTask *) removeAthleteFromAWS: (NSString*) fitID
+{
+    [[[AthletePropertyModel loadAthleteFromAWS:fitID] continueWithBlock:^id(BFTask *task)
+    {
+        [AthletePropertyModel setProperty:AWS_FIT_ATTRIBUTE_HIDDEN value:@"YES"];
+        return task;
+    }] continueWithBlock:^id(BFTask *task)
+    {
+        [AthletePropertyModel saveAthleteToAWS];
+        return task;
+    }];
+    
+    
+}
+
 ////////////////////////////////////////////////////
 //Gets a list of Athletes form AWS
 ////////////////////////////////////////////////////
@@ -164,6 +179,7 @@ static NSMutableDictionary *athleteProperties;
                                    AWS_FIT_ATTRIBUTE_LASTNAME,
                                    AWS_FIT_ATTRIBUTE_EMAIL,
                                    AWS_FIT_ATTRIBUTE_LASTUPDATED,
+                                   AWS_FIT_ATTRIBUTE_HIDDEN,
                                    nil];
     
     
@@ -171,48 +187,6 @@ static NSMutableDictionary *athleteProperties;
         return [ddb query:queryInput];
     //} //end AWS block
 
-    /*
-    //get local files
-    NSError *error = [[NSError alloc] init];
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *path = [paths objectAtIndex:0];
-    NSArray * directoryContents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:path error:&error];
-    
-    for( NSString *filename in directoryContents)
-    {
-        if([filename hasSuffix:@".fit"])
-        {
-            NSString *fitid = [filename stringByDeletingPathExtension];
-
-            NSData *localFileData = [NSData dataWithContentsOfFile:[NSString pathWithComponents:[NSArray arrayWithObjects:path,filename,nil]]];
-            NSMutableDictionary *localFileDictionary = [NSKeyedUnarchiver unarchiveObjectWithData:localFileData];
-            
-            NSMutableDictionary *athleteAttributes = [[NSMutableDictionary alloc] init];
-            for( NSString *key in localFileDictionary )
-            {
-                [athleteAttributes setObject:[localFileDictionary valueForKey:key] forKey:key];
-            }
-            [athleteAttributes setObject:[NSNumber numberWithBool:true] forKey:FIT_ATTRIBUTE_FROMFILESYSTEM];
-            bool addLocalFile = YES;
-            
-            //if aws returned this same fit, compare the last updated dates and keep the newest version
-            if([athletes objectForKey:fitid])
-            {
-                double localFileLastUpdate = [[athleteAttributes objectForKey:AWS_FIT_ATTRIBUTE_LASTUPDATED] doubleValue];
-                double awsLastUpdate = [[[athletes objectForKey:fitid] objectForKey:AWS_FIT_ATTRIBUTE_LASTUPDATED] doubleValue];
-                
-                addLocalFile = awsLastUpdate < localFileLastUpdate;
-            }
-            
-            if(addLocalFile)
-            {
-                [athletes setObject:athleteAttributes forKey:fitid];
-            }
-            
-        }
-    }
-    return athletes;
-     */
 }
 
 

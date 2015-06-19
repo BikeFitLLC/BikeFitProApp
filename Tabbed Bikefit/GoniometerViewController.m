@@ -46,6 +46,9 @@
     
     [self.view bringSubviewToFront:recordButton];
     [self.view bringSubviewToFront:saveButton];
+    [self.view bringSubviewToFront:previousImageButton];
+    [self.view bringSubviewToFront:nextImageButton];
+    
     
     CGFloat oneThirdViewWidth = self.view.frame.size.width/3;
     

@@ -14,6 +14,10 @@
 
 
 @interface AthleteInfoController ()
+{
+    UIView *logInReminder;
+    UILabel *loginReminderLabel;
+}
 
 @end
 
@@ -89,6 +93,11 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    if(logInReminder)
+    {
+        [logInReminder removeFromSuperview];
+    }
+    
     [self loadCleanPropertyList];
     [infoTableView reloadData];
     
@@ -105,6 +114,25 @@
     }
     
     [self updateUrlButtons];
+    
+    
+    if(![AmazonClientManager verifyUserKey])
+    {
+        logInReminder = [[UIView alloc] initWithFrame:self.view.frame];
+        logInReminder.backgroundColor = [UIColor blackColor];
+        logInReminder.alpha = .7;
+        
+        loginReminderLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,
+                                                                       0,
+                                                                       self.view.frame.size.width *.5,
+                                                                       self.view.frame.size.height *.3)];
+        loginReminderLabel.adjustsFontSizeToFitWidth = true;
+        loginReminderLabel.textColor = [UIColor whiteColor];
+        loginReminderLabel.text = @"Please Login In Order to Use Online Features";
+        
+        [logInReminder addSubview:loginReminderLabel];
+        [self.view addSubview:logInReminder];
+    }
 }
 
 - (void) updateUrlButtons
@@ -229,6 +257,12 @@
         inputView.backgroundColor = [UIColor blackColor];
         inputView.alpha = .8;
         
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                       initWithTarget:self
+                                       action:@selector(dismissKeyboard)];
+        
+        [self.view addGestureRecognizer:tap];
+        
         propertyNameText = [[UITextView alloc] initWithFrame:CGRectMake(
                                                 inputView.frame.size.width * .25,
                                                 inputView.frame.size.height *.2,
@@ -312,6 +346,10 @@
     }
     
 
+}
+
+-(void)dismissKeyboard {
+    [propertyNameText resignFirstResponder];
 }
 
 - (void) hideInputView

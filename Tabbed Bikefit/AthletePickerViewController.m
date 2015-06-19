@@ -41,24 +41,18 @@
     [athleteTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"athletecell"];
     [self.view addSubview:athleteTableView];
     
-    UIButton *loadButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    loadButton.frame = CGRectMake(0,0,
-                                  self.view.frame.size.width *.2,
-                                  self.view.frame.size.width *.1);
-    loadButton.titleLabel.font = [UIFont systemFontOfSize:24];
-    loadButton.backgroundColor = [UIColor blackColor];
-    loadButton.alpha = .5;
-    [loadButton setTitle:@"Load" forState:UIControlStateNormal];
-    [loadButton setCenter:CGPointMake(self.view.bounds.size.width * .5,
-                                      self.view.bounds.size.height *.7)];
-    [loadButton addTarget:self action:@selector(close) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:loadButton];
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     
     [self loadAthleteFileNames:documentsDirectory];
     return;
+}
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated { //Implement this method
+    [super setEditing:editing animated:animated];
+    [athleteTableView setEditing:editing animated:animated];
 }
 
 - (void)didReceiveMemoryWarning
@@ -80,12 +74,15 @@
         //Now that we have retrieved the fit items from AWS, put them into the dictionary
         for(NSMutableDictionary *athleteItem in [task.result items])
         {
-            NSMutableDictionary *athleteAttributes = [[NSMutableDictionary alloc] init];
-            for( NSString *key in athleteItem )
+            if(![athleteItem objectForKey:AWS_FIT_ATTRIBUTE_HIDDEN])
             {
-                [athleteAttributes setObject:[[athleteItem valueForKey:key] S] forKey:key];
+                NSMutableDictionary *athleteAttributes = [[NSMutableDictionary alloc] init];
+                for( NSString *key in athleteItem )
+                {
+                    [athleteAttributes setObject:[[athleteItem valueForKey:key] S] forKey:key];
+                }
+                [fits setObject:athleteAttributes forKey:[[athleteItem valueForKey:AWS_FIT_ATTRIBUTE_FITID] S]];
             }
-            [fits setObject:athleteAttributes forKey:[[athleteItem valueForKey:AWS_FIT_ATTRIBUTE_FITID] S]];
         }
         
         fitIds = [fits keysSortedByValueUsingComparator: ^(id obj1, id obj2){
@@ -113,17 +110,14 @@
 
 - (IBAction) close
 {
-    NSIndexPath *indexPath = [athleteTableView indexPathForSelectedRow];
-    NSString *key =  [fitIds objectAtIndex:[indexPath row]];
-
-    [[AthletePropertyModel loadAthleteFromAWS:key]
-        continueWithExecutor:[BFExecutor mainThreadExecutor] withBlock:^id(BFTask *task)
-        {
-            [self.navigationController popViewControllerAnimated:YES];
-            return nil;
-        }];
-
+    
 }
+
+- (IBAction) editTable
+{
+    [athleteTableView setEditing:true];
+}
+
 
 #pragma mark - Table view data source
 
@@ -159,55 +153,41 @@
     return cell;
 }
 
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath { //implement the delegate method
+    
+    if (editingStyle == UITableViewCellEditingStyleDelete)
+    {
+        [fits removeObjectForKey:[fitIds objectAtIndex:indexPath.row]];
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [AthletePropertyModel removeAthleteFromAWS:[fitIds objectAtIndex:indexPath.row]];
+    }
+}
 
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
- {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
- }
- else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }
- }
- */
+// Override to support conditional editing of the table view.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Return NO if you do not want the specified item to be editable.
+    return YES;
+}
 
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
- {
- }
- */
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+    
+    NSString *key =  [fitIds objectAtIndex:[indexPath row]];
+    [[AthletePropertyModel loadAthleteFromAWS:key]
+     continueWithExecutor:[BFExecutor mainThreadExecutor] withBlock:^id(BFTask *task)
+     {
+         [self.navigationController popViewControllerAnimated:YES];
+         return nil;
+     }];
+}
 
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
- {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
+-(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+}
 
-/*
- #pragma mark - Navigation
- 
- // In a story board-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
- {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- 
- */
+
 
 @end

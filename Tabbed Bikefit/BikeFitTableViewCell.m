@@ -28,33 +28,7 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     self.textLabel.adjustsFontSizeToFitWidth = YES;
-    if(!deleteButton)
-    {
-        deleteButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        deleteButton.frame = CGRectMake(0,0, 25, 25);
-        deleteButton.center = CGPointMake(self.contentView.frame.size.width - 30, self.contentView.frame.size.height/2);
-        deleteButton.alpha = .1;
-        deleteButton.titleLabel.font = [UIFont systemFontOfSize:24];
-        [deleteButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-        [deleteButton setTitle:@"X" forState:UIControlStateNormal];
-        [deleteButton addTarget:self action:@selector(enableDeleting:) forControlEvents:UIControlEventTouchUpInside];
-        [self.contentView addSubview:deleteButton];
-    }
-
-    if(!deleteButtonEnabled)
-    {
-        deleteButtonEnabled = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    }
-    [deleteButtonEnabled setBackgroundColor:[UIColor redColor]];
-    [deleteButtonEnabled setAlpha:1.0];
-    [deleteButtonEnabled setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [deleteButtonEnabled setTitle:@"DELETE" forState:UIControlStateNormal];
-    [deleteButtonEnabled sizeToFit];
-    deleteButtonEnabled.center = CGPointMake(self.contentView.frame.size.width - 60, self.contentView.superview.frame.size.height/2);
-    deleteButtonEnabled.hidden = true;
-    [deleteButtonEnabled addTarget:self action:@selector(deleteSelf:) forControlEvents:UIControlEventTouchUpInside];
-    [self.contentView addSubview:deleteButtonEnabled];
-        
+    
     return self;
 }
 

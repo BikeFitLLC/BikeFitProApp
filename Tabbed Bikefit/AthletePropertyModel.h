@@ -29,5 +29,6 @@
 + (BFTask *)loadAthleteFromAWS:(NSString*)fitID;
 + (BFTask *) getAthletesFromAws;
 + (void) setOfflineMode:(bool)offlineMode;
++ (BFTask *) removeAthleteFromAWS: (NSString*) fitID;
 
 @end

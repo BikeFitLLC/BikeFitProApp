@@ -11,12 +11,14 @@
 #import "AthletePropertyModel.h"
 #import "AmazonClientManager.h"
 #import "BikefitConstants.h"
+#import "AthleteInfoTableCell.h"
 
 
 @interface AthleteInfoController ()
 {
     UIView *logInReminder;
     UILabel *loginReminderLabel;
+    bool editing;
 }
 
 @end
@@ -26,6 +28,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
+    
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    editing = NO;
     
     UIImageView *logoImage = [[UIImageView alloc] init];
     logoImage.frame = CGRectMake(
@@ -118,21 +126,35 @@
     
     if(![AmazonClientManager verifyUserKey])
     {
-        logInReminder = [[UIView alloc] initWithFrame:self.view.frame];
+        logInReminder = [[UIView alloc] initWithFrame:self.parentViewController.view.frame];
         logInReminder.backgroundColor = [UIColor blackColor];
-        logInReminder.alpha = .7;
+        logInReminder.alpha = .9;
         
-        loginReminderLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,
-                                                                       0,
+        loginReminderLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width * .5,
+                                                                       self.view.frame.size.height * .5,
                                                                        self.view.frame.size.width *.5,
                                                                        self.view.frame.size.height *.3)];
+        [loginReminderLabel setCenter:CGPointMake(self.view.frame.size.width * .5,
+                                                 self.view.frame.size.height * .5)];
         loginReminderLabel.adjustsFontSizeToFitWidth = true;
+        loginReminderLabel.textAlignment = NSTextAlignmentCenter;
+        loginReminderLabel.numberOfLines = 2;
         loginReminderLabel.textColor = [UIColor whiteColor];
-        loginReminderLabel.text = @"Please Login In Order to Use Online Features";
+        loginReminderLabel.text = @"Please Login In Order \n to Use Online Features";
         
         [logInReminder addSubview:loginReminderLabel];
         [self.view addSubview:logInReminder];
     }
+}
+
+- (void)setEditing:(BOOL)editingInput animated:(BOOL)animated { //Implement this method
+    [super setEditing:editingInput animated:animated];
+    editing = editingInput;
+    [infoTableView setEditing:editingInput animated:animated];
+    [self loadCleanPropertyList];
+    [infoTableView reloadData];
+    [infoTableView reloadRowsAtIndexPaths:[infoTableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationFade];
+    
 }
 
 - (void) updateUrlButtons
@@ -167,7 +189,7 @@
     
     UITableView *tableView = [[UITableView alloc]initWithFrame:tableFrame style:UITableViewStylePlain];
     
-    tableView.rowHeight = self.view.frame.size.height *.07;;
+    tableView.rowHeight = self.view.frame.size.height *.07;
     tableView.sectionFooterHeight = 22;
     tableView.sectionHeaderHeight = 22;
     tableView.scrollEnabled = YES;
@@ -199,10 +221,11 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"athleteinfocell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    AthleteInfoTableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell = [[AthleteInfoTableCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
+    
     if([indexPath row] == [propertyNames count])
     {
         cell.textLabel.text = @"Add New";
@@ -212,23 +235,50 @@
     }
     
     NSString *propertyName = [propertyNames objectAtIndex:[indexPath row]];
-    cell.textLabel.text = propertyName;
-    NSObject *property = [AthletePropertyModel getProperty:propertyName];
+    cell.detailTextLabel.text = propertyName;
     
+    NSObject *property = [AthletePropertyModel getProperty:propertyName];
     if([property isKindOfClass:[NSString class]])
     {
         cell.imageView.image = nil;
         NSString *propertyString = (NSString*)property;
+        if(editing)
+        {
+            cell.textField.text = propertyString;
+        }
         if([propertyString isEqualToString:@""])
         {
-            cell.detailTextLabel.text = @"Tap to add";
+            cell.textLabel.text = @"Edit to add";
         }
         else
         {
-            cell.detailTextLabel.text = (NSString *)property;
+            cell.textLabel.numberOfLines = 0;
+            cell.textLabel.text = propertyString;
         }
     }
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(indexPath.row < propertyNames.count)
+    {
+        NSString *propertyValue = [AthletePropertyModel getProperty:[propertyNames objectAtIndex:[indexPath row]]];
+        propertyValue = [[propertyValue componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]] componentsJoinedByString:@" "];
+        NSParagraphStyle *paragraphStyle = [NSParagraphStyle defaultParagraphStyle];
+        
+        CGSize labelSize =[propertyValue boundingRectWithSize:CGSizeMake(infoTableView.frame.size.width, MAXFLOAT)
+                                                             options:NSStringDrawingUsesLineFragmentOrigin
+                                                          attributes:@{
+                                                                       NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue" size:18.0],
+                                                                       NSParagraphStyleAttributeName: paragraphStyle
+                                                                       }
+                                                      context:nil].size;
+        
+        if( labelSize.height > tableView.rowHeight)
+            return labelSize.height * 1.5;
+    }
+    return tableView.rowHeight ;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -241,111 +291,30 @@
     [self performSegueWithIdentifier:@"clientlistsegue" sender:self];
 }
 
+/*
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self constructInputViewForIndexPath:indexPath];
-    [self.view addSubview:inputView];
     [infoTableView deselectRowAtIndexPath:indexPath animated:YES];
 }
+*/
 
-- (void) constructInputViewForIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath { //implement the delegate method
+    
+    if (editingStyle == UITableViewCellEditingStyleDelete)
+    {
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
+
+// Override to support conditional editing of the table view.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(!inputView)
+    if(indexPath.row == [propertyNames count])
     {
-        
-        inputView = [[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width, self.view.frame.size.height)];
-        inputView.backgroundColor = [UIColor blackColor];
-        inputView.alpha = .8;
-        
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
-                                       initWithTarget:self
-                                       action:@selector(dismissKeyboard)];
-        
-        [self.view addGestureRecognizer:tap];
-        
-        propertyNameText = [[UITextView alloc] initWithFrame:CGRectMake(
-                                                inputView.frame.size.width * .25,
-                                                inputView.frame.size.height *.2,
-                                                400,
-                                                50)];
-        propertyNameText.backgroundColor = [UIColor whiteColor];
-        propertyNameText.font = [UIFont fontWithName:@"ArialRoundedMTBold" size:24];
-        [propertyNameText setDelegate:self];
-        
-        propertyNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(
-                                              inputView.frame.size.width * .25,
-                                              inputView.frame.size.height *.1,
-                                              inputView.frame.size.width * .6,
-                                              inputView.frame.size.height *.2)];
-        propertyNameLabel.font = [UIFont fontWithName:@"ArialRoundedMTBold" size:36];
-        propertyNameLabel.textColor = [UIColor whiteColor];
-        propertyNameLabel.text = @"Property";
-        
-        [inputView addSubview:propertyNameLabel];
-        [inputView addSubview:propertyNameText];
-        
-        propertyValueText = [[UITextView alloc] initWithFrame:CGRectMake(
-                                                               self.view.frame.size.width * .1,
-                                                               self.view.frame.size.height * .3,
-                                                               self.view.frame.size.width *.8,
-                                                               self.view.frame.size.width *.3)];
-        propertyValueText.backgroundColor = [UIColor whiteColor];
-        propertyValueText.font = [UIFont fontWithName:@"ArialRoundedMTBold" size:24];
-        [propertyValueText setDelegate:self];
-        
-        /*
-        propertyValueLabel = [[UILabel alloc] initWithFrame:CGRectMake(50,225,200,100)];
-        propertyValueLabel.font = [UIFont fontWithName:@"ArialRoundedMTBold" size:36];
-        propertyValueLabel.textColor = [UIColor whiteColor];
-        propertyValueLabel.text = @"Value";
-        */
-        [inputView addSubview:propertyValueText];
-        //[inputView addSubview:propertyValueLabel];
-        
-        UIButton *savePropertyButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        savePropertyButton.frame = CGRectMake(
-                                              self.view.frame.size.width * .4,
-                                              self.view.frame.size.height * .8,
-                                              self.view.frame.size.width *.2,
-                                              self.view.frame.size.width *.1);
-        [savePropertyButton setTitle:@"Done" forState:UIControlStateNormal];
-        savePropertyButton.titleLabel.font = [UIFont fontWithName:@"ArialRoundedMTBold" size:24];
-        [savePropertyButton addTarget:self action:@selector(hideInputView) forControlEvents:UIControlEventTouchUpInside];
-        [inputView addSubview:savePropertyButton];
-        
-        inputViewMessageLabel = [[UILabel alloc] initWithFrame:CGRectMake(
-                                                             self.view.frame.size.width * .1,
-                                                             0,
-                                                             self.view.frame.size.width *.8,
-                                                             self.view.frame.size.width *.3)];
-        
-        inputViewMessageLabel.font = [UIFont fontWithName:@"ArialRoundedMTBold" size:36];
-        inputViewMessageLabel.adjustsFontSizeToFitWidth = YES;
-        inputViewMessageLabel.textColor = [UIColor whiteColor];
-        [inputView addSubview:inputViewMessageLabel];
+        return NO;
     }
     
-    if([indexPath row] != [propertyNames count])
-    {
-        propertyNameLabel.text = [propertyNames objectAtIndex:[indexPath row]];
-        propertyNameText.hidden = YES;
-        propertyValueText.text = [AthletePropertyModel getProperty:[propertyNames objectAtIndex:[indexPath row]]];
-        
-        inputViewMessageLabel.text = @"Edit Property Value Below";
-
-    }
-    else
-    {
-        inputViewMessageLabel.text = @"Add a New Field Below";
-        
-        propertyNameText.text = @"";
-        propertyNameText.hidden = NO;
-        propertyNameLabel.text = @"Field";
-        ;
-        propertyValueText.text = @"";
-    }
-    
-
+    return YES;
 }
 
 -(void)dismissKeyboard {
@@ -392,6 +361,7 @@
     propertyNames = [NSMutableArray arrayWithObjects:@"FirstName",@"LastName",@"Email", nil];
     NSArray *hiddenProperties = [NSArray arrayWithObjects:
                         @"FitterName",
+                        @"FitterID",
                         @"LeftNotes",
                         @"RightNotes",
                         @"DateUpdated",
@@ -476,21 +446,21 @@
     [emailController dismissViewControllerAnimated:YES completion:NULL];
 }
 
--(IBAction) moveViewUpForKeyboard:(id)sender
+-(IBAction) keyboardDidShow:(NSNotification*)notification
 {
-    const int movementDistance = -150; // tweak as needed
+    const int movementDistance = 0 - [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey ] CGRectValue].size.height + self.tabBarController.tabBar.frame.size.height; // tweak as needed
     const float movementDuration = 0.3f; // tweak as needed
 
     [UIView beginAnimations: @"anim" context: nil];
-    [UIView setAnimationBeginsFromCurrentState: YES];
-    [UIView setAnimationDuration: movementDuration];
-    self.view.frame = CGRectOffset(self.view.frame, 0, movementDistance);
+        [UIView setAnimationBeginsFromCurrentState: YES];
+        [UIView setAnimationDuration: movementDuration];
+        self.view.frame = CGRectOffset(self.view.frame, 0, movementDistance);
     [UIView commitAnimations];
 }
 
--(IBAction) moveViewDownForKeyboard:(id)sender
+-(IBAction) keyboardDidHide:(NSNotification*)notification
 {
-    const int movementDistance = 150; // tweak as needed
+    const int movementDistance = [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey ] CGRectValue].size.height - self.tabBarController.tabBar.frame.size.height; // tweak as needed; // tweak as needed
     const float movementDuration = 0.3f; // tweak as needed
     
     [UIView beginAnimations: @"anim" context: nil];

@@ -10,6 +10,10 @@
 #import "BikeFitTabBarController.h"
 
 @implementation FinalNotesViewController
+{
+    UIView *logInReminder;
+    UILabel *loginReminderLabel;
+}
 
 - (void) viewDidLoad
 {
@@ -51,12 +55,38 @@
 
     dimensionsTable = [self makeDimensionTableView];
     [self.view addSubview:dimensionsTable];
-
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    if(logInReminder)
+    {
+        [logInReminder removeFromSuperview];
+    }
+    
     [dimensionsTable reloadData];
+    
+    if(![AmazonClientManager verifyUserKey])
+    {
+        logInReminder = [[UIView alloc] initWithFrame:self.parentViewController.view.frame];
+        logInReminder.backgroundColor = [UIColor blackColor];
+        logInReminder.alpha = .9;
+        
+        loginReminderLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width * .5,
+                                                                       self.view.frame.size.height * .5,
+                                                                       self.view.frame.size.width *.5,
+                                                                       self.view.frame.size.height *.3)];
+        [loginReminderLabel setCenter:CGPointMake(self.view.frame.size.width * .5,
+                                                  self.view.frame.size.height * .5)];
+        loginReminderLabel.adjustsFontSizeToFitWidth = true;
+        loginReminderLabel.textAlignment = NSTextAlignmentCenter;
+        loginReminderLabel.numberOfLines = 2;
+        loginReminderLabel.textColor = [UIColor whiteColor];
+        loginReminderLabel.text = @"Please Login In Order \n to Use Online Features";
+        
+        [logInReminder addSubview:loginReminderLabel];
+        [self.view addSubview:logInReminder];
+    }
 }
 
 -(UITableView *) makeDimensionTableView

@@ -37,6 +37,9 @@
     
     NSMutableArray *selectedNotes; //points the most recently selected array of notes
     NSIndexPath *selectedIndexPath; //index to most recently selected table cell
+    
+    UIView *logInReminder;
+    UILabel *loginReminderLabel;
 }
 
 @end

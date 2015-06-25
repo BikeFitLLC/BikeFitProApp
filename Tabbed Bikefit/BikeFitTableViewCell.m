@@ -39,6 +39,12 @@
     self.deleteEnabled = false;
 }
 
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated
+{
+    [super setEditing:editing animated:animated];
+    
+}
+
 -(void)deleteSelf:(id)sender
 {
     [delegate deleteNoteForCell:self];

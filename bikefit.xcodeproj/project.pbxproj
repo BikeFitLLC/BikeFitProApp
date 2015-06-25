@@ -11,6 +11,7 @@
 		00A382F71A3B710100791FEE /* BikeFitTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A382F61A3B710100791FEE /* BikeFitTableViewCell.m */; };
 		00D3FE991A83D9AC0017BF1D /* libPods-AWSiOSSDKv2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00D3FE981A83D9AC0017BF1D /* libPods-AWSiOSSDKv2.a */; };
 		00F813541A2ADE1300F1EA6D /* LegAngleViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F813531A2ADE1300F1EA6D /* LegAngleViewViewController.m */; };
+		00FBB9C61B3B811700873AAA /* AthleteInfoTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00FBB9C51B3B811700873AAA /* AthleteInfoTableCell.m */; };
 		00FF371A1A36302E00FD1E45 /* KW_front_laser_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 00FF37191A36302E00FD1E45 /* KW_front_laser_2.png */; };
 		00FF371C1A3630CE00FD1E45 /* measurementIcon-new-29x29.png in Resources */ = {isa = PBXBuildFile; fileRef = 00FF371B1A3630CE00FD1E45 /* measurementIcon-new-29x29.png */; };
 		00FF371E1A36310300FD1E45 /* Bike_road_diagram_ABCD.png in Resources */ = {isa = PBXBuildFile; fileRef = 00FF371D1A36310300FD1E45 /* Bike_road_diagram_ABCD.png */; };
@@ -135,6 +136,8 @@
 		00D3FE981A83D9AC0017BF1D /* libPods-AWSiOSSDKv2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-AWSiOSSDKv2.a"; path = "Pods/build/Debug-iphoneos/libPods-AWSiOSSDKv2.a"; sourceTree = "<group>"; };
 		00F813521A2ADE1300F1EA6D /* LegAngleViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LegAngleViewViewController.h; sourceTree = "<group>"; };
 		00F813531A2ADE1300F1EA6D /* LegAngleViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LegAngleViewViewController.m; sourceTree = "<group>"; };
+		00FBB9C41B3B811700873AAA /* AthleteInfoTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AthleteInfoTableCell.h; sourceTree = "<group>"; };
+		00FBB9C51B3B811700873AAA /* AthleteInfoTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AthleteInfoTableCell.m; sourceTree = "<group>"; };
 		00FF37191A36302E00FD1E45 /* KW_front_laser_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KW_front_laser_2.png; sourceTree = "<group>"; };
 		00FF371B1A3630CE00FD1E45 /* measurementIcon-new-29x29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "measurementIcon-new-29x29.png"; sourceTree = "<group>"; };
 		00FF371D1A36310300FD1E45 /* Bike_road_diagram_ABCD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bike_road_diagram_ABCD.png; sourceTree = "<group>"; };
@@ -578,6 +581,8 @@
 				5D8531E81759CD6600934E68 /* AthleteInfoController.m */,
 				5DD2940B17FA8276005E707D /* AthletePickerViewController.h */,
 				5DD2940C17FA8276005E707D /* AthletePickerViewController.m */,
+				00FBB9C41B3B811700873AAA /* AthleteInfoTableCell.h */,
+				00FBB9C51B3B811700873AAA /* AthleteInfoTableCell.m */,
 			);
 			name = AthleteInfo;
 			sourceTree = "<group>";
@@ -827,6 +832,7 @@
 				5D3BC32D190881FD003E8613 /* SettingsViewController.m in Sources */,
 				5D8531DA1759CD6600934E68 /* AppDelegate.m in Sources */,
 				5DC9305D19200D2000EB733C /* AMZNGetProfileDelegate.m in Sources */,
+				00FBB9C61B3B811700873AAA /* AthleteInfoTableCell.m in Sources */,
 				5DC9305E19200D2000EB733C /* AMZNLoginController.m in Sources */,
 				5D8531E91759CD6600934E68 /* AthleteInfoController.m in Sources */,
 				5D57674D17F4F9720017CF87 /* BikeFitTabBarController.m in Sources */,

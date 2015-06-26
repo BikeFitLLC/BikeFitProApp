@@ -21,6 +21,7 @@
 
 + (bool)setProperty:(NSString*)propertyName value:(id)value;
 + (id)getProperty:(NSString*)propertyName;
++ (void) removeProperty:(NSString *)propertyName;
 
 
 + (void)newAthlete;
@@ -29,5 +30,6 @@
 + (BFTask *)loadAthleteFromAWS:(NSString*)fitID;
 + (BFTask *) getAthletesFromAws;
 + (void) setOfflineMode:(bool)offlineMode;
++ (BFTask *) removeAthleteFromAWS: (NSString*) fitID;
 
 @end

@@ -31,7 +31,35 @@
 {
     [super viewDidLoad];
     [saveButton addTarget:self action:@selector(keepLine:) forControlEvents:UIControlEventTouchUpInside];
-    previewImage = [previewImage init];
+    previewImage = [[KneeDrawingView alloc] initWithFrame:self.view.frame];
+    previewImage.backgroundColor = [UIColor clearColor];
+    [self.view insertSubview:previewImage aboveSubview:previewView];
+    
+    lazerLeftButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    lazerLeftButton.frame = CGRectMake(self.view.frame.size.width * .1,
+                                  self.view.frame.size.height * .9,
+                                  self.view.frame.size.width * .2,
+                                  self.view.frame.size.width * .1);
+    lazerLeftButton.titleLabel.font = [UIFont systemFontOfSize:24];
+    lazerLeftButton.backgroundColor = [UIColor blackColor];
+    lazerLeftButton.alpha = .5;
+    [lazerLeftButton setTitle:@"Line Left" forState:UIControlStateNormal];
+    [lazerLeftButton addTarget:self action:@selector(moveLazerLeft:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:lazerLeftButton];
+    
+    lazerRightButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    lazerRightButton.frame = CGRectMake(self.view.frame.size.width * .8,
+                                       self.view.frame.size.height * .9,
+                                       self.view.frame.size.width * .2,
+                                       self.view.frame.size.width * .1);
+    lazerRightButton.titleLabel.font = [UIFont systemFontOfSize:24];
+    lazerRightButton.backgroundColor = [UIColor blackColor];
+    lazerRightButton.alpha = .5;
+    [lazerRightButton setTitle:@"Line Right" forState:UIControlStateNormal];
+    [lazerRightButton addTarget:self action:@selector(moveLazerRight:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:lazerRightButton];
+    
+    //previewImage = [previewImage init];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -90,6 +118,7 @@
     [lazerLeftButton setHidden:NO];
     [lazerRightButton setHidden:NO];
     [recordButton setHidden:YES];
+    [playButton setHidden:NO];
     
 }
 @end

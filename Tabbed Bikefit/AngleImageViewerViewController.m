@@ -33,10 +33,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    drawingView = [[LegAngleImageView alloc] initWithFrame:self.view.frame];
+    drawingView.image = self.image;
+    [self.view addSubview:drawingView];
+    
+    CGFloat oneThirdViewWidth = self.view.frame.size.width/3;
+    
     // Do any additional setup after loading the view.
     kneeAngleLabel = [[UILabel alloc] init];
     CGFloat height = self.navigationController.navigationBar.frame.size.height + [UIApplication sharedApplication].statusBarFrame.size.height;
-    kneeAngleLabel.frame = CGRectMake(0,height,250,75);
+    kneeAngleLabel.frame = CGRectMake(0,
+                                       height,
+                                       oneThirdViewWidth,
+                                       oneThirdViewWidth * .3);
+    kneeAngleLabel.adjustsFontSizeToFitWidth = YES;
     kneeAngleLabel.font = [UIFont fontWithName:@"Helvetica" size:24];
     kneeAngleLabel.backgroundColor = [UIColor blackColor];
     kneeAngleLabel.alpha = .5;
@@ -45,7 +55,11 @@
     [self.view addSubview:kneeAngleLabel];
     
     shoulderAngleLabel = [[UILabel alloc] init];
-    shoulderAngleLabel.frame = CGRectMake(250,height,250,75);
+    shoulderAngleLabel.frame = CGRectMake(oneThirdViewWidth,
+                                          height,
+                                          oneThirdViewWidth,
+                                          oneThirdViewWidth * .3);
+    shoulderAngleLabel.adjustsFontSizeToFitWidth = YES;
     shoulderAngleLabel.font = [UIFont fontWithName:@"Helvetica" size:24];
     shoulderAngleLabel.backgroundColor = [UIColor blackColor];
     shoulderAngleLabel.alpha = .5;
@@ -54,7 +68,11 @@
     [self.view addSubview:shoulderAngleLabel];
     
     hipAngleLabel = [[UILabel alloc] init];
-    hipAngleLabel.frame = CGRectMake(500,height,250,75);
+    hipAngleLabel.frame = CGRectMake(2*oneThirdViewWidth,
+                                     height,
+                                     oneThirdViewWidth,
+                                     oneThirdViewWidth * .3);
+    hipAngleLabel.adjustsFontSizeToFitWidth = YES;
     hipAngleLabel.font = [UIFont fontWithName:@"Helvetica" size:24];
     hipAngleLabel.backgroundColor = [UIColor blackColor];
     hipAngleLabel.alpha = .5;

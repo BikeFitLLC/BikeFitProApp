@@ -9,6 +9,7 @@
 #import "VideoNoteViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import <CoreFoundation/CoreFoundation.h>
+#import "KneeDrawingView.h"
 
 @interface VideoNoteViewController ()
 {
@@ -44,19 +45,28 @@
     [saveButton setHidden:true];
     [nextImageButton setHidden:true];
     [previousImageButton setHidden:true];
-    //[reverseCameraButton setHidden:true];
-    
+    [playButton setHidden:true];
 }
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     //
+    //setup video views
+    //
+    previewView = [[UIView alloc] initWithFrame:self.view.frame];
+    [self.view addSubview:previewView];
+
+    //
     //Setup the buttons and other stuff
     //
     recordButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    recordButton.frame = CGRectMake(0,0,200,75);
+    recordButton.frame = CGRectMake(self.view.frame.size.width * .8,
+                                    self.view.frame.size.height * .9,
+                                    self.view.frame.size.width * .2,
+                                    self.view.frame.size.width * .1);
     recordButton.titleLabel.font = [UIFont systemFontOfSize:24];
+    recordButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     recordButton.backgroundColor = [UIColor blackColor];
     recordButton.alpha = .5;
     [recordButton setTitle:@"Record 5 Seconds" forState:UIControlStateNormal];
@@ -89,8 +99,24 @@
     [nextImageButton addTarget:self action:@selector(nextImage) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:nextImageButton];
     
+    playButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    playButton.frame = CGRectMake(self.view.frame.size.width * .1,
+                                 self.view.frame.size.height * .8,
+                                 self.view.frame.size.width * .2,
+                                 self.view.frame.size.width * .1);
+    playButton.titleLabel.font = [UIFont systemFontOfSize:24];
+    playButton.backgroundColor = [UIColor blackColor];
+    playButton.alpha = .5;
+    [playButton setTitle:@"Play" forState:UIControlStateNormal];
+    [playButton addTarget:self action:@selector(play) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:playButton];
+
+    
     reverseCameraButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    reverseCameraButton.frame = CGRectMake(200,200,100,100);
+    reverseCameraButton.frame = CGRectMake(self.view.frame.size.width * .8,
+                                           self.view.frame.size.width * .95,
+                                           self.view.frame.size.width * .1,
+                                           self.view.frame.size.width * .1);
     reverseCameraButton.alpha = .5;
     [reverseCameraButton setBackgroundImage:[UIImage imageNamed:@"FrontCameraIcon.png"] forState:UIControlStateNormal];
     [reverseCameraButton setCenter:CGPointMake(self.view.bounds.size.width * .9,
@@ -99,16 +125,25 @@
     reverseCameraButton.hidden = false;
     [self.view addSubview:reverseCameraButton];
     
-    takePhotoButton.titleLabel.font = [UIFont systemFontOfSize:18];
+    takePhotoButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    takePhotoButton.frame = CGRectMake(self.view.frame.size.width * .1,
+                                  self.view.frame.size.height * .2,
+                                  self.view.frame.size.width * .2,
+                                  self.view.frame.size.width * .1);
+    takePhotoButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     takePhotoButton.backgroundColor = [UIColor blackColor];
     takePhotoButton.alpha = .5;
+    takePhotoButton.hidden = YES;
+    [takePhotoButton setTitle:@"Take Photo" forState:UIControlStateNormal];
+    [takePhotoButton addTarget:self action:@selector(takePhoto) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:takePhotoButton];
     
 	interval = 1;
     videoEnabled = true;
     
-    CGRect bounds = CGRectMake(0,0,720, 1024);// self.view.layer.bounds;
-    [self.view setBounds:bounds];
-    [previewImage setBounds:bounds];
+    //CGRect bounds = CGRectMake(0,0,720, 1024);// self.view.layer.bounds;
+    //[self.view setBounds:bounds];
+    //[previewImage setBounds:bounds];
 }
 
 - (void) viewDidAppear:(BOOL)animated
@@ -119,10 +154,12 @@
         {
             [previewImage setOverlayPath:overlayPath];
             [previewImage setNeedsDisplay];
+            [self.view insertSubview:previewImage aboveSubview:previewView];
             
             //if the videourl is set,  view it.
             player = [AVPlayer playerWithURL:videoUrl];
             [player.currentItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+            playButton.hidden = NO;
             
             //Also, enable the next and previous frame buttons
             previousImageButton.hidden = NO;
@@ -495,6 +532,7 @@
 {
     //this will be checked in captureOutput method
     [saveButton setHidden:NO];
+    [takePhotoButton setHidden:YES];
     takingPhoto = true;
 }
 

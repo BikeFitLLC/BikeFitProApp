@@ -33,6 +33,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    previewImage = [[NoteImageView alloc] initWithFrame:self.view.frame];
+    previewImage.image = self.image;
+    [self.view addSubview:previewImage];
     // Do any additional setup after loading the view.
 }
 

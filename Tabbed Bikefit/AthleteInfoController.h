@@ -32,6 +32,8 @@
     
     UILabel *inputViewMessageLabel;
     
+    IBOutlet UIToolbar *toolbar;
+    
     IBOutlet UIBarButtonItem *clientListButton;
     IBOutlet UIBarButtonItem *saveToWebButton;
     IBOutlet UIButton *saveButton;

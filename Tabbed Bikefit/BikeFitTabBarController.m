@@ -29,6 +29,9 @@
 {
     [super viewDidLoad];
     athleteProperties = [[AthletePropertyModel alloc] init];
+    
+    //set the default tab to the bikefit tab
+    self.selectedIndex = 1;
 }
 
 - (void)didReceiveMemoryWarning

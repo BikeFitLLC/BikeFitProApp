@@ -38,6 +38,9 @@
     
     NSMutableArray *selectedNotes; //points the most recently selected array of notes
     NSIndexPath *selectedIndexPath; //index to most recently selected table cell
+    
+    UIView *logInReminder;
+    UILabel *loginReminderLabel;
 }
 
 @end
@@ -56,7 +59,38 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    UIImageView *cyclistImage = [[UIImageView alloc] init];
+    cyclistImage.frame = CGRectMake(
+                                 0,
+                                 0,
+                                 self.view.frame.size.width,
+                                 self.view.frame.size.height);
+    cyclistImage.alpha = .1;
+    cyclistImage.image = [UIImage imageNamed:@"KW_front_laser_2.png"];
+    [self.view addSubview:cyclistImage];
+
+    
+    
 	// Do any additional setup after loading the view.
+    rightNotesTable = [[UITableView alloc] init];
+    rightNotesTable.frame = CGRectMake(0,0,
+                                       self.view.frame.size.width *.5,
+                                       self.view.frame.size.height *.8);
+    rightNotesTable.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:rightNotesTable];
+    
+    // Do any additional setup after loading the view.
+    leftNotesTable = [[UITableView alloc] init];
+    leftNotesTable.frame = CGRectMake(self.view.frame.size.width *.5,
+                                       0,
+                                       self.view.frame.size.width *.5,
+                                       self.view.frame.size.height *.8);
+    leftNotesTable.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:leftNotesTable];
+
     [leftNotesTable registerClass:[BikeFitTableViewCell class] forCellReuseIdentifier:@"measurementCell"];
     [rightNotesTable registerClass:[BikeFitTableViewCell class] forCellReuseIdentifier:@"measurementCell"];
     [leftNotesTable registerClass:[UITableViewCell class] forCellReuseIdentifier:@"addCell"];
@@ -114,6 +148,12 @@
      atScrollPosition:UITableViewScrollPositionBottom
      animated:YES
      ];
+}
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated { //Implement this method
+    [super setEditing:editing animated:animated];
+    [rightNotesTable setEditing:editing animated:animated];
+    [leftNotesTable setEditing:editing animated:animated];
 }
 
 - (void)didReceiveMemoryWarning
@@ -185,6 +225,11 @@
             return cell;
         }
     }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return self.view.frame.size.height *.1;
 }
 
 - (void)deleteNoteForCell:(BikeFitTableViewCell*)cell;
@@ -275,6 +320,40 @@
     }
     
     return @"Error";
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath { //implement the delegate method
+    
+    if (editingStyle == UITableViewCellEditingStyleDelete)
+    {
+        if(tableView == leftNotesTable)
+        {
+            [leftNotes removeObjectAtIndex:indexPath.row];
+            [AthletePropertyModel setProperty:@"LeftNotes" value:leftNotes];
+        }
+        if(tableView == rightNotesTable)
+        {
+            [rightNotes removeObjectAtIndex:indexPath.row];
+            [AthletePropertyModel setProperty:@"RightNotes" value:rightNotes];
+        }
+        
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
+
+// Override to support conditional editing of the table view.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(tableView == leftNotesTable && [leftNotes count] == [indexPath row])
+    {
+        return NO;
+    }
+    if(tableView == rightNotesTable && [rightNotes count] == [indexPath row])
+    {
+        return NO;
+    }
+    
+    return YES;
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex

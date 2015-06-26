@@ -35,30 +35,85 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    angleLabel = [[UILabel alloc] init];
+    angleLabel.frame = CGRectMake(0, self.navigationController.navigationBar.frame.size.height,
+                                  self.view.frame.size.width *.3,
+                                  self.view.frame.size.height *.1);
+    
+    angleLabel.font = [UIFont fontWithName:@"Helvetica" size:24];
+    angleLabel.backgroundColor = [UIColor blackColor];
+    angleLabel.textColor = [UIColor yellowColor];
+    angleLabel.alpha = .5;
+    angleLabel.numberOfLines = 2;
+    angleLabel.adjustsFontSizeToFitWidth = YES;
+    angleLabel.text = @"Angle";
+    [self.view addSubview:angleLabel];
+    
     [recordButton setHidden:TRUE];
+    leftLegImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"2_heels_left.png"]];
+    leftLegImageView.alpha = .2;
+    leftLegImageView.frame = self.view.frame;
+    [self.view addSubview:leftLegImageView];
+
+    rightLegImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"2_heel_right.png"]];
+    rightLegImageView.alpha = .2;
+    rightLegImageView.frame = self.view.frame;
+    [self.view addSubview:rightLegImageView];
+    
+    
     
     angleLabel.font = [UIFont fontWithName:@"Helvetica" size:100.0];
     
-    barYPosition = 820;
+    barYPosition = self.view.frame.size.height *.8;
     startPointLocation = CGPointMake(0, barYPosition);
+    
+    previewImage =[[VarusDrawingView alloc] initWithFrame:self.view.frame];
+    [(VarusDrawingView *)previewImage setBackgroundColor:[UIColor clearColor]];
     [(VarusDrawingView *)previewImage setStartPointLocation:startPointLocation];
     [(VarusDrawingView *)previewImage setBarYPosition:barYPosition];
+    [self.view addSubview:previewImage];
+    
+    [self.view bringSubviewToFront:takePhotoButton];
+    takePhotoButton.hidden = false;
+    takePhotoButton.frame = CGRectMake(self.view.frame.size.width *.7,
+                                       self.navigationController.navigationBar.frame.size.height,
+                                       self.view.frame.size.width *.3,
+                                       self.view.frame.size.height *.1);
+
+    [self.view bringSubviewToFront:saveButton];
+    saveButton.frame = CGRectMake(self.view.frame.size.width *.7,
+                                  self.navigationController.navigationBar.frame.size.height,
+                                  self.view.frame.size.width *.3,
+                                  self.view.frame.size.height *.1);
+    
+    [self.view bringSubviewToFront:reverseCameraButton];
+
     
     //Add images for dragbar
-    upDownImageView =[[UIImageView alloc] initWithFrame:CGRectMake(0,0,100,150)];
+    upDownImageView =[[UIImageView alloc] initWithFrame:CGRectMake(250,
+                                                                   0,
+                                                                   self.view.frame.size.width *.1,
+                                                                   self.view.frame.size.width * .2)];
     upDownImageView.image=[UIImage imageNamed:@"up_down_arrows.png"];
     [self.view addSubview:upDownImageView];
     
-    endPointLocation = CGPointMake(768,barYPosition);
-    [(VarusDrawingView *)previewImage setEndPointLocation:endPointLocation];
-    rotateArrowsImageView =[[UIImageView alloc] initWithFrame:CGRectMake(0,0,100,150)];
+    rotateArrowsImageView =[[UIImageView alloc] initWithFrame:CGRectMake(0,
+                                                                         0,
+                                                                         self.view.frame.size.width *.1,
+                                                                         self.view.frame.size.width * .2)];
     rotateArrowsImageView.image=[UIImage imageNamed:@"curved_arrows.png"];
     [self.view addSubview:rotateArrowsImageView];
     
-    ffmdImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,349,200)];
+    ffmdImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,
+                                                                  0,
+                                                                  self.view.frame.size.width *.3,
+                                                                  self.view.frame.size.width *.3/1.74)];
     ffmdImageView.image = [UIImage imageNamed:@"FFMD_Dial_only-200.png"];
     ffmdImageView.layer.anchorPoint = CGPointMake(0.5, 0.15);
     [self.view addSubview:ffmdImageView];
+    
+    endPointLocation = CGPointMake(self.view.frame.size.width, barYPosition);
+    [(VarusDrawingView *)previewImage setEndPointLocation:endPointLocation];
 
     //now that the dragbar images are added to the view, position them correctly
     [self updateArrowImages];
@@ -152,7 +207,7 @@
             startPointLocation = CGPointMake(0, (oldStartPointLocation.y + translation.y));
             [(VarusDrawingView *)previewImage setStartPointLocation:startPointLocation];
             
-            endPointLocation = CGPointMake(768,(oldEndPointLocation.y + translation.y));
+            endPointLocation = CGPointMake(self.view.frame.size.width,(oldEndPointLocation.y + translation.y));
             [(VarusDrawingView *)previewImage setEndPointLocation:endPointLocation];
         }
         NSLog(@"Moving drag box");
@@ -164,7 +219,7 @@
         startPointLocation = CGPointMake(0, startPointLocation.y + (endPointLocation.y - location.y));
         [(VarusDrawingView *)previewImage setStartPointLocation:startPointLocation];
         
-        endPointLocation = CGPointMake(768, location.y);
+        endPointLocation = CGPointMake(self.view.frame.size.width, location.y);
         [(VarusDrawingView *)previewImage setEndPointLocation:endPointLocation];
         
         [self calculateAngle];

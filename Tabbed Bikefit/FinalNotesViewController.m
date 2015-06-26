@@ -7,13 +7,20 @@
 //
 
 #import "FinalNotesViewController.h"
+#import "BikeFitTabBarController.h"
 
 @implementation FinalNotesViewController
+{
+    UIView *logInReminder;
+    UILabel *loginReminderLabel;
+}
 
 - (void) viewDidLoad
 {
     bikeDimensionsImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Bike_road_diagram_ABCD"]];
-    bikeDimensionsImage.frame = CGRectMake(0,30,750,527);
+    bikeDimensionsImage.frame = CGRectMake(0,30,
+                                           self.view.frame.size.width,
+                                           self.view.frame.size.height *.5 );
     [self.view addSubview:bikeDimensionsImage];
     
     dimensionsFieldNames = [[NSMutableArray alloc] initWithObjects:@"A: Saddle Height",
@@ -48,27 +55,53 @@
 
     dimensionsTable = [self makeDimensionTableView];
     [self.view addSubview:dimensionsTable];
-
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    if(logInReminder)
+    {
+        [logInReminder removeFromSuperview];
+    }
+    
     [dimensionsTable reloadData];
+    
+    if(![AmazonClientManager verifyUserKey])
+    {
+        logInReminder = [[UIView alloc] initWithFrame:self.parentViewController.view.frame];
+        logInReminder.backgroundColor = [UIColor blackColor];
+        logInReminder.alpha = .9;
+        
+        loginReminderLabel = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width * .5,
+                                                                       self.view.frame.size.height * .5,
+                                                                       self.view.frame.size.width *.5,
+                                                                       self.view.frame.size.height *.3)];
+        [loginReminderLabel setCenter:CGPointMake(self.view.frame.size.width * .5,
+                                                  self.view.frame.size.height * .5)];
+        loginReminderLabel.adjustsFontSizeToFitWidth = true;
+        loginReminderLabel.textAlignment = NSTextAlignmentCenter;
+        loginReminderLabel.numberOfLines = 2;
+        loginReminderLabel.textColor = [UIColor whiteColor];
+        loginReminderLabel.text = @"Please Login In Order \n to Use Online Features";
+        
+        [logInReminder addSubview:loginReminderLabel];
+        [self.view addSubview:logInReminder];
+    }
 }
 
 -(UITableView *) makeDimensionTableView
 {
-    CGFloat x = 0;
-    CGFloat y = 600;
-    CGFloat width = self.view.frame.size.width;
-    CGFloat height = [dimensionsFieldNames count] * 60 + 100;
-    CGRect tableFrame = CGRectMake(x, y, width, height);
+    UITabBarController *tb = (BikeFitTabBarController *)self.parentViewController;
+    CGRect tableFrame = CGRectMake(0,
+                                   self.view.frame.size.height *.6,
+                                   self.view.frame.size.width,
+                                   self.view.frame.size.height *.4 - tb.tabBar.frame.size.height);
     
     UITableView *tableView = [[UITableView alloc]initWithFrame:tableFrame style:UITableViewStyleGrouped];
     
-    tableView.rowHeight = 60;
-    tableView.sectionFooterHeight = 22;
-    tableView.sectionHeaderHeight = 22;
+    tableView.rowHeight = self.view.frame.size.height *.07;
+    tableView.sectionFooterHeight = self.view.frame.size.height *.03;
+    tableView.sectionHeaderHeight = self.view.frame.size.height *.03;
     tableView.scrollEnabled = YES;
     tableView.showsVerticalScrollIndicator = YES;
     tableView.userInteractionEnabled = YES;
@@ -90,6 +123,8 @@
     if (!cell)
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell.textLabel.adjustsFontSizeToFitWidth = YES;
+        cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
     }
     else
     {

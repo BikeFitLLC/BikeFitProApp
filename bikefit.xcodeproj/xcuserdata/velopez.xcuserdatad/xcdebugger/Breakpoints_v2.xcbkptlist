@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "456361802.537855"
+            timestampString = "456980653.290235"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "357"
-            endingLineNumber = "357"
+            startingLineNumber = "363"
+            endingLineNumber = "363"
             landmarkName = "+addJSONNotes"
             landmarkType = "5">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tabbed Bikefit/AthletePropertyModel.m"
-            timestampString = "456361802.537855"
+            timestampString = "456980653.290235"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "371"
-            endingLineNumber = "371"
+            startingLineNumber = "377"
+            endingLineNumber = "377"
             landmarkName = "+addJSONNotes"
             landmarkType = "5">
          </BreakpointContent>

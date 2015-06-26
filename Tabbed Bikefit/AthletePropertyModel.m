@@ -133,7 +133,7 @@ static NSMutableDictionary *athleteProperties;
 
 + (BFTask *) removeAthleteFromAWS: (NSString*) fitID
 {
-    [[[AthletePropertyModel loadAthleteFromAWS:fitID] continueWithBlock:^id(BFTask *task)
+    return [[[AthletePropertyModel loadAthleteFromAWS:fitID] continueWithBlock:^id(BFTask *task)
     {
         [AthletePropertyModel setProperty:AWS_FIT_ATTRIBUTE_HIDDEN value:@"YES"];
         return task;
@@ -318,6 +318,12 @@ static NSMutableDictionary *athleteProperties;
         return [athleteProperties objectForKey:propertyName];
     }
     return nil;
+}
+
++ (void) removeProperty:(NSString *)propertyName
+{
+    [athleteProperties removeObjectForKey:propertyName];
+    [AthletePropertyModel saveAthleteToAWS];
 }
 
 + (int)propertyCount

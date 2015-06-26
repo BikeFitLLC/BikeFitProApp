@@ -11,6 +11,8 @@
 
 @implementation AthleteInfoTableCell
 @synthesize textField;
+@synthesize titleField;
+@synthesize isNewPropertyCell;
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated
 {
@@ -27,15 +29,38 @@
             textField.borderStyle = UITextBorderStyleRoundedRect;
             textField.frame = frame;
         }
+        
+        if(titleField == nil)
+        {
+            titleField = [[UITextField alloc] init];
+            CGRect frame = self.detailTextLabel.frame;
+            frame.size.height = self.textLabel.frame.size.height;
+            [titleField addTarget:self action:@selector(updateAthleteProperty) forControlEvents:UIControlEventEditingDidEnd];
+            titleField.borderStyle = UITextBorderStyleRoundedRect;
+            titleField.frame = frame;
+        }
+        
         [self.textLabel setHidden:YES];
+        self.textField.text = self.textLabel.text;
         [self.contentView addSubview:textField];
+        
+        if(self.editingStyle == UITableViewCellEditingStyleInsert)
+        {
+            
+            [self.detailTextLabel setHidden:YES];
+            [self.contentView addSubview:titleField];
+            self.titleField.text = @"";
+            self.textField.text = @"";
+        }
     }
     else
     {
         if(textField)
         {
+            [self.detailTextLabel setHidden:NO];
             [self.textLabel setHidden:NO];
             [textField removeFromSuperview];
+            [titleField removeFromSuperview];
         }
     }
 }
@@ -43,6 +68,15 @@
     
 - (void)updateAthleteProperty
 {
-    [AthletePropertyModel setProperty:self.detailTextLabel.text value:self.textField.text];
+    NSString *propertyName;
+    if(self.editingStyle == UITableViewCellEditingStyleInsert)
+    {
+        propertyName = titleField.text;
+    }
+    else
+    {
+        propertyName = self.detailTextLabel.text;
+    }
+    [AthletePropertyModel setProperty:propertyName value:self.textField.text];
 }
 @end

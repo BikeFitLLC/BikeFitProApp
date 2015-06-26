@@ -149,11 +149,27 @@
 
 - (void)setEditing:(BOOL)editingInput animated:(BOOL)animated { //Implement this method
     [super setEditing:editingInput animated:animated];
-    editing = editingInput;
-    [infoTableView setEditing:editingInput animated:animated];
+    
     [self loadCleanPropertyList];
+    
+    editing = editingInput;
+    if(editing)
+    {
+        [propertyNames addObject:@"New Field"];
+    }
+    else
+    {
+        NSString *lastFieldName =[propertyNames objectAtIndex:propertyNames.count - 1];
+        if( [lastFieldName isEqualToString:@"New Field"])
+        {
+            [propertyNames removeObjectAtIndex:propertyNames.count - 1];
+        }
+    }
     [infoTableView reloadData];
     [infoTableView reloadRowsAtIndexPaths:[infoTableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationFade];
+    [infoTableView setEditing:editing animated:animated];
+   
+
     
 }
 
@@ -225,13 +241,9 @@
     if (!cell) {
         cell = [[AthleteInfoTableCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
-    
-    if([indexPath row] == [propertyNames count])
+    if([indexPath row] == [propertyNames count] - 1)
     {
-        cell.textLabel.text = @"Add New";
-        cell.detailTextLabel.text = @"Tap to add a new field";
-        cell.imageView.image = [UIImage imageNamed:@"plus-icon.png"];
-        return cell;
+        cell.isNewPropertyCell = YES;
     }
     
     NSString *propertyName = [propertyNames objectAtIndex:[indexPath row]];
@@ -281,9 +293,20 @@
     return tableView.rowHeight ;
 }
 
+- (UITableViewCellEditingStyle)tableView:(UITableView *)aTableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if([indexPath row] == [propertyNames count] - 1)
+    {
+        return UITableViewCellEditingStyleInsert;
+    }
+    else {
+        return UITableViewCellEditingStyleDelete;
+    }
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [propertyNames count] + 1;
+    return [propertyNames count];
 }
 
 - (void) triggerClientListSeque:(id)sender
@@ -291,18 +314,27 @@
     [self performSegueWithIdentifier:@"clientlistsegue" sender:self];
 }
 
-/*
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [infoTableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-*/
+
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath { //implement the delegate method
     
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
+        [AthletePropertyModel removeProperty:[propertyNames objectAtIndex:[indexPath row]]];
+        [propertyNames removeObjectAtIndex:[indexPath row]];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+
+
+    }
+    else if (editingStyle == UITableViewCellEditingStyleInsert)
+    {
+        //put code to handle insertion
+        //[myTableView reloadData];
     }
 }
 
@@ -311,7 +343,7 @@
 {
     if(indexPath.row == [propertyNames count])
     {
-        return NO;
+    //    return NO;
     }
     
     return YES;

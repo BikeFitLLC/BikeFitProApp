@@ -21,6 +21,7 @@
 
 + (bool)setProperty:(NSString*)propertyName value:(id)value;
 + (id)getProperty:(NSString*)propertyName;
++ (void) removeProperty:(NSString *)propertyName;
 
 
 + (void)newAthlete;

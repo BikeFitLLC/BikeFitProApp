@@ -85,21 +85,7 @@
             }
         }
         
-        fitIds = [fits keysSortedByValueUsingComparator: ^(id obj1, id obj2){
-            float date1 = [[(NSDictionary *)obj1 objectForKey:AWS_FIT_ATTRIBUTE_LASTUPDATED] floatValue];
-            float date2 = [[(NSDictionary *)obj2 objectForKey:AWS_FIT_ATTRIBUTE_LASTUPDATED] floatValue];
-            
-            if (date1 < date2)
-            {
-                return (NSComparisonResult)NSOrderedDescending;
-            }
-            if(date2 < date1)
-            {
-                return (NSComparisonResult)NSOrderedAscending;
-            }
-            
-            return NSOrderedSame;
-        }];
+        fitIds = [self sortedFitIdsFromFits:fits];
 
         //[athleteTableView reloadData];
         [athleteTableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
@@ -107,6 +93,25 @@
     }];
     
     }
+
+- (NSArray *) sortedFitIdsFromFits:(NSDictionary *)fitDict
+{
+    return [fitDict keysSortedByValueUsingComparator: ^(id obj1, id obj2){
+        float date1 = [[(NSDictionary *)obj1 objectForKey:AWS_FIT_ATTRIBUTE_LASTUPDATED] floatValue];
+        float date2 = [[(NSDictionary *)obj2 objectForKey:AWS_FIT_ATTRIBUTE_LASTUPDATED] floatValue];
+        
+        if (date1 < date2)
+        {
+            return (NSComparisonResult)NSOrderedDescending;
+        }
+        if(date2 < date1)
+        {
+            return (NSComparisonResult)NSOrderedAscending;
+        }
+        
+        return NSOrderedSame;
+    }];
+}
 
 - (IBAction) close
 {
@@ -130,7 +135,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [fits count];
+    return [fitIds count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -157,9 +162,13 @@
     
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
-        [fits removeObjectForKey:[fitIds objectAtIndex:indexPath.row]];
+        NSString *fitId = [fitIds objectAtIndex:[indexPath row]];
+        [AthletePropertyModel removeAthleteFromAWS:fitId];
+        
+        [fits removeObjectForKey:fitId];
+        fitIds = [self sortedFitIdsFromFits:fits];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        [AthletePropertyModel removeAthleteFromAWS:[fitIds objectAtIndex:indexPath.row]];
+
     }
 }
 

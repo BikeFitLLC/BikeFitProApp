@@ -10,7 +10,9 @@
 
 @interface AthleteInfoTableCell : UITableViewCell
 
+@property UITextField *titleField;
 @property UITextField *textField;
+@property BOOL isNewPropertyCell;
 
 - (void) updateAthleteProperty;
 @end

@@ -10,6 +10,7 @@
 		008755721B40D61F00BB67BE /* LoadinSpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 008755711B40D61F00BB67BE /* LoadinSpinnerView.m */; };
 		009D55801AB393A4008A8A74 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 009D557F1AB393A4008A8A74 /* MainStoryboard_iPhone.storyboard */; };
 		00A382F71A3B710100791FEE /* BikeFitTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A382F61A3B710100791FEE /* BikeFitTableViewCell.m */; };
+		00AD5C4A1B41BEFD009F0839 /* Bike_tri_diagram_ABCDEF.png in Resources */ = {isa = PBXBuildFile; fileRef = 00AD5C491B41BEFD009F0839 /* Bike_tri_diagram_ABCDEF.png */; };
 		00D3FE991A83D9AC0017BF1D /* libPods-AWSiOSSDKv2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00D3FE981A83D9AC0017BF1D /* libPods-AWSiOSSDKv2.a */; };
 		00F813541A2ADE1300F1EA6D /* LegAngleViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F813531A2ADE1300F1EA6D /* LegAngleViewViewController.m */; };
 		00FBB9C61B3B811700873AAA /* AthleteInfoTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00FBB9C51B3B811700873AAA /* AthleteInfoTableCell.m */; };
@@ -136,6 +137,7 @@
 		009D557F1AB393A4008A8A74 /* MainStoryboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		00A382F51A3B710100791FEE /* BikeFitTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BikeFitTableViewCell.h; sourceTree = "<group>"; };
 		00A382F61A3B710100791FEE /* BikeFitTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BikeFitTableViewCell.m; sourceTree = "<group>"; };
+		00AD5C491B41BEFD009F0839 /* Bike_tri_diagram_ABCDEF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Bike_tri_diagram_ABCDEF.png; path = ../../Downloads/Bike_tri_diagram_ABCDEF.png; sourceTree = "<group>"; };
 		00D3FE981A83D9AC0017BF1D /* libPods-AWSiOSSDKv2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-AWSiOSSDKv2.a"; path = "Pods/build/Debug-iphoneos/libPods-AWSiOSSDKv2.a"; sourceTree = "<group>"; };
 		00F813521A2ADE1300F1EA6D /* LegAngleViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LegAngleViewViewController.h; sourceTree = "<group>"; };
 		00F813531A2ADE1300F1EA6D /* LegAngleViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LegAngleViewViewController.m; sourceTree = "<group>"; };
@@ -456,6 +458,7 @@
 		5D8531D01759CD6600934E68 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				00AD5C491B41BEFD009F0839 /* Bike_tri_diagram_ABCDEF.png */,
 				00FF371D1A36310300FD1E45 /* Bike_road_diagram_ABCD.png */,
 				00FF371B1A3630CE00FD1E45 /* measurementIcon-new-29x29.png */,
 				00FF37191A36302E00FD1E45 /* KW_front_laser_2.png */,
@@ -739,6 +742,7 @@
 				5DD68EFA19818F9E00BCCCD9 /* FFMD_Dial_only-200.png in Resources */,
 				00FF371A1A36302E00FD1E45 /* KW_front_laser_2.png in Resources */,
 				5D6F99CC190B448600558C99 /* arrowright.png in Resources */,
+				00AD5C4A1B41BEFD009F0839 /* Bike_tri_diagram_ABCDEF.png in Resources */,
 				5D003774195CF0B800BC9BBA /* Images.xcassets in Resources */,
 				5D549A411862A53A00B61A83 /* img_thumb_383809223.jpg in Resources */,
 				009D55801AB393A4008A8A74 /* MainStoryboard_iPhone.storyboard in Resources */,

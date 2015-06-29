@@ -10,17 +10,12 @@
 
 @interface FinalNotesViewController : UIViewController <UITableViewDataSource,UITableViewDelegate, UITextFieldDelegate>
 {
-    
-    /*
-    UITextField *saddleHeightTextField;
-    UITextField *saddleSetBacktextField;
-    UITextField *handlebarDropTextField;
-    UITextField *hoodDistanceTextField;
-    UITextField *crankLengthTextField;
-     */
-    
     UITableView *dimensionsTable;
-    UIImageView *bikeDimensionsImage;
+    
+    UIImageView *bikeDimensionsImageView;
+    NSArray *bikeDimensionsImages;
+    int activeBikeImageIndex;
+    
     UIView *propertyEditView;
     UILabel *propertyNameLabel;
     UILabel *millimeterLabel;

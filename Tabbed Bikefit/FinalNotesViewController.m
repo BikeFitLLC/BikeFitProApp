@@ -17,11 +17,31 @@
 
 - (void) viewDidLoad
 {
-    bikeDimensionsImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Bike_road_diagram_ABCD"]];
-    bikeDimensionsImage.frame = CGRectMake(0,30,
-                                           self.view.frame.size.width,
-                                           self.view.frame.size.height *.5 );
-    [self.view addSubview:bikeDimensionsImage];
+
+    UIImage *roadBikeImage = [UIImage imageNamed:@"Bike_road_diagram_ABCD"];
+    UIImage *triBikeImage = [UIImage imageNamed:@"Bike_tri_diagram_ABCDEF.png"];
+    
+    bikeDimensionsImages = [NSArray arrayWithObjects:roadBikeImage, triBikeImage, nil];
+    activeBikeImageIndex = 0;
+    
+    bikeDimensionsImageView =  [[UIImageView alloc] initWithFrame:CGRectMake(0,30,
+                                                                        self.view.frame.size.width,
+                                                                        self.view.frame.size.height *.5 )];
+
+
+    [self.view addSubview:bikeDimensionsImageView];
+    
+    [bikeDimensionsImageView setUserInteractionEnabled:YES];
+    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
+    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipe:)];
+    
+    // Setting the swipe direction.
+    [swipeLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
+    [swipeRight setDirection:UISwipeGestureRecognizerDirectionRight];
+    
+    // Adding the swipe gesture on image view
+    [bikeDimensionsImageView addGestureRecognizer:swipeLeft];
+    [bikeDimensionsImageView addGestureRecognizer:swipeRight];
     
     dimensionsFieldNames = [[NSMutableArray alloc] initWithObjects:@"A: Saddle Height",
                                                                     @"B: Saddle Setback",
@@ -63,6 +83,8 @@
     {
         [logInReminder removeFromSuperview];
     }
+    
+    bikeDimensionsImageView.image = [bikeDimensionsImages objectAtIndex:activeBikeImageIndex];
     
     [dimensionsTable reloadData];
     
@@ -265,6 +287,42 @@
     {
         [AthletePropertyModel setProperty:[fieldNameDict objectForKey:propertyNameLabel.text] value:propertyValueField.text];
         [dimensionsTable reloadData];
+    }
+    
+}
+
+- (void)handleSwipe:(UISwipeGestureRecognizer *)swipe {
+    
+    if (swipe.direction == UISwipeGestureRecognizerDirectionLeft)
+    {
+        if(activeBikeImageIndex != [bikeDimensionsImages count] - 1)
+        {
+            activeBikeImageIndex = activeBikeImageIndex + 1;
+            [UIView transitionWithView:bikeDimensionsImageView
+                              duration:0.4f
+                               options:UIViewAnimationOptionTransitionFlipFromRight
+                            animations:^{
+                                bikeDimensionsImageView.image = [bikeDimensionsImages objectAtIndex:activeBikeImageIndex];
+                            } completion:NULL];
+        }
+
+        NSLog(@"Left Swipe");
+    }
+    
+    if (swipe.direction == UISwipeGestureRecognizerDirectionRight)
+    {
+        if(activeBikeImageIndex != 0)
+        {
+            activeBikeImageIndex = activeBikeImageIndex - 1;
+            bikeDimensionsImageView.image = [bikeDimensionsImages objectAtIndex:activeBikeImageIndex];
+            [UIView transitionWithView:bikeDimensionsImageView
+                              duration:0.4f
+                               options:UIViewAnimationOptionTransitionFlipFromLeft
+                            animations:^{
+                                bikeDimensionsImageView.image = [bikeDimensionsImages objectAtIndex:activeBikeImageIndex];
+                            } completion:NULL];
+        }
+        NSLog(@"Right Swipe");
     }
     
 }

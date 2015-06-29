@@ -15,9 +15,12 @@
 }
 
 @property(nonatomic, retain) NSMutableDictionary *athleteProperties;
+@property(nonatomic, retain) NSMutableDictionary *fits;
+@property(nonatomic, retain) NSDictionary *lastEvaluatedKey;
 
 + (int)propertyCount;
 + (NSArray *) propertyNames;
++ (NSMutableDictionary *) fits;
 
 + (bool)setProperty:(NSString*)propertyName value:(id)value;
 + (id)getProperty:(NSString*)propertyName;

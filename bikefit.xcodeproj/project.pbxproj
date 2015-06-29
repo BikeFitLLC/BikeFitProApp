@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		008755721B40D61F00BB67BE /* LoadinSpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 008755711B40D61F00BB67BE /* LoadinSpinnerView.m */; };
 		009D55801AB393A4008A8A74 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 009D557F1AB393A4008A8A74 /* MainStoryboard_iPhone.storyboard */; };
 		00A382F71A3B710100791FEE /* BikeFitTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A382F61A3B710100791FEE /* BikeFitTableViewCell.m */; };
 		00D3FE991A83D9AC0017BF1D /* libPods-AWSiOSSDKv2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00D3FE981A83D9AC0017BF1D /* libPods-AWSiOSSDKv2.a */; };
@@ -130,6 +131,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		008755701B40D61F00BB67BE /* LoadinSpinnerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadinSpinnerView.h; sourceTree = "<group>"; };
+		008755711B40D61F00BB67BE /* LoadinSpinnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadinSpinnerView.m; sourceTree = "<group>"; };
 		009D557F1AB393A4008A8A74 /* MainStoryboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		00A382F51A3B710100791FEE /* BikeFitTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BikeFitTableViewCell.h; sourceTree = "<group>"; };
 		00A382F61A3B710100791FEE /* BikeFitTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BikeFitTableViewCell.m; sourceTree = "<group>"; };
@@ -370,6 +373,8 @@
 				5DD68EE1197473D300BCCCD9 /* FrontCameraIcon.jpg */,
 				5DA7AE5518BEC79B00CA0DEB /* foot_fore_aft_measure.png */,
 				5D549A401862A53A00B61A83 /* img_thumb_383809223.jpg */,
+				008755701B40D61F00BB67BE /* LoadinSpinnerView.h */,
+				008755711B40D61F00BB67BE /* LoadinSpinnerView.m */,
 			);
 			name = Interface;
 			sourceTree = "<group>";
@@ -856,6 +861,7 @@
 				5DA7AE6018BED17300CA0DEB /* SpindleNote.m in Sources */,
 				5D9E2161185FE897006BA0B3 /* FootBottomNoteViewController.m in Sources */,
 				00F813541A2ADE1300F1EA6D /* LegAngleViewViewController.m in Sources */,
+				008755721B40D61F00BB67BE /* LoadinSpinnerView.m in Sources */,
 				5DBC20C418E4E24900BF5957 /* ImageViewerViewController.m in Sources */,
 				5D9E215A185CE8EE006BA0B3 /* KneeViewNote.m in Sources */,
 				5DC9305F19200D2000EB733C /* AMZNLogoutDelegate.m in Sources */,

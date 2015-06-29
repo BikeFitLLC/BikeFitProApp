@@ -73,9 +73,9 @@
     [anglePath addLineToPoint:b];
     [anglePath addLineToPoint:c];
     
-    UIBezierPath* circle1 = [UIBezierPath bezierPathWithArcCenter:a radius:50 startAngle:0 endAngle:2*pi clockwise:YES];
-    UIBezierPath* circle2 = [UIBezierPath bezierPathWithArcCenter:b radius:50 startAngle:0 endAngle:2*pi clockwise:YES];
-    UIBezierPath* circle3 = [UIBezierPath bezierPathWithArcCenter:c radius:50 startAngle:0 endAngle:2*pi clockwise:YES];
+    UIBezierPath* circle1 = [UIBezierPath bezierPathWithArcCenter:a radius:self.frame.size.height * .05 startAngle:0 endAngle:2*pi clockwise:YES];
+    UIBezierPath* circle2 = [UIBezierPath bezierPathWithArcCenter:b radius:self.frame.size.height * .05 startAngle:0 endAngle:2*pi clockwise:YES];
+    UIBezierPath* circle3 = [UIBezierPath bezierPathWithArcCenter:c radius:self.frame.size.height * .05 startAngle:0 endAngle:2*pi clockwise:YES];
     
     UIBezierPath* arcPath = [self getArcForPoints:a b:b c:c andAngle:[self calculateAngleForPoints:a b:b c:c]];
     

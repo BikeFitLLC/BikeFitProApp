@@ -9,6 +9,7 @@
 #import "AthletePickerViewController.h"
 #import "AthletePropertyModel.h"
 #import "BikefitConstants.h"
+#import "LoadinSpinnerView.h"
 
 @interface AthletePickerViewController (){
     NSMutableDictionary *fits;
@@ -32,10 +33,7 @@
 {
     [super viewDidLoad];
     athleteTableView = [[UITableView alloc] init];
-    athleteTableView.frame = CGRectMake(0,
-                                        0,
-                                        self.view.frame.size.width,
-                                        self.view.frame.size.height * .6);
+    athleteTableView.frame = self.view.frame;
     [athleteTableView setDataSource:self];
     [athleteTableView setDelegate:self];
     [athleteTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"athletecell"];
@@ -43,10 +41,18 @@
     
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    
-    [self loadAthleteFileNames:documentsDirectory];
+    //put up loading view before getting athletes
+    LoadinSpinnerView *loadingView = [[LoadinSpinnerView alloc] initWithFrame:self.view.frame];
+    [self.view addSubview:loadingView];
+    [[AthletePropertyModel getAthletesFromAws] continueWithBlock:^id(BFTask *task)
+    {
+        fits = [AthletePropertyModel fits];
+        fitIds = [self sortedFitIdsFromFits:fits];
+        [athleteTableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+        [loadingView performSelectorOnMainThread:@selector(removeFromSuperview) withObject:nil waitUntilDone:NO];
+        return nil;
+    }];
+
     return;
 }
 
@@ -60,39 +66,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
--(void)loadAthleteFileNames:(NSString *)path
-{
-    [[AthletePropertyModel getAthletesFromAws] continueWithBlock:^id(BFTask *task) {
-        if(task.error)
-        {
-            NSLog(@"Error Retrieving Fits %@",[task description]);
-            return nil;
-        }
-        
-        fits = [[NSMutableDictionary alloc] init];
-        //Now that we have retrieved the fit items from AWS, put them into the dictionary
-        for(NSMutableDictionary *athleteItem in [task.result items])
-        {
-            if(![athleteItem objectForKey:AWS_FIT_ATTRIBUTE_HIDDEN])
-            {
-                NSMutableDictionary *athleteAttributes = [[NSMutableDictionary alloc] init];
-                for( NSString *key in athleteItem )
-                {
-                    [athleteAttributes setObject:[[athleteItem valueForKey:key] S] forKey:key];
-                }
-                [fits setObject:athleteAttributes forKey:[[athleteItem valueForKey:AWS_FIT_ATTRIBUTE_FITID] S]];
-            }
-        }
-        
-        fitIds = [self sortedFitIdsFromFits:fits];
-
-        //[athleteTableView reloadData];
-        [athleteTableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
-        return nil;
-    }];
-    
-    }
 
 - (NSArray *) sortedFitIdsFromFits:(NSDictionary *)fitDict
 {
@@ -184,10 +157,14 @@
     [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
     
     NSString *key =  [fitIds objectAtIndex:[indexPath row]];
+    
+    LoadinSpinnerView *loadingView = [[LoadinSpinnerView alloc] initWithFrame:self.parentViewController.view.frame];
+    [self.view addSubview:loadingView];
     [[AthletePropertyModel loadAthleteFromAWS:key]
      continueWithExecutor:[BFExecutor mainThreadExecutor] withBlock:^id(BFTask *task)
      {
          [self.navigationController popViewControllerAnimated:YES];
+         [loadingView removeFromSuperview];
          return nil;
      }];
 }

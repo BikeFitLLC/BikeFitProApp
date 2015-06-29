@@ -25,8 +25,13 @@
 
 @implementation AthletePropertyModel
 @synthesize athleteProperties;
+@synthesize fits;
+@synthesize lastEvaluatedKey;
+
 
 static NSMutableDictionary *athleteProperties;
+static NSMutableDictionary *fits;
+static NSDictionary *lastEvaluatedKey;
 
 
 + (bool)setProperty:(NSString*)propertyName value:(id)value{
@@ -151,43 +156,79 @@ static NSMutableDictionary *athleteProperties;
 ////////////////////////////////////////////////////
 + (BFTask *) getAthletesFromAws
 {
-    //NSMutableDictionary *athletes = [[NSMutableDictionary alloc]init];
-    
-    //if([AmazonClientManager verifyUserKey])
-    //{
-        AWSDynamoDB *ddb = [AmazonClientManager ddb];
-    
-        //Creat a DynamoDB condition that only matches this fitter's fits
-        NSString *fitterID = [[NSUserDefaults standardUserDefaults] stringForKey:USER_DEFAULTS_FITTERID_KEY];
-        NSString *fitsTableName = @"Fits";
-        
-        AWSDynamoDBCondition *condition = [AWSDynamoDBCondition new];
-        condition.comparisonOperator = AWSDynamoDBComparisonOperatorEQ;
-        AWSDynamoDBAttributeValue *fitterIDAttributeValue = [AWSDynamoDBAttributeValue alloc];
-        
-        fitterIDAttributeValue.S = fitterID;
-        condition.attributeValueList = [[NSArray alloc] initWithObjects:fitterIDAttributeValue, nil];
-        
-        AWSDynamoDBQueryInput *queryInput = [[AWSDynamoDBQueryInput alloc] init];
-        queryInput.tableName = fitsTableName;
-        
-        queryInput.keyConditions = [NSMutableDictionary dictionaryWithObject:condition forKey:@"FitterID"];
-        
-        queryInput.attributesToGet = [[NSMutableArray alloc] initWithObjects:
-                                   AWS_FIT_ATTRIBUTE_FITID,
-                                   AWS_FIT_ATTRIBUTE_FIRSTNAME,
-                                   AWS_FIT_ATTRIBUTE_LASTNAME,
-                                   AWS_FIT_ATTRIBUTE_EMAIL,
-                                   AWS_FIT_ATTRIBUTE_LASTUPDATED,
-                                   AWS_FIT_ATTRIBUTE_HIDDEN,
-                                   nil];
-    
-    
-        NSLog(@"Querying AWS for athletes for the FitterID %@", fitterID);
-        return [ddb query:queryInput];
-    //} //end AWS block
-
+    return [AthletePropertyModel loadFitPageWithExclusiveStartKey:lastEvaluatedKey];
 }
+
++ (BFTask *) loadFitPageWithExclusiveStartKey:(NSDictionary *)exclusiveStartKey
+{
+    AWSDynamoDB *ddb = [AmazonClientManager ddb];
+    
+    //Creat a DynamoDB condition that only matches this fitter's fits
+    NSString *fitterID = [[NSUserDefaults standardUserDefaults] stringForKey:USER_DEFAULTS_FITTERID_KEY];
+    NSString *fitsTableName = @"Fits";
+
+    AWSDynamoDBCondition *condition = [AWSDynamoDBCondition new];
+    condition.comparisonOperator = AWSDynamoDBComparisonOperatorEQ;
+    AWSDynamoDBAttributeValue *fitterIDAttributeValue = [AWSDynamoDBAttributeValue alloc];
+    
+    fitterIDAttributeValue.S = fitterID;
+    condition.attributeValueList = [[NSArray alloc] initWithObjects:fitterIDAttributeValue, nil];
+    
+    AWSDynamoDBQueryInput *queryInput = [[AWSDynamoDBQueryInput alloc] init];
+    queryInput.tableName = fitsTableName;
+    
+    queryInput.keyConditions = [NSMutableDictionary dictionaryWithObject:condition forKey:@"FitterID"];
+    queryInput.exclusiveStartKey = exclusiveStartKey;
+    queryInput.attributesToGet = [[NSMutableArray alloc] initWithObjects:
+                                  AWS_FIT_ATTRIBUTE_FITID,
+                                  AWS_FIT_ATTRIBUTE_FIRSTNAME,
+                                  AWS_FIT_ATTRIBUTE_LASTNAME,
+                                  AWS_FIT_ATTRIBUTE_EMAIL,
+                                  AWS_FIT_ATTRIBUTE_LASTUPDATED,
+                                  AWS_FIT_ATTRIBUTE_HIDDEN,
+                                  nil];
+    
+    
+    NSLog(@"Querying AWS for athletes for the FitterID %@", fitterID);
+    
+    //
+    //Block that queries AWS for fits for use in ddb query
+    //
+    return [[ddb query:queryInput] continueWithBlock:^id(BFTask *task)
+    {
+        if(task.error)
+        {
+            NSLog(@"Error Retrieving Fits %@",[task description]);
+            return nil;
+        }
+        
+        if(!fits)
+        {
+            fits = [[NSMutableDictionary alloc] init];
+        }
+        
+        //Now that we have retrieved the fit items from AWS, put them into the dictionary
+        for(NSMutableDictionary *athleteItem in [task.result items])
+        {
+            if(![athleteItem objectForKey:AWS_FIT_ATTRIBUTE_HIDDEN])
+            {
+                NSMutableDictionary *athleteAttributes = [[NSMutableDictionary alloc] init];
+                for( NSString *key in athleteItem )
+                {
+                    [athleteAttributes setObject:[[athleteItem valueForKey:key] S] forKey:key];
+                }
+                [fits setObject:athleteAttributes forKey:[[athleteItem valueForKey:AWS_FIT_ATTRIBUTE_FITID] S]];
+            }
+        }
+        
+        lastEvaluatedKey = [task.result lastEvaluatedKey];
+        if(lastEvaluatedKey)
+        {
+            return [AthletePropertyModel getAthletesFromAws];
+        }
+        return task;
+    }];
+};
 
 
 
@@ -387,6 +428,11 @@ static NSMutableDictionary *athleteProperties;
         NSString *url = [NSString stringWithFormat:@"http://intake.bikefit.com/f/%@/%@",fitterId,fitId];
         [AthletePropertyModel setProperty:AWS_FIT_ATTRIBUTE_URL value:url];
     }
+}
+
++ (NSMutableDictionary*) fits
+{
+    return fits;
 }
 
 

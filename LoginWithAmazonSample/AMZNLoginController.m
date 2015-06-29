@@ -19,28 +19,36 @@
 #import "AMZNLogoutDelegate.h"
 #import "AmazonClientManager.h"
 #import "BikefitConstants.h"
+#import "LoadinSpinnerView.h"
 
 @implementation AMZNLoginController
+{
+    LoadinSpinnerView *loadingView;
+}
 
-@synthesize userProfile, /*navigationItem,*/ logoutButton, loginButton, infoField;
+@synthesize userProfile, logoutButton, loginButton, infoField;
 
 NSString* userLoggedOutMessage = @"Welcome, BikeFit Pro!\n";
 
 //NSString* userLoggedInMessage = @"Logged In As %@";
 BOOL isUserSignedIn;
 
-- (IBAction)onLogInButtonClicked:(id)sender {
+- (IBAction)onLogInButtonClicked:(id)sender
+{
     // Make authorize call to SDK to get authorization from the user.
     // Requesting 'profile' scopes for the current user.
     [[AmazonClientManager credProvider] setIsLoggingIn:true];
     NSArray *requestScopes = [NSArray arrayWithObject:@"profile"];
     AMZNAuthorizeUserDelegate* delegate = [[AMZNAuthorizeUserDelegate alloc] initWithParentController:self];
+    loadingView = [[LoadinSpinnerView alloc] initWithFrame:self.view.frame];
+    [self.view addSubview:loadingView];
     [AIMobileLib authorizeUserForScopes:requestScopes delegate:delegate];
 }
 
 - (IBAction)logoutButtonClicked:(id)sender {
     AMZNLogoutDelegate* delegate = [[AMZNLogoutDelegate alloc] initWithParentController:self];
     [AIMobileLib clearAuthorizationState:delegate];
+    emailIntakeUrlButton.hidden = YES;
 }
 
 - (BOOL)shouldAutorotate {
@@ -77,6 +85,11 @@ BOOL isUserSignedIn;
     self.infoField.hidden = false;
     logoutButton.hidden = false;
     emailIntakeUrlButton.hidden = false;
+    
+    if(loadingView)
+    {
+        [loadingView removeFromSuperview];
+    }
 }
 
 - (void)showLogInPage {
@@ -84,26 +97,13 @@ BOOL isUserSignedIn;
     self.loginButton.hidden = false;
     self.logoutButton.hidden = true;
 
-    
-   //if(onlineModeSwitch.on)
-    {
-        self.infoField.text = userLoggedOutMessage;
-        self.infoField.hidden = false;
-        self.loginButton.enabled = true;
-    }
-    /*else
-    {
-        self.infoField.text = @"Offline Mode";
-        self.infoField.hidden = false;
-        self.loginButton.enabled = false;
-    }*/
+    self.infoField.text = userLoggedOutMessage;
+    self.infoField.hidden = false;
+    self.loginButton.enabled = true;
     
     self.infoField.font = [UIFont fontWithName:@"Gill Sans" size:48.0];
     self.infoField.textColor = [UIColor grayColor];
     self.infoField.textAlignment = NSTextAlignmentCenter;
-    
-    
-    
 }
 
 - (void)viewDidLoad {
@@ -118,23 +118,27 @@ BOOL isUserSignedIn;
     logoImage.image = [UIImage imageNamed:@"BikeFit_logo_Horiz.png"];
     [self.view addSubview:logoImage];
     
+    infoField = [[UILabel alloc] initWithFrame:CGRectMake(
+                                 self.view.frame.size.width * .5,
+                                 self.view.frame.size.height * .3,
+                                 self.view.frame.size.width *.5,
+                                 self.view.frame.size.width *.5)];
+    
+    infoField.center = self.view.center;
+    infoField.adjustsFontSizeToFitWidth = YES;
+    [self.view addSubview:infoField];
+    
     loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    loginButton.frame = CGRectMake(0,0,
+    loginButton.frame = CGRectMake(0,
+                                   infoField.frame.origin.y + infoField.frame.size.height,
                                    209,
                                    48);
+    loginButton.center = CGPointMake(self.view.center.x, loginButton.center.y);
+    
     [loginButton setBackgroundImage:[UIImage imageNamed:@"btnLWA_gold_209x48.png"] forState:UIControlStateNormal];
-    [loginButton setCenter:CGPointMake(
-                                       self.view.bounds.size.width * .5,
-                                       self.view.bounds.size.height *.5)];
+    
     [loginButton addTarget:self action:@selector(onLogInButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:loginButton];
-    
-    infoField = [[UITextView alloc] init];
-    infoField.frame = CGRectMake(
-                                self.view.frame.size.width * .5,
-                                self.view.frame.size.height * .3,
-                                self.view.frame.size.width *.5,
-                                self.view.frame.size.width *.5);
 
     
     //Create label to display the url for this fit
@@ -144,9 +148,13 @@ BOOL isUserSignedIn;
                                               self.view.frame.size.height * .8,
                                               self.view.frame.size.width *.2,
                                               self.view.frame.size.width *.1)];
+    emailIntakeUrlButton.frame = loginButton.frame;
+    emailIntakeUrlButton.center = loginButton.center;
     emailIntakeUrlButton.titleLabel.font = [UIFont systemFontOfSize:24];
     emailIntakeUrlButton.backgroundColor = [UIColor blackColor];
     emailIntakeUrlButton.alpha = .5;
+    emailIntakeUrlButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    emailIntakeUrlButton.titleLabel.numberOfLines = 2;
     [emailIntakeUrlButton setTitle:@"Email Intake Form" forState:UIControlStateNormal];
     [emailIntakeUrlButton addTarget:self
                              action:@selector(emailIntakeUrl)

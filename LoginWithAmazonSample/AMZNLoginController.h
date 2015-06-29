@@ -23,7 +23,7 @@
 }
 
 @property (retain, nonatomic) IBOutlet UIButton *loginButton;
-@property (retain, nonatomic) IBOutlet UITextView *infoField;
+@property (retain, nonatomic) UILabel *infoField;
 @property (retain, nonatomic) IBOutlet UIButton *logoutButton;
 //@property (retain, nonatomic) IBOutlet UINavigationItem *navigationItem;
 

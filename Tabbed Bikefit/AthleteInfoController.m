@@ -39,26 +39,33 @@
     logoImage.frame = CGRectMake(
                                  self.view.frame.size.width * .1,
                                  0,
-                                 self.view.frame.size.width *.8,
-                                 self.view.frame.size.width *.3);
+                                 self.view.frame.size.width *.65,
+                                 self.view.frame.size.width *.15);
+    logoImage.center = CGPointMake(self.view.center.x, logoImage.center.y);
     logoImage.image = [UIImage imageNamed:@"BikeFit_logo_Horiz.png"];
     [self.view addSubview:logoImage];
     
     //setup subviews
-    infoTableView = [self makeInfoTableView];
-    [self.view addSubview: infoTableView];
-    [self newAthlete];
-    
     //First Name Label Subview
     firstNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(
-                                              self.view.frame.size.width * .2,
-                                              self.view.frame.size.height * .1,
-                                              self.view.frame.size.width *.6,
-                                              self.view.frame.size.width *.3)];
+                                                                0,
+                                                                0,
+                                                                self.view.frame.size.width *.6,
+                                                                self.view.frame.size.width *.1)];
+    firstNameLabel.center = CGPointMake(self.view.center.x, logoImage.center.y + logoImage.frame.size.height *.5);
     [self.view addSubview:firstNameLabel];
     [firstNameLabel setFont:[UIFont fontWithName:@"ArialRoundedMTBold" size:36]];
+    firstNameLabel.textAlignment = NSTextAlignmentCenter;
     firstNameLabel.adjustsFontSizeToFitWidth = YES;
     [firstNameLabel setText:@"First"];
+    
+    infoTableView = [self makeInfoTableView];
+    infoTableView.frame = CGRectMake(0,
+                                     firstNameLabel.frame.origin.y + firstNameLabel.frame.size.height,
+                                     infoTableView.frame.size.width,
+                                     toolbar.frame.origin.y - firstNameLabel.frame.origin.y - firstNameLabel.frame.size.height );
+    [self.view addSubview: infoTableView];
+    [self newAthlete];
     
     //Create label to display the url for this fit
     urlButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];

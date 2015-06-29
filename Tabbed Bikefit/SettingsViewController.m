@@ -31,9 +31,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //fitterKeyField.text = [[NSUserDefaults standardUserDefaults] stringForKey:USER_DEFAULTS_FITTER_KEY_KEY];
-    //onlineModeSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_ONLINEMODE_KEY] boolValue];
-    [onlineModeSwitch addTarget:self action:@selector(toggleOnlineSwitch:) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)didReceiveMemoryWarning
@@ -50,16 +47,6 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-////////////////////////////////////////////
-//Called with the onlineMode toggle switch changes
-//state
-////////////////////////////////////////////
-- (void) toggleOnlineSwitch:(id)sender
-{
-    UISwitch *sendinSwitch = sender;
-    //[[NSUserDefaults standardUserDefaults] setBool:sendinSwitch.on forKey:USER_DEFAULTS_ONLINEMODE_KEY];
-    
-}
 
 /*
 #pragma mark - Navigation

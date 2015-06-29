@@ -10,9 +10,6 @@
 
 @interface SettingsViewController : UIViewController
 {
-    IBOutlet UITextField *fitterKeyField;
-    IBOutlet UISwitch *onlineModeSwitch;
-
 }
 
 @end

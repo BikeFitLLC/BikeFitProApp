@@ -222,27 +222,9 @@
                     <view key="view" contentMode="scaleToFill" id="LXa-W5-7E6">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i93-Hs-PIT" customClass="NoteImageView">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="1280"/>
-                                <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rR4-xh-kzf">
-                                        <rect key="frame" x="48" y="771" width="315" height="162"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="iuE-uG-Arb"/>
-                    <connections>
-                        <outlet property="angleLable" destination="rR4-xh-kzf" id="BSO-2r-P4f"/>
-                        <outlet property="previewImage" destination="i93-Hs-PIT" id="lYw-6g-Hp3"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uiJ-fz-anR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

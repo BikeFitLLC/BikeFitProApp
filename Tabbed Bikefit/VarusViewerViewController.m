@@ -28,13 +28,41 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    imageView = [[UIImageView alloc] initWithImage:self.image];
+    imageView.frame = self.view.frame;
+    imageView.center = self.view.center;
+    imageView.contentMode = UIViewContentModeScaleAspectFill;
+    [self.view addSubview:imageView];
+    
+    drawingView = [[DrawingView alloc] initWithFrame:self.view.frame];
+    drawingView.backgroundColor = [UIColor clearColor];
+    drawingView.center = self.view.center;
+    [self.view addSubview:drawingView];
+    
+    angleLabel = [[UILabel alloc] init];
+    angleLabel.frame = CGRectMake(0, self.navigationController.navigationBar.frame.size.height,
+                                  self.view.frame.size.width *.3,
+                                  self.view.frame.size.height *.1);
+    
+    angleLabel.font = [UIFont fontWithName:@"Helvetica" size:24];
+    angleLabel.backgroundColor = [UIColor blackColor];
+    angleLabel.textColor = [UIColor yellowColor];
+    angleLabel.alpha = .5;
+    angleLabel.textAlignment = NSTextAlignmentCenter;
+    angleLabel.adjustsFontSizeToFitWidth = YES;
+    [self.view addSubview:angleLabel];
 }
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    drawingView.overlayPath = self.overlayPath;
+}
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    angleLable.font = [UIFont fontWithName:@"Helvetica" size:100.0];
-    angleLable.text = [NSString stringWithFormat:@"%d", (int)(varusAngle*57.2957795)];
+
+    angleLabel.text = [NSString stringWithFormat:@"%d°", (int)(varusAngle*57.2957795)];
 }
 
 - (void)didReceiveMemoryWarning

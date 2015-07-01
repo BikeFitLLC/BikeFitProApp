@@ -11,6 +11,7 @@
 @implementation NoteImageView
 
 @synthesize imageView;
+@synthesize overlayPath;
 
 - (id)initWithFrame:(CGRect)frame image:(UIImage *)imageToShow
 {

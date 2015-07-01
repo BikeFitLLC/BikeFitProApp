@@ -19,6 +19,7 @@
     UIView *logInReminder;
     UILabel *loginReminderLabel;
     bool editing;
+    CGRect oldTableFrame;
 }
 
 @end
@@ -487,26 +488,13 @@
 
 -(IBAction) keyboardDidShow:(NSNotification*)notification
 {
-    const int movementDistance = 0 - [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey ] CGRectValue].size.height + self.tabBarController.tabBar.frame.size.height; // tweak as needed
-    const float movementDuration = 0.3f; // tweak as needed
-
-    [UIView beginAnimations: @"anim" context: nil];
-        [UIView setAnimationBeginsFromCurrentState: YES];
-        [UIView setAnimationDuration: movementDuration];
-        self.view.frame = CGRectOffset(self.view.frame, 0, movementDistance);
-    [UIView commitAnimations];
+    [infoTableView setContentInset:
+        UIEdgeInsetsMake(0.f, 0.f, [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey ] CGRectValue].size.height, 0.f)];
 }
 
 -(IBAction) keyboardDidHide:(NSNotification*)notification
 {
-    const int movementDistance = [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey ] CGRectValue].size.height - self.tabBarController.tabBar.frame.size.height; // tweak as needed; // tweak as needed
-    const float movementDuration = 0.3f; // tweak as needed
-    
-    [UIView beginAnimations: @"anim" context: nil];
-    [UIView setAnimationBeginsFromCurrentState: YES];
-    [UIView setAnimationDuration: movementDuration];
-    self.view.frame = CGRectOffset(self.view.frame, 0, movementDistance);
-    [UIView commitAnimations];
+    [infoTableView setContentInset:UIEdgeInsetsZero];
 }
 
 

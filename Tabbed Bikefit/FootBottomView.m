@@ -30,7 +30,10 @@
 - (void)drawRect:(CGRect)rect
 {
     // Drawing code
-    CGRect rectangle = CGRectMake(0.0, self.frame.size.height *.2, self.frame.size.width, self.frame.size.height * .2);
+    CGRect rectangle = CGRectMake(0.0,
+                                  self.frame.size.height *.25,
+                                  self.frame.size.width,
+                                  self.frame.size.height * .12);
     footBoxPath = [UIBezierPath bezierPathWithRect:rectangle];
     [footBoxPath setLineWidth:3.0];
     [footBoxPath setLineJoinStyle:kCGLineJoinBevel];

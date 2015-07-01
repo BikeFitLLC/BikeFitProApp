@@ -382,9 +382,9 @@
         case 6:
             segueIdentifier = @"addfootnotesegue";
             break;
-        case 7:
-            segueIdentifier = @"addsaddletiltnotesegue";
-            break;
+        //case 7:
+        //    segueIdentifier = @"addsaddletiltnotesegue";
+        //    break;
     }
     if(![segueIdentifier isEqualToString:@""])
     {

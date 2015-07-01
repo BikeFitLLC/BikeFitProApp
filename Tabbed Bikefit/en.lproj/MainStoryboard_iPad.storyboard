@@ -242,31 +242,9 @@
                     <view key="view" contentMode="scaleToFill" id="pfu-Fz-Tqb">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="neR-0Q-nFK">
-                                <rect key="frame" x="0.0" y="-128" width="768" height="1280"/>
-                            </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jmC-Tl-7UT" customClass="NoteImageView">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="1280"/>
-                                <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p4M-Hi-pP9">
-                                        <rect key="frame" x="48" y="771" width="315" height="162"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="WkH-R5-MY3"/>
-                    <connections>
-                        <outlet property="angleLable" destination="p4M-Hi-pP9" id="ybE-0W-Hmm"/>
-                        <outlet property="imageView" destination="neR-0Q-nFK" id="zc0-31-6ih"/>
-                        <outlet property="previewImage" destination="jmC-Tl-7UT" id="YcQ-Tk-I7H"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gWd-Tb-spa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -510,31 +488,9 @@
                     <view key="view" contentMode="scaleToFill" id="QSB-ic-vbc">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VnK-E7-LlH" customClass="SpindleView">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="1137"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ado-qy-bex">
-                                        <rect key="frame" x="165" y="761" width="233" height="73"/>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" title="Save">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="saveNote" destination="OTY-RK-P5D" eventType="touchUpInside" id="Edb-TV-egc"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="jg6-hg-r3y"/>
-                    <connections>
-                        <outlet property="spindleView" destination="VnK-E7-LlH" id="o7T-Ij-s3r"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Owu-h3-EFQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

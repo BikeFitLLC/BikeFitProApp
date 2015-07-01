@@ -34,28 +34,28 @@
     //drawingView.overlayPath.lineWidth = 3;
     
     //Add the dragging circle
-    UIBezierPath *anglePath = [[UIBezierPath alloc] init];
-    [anglePath moveToPoint:startPointLocation];
-    [anglePath addLineToPoint:endPointLocation];
+    overlayPath = [[UIBezierPath alloc] init];
+    [overlayPath moveToPoint:startPointLocation];
+    [overlayPath addLineToPoint:endPointLocation];
     
     
     CGPoint startPoint;
     startPoint.x = self.frame.size.width /2;
     startPoint.y = 0;
     
-    [anglePath moveToPoint:startPoint];
+    [overlayPath moveToPoint:startPoint];
     CGPoint newPoint;
     CGFloat laserLength = 1500.0;
     newPoint.x = startPoint.x;
     newPoint.y = laserLength;
-    [anglePath addLineToPoint:newPoint];
+    [overlayPath addLineToPoint:newPoint];
     
     //[self.overlayPath moveToPoint:CGPointMake(0, barYPosition)];
     //[self.overlayPath addLineToPoint:CGPointMake(768, barYPosition)];
     
     UIColor *brushPattern = [UIColor redColor];
     [brushPattern setStroke];
-    [anglePath stroke];
+    [overlayPath stroke];
     [super drawRect:rect];
 }
 

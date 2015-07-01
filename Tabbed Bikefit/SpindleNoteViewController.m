@@ -45,6 +45,24 @@
     spindleView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:spindleView];
     
+    UIButton *saveButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    saveButton.frame = CGRectMake(self.view.frame.size.width * .8,
+                                  self.view.frame.size.height * .9,
+                                  self.view.frame.size.width * .2,
+                                  self.view.frame.size.width * .1);
+    saveButton.titleLabel.font = [UIFont systemFontOfSize:24];
+    saveButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    saveButton.backgroundColor = [UIColor blackColor];
+    saveButton.alpha = .5;
+    saveButton.titleLabel.numberOfLines = 2;
+    saveButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+    [saveButton setTitle:@"Save" forState:UIControlStateNormal];
+    [saveButton setCenter:CGPointMake(self.view.bounds.size.width * .85,
+                                      self.view.bounds.size.height *.75)];
+    [saveButton addTarget:self action:@selector(saveNote:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:saveButton];
+
+    
     panGesture.minimumNumberOfTouches = 1;
     panGesture.maximumNumberOfTouches = 2;
     [panGesture setDelegate:self];
@@ -81,7 +99,7 @@
     [spindleView setNeedsDisplay];
 }
 
-- (IBAction)saveNote
+- (IBAction)saveNote:(id)sender
 {
     SpindleNote *note = [[SpindleNote alloc]init];
     [note setPath:[spindleView boxPath]];

@@ -7,11 +7,13 @@
 //
 
 #import "ImageViewerViewController.h"
+#import "DrawingView.h"
 
 @interface VarusViewerViewController : ImageViewerViewController
 {
+    DrawingView *drawingView;
     CGFloat varusAngle;
-    IBOutlet UILabel *angleLable;
+    IBOutlet UILabel *angleLabel;
 }
 
 @property CGFloat varusAngle;

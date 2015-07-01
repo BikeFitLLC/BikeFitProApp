@@ -10,11 +10,12 @@
 #import "DrawingView.h"
 
 @interface NoteImageView : UIView {
-    UIBezierPath *overlyPath;
+    UIBezierPath *overlayPath;
     UIImageView *imageView;
 }
 
 @property UIImageView *imageView;
+@property UIBezierPath *overlayPath;
 
 - (id)initWithFrame:(CGRect)frame image:(UIImage *)imageToShow;
 

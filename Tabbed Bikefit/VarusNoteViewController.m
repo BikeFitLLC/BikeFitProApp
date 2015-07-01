@@ -276,7 +276,7 @@
 
     [note setAngle:angle];
     [note setImage:UIImageJPEGRepresentation(photo,.1)];
-    [note setPath:[drawingView overlayPath]];
+    [note setPath:[(VarusDrawingView *)previewImage overlayPath]];
     
     [self.bikeInfo addNote:note];
      

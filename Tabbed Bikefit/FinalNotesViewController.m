@@ -45,6 +45,9 @@
                                                                     @"B: Saddle Setback",
                                                                     @"C: Cockpit Distance",
                                                                     @"D: Handlebar Drop",
+                                                                    @"E: Elbow Pad Drop",
+                                                                    @"F: Elbow Pad Distance",
+                                                                    @"G: Elbow Pad Width",
                                                                     @"Stack",
                                                                     @"Reach",
                                                                     nil];
@@ -61,8 +64,13 @@
     [fieldNameDict setObject:@"SaddleSetback" forKey:[dimensionsFieldNames objectAtIndex:1]];
     [fieldNameDict setObject:@"CockpitDistance" forKey:[dimensionsFieldNames objectAtIndex:2]];
     [fieldNameDict setObject:@"HandlebarDrop" forKey:[dimensionsFieldNames objectAtIndex:3]];
-    [fieldNameDict setObject:@"Stack" forKey:[dimensionsFieldNames objectAtIndex:4]];
-    [fieldNameDict setObject:@"Reach" forKey:[dimensionsFieldNames objectAtIndex:5]];
+    [fieldNameDict setObject:@"ElbowPadDrop" forKey:[dimensionsFieldNames objectAtIndex:4]];
+    [fieldNameDict setObject:@"ElbowPadDistance" forKey:[dimensionsFieldNames objectAtIndex:5]];
+    [fieldNameDict setObject:@"ElbowPadWidth" forKey:[dimensionsFieldNames objectAtIndex:6]];
+    [fieldNameDict setObject:@"Stack" forKey:[dimensionsFieldNames objectAtIndex:7]];
+    [fieldNameDict setObject:@"Reach" forKey:[dimensionsFieldNames objectAtIndex:8]];
+    
+    
     [fieldNameDict setObject:@"LeftPedalSpacers" forKey:[hardwareFieldNames objectAtIndex:0]];
     [fieldNameDict setObject:@"RightPedalSpacers" forKey:[hardwareFieldNames objectAtIndex:1]];
     [fieldNameDict setObject:@"LeftWedges" forKey:[hardwareFieldNames objectAtIndex:2]];

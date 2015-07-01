@@ -27,7 +27,10 @@
 {
     //spindleYPosition = 300.0;
     // Drawing code
-    boxPath = [UIBezierPath bezierPathWithRect:CGRectMake(0, 400, 768, 200 )];
+    boxPath = [UIBezierPath bezierPathWithRect:CGRectMake(0,
+                                                          self.frame.size.height * .2,
+                                                          self.frame.size.width,
+                                                          self.frame.size.height * .2 )];
     [boxPath moveToPoint:CGPointMake(0, spindleYPosition)];
     [boxPath addLineToPoint:CGPointMake(770, spindleYPosition)];
     

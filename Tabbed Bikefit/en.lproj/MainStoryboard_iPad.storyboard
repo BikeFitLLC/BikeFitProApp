@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14C109" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="4">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <scenes>
@@ -178,7 +177,6 @@
                         <segue destination="jdh-5D-qbz" kind="push" identifier="ViewKneeNote" id="jAu-g7-9Yv"/>
                         <segue destination="PEF-sN-dV4" kind="push" identifier="ViewAngleNote" id="9Wl-CM-y27"/>
                         <segue destination="BNN-9J-juH" kind="push" identifier="addfootnotesegue" id="MVA-UO-B3m"/>
-                        <segue destination="xNd-bO-TqH" kind="push" identifier="addkneenotesegue" id="qGa-Mh-6nz"/>
                         <segue destination="zzM-Na-jZp" kind="push" identifier="addtextnotesegue" id="AGN-pW-pX1"/>
                         <segue destination="EsE-H4-LXi" kind="push" identifier="addanglenotesegue" id="Oll-VA-cHT"/>
                         <segue destination="yHS-iz-szO" kind="push" identifier="addvarusnotesegue" id="0nX-I7-qKa"/>
@@ -188,11 +186,12 @@
                         <segue destination="PPw-Pc-d98" kind="push" identifier="addkopsnotesegue" id="qr9-9e-QT6"/>
                         <segue destination="5rp-Lt-7kw" kind="push" identifier="ViewKopsNote" id="jcp-xU-qQH"/>
                         <segue destination="O9X-JH-a5Z" kind="push" identifier="addsaddletiltnotesegue" id="jDg-UW-Atg"/>
+                        <segue destination="oq0-lk-eNp" kind="push" identifier="addkneenotesegue" id="8Sr-Il-GuR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8En-y0-jNH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-764" y="4125"/>
+            <point key="canvasLocation" x="-354" y="4189"/>
         </scene>
         <!--Saddle Tilt Note View Controller-->
         <scene sceneID="a34-86-JHK">
@@ -211,7 +210,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4rN-fz-9bm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="225" y="3570"/>
+            <point key="canvasLocation" x="-83" y="3074"/>
         </scene>
         <!--Angle Image Viewer View Controller-->
         <scene sceneID="uaU-65-39I">
@@ -224,22 +223,9 @@
                     <view key="view" contentMode="scaleToFill" id="AH3-pC-MDK">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MwT-no-OXx">
-                                <rect key="frame" x="0.0" y="-128" width="775" height="1280"/>
-                            </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QuO-eQ-YJw" customClass="LegAngleImageView">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="1280"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="dPj-yE-IaO"/>
-                    <connections>
-                        <outlet property="drawingView" destination="QuO-eQ-YJw" id="OkH-oC-INx"/>
-                        <outlet property="imageView" destination="MwT-no-OXx" id="R90-k5-Lj0"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z3f-NI-GxZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -354,8 +340,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="LQg-5O-akn"/>
                     <connections>
+                        <outlet property="cameraPreviewView" destination="9yI-Kg-trH" id="eKb-ge-MA7"/>
                         <outlet property="previewImage" destination="02V-uJ-zFF" id="BNu-gP-hnE"/>
-                        <outlet property="previewView" destination="9yI-Kg-trH" id="zRl-Ho-jol"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e6F-RF-Auq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -404,62 +390,6 @@
             </objects>
             <point key="canvasLocation" x="3128" y="2711"/>
         </scene>
-        <!--Knee View Controller-->
-        <scene sceneID="dRG-pq-Fto">
-            <objects>
-                <viewController id="xNd-bO-TqH" customClass="KneeViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="gbd-1s-kBG"/>
-                        <viewControllerLayoutGuide type="bottom" id="U1B-o0-Avl"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" horizontalCompressionResistancePriority="747" id="ljF-If-BNP">
-                        <rect key="frame" x="0.0" y="64" width="768" height="911"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uaB-xN-wJY">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="1280"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2h5-iD-jaR" customClass="KneeDrawingView">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="1280"/>
-                                <subviews>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wgD-Gy-igV">
-                                        <rect key="frame" x="591" y="808" width="145" height="65"/>
-                                        <state key="normal" title="Toe Line -&gt;&gt;">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="moveLazerRight:" destination="xNd-bO-TqH" eventType="touchUpInside" id="oXd-Ta-wvZ"/>
-                                        </connections>
-                                    </button>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PCS-2o-6qo">
-                                        <rect key="frame" x="33" y="808" width="120" height="58"/>
-                                        <state key="normal" title="&lt;&lt;- Toe Line">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="moveLazerLeft:" destination="xNd-bO-TqH" eventType="touchUpInside" id="jUK-sy-MPx"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" id="9tW-xQ-8Pj"/>
-                    <connections>
-                        <outlet property="lazerLeftButton" destination="PCS-2o-6qo" id="keG-uV-1DX"/>
-                        <outlet property="lazerRightButton" destination="wgD-Gy-igV" id="pTw-Py-ahG"/>
-                        <outlet property="previewImage" destination="2h5-iD-jaR" id="ILd-0y-Bc5"/>
-                        <outlet property="previewView" destination="uaB-xN-wJY" id="AQS-sQ-53U"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4du-Jo-ufl" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2239" y="5123"/>
-        </scene>
         <!--Foot Bottom Note View Controller-->
         <scene sceneID="Ecm-nH-Fzf">
             <objects>
@@ -471,74 +401,42 @@
                     <view key="view" contentMode="scaleToFill" id="2DO-Rk-0iz">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="Ho_foot_Arches_right.png" translatesAutoresizingMaskIntoConstraints="NO" id="TfT-3B-ADb">
-                                <rect key="frame" x="0.0" y="-200" width="768" height="1794"/>
-                            </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="Ho_foot_Arches_left.png" translatesAutoresizingMaskIntoConstraints="NO" id="Oox-XC-uPf">
-                                <rect key="frame" x="0.0" y="-200" width="768" height="1800"/>
-                            </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fgx-f6-ptb" customClass="FootBottomView">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LrS-IM-26t">
-                                        <rect key="frame" x="276" y="771" width="98" height="30"/>
-                                        <state key="normal" title="Save Location">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="saveLocation:" destination="BNN-9J-juH" eventType="touchUpInside" id="O1a-CO-aD3"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="aJy-CI-eEs"/>
-                    <connections>
-                        <outlet property="footBottomView" destination="Fgx-f6-ptb" id="b0M-2F-vbc"/>
-                        <outlet property="leftFootImage" destination="Oox-XC-uPf" id="hLK-m7-x5B"/>
-                        <outlet property="rightFootImage" destination="TfT-3B-ADb" id="zic-V2-d52"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zSZ-CN-kaZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3136" y="3855"/>
         </scene>
+        <!--Knee View Controller-->
+        <scene sceneID="lul-WH-OrY">
+            <objects>
+                <viewController id="oq0-lk-eNp" customClass="KneeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="591-6a-EW5"/>
+                        <viewControllerLayoutGuide type="bottom" id="uHG-cU-2Qy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="M83-h8-geP">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="SmI-Oz-HVW"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Dl-dm-G5q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2355" y="5300"/>
+        </scene>
         <!--Kops View Controller-->
         <scene sceneID="V3e-pr-FaB">
             <objects>
                 <viewController id="PPw-Pc-d98" customClass="KopsViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="H5U-3z-sSJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="d5e-mz-KEr"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="7Wc-mt-lG6">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Owo-6R-nwy">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T6K-Pv-LWV" customClass="KneeDrawingView">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
                     <navigationItem key="navigationItem" id="hjo-kc-nah"/>
-                    <connections>
-                        <outlet property="previewImage" destination="T6K-Pv-LWV" id="qkm-mj-jo0"/>
-                        <outlet property="previewView" destination="Owo-6R-nwy" id="1Eg-bR-mek"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3r6-9m-iJl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1172" y="5131"/>
+            <point key="canvasLocation" x="1094" y="5755"/>
         </scene>
         <!--Shoulder Angle View Controller-->
         <scene sceneID="rPv-wC-B1y">
@@ -556,7 +454,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1280"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F8g-Ey-fe6" customClass="LegAngleImageView">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F8g-Ey-fe6" customClass="GoniometerDrawingView">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1280"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
@@ -594,7 +492,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="A2k-16-WaB"/>
                     <connections>
-                        <outlet property="previewView" destination="kAD-Li-Gys" id="TfM-sK-goc"/>
+                        <outlet property="cameraPreviewView" destination="kAD-Li-Gys" id="XtJ-Ms-gK4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xpU-Oo-OA2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -616,12 +514,6 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VnK-E7-LlH" customClass="SpindleView">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1137"/>
                                 <subviews>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="center" fixedFrame="YES" image="Ho_foot_Arches_left.png" translatesAutoresizingMaskIntoConstraints="NO" id="Yig-oZ-x1l">
-                                        <rect key="frame" x="-1" y="-100" width="768" height="1800"/>
-                                    </imageView>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="center" fixedFrame="YES" image="Ho_foot_Arches_right.png" translatesAutoresizingMaskIntoConstraints="NO" id="MCB-9A-yPk">
-                                        <rect key="frame" x="0.0" y="-100" width="768" height="1794"/>
-                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ado-qy-bex">
                                         <rect key="frame" x="165" y="761" width="233" height="73"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -641,8 +533,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="jg6-hg-r3y"/>
                     <connections>
-                        <outlet property="leftFootGraphic" destination="Yig-oZ-x1l" id="XqZ-Is-up2"/>
-                        <outlet property="rightFootGraphic" destination="MCB-9A-yPk" id="BRU-Z8-9zB"/>
                         <outlet property="spindleView" destination="VnK-E7-LlH" id="o7T-Ij-s3r"/>
                     </connections>
                 </viewController>
@@ -661,25 +551,11 @@
                     <view key="view" contentMode="scaleToFill" id="G3G-H7-5V4">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5lZ-P6-rP1">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="1137"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KS8-hk-4LM" customClass="LegAngleImageView">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="1048"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="xTx-sd-ckS"/>
                     <navigationItem key="navigationItem" id="VHe-Xg-q4s"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <connections>
-                        <outlet property="previewImage" destination="KS8-hk-4LM" id="IC3-fJ-1TX"/>
-                        <outlet property="previewView" destination="5lZ-P6-rP1" id="0kQ-Nf-EgW"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gff-qb-TCY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -710,8 +586,6 @@
     <resources>
         <image name="BikeFitIcon-29x29.png" width="29" height="29"/>
         <image name="Cog_15t_29x29.png" width="29" height="29"/>
-        <image name="Ho_foot_Arches_left.png" width="768" height="1800"/>
-        <image name="Ho_foot_Arches_right.png" width="768" height="1794"/>
         <image name="info_button_29x29_no_white.png" width="28" height="28"/>
         <image name="measurementIcon-new-29x29.png" width="29" height="29"/>
     </resources>

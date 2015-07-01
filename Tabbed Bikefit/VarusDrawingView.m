@@ -30,8 +30,8 @@
   
     
     //Setup the lazer line
-    self.overlayPath = [[UIBezierPath alloc] init];
-    self.overlayPath.lineWidth = 3;
+    //drawingView.overlayPath = [[UIBezierPath alloc] init];
+    //drawingView.overlayPath.lineWidth = 3;
     
     //Add the dragging circle
     UIBezierPath *anglePath = [[UIBezierPath alloc] init];
@@ -43,22 +43,19 @@
     startPoint.x = self.frame.size.width /2;
     startPoint.y = 0;
     
-    [self.overlayPath moveToPoint:startPoint];
+    [anglePath moveToPoint:startPoint];
     CGPoint newPoint;
     CGFloat laserLength = 1500.0;
     newPoint.x = startPoint.x;
     newPoint.y = laserLength;
-    [self.overlayPath addLineToPoint:newPoint];
+    [anglePath addLineToPoint:newPoint];
     
     //[self.overlayPath moveToPoint:CGPointMake(0, barYPosition)];
     //[self.overlayPath addLineToPoint:CGPointMake(768, barYPosition)];
     
-
-    [self.overlayPath appendPath:anglePath];
-    
     UIColor *brushPattern = [UIColor redColor];
     [brushPattern setStroke];
-    //[self.overlayPath stroke];
+    [anglePath stroke];
     [super drawRect:rect];
 }
 

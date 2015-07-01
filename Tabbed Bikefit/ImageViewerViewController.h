@@ -8,12 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "GoniometerViewController.h"
-#import "LegAngleImageView.h"
+#import "GoniometerDrawingView.h"
 
 @interface ImageViewerViewController : UIViewController
 {
     IBOutlet UIImageView *imageView;
-    IBOutlet NoteImageView *previewImage;
     
     UIImage *image;
     UIBezierPath *overlayPath;

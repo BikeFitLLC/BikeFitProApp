@@ -31,15 +31,16 @@
 {
     [super viewDidLoad];
     [saveButton addTarget:self action:@selector(keepLine:) forControlEvents:UIControlEventTouchUpInside];
+    
     previewImage = [[KneeDrawingView alloc] initWithFrame:self.view.frame];
     previewImage.backgroundColor = [UIColor clearColor];
-    [self.view insertSubview:previewImage aboveSubview:previewView];
+    [self.view insertSubview:previewImage aboveSubview:cameraPreviewView];
     
     lazerLeftButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    lazerLeftButton.frame = CGRectMake(self.view.frame.size.width * .1,
-                                  self.view.frame.size.height * .9,
-                                  self.view.frame.size.width * .2,
-                                  self.view.frame.size.width * .1);
+    lazerLeftButton.frame = CGRectMake(0,
+                                          self.view.frame.size.height * .9,
+                                          self.view.frame.size.width * .2,
+                                          self.view.frame.size.width * .1);
     lazerLeftButton.titleLabel.font = [UIFont systemFontOfSize:24];
     lazerLeftButton.backgroundColor = [UIColor blackColor];
     lazerLeftButton.alpha = .5;
@@ -58,8 +59,6 @@
     [lazerRightButton setTitle:@"Line Right" forState:UIControlStateNormal];
     [lazerRightButton addTarget:self action:@selector(moveLazerRight:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:lazerRightButton];
-    
-    //previewImage = [previewImage init];
 }
 
 - (void)viewDidAppear:(BOOL)animated

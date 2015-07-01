@@ -33,9 +33,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    previewImage = [[NoteImageView alloc] initWithFrame:self.view.frame];
-    previewImage.image = self.image;
-    [self.view addSubview:previewImage];
+    //previewImage = [[NoteImageView alloc] init];
+    //previewImage.imageView.image = self.image;
+    //[self.view addSubview:previewImage];
     // Do any additional setup after loading the view.
 }
 
@@ -58,8 +58,8 @@
     if(overlayPath)
     {
         
-        [previewImage setOverlayPath:overlayPath];
-        [previewImage setNeedsDisplay];
+        //previewImage.drawingView.overlayPath = overlayPath;
+        //[previewImage setNeedsDisplay];
     }
     
 

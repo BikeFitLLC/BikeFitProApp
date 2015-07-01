@@ -11,7 +11,7 @@
 #import <UIKit/UIKit.h>
 #import "NoteImageView.h"
 
-#import "LegAngleImageView.h"
+#import "GoniometerDrawingView.h"
 #import "NoteViewController.h"
 
 @interface VideoNoteViewController : NoteViewController<AVCaptureVideoDataOutputSampleBufferDelegate>
@@ -19,7 +19,7 @@
     UIBezierPath *overlayPath;
     
     //User Interface
-    IBOutlet UIView *previewView; //view that shows the camera video
+    IBOutlet UIView *cameraPreviewView; //view that shows the camera video
     UIButton *recordButton;
     UIButton *nextImageButton;
     UIButton *previousImageButton;
@@ -47,6 +47,7 @@
     NSURL *videoUrl;
     
     IBOutlet NoteImageView *previewImage;
+    DrawingView *drawingView;
     IBOutlet UIImage *photo;
 }
 

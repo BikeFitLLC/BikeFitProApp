@@ -7,7 +7,7 @@
 //
 
 #import "ImageViewerViewController.h"
-#import "LegAngleImageView.h"
+#import "GoniometerDrawingView.h"
 
 @interface AngleImageViewerViewController : ImageViewerViewController
 {
@@ -15,7 +15,7 @@
     UILabel *shoulderAngleLabel;
     UILabel *hipAngleLabel;
     
-    IBOutlet LegAngleImageView *drawingView;
+    GoniometerDrawingView *drawingView;
 }
 @property NSMutableArray *kneeVertices;
 @property NSMutableArray *shoulderVertices;

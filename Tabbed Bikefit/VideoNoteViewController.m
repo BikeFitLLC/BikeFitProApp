@@ -1,3 +1,4 @@
+
 //
 //  VideoNoteViewController.m
 //  bikefit
@@ -54,8 +55,8 @@
     //
     //setup video views
     //
-    previewView = [[UIView alloc] initWithFrame:self.view.frame];
-    [self.view addSubview:previewView];
+    cameraPreviewView = [[UIView alloc] initWithFrame:self.view.frame];
+    [self.view addSubview:cameraPreviewView];
 
     //
     //Setup the buttons and other stuff
@@ -69,6 +70,7 @@
     recordButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     recordButton.backgroundColor = [UIColor blackColor];
     recordButton.alpha = .5;
+    recordButton.titleLabel.numberOfLines = 2;
     [recordButton setTitle:@"Record 5 Seconds" forState:UIControlStateNormal];
     [recordButton setCenter:CGPointMake(self.view.bounds.size.width * .85,
                                       self.view.bounds.size.height *.75)];
@@ -76,7 +78,10 @@
     [self.view addSubview:recordButton];
     
     saveButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    saveButton.frame = CGRectMake(0,0,150,75);
+    saveButton.frame = CGRectMake(0,
+                                  0,
+                                  self.view.frame.size.width * .25,
+                                  self.view.frame.size.width * .1);
     saveButton.titleLabel.font = [UIFont systemFontOfSize:24];
     saveButton.backgroundColor = [UIColor blackColor];
     saveButton.alpha = .5;
@@ -152,9 +157,9 @@
     {
         if(videoUrl)
         {
-            [previewImage setOverlayPath:overlayPath];
+            [drawingView setOverlayPath:overlayPath];
             [previewImage setNeedsDisplay];
-            [self.view insertSubview:previewImage aboveSubview:previewView];
+            [self.view insertSubview:previewImage aboveSubview:cameraPreviewView];
             
             //if the videourl is set,  view it.
             player = [AVPlayer playerWithURL:videoUrl];
@@ -241,7 +246,7 @@
     [previewLayer setPosition:CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds))];
     [[previewLayer connection] setVideoOrientation:AVCaptureVideoOrientationPortrait];
     
-	CALayer *rootLayer = [previewView layer];
+	CALayer *rootLayer = [cameraPreviewView layer];
 	[rootLayer setMasksToBounds:YES];
     [rootLayer addSublayer:previewLayer];
 	
@@ -465,14 +470,11 @@
     }
     playerLayer = [AVPlayerLayer playerLayerWithPlayer:player];
     
-
-    CGRect bounds = self.view.bounds;
-    [playerLayer setFrame:bounds];
-    //[playerLayer setBounds:bounds];
-    [playerLayer setPosition:CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds))];
+    [playerLayer setFrame:self.view.frame];
+    [playerLayer setPosition:self.view.center];
     [playerLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
    
-    CALayer *rootLayer = [previewView layer];
+    CALayer *rootLayer = [cameraPreviewView layer];
     [rootLayer setMasksToBounds:YES];
     [rootLayer insertSublayer:playerLayer atIndex:0];
     [player seekToTime:CMTimeMakeWithSeconds(0,1)];

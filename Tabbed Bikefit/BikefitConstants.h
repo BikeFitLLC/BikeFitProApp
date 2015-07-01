@@ -22,6 +22,7 @@
 #define AWS_FIT_ATTRIBUTE_LASTUPDATED @"DateUpdated"
 #define AWS_FIT_ATTRIBUTE_URL @"FitUrl"
 #define AWS_FIT_ATTRIBUTE_HIDDEN @"Hidden"
+#define AWS_FIT_ATTRIBUTE_BIKE_TYPE @"BikeType"
 
 #define FIT_ATTRIBUTE_FROMFILESYSTEM @"FromFileSystem"
 

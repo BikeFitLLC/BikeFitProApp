@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "NoteImageView.h"
 
-@interface LegAngleImageView : NoteImageView
+@interface GoniometerDrawingView : UIView
 {
     bool clockwise;
     //int radius;
@@ -34,4 +34,6 @@
 
 - (void) clearAngle;
 - (CGFloat) calculateAngleForPoints:(CGPoint)a b:(CGPoint)b c:(CGPoint)c;
+
+- (id)initWithFrame:(CGRect)frame image:(UIImage *)imageToShow;
 @end

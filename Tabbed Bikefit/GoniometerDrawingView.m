@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Alfonso Lopez. All rights reserved.
 //
 
-#import "LegAngleImageView.h"
+#import "GoniometerDrawingView.h"
 
-@implementation LegAngleImageView
+@implementation GoniometerDrawingView
 {
     UIColor *brushPattern;
 }
@@ -29,7 +29,7 @@
 @synthesize hipAngle;
 
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)frame image:(UIImage *)imageToShow
 {
     self = [super initWithFrame:frame];
     if (self) {

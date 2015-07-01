@@ -27,7 +27,39 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    leftFootImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Ho_foot_Arches_left.png"]];
+    leftFootImage.contentMode = UIViewContentModeScaleAspectFit;
+    leftFootImage.frame = self.view.frame;
+    leftFootImage.hidden = YES;
+    [self.view addSubview:leftFootImage];
+    
+    rightFootImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Ho_foot_Arches_right.png"]];
+    rightFootImage.frame = self.view.frame;
+    rightFootImage.hidden = YES;
+    rightFootImage.contentMode = UIViewContentModeScaleAspectFit;
+    [self.view addSubview:rightFootImage];
+    
+    footBottomView = [[FootBottomView alloc] initWithFrame:self.view.frame];
+    footBottomView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:footBottomView];
+    
+    UIButton *saveButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    saveButton.frame = CGRectMake(self.view.frame.size.width * .8,
+                                    self.view.frame.size.height * .9,
+                                    self.view.frame.size.width * .2,
+                                    self.view.frame.size.width * .1);
+    saveButton.titleLabel.font = [UIFont systemFontOfSize:24];
+    saveButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    saveButton.backgroundColor = [UIColor blackColor];
+    saveButton.alpha = .5;
+    saveButton.titleLabel.numberOfLines = 2;
+    saveButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+    [saveButton setTitle:@"Save Location" forState:UIControlStateNormal];
+    [saveButton setCenter:CGPointMake(self.view.bounds.size.width * .85,
+                                        self.view.bounds.size.height *.75)];
+    [saveButton addTarget:self action:@selector(saveLocation:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:saveButton];
+    
 }
 
 - (void)didReceiveMemoryWarning

@@ -40,7 +40,7 @@
     [super viewDidLoad];
     [saveButton addTarget:self action:@selector(saveAngle) forControlEvents:UIControlEventTouchUpInside];
     
-    previewImage = [[LegAngleImageView alloc] initWithFrame:self.view.frame];
+    previewImage = [[GoniometerDrawingView alloc] initWithFrame:self.view.frame];
     previewImage.backgroundColor = [UIColor clearColor];
     [self.view addSubview:previewImage];
     
@@ -57,7 +57,7 @@
     kneeAngleButton.frame = CGRectMake(0,
                                        height,
                                        oneThirdViewWidth,
-                                       oneThirdViewWidth * .3);
+                                       oneThirdViewWidth * .4);
     kneeAngleButton.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:24];
     kneeAngleButton.backgroundColor = [UIColor blackColor];
     kneeAngleButton.alpha = .5;
@@ -73,7 +73,7 @@
     shoulderAngleButton.frame = CGRectMake(oneThirdViewWidth,
                                            height,
                                            oneThirdViewWidth,
-                                           oneThirdViewWidth * .3);
+                                           oneThirdViewWidth * .4);
     shoulderAngleButton.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:24];
     shoulderAngleButton.backgroundColor = [UIColor blackColor];
     shoulderAngleButton.alpha = .5;
@@ -89,7 +89,7 @@
     HipAngleButton.frame = CGRectMake(2*oneThirdViewWidth,
                                       height,
                                       oneThirdViewWidth,
-                                      oneThirdViewWidth * .3);
+                                      oneThirdViewWidth * .4);
     HipAngleButton.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:24];
     HipAngleButton.backgroundColor = [UIColor blackColor];
     HipAngleButton.alpha = .5;
@@ -117,7 +117,7 @@
 
 - (void)enableAngle:(id)sender
 {
-    LegAngleImageView* imageView = (LegAngleImageView *)previewImage;
+    GoniometerDrawingView* imageView = (GoniometerDrawingView *)previewImage;
     bool originalState = false;
     
     if(sender == kneeAngleButton)
@@ -153,20 +153,25 @@
  */
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
 {
-    LegAngleImageView* imageView = (LegAngleImageView*)previewImage;
+    GoniometerDrawingView* imageView = (GoniometerDrawingView*)previewImage;
     
     if(vertexIndex == 0 && [imageView.kneeVertices count] == 3)
     {
         CGPoint location = [gestureRecognizer locationInView:[self view]];
-        if( [self proximityOfTwoPoints:location b:[[imageView.kneeVertices objectAtIndex:0] CGPointValue]] < dragRadius ||
-           [self proximityOfTwoPoints:location b:[[imageView.kneeVertices objectAtIndex:1] CGPointValue]] < dragRadius ||
-           [self proximityOfTwoPoints:location b:[[imageView.kneeVertices objectAtIndex:2] CGPointValue]] < dragRadius||
-           [self proximityOfTwoPoints:location b:[[imageView.shoulderVertices objectAtIndex:0] CGPointValue]] < dragRadius ||
-           [self proximityOfTwoPoints:location b:[[imageView.shoulderVertices objectAtIndex:1] CGPointValue]] < dragRadius ||
-           [self proximityOfTwoPoints:location b:[[imageView.shoulderVertices objectAtIndex:2] CGPointValue]] < dragRadius ||
-           [self proximityOfTwoPoints:location b:[[imageView.hipVertices objectAtIndex:0] CGPointValue]] < dragRadius ||
-           [self proximityOfTwoPoints:location b:[[imageView.hipVertices objectAtIndex:1] CGPointValue]] < dragRadius ||
-           [self proximityOfTwoPoints:location b:[[imageView.hipVertices objectAtIndex:2] CGPointValue]] < dragRadius)
+        if( (([self proximityOfTwoPoints:location b:[[imageView.kneeVertices objectAtIndex:0] CGPointValue]] < dragRadius ||
+              [self proximityOfTwoPoints:location b:[[imageView.kneeVertices objectAtIndex:1] CGPointValue]] < dragRadius ||
+              [self proximityOfTwoPoints:location b:[[imageView.kneeVertices objectAtIndex:2] CGPointValue]] < dragRadius)
+                && imageView.drawKneePath )
+           ||
+           (([self proximityOfTwoPoints:location b:[[imageView.shoulderVertices objectAtIndex:0] CGPointValue]] < dragRadius ||
+             [self proximityOfTwoPoints:location b:[[imageView.shoulderVertices objectAtIndex:1] CGPointValue]] < dragRadius ||
+             [self proximityOfTwoPoints:location b:[[imageView.shoulderVertices objectAtIndex:2] CGPointValue]] < dragRadius)
+                && imageView.drawShoulderPath)
+           ||
+           (([self proximityOfTwoPoints:location b:[[imageView.hipVertices objectAtIndex:0] CGPointValue]] < dragRadius ||
+             [self proximityOfTwoPoints:location b:[[imageView.hipVertices objectAtIndex:1] CGPointValue]] < dragRadius ||
+             [self proximityOfTwoPoints:location b:[[imageView.hipVertices objectAtIndex:2] CGPointValue]] < dragRadius)
+                && imageView.drawHipPath))
         {
             return true;
         }
@@ -182,48 +187,57 @@
     CGPoint vertex;
     CGPoint translation = [sender translationInView:[self view]];
     CGPoint location = [sender locationInView:[self view]];
-    LegAngleImageView* imageView = (LegAngleImageView*)previewImage;
+    GoniometerDrawingView* imageView = (GoniometerDrawingView*)previewImage;
 
     //Gesture is beginning, so this time around we simply setup for the
     //future calls.
     if([sender state] == UIGestureRecognizerStateBegan)
     {
-        //Check whether the drage gesture is near a knee angle vertex
-        for(int i = 0; i < 3; i++ )
+        //Check whether the drag gesture is near a knee angle vertex
+        if(imageView.drawKneePath)
         {
-            vertex = [[imageView.kneeVertices objectAtIndex:i] CGPointValue];
-            if([self proximityOfTwoPoints:location b:vertex]< dragRadius)
+            for(int i = 0; i < 3; i++ )
             {
-                movingVerticeArray = imageView.kneeVertices;
-                indexOfMovingPoint = i;
-                xOffset = vertex.x;
-                yOffset = vertex.y;
-                break;
+                vertex = [[imageView.kneeVertices objectAtIndex:i] CGPointValue];
+                if([self proximityOfTwoPoints:location b:vertex]< dragRadius)
+                {
+                    movingVerticeArray = imageView.kneeVertices;
+                    indexOfMovingPoint = i;
+                    xOffset = vertex.x;
+                    yOffset = vertex.y;
+                    break;
+                }
             }
         }
-        //Check whether the drage gesture is near a knee angle vertex
-        for(int i = 0; i < 3; i++ )
+        //Check whether the drage gesture is near a shoulder angle vertex
+        if(imageView.drawShoulderPath)
         {
-            vertex = [[imageView.shoulderVertices objectAtIndex:i] CGPointValue];
-            if([self proximityOfTwoPoints:location b:vertex]< dragRadius)
+            for(int i = 0; i < 3; i++ )
             {
-                movingVerticeArray = imageView.shoulderVertices;
-                indexOfMovingPoint = i;
-                xOffset = vertex.x;
-                yOffset = vertex.y;
-                break;
+                vertex = [[imageView.shoulderVertices objectAtIndex:i] CGPointValue];
+                if([self proximityOfTwoPoints:location b:vertex]< dragRadius)
+                {
+                    movingVerticeArray = imageView.shoulderVertices;
+                    indexOfMovingPoint = i;
+                    xOffset = vertex.x;
+                    yOffset = vertex.y;
+                    break;
+                }
             }
         }
-        for(int i = 0; i < 3; i++ )
+        if(imageView.drawHipPath)
         {
-            vertex = [[imageView.hipVertices objectAtIndex:i] CGPointValue];
-            if([self proximityOfTwoPoints:location b:vertex]< dragRadius)
+            for(int i = 0; i < 3; i++ )
             {
-                movingVerticeArray = imageView.hipVertices;
-                indexOfMovingPoint = i;
-                xOffset = vertex.x;
-                yOffset = vertex.y;
-                break;
+                vertex = [[imageView.hipVertices objectAtIndex:i] CGPointValue];
+                if([self proximityOfTwoPoints:location b:vertex]< dragRadius)
+                {
+                    movingVerticeArray = imageView.hipVertices;
+                    indexOfMovingPoint = i;
+                    xOffset = vertex.x;
+                    yOffset = vertex.y;
+                    break;
+                }
             }
         }
     }
@@ -258,6 +272,7 @@
         int intAngle = (int)([imageView shoulderAngle] * 57.2957795);
         NSString *kneeButtonText = [NSString stringWithFormat:@"Shoulder Flexion %d°",intAngle];
         [shoulderAngleButton setTitle:kneeButtonText forState:UIControlStateNormal];
+        shoulderAngleButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     }
     else if(movingVerticeArray == imageView.hipVertices)
     {
@@ -287,7 +302,7 @@
 - (void) stopCapturing
 {
     [super stopCapturing];
-    LegAngleImageView *imageView = (LegAngleImageView *)previewImage;
+    GoniometerDrawingView *imageView = (GoniometerDrawingView *)previewImage;
     imageView.kneeVertices = [NSMutableArray arrayWithObjects:
                                 [NSValue valueWithCGPoint:CGPointMake(self.view.frame.size.width *.4,self.view.frame.size.height *.4)],
                                 [NSValue valueWithCGPoint:CGPointMake(self.view.frame.size.width *.6,self.view.frame.size.height *.6)],
@@ -313,7 +328,7 @@
 {
     //For the note
     AngleNote *note = [[AngleNote alloc] init];
-    LegAngleImageView *imageView = (LegAngleImageView *)previewImage;
+    GoniometerDrawingView *imageView = (GoniometerDrawingView *)previewImage;
 
     if(imageView.drawKneePath)
     {
@@ -343,7 +358,7 @@
 
 - (void)setVertices:(NSMutableArray *)vertices;
 {
-    [(LegAngleImageView *)previewImage setKneeVertices:vertices];
+    [(GoniometerDrawingView *)previewImage setKneeVertices:vertices];
 }
 
 

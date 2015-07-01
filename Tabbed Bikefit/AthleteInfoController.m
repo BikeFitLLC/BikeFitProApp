@@ -47,8 +47,7 @@
     
     //setup subviews
     //First Name Label Subview
-    firstNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(
-                                                                0,
+    firstNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,
                                                                 0,
                                                                 self.view.frame.size.width *.6,
                                                                 self.view.frame.size.width *.1)];
@@ -59,21 +58,13 @@
     firstNameLabel.adjustsFontSizeToFitWidth = YES;
     [firstNameLabel setText:@"First"];
     
-    infoTableView = [self makeInfoTableView];
-    infoTableView.frame = CGRectMake(0,
-                                     firstNameLabel.frame.origin.y + firstNameLabel.frame.size.height,
-                                     infoTableView.frame.size.width,
-                                     toolbar.frame.origin.y - firstNameLabel.frame.origin.y - firstNameLabel.frame.size.height );
-    [self.view addSubview: infoTableView];
-    [self newAthlete];
-    
     //Create label to display the url for this fit
     urlButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [urlButton setFrame:CGRectMake(
-                                   self.view.frame.size.width * .6,
-                                   self.view.frame.size.height * .1,
+    [urlButton setFrame:CGRectMake(0,
+                                   firstNameLabel.frame.origin.y + firstNameLabel.frame.size.height,
                                    100,
                                    50)];
+    urlButton.center = CGPointMake(self.view.frame.size.width *.25, urlButton.center.y);
     [urlButton setTitle:@"View Fit" forState:UIControlStateNormal];
     [urlButton addTarget:self
                action:@selector(openFitUrl)
@@ -84,11 +75,11 @@
     
     //Create label to display the url for this fit
     emailFitButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [emailFitButton setFrame:CGRectMake(
-                                        self.view.frame.size.width * .1,
-                                        self.view.frame.size.height * .1,
+    [emailFitButton setFrame:CGRectMake(0,
+                                        firstNameLabel.frame.origin.y + firstNameLabel.frame.size.height,
                                         100,
                                         50)];
+    emailFitButton.center = CGPointMake(self.view.frame.size.width *.75, emailFitButton.center.y);
     [emailFitButton setTitle:@"Email Fit" forState:UIControlStateNormal];
     [emailFitButton addTarget:self
                   action:@selector(emailFit)
@@ -96,6 +87,14 @@
     emailFitButton.hidden = YES;
     emailFitButton.enabled = NO;
     [self.view addSubview:emailFitButton];
+    
+    infoTableView = [self makeInfoTableView];
+    infoTableView.frame = CGRectMake(0,
+                                     emailFitButton.frame.origin.y + emailFitButton.frame.size.height,
+                                     infoTableView.frame.size.width,
+                                     toolbar.frame.origin.y - emailFitButton.frame.origin.y - emailFitButton.frame.size.height );
+    [self.view addSubview: infoTableView];
+    [self newAthlete];
     
     [firstNameLabel setFont:[UIFont fontWithName:@"ArialRoundedMTBold" size:36]];
 }
@@ -410,6 +409,7 @@
                         @"LeftNotesJSON",
                         @"RightNotesJSON",
                         @"FitUrl",
+                        @"BikeType",
                         //Default properties
                          @"FirstName",
                          @"LastName",

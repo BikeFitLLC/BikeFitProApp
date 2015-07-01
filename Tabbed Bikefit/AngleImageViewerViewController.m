@@ -33,8 +33,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    drawingView = [[LegAngleImageView alloc] initWithFrame:self.view.frame];
-    drawingView.image = self.image;
+    
+    imageView = [[UIImageView alloc] initWithImage:self.image];
+    imageView.frame = self.view.frame;
+    imageView.center = self.view.center;
+    imageView.contentMode = UIViewContentModeScaleAspectFill;
+    [self.view addSubview:imageView];
+    
+    drawingView = [[GoniometerDrawingView alloc] initWithFrame:self.view.frame];
+    drawingView.backgroundColor = [UIColor clearColor];
+    drawingView.center = self.view.center;
     [self.view addSubview:drawingView];
     
     CGFloat oneThirdViewWidth = self.view.frame.size.width/3;

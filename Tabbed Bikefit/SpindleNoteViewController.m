@@ -27,7 +27,23 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(moveSpindleY:)];
+    leftFootGraphic = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Ho_foot_Arches_left.png"]];
+    leftFootGraphic.contentMode = UIViewContentModeScaleAspectFit;
+    leftFootGraphic.frame = self.view.frame;
+    leftFootGraphic.hidden = YES;
+    [self.view addSubview:leftFootGraphic];
+    
+    rightFootGraphic = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Ho_foot_Arches_right.png"]];
+    rightFootGraphic.frame = self.view.frame;
+    rightFootGraphic.hidden = YES;
+    rightFootGraphic.contentMode = UIViewContentModeScaleAspectFit;
+    [self.view addSubview:rightFootGraphic];
+    
+    spindleView = [[SpindleView alloc] initWithFrame:self.view.frame];
+    spindleView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:spindleView];
     
     panGesture.minimumNumberOfTouches = 1;
     panGesture.maximumNumberOfTouches = 2;

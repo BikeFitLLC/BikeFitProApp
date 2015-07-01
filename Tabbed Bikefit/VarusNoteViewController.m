@@ -276,7 +276,7 @@
 
     [note setAngle:angle];
     [note setImage:UIImageJPEGRepresentation(photo,.1)];
-    [note setPath:[previewImage overlayPath]];
+    [note setPath:[drawingView overlayPath]];
     
     [self.bikeInfo addNote:note];
      

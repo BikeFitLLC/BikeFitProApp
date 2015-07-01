@@ -8,6 +8,7 @@
 
 #import "FinalNotesViewController.h"
 #import "BikeFitTabBarController.h"
+#import "BikefitConstants.h"
 
 @implementation FinalNotesViewController
 {
@@ -22,13 +23,10 @@
     UIImage *triBikeImage = [UIImage imageNamed:@"Bike_tri_diagram_ABCDEF.png"];
     
     bikeDimensionsImages = [NSArray arrayWithObjects:roadBikeImage, triBikeImage, nil];
-    activeBikeImageIndex = 0;
     
     bikeDimensionsImageView =  [[UIImageView alloc] initWithFrame:CGRectMake(0,30,
                                                                         self.view.frame.size.width,
                                                                         self.view.frame.size.height *.5 )];
-
-
     [self.view addSubview:bikeDimensionsImageView];
     
     [bikeDimensionsImageView setUserInteractionEnabled:YES];
@@ -84,6 +82,7 @@
         [logInReminder removeFromSuperview];
     }
     
+    activeBikeImageIndex = [[AthletePropertyModel getProperty:AWS_FIT_ATTRIBUTE_BIKE_TYPE] intValue];
     bikeDimensionsImageView.image = [bikeDimensionsImages objectAtIndex:activeBikeImageIndex];
     
     [dimensionsTable reloadData];
@@ -298,6 +297,7 @@
         if(activeBikeImageIndex != [bikeDimensionsImages count] - 1)
         {
             activeBikeImageIndex = activeBikeImageIndex + 1;
+            [AthletePropertyModel setProperty:AWS_FIT_ATTRIBUTE_BIKE_TYPE value:[NSString stringWithFormat:@"%d",activeBikeImageIndex]];
             [UIView transitionWithView:bikeDimensionsImageView
                               duration:0.4f
                                options:UIViewAnimationOptionTransitionFlipFromRight
@@ -315,6 +315,8 @@
         {
             activeBikeImageIndex = activeBikeImageIndex - 1;
             bikeDimensionsImageView.image = [bikeDimensionsImages objectAtIndex:activeBikeImageIndex];
+            [AthletePropertyModel setProperty:AWS_FIT_ATTRIBUTE_BIKE_TYPE value:[NSString stringWithFormat:@"%d",activeBikeImageIndex]];
+            
             [UIView transitionWithView:bikeDimensionsImageView
                               duration:0.4f
                                options:UIViewAnimationOptionTransitionFlipFromLeft

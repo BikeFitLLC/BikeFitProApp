@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="KrY-cd-1qb">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <scenes>
@@ -178,7 +177,6 @@
                         <segue destination="Y5e-F2-iwd" kind="push" identifier="ViewKneeNote" id="pns-tM-R9d"/>
                         <segue destination="sfc-7a-TMf" kind="push" identifier="ViewAngleNote" id="rVV-ml-U3e"/>
                         <segue destination="s7G-SM-Ri0" kind="push" identifier="addfootnotesegue" id="KbK-Nh-XMD"/>
-                        <segue destination="dVE-eD-ULn" kind="push" identifier="addkneenotesegue" id="jpV-gq-UrU"/>
                         <segue destination="QOy-bU-d7L" kind="push" identifier="addtextnotesegue" id="tnL-ng-nhl"/>
                         <segue destination="0dL-JJ-Tny" kind="push" identifier="addanglenotesegue" id="biP-TQ-hZQ"/>
                         <segue destination="o3a-Ce-arL" kind="push" identifier="addvarusnotesegue" id="12F-SL-UeK"/>
@@ -187,11 +185,12 @@
                         <segue destination="R5J-Vb-4cB" kind="push" identifier="ViewVarusNote" id="ETo-Uf-Ibt"/>
                         <segue destination="KcE-oi-5io" kind="push" identifier="addkopsnotesegue" id="m3v-6s-grr"/>
                         <segue destination="uwh-0V-djO" kind="push" identifier="ViewKopsNote" id="2zO-7O-0S1"/>
+                        <segue destination="tRa-OF-9gD" kind="push" identifier="addkneenotesegue" id="dU9-ve-Nqs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lsr-yt-e8M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-764" y="4125"/>
+            <point key="canvasLocation" x="-726" y="4099"/>
         </scene>
         <!--Angle Image Viewer View Controller-->
         <scene sceneID="CBy-6j-B5s">
@@ -306,8 +305,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="sOd-au-1jm"/>
                     <connections>
+                        <outlet property="cameraPreviewView" destination="l10-Hs-BnE" id="3Dx-LG-RLc"/>
                         <outlet property="previewImage" destination="aD3-Ka-eYn" id="Fg5-ec-WrT"/>
-                        <outlet property="previewView" destination="l10-Hs-BnE" id="3Zu-02-jeD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w78-OE-VK0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -356,62 +355,6 @@
             </objects>
             <point key="canvasLocation" x="3128" y="2711"/>
         </scene>
-        <!--Knee View Controller-->
-        <scene sceneID="FO5-oK-dsF">
-            <objects>
-                <viewController id="dVE-eD-ULn" customClass="KneeViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Jtq-gb-bi7"/>
-                        <viewControllerLayoutGuide type="bottom" id="nvT-zg-lDs"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" horizontalCompressionResistancePriority="747" id="7EL-M4-TXJ">
-                        <rect key="frame" x="0.0" y="64" width="600" height="487"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Rx-k0-FSb">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="1280"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LIV-Ev-4J7" customClass="KneeDrawingView">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="1280"/>
-                                <subviews>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PvZ-98-PuR">
-                                        <rect key="frame" x="591" y="808" width="145" height="65"/>
-                                        <state key="normal" title="Toe Line -&gt;&gt;">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="moveLazerRight:" destination="dVE-eD-ULn" eventType="touchUpInside" id="g54-Zn-1Jz"/>
-                                        </connections>
-                                    </button>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XZN-yh-gpI">
-                                        <rect key="frame" x="33" y="808" width="120" height="58"/>
-                                        <state key="normal" title="&lt;&lt;- Toe Line">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="moveLazerLeft:" destination="dVE-eD-ULn" eventType="touchUpInside" id="yeA-H8-Kjk"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" id="mCG-OB-5EZ"/>
-                    <connections>
-                        <outlet property="lazerLeftButton" destination="XZN-yh-gpI" id="Lse-Bd-FO7"/>
-                        <outlet property="lazerRightButton" destination="PvZ-98-PuR" id="ddp-lb-63s"/>
-                        <outlet property="previewImage" destination="LIV-Ev-4J7" id="pTW-du-0Mt"/>
-                        <outlet property="previewView" destination="1Rx-k0-FSb" id="fOI-GT-BY2"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vDg-yC-G1t" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2239" y="5123"/>
-        </scene>
         <!--Foot Bottom Note View Controller-->
         <scene sceneID="Klx-W8-jIf">
             <objects>
@@ -424,14 +367,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="Ho_foot_Arches_right.png" translatesAutoresizingMaskIntoConstraints="NO" id="RFh-0S-HvD">
-                                <rect key="frame" x="0.0" y="-200" width="768" height="1794"/>
-                            </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="Ho_foot_Arches_left.png" translatesAutoresizingMaskIntoConstraints="NO" id="VzT-t7-Kb8">
-                                <rect key="frame" x="0.0" y="-200" width="768" height="1800"/>
-                            </imageView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OW3-gJ-e5B" customClass="FootBottomView">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eub-nW-O1M">
                                         <rect key="frame" x="276" y="771" width="98" height="30"/>
@@ -451,8 +388,6 @@
                     <navigationItem key="navigationItem" id="yra-Pp-5pe"/>
                     <connections>
                         <outlet property="footBottomView" destination="OW3-gJ-e5B" id="hXy-e0-3z7"/>
-                        <outlet property="leftFootImage" destination="VzT-t7-Kb8" id="Dq3-JL-mrm"/>
-                        <outlet property="rightFootImage" destination="RFh-0S-HvD" id="ua7-VH-suS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T6G-92-skw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -508,10 +443,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="1Jq-2f-mxN"/>
                     <connections>
+                        <outlet property="cameraPreviewView" destination="y2M-Uf-y0L" id="Tnk-eX-htl"/>
                         <outlet property="lazerLeftButton" destination="1ug-51-hHp" id="Vbi-tm-pKg"/>
                         <outlet property="lazerRightButton" destination="LOc-qr-4C0" id="7Gv-ni-PGz"/>
                         <outlet property="previewImage" destination="TJi-51-p3r" id="gnh-Ul-Fxx"/>
-                        <outlet property="previewView" destination="y2M-Uf-y0L" id="1Xf-DX-2ae"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fdA-2c-Z2o" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -534,7 +469,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1280"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RzS-Lc-XEM" customClass="LegAngleImageView">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RzS-Lc-XEM" customClass="GoniometerDrawingView">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1280"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
@@ -550,6 +485,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JyQ-Ub-POT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3088" y="1495"/>
+        </scene>
+        <!--Knee View Controller-->
+        <scene sceneID="bJa-WB-roT">
+            <objects>
+                <viewController id="tRa-OF-9gD" customClass="KneeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DaU-0s-k3a"/>
+                        <viewControllerLayoutGuide type="bottom" id="G0P-YK-2a5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ScP-mG-msG">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="81P-D6-46s"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="njK-JD-3mh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="375" y="4525"/>
         </scene>
         <!--Varus Note View Controller-->
         <scene sceneID="khg-fQ-LDH">
@@ -581,39 +535,9 @@
                     <view key="view" contentMode="scaleToFill" id="Sdq-cs-3VZ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aSl-Tm-JYH" customClass="SpindleView">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="1137"/>
-                                <subviews>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="center" fixedFrame="YES" image="Ho_foot_Arches_left.png" translatesAutoresizingMaskIntoConstraints="NO" id="e3T-Vr-VSU">
-                                        <rect key="frame" x="-1" y="-100" width="768" height="1800"/>
-                                    </imageView>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="center" fixedFrame="YES" image="Ho_foot_Arches_right.png" translatesAutoresizingMaskIntoConstraints="NO" id="eik-ZU-Ned">
-                                        <rect key="frame" x="0.0" y="-100" width="768" height="1794"/>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gI2-qa-TOh">
-                                        <rect key="frame" x="165" y="761" width="233" height="73"/>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" title="Save">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="saveNote" destination="8YJ-R6-DIn" eventType="touchUpInside" id="zq4-y0-51z"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="m05-Dy-tBU"/>
-                    <connections>
-                        <outlet property="leftFootGraphic" destination="e3T-Vr-VSU" id="xd4-1g-v0X"/>
-                        <outlet property="rightFootGraphic" destination="eik-ZU-Ned" id="kcR-f7-MVj"/>
-                        <outlet property="spindleView" destination="aSl-Tm-JYH" id="uSv-Dt-XpC"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y8J-Qd-2HZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -631,7 +555,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FTa-nf-Rkh" customClass="LegAngleImageView">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FTa-nf-Rkh" customClass="GoniometerDrawingView">
                                 <rect key="frame" x="159" y="-137" width="768" height="1048"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
@@ -673,8 +597,6 @@
     <resources>
         <image name="BikeFitIcon-29x29.png" width="29" height="29"/>
         <image name="Cog_15t_29x29.png" width="29" height="29"/>
-        <image name="Ho_foot_Arches_left.png" width="768" height="1800"/>
-        <image name="Ho_foot_Arches_right.png" width="768" height="1794"/>
         <image name="info_button_29x29_no_white.png" width="28" height="28"/>
         <image name="measurementIcon-new-29x29.png" width="29" height="29"/>
     </resources>

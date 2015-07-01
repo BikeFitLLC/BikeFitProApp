@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "NoteImageView.h"
+#import "DrawingView.h"
 
 @interface KneeDrawingView : NoteImageView
 {
@@ -16,6 +17,7 @@
     CGPoint startPoint;
     
     bool drawingEnabled;
+    
 }
 
 @property UIBezierPath *path;

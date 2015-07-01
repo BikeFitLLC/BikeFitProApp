@@ -283,7 +283,7 @@
                                             @"Cleat Medial/Lateral (Stance width)",
                                             @"Foot Tilt",
                                             @"Foot Pressure",
-                                            @"Saddle Tilt",
+                                            //@"Saddle Tilt",
                                       nil];
         [actionSheet showInView:self.view];
     }

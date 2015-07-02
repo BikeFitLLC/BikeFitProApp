@@ -38,27 +38,33 @@
     
     lazerLeftButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     lazerLeftButton.frame = CGRectMake(0,
-                                          self.view.frame.size.height * .9,
-                                          self.view.frame.size.width * .2,
-                                          self.view.frame.size.width * .1);
+                                      self.tabBarController.tabBar.frame.origin.y - self.view.frame.size.width * .1,
+                                      self.view.frame.size.width * .2,
+                                      self.view.frame.size.width * .1);
     lazerLeftButton.titleLabel.font = [UIFont systemFontOfSize:24];
     lazerLeftButton.backgroundColor = [UIColor blackColor];
     lazerLeftButton.alpha = .5;
+    lazerLeftButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     [lazerLeftButton setTitle:@"Line Left" forState:UIControlStateNormal];
     [lazerLeftButton addTarget:self action:@selector(moveLazerLeft:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:lazerLeftButton];
     
     lazerRightButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     lazerRightButton.frame = CGRectMake(self.view.frame.size.width * .8,
-                                       self.view.frame.size.height * .9,
+                                       self.tabBarController.tabBar.frame.origin.y - self.view.frame.size.width * .1,
                                        self.view.frame.size.width * .2,
                                        self.view.frame.size.width * .1);
     lazerRightButton.titleLabel.font = [UIFont systemFontOfSize:24];
     lazerRightButton.backgroundColor = [UIColor blackColor];
     lazerRightButton.alpha = .5;
+    lazerRightButton.titleLabel.adjustsFontSizeToFitWidth = YES;
     [lazerRightButton setTitle:@"Line Right" forState:UIControlStateNormal];
     [lazerRightButton addTarget:self action:@selector(moveLazerRight:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:lazerRightButton];
+    
+    CGPoint reverseCameraCenter = lazerRightButton.center;
+    reverseCameraCenter.y = reverseCameraCenter.y - reverseCameraButton.frame.size.height;
+    reverseCameraButton.center = reverseCameraCenter;
 }
 
 - (void)viewDidAppear:(BOOL)animated

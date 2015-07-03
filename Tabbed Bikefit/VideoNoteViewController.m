@@ -157,6 +157,10 @@
     {
         if(videoUrl)
         {
+            drawingView = [[DrawingView alloc] initWithFrame:self.view.frame];
+            drawingView.backgroundColor = [UIColor clearColor];
+            [self.view insertSubview:drawingView aboveSubview:cameraPreviewView];
+            
             [drawingView setOverlayPath:overlayPath];
             [previewImage setNeedsDisplay];
             [self.view insertSubview:previewImage aboveSubview:cameraPreviewView];

@@ -15,7 +15,7 @@
     UILabel *shoulderAngleLabel;
     UILabel *hipAngleLabel;
     
-    GoniometerDrawingView *drawingView;
+    GoniometerDrawingView *goniometerDrawingView;
 }
 @property NSMutableArray *kneeVertices;
 @property NSMutableArray *shoulderVertices;

@@ -11,7 +11,6 @@
 
 @interface VarusViewerViewController : ImageViewerViewController
 {
-    DrawingView *drawingView;
     CGFloat varusAngle;
     IBOutlet UILabel *angleLabel;
 }

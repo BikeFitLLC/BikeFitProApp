@@ -7,6 +7,7 @@
 //
 
 #import "ImageViewerViewController.h"
+#import "DrawingView.h"
 
 @interface ImageViewerViewController ()
 
@@ -33,10 +34,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //previewImage = [[NoteImageView alloc] init];
-    //previewImage.imageView.image = self.image;
-    //[self.view addSubview:previewImage];
-    // Do any additional setup after loading the view.
+    imageView = [[UIImageView alloc] initWithImage:self.image];
+    imageView.frame = self.view.frame;
+    imageView.center = self.view.center;
+    imageView.contentMode = UIViewContentModeScaleAspectFill;
+    [self.view addSubview:imageView];
+    
+    drawingView = [[DrawingView alloc] initWithFrame:self.view.frame];
+    drawingView.backgroundColor = [UIColor clearColor];
+    drawingView.overlayPath = overlayPath;
+    [self.view addSubview:drawingView];
 }
 
 - (void)viewDidAppear:(BOOL)animated

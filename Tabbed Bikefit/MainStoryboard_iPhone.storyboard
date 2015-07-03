@@ -241,22 +241,9 @@
                     <view key="view" contentMode="scaleToFill" id="tfH-hQ-LTz">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dBj-Be-CDe">
-                                <rect key="frame" x="0.0" y="-128" width="768" height="1280"/>
-                            </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U0x-U5-4cu" customClass="NoteImageView">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="a7O-c6-Gnb"/>
-                    <connections>
-                        <outlet property="imageView" destination="dBj-Be-CDe" id="EhF-cd-cbY"/>
-                        <outlet property="previewImage" destination="U0x-U5-4cu" id="9s5-mQ-h50"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0yJ-go-ZjY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

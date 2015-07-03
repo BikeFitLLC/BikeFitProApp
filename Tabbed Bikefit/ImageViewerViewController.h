@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "GoniometerViewController.h"
-#import "GoniometerDrawingView.h"
+#import "DrawingView.h";
 
 @interface ImageViewerViewController : UIViewController
 {
     IBOutlet UIImageView *imageView;
+    DrawingView *drawingView;
     
     UIImage *image;
     UIBezierPath *overlayPath;

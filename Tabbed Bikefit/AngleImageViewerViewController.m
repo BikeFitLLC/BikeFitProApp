@@ -34,16 +34,10 @@
 {
     [super viewDidLoad];
     
-    imageView = [[UIImageView alloc] initWithImage:self.image];
-    imageView.frame = self.view.frame;
-    imageView.center = self.view.center;
-    imageView.contentMode = UIViewContentModeScaleAspectFill;
-    [self.view addSubview:imageView];
-    
-    drawingView = [[GoniometerDrawingView alloc] initWithFrame:self.view.frame];
-    drawingView.backgroundColor = [UIColor clearColor];
-    drawingView.center = self.view.center;
-    [self.view addSubview:drawingView];
+    goniometerDrawingView = [[GoniometerDrawingView alloc] initWithFrame:self.view.frame];
+    goniometerDrawingView.backgroundColor = [UIColor clearColor];
+    goniometerDrawingView.center = self.view.center;
+    [self.view addSubview:goniometerDrawingView];
     
     CGFloat oneThirdViewWidth = self.view.frame.size.width/3;
     
@@ -101,8 +95,8 @@
     
     if(kneeVertices)
     {
-        [drawingView setDrawKneePath:YES];
-        [drawingView setKneeVertices:kneeVertices];
+        [goniometerDrawingView setDrawKneePath:YES];
+        [goniometerDrawingView setKneeVertices:kneeVertices];
         //set the label contents
         int intAngle = (int)(kneeAngle * 57.2957795);
         NSString *kneeButtonText = [NSString stringWithFormat:@"Knee Flexion %d°\nKnee Angle %d° ",
@@ -115,20 +109,20 @@
         int intAngle = (int)(hipAngle * 57.2957795);
         NSString *hipLabelText = [NSString stringWithFormat:@"Hip Flexion %d°",intAngle];
         hipAngleLabel.text = hipLabelText;
-        [drawingView setDrawHipPath:YES];
-        [drawingView setHipVertices:hipVertices];
+        [goniometerDrawingView setDrawHipPath:YES];
+        [goniometerDrawingView setHipVertices:hipVertices];
     }
     if(shoulderVertices)
     {
         int intAngle = (int)(shoulderAngle * 57.2957795);
         NSString *shoulderLabelText = [NSString stringWithFormat:@"Shoulder Flexion %d°",intAngle];
         shoulderAngleLabel.text = shoulderLabelText;
-        [drawingView setDrawShoulderPath:YES];
-        [drawingView setShoulderVertices:shoulderVertices];
+        [goniometerDrawingView setDrawShoulderPath:YES];
+        [goniometerDrawingView setShoulderVertices:shoulderVertices];
     }
     
     
-    [drawingView setNeedsDisplay];
+    [goniometerDrawingView setNeedsDisplay];
 }
 /*
 #pragma mark - Navigation

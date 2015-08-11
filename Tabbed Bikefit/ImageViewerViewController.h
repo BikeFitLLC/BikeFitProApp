@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "GoniometerViewController.h"
-#import "DrawingView.h";
+#import "DrawingView.h"
 
 @interface ImageViewerViewController : UIViewController
 {

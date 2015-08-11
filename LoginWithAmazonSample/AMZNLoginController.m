@@ -163,6 +163,28 @@ BOOL isUserSignedIn;
     emailIntakeUrlButton.enabled = YES;
     [self.view addSubview:emailIntakeUrlButton];
     
+    logoutButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [logoutButton setFrame:CGRectMake(
+                                              self.view.frame.size.width * .5,
+                                              self.view.frame.size.height * .8,
+                                              self.view.frame.size.width *.2,
+                                              self.view.frame.size.width *.1)];
+    logoutButton.frame = loginButton.frame;
+    logoutButton.center = CGPointMake(loginButton.center.x, loginButton.center.y + logoutButton.frame.size.height);
+    logoutButton.titleLabel.font = [UIFont systemFontOfSize:24];
+    logoutButton.backgroundColor = [UIColor blackColor];
+    logoutButton.alpha = .5;
+    logoutButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    logoutButton.titleLabel.numberOfLines = 2;
+    [logoutButton setTitle:@"Logout" forState:UIControlStateNormal];
+    [logoutButton addTarget:self
+                             action:@selector(logoutButtonClicked:)
+                   forControlEvents:UIControlEventTouchUpInside];
+    logoutButton.hidden = YES;
+    logoutButton.enabled = YES;
+    [self.view addSubview:logoutButton];
+    
+    
     if ([[AmazonClientManager credProvider] isLoggedIn])
         [self loadSignedInUser];
     else

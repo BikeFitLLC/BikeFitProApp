@@ -128,6 +128,9 @@
 {
     NSMutableDictionary *dictionary = [super getDictionary];
     [dictionary setObject:[NSNumber numberWithFloat:self.kneeAngle ] forKey:@"angle"];
+    [dictionary setObject:[NSNumber numberWithFloat:self.shoulderAngle ] forKey:@"shoulderAngle"];
+    [dictionary setObject:[NSNumber numberWithFloat:self.hipAngle ] forKey:@"hipAngle"];
+    [dictionary setObject:[NSNumber numberWithFloat:self.kneeAngle ] forKey:@"kneeAngle"];
     //[dictionary setObject:self.vertices forKey:@"vertices"];
     
     return dictionary;

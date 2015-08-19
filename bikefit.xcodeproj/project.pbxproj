@@ -13,6 +13,8 @@
 		00A29FB41B431C3B00589788 /* DrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A29FB31B431C3B00589788 /* DrawingView.m */; };
 		00A382F71A3B710100791FEE /* BikeFitTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A382F61A3B710100791FEE /* BikeFitTableViewCell.m */; };
 		00D3FE991A83D9AC0017BF1D /* libPods-AWSiOSSDKv2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00D3FE981A83D9AC0017BF1D /* libPods-AWSiOSSDKv2.a */; };
+		00F1996F1B82D71A00467F26 /* SaddleTiltNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F1996E1B82D71A00467F26 /* SaddleTiltNoteViewController.m */; };
+		00F199721B82D8CE00467F26 /* SaddleTiltNote.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F199711B82D8CE00467F26 /* SaddleTiltNote.m */; };
 		00F813541A2ADE1300F1EA6D /* LegAngleViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F813531A2ADE1300F1EA6D /* LegAngleViewViewController.m */; };
 		00FBB9C61B3B811700873AAA /* AthleteInfoTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00FBB9C51B3B811700873AAA /* AthleteInfoTableCell.m */; };
 		00FF371A1A36302E00FD1E45 /* KW_front_laser_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 00FF37191A36302E00FD1E45 /* KW_front_laser_2.png */; };
@@ -141,6 +143,10 @@
 		00A382F51A3B710100791FEE /* BikeFitTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BikeFitTableViewCell.h; sourceTree = "<group>"; };
 		00A382F61A3B710100791FEE /* BikeFitTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BikeFitTableViewCell.m; sourceTree = "<group>"; };
 		00D3FE981A83D9AC0017BF1D /* libPods-AWSiOSSDKv2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-AWSiOSSDKv2.a"; path = "Pods/build/Debug-iphoneos/libPods-AWSiOSSDKv2.a"; sourceTree = "<group>"; };
+		00F1996D1B82D71A00467F26 /* SaddleTiltNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaddleTiltNoteViewController.h; sourceTree = "<group>"; };
+		00F1996E1B82D71A00467F26 /* SaddleTiltNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaddleTiltNoteViewController.m; sourceTree = "<group>"; };
+		00F199701B82D8CE00467F26 /* SaddleTiltNote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaddleTiltNote.h; sourceTree = "<group>"; };
+		00F199711B82D8CE00467F26 /* SaddleTiltNote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaddleTiltNote.m; sourceTree = "<group>"; };
 		00F813521A2ADE1300F1EA6D /* LegAngleViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LegAngleViewViewController.h; sourceTree = "<group>"; };
 		00F813531A2ADE1300F1EA6D /* LegAngleViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LegAngleViewViewController.m; sourceTree = "<group>"; };
 		00FBB9C41B3B811700873AAA /* AthleteInfoTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AthleteInfoTableCell.h; sourceTree = "<group>"; };
@@ -504,6 +510,8 @@
 		5D9E2157185CE8A0006BA0B3 /* Note Classes */ = {
 			isa = PBXGroup;
 			children = (
+				00F199701B82D8CE00467F26 /* SaddleTiltNote.h */,
+				00F199711B82D8CE00467F26 /* SaddleTiltNote.m */,
 				5D9EA2351857EA2100E63682 /* FitNote.h */,
 				5D9EA2361857EA2100E63682 /* FitNote.m */,
 				5D3BC331190AB605003E8613 /* ImageNote.h */,
@@ -612,6 +620,8 @@
 				00F813531A2ADE1300F1EA6D /* LegAngleViewViewController.m */,
 				5DB3607318C694DA00191385 /* KopsViewController.h */,
 				5DB3607418C694DA00191385 /* KopsViewController.m */,
+				00F1996D1B82D71A00467F26 /* SaddleTiltNoteViewController.h */,
+				00F1996E1B82D71A00467F26 /* SaddleTiltNoteViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -865,6 +875,7 @@
 				5DB3607518C694DA00191385 /* KopsViewController.m in Sources */,
 				5DA7AE6018BED17300CA0DEB /* SpindleNote.m in Sources */,
 				5D9E2161185FE897006BA0B3 /* FootBottomNoteViewController.m in Sources */,
+				00F1996F1B82D71A00467F26 /* SaddleTiltNoteViewController.m in Sources */,
 				00F813541A2ADE1300F1EA6D /* LegAngleViewViewController.m in Sources */,
 				008755721B40D61F00BB67BE /* LoadinSpinnerView.m in Sources */,
 				5DBC20C418E4E24900BF5957 /* ImageViewerViewController.m in Sources */,
@@ -884,6 +895,7 @@
 				5D9E215E185FE7F2006BA0B3 /* FootBottomNote.m in Sources */,
 				5DA7AE5D18BECCC800CA0DEB /* SpindleView.m in Sources */,
 				00A29FB41B431C3B00589788 /* DrawingView.m in Sources */,
+				00F199721B82D8CE00467F26 /* SaddleTiltNote.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

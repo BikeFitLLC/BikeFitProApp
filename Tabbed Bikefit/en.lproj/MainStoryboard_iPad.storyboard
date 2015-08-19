@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14C109" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C109" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="4">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
         <!--Athlete Info-->
@@ -74,10 +74,31 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Measurements" image="measurementIcon-new-29x29.png" id="WRM-iL-dIc"/>
                     <navigationItem key="navigationItem" id="ReM-ot-5pT"/>
+                    <connections>
+                        <segue destination="anB-BT-0gh" kind="modal" identifier="saddletiltsegue" id="iSz-uG-WK5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pvn-Go-RE2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="514" y="-2959"/>
+            <point key="canvasLocation" x="522" y="-2985"/>
+        </scene>
+        <!--Saddle Tilt Note View Controller-->
+        <scene sceneID="8Hg-xB-Tqi">
+            <objects>
+                <viewController id="anB-BT-0gh" customClass="SaddleTiltNoteViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0eZ-eg-fuQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="nUu-Xa-FTt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KaX-af-kSK">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="epF-ht-DOj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1477" y="-3106"/>
         </scene>
         <!--Info-->
         <scene sceneID="11">

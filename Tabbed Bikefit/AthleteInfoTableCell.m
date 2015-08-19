@@ -35,6 +35,7 @@
             titleField = [[UITextField alloc] init];
             CGRect frame = self.detailTextLabel.frame;
             frame.size.height = self.textLabel.frame.size.height;
+            frame.size.width = self.contentView.frame.size.width / 2;
             [titleField addTarget:self action:@selector(updateAthleteProperty) forControlEvents:UIControlEventEditingDidEnd];
             titleField.borderStyle = UITextBorderStyleRoundedRect;
             titleField.frame = frame;

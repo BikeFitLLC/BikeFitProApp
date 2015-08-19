@@ -8,7 +8,7 @@
 
 #import "SaddleTiltNoteViewController.h"
 #import "SaddleTiltView.h"
-#import "SaddleTiltNote.h"
+#import "AthletePropertyModel.h"
 #import <CoreMotion/CoreMotion.h>
 
 @interface SaddleTiltNoteViewController ()
@@ -27,7 +27,11 @@
     [super viewDidLoad];
     
     saveButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    saveButton.frame = CGRectMake(0,300,250,75);
+    saveButton.frame = CGRectMake(0,
+                                  self.view.frame.size.height - self.view.frame.size.height * .1,
+                                  self.view.frame.size.width,
+                                  self.view.frame.size.height * .1);
+    
     saveButton.titleLabel.font = [UIFont fontWithName:@"Helvetica" size:24];
     saveButton.backgroundColor = [UIColor blackColor];
     [saveButton setTitleColor:[UIColor yellowColor] forState:UIControlStateNormal];
@@ -38,16 +42,15 @@
 
     tilteAngleLabel = [[UILabel alloc] init];
     tilteAngleLabel.frame = CGRectMake(0,0,
-                                       self.view.frame.size.width/2,
-                                       400);
-    tilteAngleLabel.center = CGPointMake(self.view.frame.size.width/2,
-                                         self.view.frame.size.height/2
-                                         );
+                                       self.view.frame.size.width,
+                                       self.view.frame.size.width/2);
+    tilteAngleLabel.center = self.view.center;
     tilteAngleLabel.font = [UIFont fontWithName:@"Helvetica" size:64];
     tilteAngleLabel.backgroundColor = [UIColor blackColor];
     tilteAngleLabel.alpha = .5;
     tilteAngleLabel.numberOfLines = 2;
     tilteAngleLabel.textColor = [UIColor yellowColor];
+    tilteAngleLabel.textAlignment = NSTextAlignmentCenter;
     tilteAngleLabel.adjustsFontSizeToFitWidth = true;
     [self.view addSubview:tilteAngleLabel];
     
@@ -93,13 +96,8 @@
 
 - (IBAction)saveTiltAngle:(id)sender
 {
-    SaddleTiltNote *note = [[SaddleTiltNote alloc] init];
-    [note setLeftFoot:[bikeInfo leftNotesSelected]];
-    
-    [note setTiltAngle:tiltAngle];
-    [self.bikeInfo addNote:note];
-    
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [AthletePropertyModel setProperty:@"SaddleTilt" value:[NSString stringWithFormat:@"%.2f°", tiltAngle]];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 /*
 #pragma mark - Navigation

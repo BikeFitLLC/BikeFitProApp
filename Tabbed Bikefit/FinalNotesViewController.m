@@ -50,6 +50,7 @@
                                                                     @"G: Elbow Pad Width",
                                                                     @"Stack",
                                                                     @"Reach",
+                                                                    @"Saddle Tilt",
                                                                     nil];
     hardwareFieldNames = [[NSMutableArray alloc] initWithObjects:@"Left Pedal Spacers",
                                                                   @"Right Pedal Spacers",
@@ -69,6 +70,7 @@
     [fieldNameDict setObject:@"ElbowPadWidth" forKey:[dimensionsFieldNames objectAtIndex:6]];
     [fieldNameDict setObject:@"Stack" forKey:[dimensionsFieldNames objectAtIndex:7]];
     [fieldNameDict setObject:@"Reach" forKey:[dimensionsFieldNames objectAtIndex:8]];
+    [fieldNameDict setObject:@"SaddleTilt" forKey:[dimensionsFieldNames objectAtIndex:9]];
     
     
     [fieldNameDict setObject:@"LeftPedalSpacers" forKey:[hardwareFieldNames objectAtIndex:0]];
@@ -207,6 +209,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if ([indexPath row] == 9 )
+    {
+        [self performSegueWithIdentifier:@"saddletiltsegue" sender:self];
+        return;
+    }
     [self constructInputViewForIndexPath:indexPath];
     [self.view addSubview:propertyEditView];
     [dimensionsTable deselectRowAtIndexPath:indexPath animated:YES];

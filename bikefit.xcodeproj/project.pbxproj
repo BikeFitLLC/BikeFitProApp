@@ -13,6 +13,13 @@
 		00A29FB41B431C3B00589788 /* DrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A29FB31B431C3B00589788 /* DrawingView.m */; };
 		00A382F71A3B710100791FEE /* BikeFitTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A382F61A3B710100791FEE /* BikeFitTableViewCell.m */; };
 		00D3FE991A83D9AC0017BF1D /* libPods-AWSiOSSDKv2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00D3FE981A83D9AC0017BF1D /* libPods-AWSiOSSDKv2.a */; };
+		00ECBD5C1B856C820028E271 /* 1_wedge_Left_varus.png in Resources */ = {isa = PBXBuildFile; fileRef = 00ECBD561B856C820028E271 /* 1_wedge_Left_varus.png */; };
+		00ECBD5D1B856C820028E271 /* 1_Wedge_Rght_Varus.png in Resources */ = {isa = PBXBuildFile; fileRef = 00ECBD571B856C820028E271 /* 1_Wedge_Rght_Varus.png */; };
+		00ECBD5E1B856C820028E271 /* 2_wedge_left_varus.png in Resources */ = {isa = PBXBuildFile; fileRef = 00ECBD581B856C820028E271 /* 2_wedge_left_varus.png */; };
+		00ECBD5F1B856C820028E271 /* 2_Wedge_RGHT_varus.png in Resources */ = {isa = PBXBuildFile; fileRef = 00ECBD591B856C820028E271 /* 2_Wedge_RGHT_varus.png */; };
+		00ECBD601B856C820028E271 /* 3_wedge_left_varus.png in Resources */ = {isa = PBXBuildFile; fileRef = 00ECBD5A1B856C820028E271 /* 3_wedge_left_varus.png */; };
+		00ECBD611B856C820028E271 /* 3_Wedge_Rght_Varus.png in Resources */ = {isa = PBXBuildFile; fileRef = 00ECBD5B1B856C820028E271 /* 3_Wedge_Rght_Varus.png */; };
+		00ECBD671B85716F0028E271 /* CleatWedges_multi_sideview.png in Resources */ = {isa = PBXBuildFile; fileRef = 00ECBD661B85716F0028E271 /* CleatWedges_multi_sideview.png */; };
 		00F1996F1B82D71A00467F26 /* SaddleTiltNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F1996E1B82D71A00467F26 /* SaddleTiltNoteViewController.m */; };
 		00F199721B82D8CE00467F26 /* SaddleTiltNote.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F199711B82D8CE00467F26 /* SaddleTiltNote.m */; };
 		00F813541A2ADE1300F1EA6D /* LegAngleViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F813531A2ADE1300F1EA6D /* LegAngleViewViewController.m */; };
@@ -143,6 +150,13 @@
 		00A382F51A3B710100791FEE /* BikeFitTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BikeFitTableViewCell.h; sourceTree = "<group>"; };
 		00A382F61A3B710100791FEE /* BikeFitTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BikeFitTableViewCell.m; sourceTree = "<group>"; };
 		00D3FE981A83D9AC0017BF1D /* libPods-AWSiOSSDKv2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-AWSiOSSDKv2.a"; path = "Pods/build/Debug-iphoneos/libPods-AWSiOSSDKv2.a"; sourceTree = "<group>"; };
+		00ECBD561B856C820028E271 /* 1_wedge_Left_varus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1_wedge_Left_varus.png; path = ../../Dropbox/velopez/1_wedge_Left_varus.png; sourceTree = "<group>"; };
+		00ECBD571B856C820028E271 /* 1_Wedge_Rght_Varus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1_Wedge_Rght_Varus.png; path = ../../Dropbox/velopez/1_Wedge_Rght_Varus.png; sourceTree = "<group>"; };
+		00ECBD581B856C820028E271 /* 2_wedge_left_varus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 2_wedge_left_varus.png; path = ../../Dropbox/velopez/2_wedge_left_varus.png; sourceTree = "<group>"; };
+		00ECBD591B856C820028E271 /* 2_Wedge_RGHT_varus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 2_Wedge_RGHT_varus.png; path = ../../Dropbox/velopez/2_Wedge_RGHT_varus.png; sourceTree = "<group>"; };
+		00ECBD5A1B856C820028E271 /* 3_wedge_left_varus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 3_wedge_left_varus.png; path = ../../Dropbox/velopez/3_wedge_left_varus.png; sourceTree = "<group>"; };
+		00ECBD5B1B856C820028E271 /* 3_Wedge_Rght_Varus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 3_Wedge_Rght_Varus.png; path = ../../Dropbox/velopez/3_Wedge_Rght_Varus.png; sourceTree = "<group>"; };
+		00ECBD661B85716F0028E271 /* CleatWedges_multi_sideview.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CleatWedges_multi_sideview.png; path = ../../Dropbox/velopez/CleatWedges_multi_sideview.png; sourceTree = "<group>"; };
 		00F1996D1B82D71A00467F26 /* SaddleTiltNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaddleTiltNoteViewController.h; sourceTree = "<group>"; };
 		00F1996E1B82D71A00467F26 /* SaddleTiltNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaddleTiltNoteViewController.m; sourceTree = "<group>"; };
 		00F199701B82D8CE00467F26 /* SaddleTiltNote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaddleTiltNote.h; sourceTree = "<group>"; };
@@ -464,6 +478,13 @@
 		5D8531D01759CD6600934E68 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				00ECBD661B85716F0028E271 /* CleatWedges_multi_sideview.png */,
+				00ECBD561B856C820028E271 /* 1_wedge_Left_varus.png */,
+				00ECBD571B856C820028E271 /* 1_Wedge_Rght_Varus.png */,
+				00ECBD581B856C820028E271 /* 2_wedge_left_varus.png */,
+				00ECBD591B856C820028E271 /* 2_Wedge_RGHT_varus.png */,
+				00ECBD5A1B856C820028E271 /* 3_wedge_left_varus.png */,
+				00ECBD5B1B856C820028E271 /* 3_Wedge_Rght_Varus.png */,
 				007ED2201B44B34F0021E90B /* Bike_tri_diagram_ABCDEF.png */,
 				00FF371D1A36310300FD1E45 /* Bike_road_diagram_ABCD.png */,
 				00FF371B1A3630CE00FD1E45 /* measurementIcon-new-29x29.png */,
@@ -738,11 +759,14 @@
 				5D6F99D0190B453700558C99 /* BikeFitBadge.png in Resources */,
 				5D8531D41759CD6600934E68 /* InfoPlist.strings in Resources */,
 				5DEA4BD81997EA3A0024C220 /* BikeFitIcon-29x29.png in Resources */,
+				00ECBD611B856C820028E271 /* 3_Wedge_Rght_Varus.png in Resources */,
 				007ED2211B44B34F0021E90B /* Bike_tri_diagram_ABCDEF.png in Resources */,
 				5DD1837919D878AB00A5B6CE /* Bike_road_diagram_APPP.png in Resources */,
 				5DD68EEC1980884400BCCCD9 /* info_button_29x29.png in Resources */,
 				5D8531DC1759CD6600934E68 /* Default.png in Resources */,
 				5D135A4519A7FACD00273076 /* plus-icon.png in Resources */,
+				00ECBD5E1B856C820028E271 /* 2_wedge_left_varus.png in Resources */,
+				00ECBD5D1B856C820028E271 /* 1_Wedge_Rght_Varus.png in Resources */,
 				5DEA4BD51997E6830024C220 /* iTunesArtwork in Resources */,
 				5DD68EF419808E0400BCCCD9 /* 2_heel_right.png in Resources */,
 				5D8531DE1759CD6600934E68 /* Default@2x.png in Resources */,
@@ -750,6 +774,7 @@
 				5DD68EEA198086EA00BCCCD9 /* info_button.png in Resources */,
 				5D8531E61759CD6600934E68 /* MainStoryboard_iPad.storyboard in Resources */,
 				5DD68EE81980862B00BCCCD9 /* BikeFit_logo_Horiz.png in Resources */,
+				00ECBD5C1B856C820028E271 /* 1_wedge_Left_varus.png in Resources */,
 				00FF371C1A3630CE00FD1E45 /* measurementIcon-new-29x29.png in Resources */,
 				5DC9306019200D2000EB733C /* btnLWA_gold_209x48.png in Resources */,
 				5DD68EFA19818F9E00BCCCD9 /* FFMD_Dial_only-200.png in Resources */,
@@ -761,6 +786,8 @@
 				5D8531EB1759CD6600934E68 /* first.png in Resources */,
 				5D6F99CB190B448600558C99 /* arrowleft.png in Resources */,
 				5DA7AE5618BEC79B00CA0DEB /* foot_fore_aft_measure.png in Resources */,
+				00ECBD601B856C820028E271 /* 3_wedge_left_varus.png in Resources */,
+				00ECBD5F1B856C820028E271 /* 2_Wedge_RGHT_varus.png in Resources */,
 				5DD68EF819818DD200BCCCD9 /* FFMD_Dial_only.png in Resources */,
 				5D32380F1986FA92008DA71D /* Ho_foot_Arches_right.png in Resources */,
 				5DD68EE41974747D00BCCCD9 /* FrontCameraIcon.png in Resources */,
@@ -769,6 +796,7 @@
 				5D8531ED1759CD6600934E68 /* first@2x.png in Resources */,
 				5D8531F21759CD6600934E68 /* second.png in Resources */,
 				5D8531F41759CD6600934E68 /* second@2x.png in Resources */,
+				00ECBD671B85716F0028E271 /* CleatWedges_multi_sideview.png in Resources */,
 				5DC304AB199E7A3700F0AECE /* up_down_arrows.png in Resources */,
 				5DD68EE6198083C600BCCCD9 /* BikeFit_verticle_logo.png in Resources */,
 				5DD68EF019808B3300BCCCD9 /* Cog_15t.png in Resources */,

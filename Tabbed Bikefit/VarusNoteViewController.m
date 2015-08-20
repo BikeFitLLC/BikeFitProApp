@@ -17,6 +17,10 @@
     CGPoint oldEndPointLocation;
     CGFloat barYPosition;
     CGFloat angle;
+    
+    UIImageView *suggestedWedgesLeftOne;
+    UIImageView *suggestedWedgesLeftTwo;
+    UIImageView *suggestedWedgesLeftThree;
 }
 
 @end
@@ -87,6 +91,30 @@
                                   self.view.frame.size.height *.1);
     
     [self.view bringSubviewToFront:reverseCameraButton];
+    
+    //
+    //Create Image View for Suggestions
+    //
+    suggestedWedgesLeftOne = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"1_wedge_left_varus.png"]];
+    suggestedWedgesLeftTwo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"2_wedge_left_varus.png"]];
+    suggestedWedgesLeftThree = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"3_wedge_left_varus.png"]];
+    
+    CGRect frame = CGRectMake(self.view.frame.size.width * .05,
+                              self.view.frame.size.height * .85,
+                              self.view.frame.size.width *.3,
+                              self.view.frame.size.width * .1);
+    
+    suggestedWedgesLeftOne.frame = frame;
+    suggestedWedgesLeftTwo.frame = frame;
+    suggestedWedgesLeftThree.frame = frame;
+    
+    suggestedWedgesLeftOne.hidden = YES;
+    suggestedWedgesLeftTwo.hidden = YES;
+    suggestedWedgesLeftThree.hidden = YES;
+    
+    [self.view addSubview:suggestedWedgesLeftTwo];
+    [self.view addSubview:suggestedWedgesLeftOne];
+    [self.view addSubview:suggestedWedgesLeftThree];
 
     
     //Add images for dragbar
@@ -258,6 +286,31 @@
 {
     angle = atanf((startPointLocation.y - endPointLocation.y)/(endPointLocation.x - startPointLocation.x));
     int wholeAngle = (int)(angle*57.2957795);
+    if(wholeAngle <= 4)
+    {
+        suggestedWedgesLeftOne.hidden = YES;
+        suggestedWedgesLeftTwo.hidden = YES;
+        suggestedWedgesLeftThree.hidden = YES;
+    }
+    if(wholeAngle > 4 && wholeAngle <= 6)
+    {
+        suggestedWedgesLeftOne.hidden = NO;
+        suggestedWedgesLeftTwo.hidden = YES;
+        suggestedWedgesLeftThree.hidden = YES;
+    }
+    if(wholeAngle > 6 && wholeAngle <= 12)
+    {
+        suggestedWedgesLeftOne.hidden = YES;
+        suggestedWedgesLeftTwo.hidden = NO;
+        suggestedWedgesLeftThree.hidden = YES;
+    }
+    if(wholeAngle > 12)
+    {
+        suggestedWedgesLeftOne.hidden = YES;
+        suggestedWedgesLeftTwo.hidden = YES;
+        suggestedWedgesLeftThree.hidden = NO;
+    }
+    
     if((wholeAngle < 0 && ![bikeInfo leftNotesSelected]) || (wholeAngle >= 0 && [bikeInfo leftNotesSelected]))
     {
        angleLabel.text = [NSString stringWithFormat:@"%d° Varus", abs(wholeAngle)];

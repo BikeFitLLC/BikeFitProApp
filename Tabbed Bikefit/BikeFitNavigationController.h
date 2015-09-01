@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AthletePropertyModel.h"
 
-@interface BikeFitTabBarController : UITabBarController 
+@interface BikeFitNavigationController : UINavigationController
 
 @property (nonatomic, retain) AthletePropertyModel *athleteProperties;
 @end

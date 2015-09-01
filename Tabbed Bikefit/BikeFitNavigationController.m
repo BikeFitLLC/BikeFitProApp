@@ -6,13 +6,13 @@
 //  Copyright (c) 2013 Alfonso Lopez. All rights reserved.
 //
 
-#import "BikeFitTabBarController.h"
+#import "BikeFitNavigationController.h"
 
-@interface BikeFitTabBarController ()
+@interface BikeFitNavigationController ()
 
 @end
 
-@implementation BikeFitTabBarController
+@implementation BikeFitNavigationController
 
 @synthesize athleteProperties;
 
@@ -31,7 +31,7 @@
     athleteProperties = [[AthletePropertyModel alloc] init];
     
     //set the default tab to the bikefit tab
-    self.selectedIndex = 1;
+    //self.selectedIndex = 1;
 }
 
 - (void)didReceiveMemoryWarning

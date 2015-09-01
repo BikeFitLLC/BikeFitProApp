@@ -353,7 +353,7 @@
     [note setImage:UIImageJPEGRepresentation([self imageFromCurrentTime], 1)];
     [bikeInfo addNote:note];
     
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popToViewController:bikeInfo animated:YES];
 }
 
 - (void)setVertices:(NSMutableArray *)vertices;

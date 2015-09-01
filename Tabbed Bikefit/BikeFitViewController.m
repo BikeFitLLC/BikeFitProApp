@@ -95,6 +95,10 @@
     [rightNotesTable registerClass:[BikeFitTableViewCell class] forCellReuseIdentifier:@"measurementCell"];
     [leftNotesTable registerClass:[UITableViewCell class] forCellReuseIdentifier:@"addCell"];
     [rightNotesTable registerClass:[UITableViewCell class] forCellReuseIdentifier:@"addCell"];
+    
+    UISwipeGestureRecognizer * swiperight=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swiperight:)];
+    swiperight.direction=UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:swiperight];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -160,6 +164,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)swiperight:(UISwipeGestureRecognizer*)gestureRecognizer
+{
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 #pragma mark - Table view data source

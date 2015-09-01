@@ -40,7 +40,8 @@
                       withOverrideParams:nil
                                 delegate:[AmazonClientManager credProvider]];
     
-    parentViewController.userProfile = userProfile;
+    
+    //parentViewController.userProfile = userProfile;
     [parentViewController loadSignedInUser];
 }
 

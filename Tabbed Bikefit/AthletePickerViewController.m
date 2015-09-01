@@ -163,7 +163,8 @@
     [[AthletePropertyModel loadAthleteFromAWS:key]
      continueWithExecutor:[BFExecutor mainThreadExecutor] withBlock:^id(BFTask *task)
      {
-         [self.navigationController popViewControllerAnimated:YES];
+         [self performSegueWithIdentifier:@"showfithome" sender:self];
+         //[self.navigationController popViewControllerAnimated:YES];
          [loadingView removeFromSuperview];
          return nil;
      }];

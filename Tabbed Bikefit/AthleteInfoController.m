@@ -7,7 +7,7 @@
 //
 
 #import "AthleteInfoController.h"
-#import "BikeFitTabBarController.h"
+#import "BikeFitNavigationController.h"
 #import "AthletePropertyModel.h"
 #import "AmazonClientManager.h"
 #import "BikefitConstants.h"
@@ -90,12 +90,11 @@
     [self.view addSubview:emailFitButton];
     
     infoTableView = [self makeInfoTableView];
-    infoTableView.frame = CGRectMake(0,
-                                     emailFitButton.frame.origin.y + emailFitButton.frame.size.height,
-                                     infoTableView.frame.size.width,
-                                     toolbar.frame.origin.y - emailFitButton.frame.origin.y - emailFitButton.frame.size.height );
+    //infoTableView.frame = CGRectMake(0,
+    //                                 emailFitButton.frame.origin.y + emailFitButton.frame.size.height,
+    //                                 infoTableView.frame.size.width,
+    //                                 toolbar.frame.origin.y - emailFitButton.frame.origin.y - emailFitButton.frame.size.height );
     [self.view addSubview: infoTableView];
-    [self newAthlete];
     
     [firstNameLabel setFont:[UIFont fontWithName:@"ArialRoundedMTBold" size:36]];
 }
@@ -205,9 +204,9 @@
 -(UITableView *) makeInfoTableView
 {
     CGFloat x = 0;
-    CGFloat y = self.view.frame.size.height *.3;
+    CGFloat y = 0;
     CGFloat width = self.view.frame.size.width;
-    CGFloat height = toolbar.frame.origin.y - y;
+    CGFloat height = self.view.frame.size.height;
     CGRect tableFrame = CGRectMake(x, y, width, height);
     
     UITableView *tableView = [[UITableView alloc]initWithFrame:tableFrame style:UITableViewStylePlain];

@@ -7,7 +7,7 @@
 //
 
 #import "FinalNotesViewController.h"
-#import "BikeFitTabBarController.h"
+#import "BikeFitNavigationController.h"
 #import "BikefitConstants.h"
 
 @implementation FinalNotesViewController
@@ -122,7 +122,7 @@
 
 -(UITableView *) makeDimensionTableView
 {
-    UITabBarController *tb = (BikeFitTabBarController *)self.parentViewController;
+    UITabBarController *tb = (BikeFitNavigationController *)self.parentViewController;
     CGRect tableFrame = CGRectMake(0,
                                    self.view.frame.size.height *.6,
                                    self.view.frame.size.width,

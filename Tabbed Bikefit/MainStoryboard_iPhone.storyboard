@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="KrY-cd-1qb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="2DD-oW-V9R">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -19,7 +19,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ihx-md-ouP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="108" y="-1766"/>
+            <point key="canvasLocation" x="46" y="1314"/>
         </scene>
         <!--Settings-->
         <scene sceneID="QwU-QH-VMQ">
@@ -57,7 +57,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h3u-K5-eVx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-578" y="-230"/>
+            <point key="canvasLocation" x="370" y="-778"/>
         </scene>
         <!--Measurements-->
         <scene sceneID="Y29-7O-V4Y">
@@ -80,7 +80,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ACI-nq-vTJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="514" y="-2959"/>
+            <point key="canvasLocation" x="-274" y="-2627"/>
         </scene>
         <!--Saddle Tilt Note View Controller-->
         <scene sceneID="Pge-Z6-VOK">
@@ -98,7 +98,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cHH-qQ-DLJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1219" y="-3017"/>
+            <point key="canvasLocation" x="1315" y="-3191"/>
         </scene>
         <!--Info-->
         <scene sceneID="QEj-aw-4Ft">
@@ -109,38 +109,17 @@
                         <viewControllerLayoutGuide type="bottom" id="4Aw-WR-SV9"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="0fZ-Bb-hY5">
-                        <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="De8-zg-Dqh">
-                                <rect key="frame" x="0.0" y="408" width="600" height="44"/>
-                                <items>
-                                    <barButtonItem title="Client List" width="124" id="ByU-WN-6sI">
-                                        <connections>
-                                            <segue destination="fUe-ut-g7q" kind="push" identifier="clientlistsegue" id="onu-fe-MKZ"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem title="New Fit" width="125" id="wPi-PM-jUS">
-                                        <connections>
-                                            <action selector="newAthlete" destination="6uW-7z-7D4" id="GJr-1X-AnQ"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="Cyclist Info" id="7AM-op-7MQ"/>
                     <navigationItem key="navigationItem" id="vsR-8a-KDp"/>
-                    <connections>
-                        <outlet property="clientListButton" destination="ByU-WN-6sI" id="pys-my-Vgv"/>
-                        <outlet property="toolbar" destination="De8-zg-Dqh" id="hpg-te-KR4"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PjF-Cr-VYM" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1601" y="-1666"/>
+            <point key="canvasLocation" x="1069" y="538"/>
         </scene>
         <!--Athlete Picker View Controller-->
         <scene sceneID="oxU-6o-LGx">
@@ -151,32 +130,62 @@
                         <viewControllerLayoutGuide type="bottom" id="9pS-dP-XHA"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="3ll-wL-sy1">
-                        <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="Po6-9n-evo"/>
+                    <connections>
+                        <segue destination="gHv-T3-C7A" kind="show" identifier="showfithome" id="g9d-vd-vmg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0pZ-9j-23s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2696" y="-1475"/>
+            <point key="canvasLocation" x="-1534" y="1865"/>
         </scene>
         <!--Navigation Controller - Notes-->
         <scene sceneID="3qb-Ks-94w">
             <objects>
-                <navigationController definesPresentationContext="YES" id="2DD-oW-V9R" userLabel="Navigation Controller - Notes" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" id="2DD-oW-V9R" userLabel="Navigation Controller - Notes" customClass="BikeFitNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="BikeFit" image="BikeFitIcon-29x29.png" id="eir-iY-pzR"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dgy-AU-Yws">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="5t3-aU-q9u">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
-                        <segue destination="4iY-KU-4Y9" kind="relationship" relationship="rootViewController" id="m9m-X3-cfF"/>
+                        <segue destination="f2h-OH-yc7" kind="relationship" relationship="rootViewController" id="Ndg-PV-red"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ns2-qz-EQX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1752" y="4125"/>
+            <point key="canvasLocation" x="-3058" y="3091"/>
+        </scene>
+        <!--Home Screen View Controller-->
+        <scene sceneID="dKj-dv-v6D">
+            <objects>
+                <viewController id="f2h-OH-yc7" customClass="HomeScreenViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0vd-ac-M7j"/>
+                        <viewControllerLayoutGuide type="bottom" id="Y3y-Cy-XZS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="atr-r1-8dD">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="azT-sg-OA4"/>
+                    <connections>
+                        <segue destination="4iY-KU-4Y9" kind="show" identifier="showbikefit" id="Khf-i7-dzl"/>
+                        <segue destination="fUe-ut-g7q" kind="show" identifier="showclientlist" id="Kpn-jw-ZzF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="271-R4-RaQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2280" y="3091"/>
         </scene>
         <!--BikeFit-->
         <scene sceneID="QjY-B0-0LB">
@@ -187,13 +196,15 @@
                         <viewControllerLayoutGuide type="bottom" id="CYN-Sk-dPA"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Egh-vz-Iwl">
-                        <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="BikeFit" id="V0X-At-YHy"/>
                     <navigationItem key="navigationItem" id="WPB-an-gT3"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <segue destination="Y5e-F2-iwd" kind="push" identifier="ViewKneeNote" id="pns-tM-R9d"/>
                         <segue destination="sfc-7a-TMf" kind="push" identifier="ViewAngleNote" id="rVV-ml-U3e"/>
@@ -211,7 +222,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lsr-yt-e8M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-726" y="4099"/>
+            <point key="canvasLocation" x="-1050" y="3587"/>
         </scene>
         <!--Angle Image Viewer View Controller-->
         <scene sceneID="CBy-6j-B5s">
@@ -514,6 +525,27 @@
             </objects>
             <point key="canvasLocation" x="3196" y="5047"/>
         </scene>
+        <!--Fit Home-->
+        <scene sceneID="pn9-RZ-Khv">
+            <objects>
+                <viewController id="gHv-T3-C7A" customClass="FitHome" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Dia-Ws-kSq"/>
+                        <viewControllerLayoutGuide type="bottom" id="88P-Kb-ldP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xXu-hF-IbY">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="vQt-HW-3f9" kind="show" identifier="showathleteinfo" id="wuf-fB-3m4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tdM-W4-1iS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-742" y="1873"/>
+        </scene>
         <!--Spindle Note View Controller-->
         <scene sceneID="bqc-Es-6gx">
             <objects>
@@ -561,10 +593,10 @@
             </objects>
             <point key="canvasLocation" x="2048" y="1424"/>
         </scene>
-        <!--Bike Fit Tab Bar Controller-->
+        <!--Tab Bar Controller-->
         <scene sceneID="R9n-Md-c4h">
             <objects>
-                <tabBarController id="KrY-cd-1qb" customClass="BikeFitTabBarController" sceneMemberID="viewController">
+                <tabBarController id="KrY-cd-1qb" sceneMemberID="viewController">
                     <value key="contentSizeForViewInPopover" type="size" width="600" height="600"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Wwt-to-Zr4">
@@ -573,15 +605,13 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="vQt-HW-3f9" kind="relationship" relationship="viewControllers" id="z0H-gs-hgD"/>
-                        <segue destination="2DD-oW-V9R" kind="relationship" relationship="viewControllers" id="GKQ-bK-kbl"/>
                         <segue destination="C9G-wr-1wG" kind="relationship" relationship="viewControllers" id="To3-2y-cXZ"/>
                         <segue destination="TGi-41-LpC" kind="relationship" relationship="viewControllers" id="zP1-f0-nnR"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NKH-D0-eYp" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1931" y="-246"/>
+            <point key="canvasLocation" x="-1137" y="590"/>
         </scene>
     </scenes>
     <resources>

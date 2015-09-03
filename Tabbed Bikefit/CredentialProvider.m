@@ -10,6 +10,7 @@
 #import "BikefitConstants.h"
 
 #import <LoginWithAmazon/LoginWithAmazon.h>
+#import "AMZNLogoutDelegate.h"
 
 @implementation CredentialProvider
 @synthesize isLoggingIn;
@@ -88,6 +89,8 @@
                           cancelButtonTitle:@"OK"otherButtonTitles:nil
           ] show];
         
+        AMZNLogoutDelegate *delegate = [[AMZNLogoutDelegate alloc] init];
+        [AIMobileLib clearAuthorizationState:delegate];
         return nil;
     }
     
@@ -201,5 +204,7 @@
         [[[UIAlertView alloc] initWithTitle:@"" message:[NSString stringWithFormat:@"Error occured with message: %@ - Entering Offline Mode", errorResponse.error.message] delegate:nil cancelButtonTitle:@"OK"otherButtonTitles:nil]show];
     }
 }
+
+
 
 @end

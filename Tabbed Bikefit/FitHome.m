@@ -7,6 +7,7 @@
 //
 
 #import "FitHome.h"
+#import "BikefitConstants.h"
 
 @interface FitHome ()
 {
@@ -23,8 +24,23 @@
     [super viewDidLoad];
     
     CGFloat buttonHeight = self.view.frame.size.height * .2;
-    CGFloat buttonWidth = buttonHeight * 2;
+    CGFloat buttonWidth = buttonHeight * 2.5;
     self.view.backgroundColor = [UIColor colorWithRed:0x7/255.0 green:0x31/255.0 blue:0x54/255.0 alpha:1.0];
+    
+    
+    CGRect namelabelframe = CGRectMake(0,
+                                      self.view.frame.size.height * .05,
+                                      self.view.frame.size.width,
+                                      self.view.frame.size.width * .1);
+
+    UILabel *nameLabel = [[UILabel alloc] initWithFrame:namelabelframe];
+    nameLabel.backgroundColor = [UIColor colorWithRed:0x29/255.0 green:0x65/255.0 blue:0x135/255.0 alpha:1.0];
+    nameLabel.textAlignment = NSTextAlignmentCenter;
+    nameLabel.adjustsFontSizeToFitWidth = YES;
+    nameLabel.textColor = [UIColor whiteColor];
+    nameLabel.text = [NSString stringWithFormat:@"%@ %@", [AthletePropertyModel getProperty:AWS_FIT_ATTRIBUTE_FIRSTNAME],
+                      [AthletePropertyModel getProperty:AWS_FIT_ATTRIBUTE_LASTNAME]];
+    [self.view addSubview:nameLabel];
     
     bikeFitButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     bikeFitButton.frame = CGRectMake(0,

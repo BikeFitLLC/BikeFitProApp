@@ -25,7 +25,17 @@
  
  it is safe to make AWS calls if this method returns true
  */
-+(bool)verifyUserKey
++(bool)verifyLoggedIn
+{
+    bool isAWSActive = true;
+    isAWSActive = isAWSActive && [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_USERNAME_KEY] !=nil;
+    isAWSActive = isAWSActive && [[AmazonClientManager credProvider] isTokenValid];
+    
+    return isAWSActive;
+}
+  
+    
++(bool)verifyLoggedInActive
 {
     bool isAWSActive = true;
     isAWSActive = isAWSActive && [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_USERNAME_KEY] !=nil;

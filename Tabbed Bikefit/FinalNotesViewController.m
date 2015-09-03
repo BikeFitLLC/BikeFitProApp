@@ -97,7 +97,7 @@
     
     [dimensionsTable reloadData];
     
-    if(![AmazonClientManager verifyUserKey])
+    if(![AmazonClientManager verifyLoggedInActive])
     {
         logInReminder = [[UIView alloc] initWithFrame:self.parentViewController.view.frame];
         logInReminder.backgroundColor = [UIColor blackColor];

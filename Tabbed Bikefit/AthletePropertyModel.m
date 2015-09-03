@@ -53,7 +53,7 @@ static NSDictionary *lastEvaluatedKey;
 }
 
 + (void)saveAthleteToAWS{
-    if([AmazonClientManager verifyUserKey])
+    if([AmazonClientManager verifyLoggedInActive])
     {
         [AthletePropertyModel addJSONNotes];
         [AthletePropertyModel addFitURL];
@@ -251,7 +251,7 @@ static NSDictionary *lastEvaluatedKey;
     }
     
     //then get the cloud version of the fit and if it's more up to date, load that one.
-    if([AmazonClientManager verifyUserKey])
+    if([AmazonClientManager verifyLoggedInActive])
     {
         NSString *fitterID = [[NSUserDefaults standardUserDefaults] stringForKey:USER_DEFAULTS_FITTERID_KEY];
         NSString *tableName = @"Fits";//[NSString stringWithFormat:AWS_FIT_TABLE_NAME_FORMAT,fitterID];
@@ -319,7 +319,7 @@ static NSDictionary *lastEvaluatedKey;
 + (void) newAthlete
 {
     athleteProperties = [[NSMutableDictionary alloc] init];
-    if([AmazonClientManager verifyUserKey])
+    if([AmazonClientManager verifyLoggedInActive])
     {
         //if we are actively logged in, create new files
         [athleteProperties setObject:[[[NSUUID UUID] UUIDString] lowercaseString] forKey:AWS_FIT_ATTRIBUTE_FITID];

@@ -85,7 +85,7 @@
 
 -(void)uploadVideoToAWS
 {
-    if([AmazonClientManager verifyUserKey])
+    if([AmazonClientManager verifyLoggedInActive])
     {
         // Upload image data.  Remember to set the content type.
         AWSS3TransferManagerUploadRequest *uploadRequest = [AWSS3TransferManagerUploadRequest new];

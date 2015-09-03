@@ -44,7 +44,9 @@
     [AthletePropertyModel newAthlete];
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:USER_DEFAULTS_USERNAME_KEY];
     //[[NSUserDefaults standardUserDefaults] setObject:nil forKey:USER_DEFAULTS_AMZN_TOKEN_KEY];
-    
-    [parentViewController refreshLoginButtons];
+    if(parentViewController)
+    {
+        [parentViewController refreshLoginButtons];
+    }
 }
 @end

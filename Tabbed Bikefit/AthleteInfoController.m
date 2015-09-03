@@ -116,7 +116,7 @@
     [infoTableView reloadData];
     
     //Disable Web Features in online mode is off
-    if(![AmazonClientManager verifyUserKey])
+    if(![AmazonClientManager verifyLoggedInActive])
     {
         [clientListButton setEnabled:NO];
         [saveToWebButton setEnabled:NO];
@@ -130,7 +130,7 @@
     [self updateUrlButtons];
     
     
-    if(![AmazonClientManager verifyUserKey])
+    if(![AmazonClientManager verifyLoggedInActive])
     {
         logInReminder = [[UIView alloc] initWithFrame:self.parentViewController.view.frame];
         logInReminder.backgroundColor = [UIColor blackColor];

@@ -18,7 +18,8 @@
     
 }
 
-+(bool)verifyUserKey;
++(bool)verifyLoggedInActive;
++(bool)verifyLoggedIn;
 
 + (AWSDynamoDB *)ddb;
 + (AWSS3 *)s3;

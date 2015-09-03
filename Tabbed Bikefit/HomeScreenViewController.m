@@ -30,17 +30,17 @@
     
     self.navigationController.navigationBar.hidden = YES;
     
-    CGFloat buttonwidth = self.view.frame.size.width *.5;
+    CGFloat buttonwidth = self.view.frame.size.width *.39;
     self.view.backgroundColor = [UIColor colorWithRed:0x7/255.0 green:0x31/255.0 blue:0x54/255.0 alpha:1.0];
     
-    bool loggedIn = [AmazonClientManager verifyUserKey];
+    bool loggedIn = [AmazonClientManager verifyLoggedInActive];
     
     UIImageView *logoImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BF-Logo-1x.png"]];
     logoImageView.center = CGPointMake(self.view.center.x, self.view.frame.size.height * .1);
     [self.view addSubview:logoImageView];
     
-     clientsButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    clientsButton.frame = CGRectMake(0,
+    clientsButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    clientsButton.frame = CGRectMake(self.view.frame.size.width *.5 - buttonwidth,
                                      self.view.frame.size.height *.5,
                                      buttonwidth,
                                      buttonwidth);
@@ -52,16 +52,16 @@
     
     
     settingsButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    settingsButton.frame = CGRectMake(buttonwidth,
+    settingsButton.frame = CGRectMake(self.view.frame.size.width * .5,
                                       self.view.frame.size.height *.5,
                                       buttonwidth,
                                       buttonwidth);
     [settingsButton setImage:[UIImage imageNamed:@"Settings-1x.png" ] forState:UIControlStateNormal];
-    settingsButton.enabled = [AmazonClientManager verifyUserKey];
+    settingsButton.enabled = [AmazonClientManager verifyLoggedInActive];
     [self.view addSubview:settingsButton];
     
     UIButton *newFitButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    newFitButton.frame = CGRectMake(0,
+    newFitButton.frame = CGRectMake(self.view.frame.size.width *.5 - buttonwidth,
                                     self.view.frame.size.height *.5 - buttonwidth,
                                     buttonwidth,
                                     buttonwidth);
@@ -70,7 +70,7 @@
     [self.view addSubview:newFitButton];
     
     sendEmail = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    sendEmail.frame = CGRectMake(buttonwidth,
+    sendEmail.frame = CGRectMake(self.view.frame.size.width * .5,
                                  self.view.frame.size.height *.5 - buttonwidth,
                                  buttonwidth,
                                  buttonwidth);
@@ -79,9 +79,13 @@
     [self.view addSubview:sendEmail];
     
     [self refreshLoginButtons];
-    
 
+}
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self refreshLoginButtons];
 }
 
 - (void) refreshLoginButtons
@@ -92,14 +96,17 @@
     [loginButton removeFromSuperview];
     [welcomButton removeFromSuperview];
     CGRect loginoutframe = CGRectMake(0,
-                                      self.view.frame.size.height - self.view.frame.size.width * .2,
+                                      self.view.frame.size.height - self.view.frame.size.width * .1,
                                       self.view.frame.size.width,
-                                      self.view.frame.size.width * .2);
-    if(![AmazonClientManager verifyUserKey])
+                                      self.view.frame.size.width * .1);
+    if(![AmazonClientManager verifyLoggedIn])
     {
-        loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        loginButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         loginButton.frame = loginoutframe;
-        [loginButton setImage:[UIImage imageNamed:@"Please-Log-In-1x.png" ] forState:UIControlStateNormal];
+        loginButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+        [loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        loginButton.backgroundColor = [UIColor redColor];
+        [loginButton setTitle:@"Please Log In" forState:UIControlStateNormal];
         [loginButton addTarget:self action:@selector(onLogInButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:loginButton];
         sendEmail.enabled = NO ;
@@ -196,7 +203,7 @@
 
 - (void)loadSignedInUser
 {
-    if([AmazonClientManager verifyUserKey])
+    if([AmazonClientManager verifyLoggedInActive])
     {
         settingsButton.enabled = YES;
         sendEmail.enabled = YES;

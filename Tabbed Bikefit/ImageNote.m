@@ -49,7 +49,7 @@
 ///////////////////////////////////////////////////////
 -(void) downloadImageFromAws
 {
-    if([AmazonClientManager verifyUserKey])
+    if([AmazonClientManager verifyLoggedInActive])
     {
         AWSS3GetObjectRequest *request = [[AWSS3GetObjectRequest alloc] init];
         request.key = s3Key;
@@ -107,7 +107,7 @@
     }
 
     //kick off upload to aws s3 or save to filesystem
-    if([AmazonClientManager verifyUserKey])
+    if([AmazonClientManager verifyLoggedInActive])
     {
         AWSS3TransferManagerUploadRequest *por = [[AWSS3TransferManagerUploadRequest alloc] init];
         por.key = s3Key;

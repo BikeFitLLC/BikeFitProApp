@@ -8,6 +8,8 @@
 
 #import "HomeScreenViewController.h"
 #import "AMZNAuthorizeUserDelegate.h"
+#import "AMZNLogoutDelegate.h"
+#import "BikefitConstants.h"
 
 @interface HomeScreenViewController ()
 {
@@ -16,6 +18,7 @@
     UIButton *sendEmail;
     UIButton *loginButton;
     UIButton *welcomButton;
+    UIButton *logoutButton;
 }
 
 @end
@@ -31,6 +34,10 @@
     self.view.backgroundColor = [UIColor colorWithRed:0x7/255.0 green:0x31/255.0 blue:0x54/255.0 alpha:1.0];
     
     bool loggedIn = [AmazonClientManager verifyUserKey];
+    
+    UIImageView *logoImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BF-Logo-1x.png"]];
+    logoImageView.center = CGPointMake(self.view.center.x, self.view.frame.size.height * .1);
+    [self.view addSubview:logoImageView];
     
      clientsButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     clientsButton.frame = CGRectMake(0,
@@ -50,6 +57,7 @@
                                       buttonwidth,
                                       buttonwidth);
     [settingsButton setImage:[UIImage imageNamed:@"Settings-1x.png" ] forState:UIControlStateNormal];
+    settingsButton.enabled = [AmazonClientManager verifyUserKey];
     [self.view addSubview:settingsButton];
     
     UIButton *newFitButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -58,7 +66,7 @@
                                     buttonwidth,
                                     buttonwidth);
     [newFitButton setImage:[UIImage imageNamed:@"New-Fit-1x.png" ] forState:UIControlStateNormal];
-    [newFitButton addTarget:self action:@selector(segueToFitPage:) forControlEvents:UIControlEventTouchUpInside];
+    [newFitButton addTarget:self action:@selector(segueToNewFitPage:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:newFitButton];
     
     sendEmail = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -94,19 +102,68 @@
         [loginButton setImage:[UIImage imageNamed:@"Please-Log-In-1x.png" ] forState:UIControlStateNormal];
         [loginButton addTarget:self action:@selector(onLogInButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:loginButton];
+        sendEmail.enabled = NO ;
+        clientsButton.enabled= NO ;
+        settingsButton.enabled = NO;
     }
     else
     {
         welcomButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         welcomButton.frame = loginoutframe;
-        [welcomButton setTitle:@"WELCOME" forState:UIControlStateNormal];
+        welcomButton.backgroundColor = [UIColor colorWithRed:0x29/255.0 green:0x65/255.0 blue:0x135/255.0 alpha:1.0];
+        [welcomButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        NSString *name = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITTERNAME_KEY];
+        [welcomButton setTitle:[NSString stringWithFormat:@"Welcome %@", name]  forState:UIControlStateNormal];
+        
+        
+        UISwipeGestureRecognizer *recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleWelcomSwipeLeft:)];
+        [recognizer setDirection:(UISwipeGestureRecognizerDirectionLeft)];
+        [welcomButton addGestureRecognizer:recognizer];
+        
+        UISwipeGestureRecognizer *recognizerRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleWelcomSwipeRight:)];
+        [recognizerRight setDirection:(UISwipeGestureRecognizerDirectionRight)];
+        [welcomButton addGestureRecognizer:recognizerRight];
+        
+        CGRect frame = CGRectMake(0, 0, self.view.frame.size.width *.2, welcomButton.frame.size.height);
+        logoutButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [logoutButton setImage:[UIImage imageNamed:@"Logout-Cancel-Button-1x.png"] forState:UIControlStateNormal];
+        logoutButton.frame = frame;
+        
+        logoutButton.center = CGPointMake(self.view.frame.size.width - logoutButton.frame.size.width/2,
+                                              welcomButton.center.y);
+        [logoutButton addTarget:self action:@selector(logoutButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:logoutButton];
         [self.view addSubview:welcomButton];
         
     }
 }
 
--(void)segueToFitPage:(id)sender
+-(void) handleWelcomSwipeLeft:(id)sender
 {
+    
+    if(welcomButton.center.x == self.view.center.x)
+    {
+        [UIView animateWithDuration:0.5 animations:^{
+            welcomButton.center = CGPointMake(welcomButton.center.x - logoutButton.frame.size.width,
+                                              welcomButton.center.y);
+        }];
+    }
+}
+
+-(void) handleWelcomSwipeRight:(id)sender
+{
+    if(welcomButton.center.x != self.view.center.x)
+    {
+        [UIView animateWithDuration:0.5 animations:^{
+            welcomButton.center = CGPointMake(welcomButton.center.x + logoutButton.frame.size.width,
+                                              welcomButton.center.y);
+        }];
+    }
+}
+
+-(void)segueToNewFitPage:(id)sender
+{
+    [AthletePropertyModel newAthlete];
     [self performSegueWithIdentifier:@"showbikefit" sender:sender];
 }
 
@@ -130,6 +187,11 @@
     //loadingView = [[LoadinSpinnerView alloc] initWithFrame:self.view.frame];
     //[self.view addSubview:loadingView];
     [AIMobileLib authorizeUserForScopes:requestScopes delegate:delegate];
+}
+
+- (void)logoutButtonClicked:(id)sender {
+    AMZNLogoutDelegate* delegate = [[AMZNLogoutDelegate alloc] initWithParentController:self];
+    [AIMobileLib clearAuthorizationState:delegate];
 }
 
 - (void)loadSignedInUser

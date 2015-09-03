@@ -78,7 +78,7 @@
     rightNotesTable = [[UITableView alloc] init];
     rightNotesTable.frame = CGRectMake(0,0,
                                        self.view.frame.size.width *.5,
-                                       self.view.frame.size.height *.8);
+                                       self.view.frame.size.height);
     rightNotesTable.backgroundColor = [UIColor clearColor];
     [self.view addSubview:rightNotesTable];
     
@@ -87,7 +87,7 @@
     leftNotesTable.frame = CGRectMake(self.view.frame.size.width *.5,
                                        0,
                                        self.view.frame.size.width *.5,
-                                       self.view.frame.size.height *.8);
+                                       self.view.frame.size.height);
     leftNotesTable.backgroundColor = [UIColor clearColor];
     [self.view addSubview:leftNotesTable];
 

@@ -57,7 +57,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h3u-K5-eVx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="370" y="-778"/>
+            <point key="canvasLocation" x="-310" y="-1318"/>
         </scene>
         <!--Measurements-->
         <scene sceneID="Y29-7O-V4Y">
@@ -80,7 +80,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ACI-nq-vTJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-274" y="-2627"/>
+            <point key="canvasLocation" x="70" y="505"/>
         </scene>
         <!--Saddle Tilt Note View Controller-->
         <scene sceneID="Pge-Z6-VOK">
@@ -98,7 +98,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cHH-qQ-DLJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1315" y="-3191"/>
+            <point key="canvasLocation" x="1351" y="-919"/>
         </scene>
         <!--Info-->
         <scene sceneID="QEj-aw-4Ft">
@@ -142,7 +142,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0pZ-9j-23s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1534" y="1865"/>
+            <point key="canvasLocation" x="-1842" y="941"/>
         </scene>
         <!--Navigation Controller - Notes-->
         <scene sceneID="3qb-Ks-94w">
@@ -222,7 +222,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lsr-yt-e8M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1050" y="3587"/>
+            <point key="canvasLocation" x="90" y="2195"/>
         </scene>
         <!--Angle Image Viewer View Controller-->
         <scene sceneID="CBy-6j-B5s">
@@ -540,11 +540,13 @@
                     </view>
                     <connections>
                         <segue destination="vQt-HW-3f9" kind="show" identifier="showathleteinfo" id="wuf-fB-3m4"/>
+                        <segue destination="TGi-41-LpC" kind="show" identifier="showmeasurements" id="grG-My-jUa"/>
+                        <segue destination="4iY-KU-4Y9" kind="show" identifier="showbikefit" id="FVW-mw-EX2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tdM-W4-1iS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-742" y="1873"/>
+            <point key="canvasLocation" x="-994" y="893"/>
         </scene>
         <!--Spindle Note View Controller-->
         <scene sceneID="bqc-Es-6gx">
@@ -606,12 +608,11 @@
                     </tabBar>
                     <connections>
                         <segue destination="C9G-wr-1wG" kind="relationship" relationship="viewControllers" id="To3-2y-cXZ"/>
-                        <segue destination="TGi-41-LpC" kind="relationship" relationship="viewControllers" id="zP1-f0-nnR"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NKH-D0-eYp" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1137" y="590"/>
+            <point key="canvasLocation" x="-1285" y="-470"/>
         </scene>
     </scenes>
     <resources>
@@ -620,4 +621,7 @@
         <image name="info_button_29x29_no_white.png" width="28" height="28"/>
         <image name="measurementIcon-new-29x29.png" width="29" height="29"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="FVW-mw-EX2"/>
+    </inferredMetricsTieBreakers>
 </document>

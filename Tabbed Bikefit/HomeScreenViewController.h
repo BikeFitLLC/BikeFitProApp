@@ -12,5 +12,6 @@
 
 
 - (void)loadSignedInUser;
+- (void) refreshLoginButtons;
 
 @end

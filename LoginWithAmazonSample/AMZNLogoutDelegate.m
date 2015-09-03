@@ -13,10 +13,11 @@
 #import "AMZNLogoutDelegate.h"
 #import "AmazonClientManager.h"
 #import "BikefitConstants.h"
+#import "HomeScreenViewController.h"
 
 @implementation AMZNLogoutDelegate
 
-- (id)initWithParentController:(AMZNLoginController*)aViewController {
+- (id)initWithParentController:(HomeScreenViewController*)aViewController {
     if(self = [super init]) {
         parentViewController = aViewController;
     }
@@ -44,6 +45,6 @@
     [[NSUserDefaults standardUserDefaults] setObject:nil forKey:USER_DEFAULTS_USERNAME_KEY];
     //[[NSUserDefaults standardUserDefaults] setObject:nil forKey:USER_DEFAULTS_AMZN_TOKEN_KEY];
     
-    [parentViewController showLogInPage];
+    [parentViewController refreshLoginButtons];
 }
 @end

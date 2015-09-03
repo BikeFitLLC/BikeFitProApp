@@ -122,11 +122,11 @@
 
 -(UITableView *) makeDimensionTableView
 {
-    UITabBarController *tb = (BikeFitNavigationController *)self.parentViewController;
+    //UITabBarController *tb = (BikeFitNavigationController *)self.parentViewController;
     CGRect tableFrame = CGRectMake(0,
                                    self.view.frame.size.height *.6,
                                    self.view.frame.size.width,
-                                   self.view.frame.size.height *.4 - tb.tabBar.frame.size.height);
+                                   self.view.frame.size.height * .4 );
     
     UITableView *tableView = [[UITableView alloc]initWithFrame:tableFrame style:UITableViewStyleGrouped];
     

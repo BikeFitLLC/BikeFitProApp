@@ -36,7 +36,12 @@
     athleteTableView.frame = self.view.frame;
     [athleteTableView setDataSource:self];
     [athleteTableView setDelegate:self];
-    [athleteTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"athletecell"];
+    //[athleteTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"athletecell"];
+    
+    UISearchBar *searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0., 0., 320., 44.)];
+    [searchBar setDelegate:self];
+    athleteTableView.tableHeaderView = searchBar;
+    
     [self.view addSubview:athleteTableView];
     
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
@@ -114,7 +119,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"athletecell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+    }
     
     NSString *fitid = [fitIds objectAtIndex:[indexPath row]];
     cell.textLabel.adjustsFontSizeToFitWidth = YES;
@@ -122,6 +130,15 @@
                            [[fits objectForKey:fitid] objectForKey:AWS_FIT_ATTRIBUTE_FIRSTNAME],
                            [[fits objectForKey:fitid] objectForKey:AWS_FIT_ATTRIBUTE_LASTNAME],
                            [[fits objectForKey:fitid] objectForKey:AWS_FIT_ATTRIBUTE_EMAIL]];
+    
+    NSString *unixTimeString = [[fits objectForKey:fitid] objectForKey:AWS_FIT_ATTRIBUTE_LASTUPDATED];
+    NSTimeInterval unixTime = [unixTimeString doubleValue];
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:unixTime];
+    NSDateFormatter *formatter= [[NSDateFormatter alloc] init];
+    [formatter setLocale:[NSLocale currentLocale]];
+    [formatter setDateFormat:@"MMMM dd, yyyy"];
+    NSString *dateString = [formatter stringFromDate:date];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", dateString ];
     
     if([[fits objectForKey:fitid] objectForKey:FIT_ATTRIBUTE_FROMFILESYSTEM])
     {
@@ -175,6 +192,33 @@
     [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
 }
 
+//
+// UISearchBar Delegate methods
+//
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    [self filterFitIdsWithString:searchText];
+    [athleteTableView reloadData];
+    return;
+}
 
+- (void) filterFitIdsWithString:(NSString*)filter
+{
+    if([filter isEqualToString:@""])
+    {
+        fitIds = [self sortedFitIdsFromFits:fits];
+        return;
+    }
+    NSMutableArray *filteredFits = [[NSMutableArray alloc] init];
+    for( NSString* key in fits)
+    {
+        NSString *firstName = [[fits objectForKey:key] objectForKey:AWS_FIT_ATTRIBUTE_FIRSTNAME];
+        if([firstName containsString:filter])
+        {
+            [filteredFits addObject:key];
+        }
+    }
+    fitIds = filteredFits;
+}
 
 @end

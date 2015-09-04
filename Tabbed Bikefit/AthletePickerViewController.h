@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "AthleteTableViewController.h"
 
-@interface AthletePickerViewController : UIViewController <UITableViewDataSource,UITableViewDelegate>
+@interface AthletePickerViewController : UIViewController < UITableViewDataSource,
+                                                            UITableViewDelegate,
+                                                            UISearchBarDelegate>
 {
     IBOutlet UITableView *athleteTableView;
 }

@@ -20,6 +20,8 @@
     UILabel *loginReminderLabel;
     bool editing;
     CGRect oldTableFrame;
+    
+    NSIndexPath *selectionIndexPath;
 }
 
 @end
@@ -34,6 +36,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
     
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
     editing = NO;
     
     UIImageView *logoImage = [[UIImageView alloc] init];
@@ -252,6 +255,14 @@
         cell.isNewPropertyCell = YES;
     }
     
+    UIButton *downloadButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [downloadButton setBackgroundColor:[UIColor colorWithRed:0x7/255.0 green:0x31/255.0 blue:0x54/255.0 alpha:1.0]];
+    [downloadButton setTitle:@"Done" forState:UIControlStateNormal];
+    [downloadButton setFrame:CGRectMake(0, 0, 100, 35)];
+    [downloadButton addTarget:self action:@selector(endEditing:) forControlEvents:UIControlEventTouchUpInside];
+    cell.editingAccessoryView = downloadButton;
+    
+    
     NSString *propertyName = [propertyNames objectAtIndex:[indexPath row]];
     cell.detailTextLabel.text = propertyName;
     
@@ -301,12 +312,13 @@
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)aTableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if([indexPath row] == [propertyNames count] - 1)
+   if(selectionIndexPath == indexPath)
     {
-        return UITableViewCellEditingStyleInsert;
-    }
-    else {
         return UITableViewCellEditingStyleDelete;
+    }
+    else
+    {
+        return UITableViewCellEditingStyleNone;
     }
 }
 
@@ -323,12 +335,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    selectionIndexPath = indexPath;
+    [tableView setEditing:YES];
     [infoTableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath { //implement the delegate method
-    
+    selectionIndexPath = nil;
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
         [AthletePropertyModel removeProperty:[propertyNames objectAtIndex:[indexPath row]]];
@@ -342,17 +355,29 @@
         //put code to handle insertion
         //[myTableView reloadData];
     }
+    [tableView setEditing:NO];
 }
 
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.row == [propertyNames count])
+    if(indexPath == selectionIndexPath)
     {
-    //    return NO;
+        return YES;
     }
     
-    return YES;
+    return NO;
+}
+
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView setEditing:NO animated:YES];
+}
+
+- (void) endEditing: (id) sender
+{
+    [infoTableView setEditing:NO animated:YES];
+    [infoTableView reloadData];
 }
 
 -(void)dismissKeyboard {

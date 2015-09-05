@@ -10,9 +10,12 @@
 #import "AMZNAuthorizeUserDelegate.h"
 #import "AMZNLogoutDelegate.h"
 #import "BikefitConstants.h"
+#import "LoadinSpinnerView.h"
 
 @interface HomeScreenViewController ()
 {
+    LoadinSpinnerView *loadingView;
+    
     UIButton *clientsButton;
     UIButton *settingsButton;
     UIButton *sendEmail;
@@ -170,8 +173,16 @@
 
 -(void)segueToNewFitPage:(id)sender
 {
-    [AthletePropertyModel newAthlete];
-    [self performSegueWithIdentifier:@"showbikefit" sender:sender];
+    if([AmazonClientManager verifyLoggedInActive])
+    {
+        [self performSegueWithIdentifier:@"showfithome" sender:sender];
+    }
+    else
+    {
+        [AthletePropertyModel newAthlete];
+        [self performSegueWithIdentifier:@"showbikefit" sender:sender];
+    }
+    
 }
 
 -(void)segueToClientPage:(id)sender
@@ -186,13 +197,13 @@
 
 - (void)onLogInButtonClicked:(id)sender
 {
+    
     // Make authorize call to SDK to get authorization from the user.
     // Requesting 'profile' scopes for the current user.
     [[AmazonClientManager credProvider] setIsLoggingIn:true];
     NSArray *requestScopes = [NSArray arrayWithObject:@"profile"];
     AMZNAuthorizeUserDelegate* delegate = [[AMZNAuthorizeUserDelegate alloc] initWithParentController:self];
-    //loadingView = [[LoadinSpinnerView alloc] initWithFrame:self.view.frame];
-    //[self.view addSubview:loadingView];
+
     [AIMobileLib authorizeUserForScopes:requestScopes delegate:delegate];
 }
 

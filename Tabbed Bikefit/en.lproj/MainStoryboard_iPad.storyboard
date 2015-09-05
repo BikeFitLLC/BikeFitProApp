@@ -121,10 +121,10 @@
             </objects>
             <point key="canvasLocation" x="1541" y="-308"/>
         </scene>
-        <!--Athlete Picker View Controller-->
+        <!--Client List View Controller-->
         <scene sceneID="jP8-Mz-7mB">
             <objects>
-                <viewController id="b5A-jQ-1iv" customClass="AthletePickerViewController" sceneMemberID="viewController">
+                <viewController id="b5A-jQ-1iv" customClass="ClientListViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1Wq-Zw-aHG"/>
                         <viewControllerLayoutGuide type="bottom" id="0o1-di-Vea"/>
@@ -142,7 +142,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wh6-IN-khX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1370" y="95"/>
+            <point key="canvasLocation" x="-1802" y="407"/>
         </scene>
         <!--Navigation Controller - Notes-->
         <scene sceneID="e26-cN-SVn">
@@ -162,7 +162,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Bm-Jk-LmC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2880" y="2239"/>
+            <point key="canvasLocation" x="-4688" y="2343"/>
         </scene>
         <!--Home Screen View Controller-->
         <scene sceneID="jB8-yG-jBn">
@@ -181,11 +181,12 @@
                     <connections>
                         <segue destination="gl8-kG-yFy" kind="show" identifier="showbikefit" id="8fi-P5-ncd"/>
                         <segue destination="b5A-jQ-1iv" kind="show" identifier="showclientlist" id="5xD-Aw-1ND"/>
+                        <segue destination="JYg-Ik-X4W" kind="push" identifier="showfithome" id="UGv-Ag-ZrY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="teu-po-gJm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1808" y="2245"/>
+            <point key="canvasLocation" x="-3704" y="2501"/>
         </scene>
         <!--BikeFit-->
         <scene sceneID="lXn-tF-dga">
@@ -538,6 +539,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="86z-Ms-PbM"/>
                     <connections>
                         <segue destination="xq6-mi-RbB" kind="show" identifier="showathleteinfo" id="RoL-yj-M6H"/>
                         <segue destination="sKz-ef-peC" kind="show" identifier="showmeasurements" id="XbO-sw-weu"/>
@@ -546,7 +548,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dlR-0r-g1c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-522" y="47"/>
+            <point key="canvasLocation" x="-1450" y="1671"/>
         </scene>
         <!--Spindle Note View Controller-->
         <scene sceneID="1O5-op-WyK">
@@ -627,6 +629,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="X4l-Zm-gAl"/>
+        <segue reference="8fi-P5-ncd"/>
+        <segue reference="UGv-Ag-ZrY"/>
     </inferredMetricsTieBreakers>
 </document>

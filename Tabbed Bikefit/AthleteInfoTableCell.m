@@ -24,7 +24,7 @@
         {
             textField = [[UITextField alloc] init];
             CGRect frame = self.textLabel.frame;
-            frame.size.width = self.contentView.frame.size.width;
+            frame.size.width = self.contentView.frame.size.width *.9;
             [textField addTarget:self action:@selector(updateAthleteProperty) forControlEvents:UIControlEventEditingChanged];
             textField.borderStyle = UITextBorderStyleRoundedRect;
             textField.frame = frame;

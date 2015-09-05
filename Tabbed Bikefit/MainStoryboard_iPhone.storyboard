@@ -121,10 +121,10 @@
             </objects>
             <point key="canvasLocation" x="1069" y="538"/>
         </scene>
-        <!--Athlete Picker View Controller-->
+        <!--Client List View Controller-->
         <scene sceneID="oxU-6o-LGx">
             <objects>
-                <viewController id="fUe-ut-g7q" customClass="AthletePickerViewController" sceneMemberID="viewController">
+                <viewController id="fUe-ut-g7q" customClass="ClientListViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ezB-R2-Ysf"/>
                         <viewControllerLayoutGuide type="bottom" id="9pS-dP-XHA"/>
@@ -142,7 +142,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0pZ-9j-23s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1842" y="941"/>
+            <point key="canvasLocation" x="-1774" y="1637"/>
         </scene>
         <!--Navigation Controller - Notes-->
         <scene sceneID="3qb-Ks-94w">
@@ -162,7 +162,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ns2-qz-EQX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3058" y="3091"/>
+            <point key="canvasLocation" x="-4618" y="3035"/>
         </scene>
         <!--Home Screen View Controller-->
         <scene sceneID="dKj-dv-v6D">
@@ -181,11 +181,12 @@
                     <connections>
                         <segue destination="4iY-KU-4Y9" kind="show" identifier="showbikefit" id="Khf-i7-dzl"/>
                         <segue destination="fUe-ut-g7q" kind="show" identifier="showclientlist" id="Kpn-jw-ZzF"/>
+                        <segue destination="gHv-T3-C7A" kind="show" identifier="showfithome" id="tjK-i4-MBZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="271-R4-RaQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2280" y="3091"/>
+            <point key="canvasLocation" x="-3728" y="3027"/>
         </scene>
         <!--BikeFit-->
         <scene sceneID="QjY-B0-0LB">
@@ -196,7 +197,7 @@
                         <viewControllerLayoutGuide type="bottom" id="CYN-Sk-dPA"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Egh-vz-Iwl">
-                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -222,7 +223,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lsr-yt-e8M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="90" y="2195"/>
+            <point key="canvasLocation" x="-1774" y="3299"/>
         </scene>
         <!--Angle Image Viewer View Controller-->
         <scene sceneID="CBy-6j-B5s">
@@ -546,7 +547,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tdM-W4-1iS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-994" y="893"/>
+            <point key="canvasLocation" x="-1774" y="2417"/>
         </scene>
         <!--Spindle Note View Controller-->
         <scene sceneID="bqc-Es-6gx">
@@ -622,6 +623,7 @@
         <image name="measurementIcon-new-29x29.png" width="29" height="29"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="FVW-mw-EX2"/>
+        <segue reference="Khf-i7-dzl"/>
+        <segue reference="tjK-i4-MBZ"/>
     </inferredMetricsTieBreakers>
 </document>

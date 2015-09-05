@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AthleteTableViewController.h"
 
-@interface AthletePickerViewController : UIViewController < UITableViewDataSource,
+@interface ClientListViewController : UIViewController < UITableViewDataSource,
                                                             UITableViewDelegate,
                                                             UISearchBarDelegate>
 {

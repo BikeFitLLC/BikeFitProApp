@@ -16,6 +16,10 @@
 		000094551B99078D002B0EA8 /* Email-Highlight-1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000094511B99078D002B0EA8 /* Email-Highlight-1x.png */; };
 		000094561B99078D002B0EA8 /* New-Fit-Highlight-1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000094521B99078D002B0EA8 /* New-Fit-Highlight-1x.png */; };
 		000094571B99078D002B0EA8 /* Settings-Highlight-1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000094531B99078D002B0EA8 /* Settings-Highlight-1x.png */; };
+		0000945C1B9A20AF002B0EA8 /* Client-by-Name-1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000094581B9A20AF002B0EA8 /* Client-by-Name-1x.png */; };
+		0000945D1B9A20AF002B0EA8 /* Client-by-Date-1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000094591B9A20AF002B0EA8 /* Client-by-Date-1x.png */; };
+		0000945E1B9A20AF002B0EA8 /* Client-by-Date-Pressed-1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0000945A1B9A20AF002B0EA8 /* Client-by-Date-Pressed-1x.png */; };
+		0000945F1B9A20AF002B0EA8 /* Client-by-Name-Pressed-1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0000945B1B9A20AF002B0EA8 /* Client-by-Name-Pressed-1x.png */; };
 		005E3EAA1B94FA30003911DE /* Clients-1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 005E3EA91B94FA30003911DE /* Clients-1x.png */; };
 		005E3EAC1B94FBE0003911DE /* Settings-1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 005E3EAB1B94FBE0003911DE /* Settings-1x.png */; };
 		005E3EAE1B94FC39003911DE /* New-Fit-1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 005E3EAD1B94FC39003911DE /* New-Fit-1x.png */; };
@@ -120,7 +124,7 @@
 		5DC9306019200D2000EB733C /* btnLWA_gold_209x48.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DC9304F19200D2000EB733C /* btnLWA_gold_209x48.png */; };
 		5DC9306119200D2000EB733C /* btnLWA_gold_209x48_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DC9305019200D2000EB733C /* btnLWA_gold_209x48_pressed.png */; };
 		5DD1837919D878AB00A5B6CE /* Bike_road_diagram_APPP.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DD1837819D878AB00A5B6CE /* Bike_road_diagram_APPP.png */; };
-		5DD2940D17FA8276005E707D /* AthletePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD2940C17FA8276005E707D /* AthletePickerViewController.m */; };
+		5DD2940D17FA8276005E707D /* ClientListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD2940C17FA8276005E707D /* ClientListViewController.m */; };
 		5DD2941417FBBD7F005E707D /* GoniometerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD2941317FBBD7F005E707D /* GoniometerViewController.m */; };
 		5DD68EE2197473D300BCCCD9 /* FrontCameraIcon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5DD68EE1197473D300BCCCD9 /* FrontCameraIcon.jpg */; };
 		5DD68EE41974747D00BCCCD9 /* FrontCameraIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DD68EE31974747D00BCCCD9 /* FrontCameraIcon.png */; };
@@ -166,6 +170,10 @@
 		000094511B99078D002B0EA8 /* Email-Highlight-1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Email-Highlight-1x.png"; path = "../../Downloads/images 2/Email-Highlight-1x.png"; sourceTree = "<group>"; };
 		000094521B99078D002B0EA8 /* New-Fit-Highlight-1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "New-Fit-Highlight-1x.png"; path = "../../Downloads/images 2/New-Fit-Highlight-1x.png"; sourceTree = "<group>"; };
 		000094531B99078D002B0EA8 /* Settings-Highlight-1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Settings-Highlight-1x.png"; path = "../../Downloads/images 2/Settings-Highlight-1x.png"; sourceTree = "<group>"; };
+		000094581B9A20AF002B0EA8 /* Client-by-Name-1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Client-by-Name-1x.png"; path = "../../Downloads/Client List Images/Client-by-Name-1x.png"; sourceTree = "<group>"; };
+		000094591B9A20AF002B0EA8 /* Client-by-Date-1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Client-by-Date-1x.png"; path = "../../Downloads/Client List Images/Client-by-Date-1x.png"; sourceTree = "<group>"; };
+		0000945A1B9A20AF002B0EA8 /* Client-by-Date-Pressed-1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Client-by-Date-Pressed-1x.png"; path = "../../Downloads/Client List Images/Client-by-Date-Pressed-1x.png"; sourceTree = "<group>"; };
+		0000945B1B9A20AF002B0EA8 /* Client-by-Name-Pressed-1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Client-by-Name-Pressed-1x.png"; path = "../../Downloads/Client List Images/Client-by-Name-Pressed-1x.png"; sourceTree = "<group>"; };
 		005E3EA91B94FA30003911DE /* Clients-1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Clients-1x.png"; path = "../../Downloads/images/Clients-1x.png"; sourceTree = "<group>"; };
 		005E3EAB1B94FBE0003911DE /* Settings-1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Settings-1x.png"; path = "../../Downloads/images/Settings-1x.png"; sourceTree = "<group>"; };
 		005E3EAD1B94FC39003911DE /* New-Fit-1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "New-Fit-1x.png"; path = "../../Downloads/images/New-Fit-1x.png"; sourceTree = "<group>"; };
@@ -323,8 +331,8 @@
 		5DC9304F19200D2000EB733C /* btnLWA_gold_209x48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnLWA_gold_209x48.png; sourceTree = "<group>"; };
 		5DC9305019200D2000EB733C /* btnLWA_gold_209x48_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnLWA_gold_209x48_pressed.png; sourceTree = "<group>"; };
 		5DD1837819D878AB00A5B6CE /* Bike_road_diagram_APPP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bike_road_diagram_APPP.png; sourceTree = "<group>"; };
-		5DD2940B17FA8276005E707D /* AthletePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AthletePickerViewController.h; sourceTree = "<group>"; };
-		5DD2940C17FA8276005E707D /* AthletePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AthletePickerViewController.m; sourceTree = "<group>"; };
+		5DD2940B17FA8276005E707D /* ClientListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientListViewController.h; sourceTree = "<group>"; };
+		5DD2940C17FA8276005E707D /* ClientListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientListViewController.m; sourceTree = "<group>"; };
 		5DD2941217FBBD7F005E707D /* GoniometerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoniometerViewController.h; sourceTree = "<group>"; };
 		5DD2941317FBBD7F005E707D /* GoniometerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoniometerViewController.m; sourceTree = "<group>"; };
 		5DD68EE1197473D300BCCCD9 /* FrontCameraIcon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FrontCameraIcon.jpg; sourceTree = "<group>"; };
@@ -411,6 +419,8 @@
 				00A382F61A3B710100791FEE /* BikeFitTableViewCell.m */,
 				005E3EB81B952F1E003911DE /* FitHome.h */,
 				005E3EB91B952F1E003911DE /* FitHome.m */,
+				5DD2940B17FA8276005E707D /* ClientListViewController.h */,
+				5DD2940C17FA8276005E707D /* ClientListViewController.m */,
 				5DD2940E17FA8291005E707D /* AthleteInfo */,
 				5D9E215B185D0614006BA0B3 /* Note View Controllers */,
 			);
@@ -516,6 +526,10 @@
 		5D8531D01759CD6600934E68 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				000094581B9A20AF002B0EA8 /* Client-by-Name-1x.png */,
+				000094591B9A20AF002B0EA8 /* Client-by-Date-1x.png */,
+				0000945A1B9A20AF002B0EA8 /* Client-by-Date-Pressed-1x.png */,
+				0000945B1B9A20AF002B0EA8 /* Client-by-Name-Pressed-1x.png */,
 				000094501B99078D002B0EA8 /* Clients-Highlight-1x.png */,
 				000094511B99078D002B0EA8 /* Email-Highlight-1x.png */,
 				000094521B99078D002B0EA8 /* New-Fit-Highlight-1x.png */,
@@ -668,8 +682,6 @@
 			children = (
 				5D8531E71759CD6600934E68 /* AthleteInfoController.h */,
 				5D8531E81759CD6600934E68 /* AthleteInfoController.m */,
-				5DD2940B17FA8276005E707D /* AthletePickerViewController.h */,
-				5DD2940C17FA8276005E707D /* AthletePickerViewController.m */,
 				00FBB9C41B3B811700873AAA /* AthleteInfoTableCell.h */,
 				00FBB9C51B3B811700873AAA /* AthleteInfoTableCell.m */,
 			);
@@ -810,9 +822,11 @@
 			files = (
 				5D6F99D0190B453700558C99 /* BikeFitBadge.png in Resources */,
 				5D8531D41759CD6600934E68 /* InfoPlist.strings in Resources */,
+				0000945D1B9A20AF002B0EA8 /* Client-by-Date-1x.png in Resources */,
 				5DEA4BD81997EA3A0024C220 /* BikeFitIcon-29x29.png in Resources */,
 				00ECBD611B856C820028E271 /* 3_Wedge_Rght_Varus.png in Resources */,
 				007ED2211B44B34F0021E90B /* Bike_tri_diagram_ABCDEF.png in Resources */,
+				0000945C1B9A20AF002B0EA8 /* Client-by-Name-1x.png in Resources */,
 				5DD1837919D878AB00A5B6CE /* Bike_road_diagram_APPP.png in Resources */,
 				5DD68EEC1980884400BCCCD9 /* info_button_29x29.png in Resources */,
 				5D8531DC1759CD6600934E68 /* Default.png in Resources */,
@@ -845,6 +859,7 @@
 				00ECBD601B856C820028E271 /* 3_wedge_left_varus.png in Resources */,
 				000094541B99078D002B0EA8 /* Clients-Highlight-1x.png in Resources */,
 				0000944D1B98B95D002B0EA8 /* BF-Logo-1x.png in Resources */,
+				0000945E1B9A20AF002B0EA8 /* Client-by-Date-Pressed-1x.png in Resources */,
 				00ECBD5F1B856C820028E271 /* 2_Wedge_RGHT_varus.png in Resources */,
 				5DD68EF819818DD200BCCCD9 /* FFMD_Dial_only.png in Resources */,
 				005E3EAC1B94FBE0003911DE /* Settings-1x.png in Resources */,
@@ -875,6 +890,7 @@
 				000094551B99078D002B0EA8 /* Email-Highlight-1x.png in Resources */,
 				5D32380D1986F8BB008DA71D /* Ho_foot_Arches_left.png in Resources */,
 				5DC304AD199E7E8200F0AECE /* curved_arrows.png in Resources */,
+				0000945F1B9A20AF002B0EA8 /* Client-by-Name-Pressed-1x.png in Resources */,
 				5DD68EEE198089A300BCCCD9 /* info_button_29x29_no_white.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -959,7 +975,7 @@
 				005E3EB31B950026003911DE /* HomeScreenViewController.m in Sources */,
 				5D3B1E7917F76045004EB913 /* KneeViewController.m in Sources */,
 				5D3B1E7C17F76187004EB913 /* KneeDrawingView.m in Sources */,
-				5DD2940D17FA8276005E707D /* AthletePickerViewController.m in Sources */,
+				5DD2940D17FA8276005E707D /* ClientListViewController.m in Sources */,
 				5DD2941417FBBD7F005E707D /* GoniometerViewController.m in Sources */,
 				5D192BBA17FE55ED0046CC16 /* GoniometerDrawingView.m in Sources */,
 				5D6F3A9118145FAC001BD897 /* BikeFitViewController.m in Sources */,

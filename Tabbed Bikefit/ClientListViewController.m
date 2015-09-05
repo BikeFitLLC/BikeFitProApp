@@ -6,19 +6,24 @@
 //  Copyright (c) 2013 Alfonso Lopez. All rights reserved.
 //
 
-#import "AthletePickerViewController.h"
+#import "ClientListViewController.h"
 #import "AthletePropertyModel.h"
 #import "BikefitConstants.h"
 #import "LoadinSpinnerView.h"
 
-@interface AthletePickerViewController (){
+@interface ClientListViewController (){
     NSMutableDictionary *fits;
     NSArray *fitIds;
+    
+    UIButton *sortByDateButton;
+    UIButton *sortByNameButton;
+    
+    bool sortByDate;
 }
 
 @end
 
-@implementation AthletePickerViewController
+@implementation ClientListViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,8 +37,39 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    sortByDate = true;
+
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    //
+    //Set Buttons up
+    //
+    sortByDateButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [sortByDateButton setBackgroundColor:[UIColor colorWithRed:0x7/255.0 green:0x31/255.0 blue:0x54/255.0 alpha:1.0]];
+    sortByDateButton.highlighted = YES;
+    sortByDateButton.frame = CGRectMake(0,
+                                        self.view.frame.size.height -  self.view.frame.size.width * .2,
+                                        self.view.frame.size.width * .5,
+                                        self.view.frame.size.width * .2);
+    [sortByDateButton setTitle:@"Date" forState:UIControlStateNormal];
+    [sortByDateButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+    sortByDateButton.enabled = NO;
+    [sortByDateButton addTarget:self action:@selector(sortByDateButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:sortByDateButton];
+    
+    sortByNameButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [sortByNameButton setBackgroundColor:[UIColor colorWithRed:0x7/255.0 green:0x31/255.0 blue:0x54/255.0 alpha:1.0]];
+    sortByNameButton.frame = CGRectMake(self.view.frame.size.width *.5,
+                                        self.view.frame.size.height -  self.view.frame.size.width * .2,
+                                        self.view.frame.size.width * .5,
+                                        self.view.frame.size.width * .2);
+    [sortByNameButton setTitle:@"Name" forState:UIControlStateNormal];
+    [sortByNameButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+    [sortByNameButton addTarget:self action:@selector(sortByNameButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:sortByNameButton];
+    
     athleteTableView = [[UITableView alloc] init];
-    athleteTableView.frame = self.view.frame;
+    athleteTableView.frame = CGRectMake(0,0, self.view.frame.size.width, self.view.frame.size.height - sortByDateButton.frame.size.height);
     [athleteTableView setDataSource:self];
     [athleteTableView setDelegate:self];
     //[athleteTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"athletecell"];
@@ -44,7 +80,6 @@
     
     [self.view addSubview:athleteTableView];
     
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     //put up loading view before getting athletes
     LoadinSpinnerView *loadingView = [[LoadinSpinnerView alloc] initWithFrame:self.view.frame];
@@ -52,7 +87,7 @@
     [[AthletePropertyModel getAthletesFromAws] continueWithBlock:^id(BFTask *task)
     {
         fits = [AthletePropertyModel fits];
-        fitIds = [self sortedFitIdsFromFits:fits];
+        fitIds = [self sortedFitIds:fits];
         [athleteTableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
         [loadingView performSelectorOnMainThread:@selector(removeFromSuperview) withObject:nil waitUntilDone:NO];
         return nil;
@@ -72,7 +107,19 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (NSArray *) sortedFitIdsFromFits:(NSDictionary *)fitDict
+- (NSArray *) sortedFitIds:(NSDictionary *)fitDict
+{
+    if(sortByDate)
+    {
+        return [self sortedFitIdsByDateFromFits:fitDict];
+    }
+    else
+    {
+        return [self sortedFitIdsByNameFromFits:fitDict];
+    }
+    
+}
+- (NSArray *) sortedFitIdsByDateFromFits:(NSDictionary *)fitDict
 {
     return [fitDict keysSortedByValueUsingComparator: ^(id obj1, id obj2){
         float date1 = [[(NSDictionary *)obj1 objectForKey:AWS_FIT_ATTRIBUTE_LASTUPDATED] floatValue];
@@ -88,6 +135,34 @@
         }
         
         return NSOrderedSame;
+    }];
+}
+
+- (void) sortByNameButtonTapped: (id) sender
+{
+    sortByDate = false;
+    fitIds = [self sortedFitIds:fits];
+    [athleteTableView reloadData];
+    sortByNameButton.enabled = NO;
+    sortByDateButton.enabled = YES;
+}
+
+- (void) sortByDateButtonTapped: (id) sender
+{
+    sortByDate = true;
+    fitIds = [self sortedFitIds:fits];
+    [athleteTableView reloadData];
+    sortByNameButton.enabled = YES;
+    sortByDateButton.enabled = NO;
+}
+
+- (NSArray *) sortedFitIdsByNameFromFits:(NSDictionary *)fitDict
+{
+    return [fitDict keysSortedByValueUsingComparator: ^(id obj1, id obj2){
+        NSString* name1 = [(NSDictionary *)obj1 objectForKey:AWS_FIT_ATTRIBUTE_FIRSTNAME];
+        NSString* name2 = [(NSDictionary *)obj2 objectForKey:AWS_FIT_ATTRIBUTE_FIRSTNAME];
+        
+        return [name1 localizedCaseInsensitiveCompare:name2];
     }];
 }
 
@@ -126,10 +201,9 @@
     
     NSString *fitid = [fitIds objectAtIndex:[indexPath row]];
     cell.textLabel.adjustsFontSizeToFitWidth = YES;
-    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@ - %@",
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@",
                            [[fits objectForKey:fitid] objectForKey:AWS_FIT_ATTRIBUTE_FIRSTNAME],
-                           [[fits objectForKey:fitid] objectForKey:AWS_FIT_ATTRIBUTE_LASTNAME],
-                           [[fits objectForKey:fitid] objectForKey:AWS_FIT_ATTRIBUTE_EMAIL]];
+                           [[fits objectForKey:fitid] objectForKey:AWS_FIT_ATTRIBUTE_LASTNAME]];
     
     NSString *unixTimeString = [[fits objectForKey:fitid] objectForKey:AWS_FIT_ATTRIBUTE_LASTUPDATED];
     NSTimeInterval unixTime = [unixTimeString doubleValue];
@@ -156,7 +230,7 @@
         [AthletePropertyModel removeAthleteFromAWS:fitId];
         
         [fits removeObjectForKey:fitId];
-        fitIds = [self sortedFitIdsFromFits:fits];
+        fitIds = [self sortedFitIdsByDateFromFits:fits];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
 
     }
@@ -206,7 +280,7 @@
 {
     if([filter isEqualToString:@""])
     {
-        fitIds = [self sortedFitIdsFromFits:fits];
+        fitIds = [self sortedFitIdsByDateFromFits:fits];
         return;
     }
     NSMutableArray *filteredFits = [[NSMutableArray alloc] init];

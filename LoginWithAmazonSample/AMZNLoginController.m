@@ -203,23 +203,6 @@ BOOL isUserSignedIn;
 }
 
 
-- (void) emailIntakeUrl
-{
-    emailController= [[MFMailComposeViewController alloc] init];
-    emailController.mailComposeDelegate = self;
-    NSString *fitterName = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITTERNAME_KEY];
-    NSString *url = [NSString stringWithFormat:@"http://intake.bikefit.com/?fitter=%@", [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_USERNAME_KEY]];
-    NSString *emailSubject = [NSString stringWithFormat:@"Intake Form for fit with %@",fitterName];
-    NSString *emailMessage = [NSString stringWithFormat:@"Please fill this out before your appointment. <br /><br /><a href=\"%@\">%@</a>", url,url];
-    
-    [emailController setToRecipients:[NSArray arrayWithObject:[AthletePropertyModel getProperty:AWS_FIT_ATTRIBUTE_EMAIL ]]];
-    [emailController setSubject:emailSubject];
-    [emailController setMessageBody:emailMessage isHTML:YES];
-    if (emailController)
-    {
-        [self presentViewController:emailController animated:YES completion:NULL];
-    }
-}
 
 -(void) viewWillAppear:(BOOL)animated
 {

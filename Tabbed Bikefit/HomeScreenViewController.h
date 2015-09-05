@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MFMailComposeViewController.h>
 
-@interface HomeScreenViewController : UIViewController
+@interface HomeScreenViewController : UIViewController <MFMailComposeViewControllerDelegate>
 
 
 - (void)loadSignedInUser;
+
 - (void) refreshLoginButtons;
 
 @end

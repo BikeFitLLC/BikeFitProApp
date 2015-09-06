@@ -20,6 +20,10 @@
 		0000945D1B9A20AF002B0EA8 /* Client-by-Date-1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000094591B9A20AF002B0EA8 /* Client-by-Date-1x.png */; };
 		0000945E1B9A20AF002B0EA8 /* Client-by-Date-Pressed-1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0000945A1B9A20AF002B0EA8 /* Client-by-Date-Pressed-1x.png */; };
 		0000945F1B9A20AF002B0EA8 /* Client-by-Name-Pressed-1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0000945B1B9A20AF002B0EA8 /* Client-by-Name-Pressed-1x.png */; };
+		000094641B9BEE6D002B0EA8 /* Basic-Info-Active-1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000094601B9BEE6D002B0EA8 /* Basic-Info-Active-1x.png */; };
+		000094651B9BEE6D002B0EA8 /* Email-Active-1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000094611B9BEE6D002B0EA8 /* Email-Active-1x.png */; };
+		000094661B9BEE6D002B0EA8 /* Fitting-Active-1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000094621B9BEE6D002B0EA8 /* Fitting-Active-1x.png */; };
+		000094671B9BEE6D002B0EA8 /* Measurement-Active-1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000094631B9BEE6D002B0EA8 /* Measurement-Active-1x.png */; };
 		005E3EAA1B94FA30003911DE /* Clients-1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 005E3EA91B94FA30003911DE /* Clients-1x.png */; };
 		005E3EAC1B94FBE0003911DE /* Settings-1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 005E3EAB1B94FBE0003911DE /* Settings-1x.png */; };
 		005E3EAE1B94FC39003911DE /* New-Fit-1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 005E3EAD1B94FC39003911DE /* New-Fit-1x.png */; };
@@ -174,6 +178,10 @@
 		000094591B9A20AF002B0EA8 /* Client-by-Date-1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Client-by-Date-1x.png"; path = "../../Downloads/Client List Images/Client-by-Date-1x.png"; sourceTree = "<group>"; };
 		0000945A1B9A20AF002B0EA8 /* Client-by-Date-Pressed-1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Client-by-Date-Pressed-1x.png"; path = "../../Downloads/Client List Images/Client-by-Date-Pressed-1x.png"; sourceTree = "<group>"; };
 		0000945B1B9A20AF002B0EA8 /* Client-by-Name-Pressed-1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Client-by-Name-Pressed-1x.png"; path = "../../Downloads/Client List Images/Client-by-Name-Pressed-1x.png"; sourceTree = "<group>"; };
+		000094601B9BEE6D002B0EA8 /* Basic-Info-Active-1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Basic-Info-Active-1x.png"; path = "../../Downloads/images 3/Basic-Info-Active-1x.png"; sourceTree = "<group>"; };
+		000094611B9BEE6D002B0EA8 /* Email-Active-1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Email-Active-1x.png"; path = "../../Downloads/images 3/Email-Active-1x.png"; sourceTree = "<group>"; };
+		000094621B9BEE6D002B0EA8 /* Fitting-Active-1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Fitting-Active-1x.png"; path = "../../Downloads/images 3/Fitting-Active-1x.png"; sourceTree = "<group>"; };
+		000094631B9BEE6D002B0EA8 /* Measurement-Active-1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Measurement-Active-1x.png"; path = "../../Downloads/images 3/Measurement-Active-1x.png"; sourceTree = "<group>"; };
 		005E3EA91B94FA30003911DE /* Clients-1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Clients-1x.png"; path = "../../Downloads/images/Clients-1x.png"; sourceTree = "<group>"; };
 		005E3EAB1B94FBE0003911DE /* Settings-1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Settings-1x.png"; path = "../../Downloads/images/Settings-1x.png"; sourceTree = "<group>"; };
 		005E3EAD1B94FC39003911DE /* New-Fit-1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "New-Fit-1x.png"; path = "../../Downloads/images/New-Fit-1x.png"; sourceTree = "<group>"; };
@@ -526,6 +534,10 @@
 		5D8531D01759CD6600934E68 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				000094601B9BEE6D002B0EA8 /* Basic-Info-Active-1x.png */,
+				000094611B9BEE6D002B0EA8 /* Email-Active-1x.png */,
+				000094621B9BEE6D002B0EA8 /* Fitting-Active-1x.png */,
+				000094631B9BEE6D002B0EA8 /* Measurement-Active-1x.png */,
 				000094581B9A20AF002B0EA8 /* Client-by-Name-1x.png */,
 				000094591B9A20AF002B0EA8 /* Client-by-Date-1x.png */,
 				0000945A1B9A20AF002B0EA8 /* Client-by-Date-Pressed-1x.png */,
@@ -837,6 +849,7 @@
 				5DEA4BD51997E6830024C220 /* iTunesArtwork in Resources */,
 				5DD68EF419808E0400BCCCD9 /* 2_heel_right.png in Resources */,
 				5D8531DE1759CD6600934E68 /* Default@2x.png in Resources */,
+				000094651B9BEE6D002B0EA8 /* Email-Active-1x.png in Resources */,
 				5D8531E01759CD6600934E68 /* Default-568h@2x.png in Resources */,
 				005E3EAE1B94FC39003911DE /* New-Fit-1x.png in Resources */,
 				5DD68EEA198086EA00BCCCD9 /* info_button.png in Resources */,
@@ -860,6 +873,7 @@
 				000094541B99078D002B0EA8 /* Clients-Highlight-1x.png in Resources */,
 				0000944D1B98B95D002B0EA8 /* BF-Logo-1x.png in Resources */,
 				0000945E1B9A20AF002B0EA8 /* Client-by-Date-Pressed-1x.png in Resources */,
+				000094671B9BEE6D002B0EA8 /* Measurement-Active-1x.png in Resources */,
 				00ECBD5F1B856C820028E271 /* 2_Wedge_RGHT_varus.png in Resources */,
 				5DD68EF819818DD200BCCCD9 /* FFMD_Dial_only.png in Resources */,
 				005E3EAC1B94FBE0003911DE /* Settings-1x.png in Resources */,
@@ -886,8 +900,10 @@
 				000094561B99078D002B0EA8 /* New-Fit-Highlight-1x.png in Resources */,
 				0000944F1B98BB5E002B0EA8 /* Logout-Cancel-Button-1x.png in Resources */,
 				5D6F3A9318146C1F001BD897 /* BikeFitIcon.png in Resources */,
+				000094661B9BEE6D002B0EA8 /* Fitting-Active-1x.png in Resources */,
 				5DD68EF619808E0F00BCCCD9 /* 2_heels_left.png in Resources */,
 				000094551B99078D002B0EA8 /* Email-Highlight-1x.png in Resources */,
+				000094641B9BEE6D002B0EA8 /* Basic-Info-Active-1x.png in Resources */,
 				5D32380D1986F8BB008DA71D /* Ho_foot_Arches_left.png in Resources */,
 				5DC304AD199E7E8200F0AECE /* curved_arrows.png in Resources */,
 				0000945F1B9A20AF002B0EA8 /* Client-by-Name-Pressed-1x.png in Resources */,

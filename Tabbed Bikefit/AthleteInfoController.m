@@ -485,30 +485,7 @@
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
 }
 
-- (void) emailFit
-{
-    emailController= [[MFMailComposeViewController alloc] init];
-    emailController.mailComposeDelegate = self;
-    NSString *fitterName = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITTERNAME_KEY];
-    NSString *url = [[AthletePropertyModel getProperty:AWS_FIT_ATTRIBUTE_URL] lowercaseString];
-    NSString *emailSubject = [NSString stringWithFormat:@"Your Fit from %@",fitterName];
-    NSString *emailMessage = [NSString stringWithFormat:@"Thanks for coming in! <br /><br /><a href=\"%@\">Click to view your fit</a>", url];
-    
-    [emailController setToRecipients:[NSArray arrayWithObject:[AthletePropertyModel getProperty:AWS_FIT_ATTRIBUTE_EMAIL ]]];
-    [emailController setSubject:emailSubject];
-    [emailController setMessageBody:emailMessage isHTML:YES];
-    if (emailController)
-    {
-        [self presentViewController:emailController animated:YES completion:NULL];
-    }
-}
 
-- (void)mailComposeController:(MFMailComposeViewController *)controller
-          didFinishWithResult:(MFMailComposeResult)result
-                        error:(NSError *)error
-{
-    [emailController dismissViewControllerAnimated:YES completion:NULL];
-}
 
 -(IBAction) keyboardDidShow:(NSNotification*)notification
 {

@@ -19,7 +19,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6sp-oV-tWW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="518" y="468"/>
+            <point key="canvasLocation" x="590" y="748"/>
         </scene>
         <!--Settings-->
         <scene sceneID="Xbn-gG-U3r">
@@ -186,7 +186,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="teu-po-gJm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3704" y="2501"/>
+            <point key="canvasLocation" x="-3808" y="2349"/>
         </scene>
         <!--BikeFit-->
         <scene sceneID="lXn-tF-dga">

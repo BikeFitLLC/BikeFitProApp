@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MFMailComposeViewController.h>
 
-@interface FitHome : UIViewController
+@interface FitHome : UIViewController <MFMailComposeViewControllerDelegate>
 
 @end

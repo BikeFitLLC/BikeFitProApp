@@ -14,6 +14,8 @@
     UIButton *athleteInfoButton;
     UIButton *bikeFitButton;
     UIButton *measurementButton;
+    UIButton *emailFitButton;
+    MFMailComposeViewController* emailController;
 }
 
 @end
@@ -43,11 +45,10 @@
     [self.view addSubview:nameLabel];
     
     bikeFitButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    bikeFitButton.frame = CGRectMake(0,
-                                         0,
+    bikeFitButton.frame = CGRectMake(self.view.center.x - buttonWidth * .5,
+                                         self.view.center.y - buttonHeight,
                                          buttonWidth,
                                          buttonHeight);
-    bikeFitButton.center = self.view.center;
     [bikeFitButton setImage:[UIImage imageNamed:@"Fitting-1x.png" ] forState:UIControlStateNormal];
     [bikeFitButton addTarget:self action:@selector(segueToBikeFit:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:bikeFitButton];
@@ -69,6 +70,15 @@
     [measurementButton setImage:[UIImage imageNamed:@"Measurement-1x.png" ] forState:UIControlStateNormal];
     [measurementButton addTarget:self action:@selector(segueToMeasurements:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:measurementButton];
+    
+    emailFitButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    emailFitButton.frame = CGRectMake(measurementButton.frame.origin.x,
+                                         measurementButton.frame.origin.y + buttonHeight,
+                                         buttonWidth,
+                                         buttonHeight);
+    [emailFitButton setImage:[UIImage imageNamed:@"Email-Active-1x.png" ] forState:UIControlStateNormal];
+    [emailFitButton addTarget:self action:@selector(emailFit:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:emailFitButton];
 
 }
 
@@ -88,6 +98,31 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) emailFit:(id)sender
+{
+    emailController= [[MFMailComposeViewController alloc] init];
+    emailController.mailComposeDelegate = self;
+    NSString *fitterName = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITTERNAME_KEY];
+    NSString *url = [[AthletePropertyModel getProperty:AWS_FIT_ATTRIBUTE_URL] lowercaseString];
+    NSString *emailSubject = [NSString stringWithFormat:@"Your Fit from %@",fitterName];
+    NSString *emailMessage = [NSString stringWithFormat:@"Thanks for coming in! <br /><br /><a href=\"%@\">Click to view your fit</a>", url];
+    
+    [emailController setToRecipients:[NSArray arrayWithObject:[AthletePropertyModel getProperty:AWS_FIT_ATTRIBUTE_EMAIL ]]];
+    [emailController setSubject:emailSubject];
+    [emailController setMessageBody:emailMessage isHTML:YES];
+    if (emailController)
+    {
+        [self presentViewController:emailController animated:YES completion:NULL];
+    }
+}
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller
+          didFinishWithResult:(MFMailComposeResult)result
+                        error:(NSError *)error
+{
+    [emailController dismissViewControllerAnimated:YES completion:NULL];
 }
 
 /*

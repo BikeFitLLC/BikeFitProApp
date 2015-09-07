@@ -111,7 +111,7 @@
     [note setVideoUrl:videoUrl];
     
     [bikeInfo addNote:note];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popToViewController:bikeInfo animated:YES];
 }
 - (void) stopCapturing
 {

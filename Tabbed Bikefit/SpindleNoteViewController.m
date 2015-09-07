@@ -104,7 +104,7 @@
     SpindleNote *note = [[SpindleNote alloc]init];
     [note setPath:[spindleView boxPath]];
     [ bikeInfo addNote:note];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popToViewController:bikeInfo animated:YES];
     
 }
 @end

@@ -59,6 +59,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    if(![AmazonClientManager verifyLoggedInActive])
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warning!"
+                                                     message:@"Unless Logged Into An Active Account, All Fit Data Is Deleted When You Close This Screen"
+                                                    delegate:nil
+                                           cancelButtonTitle:@"I Understand"
+                                           otherButtonTitles:nil];
+        [alert show];
+        
+    }
     
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     

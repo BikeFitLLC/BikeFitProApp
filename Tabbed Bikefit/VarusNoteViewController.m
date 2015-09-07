@@ -343,7 +343,7 @@
     
     [self.bikeInfo addNote:note];
      
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popToViewController:bikeInfo animated:YES];
 }
 
 

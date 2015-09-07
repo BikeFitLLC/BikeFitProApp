@@ -89,7 +89,7 @@
     [note setFootBoxPath:footBottomView.footBoxPath];
     [bikeInfo addNote:note];
     
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popToViewController:bikeInfo animated:YES];
 }
 
 @end

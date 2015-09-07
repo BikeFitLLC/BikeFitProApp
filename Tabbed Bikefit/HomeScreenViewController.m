@@ -33,51 +33,50 @@
     
     self.navigationController.navigationBar.hidden = YES;
     
-    CGFloat buttonwidth = self.view.frame.size.width *.39;
+    
     self.view.backgroundColor = [UIColor colorWithRed:0x7/255.0 green:0x31/255.0 blue:0x54/255.0 alpha:1.0];
     
     bool loggedIn = [AmazonClientManager verifyLoggedInActive];
     
-    UIImageView *logoImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BF-Logo-1x.png"]];
+    UIImageView *logoImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BF-Logo"]];
     logoImageView.center = CGPointMake(self.view.center.x, self.view.frame.size.height * .1);
     [self.view addSubview:logoImageView];
     
     clientsButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    clientsButton.frame = CGRectMake(self.view.frame.size.width *.5 - buttonwidth,
+    [clientsButton setImage:[UIImage imageNamed:@"Clients" ] forState:UIControlStateNormal];
+    clientsButton.frame = CGRectMake(0,
                                      self.view.frame.size.height *.5,
-                                     buttonwidth,
-                                     buttonwidth);
-    [clientsButton setImage:[UIImage imageNamed:@"Clients-1x.png" ] forState:UIControlStateNormal];
+                                     clientsButton.imageView.image.size.width,
+                                     clientsButton.imageView.image.size.height);
+
     [clientsButton addTarget:self action:@selector(segueToClientPage:) forControlEvents:UIControlEventTouchUpInside];
     [clientsButton setEnabled:loggedIn];
     [self.view addSubview:clientsButton];
     
-    
-    
     settingsButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [settingsButton setImage:[UIImage imageNamed:@"Settings" ] forState:UIControlStateNormal];
     settingsButton.frame = CGRectMake(self.view.frame.size.width * .5,
                                       self.view.frame.size.height *.5,
-                                      buttonwidth,
-                                      buttonwidth);
-    [settingsButton setImage:[UIImage imageNamed:@"Settings-1x.png" ] forState:UIControlStateNormal];
+                                      settingsButton.imageView.image.size.width,
+                                      settingsButton.imageView.image.size.height);
     settingsButton.enabled = [AmazonClientManager verifyLoggedInActive];
     [self.view addSubview:settingsButton];
     
     UIButton *newFitButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    newFitButton.frame = CGRectMake(self.view.frame.size.width *.5 - buttonwidth,
-                                    self.view.frame.size.height *.5 - buttonwidth,
-                                    buttonwidth,
-                                    buttonwidth);
-    [newFitButton setImage:[UIImage imageNamed:@"New-Fit-1x.png" ] forState:UIControlStateNormal];
+    [newFitButton setImage:[UIImage imageNamed:@"New-Fit" ] forState:UIControlStateNormal];
+    newFitButton.frame = CGRectMake(0,
+                                    self.view.frame.size.height *.5 - newFitButton.imageView.image.size.height,
+                                    newFitButton.imageView.image.size.width,
+                                    newFitButton.imageView.image.size.height);
     [newFitButton addTarget:self action:@selector(segueToNewFitPage:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:newFitButton];
     
     sendEmail = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [sendEmail setImage:[UIImage imageNamed:@"Email" ] forState:UIControlStateNormal];
     sendEmail.frame = CGRectMake(self.view.frame.size.width * .5,
-                                 self.view.frame.size.height *.5 - buttonwidth,
-                                 buttonwidth,
-                                 buttonwidth);
-    [sendEmail setImage:[UIImage imageNamed:@"Email-1x.png" ] forState:UIControlStateNormal];
+                                 self.view.frame.size.height *.5 - newFitButton.imageView.image.size.height,
+                                 sendEmail.imageView.image.size.width,
+                                 sendEmail.imageView.image.size.height);
     [sendEmail addTarget:self action:@selector(emailIntakeUrl) forControlEvents:UIControlEventTouchUpInside];
     sendEmail.enabled = loggedIn;
     [self.view addSubview:sendEmail];
@@ -137,7 +136,7 @@
         
         CGRect frame = CGRectMake(0, 0, self.view.frame.size.width *.2, welcomButton.frame.size.height);
         logoutButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [logoutButton setImage:[UIImage imageNamed:@"Logout-Cancel-Button-1x.png"] forState:UIControlStateNormal];
+        [logoutButton setImage:[UIImage imageNamed:@"Logout-Cancel"] forState:UIControlStateNormal];
         logoutButton.frame = frame;
         
         logoutButton.center = CGPointMake(self.view.frame.size.width - logoutButton.frame.size.width/2,

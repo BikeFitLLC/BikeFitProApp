@@ -7,29 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		000094491B98AFB1002B0EA8 /* Measurement-1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000094461B98AFB1002B0EA8 /* Measurement-1x.png */; };
-		0000944A1B98AFB1002B0EA8 /* Basic-Info-1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000094471B98AFB1002B0EA8 /* Basic-Info-1x.png */; };
-		0000944B1B98AFB1002B0EA8 /* Fitting-1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000094481B98AFB1002B0EA8 /* Fitting-1x.png */; };
-		0000944D1B98B95D002B0EA8 /* BF-Logo-1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0000944C1B98B95D002B0EA8 /* BF-Logo-1x.png */; };
-		0000944F1B98BB5E002B0EA8 /* Logout-Cancel-Button-1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0000944E1B98BB5E002B0EA8 /* Logout-Cancel-Button-1x.png */; };
-		000094541B99078D002B0EA8 /* Clients-Highlight-1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000094501B99078D002B0EA8 /* Clients-Highlight-1x.png */; };
-		000094551B99078D002B0EA8 /* Email-Highlight-1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000094511B99078D002B0EA8 /* Email-Highlight-1x.png */; };
-		000094561B99078D002B0EA8 /* New-Fit-Highlight-1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000094521B99078D002B0EA8 /* New-Fit-Highlight-1x.png */; };
-		000094571B99078D002B0EA8 /* Settings-Highlight-1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000094531B99078D002B0EA8 /* Settings-Highlight-1x.png */; };
-		0000945C1B9A20AF002B0EA8 /* Client-by-Name-1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000094581B9A20AF002B0EA8 /* Client-by-Name-1x.png */; };
-		0000945D1B9A20AF002B0EA8 /* Client-by-Date-1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000094591B9A20AF002B0EA8 /* Client-by-Date-1x.png */; };
-		0000945E1B9A20AF002B0EA8 /* Client-by-Date-Pressed-1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0000945A1B9A20AF002B0EA8 /* Client-by-Date-Pressed-1x.png */; };
-		0000945F1B9A20AF002B0EA8 /* Client-by-Name-Pressed-1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0000945B1B9A20AF002B0EA8 /* Client-by-Name-Pressed-1x.png */; };
-		000094641B9BEE6D002B0EA8 /* Basic-Info-Active-1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000094601B9BEE6D002B0EA8 /* Basic-Info-Active-1x.png */; };
-		000094651B9BEE6D002B0EA8 /* Email-Active-1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000094611B9BEE6D002B0EA8 /* Email-Active-1x.png */; };
-		000094661B9BEE6D002B0EA8 /* Fitting-Active-1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000094621B9BEE6D002B0EA8 /* Fitting-Active-1x.png */; };
-		000094671B9BEE6D002B0EA8 /* Measurement-Active-1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 000094631B9BEE6D002B0EA8 /* Measurement-Active-1x.png */; };
-		005E3EAA1B94FA30003911DE /* Clients-1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 005E3EA91B94FA30003911DE /* Clients-1x.png */; };
-		005E3EAC1B94FBE0003911DE /* Settings-1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 005E3EAB1B94FBE0003911DE /* Settings-1x.png */; };
-		005E3EAE1B94FC39003911DE /* New-Fit-1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 005E3EAD1B94FC39003911DE /* New-Fit-1x.png */; };
-		005E3EB01B94FD63003911DE /* Email-1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 005E3EAF1B94FD63003911DE /* Email-1x.png */; };
 		005E3EB31B950026003911DE /* HomeScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 005E3EB21B950026003911DE /* HomeScreenViewController.m */; };
-		005E3EB71B9525CD003911DE /* Please-Log-In-1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 005E3EB61B9525CD003911DE /* Please-Log-In-1x.png */; };
 		005E3EBA1B952F1E003911DE /* FitHome.m in Sources */ = {isa = PBXBuildFile; fileRef = 005E3EB91B952F1E003911DE /* FitHome.m */; };
 		007ED2211B44B34F0021E90B /* Bike_tri_diagram_ABCDEF.png in Resources */ = {isa = PBXBuildFile; fileRef = 007ED2201B44B34F0021E90B /* Bike_tri_diagram_ABCDEF.png */; };
 		008755721B40D61F00BB67BE /* LoadinSpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 008755711B40D61F00BB67BE /* LoadinSpinnerView.m */; };
@@ -165,30 +143,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		000094461B98AFB1002B0EA8 /* Measurement-1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Measurement-1x.png"; path = "../../Downloads/Client Home Screen/Measurement-1x.png"; sourceTree = "<group>"; };
-		000094471B98AFB1002B0EA8 /* Basic-Info-1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Basic-Info-1x.png"; path = "../../Downloads/Client Home Screen/Basic-Info-1x.png"; sourceTree = "<group>"; };
-		000094481B98AFB1002B0EA8 /* Fitting-1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Fitting-1x.png"; path = "../../Downloads/Client Home Screen/Fitting-1x.png"; sourceTree = "<group>"; };
-		0000944C1B98B95D002B0EA8 /* BF-Logo-1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BF-Logo-1x.png"; path = "../../Downloads/images 2/BF-Logo-1x.png"; sourceTree = "<group>"; };
-		0000944E1B98BB5E002B0EA8 /* Logout-Cancel-Button-1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Logout-Cancel-Button-1x.png"; path = "../../Downloads/images 2/Logout-Cancel-Button-1x.png"; sourceTree = "<group>"; };
-		000094501B99078D002B0EA8 /* Clients-Highlight-1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Clients-Highlight-1x.png"; path = "../../Downloads/images 2/Clients-Highlight-1x.png"; sourceTree = "<group>"; };
-		000094511B99078D002B0EA8 /* Email-Highlight-1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Email-Highlight-1x.png"; path = "../../Downloads/images 2/Email-Highlight-1x.png"; sourceTree = "<group>"; };
-		000094521B99078D002B0EA8 /* New-Fit-Highlight-1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "New-Fit-Highlight-1x.png"; path = "../../Downloads/images 2/New-Fit-Highlight-1x.png"; sourceTree = "<group>"; };
-		000094531B99078D002B0EA8 /* Settings-Highlight-1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Settings-Highlight-1x.png"; path = "../../Downloads/images 2/Settings-Highlight-1x.png"; sourceTree = "<group>"; };
-		000094581B9A20AF002B0EA8 /* Client-by-Name-1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Client-by-Name-1x.png"; path = "../../Downloads/Client List Images/Client-by-Name-1x.png"; sourceTree = "<group>"; };
-		000094591B9A20AF002B0EA8 /* Client-by-Date-1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Client-by-Date-1x.png"; path = "../../Downloads/Client List Images/Client-by-Date-1x.png"; sourceTree = "<group>"; };
-		0000945A1B9A20AF002B0EA8 /* Client-by-Date-Pressed-1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Client-by-Date-Pressed-1x.png"; path = "../../Downloads/Client List Images/Client-by-Date-Pressed-1x.png"; sourceTree = "<group>"; };
-		0000945B1B9A20AF002B0EA8 /* Client-by-Name-Pressed-1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Client-by-Name-Pressed-1x.png"; path = "../../Downloads/Client List Images/Client-by-Name-Pressed-1x.png"; sourceTree = "<group>"; };
-		000094601B9BEE6D002B0EA8 /* Basic-Info-Active-1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Basic-Info-Active-1x.png"; path = "../../Downloads/images 3/Basic-Info-Active-1x.png"; sourceTree = "<group>"; };
-		000094611B9BEE6D002B0EA8 /* Email-Active-1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Email-Active-1x.png"; path = "../../Downloads/images 3/Email-Active-1x.png"; sourceTree = "<group>"; };
-		000094621B9BEE6D002B0EA8 /* Fitting-Active-1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Fitting-Active-1x.png"; path = "../../Downloads/images 3/Fitting-Active-1x.png"; sourceTree = "<group>"; };
-		000094631B9BEE6D002B0EA8 /* Measurement-Active-1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Measurement-Active-1x.png"; path = "../../Downloads/images 3/Measurement-Active-1x.png"; sourceTree = "<group>"; };
-		005E3EA91B94FA30003911DE /* Clients-1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Clients-1x.png"; path = "../../Downloads/images/Clients-1x.png"; sourceTree = "<group>"; };
-		005E3EAB1B94FBE0003911DE /* Settings-1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Settings-1x.png"; path = "../../Downloads/images/Settings-1x.png"; sourceTree = "<group>"; };
-		005E3EAD1B94FC39003911DE /* New-Fit-1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "New-Fit-1x.png"; path = "../../Downloads/images/New-Fit-1x.png"; sourceTree = "<group>"; };
-		005E3EAF1B94FD63003911DE /* Email-1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Email-1x.png"; path = "../../Downloads/images/Email-1x.png"; sourceTree = "<group>"; };
 		005E3EB11B950026003911DE /* HomeScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeScreenViewController.h; sourceTree = "<group>"; };
 		005E3EB21B950026003911DE /* HomeScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeScreenViewController.m; sourceTree = "<group>"; };
-		005E3EB61B9525CD003911DE /* Please-Log-In-1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Please-Log-In-1x.png"; path = "../../Downloads/images 2/Please-Log-In-1x.png"; sourceTree = "<group>"; };
 		005E3EB81B952F1E003911DE /* FitHome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FitHome.h; sourceTree = "<group>"; };
 		005E3EB91B952F1E003911DE /* FitHome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FitHome.m; sourceTree = "<group>"; };
 		007ED2201B44B34F0021E90B /* Bike_tri_diagram_ABCDEF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Bike_tri_diagram_ABCDEF.png; path = ../../Downloads/Bike_tri_diagram_ABCDEF.png; sourceTree = "<group>"; };
@@ -534,28 +490,6 @@
 		5D8531D01759CD6600934E68 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				000094601B9BEE6D002B0EA8 /* Basic-Info-Active-1x.png */,
-				000094611B9BEE6D002B0EA8 /* Email-Active-1x.png */,
-				000094621B9BEE6D002B0EA8 /* Fitting-Active-1x.png */,
-				000094631B9BEE6D002B0EA8 /* Measurement-Active-1x.png */,
-				000094581B9A20AF002B0EA8 /* Client-by-Name-1x.png */,
-				000094591B9A20AF002B0EA8 /* Client-by-Date-1x.png */,
-				0000945A1B9A20AF002B0EA8 /* Client-by-Date-Pressed-1x.png */,
-				0000945B1B9A20AF002B0EA8 /* Client-by-Name-Pressed-1x.png */,
-				000094501B99078D002B0EA8 /* Clients-Highlight-1x.png */,
-				000094511B99078D002B0EA8 /* Email-Highlight-1x.png */,
-				000094521B99078D002B0EA8 /* New-Fit-Highlight-1x.png */,
-				000094531B99078D002B0EA8 /* Settings-Highlight-1x.png */,
-				0000944E1B98BB5E002B0EA8 /* Logout-Cancel-Button-1x.png */,
-				0000944C1B98B95D002B0EA8 /* BF-Logo-1x.png */,
-				000094461B98AFB1002B0EA8 /* Measurement-1x.png */,
-				000094471B98AFB1002B0EA8 /* Basic-Info-1x.png */,
-				000094481B98AFB1002B0EA8 /* Fitting-1x.png */,
-				005E3EB61B9525CD003911DE /* Please-Log-In-1x.png */,
-				005E3EAF1B94FD63003911DE /* Email-1x.png */,
-				005E3EAD1B94FC39003911DE /* New-Fit-1x.png */,
-				005E3EAB1B94FBE0003911DE /* Settings-1x.png */,
-				005E3EA91B94FA30003911DE /* Clients-1x.png */,
 				00ECBD661B85716F0028E271 /* CleatWedges_multi_sideview.png */,
 				00ECBD561B856C820028E271 /* 1_wedge_Left_varus.png */,
 				00ECBD571B856C820028E271 /* 1_Wedge_Rght_Varus.png */,
@@ -834,54 +768,39 @@
 			files = (
 				5D6F99D0190B453700558C99 /* BikeFitBadge.png in Resources */,
 				5D8531D41759CD6600934E68 /* InfoPlist.strings in Resources */,
-				0000945D1B9A20AF002B0EA8 /* Client-by-Date-1x.png in Resources */,
 				5DEA4BD81997EA3A0024C220 /* BikeFitIcon-29x29.png in Resources */,
 				00ECBD611B856C820028E271 /* 3_Wedge_Rght_Varus.png in Resources */,
 				007ED2211B44B34F0021E90B /* Bike_tri_diagram_ABCDEF.png in Resources */,
-				0000945C1B9A20AF002B0EA8 /* Client-by-Name-1x.png in Resources */,
 				5DD1837919D878AB00A5B6CE /* Bike_road_diagram_APPP.png in Resources */,
 				5DD68EEC1980884400BCCCD9 /* info_button_29x29.png in Resources */,
 				5D8531DC1759CD6600934E68 /* Default.png in Resources */,
 				5D135A4519A7FACD00273076 /* plus-icon.png in Resources */,
-				005E3EB01B94FD63003911DE /* Email-1x.png in Resources */,
 				00ECBD5E1B856C820028E271 /* 2_wedge_left_varus.png in Resources */,
 				00ECBD5D1B856C820028E271 /* 1_Wedge_Rght_Varus.png in Resources */,
 				5DEA4BD51997E6830024C220 /* iTunesArtwork in Resources */,
 				5DD68EF419808E0400BCCCD9 /* 2_heel_right.png in Resources */,
 				5D8531DE1759CD6600934E68 /* Default@2x.png in Resources */,
-				000094651B9BEE6D002B0EA8 /* Email-Active-1x.png in Resources */,
 				5D8531E01759CD6600934E68 /* Default-568h@2x.png in Resources */,
-				005E3EAE1B94FC39003911DE /* New-Fit-1x.png in Resources */,
 				5DD68EEA198086EA00BCCCD9 /* info_button.png in Resources */,
 				5D8531E61759CD6600934E68 /* MainStoryboard_iPad.storyboard in Resources */,
 				5DD68EE81980862B00BCCCD9 /* BikeFit_logo_Horiz.png in Resources */,
 				00ECBD5C1B856C820028E271 /* 1_wedge_Left_varus.png in Resources */,
 				00FF371C1A3630CE00FD1E45 /* measurementIcon-new-29x29.png in Resources */,
 				5DC9306019200D2000EB733C /* btnLWA_gold_209x48.png in Resources */,
-				0000944A1B98AFB1002B0EA8 /* Basic-Info-1x.png in Resources */,
 				5DD68EFA19818F9E00BCCCD9 /* FFMD_Dial_only-200.png in Resources */,
 				00FF371A1A36302E00FD1E45 /* KW_front_laser_2.png in Resources */,
 				5D6F99CC190B448600558C99 /* arrowright.png in Resources */,
 				5D003774195CF0B800BC9BBA /* Images.xcassets in Resources */,
 				5D549A411862A53A00B61A83 /* img_thumb_383809223.jpg in Resources */,
 				009D55801AB393A4008A8A74 /* MainStoryboard_iPhone.storyboard in Resources */,
-				0000944B1B98AFB1002B0EA8 /* Fitting-1x.png in Resources */,
 				5D8531EB1759CD6600934E68 /* first.png in Resources */,
 				5D6F99CB190B448600558C99 /* arrowleft.png in Resources */,
 				5DA7AE5618BEC79B00CA0DEB /* foot_fore_aft_measure.png in Resources */,
 				00ECBD601B856C820028E271 /* 3_wedge_left_varus.png in Resources */,
-				000094541B99078D002B0EA8 /* Clients-Highlight-1x.png in Resources */,
-				0000944D1B98B95D002B0EA8 /* BF-Logo-1x.png in Resources */,
-				0000945E1B9A20AF002B0EA8 /* Client-by-Date-Pressed-1x.png in Resources */,
-				000094671B9BEE6D002B0EA8 /* Measurement-Active-1x.png in Resources */,
 				00ECBD5F1B856C820028E271 /* 2_Wedge_RGHT_varus.png in Resources */,
 				5DD68EF819818DD200BCCCD9 /* FFMD_Dial_only.png in Resources */,
-				005E3EAC1B94FBE0003911DE /* Settings-1x.png in Resources */,
 				5D32380F1986FA92008DA71D /* Ho_foot_Arches_right.png in Resources */,
 				5DD68EE41974747D00BCCCD9 /* FrontCameraIcon.png in Resources */,
-				005E3EB71B9525CD003911DE /* Please-Log-In-1x.png in Resources */,
-				005E3EAA1B94FA30003911DE /* Clients-1x.png in Resources */,
-				000094571B99078D002B0EA8 /* Settings-Highlight-1x.png in Resources */,
 				5DD68EE2197473D300BCCCD9 /* FrontCameraIcon.jpg in Resources */,
 				5DC9306119200D2000EB733C /* btnLWA_gold_209x48_pressed.png in Resources */,
 				5D8531ED1759CD6600934E68 /* first@2x.png in Resources */,
@@ -895,18 +814,11 @@
 				5DD68EF219808B8300BCCCD9 /* Cog_15t_29x29.png in Resources */,
 				5DB3AEE819D0CADD00604666 /* Bike_diagram_APP.png in Resources */,
 				5DEA4BD61997E6830024C220 /* iTunesArtwork@2x in Resources */,
-				000094491B98AFB1002B0EA8 /* Measurement-1x.png in Resources */,
 				00FF371E1A36310300FD1E45 /* Bike_road_diagram_ABCD.png in Resources */,
-				000094561B99078D002B0EA8 /* New-Fit-Highlight-1x.png in Resources */,
-				0000944F1B98BB5E002B0EA8 /* Logout-Cancel-Button-1x.png in Resources */,
 				5D6F3A9318146C1F001BD897 /* BikeFitIcon.png in Resources */,
-				000094661B9BEE6D002B0EA8 /* Fitting-Active-1x.png in Resources */,
 				5DD68EF619808E0F00BCCCD9 /* 2_heels_left.png in Resources */,
-				000094551B99078D002B0EA8 /* Email-Highlight-1x.png in Resources */,
-				000094641B9BEE6D002B0EA8 /* Basic-Info-Active-1x.png in Resources */,
 				5D32380D1986F8BB008DA71D /* Ho_foot_Arches_left.png in Resources */,
 				5DC304AD199E7E8200F0AECE /* curved_arrows.png in Resources */,
-				0000945F1B9A20AF002B0EA8 /* Client-by-Name-Pressed-1x.png in Resources */,
 				5DD68EEE198089A300BCCCD9 /* info_button_29x29_no_white.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

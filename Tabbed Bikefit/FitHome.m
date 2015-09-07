@@ -31,7 +31,7 @@
     
     
     CGRect namelabelframe = CGRectMake(0,
-                                      self.view.frame.size.height * .05,
+                                      self.view.frame.size.height * .04,
                                       self.view.frame.size.width,
                                       self.view.frame.size.width * .1);
 
@@ -49,7 +49,7 @@
                                          self.view.center.y - buttonHeight,
                                          buttonWidth,
                                          buttonHeight);
-    [bikeFitButton setImage:[UIImage imageNamed:@"Fitting-1x.png" ] forState:UIControlStateNormal];
+    [bikeFitButton setImage:[UIImage imageNamed:@"Fitting" ] forState:UIControlStateNormal];
     [bikeFitButton addTarget:self action:@selector(segueToBikeFit:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:bikeFitButton];
     
@@ -58,7 +58,7 @@
                                          bikeFitButton.frame.origin.y - buttonHeight,
                                          buttonWidth,
                                          buttonHeight);
-    [athleteInfoButton setImage:[UIImage imageNamed:@"Basic-Info-1x.png" ] forState:UIControlStateNormal];
+    [athleteInfoButton setImage:[UIImage imageNamed:@"Basic-Info" ] forState:UIControlStateNormal];
     [athleteInfoButton addTarget:self action:@selector(segueToAthleteInfo:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:athleteInfoButton];
     
@@ -67,7 +67,7 @@
                                          bikeFitButton.frame.origin.y + buttonHeight,
                                          buttonWidth,
                                          buttonHeight);
-    [measurementButton setImage:[UIImage imageNamed:@"Measurement-1x.png" ] forState:UIControlStateNormal];
+    [measurementButton setImage:[UIImage imageNamed:@"Measurement" ] forState:UIControlStateNormal];
     [measurementButton addTarget:self action:@selector(segueToMeasurements:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:measurementButton];
     
@@ -76,7 +76,7 @@
                                          measurementButton.frame.origin.y + buttonHeight,
                                          buttonWidth,
                                          buttonHeight);
-    [emailFitButton setImage:[UIImage imageNamed:@"Email-Active-1x.png" ] forState:UIControlStateNormal];
+    [emailFitButton setImage:[UIImage imageNamed:@"Email-Fit" ] forState:UIControlStateNormal];
     [emailFitButton addTarget:self action:@selector(emailFit:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:emailFitButton];
 

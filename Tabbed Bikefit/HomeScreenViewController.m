@@ -42,7 +42,7 @@
     logoImageView.center = CGPointMake(self.view.center.x, self.view.frame.size.height * .1);
     [self.view addSubview:logoImageView];
     
-    clientsButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    clientsButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [clientsButton setImage:[UIImage imageNamed:@"Clients" ] forState:UIControlStateNormal];
     clientsButton.frame = CGRectMake(0,
                                      self.view.frame.size.height *.5,
@@ -53,7 +53,7 @@
     [clientsButton setEnabled:loggedIn];
     [self.view addSubview:clientsButton];
     
-    settingsButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    settingsButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [settingsButton setImage:[UIImage imageNamed:@"Settings" ] forState:UIControlStateNormal];
     settingsButton.frame = CGRectMake(self.view.frame.size.width * .5,
                                       self.view.frame.size.height *.5,
@@ -62,7 +62,7 @@
     settingsButton.enabled = [AmazonClientManager verifyLoggedInActive];
     [self.view addSubview:settingsButton];
     
-    UIButton *newFitButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    UIButton *newFitButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [newFitButton setImage:[UIImage imageNamed:@"New-Fit" ] forState:UIControlStateNormal];
     newFitButton.frame = CGRectMake(0,
                                     self.view.frame.size.height *.5 - newFitButton.imageView.image.size.height,
@@ -71,7 +71,7 @@
     [newFitButton addTarget:self action:@selector(segueToNewFitPage:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:newFitButton];
     
-    sendEmail = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    sendEmail = [UIButton buttonWithType:UIButtonTypeCustom];
     [sendEmail setImage:[UIImage imageNamed:@"Email" ] forState:UIControlStateNormal];
     sendEmail.frame = CGRectMake(self.view.frame.size.width * .5,
                                  self.view.frame.size.height *.5 - newFitButton.imageView.image.size.height,

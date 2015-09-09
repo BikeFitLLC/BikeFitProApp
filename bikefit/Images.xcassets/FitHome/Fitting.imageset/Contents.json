@@ -1,17 +1,28 @@
 {
   "images" : [
     {
-      "idiom" : "universal",
+      "idiom" : "iphone",
       "scale" : "1x",
       "filename" : "Fitting-Active-1x.png"
     },
     {
-      "idiom" : "universal",
-      "scale" : "2x"
+      "idiom" : "iphone",
+      "scale" : "2x",
+      "filename" : "Fitting-Active-2x.png"
     },
     {
-      "idiom" : "universal",
+      "idiom" : "iphone",
       "scale" : "3x"
+    },
+    {
+      "idiom" : "ipad",
+      "scale" : "1x",
+      "filename" : "Fitting.png"
+    },
+    {
+      "idiom" : "ipad",
+      "scale" : "2x",
+      "filename" : "Fitting-1.png"
     }
   ],
   "info" : {

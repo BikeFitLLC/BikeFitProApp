@@ -1,18 +1,28 @@
 {
   "images" : [
     {
-      "idiom" : "universal",
+      "idiom" : "iphone",
       "scale" : "1x",
       "filename" : "New-Fit-1x.png"
     },
     {
-      "idiom" : "universal",
+      "idiom" : "iphone",
       "scale" : "2x",
-      "filename" : "New-Fit-1x-1.png"
+      "filename" : "New-Fit-2x-1.png"
     },
     {
-      "idiom" : "universal",
+      "idiom" : "iphone",
       "scale" : "3x"
+    },
+    {
+      "idiom" : "ipad",
+      "scale" : "1x",
+      "filename" : "New-Fit--1.png"
+    },
+    {
+      "idiom" : "ipad",
+      "scale" : "2x",
+      "filename" : "New-Fit-.png"
     }
   ],
   "info" : {

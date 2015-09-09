@@ -1,18 +1,28 @@
 {
   "images" : [
     {
-      "idiom" : "universal",
+      "idiom" : "iphone",
       "scale" : "1x",
       "filename" : "Logout-Cancel-Button-1x.png"
     },
     {
-      "idiom" : "universal",
+      "idiom" : "iphone",
       "scale" : "2x",
       "filename" : "Logout-Cancel-Button-1x-1.png"
     },
     {
-      "idiom" : "universal",
+      "idiom" : "iphone",
       "scale" : "3x"
+    },
+    {
+      "idiom" : "ipad",
+      "scale" : "1x",
+      "filename" : "Logout-Cancel-Button-2x.png"
+    },
+    {
+      "idiom" : "ipad",
+      "scale" : "2x",
+      "filename" : "Logout-Cancel-Button-3x.png"
     }
   ],
   "info" : {

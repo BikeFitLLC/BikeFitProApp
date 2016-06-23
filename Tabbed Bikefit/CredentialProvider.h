@@ -11,6 +11,7 @@
 #import "AWSCredentialsProvider.h"
 //#import <AWSRuntime/AWSRuntime.h>
 #import <LoginWithAmazon/LoginWithAmazon.h>
+@class BFTask;
 
 @interface CredentialProvider : NSObject <AWSCredentialsProvider,AIAuthenticationDelegate>
 {
@@ -31,7 +32,7 @@
                         secretKey:(NSString *)secretKey sessionKey:(NSString*)sessionKey;
 
 
-
+- (BFTask *)refresh;
 - (void) clear;
 
 - (bool) isLoggedIn;

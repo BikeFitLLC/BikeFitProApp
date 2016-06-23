@@ -68,18 +68,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 
 @end
 
-@implementation AWSEC2ActiveInstance
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"instanceId" : @"InstanceId",
-             @"instanceType" : @"InstanceType",
-             @"spotInstanceRequestId" : @"SpotInstanceRequestId",
-             };
-}
-
-@end
-
 @implementation AWSEC2Address
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
@@ -110,6 +98,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"vpc";
             case AWSEC2DomainTypeStandard:
                 return @"standard";
+            case AWSEC2DomainTypeUnknown:
             default:
                 return nil;
         }
@@ -142,6 +131,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"vpc";
             case AWSEC2DomainTypeStandard:
                 return @"standard";
+            case AWSEC2DomainTypeUnknown:
             default:
                 return nil;
         }
@@ -175,55 +165,11 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"vpc";
             case AWSEC2DomainTypeStandard:
                 return @"standard";
+            case AWSEC2DomainTypeUnknown:
             default:
                 return nil;
         }
     }];
-}
-
-@end
-
-@implementation AWSEC2AllocateHostsRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"autoPlacement" : @"AutoPlacement",
-             @"availabilityZone" : @"AvailabilityZone",
-             @"clientToken" : @"ClientToken",
-             @"instanceType" : @"InstanceType",
-             @"quantity" : @"Quantity",
-             };
-}
-
-+ (NSValueTransformer *)autoPlacementJSONTransformer {
-    return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^NSNumber *(NSString *value) {
-        if ([value isEqualToString:@"on"]) {
-            return @(AWSEC2AutoPlacementOn);
-        }
-        if ([value isEqualToString:@"off"]) {
-            return @(AWSEC2AutoPlacementOff);
-        }
-        return @(AWSEC2AutoPlacementUnknown);
-    } reverseBlock:^NSString *(NSNumber *value) {
-        switch ([value integerValue]) {
-            case AWSEC2AutoPlacementOn:
-                return @"on";
-            case AWSEC2AutoPlacementOff:
-                return @"off";
-            default:
-                return nil;
-        }
-    }];
-}
-
-@end
-
-@implementation AWSEC2AllocateHostsResult
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"hostIds" : @"HostIds",
-             };
 }
 
 @end
@@ -483,26 +429,12 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         if ([value isEqualToString:@"available"]) {
             return @(AWSEC2AvailabilityZoneStateAvailable);
         }
-        if ([value isEqualToString:@"information"]) {
-            return @(AWSEC2AvailabilityZoneStateInformation);
-        }
-        if ([value isEqualToString:@"impaired"]) {
-            return @(AWSEC2AvailabilityZoneStateImpaired);
-        }
-        if ([value isEqualToString:@"unavailable"]) {
-            return @(AWSEC2AvailabilityZoneStateUnavailable);
-        }
         return @(AWSEC2AvailabilityZoneStateUnknown);
     } reverseBlock:^NSString *(NSNumber *value) {
         switch ([value integerValue]) {
             case AWSEC2AvailabilityZoneStateAvailable:
                 return @"available";
-            case AWSEC2AvailabilityZoneStateInformation:
-                return @"information";
-            case AWSEC2AvailabilityZoneStateImpaired:
-                return @"impaired";
-            case AWSEC2AvailabilityZoneStateUnavailable:
-                return @"unavailable";
+            case AWSEC2AvailabilityZoneStateUnknown:
             default:
                 return nil;
         }
@@ -517,21 +449,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 	return @{
              @"message" : @"Message",
              };
-}
-
-@end
-
-@implementation AWSEC2AvailableCapacity
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"availableInstanceCapacity" : @"AvailableInstanceCapacity",
-             @"availableVCpus" : @"AvailableVCpus",
-             };
-}
-
-+ (NSValueTransformer *)availableInstanceCapacityJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2InstanceCapacity class]];
 }
 
 @end
@@ -660,6 +577,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"complete";
             case AWSEC2BundleTaskStateFailed:
                 return @"failed";
+            case AWSEC2BundleTaskStateUnknown:
             default:
                 return nil;
         }
@@ -738,30 +656,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 
 @end
 
-@implementation AWSEC2CancelImportTaskRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"cancelReason" : @"CancelReason",
-             @"dryRun" : @"DryRun",
-             @"importTaskId" : @"ImportTaskId",
-             };
-}
-
-@end
-
-@implementation AWSEC2CancelImportTaskResult
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"importTaskId" : @"ImportTaskId",
-             @"previousState" : @"PreviousState",
-             @"state" : @"State",
-             };
-}
-
-@end
-
 @implementation AWSEC2CancelReservedInstancesListingRequest
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
@@ -782,198 +676,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 
 + (NSValueTransformer *)reservedInstancesListingsJSONTransformer {
 	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2ReservedInstancesListing class]];
-}
-
-@end
-
-@implementation AWSEC2CancelSpotFleetRequestsError
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"code" : @"Code",
-             @"message" : @"Message",
-             };
-}
-
-+ (NSValueTransformer *)codeJSONTransformer {
-    return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^NSNumber *(NSString *value) {
-        if ([value isEqualToString:@"fleetRequestIdDoesNotExist"]) {
-            return @(AWSEC2CancelBatchErrorCodeFleetRequestIdDoesNotExist);
-        }
-        if ([value isEqualToString:@"fleetRequestIdMalformed"]) {
-            return @(AWSEC2CancelBatchErrorCodeFleetRequestIdMalformed);
-        }
-        if ([value isEqualToString:@"fleetRequestNotInCancellableState"]) {
-            return @(AWSEC2CancelBatchErrorCodeFleetRequestNotInCancellableState);
-        }
-        if ([value isEqualToString:@"unexpectedError"]) {
-            return @(AWSEC2CancelBatchErrorCodeUnexpectedError);
-        }
-        return @(AWSEC2CancelBatchErrorCodeUnknown);
-    } reverseBlock:^NSString *(NSNumber *value) {
-        switch ([value integerValue]) {
-            case AWSEC2CancelBatchErrorCodeFleetRequestIdDoesNotExist:
-                return @"fleetRequestIdDoesNotExist";
-            case AWSEC2CancelBatchErrorCodeFleetRequestIdMalformed:
-                return @"fleetRequestIdMalformed";
-            case AWSEC2CancelBatchErrorCodeFleetRequestNotInCancellableState:
-                return @"fleetRequestNotInCancellableState";
-            case AWSEC2CancelBatchErrorCodeUnexpectedError:
-                return @"unexpectedError";
-            default:
-                return nil;
-        }
-    }];
-}
-
-@end
-
-@implementation AWSEC2CancelSpotFleetRequestsErrorItem
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"error" : @"Error",
-             @"spotFleetRequestId" : @"SpotFleetRequestId",
-             };
-}
-
-+ (NSValueTransformer *)errorJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSEC2CancelSpotFleetRequestsError class]];
-}
-
-@end
-
-@implementation AWSEC2CancelSpotFleetRequestsRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"dryRun" : @"DryRun",
-             @"spotFleetRequestIds" : @"SpotFleetRequestIds",
-             @"terminateInstances" : @"TerminateInstances",
-             };
-}
-
-@end
-
-@implementation AWSEC2CancelSpotFleetRequestsResponse
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"successfulFleetRequests" : @"SuccessfulFleetRequests",
-             @"unsuccessfulFleetRequests" : @"UnsuccessfulFleetRequests",
-             };
-}
-
-+ (NSValueTransformer *)successfulFleetRequestsJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2CancelSpotFleetRequestsSuccessItem class]];
-}
-
-+ (NSValueTransformer *)unsuccessfulFleetRequestsJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2CancelSpotFleetRequestsErrorItem class]];
-}
-
-@end
-
-@implementation AWSEC2CancelSpotFleetRequestsSuccessItem
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"currentSpotFleetRequestState" : @"CurrentSpotFleetRequestState",
-             @"previousSpotFleetRequestState" : @"PreviousSpotFleetRequestState",
-             @"spotFleetRequestId" : @"SpotFleetRequestId",
-             };
-}
-
-+ (NSValueTransformer *)currentSpotFleetRequestStateJSONTransformer {
-    return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^NSNumber *(NSString *value) {
-        if ([value isEqualToString:@"submitted"]) {
-            return @(AWSEC2BatchStateSubmitted);
-        }
-        if ([value isEqualToString:@"active"]) {
-            return @(AWSEC2BatchStateActive);
-        }
-        if ([value isEqualToString:@"cancelled"]) {
-            return @(AWSEC2BatchStateCancelled);
-        }
-        if ([value isEqualToString:@"failed"]) {
-            return @(AWSEC2BatchStateFailed);
-        }
-        if ([value isEqualToString:@"cancelled_running"]) {
-            return @(AWSEC2BatchStateCancelledRunning);
-        }
-        if ([value isEqualToString:@"cancelled_terminating"]) {
-            return @(AWSEC2BatchStateCancelledTerminating);
-        }
-        if ([value isEqualToString:@"modifying"]) {
-            return @(AWSEC2BatchStateModifying);
-        }
-        return @(AWSEC2BatchStateUnknown);
-    } reverseBlock:^NSString *(NSNumber *value) {
-        switch ([value integerValue]) {
-            case AWSEC2BatchStateSubmitted:
-                return @"submitted";
-            case AWSEC2BatchStateActive:
-                return @"active";
-            case AWSEC2BatchStateCancelled:
-                return @"cancelled";
-            case AWSEC2BatchStateFailed:
-                return @"failed";
-            case AWSEC2BatchStateCancelledRunning:
-                return @"cancelled_running";
-            case AWSEC2BatchStateCancelledTerminating:
-                return @"cancelled_terminating";
-            case AWSEC2BatchStateModifying:
-                return @"modifying";
-            default:
-                return nil;
-        }
-    }];
-}
-
-+ (NSValueTransformer *)previousSpotFleetRequestStateJSONTransformer {
-    return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^NSNumber *(NSString *value) {
-        if ([value isEqualToString:@"submitted"]) {
-            return @(AWSEC2BatchStateSubmitted);
-        }
-        if ([value isEqualToString:@"active"]) {
-            return @(AWSEC2BatchStateActive);
-        }
-        if ([value isEqualToString:@"cancelled"]) {
-            return @(AWSEC2BatchStateCancelled);
-        }
-        if ([value isEqualToString:@"failed"]) {
-            return @(AWSEC2BatchStateFailed);
-        }
-        if ([value isEqualToString:@"cancelled_running"]) {
-            return @(AWSEC2BatchStateCancelledRunning);
-        }
-        if ([value isEqualToString:@"cancelled_terminating"]) {
-            return @(AWSEC2BatchStateCancelledTerminating);
-        }
-        if ([value isEqualToString:@"modifying"]) {
-            return @(AWSEC2BatchStateModifying);
-        }
-        return @(AWSEC2BatchStateUnknown);
-    } reverseBlock:^NSString *(NSNumber *value) {
-        switch ([value integerValue]) {
-            case AWSEC2BatchStateSubmitted:
-                return @"submitted";
-            case AWSEC2BatchStateActive:
-                return @"active";
-            case AWSEC2BatchStateCancelled:
-                return @"cancelled";
-            case AWSEC2BatchStateFailed:
-                return @"failed";
-            case AWSEC2BatchStateCancelledRunning:
-                return @"cancelled_running";
-            case AWSEC2BatchStateCancelledTerminating:
-                return @"cancelled_terminating";
-            case AWSEC2BatchStateModifying:
-                return @"modifying";
-            default:
-                return nil;
-        }
-    }];
 }
 
 @end
@@ -1042,21 +744,11 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"cancelled";
             case AWSEC2CancelSpotInstanceRequestStateCompleted:
                 return @"completed";
+            case AWSEC2CancelSpotInstanceRequestStateUnknown:
             default:
                 return nil;
         }
     }];
-}
-
-@end
-
-@implementation AWSEC2ClassicLinkDnsSupport
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"classicLinkDnsSupported" : @"ClassicLinkDnsSupported",
-             @"vpcId" : @"VpcId",
-             };
 }
 
 @end
@@ -1082,35 +774,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 
 @end
 
-@implementation AWSEC2ClientData
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"comment" : @"Comment",
-             @"uploadEnd" : @"UploadEnd",
-             @"uploadSize" : @"UploadSize",
-             @"uploadStart" : @"UploadStart",
-             };
-}
-
-+ (NSValueTransformer *)uploadEndJSONTransformer {
-	return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSString *str) {
-        return [NSDate aws_dateFromString:str];
-    } reverseBlock:^id(NSDate *date) {
-        return [date aws_stringValue:AWSDateISO8601DateFormat1];
-    }];
-}
-
-+ (NSValueTransformer *)uploadStartJSONTransformer {
-	return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSString *str) {
-        return [NSDate aws_dateFromString:str];
-    } reverseBlock:^id(NSDate *date) {
-        return [date aws_stringValue:AWSDateISO8601DateFormat1];
-    }];
-}
-
-@end
-
 @implementation AWSEC2ConfirmProductInstanceRequest
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
@@ -1128,7 +791,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
 	return @{
              @"ownerId" : @"OwnerId",
-             @"returned" : @"Return",
              };
 }
 
@@ -1181,6 +843,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"cancelled";
             case AWSEC2ConversionTaskStateCompleted:
                 return @"completed";
+            case AWSEC2ConversionTaskStateUnknown:
             default:
                 return nil;
         }
@@ -1214,6 +877,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         switch ([value integerValue]) {
             case AWSEC2GatewayTypeIpsec1:
                 return @"ipsec.1";
+            case AWSEC2GatewayTypeUnknown:
             default:
                 return nil;
         }
@@ -1261,89 +925,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 
 + (NSValueTransformer *)dhcpOptionsJSONTransformer {
 	return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSEC2DhcpOptions class]];
-}
-
-@end
-
-@implementation AWSEC2CreateFlowLogsRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"clientToken" : @"ClientToken",
-             @"deliverLogsPermissionArn" : @"DeliverLogsPermissionArn",
-             @"logGroupName" : @"LogGroupName",
-             @"resourceIds" : @"ResourceIds",
-             @"resourceType" : @"ResourceType",
-             @"trafficType" : @"TrafficType",
-             };
-}
-
-+ (NSValueTransformer *)resourceTypeJSONTransformer {
-    return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^NSNumber *(NSString *value) {
-        if ([value isEqualToString:@"VPC"]) {
-            return @(AWSEC2FlowLogsResourceTypeVpc);
-        }
-        if ([value isEqualToString:@"Subnet"]) {
-            return @(AWSEC2FlowLogsResourceTypeSubnet);
-        }
-        if ([value isEqualToString:@"NetworkInterface"]) {
-            return @(AWSEC2FlowLogsResourceTypeNetworkInterface);
-        }
-        return @(AWSEC2FlowLogsResourceTypeUnknown);
-    } reverseBlock:^NSString *(NSNumber *value) {
-        switch ([value integerValue]) {
-            case AWSEC2FlowLogsResourceTypeVpc:
-                return @"VPC";
-            case AWSEC2FlowLogsResourceTypeSubnet:
-                return @"Subnet";
-            case AWSEC2FlowLogsResourceTypeNetworkInterface:
-                return @"NetworkInterface";
-            default:
-                return nil;
-        }
-    }];
-}
-
-+ (NSValueTransformer *)trafficTypeJSONTransformer {
-    return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^NSNumber *(NSString *value) {
-        if ([value isEqualToString:@"ACCEPT"]) {
-            return @(AWSEC2TrafficTypeAccept);
-        }
-        if ([value isEqualToString:@"REJECT"]) {
-            return @(AWSEC2TrafficTypeReject);
-        }
-        if ([value isEqualToString:@"ALL"]) {
-            return @(AWSEC2TrafficTypeAll);
-        }
-        return @(AWSEC2TrafficTypeUnknown);
-    } reverseBlock:^NSString *(NSNumber *value) {
-        switch ([value integerValue]) {
-            case AWSEC2TrafficTypeAccept:
-                return @"ACCEPT";
-            case AWSEC2TrafficTypeReject:
-                return @"REJECT";
-            case AWSEC2TrafficTypeAll:
-                return @"ALL";
-            default:
-                return nil;
-        }
-    }];
-}
-
-@end
-
-@implementation AWSEC2CreateFlowLogsResult
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"clientToken" : @"ClientToken",
-             @"flowLogIds" : @"FlowLogIds",
-             @"unsuccessful" : @"Unsuccessful",
-             };
-}
-
-+ (NSValueTransformer *)unsuccessfulJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2UnsuccessfulItem class]];
 }
 
 @end
@@ -1412,6 +993,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"vmware";
             case AWSEC2ExportEnvironmentMicrosoft:
                 return @"microsoft";
+            case AWSEC2ExportEnvironmentUnknown:
             default:
                 return nil;
         }
@@ -1469,33 +1051,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 
 @end
 
-@implementation AWSEC2CreateNatGatewayRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"allocationId" : @"AllocationId",
-             @"clientToken" : @"ClientToken",
-             @"subnetId" : @"SubnetId",
-             };
-}
-
-@end
-
-@implementation AWSEC2CreateNatGatewayResult
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"clientToken" : @"ClientToken",
-             @"natGateway" : @"NatGateway",
-             };
-}
-
-+ (NSValueTransformer *)natGatewayJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSEC2NatGateway class]];
-}
-
-@end
-
 @implementation AWSEC2CreateNetworkAclEntryRequest
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
@@ -1535,6 +1090,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"allow";
             case AWSEC2RuleActionDeny:
                 return @"deny";
+            case AWSEC2RuleActionUnknown:
             default:
                 return nil;
         }
@@ -1622,6 +1178,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         switch ([value integerValue]) {
             case AWSEC2PlacementStrategyCluster:
                 return @"cluster";
+            case AWSEC2PlacementStrategyUnknown:
             default:
                 return nil;
         }
@@ -1669,20 +1226,9 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
              @"dryRun" : @"DryRun",
              @"gatewayId" : @"GatewayId",
              @"instanceId" : @"InstanceId",
-             @"natGatewayId" : @"NatGatewayId",
              @"networkInterfaceId" : @"NetworkInterfaceId",
              @"routeTableId" : @"RouteTableId",
              @"vpcPeeringConnectionId" : @"VpcPeeringConnectionId",
-             };
-}
-
-@end
-
-@implementation AWSEC2CreateRouteResult
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"returned" : @"Return",
              };
 }
 
@@ -1836,6 +1382,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         switch ([value integerValue]) {
             case AWSEC2PermissionGroupAll:
                 return @"all";
+            case AWSEC2PermissionGroupUnknown:
             default:
                 return nil;
         }
@@ -1889,12 +1436,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         if ([value isEqualToString:@"gp2"]) {
             return @(AWSEC2VolumeTypeGp2);
         }
-        if ([value isEqualToString:@"sc1"]) {
-            return @(AWSEC2VolumeTypeSc1);
-        }
-        if ([value isEqualToString:@"st1"]) {
-            return @(AWSEC2VolumeTypeSt1);
-        }
         return @(AWSEC2VolumeTypeUnknown);
     } reverseBlock:^NSString *(NSNumber *value) {
         switch ([value integerValue]) {
@@ -1904,44 +1445,11 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"io1";
             case AWSEC2VolumeTypeGp2:
                 return @"gp2";
-            case AWSEC2VolumeTypeSc1:
-                return @"sc1";
-            case AWSEC2VolumeTypeSt1:
-                return @"st1";
+            case AWSEC2VolumeTypeUnknown:
             default:
                 return nil;
         }
     }];
-}
-
-@end
-
-@implementation AWSEC2CreateVpcEndpointRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"clientToken" : @"ClientToken",
-             @"dryRun" : @"DryRun",
-             @"policyDocument" : @"PolicyDocument",
-             @"routeTableIds" : @"RouteTableIds",
-             @"serviceName" : @"ServiceName",
-             @"vpcId" : @"VpcId",
-             };
-}
-
-@end
-
-@implementation AWSEC2CreateVpcEndpointResult
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"clientToken" : @"ClientToken",
-             @"vpcEndpoint" : @"VpcEndpoint",
-             };
-}
-
-+ (NSValueTransformer *)vpcEndpointJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSEC2VpcEndpoint class]];
 }
 
 @end
@@ -1991,9 +1499,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         if ([value isEqualToString:@"dedicated"]) {
             return @(AWSEC2TenancyDedicated);
         }
-        if ([value isEqualToString:@"host"]) {
-            return @(AWSEC2TenancyHost);
-        }
         return @(AWSEC2TenancyUnknown);
     } reverseBlock:^NSString *(NSNumber *value) {
         switch ([value integerValue]) {
@@ -2001,8 +1506,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"default";
             case AWSEC2TenancyDedicated:
                 return @"dedicated";
-            case AWSEC2TenancyHost:
-                return @"host";
+            case AWSEC2TenancyUnknown:
             default:
                 return nil;
         }
@@ -2088,6 +1592,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         switch ([value integerValue]) {
             case AWSEC2GatewayTypeIpsec1:
                 return @"ipsec.1";
+            case AWSEC2GatewayTypeUnknown:
             default:
                 return nil;
         }
@@ -2151,30 +1656,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 
 @end
 
-@implementation AWSEC2DeleteFlowLogsRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"flowLogIds" : @"FlowLogIds",
-             };
-}
-
-@end
-
-@implementation AWSEC2DeleteFlowLogsResult
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"unsuccessful" : @"Unsuccessful",
-             };
-}
-
-+ (NSValueTransformer *)unsuccessfulJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2UnsuccessfulItem class]];
-}
-
-@end
-
 @implementation AWSEC2DeleteInternetGatewayRequest
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
@@ -2192,26 +1673,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 	return @{
              @"dryRun" : @"DryRun",
              @"keyName" : @"KeyName",
-             };
-}
-
-@end
-
-@implementation AWSEC2DeleteNatGatewayRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"natGatewayId" : @"NatGatewayId",
-             };
-}
-
-@end
-
-@implementation AWSEC2DeleteNatGatewayResult
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"natGatewayId" : @"NatGatewayId",
              };
 }
 
@@ -2353,31 +1814,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
              @"dryRun" : @"DryRun",
              @"volumeId" : @"VolumeId",
              };
-}
-
-@end
-
-@implementation AWSEC2DeleteVpcEndpointsRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"dryRun" : @"DryRun",
-             @"vpcEndpointIds" : @"VpcEndpointIds",
-             };
-}
-
-@end
-
-@implementation AWSEC2DeleteVpcEndpointsResult
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"unsuccessful" : @"Unsuccessful",
-             };
-}
-
-+ (NSValueTransformer *)unsuccessfulJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2UnsuccessfulItem class]];
 }
 
 @end
@@ -2721,94 +2157,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 
 @end
 
-@implementation AWSEC2DescribeFlowLogsRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"filter" : @"Filter",
-             @"flowLogIds" : @"FlowLogIds",
-             @"maxResults" : @"MaxResults",
-             @"nextToken" : @"NextToken",
-             };
-}
-
-+ (NSValueTransformer *)filterJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2Filter class]];
-}
-
-@end
-
-@implementation AWSEC2DescribeFlowLogsResult
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"flowLogs" : @"FlowLogs",
-             @"nextToken" : @"NextToken",
-             };
-}
-
-+ (NSValueTransformer *)flowLogsJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2FlowLog class]];
-}
-
-@end
-
-@implementation AWSEC2DescribeHostsRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"filter" : @"Filter",
-             @"hostIds" : @"HostIds",
-             @"maxResults" : @"MaxResults",
-             @"nextToken" : @"NextToken",
-             };
-}
-
-+ (NSValueTransformer *)filterJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2Filter class]];
-}
-
-@end
-
-@implementation AWSEC2DescribeHostsResult
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"hosts" : @"Hosts",
-             @"nextToken" : @"NextToken",
-             };
-}
-
-+ (NSValueTransformer *)hostsJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2Host class]];
-}
-
-@end
-
-@implementation AWSEC2DescribeIdFormatRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"resource" : @"Resource",
-             };
-}
-
-@end
-
-@implementation AWSEC2DescribeIdFormatResult
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"statuses" : @"Statuses",
-             };
-}
-
-+ (NSValueTransformer *)statusesJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2IdFormat class]];
-}
-
-@end
-
 @implementation AWSEC2DescribeImageAttributeRequest
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
@@ -2839,9 +2187,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         if ([value isEqualToString:@"blockDeviceMapping"]) {
             return @(AWSEC2ImageAttributeNameBlockDeviceMapping);
         }
-        if ([value isEqualToString:@"sriovNetSupport"]) {
-            return @(AWSEC2ImageAttributeNameSriovNetSupport);
-        }
         return @(AWSEC2ImageAttributeNameUnknown);
     } reverseBlock:^NSString *(NSNumber *value) {
         switch ([value integerValue]) {
@@ -2857,8 +2202,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"productCodes";
             case AWSEC2ImageAttributeNameBlockDeviceMapping:
                 return @"blockDeviceMapping";
-            case AWSEC2ImageAttributeNameSriovNetSupport:
-                return @"sriovNetSupport";
+            case AWSEC2ImageAttributeNameUnknown:
             default:
                 return nil;
         }
@@ -2895,72 +2239,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 
 + (NSValueTransformer *)imagesJSONTransformer {
 	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2Image class]];
-}
-
-@end
-
-@implementation AWSEC2DescribeImportImageTasksRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"dryRun" : @"DryRun",
-             @"filters" : @"Filters",
-             @"importTaskIds" : @"ImportTaskIds",
-             @"maxResults" : @"MaxResults",
-             @"nextToken" : @"NextToken",
-             };
-}
-
-+ (NSValueTransformer *)filtersJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2Filter class]];
-}
-
-@end
-
-@implementation AWSEC2DescribeImportImageTasksResult
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"importImageTasks" : @"ImportImageTasks",
-             @"nextToken" : @"NextToken",
-             };
-}
-
-+ (NSValueTransformer *)importImageTasksJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2ImportImageTask class]];
-}
-
-@end
-
-@implementation AWSEC2DescribeImportSnapshotTasksRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"dryRun" : @"DryRun",
-             @"filters" : @"Filters",
-             @"importTaskIds" : @"ImportTaskIds",
-             @"maxResults" : @"MaxResults",
-             @"nextToken" : @"NextToken",
-             };
-}
-
-+ (NSValueTransformer *)filtersJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2Filter class]];
-}
-
-@end
-
-@implementation AWSEC2DescribeImportSnapshotTasksResult
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"importSnapshotTasks" : @"ImportSnapshotTasks",
-             @"nextToken" : @"NextToken",
-             };
-}
-
-+ (NSValueTransformer *)importSnapshotTasksJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2ImportSnapshotTask class]];
 }
 
 @end
@@ -3045,6 +2323,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"ebsOptimized";
             case AWSEC2InstanceAttributeNameSriovNetSupport:
                 return @"sriovNetSupport";
+            case AWSEC2InstanceAttributeNameUnknown:
             default:
                 return nil;
         }
@@ -3180,71 +2459,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 
 @end
 
-@implementation AWSEC2DescribeMovingAddressesRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"dryRun" : @"DryRun",
-             @"filters" : @"Filters",
-             @"maxResults" : @"MaxResults",
-             @"nextToken" : @"NextToken",
-             @"publicIps" : @"PublicIps",
-             };
-}
-
-+ (NSValueTransformer *)filtersJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2Filter class]];
-}
-
-@end
-
-@implementation AWSEC2DescribeMovingAddressesResult
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"movingAddressStatuses" : @"MovingAddressStatuses",
-             @"nextToken" : @"NextToken",
-             };
-}
-
-+ (NSValueTransformer *)movingAddressStatusesJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2MovingAddressStatus class]];
-}
-
-@end
-
-@implementation AWSEC2DescribeNatGatewaysRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"filter" : @"Filter",
-             @"maxResults" : @"MaxResults",
-             @"natGatewayIds" : @"NatGatewayIds",
-             @"nextToken" : @"NextToken",
-             };
-}
-
-+ (NSValueTransformer *)filterJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2Filter class]];
-}
-
-@end
-
-@implementation AWSEC2DescribeNatGatewaysResult
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"natGateways" : @"NatGateways",
-             @"nextToken" : @"NextToken",
-             };
-}
-
-+ (NSValueTransformer *)natGatewaysJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2NatGateway class]];
-}
-
-@end
-
 @implementation AWSEC2DescribeNetworkAclsRequest
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
@@ -3310,6 +2524,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"sourceDestCheck";
             case AWSEC2NetworkInterfaceAttributeAttachment:
                 return @"attachment";
+            case AWSEC2NetworkInterfaceAttributeUnknown:
             default:
                 return nil;
         }
@@ -3404,39 +2619,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 
 + (NSValueTransformer *)placementGroupsJSONTransformer {
 	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2PlacementGroup class]];
-}
-
-@end
-
-@implementation AWSEC2DescribePrefixListsRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"dryRun" : @"DryRun",
-             @"filters" : @"Filters",
-             @"maxResults" : @"MaxResults",
-             @"nextToken" : @"NextToken",
-             @"prefixListIds" : @"PrefixListIds",
-             };
-}
-
-+ (NSValueTransformer *)filtersJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2Filter class]];
-}
-
-@end
-
-@implementation AWSEC2DescribePrefixListsResult
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"nextToken" : @"NextToken",
-             @"prefixLists" : @"PrefixLists",
-             };
-}
-
-+ (NSValueTransformer *)prefixListsJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2PrefixList class]];
 }
 
 @end
@@ -3565,9 +2747,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         if ([value isEqualToString:@"dedicated"]) {
             return @(AWSEC2TenancyDedicated);
         }
-        if ([value isEqualToString:@"host"]) {
-            return @(AWSEC2TenancyHost);
-        }
         return @(AWSEC2TenancyUnknown);
     } reverseBlock:^NSString *(NSNumber *value) {
         switch ([value integerValue]) {
@@ -3575,8 +2754,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"default";
             case AWSEC2TenancyDedicated:
                 return @"dedicated";
-            case AWSEC2TenancyHost:
-                return @"host";
+            case AWSEC2TenancyUnknown:
             default:
                 return nil;
         }
@@ -3612,24 +2790,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         if ([value isEqualToString:@"m3.2xlarge"]) {
             return @(AWSEC2InstanceTypeM3_2xlarge);
         }
-        if ([value isEqualToString:@"m4.large"]) {
-            return @(AWSEC2InstanceTypeM4_large);
-        }
-        if ([value isEqualToString:@"m4.xlarge"]) {
-            return @(AWSEC2InstanceTypeM4_xlarge);
-        }
-        if ([value isEqualToString:@"m4.2xlarge"]) {
-            return @(AWSEC2InstanceTypeM4_2xlarge);
-        }
-        if ([value isEqualToString:@"m4.4xlarge"]) {
-            return @(AWSEC2InstanceTypeM4_4xlarge);
-        }
-        if ([value isEqualToString:@"m4.10xlarge"]) {
-            return @(AWSEC2InstanceTypeM4_10xlarge);
-        }
-        if ([value isEqualToString:@"t2.nano"]) {
-            return @(AWSEC2InstanceTypeT2_nano);
-        }
         if ([value isEqualToString:@"t2.micro"]) {
             return @(AWSEC2InstanceTypeT2_micro);
         }
@@ -3638,9 +2798,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         }
         if ([value isEqualToString:@"t2.medium"]) {
             return @(AWSEC2InstanceTypeT2_medium);
-        }
-        if ([value isEqualToString:@"t2.large"]) {
-            return @(AWSEC2InstanceTypeT2_large);
         }
         if ([value isEqualToString:@"m2.xlarge"]) {
             return @(AWSEC2InstanceTypeM2_xlarge);
@@ -3717,9 +2874,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         if ([value isEqualToString:@"g2.2xlarge"]) {
             return @(AWSEC2InstanceTypeG2_2xlarge);
         }
-        if ([value isEqualToString:@"g2.8xlarge"]) {
-            return @(AWSEC2InstanceTypeG2_8xlarge);
-        }
         if ([value isEqualToString:@"cg1.4xlarge"]) {
             return @(AWSEC2InstanceTypeCG1_4xlarge);
         }
@@ -3737,18 +2891,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         }
         if ([value isEqualToString:@"r3.8xlarge"]) {
             return @(AWSEC2InstanceTypeR3_8xlarge);
-        }
-        if ([value isEqualToString:@"d2.xlarge"]) {
-            return @(AWSEC2InstanceTypeD2_xlarge);
-        }
-        if ([value isEqualToString:@"d2.2xlarge"]) {
-            return @(AWSEC2InstanceTypeD2_2xlarge);
-        }
-        if ([value isEqualToString:@"d2.4xlarge"]) {
-            return @(AWSEC2InstanceTypeD2_4xlarge);
-        }
-        if ([value isEqualToString:@"d2.8xlarge"]) {
-            return @(AWSEC2InstanceTypeD2_8xlarge);
         }
         return @(AWSEC2InstanceTypeUnknown);
     } reverseBlock:^NSString *(NSNumber *value) {
@@ -3771,26 +2913,12 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"m3.xlarge";
             case AWSEC2InstanceTypeM3_2xlarge:
                 return @"m3.2xlarge";
-            case AWSEC2InstanceTypeM4_large:
-                return @"m4.large";
-            case AWSEC2InstanceTypeM4_xlarge:
-                return @"m4.xlarge";
-            case AWSEC2InstanceTypeM4_2xlarge:
-                return @"m4.2xlarge";
-            case AWSEC2InstanceTypeM4_4xlarge:
-                return @"m4.4xlarge";
-            case AWSEC2InstanceTypeM4_10xlarge:
-                return @"m4.10xlarge";
-            case AWSEC2InstanceTypeT2_nano:
-                return @"t2.nano";
             case AWSEC2InstanceTypeT2_micro:
                 return @"t2.micro";
             case AWSEC2InstanceTypeT2_small:
                 return @"t2.small";
             case AWSEC2InstanceTypeT2_medium:
                 return @"t2.medium";
-            case AWSEC2InstanceTypeT2_large:
-                return @"t2.large";
             case AWSEC2InstanceTypeM2_xlarge:
                 return @"m2.xlarge";
             case AWSEC2InstanceTypeM2_2xlarge:
@@ -3841,8 +2969,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"cc2.8xlarge";
             case AWSEC2InstanceTypeG2_2xlarge:
                 return @"g2.2xlarge";
-            case AWSEC2InstanceTypeG2_8xlarge:
-                return @"g2.8xlarge";
             case AWSEC2InstanceTypeCG1_4xlarge:
                 return @"cg1.4xlarge";
             case AWSEC2InstanceTypeR3_large:
@@ -3855,14 +2981,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"r3.4xlarge";
             case AWSEC2InstanceTypeR3_8xlarge:
                 return @"r3.8xlarge";
-            case AWSEC2InstanceTypeD2_xlarge:
-                return @"d2.xlarge";
-            case AWSEC2InstanceTypeD2_2xlarge:
-                return @"d2.2xlarge";
-            case AWSEC2InstanceTypeD2_4xlarge:
-                return @"d2.4xlarge";
-            case AWSEC2InstanceTypeD2_8xlarge:
-                return @"d2.8xlarge";
+            case AWSEC2InstanceTypeUnknown:
             default:
                 return nil;
         }
@@ -3904,6 +3023,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"Partial Upfront";
             case AWSEC2OfferingTypeValuesAllUpfront:
                 return @"All Upfront";
+            case AWSEC2OfferingTypeValuesUnknown:
             default:
                 return nil;
         }
@@ -3918,7 +3038,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         if ([value isEqualToString:@"Linux/UNIX (Amazon VPC)"]) {
             return @(AWSEC2RIProductDescriptionLinuxUNIXAmazonVPC);
         }
-        if ([value isEqualToString:@"Windows"] || [value isEqualToString:@"windows"]) {
+        if ([value isEqualToString:@"Windows"]) {
             return @(AWSEC2RIProductDescriptionWindows);
         }
         if ([value isEqualToString:@"Windows (Amazon VPC)"]) {
@@ -3935,6 +3055,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"Windows";
             case AWSEC2RIProductDescriptionWindowsAmazonVPC:
                 return @"Windows (Amazon VPC)";
+            case AWSEC2RIProductDescriptionUnknown:
             default:
                 return nil;
         }
@@ -4008,6 +3129,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"Partial Upfront";
             case AWSEC2OfferingTypeValuesAllUpfront:
                 return @"All Upfront";
+            case AWSEC2OfferingTypeValuesUnknown:
             default:
                 return nil;
         }
@@ -4056,113 +3178,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 
 + (NSValueTransformer *)routeTablesJSONTransformer {
 	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2RouteTable class]];
-}
-
-@end
-
-@implementation AWSEC2DescribeScheduledInstanceAvailabilityRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"dryRun" : @"DryRun",
-             @"filters" : @"Filters",
-             @"firstSlotStartTimeRange" : @"FirstSlotStartTimeRange",
-             @"maxResults" : @"MaxResults",
-             @"maxSlotDurationInHours" : @"MaxSlotDurationInHours",
-             @"minSlotDurationInHours" : @"MinSlotDurationInHours",
-             @"nextToken" : @"NextToken",
-             @"recurrence" : @"Recurrence",
-             };
-}
-
-+ (NSValueTransformer *)filtersJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2Filter class]];
-}
-
-+ (NSValueTransformer *)firstSlotStartTimeRangeJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSEC2SlotDateTimeRangeRequest class]];
-}
-
-+ (NSValueTransformer *)recurrenceJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSEC2ScheduledInstanceRecurrenceRequest class]];
-}
-
-@end
-
-@implementation AWSEC2DescribeScheduledInstanceAvailabilityResult
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"nextToken" : @"NextToken",
-             @"scheduledInstanceAvailabilitySet" : @"ScheduledInstanceAvailabilitySet",
-             };
-}
-
-+ (NSValueTransformer *)scheduledInstanceAvailabilitySetJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2ScheduledInstanceAvailability class]];
-}
-
-@end
-
-@implementation AWSEC2DescribeScheduledInstancesRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"dryRun" : @"DryRun",
-             @"filters" : @"Filters",
-             @"maxResults" : @"MaxResults",
-             @"nextToken" : @"NextToken",
-             @"scheduledInstanceIds" : @"ScheduledInstanceIds",
-             @"slotStartTimeRange" : @"SlotStartTimeRange",
-             };
-}
-
-+ (NSValueTransformer *)filtersJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2Filter class]];
-}
-
-+ (NSValueTransformer *)slotStartTimeRangeJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSEC2SlotStartTimeRangeRequest class]];
-}
-
-@end
-
-@implementation AWSEC2DescribeScheduledInstancesResult
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"nextToken" : @"NextToken",
-             @"scheduledInstanceSet" : @"ScheduledInstanceSet",
-             };
-}
-
-+ (NSValueTransformer *)scheduledInstanceSetJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2ScheduledInstance class]];
-}
-
-@end
-
-@implementation AWSEC2DescribeSecurityGroupReferencesRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"dryRun" : @"DryRun",
-             @"groupId" : @"GroupId",
-             };
-}
-
-@end
-
-@implementation AWSEC2DescribeSecurityGroupReferencesResult
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"securityGroupReferenceSet" : @"SecurityGroupReferenceSet",
-             };
-}
-
-+ (NSValueTransformer *)securityGroupReferenceSetJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2SecurityGroupReference class]];
 }
 
 @end
@@ -4223,6 +3238,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"productCodes";
             case AWSEC2SnapshotAttributeNameCreateVolumePermission:
                 return @"createVolumePermission";
+            case AWSEC2SnapshotAttributeNameUnknown:
             default:
                 return nil;
         }
@@ -4310,146 +3326,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 
 @end
 
-@implementation AWSEC2DescribeSpotFleetInstancesRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"dryRun" : @"DryRun",
-             @"maxResults" : @"MaxResults",
-             @"nextToken" : @"NextToken",
-             @"spotFleetRequestId" : @"SpotFleetRequestId",
-             };
-}
-
-@end
-
-@implementation AWSEC2DescribeSpotFleetInstancesResponse
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"activeInstances" : @"ActiveInstances",
-             @"nextToken" : @"NextToken",
-             @"spotFleetRequestId" : @"SpotFleetRequestId",
-             };
-}
-
-+ (NSValueTransformer *)activeInstancesJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2ActiveInstance class]];
-}
-
-@end
-
-@implementation AWSEC2DescribeSpotFleetRequestHistoryRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"dryRun" : @"DryRun",
-             @"eventType" : @"EventType",
-             @"maxResults" : @"MaxResults",
-             @"nextToken" : @"NextToken",
-             @"spotFleetRequestId" : @"SpotFleetRequestId",
-             @"startTime" : @"StartTime",
-             };
-}
-
-+ (NSValueTransformer *)eventTypeJSONTransformer {
-    return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^NSNumber *(NSString *value) {
-        if ([value isEqualToString:@"instanceChange"]) {
-            return @(AWSEC2EventTypeInstanceChange);
-        }
-        if ([value isEqualToString:@"fleetRequestChange"]) {
-            return @(AWSEC2EventTypeFleetRequestChange);
-        }
-        if ([value isEqualToString:@"error"]) {
-            return @(AWSEC2EventTypeError);
-        }
-        return @(AWSEC2EventTypeUnknown);
-    } reverseBlock:^NSString *(NSNumber *value) {
-        switch ([value integerValue]) {
-            case AWSEC2EventTypeInstanceChange:
-                return @"instanceChange";
-            case AWSEC2EventTypeFleetRequestChange:
-                return @"fleetRequestChange";
-            case AWSEC2EventTypeError:
-                return @"error";
-            default:
-                return nil;
-        }
-    }];
-}
-
-+ (NSValueTransformer *)startTimeJSONTransformer {
-	return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSString *str) {
-        return [NSDate aws_dateFromString:str];
-    } reverseBlock:^id(NSDate *date) {
-        return [date aws_stringValue:AWSDateISO8601DateFormat1];
-    }];
-}
-
-@end
-
-@implementation AWSEC2DescribeSpotFleetRequestHistoryResponse
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"historyRecords" : @"HistoryRecords",
-             @"lastEvaluatedTime" : @"LastEvaluatedTime",
-             @"nextToken" : @"NextToken",
-             @"spotFleetRequestId" : @"SpotFleetRequestId",
-             @"startTime" : @"StartTime",
-             };
-}
-
-+ (NSValueTransformer *)historyRecordsJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2HistoryRecord class]];
-}
-
-+ (NSValueTransformer *)lastEvaluatedTimeJSONTransformer {
-	return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSString *str) {
-        return [NSDate aws_dateFromString:str];
-    } reverseBlock:^id(NSDate *date) {
-        return [date aws_stringValue:AWSDateISO8601DateFormat1];
-    }];
-}
-
-+ (NSValueTransformer *)startTimeJSONTransformer {
-	return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSString *str) {
-        return [NSDate aws_dateFromString:str];
-    } reverseBlock:^id(NSDate *date) {
-        return [date aws_stringValue:AWSDateISO8601DateFormat1];
-    }];
-}
-
-@end
-
-@implementation AWSEC2DescribeSpotFleetRequestsRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"dryRun" : @"DryRun",
-             @"maxResults" : @"MaxResults",
-             @"nextToken" : @"NextToken",
-             @"spotFleetRequestIds" : @"SpotFleetRequestIds",
-             };
-}
-
-@end
-
-@implementation AWSEC2DescribeSpotFleetRequestsResponse
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"nextToken" : @"NextToken",
-             @"spotFleetRequestConfigs" : @"SpotFleetRequestConfigs",
-             };
-}
-
-+ (NSValueTransformer *)spotFleetRequestConfigsJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2SpotFleetRequestConfig class]];
-}
-
-@end
-
 @implementation AWSEC2DescribeSpotInstanceRequestsRequest
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
@@ -4529,34 +3405,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 
 + (NSValueTransformer *)spotPriceHistoryJSONTransformer {
 	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2SpotPrice class]];
-}
-
-@end
-
-@implementation AWSEC2DescribeStaleSecurityGroupsRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"dryRun" : @"DryRun",
-             @"maxResults" : @"MaxResults",
-             @"nextToken" : @"NextToken",
-             @"vpcId" : @"VpcId",
-             };
-}
-
-@end
-
-@implementation AWSEC2DescribeStaleSecurityGroupsResult
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"nextToken" : @"NextToken",
-             @"staleSecurityGroupSet" : @"StaleSecurityGroupSet",
-             };
-}
-
-+ (NSValueTransformer *)staleSecurityGroupSetJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2StaleSecurityGroup class]];
 }
 
 @end
@@ -4648,6 +3496,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"autoEnableIO";
             case AWSEC2VolumeAttributeNameProductCodes:
                 return @"productCodes";
+            case AWSEC2VolumeAttributeNameUnknown:
             default:
                 return nil;
         }
@@ -4767,6 +3616,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"enableDnsSupport";
             case AWSEC2VpcAttributeNameEnableDNSHostnames:
                 return @"enableDnsHostnames";
+            case AWSEC2VpcAttributeNameUnknown:
             default:
                 return nil;
         }
@@ -4791,33 +3641,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 
 + (NSValueTransformer *)enableDnsSupportJSONTransformer {
 	return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSEC2AttributeBooleanValue class]];
-}
-
-@end
-
-@implementation AWSEC2DescribeVpcClassicLinkDnsSupportRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"maxResults" : @"MaxResults",
-             @"nextToken" : @"NextToken",
-             @"vpcIds" : @"VpcIds",
-             };
-}
-
-@end
-
-@implementation AWSEC2DescribeVpcClassicLinkDnsSupportResult
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"nextToken" : @"NextToken",
-             @"vpcs" : @"Vpcs",
-             };
-}
-
-+ (NSValueTransformer *)vpcsJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2ClassicLinkDnsSupport class]];
 }
 
 @end
@@ -4848,62 +3671,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 
 + (NSValueTransformer *)vpcsJSONTransformer {
 	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2VpcClassicLink class]];
-}
-
-@end
-
-@implementation AWSEC2DescribeVpcEndpointServicesRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"dryRun" : @"DryRun",
-             @"maxResults" : @"MaxResults",
-             @"nextToken" : @"NextToken",
-             };
-}
-
-@end
-
-@implementation AWSEC2DescribeVpcEndpointServicesResult
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"nextToken" : @"NextToken",
-             @"serviceNames" : @"ServiceNames",
-             };
-}
-
-@end
-
-@implementation AWSEC2DescribeVpcEndpointsRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"dryRun" : @"DryRun",
-             @"filters" : @"Filters",
-             @"maxResults" : @"MaxResults",
-             @"nextToken" : @"NextToken",
-             @"vpcEndpointIds" : @"VpcEndpointIds",
-             };
-}
-
-+ (NSValueTransformer *)filtersJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2Filter class]];
-}
-
-@end
-
-@implementation AWSEC2DescribeVpcEndpointsResult
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"nextToken" : @"NextToken",
-             @"vpcEndpoints" : @"VpcEndpoints",
-             };
-}
-
-+ (NSValueTransformer *)vpcEndpointsJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2VpcEndpoint class]];
 }
 
 @end
@@ -5146,26 +3913,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 
 @end
 
-@implementation AWSEC2DisableVpcClassicLinkDnsSupportRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"vpcId" : @"VpcId",
-             };
-}
-
-@end
-
-@implementation AWSEC2DisableVpcClassicLinkDnsSupportResult
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"returned" : @"Return",
-             };
-}
-
-@end
-
 @implementation AWSEC2DisableVpcClassicLinkRequest
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
@@ -5261,6 +4008,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"RAW";
             case AWSEC2DiskImageFormatVHD:
                 return @"VHD";
+            case AWSEC2DiskImageFormatUnknown:
             default:
                 return nil;
         }
@@ -5299,6 +4047,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"RAW";
             case AWSEC2DiskImageFormatVHD:
                 return @"VHD";
+            case AWSEC2DiskImageFormatUnknown:
             default:
                 return nil;
         }
@@ -5342,12 +4091,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         if ([value isEqualToString:@"gp2"]) {
             return @(AWSEC2VolumeTypeGp2);
         }
-        if ([value isEqualToString:@"sc1"]) {
-            return @(AWSEC2VolumeTypeSc1);
-        }
-        if ([value isEqualToString:@"st1"]) {
-            return @(AWSEC2VolumeTypeSt1);
-        }
         return @(AWSEC2VolumeTypeUnknown);
     } reverseBlock:^NSString *(NSNumber *value) {
         switch ([value integerValue]) {
@@ -5357,10 +4100,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"io1";
             case AWSEC2VolumeTypeGp2:
                 return @"gp2";
-            case AWSEC2VolumeTypeSc1:
-                return @"sc1";
-            case AWSEC2VolumeTypeSt1:
-                return @"st1";
+            case AWSEC2VolumeTypeUnknown:
             default:
                 return nil;
         }
@@ -5413,6 +4153,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"detaching";
             case AWSEC2AttachmentStatusDetached:
                 return @"detached";
+            case AWSEC2AttachmentStatusUnknown:
             default:
                 return nil;
         }
@@ -5454,26 +4195,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 
 @end
 
-@implementation AWSEC2EnableVpcClassicLinkDnsSupportRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"vpcId" : @"VpcId",
-             };
-}
-
-@end
-
-@implementation AWSEC2EnableVpcClassicLinkDnsSupportResult
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"returned" : @"Return",
-             };
-}
-
-@end
-
 @implementation AWSEC2EnableVpcClassicLinkRequest
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
@@ -5490,18 +4211,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
 	return @{
              @"returned" : @"Return",
-             };
-}
-
-@end
-
-@implementation AWSEC2EventInformation
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"eventDescription" : @"EventDescription",
-             @"eventSubType" : @"EventSubType",
-             @"instanceId" : @"InstanceId",
              };
 }
 
@@ -5553,6 +4262,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"cancelled";
             case AWSEC2ExportTaskStateCompleted:
                 return @"completed";
+            case AWSEC2ExportTaskStateUnknown:
             default:
                 return nil;
         }
@@ -5582,6 +4292,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         switch ([value integerValue]) {
             case AWSEC2ContainerFormatOVA:
                 return @"ova";
+            case AWSEC2ContainerFormatUnknown:
             default:
                 return nil;
         }
@@ -5608,6 +4319,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"RAW";
             case AWSEC2DiskImageFormatVHD:
                 return @"VHD";
+            case AWSEC2DiskImageFormatUnknown:
             default:
                 return nil;
         }
@@ -5637,6 +4349,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         switch ([value integerValue]) {
             case AWSEC2ContainerFormatOVA:
                 return @"ova";
+            case AWSEC2ContainerFormatUnknown:
             default:
                 return nil;
         }
@@ -5663,6 +4376,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"RAW";
             case AWSEC2DiskImageFormatVHD:
                 return @"VHD";
+            case AWSEC2DiskImageFormatUnknown:
             default:
                 return nil;
         }
@@ -5678,58 +4392,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
              @"name" : @"Name",
              @"values" : @"Values",
              };
-}
-
-@end
-
-@implementation AWSEC2FlowLog
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"creationTime" : @"CreationTime",
-             @"deliverLogsErrorMessage" : @"DeliverLogsErrorMessage",
-             @"deliverLogsPermissionArn" : @"DeliverLogsPermissionArn",
-             @"deliverLogsStatus" : @"DeliverLogsStatus",
-             @"flowLogId" : @"FlowLogId",
-             @"flowLogStatus" : @"FlowLogStatus",
-             @"logGroupName" : @"LogGroupName",
-             @"resourceId" : @"ResourceId",
-             @"trafficType" : @"TrafficType",
-             };
-}
-
-+ (NSValueTransformer *)creationTimeJSONTransformer {
-	return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSString *str) {
-        return [NSDate aws_dateFromString:str];
-    } reverseBlock:^id(NSDate *date) {
-        return [date aws_stringValue:AWSDateISO8601DateFormat1];
-    }];
-}
-
-+ (NSValueTransformer *)trafficTypeJSONTransformer {
-    return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^NSNumber *(NSString *value) {
-        if ([value isEqualToString:@"ACCEPT"]) {
-            return @(AWSEC2TrafficTypeAccept);
-        }
-        if ([value isEqualToString:@"REJECT"]) {
-            return @(AWSEC2TrafficTypeReject);
-        }
-        if ([value isEqualToString:@"ALL"]) {
-            return @(AWSEC2TrafficTypeAll);
-        }
-        return @(AWSEC2TrafficTypeUnknown);
-    } reverseBlock:^NSString *(NSNumber *value) {
-        switch ([value integerValue]) {
-            case AWSEC2TrafficTypeAccept:
-                return @"ACCEPT";
-            case AWSEC2TrafficTypeReject:
-                return @"REJECT";
-            case AWSEC2TrafficTypeAll:
-                return @"ALL";
-            default:
-                return nil;
-        }
-    }];
 }
 
 @end
@@ -5807,167 +4469,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 
 @end
 
-@implementation AWSEC2HistoryRecord
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"eventInformation" : @"EventInformation",
-             @"eventType" : @"EventType",
-             @"timestamp" : @"Timestamp",
-             };
-}
-
-+ (NSValueTransformer *)eventInformationJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSEC2EventInformation class]];
-}
-
-+ (NSValueTransformer *)eventTypeJSONTransformer {
-    return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^NSNumber *(NSString *value) {
-        if ([value isEqualToString:@"instanceChange"]) {
-            return @(AWSEC2EventTypeInstanceChange);
-        }
-        if ([value isEqualToString:@"fleetRequestChange"]) {
-            return @(AWSEC2EventTypeFleetRequestChange);
-        }
-        if ([value isEqualToString:@"error"]) {
-            return @(AWSEC2EventTypeError);
-        }
-        return @(AWSEC2EventTypeUnknown);
-    } reverseBlock:^NSString *(NSNumber *value) {
-        switch ([value integerValue]) {
-            case AWSEC2EventTypeInstanceChange:
-                return @"instanceChange";
-            case AWSEC2EventTypeFleetRequestChange:
-                return @"fleetRequestChange";
-            case AWSEC2EventTypeError:
-                return @"error";
-            default:
-                return nil;
-        }
-    }];
-}
-
-+ (NSValueTransformer *)timestampJSONTransformer {
-	return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSString *str) {
-        return [NSDate aws_dateFromString:str];
-    } reverseBlock:^id(NSDate *date) {
-        return [date aws_stringValue:AWSDateISO8601DateFormat1];
-    }];
-}
-
-@end
-
-@implementation AWSEC2Host
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"autoPlacement" : @"AutoPlacement",
-             @"availabilityZone" : @"AvailabilityZone",
-             @"availableCapacity" : @"AvailableCapacity",
-             @"clientToken" : @"ClientToken",
-             @"hostId" : @"HostId",
-             @"hostProperties" : @"HostProperties",
-             @"hostReservationId" : @"HostReservationId",
-             @"instances" : @"Instances",
-             @"state" : @"State",
-             };
-}
-
-+ (NSValueTransformer *)autoPlacementJSONTransformer {
-    return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^NSNumber *(NSString *value) {
-        if ([value isEqualToString:@"on"]) {
-            return @(AWSEC2AutoPlacementOn);
-        }
-        if ([value isEqualToString:@"off"]) {
-            return @(AWSEC2AutoPlacementOff);
-        }
-        return @(AWSEC2AutoPlacementUnknown);
-    } reverseBlock:^NSString *(NSNumber *value) {
-        switch ([value integerValue]) {
-            case AWSEC2AutoPlacementOn:
-                return @"on";
-            case AWSEC2AutoPlacementOff:
-                return @"off";
-            default:
-                return nil;
-        }
-    }];
-}
-
-+ (NSValueTransformer *)availableCapacityJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSEC2AvailableCapacity class]];
-}
-
-+ (NSValueTransformer *)hostPropertiesJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSEC2HostProperties class]];
-}
-
-+ (NSValueTransformer *)instancesJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2HostInstance class]];
-}
-
-+ (NSValueTransformer *)stateJSONTransformer {
-    return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^NSNumber *(NSString *value) {
-        if ([value isEqualToString:@"available"]) {
-            return @(AWSEC2AllocationStateAvailable);
-        }
-        if ([value isEqualToString:@"under-assessment"]) {
-            return @(AWSEC2AllocationStateUnderAssessment);
-        }
-        if ([value isEqualToString:@"permanent-failure"]) {
-            return @(AWSEC2AllocationStatePermanentFailure);
-        }
-        if ([value isEqualToString:@"released"]) {
-            return @(AWSEC2AllocationStateReleased);
-        }
-        if ([value isEqualToString:@"released-permanent-failure"]) {
-            return @(AWSEC2AllocationStateReleasedPermanentFailure);
-        }
-        return @(AWSEC2AllocationStateUnknown);
-    } reverseBlock:^NSString *(NSNumber *value) {
-        switch ([value integerValue]) {
-            case AWSEC2AllocationStateAvailable:
-                return @"available";
-            case AWSEC2AllocationStateUnderAssessment:
-                return @"under-assessment";
-            case AWSEC2AllocationStatePermanentFailure:
-                return @"permanent-failure";
-            case AWSEC2AllocationStateReleased:
-                return @"released";
-            case AWSEC2AllocationStateReleasedPermanentFailure:
-                return @"released-permanent-failure";
-            default:
-                return nil;
-        }
-    }];
-}
-
-@end
-
-@implementation AWSEC2HostInstance
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"instanceId" : @"InstanceId",
-             @"instanceType" : @"InstanceType",
-             };
-}
-
-@end
-
-@implementation AWSEC2HostProperties
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"cores" : @"Cores",
-             @"instanceType" : @"InstanceType",
-             @"sockets" : @"Sockets",
-             @"totalVCpus" : @"TotalVCpus",
-             };
-}
-
-@end
-
 @implementation AWSEC2IamInstanceProfile
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
@@ -5997,26 +4498,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
              @"code" : @"Code",
              @"types" : @"Type",
              };
-}
-
-@end
-
-@implementation AWSEC2IdFormat
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"deadline" : @"Deadline",
-             @"resource" : @"Resource",
-             @"useLongIds" : @"UseLongIds",
-             };
-}
-
-+ (NSValueTransformer *)deadlineJSONTransformer {
-	return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSString *str) {
-        return [NSDate aws_dateFromString:str];
-    } reverseBlock:^id(NSDate *date) {
-        return [date aws_stringValue:AWSDateISO8601DateFormat1];
-    }];
 }
 
 @end
@@ -6066,6 +4547,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"i386";
             case AWSEC2ArchitectureValuesX86_64:
                 return @"x86_64";
+            case AWSEC2ArchitectureValuesUnknown:
             default:
                 return nil;
         }
@@ -6091,6 +4573,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"ovm";
             case AWSEC2HypervisorTypeXen:
                 return @"xen";
+            case AWSEC2HypervisorTypeUnknown:
             default:
                 return nil;
         }
@@ -6117,6 +4600,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"kernel";
             case AWSEC2ImageTypeValuesRAMDisk:
                 return @"ramdisk";
+            case AWSEC2ImageTypeValuesUnknown:
             default:
                 return nil;
         }
@@ -6125,7 +4609,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 
 + (NSValueTransformer *)platformJSONTransformer {
     return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^NSNumber *(NSString *value) {
-        if ([value isEqualToString:@"Windows"] || [value isEqualToString:@"windows"]) {
+        if ([value isEqualToString:@"Windows"] || [value isEqualToString:@"windows"]) { //special case
             return @(AWSEC2PlatformValuesWindows);
         }
         return @(AWSEC2PlatformValuesUnknown);
@@ -6133,6 +4617,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         switch ([value integerValue]) {
             case AWSEC2PlatformValuesWindows:
                 return @"Windows";
+            case AWSEC2PlatformValuesUnknown:
             default:
                 return nil;
         }
@@ -6158,6 +4643,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"ebs";
             case AWSEC2DeviceTypeInstanceStore:
                 return @"instance-store";
+            case AWSEC2DeviceTypeUnknown:
             default:
                 return nil;
         }
@@ -6166,44 +4652,20 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 
 + (NSValueTransformer *)stateJSONTransformer {
     return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^NSNumber *(NSString *value) {
-        if ([value isEqualToString:@"pending"]) {
-            return @(AWSEC2ImageStatePending);
-        }
         if ([value isEqualToString:@"available"]) {
             return @(AWSEC2ImageStateAvailable);
-        }
-        if ([value isEqualToString:@"invalid"]) {
-            return @(AWSEC2ImageStateInvalid);
         }
         if ([value isEqualToString:@"deregistered"]) {
             return @(AWSEC2ImageStateDeregistered);
         }
-        if ([value isEqualToString:@"transient"]) {
-            return @(AWSEC2ImageStateTransient);
-        }
-        if ([value isEqualToString:@"failed"]) {
-            return @(AWSEC2ImageStateFailed);
-        }
-        if ([value isEqualToString:@"error"]) {
-            return @(AWSEC2ImageStateError);
-        }
         return @(AWSEC2ImageStateUnknown);
     } reverseBlock:^NSString *(NSNumber *value) {
         switch ([value integerValue]) {
-            case AWSEC2ImageStatePending:
-                return @"pending";
             case AWSEC2ImageStateAvailable:
                 return @"available";
-            case AWSEC2ImageStateInvalid:
-                return @"invalid";
             case AWSEC2ImageStateDeregistered:
                 return @"deregistered";
-            case AWSEC2ImageStateTransient:
-                return @"transient";
-            case AWSEC2ImageStateFailed:
-                return @"failed";
-            case AWSEC2ImageStateError:
-                return @"error";
+            case AWSEC2ImageStateUnknown:
             default:
                 return nil;
         }
@@ -6233,6 +4695,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"hvm";
             case AWSEC2VirtualizationTypeParavirtual:
                 return @"paravirtual";
+            case AWSEC2VirtualizationTypeUnknown:
             default:
                 return nil;
         }
@@ -6286,100 +4749,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 
 @end
 
-@implementation AWSEC2ImageDiskContainer
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"detail" : @"Description",
-             @"deviceName" : @"DeviceName",
-             @"format" : @"Format",
-             @"snapshotId" : @"SnapshotId",
-             @"url" : @"Url",
-             @"userBucket" : @"UserBucket",
-             };
-}
-
-+ (NSValueTransformer *)userBucketJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSEC2UserBucket class]];
-}
-
-@end
-
-@implementation AWSEC2ImportImageRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"architecture" : @"Architecture",
-             @"clientData" : @"ClientData",
-             @"clientToken" : @"ClientToken",
-             @"detail" : @"Description",
-             @"diskContainers" : @"DiskContainers",
-             @"dryRun" : @"DryRun",
-             @"hypervisor" : @"Hypervisor",
-             @"licenseType" : @"LicenseType",
-             @"platform" : @"Platform",
-             @"roleName" : @"RoleName",
-             };
-}
-
-+ (NSValueTransformer *)clientDataJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSEC2ClientData class]];
-}
-
-+ (NSValueTransformer *)diskContainersJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2ImageDiskContainer class]];
-}
-
-@end
-
-@implementation AWSEC2ImportImageResult
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"architecture" : @"Architecture",
-             @"detail" : @"Description",
-             @"hypervisor" : @"Hypervisor",
-             @"imageId" : @"ImageId",
-             @"importTaskId" : @"ImportTaskId",
-             @"licenseType" : @"LicenseType",
-             @"platform" : @"Platform",
-             @"progress" : @"Progress",
-             @"snapshotDetails" : @"SnapshotDetails",
-             @"status" : @"Status",
-             @"statusMessage" : @"StatusMessage",
-             };
-}
-
-+ (NSValueTransformer *)snapshotDetailsJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2SnapshotDetail class]];
-}
-
-@end
-
-@implementation AWSEC2ImportImageTask
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"architecture" : @"Architecture",
-             @"detail" : @"Description",
-             @"hypervisor" : @"Hypervisor",
-             @"imageId" : @"ImageId",
-             @"importTaskId" : @"ImportTaskId",
-             @"licenseType" : @"LicenseType",
-             @"platform" : @"Platform",
-             @"progress" : @"Progress",
-             @"snapshotDetails" : @"SnapshotDetails",
-             @"status" : @"Status",
-             @"statusMessage" : @"StatusMessage",
-             };
-}
-
-+ (NSValueTransformer *)snapshotDetailsJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2SnapshotDetail class]];
-}
-
-@end
-
 @implementation AWSEC2ImportInstanceLaunchSpecification
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
@@ -6413,6 +4782,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"i386";
             case AWSEC2ArchitectureValuesX86_64:
                 return @"x86_64";
+            case AWSEC2ArchitectureValuesUnknown:
             default:
                 return nil;
         }
@@ -6434,6 +4804,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"stop";
             case AWSEC2ShutdownBehaviorTerminate:
                 return @"terminate";
+            case AWSEC2ShutdownBehaviorUnknown:
             default:
                 return nil;
         }
@@ -6469,24 +4840,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         if ([value isEqualToString:@"m3.2xlarge"]) {
             return @(AWSEC2InstanceTypeM3_2xlarge);
         }
-        if ([value isEqualToString:@"m4.large"]) {
-            return @(AWSEC2InstanceTypeM4_large);
-        }
-        if ([value isEqualToString:@"m4.xlarge"]) {
-            return @(AWSEC2InstanceTypeM4_xlarge);
-        }
-        if ([value isEqualToString:@"m4.2xlarge"]) {
-            return @(AWSEC2InstanceTypeM4_2xlarge);
-        }
-        if ([value isEqualToString:@"m4.4xlarge"]) {
-            return @(AWSEC2InstanceTypeM4_4xlarge);
-        }
-        if ([value isEqualToString:@"m4.10xlarge"]) {
-            return @(AWSEC2InstanceTypeM4_10xlarge);
-        }
-        if ([value isEqualToString:@"t2.nano"]) {
-            return @(AWSEC2InstanceTypeT2_nano);
-        }
         if ([value isEqualToString:@"t2.micro"]) {
             return @(AWSEC2InstanceTypeT2_micro);
         }
@@ -6495,9 +4848,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         }
         if ([value isEqualToString:@"t2.medium"]) {
             return @(AWSEC2InstanceTypeT2_medium);
-        }
-        if ([value isEqualToString:@"t2.large"]) {
-            return @(AWSEC2InstanceTypeT2_large);
         }
         if ([value isEqualToString:@"m2.xlarge"]) {
             return @(AWSEC2InstanceTypeM2_xlarge);
@@ -6574,9 +4924,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         if ([value isEqualToString:@"g2.2xlarge"]) {
             return @(AWSEC2InstanceTypeG2_2xlarge);
         }
-        if ([value isEqualToString:@"g2.8xlarge"]) {
-            return @(AWSEC2InstanceTypeG2_8xlarge);
-        }
         if ([value isEqualToString:@"cg1.4xlarge"]) {
             return @(AWSEC2InstanceTypeCG1_4xlarge);
         }
@@ -6594,18 +4941,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         }
         if ([value isEqualToString:@"r3.8xlarge"]) {
             return @(AWSEC2InstanceTypeR3_8xlarge);
-        }
-        if ([value isEqualToString:@"d2.xlarge"]) {
-            return @(AWSEC2InstanceTypeD2_xlarge);
-        }
-        if ([value isEqualToString:@"d2.2xlarge"]) {
-            return @(AWSEC2InstanceTypeD2_2xlarge);
-        }
-        if ([value isEqualToString:@"d2.4xlarge"]) {
-            return @(AWSEC2InstanceTypeD2_4xlarge);
-        }
-        if ([value isEqualToString:@"d2.8xlarge"]) {
-            return @(AWSEC2InstanceTypeD2_8xlarge);
         }
         return @(AWSEC2InstanceTypeUnknown);
     } reverseBlock:^NSString *(NSNumber *value) {
@@ -6628,26 +4963,12 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"m3.xlarge";
             case AWSEC2InstanceTypeM3_2xlarge:
                 return @"m3.2xlarge";
-            case AWSEC2InstanceTypeM4_large:
-                return @"m4.large";
-            case AWSEC2InstanceTypeM4_xlarge:
-                return @"m4.xlarge";
-            case AWSEC2InstanceTypeM4_2xlarge:
-                return @"m4.2xlarge";
-            case AWSEC2InstanceTypeM4_4xlarge:
-                return @"m4.4xlarge";
-            case AWSEC2InstanceTypeM4_10xlarge:
-                return @"m4.10xlarge";
-            case AWSEC2InstanceTypeT2_nano:
-                return @"t2.nano";
             case AWSEC2InstanceTypeT2_micro:
                 return @"t2.micro";
             case AWSEC2InstanceTypeT2_small:
                 return @"t2.small";
             case AWSEC2InstanceTypeT2_medium:
                 return @"t2.medium";
-            case AWSEC2InstanceTypeT2_large:
-                return @"t2.large";
             case AWSEC2InstanceTypeM2_xlarge:
                 return @"m2.xlarge";
             case AWSEC2InstanceTypeM2_2xlarge:
@@ -6698,8 +5019,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"cc2.8xlarge";
             case AWSEC2InstanceTypeG2_2xlarge:
                 return @"g2.2xlarge";
-            case AWSEC2InstanceTypeG2_8xlarge:
-                return @"g2.8xlarge";
             case AWSEC2InstanceTypeCG1_4xlarge:
                 return @"cg1.4xlarge";
             case AWSEC2InstanceTypeR3_large:
@@ -6712,14 +5031,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"r3.4xlarge";
             case AWSEC2InstanceTypeR3_8xlarge:
                 return @"r3.8xlarge";
-            case AWSEC2InstanceTypeD2_xlarge:
-                return @"d2.xlarge";
-            case AWSEC2InstanceTypeD2_2xlarge:
-                return @"d2.2xlarge";
-            case AWSEC2InstanceTypeD2_4xlarge:
-                return @"d2.4xlarge";
-            case AWSEC2InstanceTypeD2_8xlarge:
-                return @"d2.8xlarge";
+            case AWSEC2InstanceTypeUnknown:
             default:
                 return nil;
         }
@@ -6758,7 +5070,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 
 + (NSValueTransformer *)platformJSONTransformer {
     return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^NSNumber *(NSString *value) {
-        if ([value isEqualToString:@"Windows"] || [value isEqualToString:@"windows"]) {
+        if ([value isEqualToString:@"Windows"]) {
             return @(AWSEC2PlatformValuesWindows);
         }
         return @(AWSEC2PlatformValuesUnknown);
@@ -6766,6 +5078,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         switch ([value integerValue]) {
             case AWSEC2PlatformValuesWindows:
                 return @"Windows";
+            case AWSEC2PlatformValuesUnknown:
             default:
                 return nil;
         }
@@ -6801,7 +5114,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 
 + (NSValueTransformer *)platformJSONTransformer {
     return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^NSNumber *(NSString *value) {
-        if ([value isEqualToString:@"Windows"] || [value isEqualToString:@"windows"]) {
+        if ([value isEqualToString:@"Windows"]) {
             return @(AWSEC2PlatformValuesWindows);
         }
         return @(AWSEC2PlatformValuesUnknown);
@@ -6809,6 +5122,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         switch ([value integerValue]) {
             case AWSEC2PlatformValuesWindows:
                 return @"Windows";
+            case AWSEC2PlatformValuesUnknown:
             default:
                 return nil;
         }
@@ -6864,61 +5178,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
              @"keyFingerprint" : @"KeyFingerprint",
              @"keyName" : @"KeyName",
              };
-}
-
-@end
-
-@implementation AWSEC2ImportSnapshotRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"clientData" : @"ClientData",
-             @"clientToken" : @"ClientToken",
-             @"detail" : @"Description",
-             @"diskContainer" : @"DiskContainer",
-             @"dryRun" : @"DryRun",
-             @"roleName" : @"RoleName",
-             };
-}
-
-+ (NSValueTransformer *)clientDataJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSEC2ClientData class]];
-}
-
-+ (NSValueTransformer *)diskContainerJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSEC2SnapshotDiskContainer class]];
-}
-
-@end
-
-@implementation AWSEC2ImportSnapshotResult
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"detail" : @"Description",
-             @"importTaskId" : @"ImportTaskId",
-             @"snapshotTaskDetail" : @"SnapshotTaskDetail",
-             };
-}
-
-+ (NSValueTransformer *)snapshotTaskDetailJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSEC2SnapshotTaskDetail class]];
-}
-
-@end
-
-@implementation AWSEC2ImportSnapshotTask
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"detail" : @"Description",
-             @"importTaskId" : @"ImportTaskId",
-             @"snapshotTaskDetail" : @"SnapshotTaskDetail",
-             };
-}
-
-+ (NSValueTransformer *)snapshotTaskDetailJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSEC2SnapshotTaskDetail class]];
 }
 
 @end
@@ -7040,6 +5299,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"i386";
             case AWSEC2ArchitectureValuesX86_64:
                 return @"x86_64";
+            case AWSEC2ArchitectureValuesUnknown:
             default:
                 return nil;
         }
@@ -7065,6 +5325,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"ovm";
             case AWSEC2HypervisorTypeXen:
                 return @"xen";
+            case AWSEC2HypervisorTypeUnknown:
             default:
                 return nil;
         }
@@ -7080,16 +5341,12 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         if ([value isEqualToString:@"spot"]) {
             return @(AWSEC2InstanceLifecycleTypeSpot);
         }
-        if ([value isEqualToString:@"scheduled"]) {
-            return @(AWSEC2InstanceLifecycleTypeScheduled);
-        }
         return @(AWSEC2InstanceLifecycleTypeUnknown);
     } reverseBlock:^NSString *(NSNumber *value) {
         switch ([value integerValue]) {
             case AWSEC2InstanceLifecycleTypeSpot:
                 return @"spot";
-            case AWSEC2InstanceLifecycleTypeScheduled:
-                return @"scheduled";
+            case AWSEC2InstanceLifecycleTypeUnknown:
             default:
                 return nil;
         }
@@ -7125,24 +5382,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         if ([value isEqualToString:@"m3.2xlarge"]) {
             return @(AWSEC2InstanceTypeM3_2xlarge);
         }
-        if ([value isEqualToString:@"m4.large"]) {
-            return @(AWSEC2InstanceTypeM4_large);
-        }
-        if ([value isEqualToString:@"m4.xlarge"]) {
-            return @(AWSEC2InstanceTypeM4_xlarge);
-        }
-        if ([value isEqualToString:@"m4.2xlarge"]) {
-            return @(AWSEC2InstanceTypeM4_2xlarge);
-        }
-        if ([value isEqualToString:@"m4.4xlarge"]) {
-            return @(AWSEC2InstanceTypeM4_4xlarge);
-        }
-        if ([value isEqualToString:@"m4.10xlarge"]) {
-            return @(AWSEC2InstanceTypeM4_10xlarge);
-        }
-        if ([value isEqualToString:@"t2.nano"]) {
-            return @(AWSEC2InstanceTypeT2_nano);
-        }
         if ([value isEqualToString:@"t2.micro"]) {
             return @(AWSEC2InstanceTypeT2_micro);
         }
@@ -7151,9 +5390,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         }
         if ([value isEqualToString:@"t2.medium"]) {
             return @(AWSEC2InstanceTypeT2_medium);
-        }
-        if ([value isEqualToString:@"t2.large"]) {
-            return @(AWSEC2InstanceTypeT2_large);
         }
         if ([value isEqualToString:@"m2.xlarge"]) {
             return @(AWSEC2InstanceTypeM2_xlarge);
@@ -7230,9 +5466,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         if ([value isEqualToString:@"g2.2xlarge"]) {
             return @(AWSEC2InstanceTypeG2_2xlarge);
         }
-        if ([value isEqualToString:@"g2.8xlarge"]) {
-            return @(AWSEC2InstanceTypeG2_8xlarge);
-        }
         if ([value isEqualToString:@"cg1.4xlarge"]) {
             return @(AWSEC2InstanceTypeCG1_4xlarge);
         }
@@ -7250,18 +5483,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         }
         if ([value isEqualToString:@"r3.8xlarge"]) {
             return @(AWSEC2InstanceTypeR3_8xlarge);
-        }
-        if ([value isEqualToString:@"d2.xlarge"]) {
-            return @(AWSEC2InstanceTypeD2_xlarge);
-        }
-        if ([value isEqualToString:@"d2.2xlarge"]) {
-            return @(AWSEC2InstanceTypeD2_2xlarge);
-        }
-        if ([value isEqualToString:@"d2.4xlarge"]) {
-            return @(AWSEC2InstanceTypeD2_4xlarge);
-        }
-        if ([value isEqualToString:@"d2.8xlarge"]) {
-            return @(AWSEC2InstanceTypeD2_8xlarge);
         }
         return @(AWSEC2InstanceTypeUnknown);
     } reverseBlock:^NSString *(NSNumber *value) {
@@ -7284,26 +5505,12 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"m3.xlarge";
             case AWSEC2InstanceTypeM3_2xlarge:
                 return @"m3.2xlarge";
-            case AWSEC2InstanceTypeM4_large:
-                return @"m4.large";
-            case AWSEC2InstanceTypeM4_xlarge:
-                return @"m4.xlarge";
-            case AWSEC2InstanceTypeM4_2xlarge:
-                return @"m4.2xlarge";
-            case AWSEC2InstanceTypeM4_4xlarge:
-                return @"m4.4xlarge";
-            case AWSEC2InstanceTypeM4_10xlarge:
-                return @"m4.10xlarge";
-            case AWSEC2InstanceTypeT2_nano:
-                return @"t2.nano";
             case AWSEC2InstanceTypeT2_micro:
                 return @"t2.micro";
             case AWSEC2InstanceTypeT2_small:
                 return @"t2.small";
             case AWSEC2InstanceTypeT2_medium:
                 return @"t2.medium";
-            case AWSEC2InstanceTypeT2_large:
-                return @"t2.large";
             case AWSEC2InstanceTypeM2_xlarge:
                 return @"m2.xlarge";
             case AWSEC2InstanceTypeM2_2xlarge:
@@ -7354,8 +5561,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"cc2.8xlarge";
             case AWSEC2InstanceTypeG2_2xlarge:
                 return @"g2.2xlarge";
-            case AWSEC2InstanceTypeG2_8xlarge:
-                return @"g2.8xlarge";
             case AWSEC2InstanceTypeCG1_4xlarge:
                 return @"cg1.4xlarge";
             case AWSEC2InstanceTypeR3_large:
@@ -7368,14 +5573,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"r3.4xlarge";
             case AWSEC2InstanceTypeR3_8xlarge:
                 return @"r3.8xlarge";
-            case AWSEC2InstanceTypeD2_xlarge:
-                return @"d2.xlarge";
-            case AWSEC2InstanceTypeD2_2xlarge:
-                return @"d2.2xlarge";
-            case AWSEC2InstanceTypeD2_4xlarge:
-                return @"d2.4xlarge";
-            case AWSEC2InstanceTypeD2_8xlarge:
-                return @"d2.8xlarge";
+            case AWSEC2InstanceTypeUnknown:
             default:
                 return nil;
         }
@@ -7404,7 +5602,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 
 + (NSValueTransformer *)platformJSONTransformer {
     return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^NSNumber *(NSString *value) {
-        if ([value isEqualToString:@"Windows"] || [value isEqualToString:@"windows"]) {
+        if ([value isEqualToString:@"Windows"] || [value isEqualToString:@"windows"]) { //special case
             return @(AWSEC2PlatformValuesWindows);
         }
         return @(AWSEC2PlatformValuesUnknown);
@@ -7412,6 +5610,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         switch ([value integerValue]) {
             case AWSEC2PlatformValuesWindows:
                 return @"Windows";
+            case AWSEC2PlatformValuesUnknown:
             default:
                 return nil;
         }
@@ -7437,6 +5636,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"ebs";
             case AWSEC2DeviceTypeInstanceStore:
                 return @"instance-store";
+            case AWSEC2DeviceTypeUnknown:
             default:
                 return nil;
         }
@@ -7474,6 +5674,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"hvm";
             case AWSEC2VirtualizationTypeParavirtual:
                 return @"paravirtual";
+            case AWSEC2VirtualizationTypeUnknown:
             default:
                 return nil;
         }
@@ -7589,18 +5790,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 
 @end
 
-@implementation AWSEC2InstanceCapacity
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"availableCapacity" : @"AvailableCapacity",
-             @"instanceType" : @"InstanceType",
-             @"totalCapacity" : @"TotalCapacity",
-             };
-}
-
-@end
-
 @implementation AWSEC2InstanceCount
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
@@ -7635,6 +5824,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"cancelled";
             case AWSEC2ListingStatePending:
                 return @"pending";
+            case AWSEC2ListingStateUnknown:
             default:
                 return nil;
         }
@@ -7672,6 +5862,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"vmware";
             case AWSEC2ExportEnvironmentMicrosoft:
                 return @"microsoft";
+            case AWSEC2ExportEnvironmentUnknown:
             default:
                 return nil;
         }
@@ -7757,6 +5948,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"in-use";
             case AWSEC2NetworkInterfaceStatusDetaching:
                 return @"detaching";
+            case AWSEC2NetworkInterfaceStatusUnknown:
             default:
                 return nil;
         }
@@ -7822,6 +6014,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"detaching";
             case AWSEC2AttachmentStatusDetached:
                 return @"detached";
+            case AWSEC2AttachmentStatusUnknown:
             default:
                 return nil;
         }
@@ -7914,6 +6107,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"stopping";
             case AWSEC2InstanceStateNameStopped:
                 return @"stopped";
+            case AWSEC2InstanceStateNameUnknown:
             default:
                 return nil;
         }
@@ -8001,6 +6195,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         switch ([value integerValue]) {
             case AWSEC2StatusNameReachability:
                 return @"reachability";
+            case AWSEC2StatusNameUnknown:
             default:
                 return nil;
         }
@@ -8018,9 +6213,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         if ([value isEqualToString:@"insufficient-data"]) {
             return @(AWSEC2StatusTypeInsufficientData);
         }
-        if ([value isEqualToString:@"initializing"]) {
-            return @(AWSEC2StatusTypeInitializing);
-        }
         return @(AWSEC2StatusTypeUnknown);
     } reverseBlock:^NSString *(NSNumber *value) {
         switch ([value integerValue]) {
@@ -8030,8 +6222,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"failed";
             case AWSEC2StatusTypeInsufficientData:
                 return @"insufficient-data";
-            case AWSEC2StatusTypeInitializing:
-                return @"initializing";
+            case AWSEC2StatusTypeUnknown:
             default:
                 return nil;
         }
@@ -8081,6 +6272,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"instance-retirement";
             case AWSEC2EventCodeInstanceStop:
                 return @"instance-stop";
+            case AWSEC2EventCodeUnknown:
             default:
                 return nil;
         }
@@ -8132,9 +6324,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         if ([value isEqualToString:@"not-applicable"]) {
             return @(AWSEC2SummaryStatusNotApplicable);
         }
-        if ([value isEqualToString:@"initializing"]) {
-            return @(AWSEC2SummaryStatusInitializing);
-        }
         return @(AWSEC2SummaryStatusUnknown);
     } reverseBlock:^NSString *(NSNumber *value) {
         switch ([value integerValue]) {
@@ -8146,8 +6335,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"insufficient-data";
             case AWSEC2SummaryStatusNotApplicable:
                 return @"not-applicable";
-            case AWSEC2SummaryStatusInitializing:
-                return @"initializing";
+            case AWSEC2SummaryStatusUnknown:
             default:
                 return nil;
         }
@@ -8210,6 +6398,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"detaching";
             case AWSEC2AttachmentStatusDetached:
                 return @"detached";
+            case AWSEC2AttachmentStatusUnknown:
             default:
                 return nil;
         }
@@ -8225,7 +6414,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
              @"fromPort" : @"FromPort",
              @"ipProtocol" : @"IpProtocol",
              @"ipRanges" : @"IpRanges",
-             @"prefixListIds" : @"PrefixListIds",
              @"toPort" : @"ToPort",
              @"userIdGroupPairs" : @"UserIdGroupPairs",
              };
@@ -8233,10 +6421,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 
 + (NSValueTransformer *)ipRangesJSONTransformer {
 	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2IpRange class]];
-}
-
-+ (NSValueTransformer *)prefixListIdsJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2PrefixListId class]];
 }
 
 + (NSValueTransformer *)userIdGroupPairsJSONTransformer {
@@ -8308,6 +6492,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         switch ([value integerValue]) {
             case AWSEC2PermissionGroupAll:
                 return @"all";
+            case AWSEC2PermissionGroupUnknown:
             default:
                 return nil;
         }
@@ -8394,24 +6579,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         if ([value isEqualToString:@"m3.2xlarge"]) {
             return @(AWSEC2InstanceTypeM3_2xlarge);
         }
-        if ([value isEqualToString:@"m4.large"]) {
-            return @(AWSEC2InstanceTypeM4_large);
-        }
-        if ([value isEqualToString:@"m4.xlarge"]) {
-            return @(AWSEC2InstanceTypeM4_xlarge);
-        }
-        if ([value isEqualToString:@"m4.2xlarge"]) {
-            return @(AWSEC2InstanceTypeM4_2xlarge);
-        }
-        if ([value isEqualToString:@"m4.4xlarge"]) {
-            return @(AWSEC2InstanceTypeM4_4xlarge);
-        }
-        if ([value isEqualToString:@"m4.10xlarge"]) {
-            return @(AWSEC2InstanceTypeM4_10xlarge);
-        }
-        if ([value isEqualToString:@"t2.nano"]) {
-            return @(AWSEC2InstanceTypeT2_nano);
-        }
         if ([value isEqualToString:@"t2.micro"]) {
             return @(AWSEC2InstanceTypeT2_micro);
         }
@@ -8420,9 +6587,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         }
         if ([value isEqualToString:@"t2.medium"]) {
             return @(AWSEC2InstanceTypeT2_medium);
-        }
-        if ([value isEqualToString:@"t2.large"]) {
-            return @(AWSEC2InstanceTypeT2_large);
         }
         if ([value isEqualToString:@"m2.xlarge"]) {
             return @(AWSEC2InstanceTypeM2_xlarge);
@@ -8499,9 +6663,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         if ([value isEqualToString:@"g2.2xlarge"]) {
             return @(AWSEC2InstanceTypeG2_2xlarge);
         }
-        if ([value isEqualToString:@"g2.8xlarge"]) {
-            return @(AWSEC2InstanceTypeG2_8xlarge);
-        }
         if ([value isEqualToString:@"cg1.4xlarge"]) {
             return @(AWSEC2InstanceTypeCG1_4xlarge);
         }
@@ -8519,18 +6680,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         }
         if ([value isEqualToString:@"r3.8xlarge"]) {
             return @(AWSEC2InstanceTypeR3_8xlarge);
-        }
-        if ([value isEqualToString:@"d2.xlarge"]) {
-            return @(AWSEC2InstanceTypeD2_xlarge);
-        }
-        if ([value isEqualToString:@"d2.2xlarge"]) {
-            return @(AWSEC2InstanceTypeD2_2xlarge);
-        }
-        if ([value isEqualToString:@"d2.4xlarge"]) {
-            return @(AWSEC2InstanceTypeD2_4xlarge);
-        }
-        if ([value isEqualToString:@"d2.8xlarge"]) {
-            return @(AWSEC2InstanceTypeD2_8xlarge);
         }
         return @(AWSEC2InstanceTypeUnknown);
     } reverseBlock:^NSString *(NSNumber *value) {
@@ -8553,26 +6702,12 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"m3.xlarge";
             case AWSEC2InstanceTypeM3_2xlarge:
                 return @"m3.2xlarge";
-            case AWSEC2InstanceTypeM4_large:
-                return @"m4.large";
-            case AWSEC2InstanceTypeM4_xlarge:
-                return @"m4.xlarge";
-            case AWSEC2InstanceTypeM4_2xlarge:
-                return @"m4.2xlarge";
-            case AWSEC2InstanceTypeM4_4xlarge:
-                return @"m4.4xlarge";
-            case AWSEC2InstanceTypeM4_10xlarge:
-                return @"m4.10xlarge";
-            case AWSEC2InstanceTypeT2_nano:
-                return @"t2.nano";
             case AWSEC2InstanceTypeT2_micro:
                 return @"t2.micro";
             case AWSEC2InstanceTypeT2_small:
                 return @"t2.small";
             case AWSEC2InstanceTypeT2_medium:
                 return @"t2.medium";
-            case AWSEC2InstanceTypeT2_large:
-                return @"t2.large";
             case AWSEC2InstanceTypeM2_xlarge:
                 return @"m2.xlarge";
             case AWSEC2InstanceTypeM2_2xlarge:
@@ -8623,8 +6758,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"cc2.8xlarge";
             case AWSEC2InstanceTypeG2_2xlarge:
                 return @"g2.2xlarge";
-            case AWSEC2InstanceTypeG2_8xlarge:
-                return @"g2.8xlarge";
             case AWSEC2InstanceTypeCG1_4xlarge:
                 return @"cg1.4xlarge";
             case AWSEC2InstanceTypeR3_large:
@@ -8637,14 +6770,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"r3.4xlarge";
             case AWSEC2InstanceTypeR3_8xlarge:
                 return @"r3.8xlarge";
-            case AWSEC2InstanceTypeD2_xlarge:
-                return @"d2.xlarge";
-            case AWSEC2InstanceTypeD2_2xlarge:
-                return @"d2.2xlarge";
-            case AWSEC2InstanceTypeD2_4xlarge:
-                return @"d2.4xlarge";
-            case AWSEC2InstanceTypeD2_8xlarge:
-                return @"d2.8xlarge";
+            case AWSEC2InstanceTypeUnknown:
             default:
                 return nil;
         }
@@ -8665,64 +6791,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 
 + (NSValueTransformer *)securityGroupsJSONTransformer {
 	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2GroupIdentifier class]];
-}
-
-@end
-
-@implementation AWSEC2ModifyHostsRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"autoPlacement" : @"AutoPlacement",
-             @"hostIds" : @"HostIds",
-             };
-}
-
-+ (NSValueTransformer *)autoPlacementJSONTransformer {
-    return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^NSNumber *(NSString *value) {
-        if ([value isEqualToString:@"on"]) {
-            return @(AWSEC2AutoPlacementOn);
-        }
-        if ([value isEqualToString:@"off"]) {
-            return @(AWSEC2AutoPlacementOff);
-        }
-        return @(AWSEC2AutoPlacementUnknown);
-    } reverseBlock:^NSString *(NSNumber *value) {
-        switch ([value integerValue]) {
-            case AWSEC2AutoPlacementOn:
-                return @"on";
-            case AWSEC2AutoPlacementOff:
-                return @"off";
-            default:
-                return nil;
-        }
-    }];
-}
-
-@end
-
-@implementation AWSEC2ModifyHostsResult
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"successful" : @"Successful",
-             @"unsuccessful" : @"Unsuccessful",
-             };
-}
-
-+ (NSValueTransformer *)unsuccessfulJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2UnsuccessfulItem class]];
-}
-
-@end
-
-@implementation AWSEC2ModifyIdFormatRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"resource" : @"Resource",
-             @"useLongIds" : @"UseLongIds",
-             };
 }
 
 @end
@@ -8750,27 +6818,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 
 + (NSValueTransformer *)launchPermissionJSONTransformer {
 	return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSEC2LaunchPermissionModifications class]];
-}
-
-+ (NSValueTransformer *)operationTypeJSONTransformer {
-    return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^NSNumber *(NSString *value) {
-        if ([value isEqualToString:@"add"]) {
-            return @(AWSEC2OperationTypeAdd);
-        }
-        if ([value isEqualToString:@"remove"]) {
-            return @(AWSEC2OperationTypeRemove);
-        }
-        return @(AWSEC2OperationTypeUnknown);
-    } reverseBlock:^NSString *(NSNumber *value) {
-        switch ([value integerValue]) {
-            case AWSEC2OperationTypeAdd:
-                return @"add";
-            case AWSEC2OperationTypeRemove:
-                return @"remove";
-            default:
-                return nil;
-        }
-    }];
 }
 
 @end
@@ -8867,6 +6914,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"ebsOptimized";
             case AWSEC2InstanceAttributeNameSriovNetSupport:
                 return @"sriovNetSupport";
+            case AWSEC2InstanceAttributeNameUnknown:
             default:
                 return nil;
         }
@@ -8911,71 +6959,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 
 + (NSValueTransformer *)userDataJSONTransformer {
 	return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSEC2BlobAttributeValue class]];
-}
-
-@end
-
-@implementation AWSEC2ModifyInstancePlacementRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"affinity" : @"Affinity",
-             @"hostId" : @"HostId",
-             @"instanceId" : @"InstanceId",
-             @"tenancy" : @"Tenancy",
-             };
-}
-
-+ (NSValueTransformer *)affinityJSONTransformer {
-    return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^NSNumber *(NSString *value) {
-        if ([value isEqualToString:@"default"]) {
-            return @(AWSEC2AffinityDefault);
-        }
-        if ([value isEqualToString:@"host"]) {
-            return @(AWSEC2AffinityHost);
-        }
-        return @(AWSEC2AffinityUnknown);
-    } reverseBlock:^NSString *(NSNumber *value) {
-        switch ([value integerValue]) {
-            case AWSEC2AffinityDefault:
-                return @"default";
-            case AWSEC2AffinityHost:
-                return @"host";
-            default:
-                return nil;
-        }
-    }];
-}
-
-+ (NSValueTransformer *)tenancyJSONTransformer {
-    return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^NSNumber *(NSString *value) {
-        if ([value isEqualToString:@"dedicated"]) {
-            return @(AWSEC2HostTenancyDedicated);
-        }
-        if ([value isEqualToString:@"host"]) {
-            return @(AWSEC2HostTenancyHost);
-        }
-        return @(AWSEC2HostTenancyUnknown);
-    } reverseBlock:^NSString *(NSNumber *value) {
-        switch ([value integerValue]) {
-            case AWSEC2HostTenancyDedicated:
-                return @"dedicated";
-            case AWSEC2HostTenancyHost:
-                return @"host";
-            default:
-                return nil;
-        }
-    }];
-}
-
-@end
-
-@implementation AWSEC2ModifyInstancePlacementResult
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"returned" : @"Return",
-             };
 }
 
 @end
@@ -9062,6 +7045,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"productCodes";
             case AWSEC2SnapshotAttributeNameCreateVolumePermission:
                 return @"createVolumePermission";
+            case AWSEC2SnapshotAttributeNameUnknown:
             default:
                 return nil;
         }
@@ -9070,70 +7054,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 
 + (NSValueTransformer *)createVolumePermissionJSONTransformer {
 	return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSEC2CreateVolumePermissionModifications class]];
-}
-
-+ (NSValueTransformer *)operationTypeJSONTransformer {
-    return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^NSNumber *(NSString *value) {
-        if ([value isEqualToString:@"add"]) {
-            return @(AWSEC2OperationTypeAdd);
-        }
-        if ([value isEqualToString:@"remove"]) {
-            return @(AWSEC2OperationTypeRemove);
-        }
-        return @(AWSEC2OperationTypeUnknown);
-    } reverseBlock:^NSString *(NSNumber *value) {
-        switch ([value integerValue]) {
-            case AWSEC2OperationTypeAdd:
-                return @"add";
-            case AWSEC2OperationTypeRemove:
-                return @"remove";
-            default:
-                return nil;
-        }
-    }];
-}
-
-@end
-
-@implementation AWSEC2ModifySpotFleetRequestRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"excessCapacityTerminationPolicy" : @"ExcessCapacityTerminationPolicy",
-             @"spotFleetRequestId" : @"SpotFleetRequestId",
-             @"targetCapacity" : @"TargetCapacity",
-             };
-}
-
-+ (NSValueTransformer *)excessCapacityTerminationPolicyJSONTransformer {
-    return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^NSNumber *(NSString *value) {
-        if ([value isEqualToString:@"noTermination"]) {
-            return @(AWSEC2ExcessCapacityTerminationPolicyNoTermination);
-        }
-        if ([value isEqualToString:@"default"]) {
-            return @(AWSEC2ExcessCapacityTerminationPolicyDefault);
-        }
-        return @(AWSEC2ExcessCapacityTerminationPolicyUnknown);
-    } reverseBlock:^NSString *(NSNumber *value) {
-        switch ([value integerValue]) {
-            case AWSEC2ExcessCapacityTerminationPolicyNoTermination:
-                return @"noTermination";
-            case AWSEC2ExcessCapacityTerminationPolicyDefault:
-                return @"default";
-            default:
-                return nil;
-        }
-    }];
-}
-
-@end
-
-@implementation AWSEC2ModifySpotFleetRequestResponse
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"returned" : @"Return",
-             };
 }
 
 @end
@@ -9189,71 +7109,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 
 @end
 
-@implementation AWSEC2ModifyVpcEndpointRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"addRouteTableIds" : @"AddRouteTableIds",
-             @"dryRun" : @"DryRun",
-             @"policyDocument" : @"PolicyDocument",
-             @"removeRouteTableIds" : @"RemoveRouteTableIds",
-             @"resetPolicy" : @"ResetPolicy",
-             @"vpcEndpointId" : @"VpcEndpointId",
-             };
-}
-
-@end
-
-@implementation AWSEC2ModifyVpcEndpointResult
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"returned" : @"Return",
-             };
-}
-
-@end
-
-@implementation AWSEC2ModifyVpcPeeringConnectionOptionsRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"accepterPeeringConnectionOptions" : @"AccepterPeeringConnectionOptions",
-             @"dryRun" : @"DryRun",
-             @"requesterPeeringConnectionOptions" : @"RequesterPeeringConnectionOptions",
-             @"vpcPeeringConnectionId" : @"VpcPeeringConnectionId",
-             };
-}
-
-+ (NSValueTransformer *)accepterPeeringConnectionOptionsJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSEC2PeeringConnectionOptionsRequest class]];
-}
-
-+ (NSValueTransformer *)requesterPeeringConnectionOptionsJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSEC2PeeringConnectionOptionsRequest class]];
-}
-
-@end
-
-@implementation AWSEC2ModifyVpcPeeringConnectionOptionsResult
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"accepterPeeringConnectionOptions" : @"AccepterPeeringConnectionOptions",
-             @"requesterPeeringConnectionOptions" : @"RequesterPeeringConnectionOptions",
-             };
-}
-
-+ (NSValueTransformer *)accepterPeeringConnectionOptionsJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSEC2PeeringConnectionOptions class]];
-}
-
-+ (NSValueTransformer *)requesterPeeringConnectionOptionsJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSEC2PeeringConnectionOptions class]];
-}
-
-@end
-
 @implementation AWSEC2MonitorInstancesRequest
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
@@ -9292,9 +7147,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         if ([value isEqualToString:@"disabled"]) {
             return @(AWSEC2MonitoringStateDisabled);
         }
-        if ([value isEqualToString:@"disabling"]) {
-            return @(AWSEC2MonitoringStateDisabling);
-        }
         if ([value isEqualToString:@"enabled"]) {
             return @(AWSEC2MonitoringStateEnabled);
         }
@@ -9306,183 +7158,15 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         switch ([value integerValue]) {
             case AWSEC2MonitoringStateDisabled:
                 return @"disabled";
-            case AWSEC2MonitoringStateDisabling:
-                return @"disabling";
             case AWSEC2MonitoringStateEnabled:
                 return @"enabled";
             case AWSEC2MonitoringStatePending:
                 return @"pending";
+            case AWSEC2MonitoringStateUnknown:
             default:
                 return nil;
         }
     }];
-}
-
-@end
-
-@implementation AWSEC2MoveAddressToVpcRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"dryRun" : @"DryRun",
-             @"publicIp" : @"PublicIp",
-             };
-}
-
-@end
-
-@implementation AWSEC2MoveAddressToVpcResult
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"allocationId" : @"AllocationId",
-             @"status" : @"Status",
-             };
-}
-
-+ (NSValueTransformer *)statusJSONTransformer {
-    return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^NSNumber *(NSString *value) {
-        if ([value isEqualToString:@"MoveInProgress"]) {
-            return @(AWSEC2StatusMoveInProgress);
-        }
-        if ([value isEqualToString:@"InVpc"]) {
-            return @(AWSEC2StatusInVpc);
-        }
-        if ([value isEqualToString:@"InClassic"]) {
-            return @(AWSEC2StatusInClassic);
-        }
-        return @(AWSEC2StatusUnknown);
-    } reverseBlock:^NSString *(NSNumber *value) {
-        switch ([value integerValue]) {
-            case AWSEC2StatusMoveInProgress:
-                return @"MoveInProgress";
-            case AWSEC2StatusInVpc:
-                return @"InVpc";
-            case AWSEC2StatusInClassic:
-                return @"InClassic";
-            default:
-                return nil;
-        }
-    }];
-}
-
-@end
-
-@implementation AWSEC2MovingAddressStatus
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"moveStatus" : @"MoveStatus",
-             @"publicIp" : @"PublicIp",
-             };
-}
-
-+ (NSValueTransformer *)moveStatusJSONTransformer {
-    return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^NSNumber *(NSString *value) {
-        if ([value isEqualToString:@"movingToVpc"]) {
-            return @(AWSEC2MoveStatusMovingToVpc);
-        }
-        if ([value isEqualToString:@"restoringToClassic"]) {
-            return @(AWSEC2MoveStatusRestoringToClassic);
-        }
-        return @(AWSEC2MoveStatusUnknown);
-    } reverseBlock:^NSString *(NSNumber *value) {
-        switch ([value integerValue]) {
-            case AWSEC2MoveStatusMovingToVpc:
-                return @"movingToVpc";
-            case AWSEC2MoveStatusRestoringToClassic:
-                return @"restoringToClassic";
-            default:
-                return nil;
-        }
-    }];
-}
-
-@end
-
-@implementation AWSEC2NatGateway
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"createTime" : @"CreateTime",
-             @"deleteTime" : @"DeleteTime",
-             @"failureCode" : @"FailureCode",
-             @"failureMessage" : @"FailureMessage",
-             @"natGatewayAddresses" : @"NatGatewayAddresses",
-             @"natGatewayId" : @"NatGatewayId",
-             @"state" : @"State",
-             @"subnetId" : @"SubnetId",
-             @"vpcId" : @"VpcId",
-             };
-}
-
-+ (NSValueTransformer *)createTimeJSONTransformer {
-	return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSString *str) {
-        return [NSDate aws_dateFromString:str];
-    } reverseBlock:^id(NSDate *date) {
-        return [date aws_stringValue:AWSDateISO8601DateFormat1];
-    }];
-}
-
-+ (NSValueTransformer *)deleteTimeJSONTransformer {
-	return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSString *str) {
-        return [NSDate aws_dateFromString:str];
-    } reverseBlock:^id(NSDate *date) {
-        return [date aws_stringValue:AWSDateISO8601DateFormat1];
-    }];
-}
-
-+ (NSValueTransformer *)natGatewayAddressesJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2NatGatewayAddress class]];
-}
-
-+ (NSValueTransformer *)stateJSONTransformer {
-    return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^NSNumber *(NSString *value) {
-        if ([value isEqualToString:@"pending"]) {
-            return @(AWSEC2NatGatewayStatePending);
-        }
-        if ([value isEqualToString:@"failed"]) {
-            return @(AWSEC2NatGatewayStateFailed);
-        }
-        if ([value isEqualToString:@"available"]) {
-            return @(AWSEC2NatGatewayStateAvailable);
-        }
-        if ([value isEqualToString:@"deleting"]) {
-            return @(AWSEC2NatGatewayStateDeleting);
-        }
-        if ([value isEqualToString:@"deleted"]) {
-            return @(AWSEC2NatGatewayStateDeleted);
-        }
-        return @(AWSEC2NatGatewayStateUnknown);
-    } reverseBlock:^NSString *(NSNumber *value) {
-        switch ([value integerValue]) {
-            case AWSEC2NatGatewayStatePending:
-                return @"pending";
-            case AWSEC2NatGatewayStateFailed:
-                return @"failed";
-            case AWSEC2NatGatewayStateAvailable:
-                return @"available";
-            case AWSEC2NatGatewayStateDeleting:
-                return @"deleting";
-            case AWSEC2NatGatewayStateDeleted:
-                return @"deleted";
-            default:
-                return nil;
-        }
-    }];
-}
-
-@end
-
-@implementation AWSEC2NatGatewayAddress
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"allocationId" : @"AllocationId",
-             @"networkInterfaceId" : @"NetworkInterfaceId",
-             @"privateIp" : @"PrivateIp",
-             @"publicIp" : @"PublicIp",
-             };
 }
 
 @end
@@ -9563,6 +7247,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"allow";
             case AWSEC2RuleActionDeny:
                 return @"deny";
+            case AWSEC2RuleActionUnknown:
             default:
                 return nil;
         }
@@ -9580,7 +7265,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
              @"availabilityZone" : @"AvailabilityZone",
              @"detail" : @"Description",
              @"groups" : @"Groups",
-             @"interfaceType" : @"InterfaceType",
              @"macAddress" : @"MacAddress",
              @"networkInterfaceId" : @"NetworkInterfaceId",
              @"ownerId" : @"OwnerId",
@@ -9607,27 +7291,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 
 + (NSValueTransformer *)groupsJSONTransformer {
 	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2GroupIdentifier class]];
-}
-
-+ (NSValueTransformer *)interfaceTypeJSONTransformer {
-    return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^NSNumber *(NSString *value) {
-        if ([value isEqualToString:@"interface"]) {
-            return @(AWSEC2NetworkInterfaceTypeInterface);
-        }
-        if ([value isEqualToString:@"natGateway"]) {
-            return @(AWSEC2NetworkInterfaceTypeNatGateway);
-        }
-        return @(AWSEC2NetworkInterfaceTypeUnknown);
-    } reverseBlock:^NSString *(NSNumber *value) {
-        switch ([value integerValue]) {
-            case AWSEC2NetworkInterfaceTypeInterface:
-                return @"interface";
-            case AWSEC2NetworkInterfaceTypeNatGateway:
-                return @"natGateway";
-            default:
-                return nil;
-        }
-    }];
 }
 
 + (NSValueTransformer *)privateIpAddressesJSONTransformer {
@@ -9659,6 +7322,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"in-use";
             case AWSEC2NetworkInterfaceStatusDetaching:
                 return @"detaching";
+            case AWSEC2NetworkInterfaceStatusUnknown:
             default:
                 return nil;
         }
@@ -9732,6 +7396,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"detaching";
             case AWSEC2AttachmentStatusDetached:
                 return @"detached";
+            case AWSEC2AttachmentStatusUnknown:
             default:
                 return nil;
         }
@@ -9768,36 +7433,12 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 
 @end
 
-@implementation AWSEC2PeeringConnectionOptions
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"allowEgressFromLocalClassicLinkToRemoteVpc" : @"AllowEgressFromLocalClassicLinkToRemoteVpc",
-             @"allowEgressFromLocalVpcToRemoteClassicLink" : @"AllowEgressFromLocalVpcToRemoteClassicLink",
-             };
-}
-
-@end
-
-@implementation AWSEC2PeeringConnectionOptionsRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"allowEgressFromLocalClassicLinkToRemoteVpc" : @"AllowEgressFromLocalClassicLinkToRemoteVpc",
-             @"allowEgressFromLocalVpcToRemoteClassicLink" : @"AllowEgressFromLocalVpcToRemoteClassicLink",
-             };
-}
-
-@end
-
 @implementation AWSEC2Placement
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
 	return @{
-             @"affinity" : @"Affinity",
              @"availabilityZone" : @"AvailabilityZone",
              @"groupName" : @"GroupName",
-             @"hostId" : @"HostId",
              @"tenancy" : @"Tenancy",
              };
 }
@@ -9810,9 +7451,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         if ([value isEqualToString:@"dedicated"]) {
             return @(AWSEC2TenancyDedicated);
         }
-        if ([value isEqualToString:@"host"]) {
-            return @(AWSEC2TenancyHost);
-        }
         return @(AWSEC2TenancyUnknown);
     } reverseBlock:^NSString *(NSNumber *value) {
         switch ([value integerValue]) {
@@ -9820,8 +7458,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"default";
             case AWSEC2TenancyDedicated:
                 return @"dedicated";
-            case AWSEC2TenancyHost:
-                return @"host";
+            case AWSEC2TenancyUnknown:
             default:
                 return nil;
         }
@@ -9865,6 +7502,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"deleting";
             case AWSEC2PlacementGroupStateDeleted:
                 return @"deleted";
+            case AWSEC2PlacementGroupStateUnknown:
             default:
                 return nil;
         }
@@ -9881,6 +7519,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         switch ([value integerValue]) {
             case AWSEC2PlacementStrategyCluster:
                 return @"cluster";
+            case AWSEC2PlacementStrategyUnknown:
             default:
                 return nil;
         }
@@ -9895,28 +7534,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 	return @{
              @"from" : @"From",
              @"to" : @"To",
-             };
-}
-
-@end
-
-@implementation AWSEC2PrefixList
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"cidrs" : @"Cidrs",
-             @"prefixListId" : @"PrefixListId",
-             @"prefixListName" : @"PrefixListName",
-             };
-}
-
-@end
-
-@implementation AWSEC2PrefixListId
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"prefixListId" : @"PrefixListId",
              };
 }
 
@@ -9943,6 +7560,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         switch ([value integerValue]) {
             case AWSEC2CurrencyCodeValuesUSD:
                 return @"USD";
+            case AWSEC2CurrencyCodeValuesUnknown:
             default:
                 return nil;
         }
@@ -9971,6 +7589,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         switch ([value integerValue]) {
             case AWSEC2CurrencyCodeValuesUSD:
                 return @"USD";
+            case AWSEC2CurrencyCodeValuesUnknown:
             default:
                 return nil;
         }
@@ -10025,6 +7644,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"devpay";
             case AWSEC2ProductCodeValuesMarketplace:
                 return @"marketplace";
+            case AWSEC2ProductCodeValuesUnknown:
             default:
                 return nil;
         }
@@ -10038,17 +7658,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
 	return @{
              @"gatewayId" : @"GatewayId",
-             };
-}
-
-@end
-
-@implementation AWSEC2PurchaseRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"instanceCount" : @"InstanceCount",
-             @"purchaseToken" : @"PurchaseToken",
              };
 }
 
@@ -10077,36 +7686,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 	return @{
              @"reservedInstancesId" : @"ReservedInstancesId",
              };
-}
-
-@end
-
-@implementation AWSEC2PurchaseScheduledInstancesRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"clientToken" : @"ClientToken",
-             @"dryRun" : @"DryRun",
-             @"purchaseRequests" : @"PurchaseRequests",
-             };
-}
-
-+ (NSValueTransformer *)purchaseRequestsJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2PurchaseRequest class]];
-}
-
-@end
-
-@implementation AWSEC2PurchaseScheduledInstancesResult
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"scheduledInstanceSet" : @"ScheduledInstanceSet",
-             };
-}
-
-+ (NSValueTransformer *)scheduledInstanceSetJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2ScheduledInstance class]];
 }
 
 @end
@@ -10141,6 +7720,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         switch ([value integerValue]) {
             case AWSEC2RecurringChargeFrequencyHourly:
                 return @"Hourly";
+            case AWSEC2RecurringChargeFrequencyUnknown:
             default:
                 return nil;
         }
@@ -10193,6 +7773,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"i386";
             case AWSEC2ArchitectureValuesX86_64:
                 return @"x86_64";
+            case AWSEC2ArchitectureValuesUnknown:
             default:
                 return nil;
         }
@@ -10244,31 +7825,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
              @"dryRun" : @"DryRun",
              @"publicIp" : @"PublicIp",
              };
-}
-
-@end
-
-@implementation AWSEC2ReleaseHostsRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"hostIds" : @"HostIds",
-             };
-}
-
-@end
-
-@implementation AWSEC2ReleaseHostsResult
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"successful" : @"Successful",
-             @"unsuccessful" : @"Unsuccessful",
-             };
-}
-
-+ (NSValueTransformer *)unsuccessfulJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2UnsuccessfulItem class]];
 }
 
 @end
@@ -10334,6 +7890,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"allow";
             case AWSEC2RuleActionDeny:
                 return @"deny";
+            case AWSEC2RuleActionUnknown:
             default:
                 return nil;
         }
@@ -10350,7 +7907,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
              @"dryRun" : @"DryRun",
              @"gatewayId" : @"GatewayId",
              @"instanceId" : @"InstanceId",
-             @"natGatewayId" : @"NatGatewayId",
              @"networkInterfaceId" : @"NetworkInterfaceId",
              @"routeTableId" : @"RouteTableId",
              @"vpcPeeringConnectionId" : @"VpcPeeringConnectionId",
@@ -10388,8 +7944,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
              @"clientToken" : @"ClientToken",
              @"detail" : @"Description",
              @"dryRun" : @"DryRun",
-             @"encrypted" : @"Encrypted",
-             @"kmsKeyId" : @"KmsKeyId",
              @"name" : @"Name",
              @"sourceImageId" : @"SourceImageId",
              @"sourceRegion" : @"SourceRegion",
@@ -10415,8 +7969,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
              @"destinationRegion" : @"DestinationRegion",
              @"detail" : @"Description",
              @"dryRun" : @"DryRun",
-             @"encrypted" : @"Encrypted",
-             @"kmsKeyId" : @"KmsKeyId",
              @"presignedUrl" : @"PresignedUrl",
              @"sourceRegion" : @"SourceRegion",
              @"sourceSnapshotId" : @"SourceSnapshotId",
@@ -10480,35 +8032,11 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"ok";
             case AWSEC2ReportStatusTypeImpaired:
                 return @"impaired";
+            case AWSEC2ReportStatusTypeUnknown:
             default:
                 return nil;
         }
     }];
-}
-
-@end
-
-@implementation AWSEC2RequestSpotFleetRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"dryRun" : @"DryRun",
-             @"spotFleetRequestConfig" : @"SpotFleetRequestConfig",
-             };
-}
-
-+ (NSValueTransformer *)spotFleetRequestConfigJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSEC2SpotFleetRequestConfigData class]];
-}
-
-@end
-
-@implementation AWSEC2RequestSpotFleetResponse
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"spotFleetRequestId" : @"SpotFleetRequestId",
-             };
 }
 
 @end
@@ -10518,8 +8046,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
 	return @{
              @"availabilityZoneGroup" : @"AvailabilityZoneGroup",
-             @"blockDurationMinutes" : @"BlockDurationMinutes",
-             @"clientToken" : @"ClientToken",
              @"dryRun" : @"DryRun",
              @"instanceCount" : @"InstanceCount",
              @"launchGroup" : @"LaunchGroup",
@@ -10550,6 +8076,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"one-time";
             case AWSEC2SpotInstanceTypePersistent:
                 return @"persistent";
+            case AWSEC2SpotInstanceTypeUnknown:
             default:
                 return nil;
         }
@@ -10648,24 +8175,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         if ([value isEqualToString:@"m3.2xlarge"]) {
             return @(AWSEC2InstanceTypeM3_2xlarge);
         }
-        if ([value isEqualToString:@"m4.large"]) {
-            return @(AWSEC2InstanceTypeM4_large);
-        }
-        if ([value isEqualToString:@"m4.xlarge"]) {
-            return @(AWSEC2InstanceTypeM4_xlarge);
-        }
-        if ([value isEqualToString:@"m4.2xlarge"]) {
-            return @(AWSEC2InstanceTypeM4_2xlarge);
-        }
-        if ([value isEqualToString:@"m4.4xlarge"]) {
-            return @(AWSEC2InstanceTypeM4_4xlarge);
-        }
-        if ([value isEqualToString:@"m4.10xlarge"]) {
-            return @(AWSEC2InstanceTypeM4_10xlarge);
-        }
-        if ([value isEqualToString:@"t2.nano"]) {
-            return @(AWSEC2InstanceTypeT2_nano);
-        }
         if ([value isEqualToString:@"t2.micro"]) {
             return @(AWSEC2InstanceTypeT2_micro);
         }
@@ -10674,9 +8183,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         }
         if ([value isEqualToString:@"t2.medium"]) {
             return @(AWSEC2InstanceTypeT2_medium);
-        }
-        if ([value isEqualToString:@"t2.large"]) {
-            return @(AWSEC2InstanceTypeT2_large);
         }
         if ([value isEqualToString:@"m2.xlarge"]) {
             return @(AWSEC2InstanceTypeM2_xlarge);
@@ -10753,9 +8259,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         if ([value isEqualToString:@"g2.2xlarge"]) {
             return @(AWSEC2InstanceTypeG2_2xlarge);
         }
-        if ([value isEqualToString:@"g2.8xlarge"]) {
-            return @(AWSEC2InstanceTypeG2_8xlarge);
-        }
         if ([value isEqualToString:@"cg1.4xlarge"]) {
             return @(AWSEC2InstanceTypeCG1_4xlarge);
         }
@@ -10773,18 +8276,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         }
         if ([value isEqualToString:@"r3.8xlarge"]) {
             return @(AWSEC2InstanceTypeR3_8xlarge);
-        }
-        if ([value isEqualToString:@"d2.xlarge"]) {
-            return @(AWSEC2InstanceTypeD2_xlarge);
-        }
-        if ([value isEqualToString:@"d2.2xlarge"]) {
-            return @(AWSEC2InstanceTypeD2_2xlarge);
-        }
-        if ([value isEqualToString:@"d2.4xlarge"]) {
-            return @(AWSEC2InstanceTypeD2_4xlarge);
-        }
-        if ([value isEqualToString:@"d2.8xlarge"]) {
-            return @(AWSEC2InstanceTypeD2_8xlarge);
         }
         return @(AWSEC2InstanceTypeUnknown);
     } reverseBlock:^NSString *(NSNumber *value) {
@@ -10807,26 +8298,12 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"m3.xlarge";
             case AWSEC2InstanceTypeM3_2xlarge:
                 return @"m3.2xlarge";
-            case AWSEC2InstanceTypeM4_large:
-                return @"m4.large";
-            case AWSEC2InstanceTypeM4_xlarge:
-                return @"m4.xlarge";
-            case AWSEC2InstanceTypeM4_2xlarge:
-                return @"m4.2xlarge";
-            case AWSEC2InstanceTypeM4_4xlarge:
-                return @"m4.4xlarge";
-            case AWSEC2InstanceTypeM4_10xlarge:
-                return @"m4.10xlarge";
-            case AWSEC2InstanceTypeT2_nano:
-                return @"t2.nano";
             case AWSEC2InstanceTypeT2_micro:
                 return @"t2.micro";
             case AWSEC2InstanceTypeT2_small:
                 return @"t2.small";
             case AWSEC2InstanceTypeT2_medium:
                 return @"t2.medium";
-            case AWSEC2InstanceTypeT2_large:
-                return @"t2.large";
             case AWSEC2InstanceTypeM2_xlarge:
                 return @"m2.xlarge";
             case AWSEC2InstanceTypeM2_2xlarge:
@@ -10877,8 +8354,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"cc2.8xlarge";
             case AWSEC2InstanceTypeG2_2xlarge:
                 return @"g2.2xlarge";
-            case AWSEC2InstanceTypeG2_8xlarge:
-                return @"g2.8xlarge";
             case AWSEC2InstanceTypeCG1_4xlarge:
                 return @"cg1.4xlarge";
             case AWSEC2InstanceTypeR3_large:
@@ -10891,14 +8366,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"r3.4xlarge";
             case AWSEC2InstanceTypeR3_8xlarge:
                 return @"r3.8xlarge";
-            case AWSEC2InstanceTypeD2_xlarge:
-                return @"d2.xlarge";
-            case AWSEC2InstanceTypeD2_2xlarge:
-                return @"d2.2xlarge";
-            case AWSEC2InstanceTypeD2_4xlarge:
-                return @"d2.4xlarge";
-            case AWSEC2InstanceTypeD2_8xlarge:
-                return @"d2.8xlarge";
+            case AWSEC2InstanceTypeUnknown:
             default:
                 return nil;
         }
@@ -10960,6 +8428,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         switch ([value integerValue]) {
             case AWSEC2CurrencyCodeValuesUSD:
                 return @"USD";
+            case AWSEC2CurrencyCodeValuesUnknown:
             default:
                 return nil;
         }
@@ -11001,6 +8470,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         switch ([value integerValue]) {
             case AWSEC2CurrencyCodeValuesUSD:
                 return @"USD";
+            case AWSEC2CurrencyCodeValuesUnknown:
             default:
                 return nil;
         }
@@ -11023,9 +8493,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         if ([value isEqualToString:@"dedicated"]) {
             return @(AWSEC2TenancyDedicated);
         }
-        if ([value isEqualToString:@"host"]) {
-            return @(AWSEC2TenancyHost);
-        }
         return @(AWSEC2TenancyUnknown);
     } reverseBlock:^NSString *(NSNumber *value) {
         switch ([value integerValue]) {
@@ -11033,8 +8500,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"default";
             case AWSEC2TenancyDedicated:
                 return @"dedicated";
-            case AWSEC2TenancyHost:
-                return @"host";
+            case AWSEC2TenancyUnknown:
             default:
                 return nil;
         }
@@ -11070,24 +8536,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         if ([value isEqualToString:@"m3.2xlarge"]) {
             return @(AWSEC2InstanceTypeM3_2xlarge);
         }
-        if ([value isEqualToString:@"m4.large"]) {
-            return @(AWSEC2InstanceTypeM4_large);
-        }
-        if ([value isEqualToString:@"m4.xlarge"]) {
-            return @(AWSEC2InstanceTypeM4_xlarge);
-        }
-        if ([value isEqualToString:@"m4.2xlarge"]) {
-            return @(AWSEC2InstanceTypeM4_2xlarge);
-        }
-        if ([value isEqualToString:@"m4.4xlarge"]) {
-            return @(AWSEC2InstanceTypeM4_4xlarge);
-        }
-        if ([value isEqualToString:@"m4.10xlarge"]) {
-            return @(AWSEC2InstanceTypeM4_10xlarge);
-        }
-        if ([value isEqualToString:@"t2.nano"]) {
-            return @(AWSEC2InstanceTypeT2_nano);
-        }
         if ([value isEqualToString:@"t2.micro"]) {
             return @(AWSEC2InstanceTypeT2_micro);
         }
@@ -11096,9 +8544,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         }
         if ([value isEqualToString:@"t2.medium"]) {
             return @(AWSEC2InstanceTypeT2_medium);
-        }
-        if ([value isEqualToString:@"t2.large"]) {
-            return @(AWSEC2InstanceTypeT2_large);
         }
         if ([value isEqualToString:@"m2.xlarge"]) {
             return @(AWSEC2InstanceTypeM2_xlarge);
@@ -11175,9 +8620,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         if ([value isEqualToString:@"g2.2xlarge"]) {
             return @(AWSEC2InstanceTypeG2_2xlarge);
         }
-        if ([value isEqualToString:@"g2.8xlarge"]) {
-            return @(AWSEC2InstanceTypeG2_8xlarge);
-        }
         if ([value isEqualToString:@"cg1.4xlarge"]) {
             return @(AWSEC2InstanceTypeCG1_4xlarge);
         }
@@ -11195,18 +8637,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         }
         if ([value isEqualToString:@"r3.8xlarge"]) {
             return @(AWSEC2InstanceTypeR3_8xlarge);
-        }
-        if ([value isEqualToString:@"d2.xlarge"]) {
-            return @(AWSEC2InstanceTypeD2_xlarge);
-        }
-        if ([value isEqualToString:@"d2.2xlarge"]) {
-            return @(AWSEC2InstanceTypeD2_2xlarge);
-        }
-        if ([value isEqualToString:@"d2.4xlarge"]) {
-            return @(AWSEC2InstanceTypeD2_4xlarge);
-        }
-        if ([value isEqualToString:@"d2.8xlarge"]) {
-            return @(AWSEC2InstanceTypeD2_8xlarge);
         }
         return @(AWSEC2InstanceTypeUnknown);
     } reverseBlock:^NSString *(NSNumber *value) {
@@ -11229,26 +8659,12 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"m3.xlarge";
             case AWSEC2InstanceTypeM3_2xlarge:
                 return @"m3.2xlarge";
-            case AWSEC2InstanceTypeM4_large:
-                return @"m4.large";
-            case AWSEC2InstanceTypeM4_xlarge:
-                return @"m4.xlarge";
-            case AWSEC2InstanceTypeM4_2xlarge:
-                return @"m4.2xlarge";
-            case AWSEC2InstanceTypeM4_4xlarge:
-                return @"m4.4xlarge";
-            case AWSEC2InstanceTypeM4_10xlarge:
-                return @"m4.10xlarge";
-            case AWSEC2InstanceTypeT2_nano:
-                return @"t2.nano";
             case AWSEC2InstanceTypeT2_micro:
                 return @"t2.micro";
             case AWSEC2InstanceTypeT2_small:
                 return @"t2.small";
             case AWSEC2InstanceTypeT2_medium:
                 return @"t2.medium";
-            case AWSEC2InstanceTypeT2_large:
-                return @"t2.large";
             case AWSEC2InstanceTypeM2_xlarge:
                 return @"m2.xlarge";
             case AWSEC2InstanceTypeM2_2xlarge:
@@ -11299,8 +8715,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"cc2.8xlarge";
             case AWSEC2InstanceTypeG2_2xlarge:
                 return @"g2.2xlarge";
-            case AWSEC2InstanceTypeG2_8xlarge:
-                return @"g2.8xlarge";
             case AWSEC2InstanceTypeCG1_4xlarge:
                 return @"cg1.4xlarge";
             case AWSEC2InstanceTypeR3_large:
@@ -11313,14 +8727,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"r3.4xlarge";
             case AWSEC2InstanceTypeR3_8xlarge:
                 return @"r3.8xlarge";
-            case AWSEC2InstanceTypeD2_xlarge:
-                return @"d2.xlarge";
-            case AWSEC2InstanceTypeD2_2xlarge:
-                return @"d2.2xlarge";
-            case AWSEC2InstanceTypeD2_4xlarge:
-                return @"d2.4xlarge";
-            case AWSEC2InstanceTypeD2_8xlarge:
-                return @"d2.8xlarge";
+            case AWSEC2InstanceTypeUnknown:
             default:
                 return nil;
         }
@@ -11362,6 +8769,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"Partial Upfront";
             case AWSEC2OfferingTypeValuesAllUpfront:
                 return @"All Upfront";
+            case AWSEC2OfferingTypeValuesUnknown:
             default:
                 return nil;
         }
@@ -11376,7 +8784,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         if ([value isEqualToString:@"Linux/UNIX (Amazon VPC)"]) {
             return @(AWSEC2RIProductDescriptionLinuxUNIXAmazonVPC);
         }
-        if ([value isEqualToString:@"Windows"] || [value isEqualToString:@"windows"]) {
+        if ([value isEqualToString:@"Windows"]) {
             return @(AWSEC2RIProductDescriptionWindows);
         }
         if ([value isEqualToString:@"Windows (Amazon VPC)"]) {
@@ -11393,6 +8801,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"Windows";
             case AWSEC2RIProductDescriptionWindowsAmazonVPC:
                 return @"Windows (Amazon VPC)";
+            case AWSEC2RIProductDescriptionUnknown:
             default:
                 return nil;
         }
@@ -11436,6 +8845,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"payment-failed";
             case AWSEC2ReservedInstanceStateRetired:
                 return @"retired";
+            case AWSEC2ReservedInstanceStateUnknown:
             default:
                 return nil;
         }
@@ -11488,24 +8898,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         if ([value isEqualToString:@"m3.2xlarge"]) {
             return @(AWSEC2InstanceTypeM3_2xlarge);
         }
-        if ([value isEqualToString:@"m4.large"]) {
-            return @(AWSEC2InstanceTypeM4_large);
-        }
-        if ([value isEqualToString:@"m4.xlarge"]) {
-            return @(AWSEC2InstanceTypeM4_xlarge);
-        }
-        if ([value isEqualToString:@"m4.2xlarge"]) {
-            return @(AWSEC2InstanceTypeM4_2xlarge);
-        }
-        if ([value isEqualToString:@"m4.4xlarge"]) {
-            return @(AWSEC2InstanceTypeM4_4xlarge);
-        }
-        if ([value isEqualToString:@"m4.10xlarge"]) {
-            return @(AWSEC2InstanceTypeM4_10xlarge);
-        }
-        if ([value isEqualToString:@"t2.nano"]) {
-            return @(AWSEC2InstanceTypeT2_nano);
-        }
         if ([value isEqualToString:@"t2.micro"]) {
             return @(AWSEC2InstanceTypeT2_micro);
         }
@@ -11514,9 +8906,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         }
         if ([value isEqualToString:@"t2.medium"]) {
             return @(AWSEC2InstanceTypeT2_medium);
-        }
-        if ([value isEqualToString:@"t2.large"]) {
-            return @(AWSEC2InstanceTypeT2_large);
         }
         if ([value isEqualToString:@"m2.xlarge"]) {
             return @(AWSEC2InstanceTypeM2_xlarge);
@@ -11593,9 +8982,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         if ([value isEqualToString:@"g2.2xlarge"]) {
             return @(AWSEC2InstanceTypeG2_2xlarge);
         }
-        if ([value isEqualToString:@"g2.8xlarge"]) {
-            return @(AWSEC2InstanceTypeG2_8xlarge);
-        }
         if ([value isEqualToString:@"cg1.4xlarge"]) {
             return @(AWSEC2InstanceTypeCG1_4xlarge);
         }
@@ -11613,18 +8999,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         }
         if ([value isEqualToString:@"r3.8xlarge"]) {
             return @(AWSEC2InstanceTypeR3_8xlarge);
-        }
-        if ([value isEqualToString:@"d2.xlarge"]) {
-            return @(AWSEC2InstanceTypeD2_xlarge);
-        }
-        if ([value isEqualToString:@"d2.2xlarge"]) {
-            return @(AWSEC2InstanceTypeD2_2xlarge);
-        }
-        if ([value isEqualToString:@"d2.4xlarge"]) {
-            return @(AWSEC2InstanceTypeD2_4xlarge);
-        }
-        if ([value isEqualToString:@"d2.8xlarge"]) {
-            return @(AWSEC2InstanceTypeD2_8xlarge);
         }
         return @(AWSEC2InstanceTypeUnknown);
     } reverseBlock:^NSString *(NSNumber *value) {
@@ -11647,26 +9021,12 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"m3.xlarge";
             case AWSEC2InstanceTypeM3_2xlarge:
                 return @"m3.2xlarge";
-            case AWSEC2InstanceTypeM4_large:
-                return @"m4.large";
-            case AWSEC2InstanceTypeM4_xlarge:
-                return @"m4.xlarge";
-            case AWSEC2InstanceTypeM4_2xlarge:
-                return @"m4.2xlarge";
-            case AWSEC2InstanceTypeM4_4xlarge:
-                return @"m4.4xlarge";
-            case AWSEC2InstanceTypeM4_10xlarge:
-                return @"m4.10xlarge";
-            case AWSEC2InstanceTypeT2_nano:
-                return @"t2.nano";
             case AWSEC2InstanceTypeT2_micro:
                 return @"t2.micro";
             case AWSEC2InstanceTypeT2_small:
                 return @"t2.small";
             case AWSEC2InstanceTypeT2_medium:
                 return @"t2.medium";
-            case AWSEC2InstanceTypeT2_large:
-                return @"t2.large";
             case AWSEC2InstanceTypeM2_xlarge:
                 return @"m2.xlarge";
             case AWSEC2InstanceTypeM2_2xlarge:
@@ -11717,8 +9077,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"cc2.8xlarge";
             case AWSEC2InstanceTypeG2_2xlarge:
                 return @"g2.2xlarge";
-            case AWSEC2InstanceTypeG2_8xlarge:
-                return @"g2.8xlarge";
             case AWSEC2InstanceTypeCG1_4xlarge:
                 return @"cg1.4xlarge";
             case AWSEC2InstanceTypeR3_large:
@@ -11731,14 +9089,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"r3.4xlarge";
             case AWSEC2InstanceTypeR3_8xlarge:
                 return @"r3.8xlarge";
-            case AWSEC2InstanceTypeD2_xlarge:
-                return @"d2.xlarge";
-            case AWSEC2InstanceTypeD2_2xlarge:
-                return @"d2.2xlarge";
-            case AWSEC2InstanceTypeD2_4xlarge:
-                return @"d2.4xlarge";
-            case AWSEC2InstanceTypeD2_8xlarge:
-                return @"d2.8xlarge";
+            case AWSEC2InstanceTypeUnknown:
             default:
                 return nil;
         }
@@ -11815,6 +9166,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"cancelled";
             case AWSEC2ListingStatusClosed:
                 return @"closed";
+            case AWSEC2ListingStatusUnknown:
             default:
                 return nil;
         }
@@ -11930,6 +9282,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         switch ([value integerValue]) {
             case AWSEC2CurrencyCodeValuesUSD:
                 return @"USD";
+            case AWSEC2CurrencyCodeValuesUnknown:
             default:
                 return nil;
         }
@@ -11944,9 +9297,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         if ([value isEqualToString:@"dedicated"]) {
             return @(AWSEC2TenancyDedicated);
         }
-        if ([value isEqualToString:@"host"]) {
-            return @(AWSEC2TenancyHost);
-        }
         return @(AWSEC2TenancyUnknown);
     } reverseBlock:^NSString *(NSNumber *value) {
         switch ([value integerValue]) {
@@ -11954,8 +9304,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"default";
             case AWSEC2TenancyDedicated:
                 return @"dedicated";
-            case AWSEC2TenancyHost:
-                return @"host";
+            case AWSEC2TenancyUnknown:
             default:
                 return nil;
         }
@@ -11991,24 +9340,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         if ([value isEqualToString:@"m3.2xlarge"]) {
             return @(AWSEC2InstanceTypeM3_2xlarge);
         }
-        if ([value isEqualToString:@"m4.large"]) {
-            return @(AWSEC2InstanceTypeM4_large);
-        }
-        if ([value isEqualToString:@"m4.xlarge"]) {
-            return @(AWSEC2InstanceTypeM4_xlarge);
-        }
-        if ([value isEqualToString:@"m4.2xlarge"]) {
-            return @(AWSEC2InstanceTypeM4_2xlarge);
-        }
-        if ([value isEqualToString:@"m4.4xlarge"]) {
-            return @(AWSEC2InstanceTypeM4_4xlarge);
-        }
-        if ([value isEqualToString:@"m4.10xlarge"]) {
-            return @(AWSEC2InstanceTypeM4_10xlarge);
-        }
-        if ([value isEqualToString:@"t2.nano"]) {
-            return @(AWSEC2InstanceTypeT2_nano);
-        }
         if ([value isEqualToString:@"t2.micro"]) {
             return @(AWSEC2InstanceTypeT2_micro);
         }
@@ -12017,9 +9348,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         }
         if ([value isEqualToString:@"t2.medium"]) {
             return @(AWSEC2InstanceTypeT2_medium);
-        }
-        if ([value isEqualToString:@"t2.large"]) {
-            return @(AWSEC2InstanceTypeT2_large);
         }
         if ([value isEqualToString:@"m2.xlarge"]) {
             return @(AWSEC2InstanceTypeM2_xlarge);
@@ -12096,9 +9424,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         if ([value isEqualToString:@"g2.2xlarge"]) {
             return @(AWSEC2InstanceTypeG2_2xlarge);
         }
-        if ([value isEqualToString:@"g2.8xlarge"]) {
-            return @(AWSEC2InstanceTypeG2_8xlarge);
-        }
         if ([value isEqualToString:@"cg1.4xlarge"]) {
             return @(AWSEC2InstanceTypeCG1_4xlarge);
         }
@@ -12116,18 +9441,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         }
         if ([value isEqualToString:@"r3.8xlarge"]) {
             return @(AWSEC2InstanceTypeR3_8xlarge);
-        }
-        if ([value isEqualToString:@"d2.xlarge"]) {
-            return @(AWSEC2InstanceTypeD2_xlarge);
-        }
-        if ([value isEqualToString:@"d2.2xlarge"]) {
-            return @(AWSEC2InstanceTypeD2_2xlarge);
-        }
-        if ([value isEqualToString:@"d2.4xlarge"]) {
-            return @(AWSEC2InstanceTypeD2_4xlarge);
-        }
-        if ([value isEqualToString:@"d2.8xlarge"]) {
-            return @(AWSEC2InstanceTypeD2_8xlarge);
         }
         return @(AWSEC2InstanceTypeUnknown);
     } reverseBlock:^NSString *(NSNumber *value) {
@@ -12150,26 +9463,12 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"m3.xlarge";
             case AWSEC2InstanceTypeM3_2xlarge:
                 return @"m3.2xlarge";
-            case AWSEC2InstanceTypeM4_large:
-                return @"m4.large";
-            case AWSEC2InstanceTypeM4_xlarge:
-                return @"m4.xlarge";
-            case AWSEC2InstanceTypeM4_2xlarge:
-                return @"m4.2xlarge";
-            case AWSEC2InstanceTypeM4_4xlarge:
-                return @"m4.4xlarge";
-            case AWSEC2InstanceTypeM4_10xlarge:
-                return @"m4.10xlarge";
-            case AWSEC2InstanceTypeT2_nano:
-                return @"t2.nano";
             case AWSEC2InstanceTypeT2_micro:
                 return @"t2.micro";
             case AWSEC2InstanceTypeT2_small:
                 return @"t2.small";
             case AWSEC2InstanceTypeT2_medium:
                 return @"t2.medium";
-            case AWSEC2InstanceTypeT2_large:
-                return @"t2.large";
             case AWSEC2InstanceTypeM2_xlarge:
                 return @"m2.xlarge";
             case AWSEC2InstanceTypeM2_2xlarge:
@@ -12220,8 +9519,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"cc2.8xlarge";
             case AWSEC2InstanceTypeG2_2xlarge:
                 return @"g2.2xlarge";
-            case AWSEC2InstanceTypeG2_8xlarge:
-                return @"g2.8xlarge";
             case AWSEC2InstanceTypeCG1_4xlarge:
                 return @"cg1.4xlarge";
             case AWSEC2InstanceTypeR3_large:
@@ -12234,14 +9531,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"r3.4xlarge";
             case AWSEC2InstanceTypeR3_8xlarge:
                 return @"r3.8xlarge";
-            case AWSEC2InstanceTypeD2_xlarge:
-                return @"d2.xlarge";
-            case AWSEC2InstanceTypeD2_2xlarge:
-                return @"d2.2xlarge";
-            case AWSEC2InstanceTypeD2_4xlarge:
-                return @"d2.4xlarge";
-            case AWSEC2InstanceTypeD2_8xlarge:
-                return @"d2.8xlarge";
+            case AWSEC2InstanceTypeUnknown:
             default:
                 return nil;
         }
@@ -12283,6 +9573,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"Partial Upfront";
             case AWSEC2OfferingTypeValuesAllUpfront:
                 return @"All Upfront";
+            case AWSEC2OfferingTypeValuesUnknown:
             default:
                 return nil;
         }
@@ -12301,7 +9592,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         if ([value isEqualToString:@"Linux/UNIX (Amazon VPC)"]) {
             return @(AWSEC2RIProductDescriptionLinuxUNIXAmazonVPC);
         }
-        if ([value isEqualToString:@"Windows"] || [value isEqualToString:@"windows"]) {
+        if ([value isEqualToString:@"Windows"]) {
             return @(AWSEC2RIProductDescriptionWindows);
         }
         if ([value isEqualToString:@"Windows (Amazon VPC)"]) {
@@ -12318,6 +9609,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"Windows";
             case AWSEC2RIProductDescriptionWindowsAmazonVPC:
                 return @"Windows (Amazon VPC)";
+            case AWSEC2RIProductDescriptionUnknown:
             default:
                 return nil;
         }
@@ -12350,6 +9642,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         switch ([value integerValue]) {
             case AWSEC2ResetImageAttributeNameLaunchPermission:
                 return @"launchPermission";
+            case AWSEC2ResetImageAttributeNameUnknown:
             default:
                 return nil;
         }
@@ -12438,6 +9731,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"ebsOptimized";
             case AWSEC2InstanceAttributeNameSriovNetSupport:
                 return @"sriovNetSupport";
+            case AWSEC2InstanceAttributeNameUnknown:
             default:
                 return nil;
         }
@@ -12483,54 +9777,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"productCodes";
             case AWSEC2SnapshotAttributeNameCreateVolumePermission:
                 return @"createVolumePermission";
-            default:
-                return nil;
-        }
-    }];
-}
-
-@end
-
-@implementation AWSEC2RestoreAddressToClassicRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"dryRun" : @"DryRun",
-             @"publicIp" : @"PublicIp",
-             };
-}
-
-@end
-
-@implementation AWSEC2RestoreAddressToClassicResult
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"publicIp" : @"PublicIp",
-             @"status" : @"Status",
-             };
-}
-
-+ (NSValueTransformer *)statusJSONTransformer {
-    return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^NSNumber *(NSString *value) {
-        if ([value isEqualToString:@"MoveInProgress"]) {
-            return @(AWSEC2StatusMoveInProgress);
-        }
-        if ([value isEqualToString:@"InVpc"]) {
-            return @(AWSEC2StatusInVpc);
-        }
-        if ([value isEqualToString:@"InClassic"]) {
-            return @(AWSEC2StatusInClassic);
-        }
-        return @(AWSEC2StatusUnknown);
-    } reverseBlock:^NSString *(NSNumber *value) {
-        switch ([value integerValue]) {
-            case AWSEC2StatusMoveInProgress:
-                return @"MoveInProgress";
-            case AWSEC2StatusInVpc:
-                return @"InVpc";
-            case AWSEC2StatusInClassic:
-                return @"InClassic";
+            case AWSEC2SnapshotAttributeNameUnknown:
             default:
                 return nil;
         }
@@ -12589,11 +9836,9 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
 	return @{
              @"destinationCidrBlock" : @"DestinationCidrBlock",
-             @"destinationPrefixListId" : @"DestinationPrefixListId",
              @"gatewayId" : @"GatewayId",
              @"instanceId" : @"InstanceId",
              @"instanceOwnerId" : @"InstanceOwnerId",
-             @"natGatewayId" : @"NatGatewayId",
              @"networkInterfaceId" : @"NetworkInterfaceId",
              @"origin" : @"Origin",
              @"state" : @"State",
@@ -12621,6 +9866,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"CreateRoute";
             case AWSEC2RouteOriginEnableVgwRoutePropagation:
                 return @"EnableVgwRoutePropagation";
+            case AWSEC2RouteOriginUnknown:
             default:
                 return nil;
         }
@@ -12642,6 +9888,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"active";
             case AWSEC2RouteStateBlackhole:
                 return @"blackhole";
+            case AWSEC2RouteStateUnknown:
             default:
                 return nil;
         }
@@ -12757,6 +10004,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"stop";
             case AWSEC2ShutdownBehaviorTerminate:
                 return @"terminate";
+            case AWSEC2ShutdownBehaviorUnknown:
             default:
                 return nil;
         }
@@ -12792,24 +10040,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         if ([value isEqualToString:@"m3.2xlarge"]) {
             return @(AWSEC2InstanceTypeM3_2xlarge);
         }
-        if ([value isEqualToString:@"m4.large"]) {
-            return @(AWSEC2InstanceTypeM4_large);
-        }
-        if ([value isEqualToString:@"m4.xlarge"]) {
-            return @(AWSEC2InstanceTypeM4_xlarge);
-        }
-        if ([value isEqualToString:@"m4.2xlarge"]) {
-            return @(AWSEC2InstanceTypeM4_2xlarge);
-        }
-        if ([value isEqualToString:@"m4.4xlarge"]) {
-            return @(AWSEC2InstanceTypeM4_4xlarge);
-        }
-        if ([value isEqualToString:@"m4.10xlarge"]) {
-            return @(AWSEC2InstanceTypeM4_10xlarge);
-        }
-        if ([value isEqualToString:@"t2.nano"]) {
-            return @(AWSEC2InstanceTypeT2_nano);
-        }
         if ([value isEqualToString:@"t2.micro"]) {
             return @(AWSEC2InstanceTypeT2_micro);
         }
@@ -12818,9 +10048,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         }
         if ([value isEqualToString:@"t2.medium"]) {
             return @(AWSEC2InstanceTypeT2_medium);
-        }
-        if ([value isEqualToString:@"t2.large"]) {
-            return @(AWSEC2InstanceTypeT2_large);
         }
         if ([value isEqualToString:@"m2.xlarge"]) {
             return @(AWSEC2InstanceTypeM2_xlarge);
@@ -12897,9 +10124,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         if ([value isEqualToString:@"g2.2xlarge"]) {
             return @(AWSEC2InstanceTypeG2_2xlarge);
         }
-        if ([value isEqualToString:@"g2.8xlarge"]) {
-            return @(AWSEC2InstanceTypeG2_8xlarge);
-        }
         if ([value isEqualToString:@"cg1.4xlarge"]) {
             return @(AWSEC2InstanceTypeCG1_4xlarge);
         }
@@ -12917,18 +10141,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         }
         if ([value isEqualToString:@"r3.8xlarge"]) {
             return @(AWSEC2InstanceTypeR3_8xlarge);
-        }
-        if ([value isEqualToString:@"d2.xlarge"]) {
-            return @(AWSEC2InstanceTypeD2_xlarge);
-        }
-        if ([value isEqualToString:@"d2.2xlarge"]) {
-            return @(AWSEC2InstanceTypeD2_2xlarge);
-        }
-        if ([value isEqualToString:@"d2.4xlarge"]) {
-            return @(AWSEC2InstanceTypeD2_4xlarge);
-        }
-        if ([value isEqualToString:@"d2.8xlarge"]) {
-            return @(AWSEC2InstanceTypeD2_8xlarge);
         }
         return @(AWSEC2InstanceTypeUnknown);
     } reverseBlock:^NSString *(NSNumber *value) {
@@ -12951,26 +10163,12 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"m3.xlarge";
             case AWSEC2InstanceTypeM3_2xlarge:
                 return @"m3.2xlarge";
-            case AWSEC2InstanceTypeM4_large:
-                return @"m4.large";
-            case AWSEC2InstanceTypeM4_xlarge:
-                return @"m4.xlarge";
-            case AWSEC2InstanceTypeM4_2xlarge:
-                return @"m4.2xlarge";
-            case AWSEC2InstanceTypeM4_4xlarge:
-                return @"m4.4xlarge";
-            case AWSEC2InstanceTypeM4_10xlarge:
-                return @"m4.10xlarge";
-            case AWSEC2InstanceTypeT2_nano:
-                return @"t2.nano";
             case AWSEC2InstanceTypeT2_micro:
                 return @"t2.micro";
             case AWSEC2InstanceTypeT2_small:
                 return @"t2.small";
             case AWSEC2InstanceTypeT2_medium:
                 return @"t2.medium";
-            case AWSEC2InstanceTypeT2_large:
-                return @"t2.large";
             case AWSEC2InstanceTypeM2_xlarge:
                 return @"m2.xlarge";
             case AWSEC2InstanceTypeM2_2xlarge:
@@ -13021,8 +10219,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"cc2.8xlarge";
             case AWSEC2InstanceTypeG2_2xlarge:
                 return @"g2.2xlarge";
-            case AWSEC2InstanceTypeG2_8xlarge:
-                return @"g2.8xlarge";
             case AWSEC2InstanceTypeCG1_4xlarge:
                 return @"cg1.4xlarge";
             case AWSEC2InstanceTypeR3_large:
@@ -13035,14 +10231,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"r3.4xlarge";
             case AWSEC2InstanceTypeR3_8xlarge:
                 return @"r3.8xlarge";
-            case AWSEC2InstanceTypeD2_xlarge:
-                return @"d2.xlarge";
-            case AWSEC2InstanceTypeD2_2xlarge:
-                return @"d2.2xlarge";
-            case AWSEC2InstanceTypeD2_4xlarge:
-                return @"d2.4xlarge";
-            case AWSEC2InstanceTypeD2_8xlarge:
-                return @"d2.8xlarge";
+            case AWSEC2InstanceTypeUnknown:
             default:
                 return nil;
         }
@@ -13063,34 +10252,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 
 @end
 
-@implementation AWSEC2RunScheduledInstancesRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"clientToken" : @"ClientToken",
-             @"dryRun" : @"DryRun",
-             @"instanceCount" : @"InstanceCount",
-             @"launchSpecification" : @"LaunchSpecification",
-             @"scheduledInstanceId" : @"ScheduledInstanceId",
-             };
-}
-
-+ (NSValueTransformer *)launchSpecificationJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSEC2ScheduledInstancesLaunchSpecification class]];
-}
-
-@end
-
-@implementation AWSEC2RunScheduledInstancesResult
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"instanceIdSet" : @"InstanceIdSet",
-             };
-}
-
-@end
-
 @implementation AWSEC2S3Storage
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
@@ -13100,277 +10261,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
              @"prefix" : @"Prefix",
              @"uploadPolicy" : @"UploadPolicy",
              @"uploadPolicySignature" : @"UploadPolicySignature",
-             };
-}
-
-@end
-
-@implementation AWSEC2ScheduledInstance
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"availabilityZone" : @"AvailabilityZone",
-             @"createDate" : @"CreateDate",
-             @"hourlyPrice" : @"HourlyPrice",
-             @"instanceCount" : @"InstanceCount",
-             @"instanceType" : @"InstanceType",
-             @"networkPlatform" : @"NetworkPlatform",
-             @"nextSlotStartTime" : @"NextSlotStartTime",
-             @"platform" : @"Platform",
-             @"previousSlotEndTime" : @"PreviousSlotEndTime",
-             @"recurrence" : @"Recurrence",
-             @"scheduledInstanceId" : @"ScheduledInstanceId",
-             @"slotDurationInHours" : @"SlotDurationInHours",
-             @"termEndDate" : @"TermEndDate",
-             @"termStartDate" : @"TermStartDate",
-             @"totalScheduledInstanceHours" : @"TotalScheduledInstanceHours",
-             };
-}
-
-+ (NSValueTransformer *)createDateJSONTransformer {
-	return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSString *str) {
-        return [NSDate aws_dateFromString:str];
-    } reverseBlock:^id(NSDate *date) {
-        return [date aws_stringValue:AWSDateISO8601DateFormat1];
-    }];
-}
-
-+ (NSValueTransformer *)nextSlotStartTimeJSONTransformer {
-	return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSString *str) {
-        return [NSDate aws_dateFromString:str];
-    } reverseBlock:^id(NSDate *date) {
-        return [date aws_stringValue:AWSDateISO8601DateFormat1];
-    }];
-}
-
-+ (NSValueTransformer *)previousSlotEndTimeJSONTransformer {
-	return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSString *str) {
-        return [NSDate aws_dateFromString:str];
-    } reverseBlock:^id(NSDate *date) {
-        return [date aws_stringValue:AWSDateISO8601DateFormat1];
-    }];
-}
-
-+ (NSValueTransformer *)recurrenceJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSEC2ScheduledInstanceRecurrence class]];
-}
-
-+ (NSValueTransformer *)termEndDateJSONTransformer {
-	return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSString *str) {
-        return [NSDate aws_dateFromString:str];
-    } reverseBlock:^id(NSDate *date) {
-        return [date aws_stringValue:AWSDateISO8601DateFormat1];
-    }];
-}
-
-+ (NSValueTransformer *)termStartDateJSONTransformer {
-	return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSString *str) {
-        return [NSDate aws_dateFromString:str];
-    } reverseBlock:^id(NSDate *date) {
-        return [date aws_stringValue:AWSDateISO8601DateFormat1];
-    }];
-}
-
-@end
-
-@implementation AWSEC2ScheduledInstanceAvailability
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"availabilityZone" : @"AvailabilityZone",
-             @"availableInstanceCount" : @"AvailableInstanceCount",
-             @"firstSlotStartTime" : @"FirstSlotStartTime",
-             @"hourlyPrice" : @"HourlyPrice",
-             @"instanceType" : @"InstanceType",
-             @"maxTermDurationInDays" : @"MaxTermDurationInDays",
-             @"minTermDurationInDays" : @"MinTermDurationInDays",
-             @"networkPlatform" : @"NetworkPlatform",
-             @"platform" : @"Platform",
-             @"purchaseToken" : @"PurchaseToken",
-             @"recurrence" : @"Recurrence",
-             @"slotDurationInHours" : @"SlotDurationInHours",
-             @"totalScheduledInstanceHours" : @"TotalScheduledInstanceHours",
-             };
-}
-
-+ (NSValueTransformer *)firstSlotStartTimeJSONTransformer {
-	return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSString *str) {
-        return [NSDate aws_dateFromString:str];
-    } reverseBlock:^id(NSDate *date) {
-        return [date aws_stringValue:AWSDateISO8601DateFormat1];
-    }];
-}
-
-+ (NSValueTransformer *)recurrenceJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSEC2ScheduledInstanceRecurrence class]];
-}
-
-@end
-
-@implementation AWSEC2ScheduledInstanceRecurrence
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"frequency" : @"Frequency",
-             @"interval" : @"Interval",
-             @"occurrenceDaySet" : @"OccurrenceDaySet",
-             @"occurrenceRelativeToEnd" : @"OccurrenceRelativeToEnd",
-             @"occurrenceUnit" : @"OccurrenceUnit",
-             };
-}
-
-@end
-
-@implementation AWSEC2ScheduledInstanceRecurrenceRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"frequency" : @"Frequency",
-             @"interval" : @"Interval",
-             @"occurrenceDays" : @"OccurrenceDays",
-             @"occurrenceRelativeToEnd" : @"OccurrenceRelativeToEnd",
-             @"occurrenceUnit" : @"OccurrenceUnit",
-             };
-}
-
-@end
-
-@implementation AWSEC2ScheduledInstancesBlockDeviceMapping
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"deviceName" : @"DeviceName",
-             @"ebs" : @"Ebs",
-             @"noDevice" : @"NoDevice",
-             @"virtualName" : @"VirtualName",
-             };
-}
-
-+ (NSValueTransformer *)ebsJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSEC2ScheduledInstancesEbs class]];
-}
-
-@end
-
-@implementation AWSEC2ScheduledInstancesEbs
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"deleteOnTermination" : @"DeleteOnTermination",
-             @"encrypted" : @"Encrypted",
-             @"iops" : @"Iops",
-             @"snapshotId" : @"SnapshotId",
-             @"volumeSize" : @"VolumeSize",
-             @"volumeType" : @"VolumeType",
-             };
-}
-
-@end
-
-@implementation AWSEC2ScheduledInstancesIamInstanceProfile
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"arn" : @"Arn",
-             @"name" : @"Name",
-             };
-}
-
-@end
-
-@implementation AWSEC2ScheduledInstancesLaunchSpecification
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"blockDeviceMappings" : @"BlockDeviceMappings",
-             @"ebsOptimized" : @"EbsOptimized",
-             @"iamInstanceProfile" : @"IamInstanceProfile",
-             @"imageId" : @"ImageId",
-             @"instanceType" : @"InstanceType",
-             @"kernelId" : @"KernelId",
-             @"keyName" : @"KeyName",
-             @"monitoring" : @"Monitoring",
-             @"networkInterfaces" : @"NetworkInterfaces",
-             @"placement" : @"Placement",
-             @"ramdiskId" : @"RamdiskId",
-             @"securityGroupIds" : @"SecurityGroupIds",
-             @"subnetId" : @"SubnetId",
-             @"userData" : @"UserData",
-             };
-}
-
-+ (NSValueTransformer *)blockDeviceMappingsJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2ScheduledInstancesBlockDeviceMapping class]];
-}
-
-+ (NSValueTransformer *)iamInstanceProfileJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSEC2ScheduledInstancesIamInstanceProfile class]];
-}
-
-+ (NSValueTransformer *)monitoringJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSEC2ScheduledInstancesMonitoring class]];
-}
-
-+ (NSValueTransformer *)networkInterfacesJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2ScheduledInstancesNetworkInterface class]];
-}
-
-+ (NSValueTransformer *)placementJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSEC2ScheduledInstancesPlacement class]];
-}
-
-@end
-
-@implementation AWSEC2ScheduledInstancesMonitoring
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"enabled" : @"Enabled",
-             };
-}
-
-@end
-
-@implementation AWSEC2ScheduledInstancesNetworkInterface
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"associatePublicIpAddress" : @"AssociatePublicIpAddress",
-             @"deleteOnTermination" : @"DeleteOnTermination",
-             @"detail" : @"Description",
-             @"deviceIndex" : @"DeviceIndex",
-             @"groups" : @"Groups",
-             @"networkInterfaceId" : @"NetworkInterfaceId",
-             @"privateIpAddress" : @"PrivateIpAddress",
-             @"privateIpAddressConfigs" : @"PrivateIpAddressConfigs",
-             @"secondaryPrivateIpAddressCount" : @"SecondaryPrivateIpAddressCount",
-             @"subnetId" : @"SubnetId",
-             };
-}
-
-+ (NSValueTransformer *)privateIpAddressConfigsJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2ScheduledInstancesPrivateIpAddressConfig class]];
-}
-
-@end
-
-@implementation AWSEC2ScheduledInstancesPlacement
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"availabilityZone" : @"AvailabilityZone",
-             @"groupName" : @"GroupName",
-             };
-}
-
-@end
-
-@implementation AWSEC2ScheduledInstancesPrivateIpAddressConfig
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"primary" : @"Primary",
-             @"privateIpAddress" : @"PrivateIpAddress",
              };
 }
 
@@ -13405,77 +10295,10 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 
 @end
 
-@implementation AWSEC2SecurityGroupReference
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"groupId" : @"GroupId",
-             @"referencingVpcId" : @"ReferencingVpcId",
-             @"vpcPeeringConnectionId" : @"VpcPeeringConnectionId",
-             };
-}
-
-@end
-
-@implementation AWSEC2SlotDateTimeRangeRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"earliestTime" : @"EarliestTime",
-             @"latestTime" : @"LatestTime",
-             };
-}
-
-+ (NSValueTransformer *)earliestTimeJSONTransformer {
-	return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSString *str) {
-        return [NSDate aws_dateFromString:str];
-    } reverseBlock:^id(NSDate *date) {
-        return [date aws_stringValue:AWSDateISO8601DateFormat1];
-    }];
-}
-
-+ (NSValueTransformer *)latestTimeJSONTransformer {
-	return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSString *str) {
-        return [NSDate aws_dateFromString:str];
-    } reverseBlock:^id(NSDate *date) {
-        return [date aws_stringValue:AWSDateISO8601DateFormat1];
-    }];
-}
-
-@end
-
-@implementation AWSEC2SlotStartTimeRangeRequest
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"earliestTime" : @"EarliestTime",
-             @"latestTime" : @"LatestTime",
-             };
-}
-
-+ (NSValueTransformer *)earliestTimeJSONTransformer {
-	return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSString *str) {
-        return [NSDate aws_dateFromString:str];
-    } reverseBlock:^id(NSDate *date) {
-        return [date aws_stringValue:AWSDateISO8601DateFormat1];
-    }];
-}
-
-+ (NSValueTransformer *)latestTimeJSONTransformer {
-	return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSString *str) {
-        return [NSDate aws_dateFromString:str];
-    } reverseBlock:^id(NSDate *date) {
-        return [date aws_stringValue:AWSDateISO8601DateFormat1];
-    }];
-}
-
-@end
-
 @implementation AWSEC2Snapshot
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
 	return @{
-             @"dataEncryptionKeyId" : @"DataEncryptionKeyId",
              @"detail" : @"Description",
              @"encrypted" : @"Encrypted",
              @"kmsKeyId" : @"KmsKeyId",
@@ -13485,7 +10308,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
              @"snapshotId" : @"SnapshotId",
              @"startTime" : @"StartTime",
              @"state" : @"State",
-             @"stateMessage" : @"StateMessage",
              @"tags" : @"Tags",
              @"volumeId" : @"VolumeId",
              @"volumeSize" : @"VolumeSize",
@@ -13520,6 +10342,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"completed";
             case AWSEC2SnapshotStateError:
                 return @"error";
+            case AWSEC2SnapshotStateUnknown:
             default:
                 return nil;
         }
@@ -13528,68 +10351,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 
 + (NSValueTransformer *)tagsJSONTransformer {
 	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2Tag class]];
-}
-
-@end
-
-@implementation AWSEC2SnapshotDetail
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"detail" : @"Description",
-             @"deviceName" : @"DeviceName",
-             @"diskImageSize" : @"DiskImageSize",
-             @"format" : @"Format",
-             @"progress" : @"Progress",
-             @"snapshotId" : @"SnapshotId",
-             @"status" : @"Status",
-             @"statusMessage" : @"StatusMessage",
-             @"url" : @"Url",
-             @"userBucket" : @"UserBucket",
-             };
-}
-
-+ (NSValueTransformer *)userBucketJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSEC2UserBucketDetails class]];
-}
-
-@end
-
-@implementation AWSEC2SnapshotDiskContainer
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"detail" : @"Description",
-             @"format" : @"Format",
-             @"url" : @"Url",
-             @"userBucket" : @"UserBucket",
-             };
-}
-
-+ (NSValueTransformer *)userBucketJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSEC2UserBucket class]];
-}
-
-@end
-
-@implementation AWSEC2SnapshotTaskDetail
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"detail" : @"Description",
-             @"diskImageSize" : @"DiskImageSize",
-             @"format" : @"Format",
-             @"progress" : @"Progress",
-             @"snapshotId" : @"SnapshotId",
-             @"status" : @"Status",
-             @"statusMessage" : @"StatusMessage",
-             @"url" : @"Url",
-             @"userBucket" : @"UserBucket",
-             };
-}
-
-+ (NSValueTransformer *)userBucketJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSEC2UserBucketDetails class]];
 }
 
 @end
@@ -13625,507 +10386,10 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"Active";
             case AWSEC2DatafeedSubscriptionStateInactive:
                 return @"Inactive";
+            case AWSEC2DatafeedSubscriptionStateUnknown:
             default:
                 return nil;
         }
-    }];
-}
-
-@end
-
-@implementation AWSEC2SpotFleetLaunchSpecification
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"addressingType" : @"AddressingType",
-             @"blockDeviceMappings" : @"BlockDeviceMappings",
-             @"ebsOptimized" : @"EbsOptimized",
-             @"iamInstanceProfile" : @"IamInstanceProfile",
-             @"imageId" : @"ImageId",
-             @"instanceType" : @"InstanceType",
-             @"kernelId" : @"KernelId",
-             @"keyName" : @"KeyName",
-             @"monitoring" : @"Monitoring",
-             @"networkInterfaces" : @"NetworkInterfaces",
-             @"placement" : @"Placement",
-             @"ramdiskId" : @"RamdiskId",
-             @"securityGroups" : @"SecurityGroups",
-             @"spotPrice" : @"SpotPrice",
-             @"subnetId" : @"SubnetId",
-             @"userData" : @"UserData",
-             @"weightedCapacity" : @"WeightedCapacity",
-             };
-}
-
-+ (NSValueTransformer *)blockDeviceMappingsJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2BlockDeviceMapping class]];
-}
-
-+ (NSValueTransformer *)iamInstanceProfileJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSEC2IamInstanceProfileSpecification class]];
-}
-
-+ (NSValueTransformer *)instanceTypeJSONTransformer {
-    return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^NSNumber *(NSString *value) {
-        if ([value isEqualToString:@"t1.micro"]) {
-            return @(AWSEC2InstanceTypeT1_micro);
-        }
-        if ([value isEqualToString:@"m1.small"]) {
-            return @(AWSEC2InstanceTypeM1_small);
-        }
-        if ([value isEqualToString:@"m1.medium"]) {
-            return @(AWSEC2InstanceTypeM1_medium);
-        }
-        if ([value isEqualToString:@"m1.large"]) {
-            return @(AWSEC2InstanceTypeM1_large);
-        }
-        if ([value isEqualToString:@"m1.xlarge"]) {
-            return @(AWSEC2InstanceTypeM1_xlarge);
-        }
-        if ([value isEqualToString:@"m3.medium"]) {
-            return @(AWSEC2InstanceTypeM3_medium);
-        }
-        if ([value isEqualToString:@"m3.large"]) {
-            return @(AWSEC2InstanceTypeM3_large);
-        }
-        if ([value isEqualToString:@"m3.xlarge"]) {
-            return @(AWSEC2InstanceTypeM3_xlarge);
-        }
-        if ([value isEqualToString:@"m3.2xlarge"]) {
-            return @(AWSEC2InstanceTypeM3_2xlarge);
-        }
-        if ([value isEqualToString:@"m4.large"]) {
-            return @(AWSEC2InstanceTypeM4_large);
-        }
-        if ([value isEqualToString:@"m4.xlarge"]) {
-            return @(AWSEC2InstanceTypeM4_xlarge);
-        }
-        if ([value isEqualToString:@"m4.2xlarge"]) {
-            return @(AWSEC2InstanceTypeM4_2xlarge);
-        }
-        if ([value isEqualToString:@"m4.4xlarge"]) {
-            return @(AWSEC2InstanceTypeM4_4xlarge);
-        }
-        if ([value isEqualToString:@"m4.10xlarge"]) {
-            return @(AWSEC2InstanceTypeM4_10xlarge);
-        }
-        if ([value isEqualToString:@"t2.nano"]) {
-            return @(AWSEC2InstanceTypeT2_nano);
-        }
-        if ([value isEqualToString:@"t2.micro"]) {
-            return @(AWSEC2InstanceTypeT2_micro);
-        }
-        if ([value isEqualToString:@"t2.small"]) {
-            return @(AWSEC2InstanceTypeT2_small);
-        }
-        if ([value isEqualToString:@"t2.medium"]) {
-            return @(AWSEC2InstanceTypeT2_medium);
-        }
-        if ([value isEqualToString:@"t2.large"]) {
-            return @(AWSEC2InstanceTypeT2_large);
-        }
-        if ([value isEqualToString:@"m2.xlarge"]) {
-            return @(AWSEC2InstanceTypeM2_xlarge);
-        }
-        if ([value isEqualToString:@"m2.2xlarge"]) {
-            return @(AWSEC2InstanceTypeM2_2xlarge);
-        }
-        if ([value isEqualToString:@"m2.4xlarge"]) {
-            return @(AWSEC2InstanceTypeM2_4xlarge);
-        }
-        if ([value isEqualToString:@"cr1.8xlarge"]) {
-            return @(AWSEC2InstanceTypeCR1_8xlarge);
-        }
-        if ([value isEqualToString:@"i2.xlarge"]) {
-            return @(AWSEC2InstanceTypeI2_xlarge);
-        }
-        if ([value isEqualToString:@"i2.2xlarge"]) {
-            return @(AWSEC2InstanceTypeI2_2xlarge);
-        }
-        if ([value isEqualToString:@"i2.4xlarge"]) {
-            return @(AWSEC2InstanceTypeI2_4xlarge);
-        }
-        if ([value isEqualToString:@"i2.8xlarge"]) {
-            return @(AWSEC2InstanceTypeI2_8xlarge);
-        }
-        if ([value isEqualToString:@"hi1.4xlarge"]) {
-            return @(AWSEC2InstanceTypeHI1_4xlarge);
-        }
-        if ([value isEqualToString:@"hs1.8xlarge"]) {
-            return @(AWSEC2InstanceTypeHS1_8xlarge);
-        }
-        if ([value isEqualToString:@"c1.medium"]) {
-            return @(AWSEC2InstanceTypeC1_medium);
-        }
-        if ([value isEqualToString:@"c1.xlarge"]) {
-            return @(AWSEC2InstanceTypeC1_xlarge);
-        }
-        if ([value isEqualToString:@"c3.large"]) {
-            return @(AWSEC2InstanceTypeC3_large);
-        }
-        if ([value isEqualToString:@"c3.xlarge"]) {
-            return @(AWSEC2InstanceTypeC3_xlarge);
-        }
-        if ([value isEqualToString:@"c3.2xlarge"]) {
-            return @(AWSEC2InstanceTypeC3_2xlarge);
-        }
-        if ([value isEqualToString:@"c3.4xlarge"]) {
-            return @(AWSEC2InstanceTypeC3_4xlarge);
-        }
-        if ([value isEqualToString:@"c3.8xlarge"]) {
-            return @(AWSEC2InstanceTypeC3_8xlarge);
-        }
-        if ([value isEqualToString:@"c4.large"]) {
-            return @(AWSEC2InstanceTypeC4_large);
-        }
-        if ([value isEqualToString:@"c4.xlarge"]) {
-            return @(AWSEC2InstanceTypeC4_xlarge);
-        }
-        if ([value isEqualToString:@"c4.2xlarge"]) {
-            return @(AWSEC2InstanceTypeC4_2xlarge);
-        }
-        if ([value isEqualToString:@"c4.4xlarge"]) {
-            return @(AWSEC2InstanceTypeC4_4xlarge);
-        }
-        if ([value isEqualToString:@"c4.8xlarge"]) {
-            return @(AWSEC2InstanceTypeC4_8xlarge);
-        }
-        if ([value isEqualToString:@"cc1.4xlarge"]) {
-            return @(AWSEC2InstanceTypeCC1_4xlarge);
-        }
-        if ([value isEqualToString:@"cc2.8xlarge"]) {
-            return @(AWSEC2InstanceTypeCC2_8xlarge);
-        }
-        if ([value isEqualToString:@"g2.2xlarge"]) {
-            return @(AWSEC2InstanceTypeG2_2xlarge);
-        }
-        if ([value isEqualToString:@"g2.8xlarge"]) {
-            return @(AWSEC2InstanceTypeG2_8xlarge);
-        }
-        if ([value isEqualToString:@"cg1.4xlarge"]) {
-            return @(AWSEC2InstanceTypeCG1_4xlarge);
-        }
-        if ([value isEqualToString:@"r3.large"]) {
-            return @(AWSEC2InstanceTypeR3_large);
-        }
-        if ([value isEqualToString:@"r3.xlarge"]) {
-            return @(AWSEC2InstanceTypeR3_xlarge);
-        }
-        if ([value isEqualToString:@"r3.2xlarge"]) {
-            return @(AWSEC2InstanceTypeR3_2xlarge);
-        }
-        if ([value isEqualToString:@"r3.4xlarge"]) {
-            return @(AWSEC2InstanceTypeR3_4xlarge);
-        }
-        if ([value isEqualToString:@"r3.8xlarge"]) {
-            return @(AWSEC2InstanceTypeR3_8xlarge);
-        }
-        if ([value isEqualToString:@"d2.xlarge"]) {
-            return @(AWSEC2InstanceTypeD2_xlarge);
-        }
-        if ([value isEqualToString:@"d2.2xlarge"]) {
-            return @(AWSEC2InstanceTypeD2_2xlarge);
-        }
-        if ([value isEqualToString:@"d2.4xlarge"]) {
-            return @(AWSEC2InstanceTypeD2_4xlarge);
-        }
-        if ([value isEqualToString:@"d2.8xlarge"]) {
-            return @(AWSEC2InstanceTypeD2_8xlarge);
-        }
-        return @(AWSEC2InstanceTypeUnknown);
-    } reverseBlock:^NSString *(NSNumber *value) {
-        switch ([value integerValue]) {
-            case AWSEC2InstanceTypeT1_micro:
-                return @"t1.micro";
-            case AWSEC2InstanceTypeM1_small:
-                return @"m1.small";
-            case AWSEC2InstanceTypeM1_medium:
-                return @"m1.medium";
-            case AWSEC2InstanceTypeM1_large:
-                return @"m1.large";
-            case AWSEC2InstanceTypeM1_xlarge:
-                return @"m1.xlarge";
-            case AWSEC2InstanceTypeM3_medium:
-                return @"m3.medium";
-            case AWSEC2InstanceTypeM3_large:
-                return @"m3.large";
-            case AWSEC2InstanceTypeM3_xlarge:
-                return @"m3.xlarge";
-            case AWSEC2InstanceTypeM3_2xlarge:
-                return @"m3.2xlarge";
-            case AWSEC2InstanceTypeM4_large:
-                return @"m4.large";
-            case AWSEC2InstanceTypeM4_xlarge:
-                return @"m4.xlarge";
-            case AWSEC2InstanceTypeM4_2xlarge:
-                return @"m4.2xlarge";
-            case AWSEC2InstanceTypeM4_4xlarge:
-                return @"m4.4xlarge";
-            case AWSEC2InstanceTypeM4_10xlarge:
-                return @"m4.10xlarge";
-            case AWSEC2InstanceTypeT2_nano:
-                return @"t2.nano";
-            case AWSEC2InstanceTypeT2_micro:
-                return @"t2.micro";
-            case AWSEC2InstanceTypeT2_small:
-                return @"t2.small";
-            case AWSEC2InstanceTypeT2_medium:
-                return @"t2.medium";
-            case AWSEC2InstanceTypeT2_large:
-                return @"t2.large";
-            case AWSEC2InstanceTypeM2_xlarge:
-                return @"m2.xlarge";
-            case AWSEC2InstanceTypeM2_2xlarge:
-                return @"m2.2xlarge";
-            case AWSEC2InstanceTypeM2_4xlarge:
-                return @"m2.4xlarge";
-            case AWSEC2InstanceTypeCR1_8xlarge:
-                return @"cr1.8xlarge";
-            case AWSEC2InstanceTypeI2_xlarge:
-                return @"i2.xlarge";
-            case AWSEC2InstanceTypeI2_2xlarge:
-                return @"i2.2xlarge";
-            case AWSEC2InstanceTypeI2_4xlarge:
-                return @"i2.4xlarge";
-            case AWSEC2InstanceTypeI2_8xlarge:
-                return @"i2.8xlarge";
-            case AWSEC2InstanceTypeHI1_4xlarge:
-                return @"hi1.4xlarge";
-            case AWSEC2InstanceTypeHS1_8xlarge:
-                return @"hs1.8xlarge";
-            case AWSEC2InstanceTypeC1_medium:
-                return @"c1.medium";
-            case AWSEC2InstanceTypeC1_xlarge:
-                return @"c1.xlarge";
-            case AWSEC2InstanceTypeC3_large:
-                return @"c3.large";
-            case AWSEC2InstanceTypeC3_xlarge:
-                return @"c3.xlarge";
-            case AWSEC2InstanceTypeC3_2xlarge:
-                return @"c3.2xlarge";
-            case AWSEC2InstanceTypeC3_4xlarge:
-                return @"c3.4xlarge";
-            case AWSEC2InstanceTypeC3_8xlarge:
-                return @"c3.8xlarge";
-            case AWSEC2InstanceTypeC4_large:
-                return @"c4.large";
-            case AWSEC2InstanceTypeC4_xlarge:
-                return @"c4.xlarge";
-            case AWSEC2InstanceTypeC4_2xlarge:
-                return @"c4.2xlarge";
-            case AWSEC2InstanceTypeC4_4xlarge:
-                return @"c4.4xlarge";
-            case AWSEC2InstanceTypeC4_8xlarge:
-                return @"c4.8xlarge";
-            case AWSEC2InstanceTypeCC1_4xlarge:
-                return @"cc1.4xlarge";
-            case AWSEC2InstanceTypeCC2_8xlarge:
-                return @"cc2.8xlarge";
-            case AWSEC2InstanceTypeG2_2xlarge:
-                return @"g2.2xlarge";
-            case AWSEC2InstanceTypeG2_8xlarge:
-                return @"g2.8xlarge";
-            case AWSEC2InstanceTypeCG1_4xlarge:
-                return @"cg1.4xlarge";
-            case AWSEC2InstanceTypeR3_large:
-                return @"r3.large";
-            case AWSEC2InstanceTypeR3_xlarge:
-                return @"r3.xlarge";
-            case AWSEC2InstanceTypeR3_2xlarge:
-                return @"r3.2xlarge";
-            case AWSEC2InstanceTypeR3_4xlarge:
-                return @"r3.4xlarge";
-            case AWSEC2InstanceTypeR3_8xlarge:
-                return @"r3.8xlarge";
-            case AWSEC2InstanceTypeD2_xlarge:
-                return @"d2.xlarge";
-            case AWSEC2InstanceTypeD2_2xlarge:
-                return @"d2.2xlarge";
-            case AWSEC2InstanceTypeD2_4xlarge:
-                return @"d2.4xlarge";
-            case AWSEC2InstanceTypeD2_8xlarge:
-                return @"d2.8xlarge";
-            default:
-                return nil;
-        }
-    }];
-}
-
-+ (NSValueTransformer *)monitoringJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSEC2SpotFleetMonitoring class]];
-}
-
-+ (NSValueTransformer *)networkInterfacesJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2InstanceNetworkInterfaceSpecification class]];
-}
-
-+ (NSValueTransformer *)placementJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSEC2SpotPlacement class]];
-}
-
-+ (NSValueTransformer *)securityGroupsJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2GroupIdentifier class]];
-}
-
-@end
-
-@implementation AWSEC2SpotFleetMonitoring
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"enabled" : @"Enabled",
-             };
-}
-
-@end
-
-@implementation AWSEC2SpotFleetRequestConfig
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"createTime" : @"CreateTime",
-             @"spotFleetRequestConfig" : @"SpotFleetRequestConfig",
-             @"spotFleetRequestId" : @"SpotFleetRequestId",
-             @"spotFleetRequestState" : @"SpotFleetRequestState",
-             };
-}
-
-+ (NSValueTransformer *)createTimeJSONTransformer {
-	return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSString *str) {
-        return [NSDate aws_dateFromString:str];
-    } reverseBlock:^id(NSDate *date) {
-        return [date aws_stringValue:AWSDateISO8601DateFormat1];
-    }];
-}
-
-+ (NSValueTransformer *)spotFleetRequestConfigJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSEC2SpotFleetRequestConfigData class]];
-}
-
-+ (NSValueTransformer *)spotFleetRequestStateJSONTransformer {
-    return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^NSNumber *(NSString *value) {
-        if ([value isEqualToString:@"submitted"]) {
-            return @(AWSEC2BatchStateSubmitted);
-        }
-        if ([value isEqualToString:@"active"]) {
-            return @(AWSEC2BatchStateActive);
-        }
-        if ([value isEqualToString:@"cancelled"]) {
-            return @(AWSEC2BatchStateCancelled);
-        }
-        if ([value isEqualToString:@"failed"]) {
-            return @(AWSEC2BatchStateFailed);
-        }
-        if ([value isEqualToString:@"cancelled_running"]) {
-            return @(AWSEC2BatchStateCancelledRunning);
-        }
-        if ([value isEqualToString:@"cancelled_terminating"]) {
-            return @(AWSEC2BatchStateCancelledTerminating);
-        }
-        if ([value isEqualToString:@"modifying"]) {
-            return @(AWSEC2BatchStateModifying);
-        }
-        return @(AWSEC2BatchStateUnknown);
-    } reverseBlock:^NSString *(NSNumber *value) {
-        switch ([value integerValue]) {
-            case AWSEC2BatchStateSubmitted:
-                return @"submitted";
-            case AWSEC2BatchStateActive:
-                return @"active";
-            case AWSEC2BatchStateCancelled:
-                return @"cancelled";
-            case AWSEC2BatchStateFailed:
-                return @"failed";
-            case AWSEC2BatchStateCancelledRunning:
-                return @"cancelled_running";
-            case AWSEC2BatchStateCancelledTerminating:
-                return @"cancelled_terminating";
-            case AWSEC2BatchStateModifying:
-                return @"modifying";
-            default:
-                return nil;
-        }
-    }];
-}
-
-@end
-
-@implementation AWSEC2SpotFleetRequestConfigData
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"allocationStrategy" : @"AllocationStrategy",
-             @"clientToken" : @"ClientToken",
-             @"excessCapacityTerminationPolicy" : @"ExcessCapacityTerminationPolicy",
-             @"iamFleetRole" : @"IamFleetRole",
-             @"launchSpecifications" : @"LaunchSpecifications",
-             @"spotPrice" : @"SpotPrice",
-             @"targetCapacity" : @"TargetCapacity",
-             @"terminateInstancesWithExpiration" : @"TerminateInstancesWithExpiration",
-             @"validFrom" : @"ValidFrom",
-             @"validUntil" : @"ValidUntil",
-             };
-}
-
-+ (NSValueTransformer *)allocationStrategyJSONTransformer {
-    return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^NSNumber *(NSString *value) {
-        if ([value isEqualToString:@"lowestPrice"]) {
-            return @(AWSEC2AllocationStrategyLowestPrice);
-        }
-        if ([value isEqualToString:@"diversified"]) {
-            return @(AWSEC2AllocationStrategyDiversified);
-        }
-        return @(AWSEC2AllocationStrategyUnknown);
-    } reverseBlock:^NSString *(NSNumber *value) {
-        switch ([value integerValue]) {
-            case AWSEC2AllocationStrategyLowestPrice:
-                return @"lowestPrice";
-            case AWSEC2AllocationStrategyDiversified:
-                return @"diversified";
-            default:
-                return nil;
-        }
-    }];
-}
-
-+ (NSValueTransformer *)excessCapacityTerminationPolicyJSONTransformer {
-    return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^NSNumber *(NSString *value) {
-        if ([value isEqualToString:@"noTermination"]) {
-            return @(AWSEC2ExcessCapacityTerminationPolicyNoTermination);
-        }
-        if ([value isEqualToString:@"default"]) {
-            return @(AWSEC2ExcessCapacityTerminationPolicyDefault);
-        }
-        return @(AWSEC2ExcessCapacityTerminationPolicyUnknown);
-    } reverseBlock:^NSString *(NSNumber *value) {
-        switch ([value integerValue]) {
-            case AWSEC2ExcessCapacityTerminationPolicyNoTermination:
-                return @"noTermination";
-            case AWSEC2ExcessCapacityTerminationPolicyDefault:
-                return @"default";
-            default:
-                return nil;
-        }
-    }];
-}
-
-+ (NSValueTransformer *)launchSpecificationsJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2SpotFleetLaunchSpecification class]];
-}
-
-+ (NSValueTransformer *)validFromJSONTransformer {
-	return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSString *str) {
-        return [NSDate aws_dateFromString:str];
-    } reverseBlock:^id(NSDate *date) {
-        return [date aws_stringValue:AWSDateISO8601DateFormat1];
-    }];
-}
-
-+ (NSValueTransformer *)validUntilJSONTransformer {
-	return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSString *str) {
-        return [NSDate aws_dateFromString:str];
-    } reverseBlock:^id(NSDate *date) {
-        return [date aws_stringValue:AWSDateISO8601DateFormat1];
     }];
 }
 
@@ -14135,9 +10399,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
 	return @{
-             @"actualBlockHourlyPrice" : @"ActualBlockHourlyPrice",
              @"availabilityZoneGroup" : @"AvailabilityZoneGroup",
-             @"blockDurationMinutes" : @"BlockDurationMinutes",
              @"createTime" : @"CreateTime",
              @"fault" : @"Fault",
              @"instanceId" : @"InstanceId",
@@ -14180,7 +10442,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         if ([value isEqualToString:@"Linux/UNIX (Amazon VPC)"]) {
             return @(AWSEC2RIProductDescriptionLinuxUNIXAmazonVPC);
         }
-        if ([value isEqualToString:@"Windows"] || [value isEqualToString:@"windows"]) {
+        if ([value isEqualToString:@"Windows"]) {
             return @(AWSEC2RIProductDescriptionWindows);
         }
         if ([value isEqualToString:@"Windows (Amazon VPC)"]) {
@@ -14197,6 +10459,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"Windows";
             case AWSEC2RIProductDescriptionWindowsAmazonVPC:
                 return @"Windows (Amazon VPC)";
+            case AWSEC2RIProductDescriptionUnknown:
             default:
                 return nil;
         }
@@ -14233,6 +10496,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"cancelled";
             case AWSEC2SpotInstanceStateFailed:
                 return @"failed";
+            case AWSEC2SpotInstanceStateUnknown:
             default:
                 return nil;
         }
@@ -14262,6 +10526,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"one-time";
             case AWSEC2SpotInstanceTypePersistent:
                 return @"persistent";
+            case AWSEC2SpotInstanceTypeUnknown:
             default:
                 return nil;
         }
@@ -14369,24 +10634,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         if ([value isEqualToString:@"m3.2xlarge"]) {
             return @(AWSEC2InstanceTypeM3_2xlarge);
         }
-        if ([value isEqualToString:@"m4.large"]) {
-            return @(AWSEC2InstanceTypeM4_large);
-        }
-        if ([value isEqualToString:@"m4.xlarge"]) {
-            return @(AWSEC2InstanceTypeM4_xlarge);
-        }
-        if ([value isEqualToString:@"m4.2xlarge"]) {
-            return @(AWSEC2InstanceTypeM4_2xlarge);
-        }
-        if ([value isEqualToString:@"m4.4xlarge"]) {
-            return @(AWSEC2InstanceTypeM4_4xlarge);
-        }
-        if ([value isEqualToString:@"m4.10xlarge"]) {
-            return @(AWSEC2InstanceTypeM4_10xlarge);
-        }
-        if ([value isEqualToString:@"t2.nano"]) {
-            return @(AWSEC2InstanceTypeT2_nano);
-        }
         if ([value isEqualToString:@"t2.micro"]) {
             return @(AWSEC2InstanceTypeT2_micro);
         }
@@ -14395,9 +10642,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         }
         if ([value isEqualToString:@"t2.medium"]) {
             return @(AWSEC2InstanceTypeT2_medium);
-        }
-        if ([value isEqualToString:@"t2.large"]) {
-            return @(AWSEC2InstanceTypeT2_large);
         }
         if ([value isEqualToString:@"m2.xlarge"]) {
             return @(AWSEC2InstanceTypeM2_xlarge);
@@ -14474,9 +10718,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         if ([value isEqualToString:@"g2.2xlarge"]) {
             return @(AWSEC2InstanceTypeG2_2xlarge);
         }
-        if ([value isEqualToString:@"g2.8xlarge"]) {
-            return @(AWSEC2InstanceTypeG2_8xlarge);
-        }
         if ([value isEqualToString:@"cg1.4xlarge"]) {
             return @(AWSEC2InstanceTypeCG1_4xlarge);
         }
@@ -14494,18 +10735,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         }
         if ([value isEqualToString:@"r3.8xlarge"]) {
             return @(AWSEC2InstanceTypeR3_8xlarge);
-        }
-        if ([value isEqualToString:@"d2.xlarge"]) {
-            return @(AWSEC2InstanceTypeD2_xlarge);
-        }
-        if ([value isEqualToString:@"d2.2xlarge"]) {
-            return @(AWSEC2InstanceTypeD2_2xlarge);
-        }
-        if ([value isEqualToString:@"d2.4xlarge"]) {
-            return @(AWSEC2InstanceTypeD2_4xlarge);
-        }
-        if ([value isEqualToString:@"d2.8xlarge"]) {
-            return @(AWSEC2InstanceTypeD2_8xlarge);
         }
         return @(AWSEC2InstanceTypeUnknown);
     } reverseBlock:^NSString *(NSNumber *value) {
@@ -14528,26 +10757,12 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"m3.xlarge";
             case AWSEC2InstanceTypeM3_2xlarge:
                 return @"m3.2xlarge";
-            case AWSEC2InstanceTypeM4_large:
-                return @"m4.large";
-            case AWSEC2InstanceTypeM4_xlarge:
-                return @"m4.xlarge";
-            case AWSEC2InstanceTypeM4_2xlarge:
-                return @"m4.2xlarge";
-            case AWSEC2InstanceTypeM4_4xlarge:
-                return @"m4.4xlarge";
-            case AWSEC2InstanceTypeM4_10xlarge:
-                return @"m4.10xlarge";
-            case AWSEC2InstanceTypeT2_nano:
-                return @"t2.nano";
             case AWSEC2InstanceTypeT2_micro:
                 return @"t2.micro";
             case AWSEC2InstanceTypeT2_small:
                 return @"t2.small";
             case AWSEC2InstanceTypeT2_medium:
                 return @"t2.medium";
-            case AWSEC2InstanceTypeT2_large:
-                return @"t2.large";
             case AWSEC2InstanceTypeM2_xlarge:
                 return @"m2.xlarge";
             case AWSEC2InstanceTypeM2_2xlarge:
@@ -14598,8 +10813,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"cc2.8xlarge";
             case AWSEC2InstanceTypeG2_2xlarge:
                 return @"g2.2xlarge";
-            case AWSEC2InstanceTypeG2_8xlarge:
-                return @"g2.8xlarge";
             case AWSEC2InstanceTypeCG1_4xlarge:
                 return @"cg1.4xlarge";
             case AWSEC2InstanceTypeR3_large:
@@ -14612,14 +10825,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"r3.4xlarge";
             case AWSEC2InstanceTypeR3_8xlarge:
                 return @"r3.8xlarge";
-            case AWSEC2InstanceTypeD2_xlarge:
-                return @"d2.xlarge";
-            case AWSEC2InstanceTypeD2_2xlarge:
-                return @"d2.2xlarge";
-            case AWSEC2InstanceTypeD2_4xlarge:
-                return @"d2.4xlarge";
-            case AWSEC2InstanceTypeD2_8xlarge:
-                return @"d2.8xlarge";
+            case AWSEC2InstanceTypeUnknown:
             default:
                 return nil;
         }
@@ -14634,7 +10840,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         if ([value isEqualToString:@"Linux/UNIX (Amazon VPC)"]) {
             return @(AWSEC2RIProductDescriptionLinuxUNIXAmazonVPC);
         }
-        if ([value isEqualToString:@"Windows"] || [value isEqualToString:@"windows"]) {
+        if ([value isEqualToString:@"Windows"]) {
             return @(AWSEC2RIProductDescriptionWindows);
         }
         if ([value isEqualToString:@"Windows (Amazon VPC)"]) {
@@ -14651,6 +10857,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"Windows";
             case AWSEC2RIProductDescriptionWindowsAmazonVPC:
                 return @"Windows (Amazon VPC)";
+            case AWSEC2RIProductDescriptionUnknown:
             default:
                 return nil;
         }
@@ -14663,48 +10870,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
     } reverseBlock:^id(NSDate *date) {
         return [date aws_stringValue:AWSDateISO8601DateFormat1];
     }];
-}
-
-@end
-
-@implementation AWSEC2StaleIpPermission
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"fromPort" : @"FromPort",
-             @"ipProtocol" : @"IpProtocol",
-             @"ipRanges" : @"IpRanges",
-             @"prefixListIds" : @"PrefixListIds",
-             @"toPort" : @"ToPort",
-             @"userIdGroupPairs" : @"UserIdGroupPairs",
-             };
-}
-
-+ (NSValueTransformer *)userIdGroupPairsJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2UserIdGroupPair class]];
-}
-
-@end
-
-@implementation AWSEC2StaleSecurityGroup
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"detail" : @"Description",
-             @"groupId" : @"GroupId",
-             @"groupName" : @"GroupName",
-             @"staleIpPermissions" : @"StaleIpPermissions",
-             @"staleIpPermissionsEgress" : @"StaleIpPermissionsEgress",
-             @"vpcId" : @"VpcId",
-             };
-}
-
-+ (NSValueTransformer *)staleIpPermissionsJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2StaleIpPermission class]];
-}
-
-+ (NSValueTransformer *)staleIpPermissionsEgressJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2StaleIpPermission class]];
 }
 
 @end
@@ -14817,6 +10982,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"pending";
             case AWSEC2SubnetStateAvailable:
                 return @"available";
+            case AWSEC2SubnetStateUnknown:
             default:
                 return nil;
         }
@@ -14941,6 +11107,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"vpn-connection";
             case AWSEC2ResourceTypeVpnGateway:
                 return @"vpn-gateway";
+            case AWSEC2ResourceTypeUnknown:
             default:
                 return nil;
         }
@@ -15010,54 +11177,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 
 @end
 
-@implementation AWSEC2UnsuccessfulItem
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"error" : @"Error",
-             @"resourceId" : @"ResourceId",
-             };
-}
-
-+ (NSValueTransformer *)errorJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSEC2UnsuccessfulItemError class]];
-}
-
-@end
-
-@implementation AWSEC2UnsuccessfulItemError
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"code" : @"Code",
-             @"message" : @"Message",
-             };
-}
-
-@end
-
-@implementation AWSEC2UserBucket
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"s3Bucket" : @"S3Bucket",
-             @"s3Key" : @"S3Key",
-             };
-}
-
-@end
-
-@implementation AWSEC2UserBucketDetails
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"s3Bucket" : @"S3Bucket",
-             @"s3Key" : @"S3Key",
-             };
-}
-
-@end
-
 @implementation AWSEC2UserData
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
@@ -15074,10 +11193,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 	return @{
              @"groupId" : @"GroupId",
              @"groupName" : @"GroupName",
-             @"peeringStatus" : @"PeeringStatus",
              @"userId" : @"UserId",
-             @"vpcId" : @"VpcId",
-             @"vpcPeeringConnectionId" : @"VpcPeeringConnectionId",
              };
 }
 
@@ -15118,6 +11234,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"UP";
             case AWSEC2TelemetryStatusDown:
                 return @"DOWN";
+            case AWSEC2TelemetryStatusUnknown:
             default:
                 return nil;
         }
@@ -15192,6 +11309,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"deleted";
             case AWSEC2VolumeStateError:
                 return @"error";
+            case AWSEC2VolumeStateUnknown:
             default:
                 return nil;
         }
@@ -15213,12 +11331,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         if ([value isEqualToString:@"gp2"]) {
             return @(AWSEC2VolumeTypeGp2);
         }
-        if ([value isEqualToString:@"sc1"]) {
-            return @(AWSEC2VolumeTypeSc1);
-        }
-        if ([value isEqualToString:@"st1"]) {
-            return @(AWSEC2VolumeTypeSt1);
-        }
         return @(AWSEC2VolumeTypeUnknown);
     } reverseBlock:^NSString *(NSNumber *value) {
         switch ([value integerValue]) {
@@ -15228,10 +11340,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"io1";
             case AWSEC2VolumeTypeGp2:
                 return @"gp2";
-            case AWSEC2VolumeTypeSc1:
-                return @"sc1";
-            case AWSEC2VolumeTypeSt1:
-                return @"st1";
+            case AWSEC2VolumeTypeUnknown:
             default:
                 return nil;
         }
@@ -15286,6 +11395,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"detaching";
             case AWSEC2VolumeAttachmentStateDetached:
                 return @"detached";
+            case AWSEC2VolumeAttachmentStateUnknown:
             default:
                 return nil;
         }
@@ -15341,6 +11451,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"io-enabled";
             case AWSEC2VolumeStatusNameIoPerformance:
                 return @"io-performance";
+            case AWSEC2VolumeStatusNameUnknown:
             default:
                 return nil;
         }
@@ -15412,6 +11523,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"impaired";
             case AWSEC2VolumeStatusInfoStatusInsufficientData:
                 return @"insufficient-data";
+            case AWSEC2VolumeStatusInfoStatusUnknown:
             default:
                 return nil;
         }
@@ -15468,9 +11580,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         if ([value isEqualToString:@"dedicated"]) {
             return @(AWSEC2TenancyDedicated);
         }
-        if ([value isEqualToString:@"host"]) {
-            return @(AWSEC2TenancyHost);
-        }
         return @(AWSEC2TenancyUnknown);
     } reverseBlock:^NSString *(NSNumber *value) {
         switch ([value integerValue]) {
@@ -15478,8 +11587,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"default";
             case AWSEC2TenancyDedicated:
                 return @"dedicated";
-            case AWSEC2TenancyHost:
-                return @"host";
+            case AWSEC2TenancyUnknown:
             default:
                 return nil;
         }
@@ -15501,6 +11609,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"pending";
             case AWSEC2VpcStateAvailable:
                 return @"available";
+            case AWSEC2VpcStateUnknown:
             default:
                 return nil;
         }
@@ -15547,6 +11656,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"detaching";
             case AWSEC2AttachmentStatusDetached:
                 return @"detached";
+            case AWSEC2AttachmentStatusUnknown:
             default:
                 return nil;
         }
@@ -15567,61 +11677,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 
 + (NSValueTransformer *)tagsJSONTransformer {
 	return [NSValueTransformer awsmtl_JSONArrayTransformerWithModelClass:[AWSEC2Tag class]];
-}
-
-@end
-
-@implementation AWSEC2VpcEndpoint
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"creationTimestamp" : @"CreationTimestamp",
-             @"policyDocument" : @"PolicyDocument",
-             @"routeTableIds" : @"RouteTableIds",
-             @"serviceName" : @"ServiceName",
-             @"state" : @"State",
-             @"vpcEndpointId" : @"VpcEndpointId",
-             @"vpcId" : @"VpcId",
-             };
-}
-
-+ (NSValueTransformer *)creationTimestampJSONTransformer {
-	return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^id(NSString *str) {
-        return [NSDate aws_dateFromString:str];
-    } reverseBlock:^id(NSDate *date) {
-        return [date aws_stringValue:AWSDateISO8601DateFormat1];
-    }];
-}
-
-+ (NSValueTransformer *)stateJSONTransformer {
-    return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^NSNumber *(NSString *value) {
-        if ([value isEqualToString:@"Pending"]) {
-            return @(AWSEC2StatePending);
-        }
-        if ([value isEqualToString:@"Available"]) {
-            return @(AWSEC2StateAvailable);
-        }
-        if ([value isEqualToString:@"Deleting"]) {
-            return @(AWSEC2StateDeleting);
-        }
-        if ([value isEqualToString:@"Deleted"]) {
-            return @(AWSEC2StateDeleted);
-        }
-        return @(AWSEC2StateUnknown);
-    } reverseBlock:^NSString *(NSNumber *value) {
-        switch ([value integerValue]) {
-            case AWSEC2StatePending:
-                return @"Pending";
-            case AWSEC2StateAvailable:
-                return @"Available";
-            case AWSEC2StateDeleting:
-                return @"Deleting";
-            case AWSEC2StateDeleted:
-                return @"Deleted";
-            default:
-                return nil;
-        }
-    }];
 }
 
 @end
@@ -15665,17 +11720,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 
 @end
 
-@implementation AWSEC2VpcPeeringConnectionOptionsDescription
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"allowEgressFromLocalClassicLinkToRemoteVpc" : @"AllowEgressFromLocalClassicLinkToRemoteVpc",
-             @"allowEgressFromLocalVpcToRemoteClassicLink" : @"AllowEgressFromLocalVpcToRemoteClassicLink",
-             };
-}
-
-@end
-
 @implementation AWSEC2VpcPeeringConnectionStateReason
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey {
@@ -15683,62 +11727,6 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
              @"code" : @"Code",
              @"message" : @"Message",
              };
-}
-
-+ (NSValueTransformer *)codeJSONTransformer {
-    return [AWSMTLValueTransformer reversibleTransformerWithForwardBlock:^NSNumber *(NSString *value) {
-        if ([value isEqualToString:@"initiating-request"]) {
-            return @(AWSEC2VpcPeeringConnectionStateReasonCodeInitiatingRequest);
-        }
-        if ([value isEqualToString:@"pending-acceptance"]) {
-            return @(AWSEC2VpcPeeringConnectionStateReasonCodePendingAcceptance);
-        }
-        if ([value isEqualToString:@"active"]) {
-            return @(AWSEC2VpcPeeringConnectionStateReasonCodeActive);
-        }
-        if ([value isEqualToString:@"deleted"]) {
-            return @(AWSEC2VpcPeeringConnectionStateReasonCodeDeleted);
-        }
-        if ([value isEqualToString:@"rejected"]) {
-            return @(AWSEC2VpcPeeringConnectionStateReasonCodeRejected);
-        }
-        if ([value isEqualToString:@"failed"]) {
-            return @(AWSEC2VpcPeeringConnectionStateReasonCodeFailed);
-        }
-        if ([value isEqualToString:@"expired"]) {
-            return @(AWSEC2VpcPeeringConnectionStateReasonCodeExpired);
-        }
-        if ([value isEqualToString:@"provisioning"]) {
-            return @(AWSEC2VpcPeeringConnectionStateReasonCodeProvisioning);
-        }
-        if ([value isEqualToString:@"deleting"]) {
-            return @(AWSEC2VpcPeeringConnectionStateReasonCodeDeleting);
-        }
-        return @(AWSEC2VpcPeeringConnectionStateReasonCodeUnknown);
-    } reverseBlock:^NSString *(NSNumber *value) {
-        switch ([value integerValue]) {
-            case AWSEC2VpcPeeringConnectionStateReasonCodeInitiatingRequest:
-                return @"initiating-request";
-            case AWSEC2VpcPeeringConnectionStateReasonCodePendingAcceptance:
-                return @"pending-acceptance";
-            case AWSEC2VpcPeeringConnectionStateReasonCodeActive:
-                return @"active";
-            case AWSEC2VpcPeeringConnectionStateReasonCodeDeleted:
-                return @"deleted";
-            case AWSEC2VpcPeeringConnectionStateReasonCodeRejected:
-                return @"rejected";
-            case AWSEC2VpcPeeringConnectionStateReasonCodeFailed:
-                return @"failed";
-            case AWSEC2VpcPeeringConnectionStateReasonCodeExpired:
-                return @"expired";
-            case AWSEC2VpcPeeringConnectionStateReasonCodeProvisioning:
-                return @"provisioning";
-            case AWSEC2VpcPeeringConnectionStateReasonCodeDeleting:
-                return @"deleting";
-            default:
-                return nil;
-        }
-    }];
 }
 
 @end
@@ -15749,13 +11737,8 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
 	return @{
              @"cidrBlock" : @"CidrBlock",
              @"ownerId" : @"OwnerId",
-             @"peeringOptions" : @"PeeringOptions",
              @"vpcId" : @"VpcId",
              };
-}
-
-+ (NSValueTransformer *)peeringOptionsJSONTransformer {
-	return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSEC2VpcPeeringConnectionOptionsDescription class]];
 }
 
 @end
@@ -15810,6 +11793,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"deleting";
             case AWSEC2VpnStateDeleted:
                 return @"deleted";
+            case AWSEC2VpnStateUnknown:
             default:
                 return nil;
         }
@@ -15830,6 +11814,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         switch ([value integerValue]) {
             case AWSEC2GatewayTypeIpsec1:
                 return @"ipsec.1";
+            case AWSEC2GatewayTypeUnknown:
             default:
                 return nil;
         }
@@ -15900,6 +11885,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"deleting";
             case AWSEC2VpnStateDeleted:
                 return @"deleted";
+            case AWSEC2VpnStateUnknown:
             default:
                 return nil;
         }
@@ -15920,6 +11906,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         switch ([value integerValue]) {
             case AWSEC2GatewayTypeIpsec1:
                 return @"ipsec.1";
+            case AWSEC2GatewayTypeUnknown:
             default:
                 return nil;
         }
@@ -15952,6 +11939,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
         switch ([value integerValue]) {
             case AWSEC2VpnStaticRouteSourceStatic:
                 return @"Static";
+            case AWSEC2VpnStaticRouteSourceUnknown:
             default:
                 return nil;
         }
@@ -15983,6 +11971,7 @@ NSString *const AWSEC2ErrorDomain = @"com.amazonaws.AWSEC2ErrorDomain";
                 return @"deleting";
             case AWSEC2VpnStateDeleted:
                 return @"deleted";
+            case AWSEC2VpnStateUnknown:
             default:
                 return nil;
         }

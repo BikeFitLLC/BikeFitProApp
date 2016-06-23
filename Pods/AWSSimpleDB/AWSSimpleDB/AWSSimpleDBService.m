@@ -26,9 +26,6 @@
 #import "AWSSynchronizedMutableDictionary.h"
 #import "AWSSimpleDBResources.h"
 
-static NSString *const AWSInfoSimpleDB = @"SimpleDB";
-static NSString *const AWSSimpleDBSDKVersion = @"2.4.3";
-
 @interface AWSSimpleDBResponseSerializer : AWSXMLResponseSerializer
 
 @end
@@ -40,6 +37,9 @@ static NSString *const AWSSimpleDBSDKVersion = @"2.4.3";
 static NSDictionary *errorCodeDictionary = nil;
 + (void)initialize {
     errorCodeDictionary = @{
+                            @"AccessFailure" : @(AWSSimpleDBErrorAccessFailure),
+                            @"AuthFailure" : @(AWSSimpleDBErrorAuthFailure),
+                            @"AuthMissingFailure" : @(AWSSimpleDBErrorAuthMissingFailure),
                             @"AttributeDoesNotExist" : @(AWSSimpleDBErrorAttributeDoesNotExist),
                             @"DuplicateItemName" : @(AWSSimpleDBErrorDuplicateItemName),
                             @"InvalidNextToken" : @(AWSSimpleDBErrorInvalidNextToken),
@@ -118,6 +118,32 @@ static NSDictionary *errorCodeDictionary = nil;
 
 @implementation AWSSimpleDBRequestRetryHandler
 
+- (AWSNetworkingRetryType)shouldRetry:(uint32_t)currentRetryCount
+                             response:(NSHTTPURLResponse *)response
+                                 data:(NSData *)data
+                                error:(NSError *)error {
+    AWSNetworkingRetryType retryType = [super shouldRetry:currentRetryCount
+                                                 response:response
+                                                     data:data
+                                                    error:error];
+    if(retryType == AWSNetworkingRetryTypeShouldNotRetry
+       && [error.domain isEqualToString:AWSSimpleDBErrorDomain]
+       && currentRetryCount < self.maxRetryCount) {
+        switch (error.code) {
+            case AWSSimpleDBErrorAccessFailure:
+            case AWSSimpleDBErrorAuthFailure:
+            case AWSSimpleDBErrorAuthMissingFailure:
+                retryType = AWSNetworkingRetryTypeShouldRefreshCredentialsAndRetry;
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    return retryType;
+}
+
 @end
 
 @interface AWSRequest()
@@ -141,41 +167,22 @@ static NSDictionary *errorCodeDictionary = nil;
 
 @implementation AWSSimpleDB
 
-+ (void)initialize {
-    [super initialize];
-
-    if (![AWSiOSSDKVersion isEqualToString:AWSSimpleDBSDKVersion]) {
-        @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                       reason:[NSString stringWithFormat:@"AWSCore and AWSSimpleDB versions need to match. Check your SDK installation. AWSCore: %@ AWSSimpleDB: %@", AWSiOSSDKVersion, AWSSimpleDBSDKVersion]
-                                     userInfo:nil];
-    }
-}
-
-#pragma mark - Setup
-
 static AWSSynchronizedMutableDictionary *_serviceClients = nil;
 
 + (instancetype)defaultSimpleDB {
+    if (![AWSServiceManager defaultServiceManager].defaultServiceConfiguration) {
+        @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                       reason:@"`defaultServiceConfiguration` is `nil`. You need to set it before using this method."
+                                     userInfo:nil];
+    }
+
     static AWSSimpleDB *_defaultSimpleDB = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        AWSServiceConfiguration *serviceConfiguration = nil;
-        AWSServiceInfo *serviceInfo = [[AWSInfo defaultAWSInfo] defaultServiceInfo:AWSInfoSimpleDB];
-        if (serviceInfo) {
-            serviceConfiguration = [[AWSServiceConfiguration alloc] initWithRegion:serviceInfo.region
-                                                               credentialsProvider:serviceInfo.cognitoCredentialsProvider];
-        }
-
-        if (!serviceConfiguration) {
-            serviceConfiguration = [AWSServiceManager defaultServiceManager].defaultServiceConfiguration;
-        }
-
-        if (!serviceConfiguration) {
-            @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                           reason:@"The service configuration is `nil`. You need to configure `Info.plist` or set `defaultServiceConfiguration` before using this method."
-                                         userInfo:nil];
-        }
-        _defaultSimpleDB = [[AWSSimpleDB alloc] initWithConfiguration:serviceConfiguration];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+        _defaultSimpleDB = [[AWSSimpleDB alloc] initWithConfiguration:AWSServiceManager.defaultServiceManager.defaultServiceConfiguration];
+#pragma clang diagnostic pop
     });
 
     return _defaultSimpleDB;
@@ -186,28 +193,15 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
     dispatch_once(&onceToken, ^{
         _serviceClients = [AWSSynchronizedMutableDictionary new];
     });
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     [_serviceClients setObject:[[AWSSimpleDB alloc] initWithConfiguration:configuration]
                         forKey:key];
+#pragma clang diagnostic pop
 }
 
 + (instancetype)SimpleDBForKey:(NSString *)key {
-    @synchronized(self) {
-        AWSSimpleDB *serviceClient = [_serviceClients objectForKey:key];
-        if (serviceClient) {
-            return serviceClient;
-        }
-
-        AWSServiceInfo *serviceInfo = [[AWSInfo defaultAWSInfo] serviceInfo:AWSInfoSimpleDB
-                                                                     forKey:key];
-        if (serviceInfo) {
-            AWSServiceConfiguration *serviceConfiguration = [[AWSServiceConfiguration alloc] initWithRegion:serviceInfo.region
-                                                                                        credentialsProvider:serviceInfo.cognitoCredentialsProvider];
-            [AWSSimpleDB registerSimpleDBWithConfiguration:serviceConfiguration
-                                                    forKey:key];
-        }
-
-        return [_serviceClients objectForKey:key];
-    }
+    return [_serviceClients objectForKey:key];
 }
 
 + (void)removeSimpleDBForKey:(NSString *)key {
@@ -220,8 +214,6 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
                                  userInfo:nil];
     return nil;
 }
-
-#pragma mark -
 
 - (instancetype)initWithConfiguration:(AWSServiceConfiguration *)configuration {
     if (self = [super init]) {
@@ -548,7 +540,5 @@ completionHandler:(void (^)(AWSSimpleDBSelectResult *response, NSError *error))c
         return nil;
     }];
 }
-
-#pragma mark -
 
 @end

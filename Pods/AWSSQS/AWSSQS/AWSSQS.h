@@ -14,12 +14,5 @@
 //
 
 #import <Foundation/Foundation.h>
-
-//! Project version number for AWSSQS.
-FOUNDATION_EXPORT double AWSSQSVersionNumber;
-
-//! Project version string for AWSSQS.
-FOUNDATION_EXPORT const unsigned char AWSSQSVersionString[];
-
 #import <AWSCore/AWSCore.h>
 #import "AWSSQSService.h"

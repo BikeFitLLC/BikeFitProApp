@@ -14,13 +14,6 @@
 //
 
 #import <Foundation/Foundation.h>
-
-//! Project version number for AWSKinesis.
-FOUNDATION_EXPORT double AWSKinesisVersionNumber;
-
-//! Project version string for AWSKinesis.
-FOUNDATION_EXPORT const unsigned char AWSKinesisVersionString[];
-
 #import <AWSCore/AWSCore.h>
 #import "AWSKinesisService.h"
 #import "AWSKinesisRecorder.h"

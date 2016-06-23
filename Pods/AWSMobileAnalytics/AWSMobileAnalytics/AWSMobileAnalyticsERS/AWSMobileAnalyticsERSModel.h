@@ -23,6 +23,9 @@ FOUNDATION_EXPORT NSString *const AWSMobileAnalyticsERSErrorDomain;
 
 typedef NS_ENUM(NSInteger, AWSMobileAnalyticsERSErrorType) {
     AWSMobileAnalyticsERSErrorUnknown,
+    AWSMobileAnalyticsERSErrorIncompleteSignature,
+    AWSMobileAnalyticsERSErrorInvalidClientTokenId,
+    AWSMobileAnalyticsERSErrorMissingAuthenticationToken,
     AWSMobileAnalyticsERSErrorBadRequest,
 };
 

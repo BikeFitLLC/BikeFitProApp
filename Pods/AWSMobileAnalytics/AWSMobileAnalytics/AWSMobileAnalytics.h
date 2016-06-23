@@ -14,13 +14,6 @@
 //
 
 #import <Foundation/Foundation.h>
-
-//! Project version number for AWSMobileAnalytics.
-FOUNDATION_EXPORT double AWSMobileAnalyticsVersionNumber;
-
-//! Project version string for AWSMobileAnalytics.
-FOUNDATION_EXPORT const unsigned char AWSMobileAnalyticsVersionString[];
-
 #import <AWSCore/AWSCore.h>
 
 #import "AWSMobileAnalyticsService.h"
@@ -31,5 +24,3 @@ FOUNDATION_EXPORT const unsigned char AWSMobileAnalyticsVersionString[];
 #import "AWSMobileAnalyticsMonetizationEventBuilder.h"
 #import "AWSMobileAnalyticsAppleMonetizationEventBuilder.h"
 #import "AWSMobileAnalyticsVirtualMonetizationEventBuilder.h"
-
-#import "AWSMobileAnalyticsERSService.h"

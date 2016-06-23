@@ -26,9 +26,6 @@
 #import "AWSSynchronizedMutableDictionary.h"
 #import "AWSDynamoDBResources.h"
 
-static NSString *const AWSInfoDynamoDB = @"DynamoDB";
-static NSString *const AWSDynamoDBSDKVersion = @"2.4.3";
-
 @interface AWSDynamoDBResponseSerializer : AWSJSONResponseSerializer
 
 @end
@@ -40,6 +37,11 @@ static NSString *const AWSDynamoDBSDKVersion = @"2.4.3";
 static NSDictionary *errorCodeDictionary = nil;
 + (void)initialize {
     errorCodeDictionary = @{
+                            @"AccessDeniedException" : @(AWSDynamoDBErrorAccessDenied),
+                            @"UnrecognizedClientException" : @(AWSDynamoDBErrorUnrecognizedClient),
+                            @"IncompleteSignature" : @(AWSDynamoDBErrorIncompleteSignature),
+                            @"InvalidClientTokenId" : @(AWSDynamoDBErrorInvalidClientTokenId),
+                            @"MissingAuthenticationToken" : @(AWSDynamoDBErrorMissingAuthenticationToken),
                             @"ConditionalCheckFailedException" : @(AWSDynamoDBErrorConditionalCheckFailed),
                             @"InternalServerError" : @(AWSDynamoDBErrorInternalServer),
                             @"ItemCollectionSizeLimitExceededException" : @(AWSDynamoDBErrorItemCollectionSizeLimitExceeded),
@@ -121,6 +123,14 @@ static NSDictionary *errorCodeDictionary = nil;
                 retryType = AWSNetworkingRetryTypeShouldRetry;
                 break;
 
+            case AWSDynamoDBErrorAccessDenied:
+            case AWSDynamoDBErrorUnrecognizedClient:
+            case AWSDynamoDBErrorIncompleteSignature:
+            case AWSDynamoDBErrorInvalidClientTokenId:
+            case AWSDynamoDBErrorMissingAuthenticationToken:
+                retryType = AWSNetworkingRetryTypeShouldRefreshCredentialsAndRetry;
+                break;
+
             default:
                 break;
         }
@@ -152,41 +162,22 @@ static NSDictionary *errorCodeDictionary = nil;
 
 @implementation AWSDynamoDB
 
-+ (void)initialize {
-    [super initialize];
-
-    if (![AWSiOSSDKVersion isEqualToString:AWSDynamoDBSDKVersion]) {
-        @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                       reason:[NSString stringWithFormat:@"AWSCore and AWSDynamoDB versions need to match. Check your SDK installation. AWSCore: %@ AWSDynamoDB: %@", AWSiOSSDKVersion, AWSDynamoDBSDKVersion]
-                                     userInfo:nil];
-    }
-}
-
-#pragma mark - Setup
-
 static AWSSynchronizedMutableDictionary *_serviceClients = nil;
 
 + (instancetype)defaultDynamoDB {
+    if (![AWSServiceManager defaultServiceManager].defaultServiceConfiguration) {
+        @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                       reason:@"`defaultServiceConfiguration` is `nil`. You need to set it before using this method."
+                                     userInfo:nil];
+    }
+
     static AWSDynamoDB *_defaultDynamoDB = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        AWSServiceConfiguration *serviceConfiguration = nil;
-        AWSServiceInfo *serviceInfo = [[AWSInfo defaultAWSInfo] defaultServiceInfo:AWSInfoDynamoDB];
-        if (serviceInfo) {
-            serviceConfiguration = [[AWSServiceConfiguration alloc] initWithRegion:serviceInfo.region
-                                                               credentialsProvider:serviceInfo.cognitoCredentialsProvider];
-        }
-
-        if (!serviceConfiguration) {
-            serviceConfiguration = [AWSServiceManager defaultServiceManager].defaultServiceConfiguration;
-        }
-
-        if (!serviceConfiguration) {
-            @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                           reason:@"The service configuration is `nil`. You need to configure `Info.plist` or set `defaultServiceConfiguration` before using this method."
-                                         userInfo:nil];
-        }
-        _defaultDynamoDB = [[AWSDynamoDB alloc] initWithConfiguration:serviceConfiguration];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+        _defaultDynamoDB = [[AWSDynamoDB alloc] initWithConfiguration:AWSServiceManager.defaultServiceManager.defaultServiceConfiguration];
+#pragma clang diagnostic pop
     });
 
     return _defaultDynamoDB;
@@ -197,28 +188,15 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
     dispatch_once(&onceToken, ^{
         _serviceClients = [AWSSynchronizedMutableDictionary new];
     });
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     [_serviceClients setObject:[[AWSDynamoDB alloc] initWithConfiguration:configuration]
                         forKey:key];
+#pragma clang diagnostic pop
 }
 
 + (instancetype)DynamoDBForKey:(NSString *)key {
-    @synchronized(self) {
-        AWSDynamoDB *serviceClient = [_serviceClients objectForKey:key];
-        if (serviceClient) {
-            return serviceClient;
-        }
-
-        AWSServiceInfo *serviceInfo = [[AWSInfo defaultAWSInfo] serviceInfo:AWSInfoDynamoDB
-                                                                     forKey:key];
-        if (serviceInfo) {
-            AWSServiceConfiguration *serviceConfiguration = [[AWSServiceConfiguration alloc] initWithRegion:serviceInfo.region
-                                                                                        credentialsProvider:serviceInfo.cognitoCredentialsProvider];
-            [AWSDynamoDB registerDynamoDBWithConfiguration:serviceConfiguration
-                                                    forKey:key];
-        }
-
-        return [_serviceClients objectForKey:key];
-    }
+    return [_serviceClients objectForKey:key];
 }
 
 + (void)removeDynamoDBForKey:(NSString *)key {
@@ -231,8 +209,6 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
                                  userInfo:nil];
     return nil;
 }
-
-#pragma mark -
 
 - (instancetype)initWithConfiguration:(AWSServiceConfiguration *)configuration {
     if (self = [super init]) {
@@ -416,34 +392,6 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
   completionHandler:(void (^)(AWSDynamoDBDeleteTableOutput *response, NSError *error))completionHandler {
     [[self deleteTable:request] continueWithBlock:^id _Nullable(AWSTask<AWSDynamoDBDeleteTableOutput *> * _Nonnull task) {
         AWSDynamoDBDeleteTableOutput *result = task.result;
-        NSError *error = task.error;
-
-        if (task.exception) {
-            AWSLogError(@"Fatal exception: [%@]", task.exception);
-            kill(getpid(), SIGKILL);
-        }
-
-        if (completionHandler) {
-            completionHandler(result, error);
-        }
-
-        return nil;
-    }];
-}
-
-- (AWSTask<AWSDynamoDBDescribeLimitsOutput *> *)describeLimits:(AWSDynamoDBDescribeLimitsInput *)request {
-    return [self invokeRequest:request
-                    HTTPMethod:AWSHTTPMethodPOST
-                     URLString:@""
-                  targetPrefix:@"DynamoDB_20120810"
-                 operationName:@"DescribeLimits"
-                   outputClass:[AWSDynamoDBDescribeLimitsOutput class]];
-}
-
-- (void)describeLimits:(AWSDynamoDBDescribeLimitsInput *)request
-     completionHandler:(void (^)(AWSDynamoDBDescribeLimitsOutput *response, NSError *error))completionHandler {
-    [[self describeLimits:request] continueWithBlock:^id _Nullable(AWSTask<AWSDynamoDBDescribeLimitsOutput *> * _Nonnull task) {
-        AWSDynamoDBDescribeLimitsOutput *result = task.result;
         NSError *error = task.error;
 
         if (task.exception) {
@@ -682,7 +630,5 @@ completionHandler:(void (^)(AWSDynamoDBScanOutput *response, NSError *error))com
         return nil;
     }];
 }
-
-#pragma mark -
 
 @end

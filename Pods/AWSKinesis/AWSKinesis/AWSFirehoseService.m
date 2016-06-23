@@ -26,9 +26,6 @@
 #import "AWSSynchronizedMutableDictionary.h"
 #import "AWSFirehoseResources.h"
 
-static NSString *const AWSInfoFirehose = @"Firehose";
-static NSString *const AWSFirehoseSDKVersion = @"2.4.3";
-
 @interface AWSFirehoseResponseSerializer : AWSJSONResponseSerializer
 
 @end
@@ -40,6 +37,9 @@ static NSString *const AWSFirehoseSDKVersion = @"2.4.3";
 static NSDictionary *errorCodeDictionary = nil;
 + (void)initialize {
     errorCodeDictionary = @{
+                            @"IncompleteSignature" : @(AWSFirehoseErrorIncompleteSignature),
+                            @"InvalidClientTokenId" : @(AWSFirehoseErrorInvalidClientTokenId),
+                            @"MissingAuthenticationToken" : @(AWSFirehoseErrorMissingAuthenticationToken),
                             @"ConcurrentModificationException" : @(AWSFirehoseErrorConcurrentModification),
                             @"InvalidArgumentException" : @(AWSFirehoseErrorInvalidArgument),
                             @"LimitExceededException" : @(AWSFirehoseErrorLimitExceeded),
@@ -116,6 +116,12 @@ static NSDictionary *errorCodeDictionary = nil;
        && [error.domain isEqualToString:AWSFirehoseErrorDomain]
        && currentRetryCount < self.maxRetryCount) {
         switch (error.code) {
+            case AWSFirehoseErrorIncompleteSignature:
+            case AWSFirehoseErrorInvalidClientTokenId:
+            case AWSFirehoseErrorMissingAuthenticationToken:
+                retryType = AWSNetworkingRetryTypeShouldRefreshCredentialsAndRetry;
+                break;
+
             case AWSFirehoseErrorLimitExceeded:
                 retryType = AWSNetworkingRetryTypeShouldRetry;
                 break;
@@ -151,41 +157,20 @@ static NSDictionary *errorCodeDictionary = nil;
 
 @implementation AWSFirehose
 
-+ (void)initialize {
-    [super initialize];
-
-    if (![AWSiOSSDKVersion isEqualToString:AWSFirehoseSDKVersion]) {
-        @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                       reason:[NSString stringWithFormat:@"AWSCore and AWSKinesis versions need to match. Check your SDK installation. AWSCore: %@ AWSKinesis: %@", AWSiOSSDKVersion, AWSFirehoseSDKVersion]
-                                     userInfo:nil];
-    }
-}
-
-#pragma mark - Setup
-
 static AWSSynchronizedMutableDictionary *_serviceClients = nil;
 
 + (instancetype)defaultFirehose {
+    if (![AWSServiceManager defaultServiceManager].defaultServiceConfiguration) {
+        return nil;
+    }
+
     static AWSFirehose *_defaultFirehose = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        AWSServiceConfiguration *serviceConfiguration = nil;
-        AWSServiceInfo *serviceInfo = [[AWSInfo defaultAWSInfo] defaultServiceInfo:AWSInfoFirehose];
-        if (serviceInfo) {
-            serviceConfiguration = [[AWSServiceConfiguration alloc] initWithRegion:serviceInfo.region
-                                                               credentialsProvider:serviceInfo.cognitoCredentialsProvider];
-        }
-
-        if (!serviceConfiguration) {
-            serviceConfiguration = [AWSServiceManager defaultServiceManager].defaultServiceConfiguration;
-        }
-
-        if (!serviceConfiguration) {
-            @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                           reason:@"The service configuration is `nil`. You need to configure `Info.plist` or set `defaultServiceConfiguration` before using this method."
-                                         userInfo:nil];
-        }
-        _defaultFirehose = [[AWSFirehose alloc] initWithConfiguration:serviceConfiguration];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+        _defaultFirehose = [[AWSFirehose alloc] initWithConfiguration:AWSServiceManager.defaultServiceManager.defaultServiceConfiguration];
+#pragma clang diagnostic pop
     });
 
     return _defaultFirehose;
@@ -196,28 +181,15 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
     dispatch_once(&onceToken, ^{
         _serviceClients = [AWSSynchronizedMutableDictionary new];
     });
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     [_serviceClients setObject:[[AWSFirehose alloc] initWithConfiguration:configuration]
                         forKey:key];
+#pragma clang diagnostic pop
 }
 
 + (instancetype)FirehoseForKey:(NSString *)key {
-    @synchronized(self) {
-        AWSFirehose *serviceClient = [_serviceClients objectForKey:key];
-        if (serviceClient) {
-            return serviceClient;
-        }
-
-        AWSServiceInfo *serviceInfo = [[AWSInfo defaultAWSInfo] serviceInfo:AWSInfoFirehose
-                                                                     forKey:key];
-        if (serviceInfo) {
-            AWSServiceConfiguration *serviceConfiguration = [[AWSServiceConfiguration alloc] initWithRegion:serviceInfo.region
-                                                                                        credentialsProvider:serviceInfo.cognitoCredentialsProvider];
-            [AWSFirehose registerFirehoseWithConfiguration:serviceConfiguration
-                                                    forKey:key];
-        }
-
-        return [_serviceClients objectForKey:key];
-    }
+    return [_serviceClients objectForKey:key];
 }
 
 + (void)removeFirehoseForKey:(NSString *)key {
@@ -230,8 +202,6 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
                                  userInfo:nil];
     return nil;
 }
-
-#pragma mark -
 
 - (instancetype)initWithConfiguration:(AWSServiceConfiguration *)configuration {
     if (self = [super init]) {
@@ -485,7 +455,5 @@ completionHandler:(void (^)(AWSFirehosePutRecordOutput *response, NSError *error
         return nil;
     }];
 }
-
-#pragma mark -
 
 @end

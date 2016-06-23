@@ -76,6 +76,16 @@
                ReferencedContainer = "container:bikefit.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "002733BE1BD1B13200EDA7BC"
+               BuildableName = "bikefitUITests.xctest"
+               BlueprintName = "bikefitUITests"
+               ReferencedContainer = "container:bikefit.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

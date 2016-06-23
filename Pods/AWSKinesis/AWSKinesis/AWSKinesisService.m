@@ -26,9 +26,6 @@
 #import "AWSSynchronizedMutableDictionary.h"
 #import "AWSKinesisResources.h"
 
-static NSString *const AWSInfoKinesis = @"Kinesis";
-static NSString *const AWSKinesisSDKVersion = @"2.4.3";
-
 @interface AWSKinesisResponseSerializer : AWSJSONResponseSerializer
 
 @end
@@ -40,6 +37,9 @@ static NSString *const AWSKinesisSDKVersion = @"2.4.3";
 static NSDictionary *errorCodeDictionary = nil;
 + (void)initialize {
     errorCodeDictionary = @{
+                            @"IncompleteSignature" : @(AWSKinesisErrorIncompleteSignature),
+                            @"InvalidClientTokenId" : @(AWSKinesisErrorInvalidClientTokenId),
+                            @"MissingAuthenticationToken" : @(AWSKinesisErrorMissingAuthenticationToken),
                             @"ExpiredIteratorException" : @(AWSKinesisErrorExpiredIterator),
                             @"InvalidArgumentException" : @(AWSKinesisErrorInvalidArgument),
                             @"LimitExceededException" : @(AWSKinesisErrorLimitExceeded),
@@ -116,6 +116,12 @@ static NSDictionary *errorCodeDictionary = nil;
        && [error.domain isEqualToString:AWSKinesisErrorDomain]
        && currentRetryCount < self.maxRetryCount) {
         switch (error.code) {
+            case AWSKinesisErrorIncompleteSignature:
+            case AWSKinesisErrorInvalidClientTokenId:
+            case AWSKinesisErrorMissingAuthenticationToken:
+                retryType = AWSNetworkingRetryTypeShouldRefreshCredentialsAndRetry;
+                break;
+
             case AWSKinesisErrorProvisionedThroughputExceeded:
                 retryType = AWSNetworkingRetryTypeShouldRetry;
                 break;
@@ -151,41 +157,22 @@ static NSDictionary *errorCodeDictionary = nil;
 
 @implementation AWSKinesis
 
-+ (void)initialize {
-    [super initialize];
-
-    if (![AWSiOSSDKVersion isEqualToString:AWSKinesisSDKVersion]) {
-        @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                       reason:[NSString stringWithFormat:@"AWSCore and AWSKinesis versions need to match. Check your SDK installation. AWSCore: %@ AWSKinesis: %@", AWSiOSSDKVersion, AWSKinesisSDKVersion]
-                                     userInfo:nil];
-    }
-}
-
-#pragma mark - Setup
-
 static AWSSynchronizedMutableDictionary *_serviceClients = nil;
 
 + (instancetype)defaultKinesis {
+    if (![AWSServiceManager defaultServiceManager].defaultServiceConfiguration) {
+        @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                       reason:@"`defaultServiceConfiguration` is `nil`. You need to set it before using this method."
+                                     userInfo:nil];
+    }
+
     static AWSKinesis *_defaultKinesis = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        AWSServiceConfiguration *serviceConfiguration = nil;
-        AWSServiceInfo *serviceInfo = [[AWSInfo defaultAWSInfo] defaultServiceInfo:AWSInfoKinesis];
-        if (serviceInfo) {
-            serviceConfiguration = [[AWSServiceConfiguration alloc] initWithRegion:serviceInfo.region
-                                                               credentialsProvider:serviceInfo.cognitoCredentialsProvider];
-        }
-
-        if (!serviceConfiguration) {
-            serviceConfiguration = [AWSServiceManager defaultServiceManager].defaultServiceConfiguration;
-        }
-
-        if (!serviceConfiguration) {
-            @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                           reason:@"The service configuration is `nil`. You need to configure `Info.plist` or set `defaultServiceConfiguration` before using this method."
-                                         userInfo:nil];
-        }
-        _defaultKinesis = [[AWSKinesis alloc] initWithConfiguration:serviceConfiguration];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+        _defaultKinesis = [[AWSKinesis alloc] initWithConfiguration:AWSServiceManager.defaultServiceManager.defaultServiceConfiguration];
+#pragma clang diagnostic pop
     });
 
     return _defaultKinesis;
@@ -196,28 +183,15 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
     dispatch_once(&onceToken, ^{
         _serviceClients = [AWSSynchronizedMutableDictionary new];
     });
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     [_serviceClients setObject:[[AWSKinesis alloc] initWithConfiguration:configuration]
                         forKey:key];
+#pragma clang diagnostic pop
 }
 
 + (instancetype)KinesisForKey:(NSString *)key {
-    @synchronized(self) {
-        AWSKinesis *serviceClient = [_serviceClients objectForKey:key];
-        if (serviceClient) {
-            return serviceClient;
-        }
-
-        AWSServiceInfo *serviceInfo = [[AWSInfo defaultAWSInfo] serviceInfo:AWSInfoKinesis
-                                                                     forKey:key];
-        if (serviceInfo) {
-            AWSServiceConfiguration *serviceConfiguration = [[AWSServiceConfiguration alloc] initWithRegion:serviceInfo.region
-                                                                                        credentialsProvider:serviceInfo.cognitoCredentialsProvider];
-            [AWSKinesis registerKinesisWithConfiguration:serviceConfiguration
-                                                  forKey:key];
-        }
-
-        return [_serviceClients objectForKey:key];
-    }
+    return [_serviceClients objectForKey:key];
 }
 
 + (void)removeKinesisForKey:(NSString *)key {
@@ -230,8 +204,6 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
                                  userInfo:nil];
     return nil;
 }
-
-#pragma mark -
 
 - (instancetype)initWithConfiguration:(AWSServiceConfiguration *)configuration {
     if (self = [super init]) {
@@ -344,33 +316,6 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
     }];
 }
 
-- (AWSTask *)decreaseStreamRetentionPeriod:(AWSKinesisDecreaseStreamRetentionPeriodInput *)request {
-    return [self invokeRequest:request
-                    HTTPMethod:AWSHTTPMethodPOST
-                     URLString:@""
-                  targetPrefix:@"Kinesis_20131202"
-                 operationName:@"DecreaseStreamRetentionPeriod"
-                   outputClass:nil];
-}
-
-- (void)decreaseStreamRetentionPeriod:(AWSKinesisDecreaseStreamRetentionPeriodInput *)request
-                    completionHandler:(void (^)(NSError *error))completionHandler {
-    [[self decreaseStreamRetentionPeriod:request] continueWithBlock:^id _Nullable(AWSTask * _Nonnull task) {
-        NSError *error = task.error;
-
-        if (task.exception) {
-            AWSLogError(@"Fatal exception: [%@]", task.exception);
-            kill(getpid(), SIGKILL);
-        }
-
-        if (completionHandler) {
-            completionHandler(error);
-        }
-
-        return nil;
-    }];
-}
-
 - (AWSTask *)deleteStream:(AWSKinesisDeleteStreamInput *)request {
     return [self invokeRequest:request
                     HTTPMethod:AWSHTTPMethodPOST
@@ -411,62 +356,6 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
      completionHandler:(void (^)(AWSKinesisDescribeStreamOutput *response, NSError *error))completionHandler {
     [[self describeStream:request] continueWithBlock:^id _Nullable(AWSTask<AWSKinesisDescribeStreamOutput *> * _Nonnull task) {
         AWSKinesisDescribeStreamOutput *result = task.result;
-        NSError *error = task.error;
-
-        if (task.exception) {
-            AWSLogError(@"Fatal exception: [%@]", task.exception);
-            kill(getpid(), SIGKILL);
-        }
-
-        if (completionHandler) {
-            completionHandler(result, error);
-        }
-
-        return nil;
-    }];
-}
-
-- (AWSTask<AWSKinesisEnhancedMonitoringOutput *> *)disableEnhancedMonitoring:(AWSKinesisDisableEnhancedMonitoringInput *)request {
-    return [self invokeRequest:request
-                    HTTPMethod:AWSHTTPMethodPOST
-                     URLString:@""
-                  targetPrefix:@"Kinesis_20131202"
-                 operationName:@"DisableEnhancedMonitoring"
-                   outputClass:[AWSKinesisEnhancedMonitoringOutput class]];
-}
-
-- (void)disableEnhancedMonitoring:(AWSKinesisDisableEnhancedMonitoringInput *)request
-                completionHandler:(void (^)(AWSKinesisEnhancedMonitoringOutput *response, NSError *error))completionHandler {
-    [[self disableEnhancedMonitoring:request] continueWithBlock:^id _Nullable(AWSTask<AWSKinesisEnhancedMonitoringOutput *> * _Nonnull task) {
-        AWSKinesisEnhancedMonitoringOutput *result = task.result;
-        NSError *error = task.error;
-
-        if (task.exception) {
-            AWSLogError(@"Fatal exception: [%@]", task.exception);
-            kill(getpid(), SIGKILL);
-        }
-
-        if (completionHandler) {
-            completionHandler(result, error);
-        }
-
-        return nil;
-    }];
-}
-
-- (AWSTask<AWSKinesisEnhancedMonitoringOutput *> *)enableEnhancedMonitoring:(AWSKinesisEnableEnhancedMonitoringInput *)request {
-    return [self invokeRequest:request
-                    HTTPMethod:AWSHTTPMethodPOST
-                     URLString:@""
-                  targetPrefix:@"Kinesis_20131202"
-                 operationName:@"EnableEnhancedMonitoring"
-                   outputClass:[AWSKinesisEnhancedMonitoringOutput class]];
-}
-
-- (void)enableEnhancedMonitoring:(AWSKinesisEnableEnhancedMonitoringInput *)request
-               completionHandler:(void (^)(AWSKinesisEnhancedMonitoringOutput *response, NSError *error))completionHandler {
-    [[self enableEnhancedMonitoring:request] continueWithBlock:^id _Nullable(AWSTask<AWSKinesisEnhancedMonitoringOutput *> * _Nonnull task) {
-        AWSKinesisEnhancedMonitoringOutput *result = task.result;
         NSError *error = task.error;
 
         if (task.exception) {
@@ -532,33 +421,6 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
 
         if (completionHandler) {
             completionHandler(result, error);
-        }
-
-        return nil;
-    }];
-}
-
-- (AWSTask *)increaseStreamRetentionPeriod:(AWSKinesisIncreaseStreamRetentionPeriodInput *)request {
-    return [self invokeRequest:request
-                    HTTPMethod:AWSHTTPMethodPOST
-                     URLString:@""
-                  targetPrefix:@"Kinesis_20131202"
-                 operationName:@"IncreaseStreamRetentionPeriod"
-                   outputClass:nil];
-}
-
-- (void)increaseStreamRetentionPeriod:(AWSKinesisIncreaseStreamRetentionPeriodInput *)request
-                    completionHandler:(void (^)(NSError *error))completionHandler {
-    [[self increaseStreamRetentionPeriod:request] continueWithBlock:^id _Nullable(AWSTask * _Nonnull task) {
-        NSError *error = task.error;
-
-        if (task.exception) {
-            AWSLogError(@"Fatal exception: [%@]", task.exception);
-            kill(getpid(), SIGKILL);
-        }
-
-        if (completionHandler) {
-            completionHandler(error);
         }
 
         return nil;
@@ -757,7 +619,5 @@ completionHandler:(void (^)(AWSKinesisPutRecordOutput *response, NSError *error)
         return nil;
     }];
 }
-
-#pragma mark -
 
 @end

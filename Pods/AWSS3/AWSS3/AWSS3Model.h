@@ -23,6 +23,12 @@ FOUNDATION_EXPORT NSString *const AWSS3ErrorDomain;
 
 typedef NS_ENUM(NSInteger, AWSS3ErrorType) {
     AWSS3ErrorUnknown,
+    AWSS3ErrorAccessDenied,
+    AWSS3ErrorExpiredToken,
+    AWSS3ErrorInvalidAccessKeyId,
+    AWSS3ErrorInvalidToken,
+    AWSS3ErrorSignatureDoesNotMatch,
+    AWSS3ErrorTokenRefreshRequired,
     AWSS3ErrorBucketAlreadyExists,
     AWSS3ErrorBucketAlreadyOwnedByYou,
     AWSS3ErrorNoSuchBucket,
@@ -30,12 +36,6 @@ typedef NS_ENUM(NSInteger, AWSS3ErrorType) {
     AWSS3ErrorNoSuchUpload,
     AWSS3ErrorObjectAlreadyInActiveTier,
     AWSS3ErrorObjectNotInActiveTier,
-};
-
-typedef NS_ENUM(NSInteger, AWSS3BucketAccelerateStatus) {
-    AWSS3BucketAccelerateStatusUnknown,
-    AWSS3BucketAccelerateStatusEnabled,
-    AWSS3BucketAccelerateStatusSuspended,
 };
 
 typedef NS_ENUM(NSInteger, AWSS3BucketCannedACL) {
@@ -55,11 +55,10 @@ typedef NS_ENUM(NSInteger, AWSS3BucketLocationConstraint) {
     AWSS3BucketLocationConstraintAPSoutheast1,
     AWSS3BucketLocationConstraintAPSoutheast2,
     AWSS3BucketLocationConstraintAPNortheast1,
-    AWSS3BucketLocationConstraintAPNortheast2,
     AWSS3BucketLocationConstraintSAEast1,
-    AWSS3BucketLocationConstraintEUCentral1,
     AWSS3BucketLocationConstraintBlank,
     AWSS3BucketLocationConstraintCNNorth1,
+    AWSS3BucketLocationConstraintEUCentral1,
     AWSS3BucketLocationConstraintUSGovWest1,
 };
 
@@ -218,10 +217,8 @@ typedef NS_ENUM(NSInteger, AWSS3Types) {
     AWSS3TypesGroup,
 };
 
-@class AWSS3AbortIncompleteMultipartUpload;
 @class AWSS3AbortMultipartUploadOutput;
 @class AWSS3AbortMultipartUploadRequest;
-@class AWSS3AccelerateConfiguration;
 @class AWSS3AccessControlPolicy;
 @class AWSS3Bucket;
 @class AWSS3BucketLifecycleConfiguration;
@@ -257,8 +254,6 @@ typedef NS_ENUM(NSInteger, AWSS3Types) {
 @class AWSS3Error;
 @class AWSS3ErrorDocument;
 @class AWSS3FilterRule;
-@class AWSS3GetBucketAccelerateConfigurationOutput;
-@class AWSS3GetBucketAccelerateConfigurationRequest;
 @class AWSS3GetBucketAclOutput;
 @class AWSS3GetBucketAclRequest;
 @class AWSS3GetBucketCorsOutput;
@@ -308,8 +303,6 @@ typedef NS_ENUM(NSInteger, AWSS3Types) {
 @class AWSS3ListObjectVersionsRequest;
 @class AWSS3ListObjectsOutput;
 @class AWSS3ListObjectsRequest;
-@class AWSS3ListObjectsV2Output;
-@class AWSS3ListObjectsV2Request;
 @class AWSS3ListPartsOutput;
 @class AWSS3ListPartsRequest;
 @class AWSS3LoggingEnabled;
@@ -324,7 +317,6 @@ typedef NS_ENUM(NSInteger, AWSS3Types) {
 @class AWSS3ObjectVersion;
 @class AWSS3Owner;
 @class AWSS3Part;
-@class AWSS3PutBucketAccelerateConfigurationRequest;
 @class AWSS3PutBucketAclRequest;
 @class AWSS3PutBucketCorsRequest;
 @class AWSS3PutBucketLifecycleConfigurationRequest;
@@ -374,19 +366,6 @@ typedef NS_ENUM(NSInteger, AWSS3Types) {
 @class AWSS3WebsiteConfiguration;
 
 /**
- Specifies the days since the initiation of an Incomplete Multipart Upload that Lifecycle will wait before permanently removing all parts of the upload.
- */
-@interface AWSS3AbortIncompleteMultipartUpload : AWSModel
-
-
-/**
- Indicates the number of days that must pass since initiation for Lifecycle to abort an Incomplete Multipart Upload.
- */
-@property (nonatomic, strong) NSNumber * _Nullable daysAfterInitiation;
-
-@end
-
-/**
  
  */
 @interface AWSS3AbortMultipartUploadOutput : AWSModel
@@ -424,19 +403,6 @@ typedef NS_ENUM(NSInteger, AWSS3Types) {
  
  */
 @property (nonatomic, strong) NSString * _Nullable uploadId;
-
-@end
-
-/**
- 
- */
-@interface AWSS3AccelerateConfiguration : AWSModel
-
-
-/**
- The accelerate configuration of the bucket.
- */
-@property (nonatomic, assign) AWSS3BucketAccelerateStatus status;
 
 @end
 
@@ -808,16 +774,6 @@ typedef NS_ENUM(NSInteger, AWSS3Types) {
  */
 @interface AWSS3CreateMultipartUploadOutput : AWSModel
 
-
-/**
- Date when multipart upload will become eligible for abort operation by lifecycle.
- */
-@property (nonatomic, strong) NSDate * _Nullable abortDate;
-
-/**
- Id of the lifecycle rule that makes a multipart upload eligible for abort operation.
- */
-@property (nonatomic, strong) NSString * _Nullable abortRuleId;
 
 /**
  Name of the bucket to which the multipart upload was initiated.
@@ -1318,32 +1274,6 @@ typedef NS_ENUM(NSInteger, AWSS3Types) {
 /**
  
  */
-@interface AWSS3GetBucketAccelerateConfigurationOutput : AWSModel
-
-
-/**
- The accelerate configuration of the bucket.
- */
-@property (nonatomic, assign) AWSS3BucketAccelerateStatus status;
-
-@end
-
-/**
- 
- */
-@interface AWSS3GetBucketAccelerateConfigurationRequest : AWSRequest
-
-
-/**
- Name of the bucket for which the accelerate configuration is retrieved.
- */
-@property (nonatomic, strong) NSString * _Nullable bucket;
-
-@end
-
-/**
- 
- */
 @interface AWSS3GetBucketAclOutput : AWSModel
 
 
@@ -1509,7 +1439,7 @@ typedef NS_ENUM(NSInteger, AWSS3Types) {
 
 
 /**
- Name of the bucket to get the notification configuration for.
+ Name of the buket to get the notification configuration for.
  */
 @property (nonatomic, strong) NSString * _Nullable bucket;
 
@@ -2368,11 +2298,6 @@ typedef NS_ENUM(NSInteger, AWSS3Types) {
  */
 @property (nonatomic, strong) NSNumber * _Nullable days;
 
-/**
- Indicates whether Amazon S3 will remove a delete marker with no noncurrent versions. If set to true, the delete marker will be expired; if set to false the policy takes no action. This cannot be specified with Days or Date in a Lifecycle Expiration Policy.
- */
-@property (nonatomic, strong) NSNumber * _Nullable expiredObjectDeleteMarker;
-
 @end
 
 /**
@@ -2380,11 +2305,6 @@ typedef NS_ENUM(NSInteger, AWSS3Types) {
  */
 @interface AWSS3LifecycleRule : AWSModel
 
-
-/**
- Specifies the days since the initiation of an Incomplete Multipart Upload that Lifecycle will wait before permanently removing all parts of the upload.
- */
-@property (nonatomic, strong) AWSS3AbortIncompleteMultipartUpload * _Nullable abortIncompleteMultipartUpload;
 
 /**
  
@@ -2767,134 +2687,8 @@ typedef NS_ENUM(NSInteger, AWSS3Types) {
 /**
  
  */
-@interface AWSS3ListObjectsV2Output : AWSModel
-
-
-/**
- 
- */
-@property (nonatomic, strong) NSArray<AWSS3CommonPrefix *> * _Nullable commonPrefixes;
-
-/**
- 
- */
-@property (nonatomic, strong) NSArray<AWSS3Object *> * _Nullable contents;
-
-/**
- ContinuationToken indicates Amazon S3 that the list is being continued on this bucket with a token. ContinuationToken is obfuscated and is not a real key
- */
-@property (nonatomic, strong) NSString * _Nullable continuationToken;
-
-/**
- A delimiter is a character you use to group keys.
- */
-@property (nonatomic, strong) NSString * _Nullable delimiter;
-
-/**
- Encoding type used by Amazon S3 to encode object keys in the response.
- */
-@property (nonatomic, assign) AWSS3EncodingType encodingType;
-
-/**
- A flag that indicates whether or not Amazon S3 returned all of the results that satisfied the search criteria.
- */
-@property (nonatomic, strong) NSNumber * _Nullable isTruncated;
-
-/**
- KeyCount is the number of keys returned with this request. KeyCount will always be less than equals to MaxKeys field. Say you ask for 50 keys, your result will include less than equals 50 keys
- */
-@property (nonatomic, strong) NSNumber * _Nullable keyCount;
-
-/**
- Sets the maximum number of keys returned in the response. The response might contain fewer keys but will never contain more.
- */
-@property (nonatomic, strong) NSNumber * _Nullable maxKeys;
-
-/**
- 
- */
-@property (nonatomic, strong) NSString * _Nullable name;
-
-/**
- NextContinuationToken is sent when isTruncated is true which means there are more keys in the bucket that can be listed. The next list requests to Amazon S3 can be continued with this NextContinuationToken. NextContinuationToken is obfuscated and is not a real key
- */
-@property (nonatomic, strong) NSString * _Nullable nextContinuationToken;
-
-/**
- Limits the response to keys that begin with the specified prefix.
- */
-@property (nonatomic, strong) NSString * _Nullable prefix;
-
-/**
- StartAfter is where you want Amazon S3 to start listing from. Amazon S3 starts listing after this specified key. StartAfter can be any key in the bucket
- */
-@property (nonatomic, strong) NSString * _Nullable startAfter;
-
-@end
-
-/**
- 
- */
-@interface AWSS3ListObjectsV2Request : AWSRequest
-
-
-/**
- 
- */
-@property (nonatomic, strong) NSString * _Nullable bucket;
-
-/**
- ContinuationToken indicates Amazon S3 that the list is being continued on this bucket with a token. ContinuationToken is obfuscated and is not a real key
- */
-@property (nonatomic, strong) NSString * _Nullable continuationToken;
-
-/**
- A delimiter is a character you use to group keys.
- */
-@property (nonatomic, strong) NSString * _Nullable delimiter;
-
-/**
- Encoding type used by Amazon S3 to encode object keys in the response.
- */
-@property (nonatomic, assign) AWSS3EncodingType encodingType;
-
-/**
- The owner field is not present in listV2 by default, if you want to return owner field with each key in the result then set the fetch owner field to true
- */
-@property (nonatomic, strong) NSNumber * _Nullable fetchOwner;
-
-/**
- Sets the maximum number of keys returned in the response. The response might contain fewer keys but will never contain more.
- */
-@property (nonatomic, strong) NSNumber * _Nullable maxKeys;
-
-/**
- Limits the response to keys that begin with the specified prefix.
- */
-@property (nonatomic, strong) NSString * _Nullable prefix;
-
-/**
- StartAfter is where you want Amazon S3 to start listing from. Amazon S3 starts listing after this specified key. StartAfter can be any key in the bucket
- */
-@property (nonatomic, strong) NSString * _Nullable startAfter;
-
-@end
-
-/**
- 
- */
 @interface AWSS3ListPartsOutput : AWSModel
 
-
-/**
- Date when multipart upload will become eligible for abort operation by lifecycle.
- */
-@property (nonatomic, strong) NSDate * _Nullable abortDate;
-
-/**
- Id of the lifecycle rule that makes a multipart upload eligible for abort operation.
- */
-@property (nonatomic, strong) NSString * _Nullable abortRuleId;
 
 /**
  Name of the bucket to which the multipart upload was initiated.
@@ -3300,24 +3094,6 @@ typedef NS_ENUM(NSInteger, AWSS3Types) {
 /**
  
  */
-@interface AWSS3PutBucketAccelerateConfigurationRequest : AWSRequest
-
-
-/**
- Specifies the Accelerate Configuration you want to set for the bucket.
- */
-@property (nonatomic, strong) AWSS3AccelerateConfiguration * _Nullable accelerateConfiguration;
-
-/**
- Name of the bucket for which the accelerate configuration is set.
- */
-@property (nonatomic, strong) NSString * _Nullable bucket;
-
-@end
-
-/**
- 
- */
 @interface AWSS3PutBucketAclRequest : AWSRequest
 
 
@@ -3713,11 +3489,6 @@ typedef NS_ENUM(NSInteger, AWSS3Types) {
  */
 @property (nonatomic, assign) AWSS3RequestPayer requestPayer;
 
-/**
- VersionId used to reference a specific version of the object.
- */
-@property (nonatomic, strong) NSString * _Nullable versionId;
-
 @end
 
 /**
@@ -3785,7 +3556,7 @@ typedef NS_ENUM(NSInteger, AWSS3Types) {
 @property (nonatomic, strong) id _Nullable body;
 
 /**
- Name of the bucket to which the PUT operation was initiated.
+ 
  */
 @property (nonatomic, strong) NSString * _Nullable bucket;
 
@@ -3815,7 +3586,7 @@ typedef NS_ENUM(NSInteger, AWSS3Types) {
 @property (nonatomic, strong) NSNumber * _Nullable contentLength;
 
 /**
- The base64-encoded 128-bit MD5 digest of the part data.
+ 
  */
 @property (nonatomic, strong) NSString * _Nullable contentMD5;
 
@@ -3850,7 +3621,7 @@ typedef NS_ENUM(NSInteger, AWSS3Types) {
 @property (nonatomic, strong) NSString * _Nullable grantWriteACP;
 
 /**
- Object key for which the PUT operation was initiated.
+ 
  */
 @property (nonatomic, strong) NSString * _Nullable key;
 
@@ -4423,11 +4194,6 @@ typedef NS_ENUM(NSInteger, AWSS3Types) {
 
 
 /**
- Specifies the days since the initiation of an Incomplete Multipart Upload that Lifecycle will wait before permanently removing all parts of the upload.
- */
-@property (nonatomic, strong) AWSS3AbortIncompleteMultipartUpload * _Nullable abortIncompleteMultipartUpload;
-
-/**
  
  */
 @property (nonatomic, strong) AWSS3LifecycleExpiration * _Nullable expiration;
@@ -4787,12 +4553,12 @@ typedef NS_ENUM(NSInteger, AWSS3Types) {
 
 
 /**
- Object data.
+ 
  */
 @property (nonatomic, strong) id _Nullable body;
 
 /**
- Name of the bucket to which the multipart upload was initiated.
+ 
  */
 @property (nonatomic, strong) NSString * _Nullable bucket;
 
@@ -4802,12 +4568,12 @@ typedef NS_ENUM(NSInteger, AWSS3Types) {
 @property (nonatomic, strong) NSNumber * _Nullable contentLength;
 
 /**
- The base64-encoded 128-bit MD5 digest of the part data.
+ 
  */
 @property (nonatomic, strong) NSString * _Nullable contentMD5;
 
 /**
- Object key for which the multipart upload was initiated.
+ 
  */
 @property (nonatomic, strong) NSString * _Nullable key;
 

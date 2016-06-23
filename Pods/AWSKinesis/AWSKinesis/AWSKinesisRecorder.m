@@ -22,8 +22,6 @@ NSString *const AWSKinesisRecorderErrorDomain = @"com.amazonaws.AWSKinesisRecord
 NSString *const AWSKinesisRecorderByteThresholdReachedNotification = @"com.amazonaws.AWSKinesisRecorderByteThresholdReachedNotification";
 NSString *const AWSKinesisRecorderByteThresholdReachedNotificationDiskBytesUsedKey = @"diskBytesUsed";
 
-static NSString *const AWSInfoKinesisRecorder = @"KinesisRecorder";
-
 // Legacy constants
 NSString *const AWSKinesisRecorderCacheName = @"com.amazonaws.AWSKinesisRecorderCacheName.Cache";
 
@@ -49,38 +47,21 @@ NSString *const AWSKinesisRecorderCacheName = @"com.amazonaws.AWSKinesisRecorder
 
 @end
 
-@interface AWSKinesis()
-
-- (instancetype)initWithConfiguration:(AWSServiceConfiguration *)configuration;
-
-@end
-
 @implementation AWSKinesisRecorder
 
 static AWSSynchronizedMutableDictionary *_serviceClients = nil;
 
 + (instancetype)defaultKinesisRecorder {
+    if (![AWSServiceManager defaultServiceManager].defaultServiceConfiguration) {
+        @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                       reason:@"`defaultServiceConfiguration` is `nil`. You need to set it before using this method."
+                                     userInfo:nil];
+    }
+
     static AWSKinesisRecorder *_defaultKinesisRecorder = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        AWSServiceConfiguration *serviceConfiguration = nil;
-        AWSServiceInfo *serviceInfo = [[AWSInfo defaultAWSInfo] defaultServiceInfo:AWSInfoKinesisRecorder];
-        if (serviceInfo) {
-            serviceConfiguration = [[AWSServiceConfiguration alloc] initWithRegion:serviceInfo.region
-                                                               credentialsProvider:serviceInfo.cognitoCredentialsProvider];
-        }
-
-        if (!serviceConfiguration) {
-            serviceConfiguration = [AWSServiceManager defaultServiceManager].defaultServiceConfiguration;
-        }
-
-        if (!serviceConfiguration) {
-            @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                           reason:@"The service configuration is `nil`. You need to configure `Info.plist` or set `defaultServiceConfiguration` before using this method."
-                                         userInfo:nil];
-        }
-
-        _defaultKinesisRecorder = [[AWSKinesisRecorder alloc] initWithConfiguration:serviceConfiguration
+        _defaultKinesisRecorder = [[AWSKinesisRecorder alloc] initWithConfiguration:[AWSServiceManager defaultServiceManager].defaultServiceConfiguration
                                                                          identifier:@"Default"
                                                                           cacheName:AWSKinesisRecorderCacheName];
     });
@@ -102,23 +83,7 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
 }
 
 + (instancetype)KinesisRecorderForKey:(NSString *)key {
-    @synchronized(self) {
-        AWSKinesisRecorder *serviceClient = [_serviceClients objectForKey:key];
-        if (serviceClient) {
-            return serviceClient;
-        }
-
-        AWSServiceInfo *serviceInfo = [[AWSInfo defaultAWSInfo] serviceInfo:AWSInfoKinesisRecorder
-                                                                     forKey:key];
-        if (serviceInfo) {
-            AWSServiceConfiguration *serviceConfiguration = [[AWSServiceConfiguration alloc] initWithRegion:serviceInfo.region
-                                                                                        credentialsProvider:serviceInfo.cognitoCredentialsProvider];
-            [AWSKinesisRecorder registerKinesisRecorderWithConfiguration:serviceConfiguration
-                                                                  forKey:key];
-        }
-
-        return [_serviceClients objectForKey:key];
-    }
+    return [_serviceClients objectForKey:key];
 }
 
 + (void)removeKinesisRecorderForKey:(NSString *)key {
@@ -148,7 +113,10 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
 
 - (instancetype)initWithConfiguration:(AWSServiceConfiguration *)configuration {
     if (self = [super init]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
         _kinesis = [[AWSKinesis alloc] initWithConfiguration:configuration];
+#pragma clang diagnostic pop
     }
 
     return self;
@@ -158,8 +126,7 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
                             records:(NSArray *)temporaryRecords
                       partitionKeys:(NSArray *)partitionKeys
                    putPartitionKeys:(NSMutableArray *)putPartitionKeys
-                 retryPartitionKeys:(NSMutableArray *)retryPartitionKeys
-                               stop:(BOOL *)stop {
+                 retryPartitionKeys:(NSMutableArray *)retryPartitionKeys {
     NSMutableArray *records = [NSMutableArray new];
 
     for (NSDictionary *recordDictionary in temporaryRecords) {
@@ -178,9 +145,6 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
     return [[self.kinesis putRecords:putRecordsInput] continueWithBlock:^id(AWSTask *task) {
         if (task.error) {
             AWSLogError(@"Error: [%@]", task.error);
-            if ([task.error.domain isEqualToString:NSURLErrorDomain]) {
-                *stop = YES;
-            }
         }
         if (task.exception) {
             AWSLogError(@"Exception: [%@]", task.exception);

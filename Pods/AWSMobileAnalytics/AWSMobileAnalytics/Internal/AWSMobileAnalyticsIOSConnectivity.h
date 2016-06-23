@@ -16,20 +16,18 @@
 #import <Foundation/Foundation.h>
 #import "AWSMobileAnalyticsConnectivity.h"
 
-@class AWSKSReachability;
+@class AWSReachability;
 
 @interface AWSMobileAnalyticsIOSConnectivity : NSObject<AWSMobileAnalyticsConnectivity>
 
-@property (nonatomic, readonly) AWSKSReachability* reachability;
+-(id) initWithReachability:(AWSReachability*) theReachability;
 
-+ (instancetype)defaultConnectivity;
+@property (nonatomic, readonly) AWSReachability* reachability;
 
 -(BOOL) isConnected;
 
 -(BOOL) hasWifi;
 
--(BOOL) hasWANOnly;
-
-
+-(BOOL) hasWAN;
 
 @end

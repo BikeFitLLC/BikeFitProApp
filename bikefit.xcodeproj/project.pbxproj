@@ -855,7 +855,7 @@
 						TestTargetID = 5D8531C51759CD6600934E68;
 					};
 					5D8531C51759CD6600934E68 = {
-						DevelopmentTeam = 2M3455ALB5;
+						DevelopmentTeam = MJLARYDQWH;
 					};
 				};
 			};
@@ -1344,8 +1344,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_ENTITLEMENTS[sdk=*]" = "";
-				CODE_SIGN_IDENTITY = "iOS Development: Alfonso Lopez (67GDG2Q592)";
-				"CODE_SIGN_IDENTITY[sdk=*]" = "iOS Development: Alfonso Lopez (67GDG2Q592)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1354,7 +1354,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tabbed Bikefit/bikefit-Prefix.pch";
 				INFOPLIST_FILE = "Tabbed Bikefit/bikefit-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1383,7 +1383,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.velopez.bikefit;
 				PRODUCT_NAME = bikefit;
-				PROVISIONING_PROFILE = "229011f6-5180-41f4-b69f-ef9914d984e5";
+				PROVISIONING_PROFILE = "5f80bacf-d726-440d-b9e0-c9cbad675b01";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
@@ -1396,8 +1396,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Alfonso Lopez";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Alfonso Lopez";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1406,7 +1406,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tabbed Bikefit/bikefit-Prefix.pch";
 				INFOPLIST_FILE = "Tabbed Bikefit/bikefit-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1435,7 +1435,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.velopez.bikefit;
 				PRODUCT_NAME = bikefit;
-				PROVISIONING_PROFILE = "d6678383-24a9-453f-b129-0a91c9be6085";
+				PROVISIONING_PROFILE = "5f80bacf-d726-440d-b9e0-c9cbad675b01";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;

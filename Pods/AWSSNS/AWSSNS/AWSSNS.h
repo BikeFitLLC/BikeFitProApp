@@ -14,12 +14,5 @@
 //
 
 #import <Foundation/Foundation.h>
-
-//! Project version number for AWSSNS.
-FOUNDATION_EXPORT double AWSSNSVersionNumber;
-
-//! Project version string for AWSSNS.
-FOUNDATION_EXPORT const unsigned char AWSSNSVersionString[];
-
 #import <AWSCore/AWSCore.h>
 #import "AWSSNSService.h"

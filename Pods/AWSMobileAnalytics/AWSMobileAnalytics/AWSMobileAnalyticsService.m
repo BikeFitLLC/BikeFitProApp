@@ -27,12 +27,7 @@
 #import "AWSLogging.h"
 #import "AWSSynchronizedMutableDictionary.h"
 #import "AWSMobileAnalyticsContext.h"
-#import "AWSMobileAnalyticsERSService.h"
-
-#import <AWSCore/AWSInfo.h>
-
-static NSString *const AWSInfoMobileAnalytics = @"MobileAnalytics";
-static NSString *const AWSInfoAppId = @"AppId";
+#import "AWSMobileAnalyticsERS.h"
 
 @interface AWSMobileAnalyticsERS()
 
@@ -54,22 +49,9 @@ static NSString *const AWSInfoAppId = @"AppId";
 
 static AWSSynchronizedMutableDictionary *_mobileAnalyticsForAppNamespace = nil;
 
-+ (instancetype)defaultMobileAnalytics {
-    AWSServiceInfo *serviceInfo = [[AWSInfo defaultAWSInfo] defaultServiceInfo:AWSInfoMobileAnalytics];
-    NSString *appId = [serviceInfo.infoDictionary objectForKey:AWSInfoAppId];
-
-    if (!appId) {
-        return nil;
-    }
-
-    return [self mobileAnalyticsForAppId:appId
-                           configuration:nil
-                         completionBlock:nil];
-}
-
 + (instancetype)mobileAnalyticsForAppId:(NSString *)appId {
     return [self mobileAnalyticsForAppId:appId
-                           configuration:nil
+                           configuration:[AWSMobileAnalyticsConfiguration new]
                          completionBlock:nil];
 }
 
@@ -85,8 +67,7 @@ static AWSSynchronizedMutableDictionary *_mobileAnalyticsForAppNamespace = nil;
                         completionBlock:(AWSInitializationCompletionBlock)completionBlock {
     AWSMobileAnalyticsConfiguration *configuration = [AWSMobileAnalyticsConfiguration new];
     if (identityPoolId) {
-        AWSCognitoCredentialsProvider* credentialsProvider = [[AWSCognitoCredentialsProvider alloc] initWithRegionType:AWSRegionUSEast1
-                                                                                                        identityPoolId:identityPoolId];
+        AWSCognitoCredentialsProvider* credentialsProvider = [[AWSCognitoCredentialsProvider alloc] initWithRegionType:AWSRegionUSEast1 identityPoolId:identityPoolId];
         AWSServiceConfiguration *serviceConfiguration = [[AWSServiceConfiguration alloc] initWithRegion:AWSRegionUSEast1
                                                                                     credentialsProvider:credentialsProvider];
         configuration.serviceConfiguration = serviceConfiguration;
@@ -100,7 +81,8 @@ static AWSSynchronizedMutableDictionary *_mobileAnalyticsForAppNamespace = nil;
 + (instancetype)mobileAnalyticsForAppId:(NSString *)appId
                           configuration:(AWSMobileAnalyticsConfiguration *)configuration
                         completionBlock:(AWSInitializationCompletionBlock)completionBlock {
-    if (!appId) {
+    
+    if ((!configuration.serviceConfiguration && ![AWSServiceManager defaultServiceManager].defaultServiceConfiguration ) || !appId) {
         return nil;
     }
 
@@ -119,8 +101,6 @@ static AWSSynchronizedMutableDictionary *_mobileAnalyticsForAppNamespace = nil;
             if (mobileAnalytics) {
                 [_mobileAnalyticsForAppNamespace setObject:mobileAnalytics
                                                     forKey:appId];
-            } else {
-                return nil;
             }
         }
 
@@ -132,7 +112,7 @@ static AWSSynchronizedMutableDictionary *_mobileAnalyticsForAppNamespace = nil;
                      insightsPrivateKey:(NSString *)insightsPrivateKey {
     return [self mobileAnalyticsForAppId:appId
                       insightsPrivateKey:insightsPrivateKey
-                           configuration:nil
+                           configuration:[AWSMobileAnalyticsConfiguration new]
                          completionBlock:nil];
 }
 
@@ -140,7 +120,7 @@ static AWSSynchronizedMutableDictionary *_mobileAnalyticsForAppNamespace = nil;
                      insightsPrivateKey:(NSString *)insightsPrivateKey
                           configuration:(AWSMobileAnalyticsConfiguration *)configuration
                         completionBlock:(AWSInitializationCompletionBlock)completionBlock {
-    if (!appId) {
+    if ((!configuration.serviceConfiguration && ![AWSServiceManager defaultServiceManager].defaultServiceConfiguration ) || !appId) {
         return nil;
     }
 
@@ -159,8 +139,6 @@ static AWSSynchronizedMutableDictionary *_mobileAnalyticsForAppNamespace = nil;
             if (mobileAnalytics) {
                 [_mobileAnalyticsForAppNamespace setObject:mobileAnalytics
                                                     forKey:appId];
-            } else {
-                return nil;
             }
         }
 
@@ -179,27 +157,18 @@ static AWSSynchronizedMutableDictionary *_mobileAnalyticsForAppNamespace = nil;
             _configuration = [AWSMobileAnalyticsConfiguration new];
         }
 
-        AWSServiceInfo *serviceInfo = [[AWSInfo defaultAWSInfo] defaultServiceInfo:AWSInfoMobileAnalytics];
-        if (serviceInfo) {
-            _configuration.serviceConfiguration = [[AWSServiceConfiguration alloc] initWithRegion:serviceInfo.region
-                                                                              credentialsProvider:serviceInfo.cognitoCredentialsProvider];
-        }
-
-        if (!_configuration.serviceConfiguration) {
-            return nil;
-        }
-
         // create insights options from theClientConfig
-        AWSMobileAnalyticsDefaultOptions *options = [AWSMobileAnalyticsDefaultOptions optionsWithAllowEventCollection:_configuration.enableEvents
-                                                                                                      withWANDelivery:_configuration.transmitOnWAN];
+        AWSMobileAnalyticsDefaultOptions *options = [AWSMobileAnalyticsDefaultOptions optionsWithAllowEventCollection:configuration.enableEvents
+                                                                                                      withWANDelivery:configuration.transmitOnWAN];
 
         // Build a DefaultContext and call the internal constructor
         _mobileAnalyticsContext = [AWSMobileAnalyticsDefaultContext contextWithIdentifier:appId
                                                                        insightsPrivateKey:insightsPrivateKey
-                                                                  withClientConfiguration:_configuration
+                                                                  withClientConfiguration:configuration
                                                                               withSdkInfo:[AWSMobileAnalyticsSDKInfo sdkInfoFromBrazil]
                                                                 withConfigurationSettings:settings];
-        _mobileAnalyticsContext.ers = [[AWSMobileAnalyticsERS alloc] initWithConfiguration:_configuration.serviceConfiguration];
+        _mobileAnalyticsContext.ers = [[AWSMobileAnalyticsERS alloc] initWithConfiguration:configuration.serviceConfiguration];
+
 
         _deliveryClient = [AWSMobileAnalyticsDefaultDeliveryClient deliveryClientWithContext:_mobileAnalyticsContext
                                                                              withWanDelivery:options.allowWANDelivery];

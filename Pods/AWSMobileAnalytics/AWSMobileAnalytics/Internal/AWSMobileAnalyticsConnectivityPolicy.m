@@ -54,18 +54,15 @@ static NSString* const AWSMobileAnalyticsSubmittedTimeKey = @"AWSMobileAnalytics
     BOOL canTransmitOnWAN = self.allowWan &&
                            [self.configuration boolForKey:AWSKeyAllowWANEventDelivery withOptValue:AWSValueAllowWANEventDelivery];
     
-    if (canTransmitOnWAN) {
-        return YES; //Always try to submit if WAN submission is turned on.
-    } else {
-        if([self.connectivity isConnected]) {
-            isAllowed = [self.connectivity hasWifi] || ([self.connectivity hasWANOnly] && canTransmitOnWAN);
-        }
-
-        if (isAllowed == NO) {
-            AWSLogWarn(@"Submission request being dropped because the device doesn't have network connection or allowWAN has been turned off while in Cellular network");
-        }
-        return isAllowed;
+    if([self.connectivity isConnected])
+    {
+        isAllowed = [self.connectivity hasWifi] || ([self.connectivity hasWAN] && canTransmitOnWAN);
     }
+    
+    if (isAllowed == NO) {
+        AWSLogWarn(@"Submission request being dropped because the device doesn't have network connection or allowWAN has been turned off while in Cellular network");
+    }
+    return isAllowed;
 }
 
 -(void)handleDeliveryAttempt:(BOOL)attemptSuccesful

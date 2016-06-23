@@ -26,9 +26,6 @@
 #import "AWSSynchronizedMutableDictionary.h"
 #import "AWSSNSResources.h"
 
-static NSString *const AWSInfoSNS = @"SNS";
-static NSString *const AWSSNSSDKVersion = @"2.4.3";
-
 @interface AWSSNSResponseSerializer : AWSXMLResponseSerializer
 
 @end
@@ -40,6 +37,9 @@ static NSString *const AWSSNSSDKVersion = @"2.4.3";
 static NSDictionary *errorCodeDictionary = nil;
 + (void)initialize {
     errorCodeDictionary = @{
+                            @"IncompleteSignature" : @(AWSSNSErrorIncompleteSignature),
+                            @"InvalidClientTokenId" : @(AWSSNSErrorInvalidClientTokenId),
+                            @"MissingAuthenticationToken" : @(AWSSNSErrorMissingAuthenticationToken),
                             @"AuthorizationError" : @(AWSSNSErrorAuthorizationError),
                             @"EndpointDisabled" : @(AWSSNSErrorEndpointDisabled),
                             @"InternalError" : @(AWSSNSErrorInternalError),
@@ -48,7 +48,6 @@ static NSDictionary *errorCodeDictionary = nil;
                             @"NotFound" : @(AWSSNSErrorNotFound),
                             @"PlatformApplicationDisabled" : @(AWSSNSErrorPlatformApplicationDisabled),
                             @"SubscriptionLimitExceeded" : @(AWSSNSErrorSubscriptionLimitExceeded),
-                            @"TaggingOperationFailed" : @(AWSSNSErrorTaggingOperationFailed),
                             @"TopicLimitExceeded" : @(AWSSNSErrorTopicLimitExceeded),
                             };
 }
@@ -111,6 +110,42 @@ static NSDictionary *errorCodeDictionary = nil;
 
 @implementation AWSSNSRequestRetryHandler
 
+- (AWSNetworkingRetryType)shouldRetry:(uint32_t)currentRetryCount
+                             response:(NSHTTPURLResponse *)response
+                                 data:(NSData *)data
+                                error:(NSError *)error {
+    AWSNetworkingRetryType retryType = [super shouldRetry:currentRetryCount
+                                                 response:response
+                                                     data:data
+                                                    error:error];
+    if(retryType == AWSNetworkingRetryTypeShouldNotRetry
+       && currentRetryCount < self.maxRetryCount) {
+        if ([error.domain isEqualToString:AWSSNSErrorDomain]) {
+            switch (error.code) {
+                case AWSSNSErrorIncompleteSignature:
+                case AWSSNSErrorInvalidClientTokenId:
+                case AWSSNSErrorMissingAuthenticationToken:
+                    retryType = AWSNetworkingRetryTypeShouldRefreshCredentialsAndRetry;
+                    break;
+
+                default:
+                    break;
+            }
+        } else if ([error.domain isEqualToString:AWSGeneralErrorDomain]) {
+            switch (error.code) {
+                case AWSGeneralErrorSignatureDoesNotMatch:
+                    retryType = AWSNetworkingRetryTypeShouldCorrectClockSkewAndRetry;
+                    break;
+
+                default:
+                    break;
+            }
+        }
+    }
+
+    return retryType;
+}
+
 @end
 
 @interface AWSRequest()
@@ -134,41 +169,22 @@ static NSDictionary *errorCodeDictionary = nil;
 
 @implementation AWSSNS
 
-+ (void)initialize {
-    [super initialize];
-
-    if (![AWSiOSSDKVersion isEqualToString:AWSSNSSDKVersion]) {
-        @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                       reason:[NSString stringWithFormat:@"AWSCore and AWSSNS versions need to match. Check your SDK installation. AWSCore: %@ AWSSNS: %@", AWSiOSSDKVersion, AWSSNSSDKVersion]
-                                     userInfo:nil];
-    }
-}
-
-#pragma mark - Setup
-
 static AWSSynchronizedMutableDictionary *_serviceClients = nil;
 
 + (instancetype)defaultSNS {
+    if (![AWSServiceManager defaultServiceManager].defaultServiceConfiguration) {
+        @throw [NSException exceptionWithName:NSInternalInconsistencyException
+                                       reason:@"`defaultServiceConfiguration` is `nil`. You need to set it before using this method."
+                                     userInfo:nil];
+    }
+
     static AWSSNS *_defaultSNS = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        AWSServiceConfiguration *serviceConfiguration = nil;
-        AWSServiceInfo *serviceInfo = [[AWSInfo defaultAWSInfo] defaultServiceInfo:AWSInfoSNS];
-        if (serviceInfo) {
-            serviceConfiguration = [[AWSServiceConfiguration alloc] initWithRegion:serviceInfo.region
-                                                               credentialsProvider:serviceInfo.cognitoCredentialsProvider];
-        }
-
-        if (!serviceConfiguration) {
-            serviceConfiguration = [AWSServiceManager defaultServiceManager].defaultServiceConfiguration;
-        }
-
-        if (!serviceConfiguration) {
-            @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                           reason:@"The service configuration is `nil`. You need to configure `Info.plist` or set `defaultServiceConfiguration` before using this method."
-                                         userInfo:nil];
-        }
-        _defaultSNS = [[AWSSNS alloc] initWithConfiguration:serviceConfiguration];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+        _defaultSNS = [[AWSSNS alloc] initWithConfiguration:AWSServiceManager.defaultServiceManager.defaultServiceConfiguration];
+#pragma clang diagnostic pop
     });
 
     return _defaultSNS;
@@ -179,28 +195,15 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
     dispatch_once(&onceToken, ^{
         _serviceClients = [AWSSynchronizedMutableDictionary new];
     });
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
     [_serviceClients setObject:[[AWSSNS alloc] initWithConfiguration:configuration]
                         forKey:key];
+#pragma clang diagnostic pop
 }
 
 + (instancetype)SNSForKey:(NSString *)key {
-    @synchronized(self) {
-        AWSSNS *serviceClient = [_serviceClients objectForKey:key];
-        if (serviceClient) {
-            return serviceClient;
-        }
-
-        AWSServiceInfo *serviceInfo = [[AWSInfo defaultAWSInfo] serviceInfo:AWSInfoSNS
-                                                                     forKey:key];
-        if (serviceInfo) {
-            AWSServiceConfiguration *serviceConfiguration = [[AWSServiceConfiguration alloc] initWithRegion:serviceInfo.region
-                                                                                        credentialsProvider:serviceInfo.cognitoCredentialsProvider];
-            [AWSSNS registerSNSWithConfiguration:serviceConfiguration
-                                          forKey:key];
-        }
-
-        return [_serviceClients objectForKey:key];
-    }
+    return [_serviceClients objectForKey:key];
 }
 
 + (void)removeSNSForKey:(NSString *)key {
@@ -213,8 +216,6 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
                                  userInfo:nil];
     return nil;
 }
-
-#pragma mark -
 
 - (instancetype)initWithConfiguration:(AWSServiceConfiguration *)configuration {
     if (self = [super init]) {
@@ -280,33 +281,6 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
 - (void)addPermission:(AWSSNSAddPermissionInput *)request
     completionHandler:(void (^)(NSError *error))completionHandler {
     [[self addPermission:request] continueWithBlock:^id _Nullable(AWSTask * _Nonnull task) {
-        NSError *error = task.error;
-
-        if (task.exception) {
-            AWSLogError(@"Fatal exception: [%@]", task.exception);
-            kill(getpid(), SIGKILL);
-        }
-
-        if (completionHandler) {
-            completionHandler(error);
-        }
-
-        return nil;
-    }];
-}
-
-- (AWSTask *)addTagsToResource:(AWSSNSAddTagsToResourceInput *)request {
-    return [self invokeRequest:request
-                    HTTPMethod:AWSHTTPMethodPOST
-                     URLString:@""
-                  targetPrefix:@""
-                 operationName:@"AddTagsToResource"
-                   outputClass:nil];
-}
-
-- (void)addTagsToResource:(AWSSNSAddTagsToResourceInput *)request
-        completionHandler:(void (^)(NSError *error))completionHandler {
-    [[self addTagsToResource:request] continueWithBlock:^id _Nullable(AWSTask * _Nonnull task) {
         NSError *error = task.error;
 
         if (task.exception) {
@@ -739,34 +713,6 @@ static AWSSynchronizedMutableDictionary *_serviceClients = nil;
     }];
 }
 
-- (AWSTask<AWSSNSListTagsForResourceResponse *> *)listTagsForResource:(AWSSNSListTagsForResourceInput *)request {
-    return [self invokeRequest:request
-                    HTTPMethod:AWSHTTPMethodPOST
-                     URLString:@""
-                  targetPrefix:@""
-                 operationName:@"ListTagsForResource"
-                   outputClass:[AWSSNSListTagsForResourceResponse class]];
-}
-
-- (void)listTagsForResource:(AWSSNSListTagsForResourceInput *)request
-          completionHandler:(void (^)(AWSSNSListTagsForResourceResponse *response, NSError *error))completionHandler {
-    [[self listTagsForResource:request] continueWithBlock:^id _Nullable(AWSTask<AWSSNSListTagsForResourceResponse *> * _Nonnull task) {
-        AWSSNSListTagsForResourceResponse *result = task.result;
-        NSError *error = task.error;
-
-        if (task.exception) {
-            AWSLogError(@"Fatal exception: [%@]", task.exception);
-            kill(getpid(), SIGKILL);
-        }
-
-        if (completionHandler) {
-            completionHandler(result, error);
-        }
-
-        return nil;
-    }];
-}
-
 - (AWSTask<AWSSNSListTopicsResponse *> *)listTopics:(AWSSNSListTopicsInput *)request {
     return [self invokeRequest:request
                     HTTPMethod:AWSHTTPMethodPOST
@@ -835,33 +781,6 @@ completionHandler:(void (^)(AWSSNSPublishResponse *response, NSError *error))com
 - (void)removePermission:(AWSSNSRemovePermissionInput *)request
        completionHandler:(void (^)(NSError *error))completionHandler {
     [[self removePermission:request] continueWithBlock:^id _Nullable(AWSTask * _Nonnull task) {
-        NSError *error = task.error;
-
-        if (task.exception) {
-            AWSLogError(@"Fatal exception: [%@]", task.exception);
-            kill(getpid(), SIGKILL);
-        }
-
-        if (completionHandler) {
-            completionHandler(error);
-        }
-
-        return nil;
-    }];
-}
-
-- (AWSTask *)removeTagsFromResource:(AWSSNSRemoveTagsFromResourceInput *)request {
-    return [self invokeRequest:request
-                    HTTPMethod:AWSHTTPMethodPOST
-                     URLString:@""
-                  targetPrefix:@""
-                 operationName:@"RemoveTagsFromResource"
-                   outputClass:nil];
-}
-
-- (void)removeTagsFromResource:(AWSSNSRemoveTagsFromResourceInput *)request
-             completionHandler:(void (^)(NSError *error))completionHandler {
-    [[self removeTagsFromResource:request] continueWithBlock:^id _Nullable(AWSTask * _Nonnull task) {
         NSError *error = task.error;
 
         if (task.exception) {
@@ -1039,7 +958,5 @@ completionHandler:(void (^)(AWSSNSSubscribeResponse *response, NSError *error))c
         return nil;
     }];
 }
-
-#pragma mark -
 
 @end

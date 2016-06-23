@@ -18,7 +18,7 @@
 #import "AWSMobileAnalyticsDeliveryClient.h"
 #import "AWSMobileAnalyticsSDKInfo.h"
 #import "AWSMobileAnalyticsSystem.h"
-#import "AWSMobileAnalyticsERSService.h"
+#import "AWSMobileAnalyticsERS.h"
 
 @class AWSMobileAnalyticsClientContext;
 

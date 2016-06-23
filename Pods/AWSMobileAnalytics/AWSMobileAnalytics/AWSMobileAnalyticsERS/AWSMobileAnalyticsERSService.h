@@ -16,7 +16,6 @@
 #import <Foundation/Foundation.h>
 #import <AWSCore/AWSCore.h>
 #import "AWSMobileAnalyticsERSModel.h"
-#import "AWSMobileAnalyticsERSResources.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -47,6 +47,7 @@ NSString *const AWSDynamoDBErrorDomain = @"com.amazonaws.AWSDynamoDBErrorDomain"
                 return @"N";
             case AWSDynamoDBScalarAttributeTypeB:
                 return @"B";
+            case AWSDynamoDBScalarAttributeTypeUnknown:
             default:
                 return nil;
         }
@@ -115,6 +116,7 @@ NSString *const AWSDynamoDBErrorDomain = @"com.amazonaws.AWSDynamoDBErrorDomain"
                 return @"PUT";
             case AWSDynamoDBAttributeActionDelete:
                 return @"DELETE";
+            case AWSDynamoDBAttributeActionUnknown:
             default:
                 return nil;
         }
@@ -164,6 +166,7 @@ NSString *const AWSDynamoDBErrorDomain = @"com.amazonaws.AWSDynamoDBErrorDomain"
                 return @"TOTAL";
             case AWSDynamoDBReturnConsumedCapacityNone:
                 return @"NONE";
+            case AWSDynamoDBReturnConsumedCapacityUnknown:
             default:
                 return nil;
         }
@@ -242,6 +245,7 @@ NSString *const AWSDynamoDBErrorDomain = @"com.amazonaws.AWSDynamoDBErrorDomain"
                 return @"TOTAL";
             case AWSDynamoDBReturnConsumedCapacityNone:
                 return @"NONE";
+            case AWSDynamoDBReturnConsumedCapacityUnknown:
             default:
                 return nil;
         }
@@ -263,6 +267,7 @@ NSString *const AWSDynamoDBErrorDomain = @"com.amazonaws.AWSDynamoDBErrorDomain"
                 return @"SIZE";
             case AWSDynamoDBReturnItemCollectionMetricsNone:
                 return @"NONE";
+            case AWSDynamoDBReturnItemCollectionMetricsUnknown:
             default:
                 return nil;
         }
@@ -396,6 +401,7 @@ NSString *const AWSDynamoDBErrorDomain = @"com.amazonaws.AWSDynamoDBErrorDomain"
                 return @"NOT_CONTAINS";
             case AWSDynamoDBComparisonOperatorBeginsWith:
                 return @"BEGINS_WITH";
+            case AWSDynamoDBComparisonOperatorUnknown:
             default:
                 return nil;
         }
@@ -559,6 +565,7 @@ NSString *const AWSDynamoDBErrorDomain = @"com.amazonaws.AWSDynamoDBErrorDomain"
                 return @"AND";
             case AWSDynamoDBConditionalOperatorOr:
                 return @"OR";
+            case AWSDynamoDBConditionalOperatorUnknown:
             default:
                 return nil;
         }
@@ -609,6 +616,7 @@ NSString *const AWSDynamoDBErrorDomain = @"com.amazonaws.AWSDynamoDBErrorDomain"
                 return @"TOTAL";
             case AWSDynamoDBReturnConsumedCapacityNone:
                 return @"NONE";
+            case AWSDynamoDBReturnConsumedCapacityUnknown:
             default:
                 return nil;
         }
@@ -630,6 +638,7 @@ NSString *const AWSDynamoDBErrorDomain = @"com.amazonaws.AWSDynamoDBErrorDomain"
                 return @"SIZE";
             case AWSDynamoDBReturnItemCollectionMetricsNone:
                 return @"NONE";
+            case AWSDynamoDBReturnItemCollectionMetricsUnknown:
             default:
                 return nil;
         }
@@ -666,6 +675,7 @@ NSString *const AWSDynamoDBErrorDomain = @"com.amazonaws.AWSDynamoDBErrorDomain"
                 return @"ALL_NEW";
             case AWSDynamoDBReturnValueUpdatedNew:
                 return @"UPDATED_NEW";
+            case AWSDynamoDBReturnValueUnknown:
             default:
                 return nil;
         }
@@ -740,23 +750,6 @@ NSString *const AWSDynamoDBErrorDomain = @"com.amazonaws.AWSDynamoDBErrorDomain"
 
 + (NSValueTransformer *)tableDescriptionJSONTransformer {
 	return [NSValueTransformer awsmtl_JSONDictionaryTransformerWithModelClass:[AWSDynamoDBTableDescription class]];
-}
-
-@end
-
-@implementation AWSDynamoDBDescribeLimitsInput
-
-@end
-
-@implementation AWSDynamoDBDescribeLimitsOutput
-
-+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-	return @{
-             @"accountMaxReadCapacityUnits" : @"AccountMaxReadCapacityUnits",
-             @"accountMaxWriteCapacityUnits" : @"AccountMaxWriteCapacityUnits",
-             @"tableMaxReadCapacityUnits" : @"TableMaxReadCapacityUnits",
-             @"tableMaxWriteCapacityUnits" : @"TableMaxWriteCapacityUnits",
-             };
 }
 
 @end
@@ -870,6 +863,7 @@ NSString *const AWSDynamoDBErrorDomain = @"com.amazonaws.AWSDynamoDBErrorDomain"
                 return @"NOT_CONTAINS";
             case AWSDynamoDBComparisonOperatorBeginsWith:
                 return @"BEGINS_WITH";
+            case AWSDynamoDBComparisonOperatorUnknown:
             default:
                 return nil;
         }
@@ -924,6 +918,7 @@ NSString *const AWSDynamoDBErrorDomain = @"com.amazonaws.AWSDynamoDBErrorDomain"
                 return @"TOTAL";
             case AWSDynamoDBReturnConsumedCapacityNone:
                 return @"NONE";
+            case AWSDynamoDBReturnConsumedCapacityUnknown:
             default:
                 return nil;
         }
@@ -1021,6 +1016,7 @@ NSString *const AWSDynamoDBErrorDomain = @"com.amazonaws.AWSDynamoDBErrorDomain"
                 return @"DELETING";
             case AWSDynamoDBIndexStatusActive:
                 return @"ACTIVE";
+            case AWSDynamoDBIndexStatusUnknown:
             default:
                 return nil;
         }
@@ -1108,6 +1104,7 @@ NSString *const AWSDynamoDBErrorDomain = @"com.amazonaws.AWSDynamoDBErrorDomain"
                 return @"HASH";
             case AWSDynamoDBKeyTypeRange:
                 return @"RANGE";
+            case AWSDynamoDBKeyTypeUnknown:
             default:
                 return nil;
         }
@@ -1232,6 +1229,7 @@ NSString *const AWSDynamoDBErrorDomain = @"com.amazonaws.AWSDynamoDBErrorDomain"
                 return @"KEYS_ONLY";
             case AWSDynamoDBProjectionTypeInclude:
                 return @"INCLUDE";
+            case AWSDynamoDBProjectionTypeUnknown:
             default:
                 return nil;
         }
@@ -1313,6 +1311,7 @@ NSString *const AWSDynamoDBErrorDomain = @"com.amazonaws.AWSDynamoDBErrorDomain"
                 return @"AND";
             case AWSDynamoDBConditionalOperatorOr:
                 return @"OR";
+            case AWSDynamoDBConditionalOperatorUnknown:
             default:
                 return nil;
         }
@@ -1363,6 +1362,7 @@ NSString *const AWSDynamoDBErrorDomain = @"com.amazonaws.AWSDynamoDBErrorDomain"
                 return @"TOTAL";
             case AWSDynamoDBReturnConsumedCapacityNone:
                 return @"NONE";
+            case AWSDynamoDBReturnConsumedCapacityUnknown:
             default:
                 return nil;
         }
@@ -1384,6 +1384,7 @@ NSString *const AWSDynamoDBErrorDomain = @"com.amazonaws.AWSDynamoDBErrorDomain"
                 return @"SIZE";
             case AWSDynamoDBReturnItemCollectionMetricsNone:
                 return @"NONE";
+            case AWSDynamoDBReturnItemCollectionMetricsUnknown:
             default:
                 return nil;
         }
@@ -1420,6 +1421,7 @@ NSString *const AWSDynamoDBErrorDomain = @"com.amazonaws.AWSDynamoDBErrorDomain"
                 return @"ALL_NEW";
             case AWSDynamoDBReturnValueUpdatedNew:
                 return @"UPDATED_NEW";
+            case AWSDynamoDBReturnValueUnknown:
             default:
                 return nil;
         }
@@ -1513,6 +1515,7 @@ NSString *const AWSDynamoDBErrorDomain = @"com.amazonaws.AWSDynamoDBErrorDomain"
                 return @"AND";
             case AWSDynamoDBConditionalOperatorOr:
                 return @"OR";
+            case AWSDynamoDBConditionalOperatorUnknown:
             default:
                 return nil;
         }
@@ -1571,6 +1574,7 @@ NSString *const AWSDynamoDBErrorDomain = @"com.amazonaws.AWSDynamoDBErrorDomain"
                 return @"TOTAL";
             case AWSDynamoDBReturnConsumedCapacityNone:
                 return @"NONE";
+            case AWSDynamoDBReturnConsumedCapacityUnknown:
             default:
                 return nil;
         }
@@ -1602,6 +1606,7 @@ NSString *const AWSDynamoDBErrorDomain = @"com.amazonaws.AWSDynamoDBErrorDomain"
                 return @"SPECIFIC_ATTRIBUTES";
             case AWSDynamoDBSelectCount:
                 return @"COUNT";
+            case AWSDynamoDBSelectUnknown:
             default:
                 return nil;
         }
@@ -1682,6 +1687,7 @@ NSString *const AWSDynamoDBErrorDomain = @"com.amazonaws.AWSDynamoDBErrorDomain"
                 return @"AND";
             case AWSDynamoDBConditionalOperatorOr:
                 return @"OR";
+            case AWSDynamoDBConditionalOperatorUnknown:
             default:
                 return nil;
         }
@@ -1724,6 +1730,7 @@ NSString *const AWSDynamoDBErrorDomain = @"com.amazonaws.AWSDynamoDBErrorDomain"
                 return @"TOTAL";
             case AWSDynamoDBReturnConsumedCapacityNone:
                 return @"NONE";
+            case AWSDynamoDBReturnConsumedCapacityUnknown:
             default:
                 return nil;
         }
@@ -1763,6 +1770,7 @@ NSString *const AWSDynamoDBErrorDomain = @"com.amazonaws.AWSDynamoDBErrorDomain"
                 return @"SPECIFIC_ATTRIBUTES";
             case AWSDynamoDBSelectCount:
                 return @"COUNT";
+            case AWSDynamoDBSelectUnknown:
             default:
                 return nil;
         }
@@ -1839,6 +1847,7 @@ NSString *const AWSDynamoDBErrorDomain = @"com.amazonaws.AWSDynamoDBErrorDomain"
                 return @"NEW_AND_OLD_IMAGES";
             case AWSDynamoDBStreamViewTypeKeysOnly:
                 return @"KEYS_ONLY";
+            case AWSDynamoDBStreamViewTypeUnknown:
             default:
                 return nil;
         }
@@ -1925,6 +1934,7 @@ NSString *const AWSDynamoDBErrorDomain = @"com.amazonaws.AWSDynamoDBErrorDomain"
                 return @"DELETING";
             case AWSDynamoDBTableStatusActive:
                 return @"ACTIVE";
+            case AWSDynamoDBTableStatusUnknown:
             default:
                 return nil;
         }
@@ -1990,6 +2000,7 @@ NSString *const AWSDynamoDBErrorDomain = @"com.amazonaws.AWSDynamoDBErrorDomain"
                 return @"AND";
             case AWSDynamoDBConditionalOperatorOr:
                 return @"OR";
+            case AWSDynamoDBConditionalOperatorUnknown:
             default:
                 return nil;
         }
@@ -2040,6 +2051,7 @@ NSString *const AWSDynamoDBErrorDomain = @"com.amazonaws.AWSDynamoDBErrorDomain"
                 return @"TOTAL";
             case AWSDynamoDBReturnConsumedCapacityNone:
                 return @"NONE";
+            case AWSDynamoDBReturnConsumedCapacityUnknown:
             default:
                 return nil;
         }
@@ -2061,6 +2073,7 @@ NSString *const AWSDynamoDBErrorDomain = @"com.amazonaws.AWSDynamoDBErrorDomain"
                 return @"SIZE";
             case AWSDynamoDBReturnItemCollectionMetricsNone:
                 return @"NONE";
+            case AWSDynamoDBReturnItemCollectionMetricsUnknown:
             default:
                 return nil;
         }
@@ -2097,6 +2110,7 @@ NSString *const AWSDynamoDBErrorDomain = @"com.amazonaws.AWSDynamoDBErrorDomain"
                 return @"ALL_NEW";
             case AWSDynamoDBReturnValueUpdatedNew:
                 return @"UPDATED_NEW";
+            case AWSDynamoDBReturnValueUnknown:
             default:
                 return nil;
         }

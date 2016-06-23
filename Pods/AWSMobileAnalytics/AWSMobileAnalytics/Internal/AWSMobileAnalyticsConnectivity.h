@@ -24,6 +24,6 @@
 @property (nonatomic, readonly) BOOL hasWifi;
 
 @required
-@property (nonatomic, readonly) BOOL hasWANOnly;
+@property (nonatomic, readonly) BOOL hasWAN;
 
 @end

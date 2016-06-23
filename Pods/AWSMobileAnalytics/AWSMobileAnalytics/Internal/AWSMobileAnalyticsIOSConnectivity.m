@@ -14,37 +14,17 @@
 //
 
 #import "AWSMobileAnalyticsIOSConnectivity.h"
-#import "AWSKSReachability.h"
+#import "AWSReachability.h"
 
 @interface AWSMobileAnalyticsIOSConnectivity()
 
-@property (nonatomic, readwrite) AWSKSReachability* reachability;
+@property (nonatomic, readwrite) AWSReachability* reachability;
 
 @end
 
 @implementation AWSMobileAnalyticsIOSConnectivity
 
-
-+ (instancetype)defaultConnectivity
-{
-    static id reachability;
-    static dispatch_once_t predicate;
-
-    dispatch_once(&predicate, ^{
-        reachability = [[self alloc] initWithReachability:[AWSKSReachability reachabilityToInternet]];
-    });
-
-    return reachability;
-}
-
-- (instancetype)init {
-    @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                   reason:@"`- init` is not a valid initializer. Use `+ defaultConnectivity` instead."
-                                 userInfo:nil];
-    return nil;
-}
-
--(id) initWithReachability:(AWSKSReachability*) theReachability
+-(id) initWithReachability:(AWSReachability*) theReachability
 {
     if(self = [super init])
     {
@@ -55,17 +35,17 @@
 
 -(BOOL) isConnected
 {
-    return [self.reachability reachable];
+    return [self.reachability isReachable];
 }
 
 -(BOOL) hasWifi
 {
-    return ![self.reachability WWANOnly];
+    return [self.reachability isReachableViaWiFi];
 }
 
--(BOOL) hasWANOnly
+-(BOOL) hasWAN
 {
-    return [self.reachability WWANOnly];
+    return [self.reachability isReachableViaWWAN];
 }
 
 @end

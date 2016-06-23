@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scheme
+   LastUpgradeVersion = "0700"
+   version = "1.7">
+   <BuildAction
+      parallelizeBuildables = "YES"
+      buildImplicitDependencies = "YES">
+      <BuildActionEntries>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "5D8531C51759CD6600934E68"
+               BuildableName = "bikefit.app"
+               BlueprintName = "bikefit"
+               ReferencedContainer = "container:bikefit.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "5D8531F91759CD6600934E68"
+               BuildableName = "bikefitTests.octest"
+               BlueprintName = "bikefitTests"
+               ReferencedContainer = "container:bikefit.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
+   </BuildAction>
+   <TestAction
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      shouldUseLaunchSchemeArgsEnv = "YES">
+      <PreActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Run Script"
+               scriptText = "&#10;&#10;device_types_output = `xcrun simctl list devicetypes`&#10;device_types = device_types_output.scan /(.*) \((.*)\)/&#10;&#10;runtimes_output = `xcrun simctl list runtimes`&#10;runtimes = runtimes_output.scan /(.*) \(.*\) \((com.apple[^)]+)\)$/&#10;&#10;devices_output = `xcrun simctl list devices`&#10;devices = devices_output.scan /\s\s\s\s(.*) \(([^)]+)\) (.*)/&#10;&#10;devices.each do |device|&#10;puts &quot;Removing device #{device[0]} (#{device[1]})&quot;&#10;`xcrun simctl delete #{device[1]}`&#10;end&#10;&#10;device_types.each do |device_type|&#10;runtimes.each do |runtime|&#10;puts &quot;Creating #{device_type} with #{runtime}&quot;&#10;command = &quot;xcrun simctl create &apos;#{device_type[0]} #{runtime[0]}&apos; #{device_type[1]} #{runtime[1]}&quot;&#10;command_output = `#{command}`&#10;sleep 0.5&#10;end&#10;"
+               shellToInvoke = "/usr/bin/env ruby">
+            </ActionContent>
+         </ExecutionAction>
+      </PreActions>
+      <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "5D8531F91759CD6600934E68"
+               BuildableName = "bikefitTests.octest"
+               BlueprintName = "bikefitTests"
+               ReferencedContainer = "container:bikefit.xcodeproj">
+            </BuildableReference>
+            <LocationScenarioReference
+               identifier = "com.apple.dt.IDEFoundation.CurrentLocationScenarioIdentifier"
+               referenceType = "1">
+            </LocationScenarioReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "00286C121BD0455000CC0C08"
+               BuildableName = "bikefitModelTests.xctest"
+               BlueprintName = "bikefitModelTests"
+               ReferencedContainer = "container:bikefit.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+      </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "5D8531C51759CD6600934E68"
+            BuildableName = "bikefit.app"
+            BlueprintName = "bikefit"
+            ReferencedContainer = "container:bikefit.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
+      <AdditionalOptions>
+      </AdditionalOptions>
+   </TestAction>
+   <LaunchAction
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      launchStyle = "0"
+      useCustomWorkingDirectory = "NO"
+      ignoresPersistentStateOnLaunch = "NO"
+      debugDocumentVersioning = "YES"
+      debugServiceExtension = "internal"
+      allowLocationSimulation = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "5D8531C51759CD6600934E68"
+            BuildableName = "bikefit.app"
+            BlueprintName = "bikefit"
+            ReferencedContainer = "container:bikefit.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+      <AdditionalOptions>
+      </AdditionalOptions>
+   </LaunchAction>
+   <ProfileAction
+      buildConfiguration = "Release"
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      savedToolIdentifier = ""
+      useCustomWorkingDirectory = "NO"
+      debugDocumentVersioning = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "5D8531C51759CD6600934E68"
+            BuildableName = "bikefit.app"
+            BlueprintName = "bikefit"
+            ReferencedContainer = "container:bikefit.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+   </ProfileAction>
+   <AnalyzeAction
+      buildConfiguration = "Debug">
+   </AnalyzeAction>
+   <ArchiveAction
+      buildConfiguration = "Release"
+      revealArchiveInOrganizer = "YES">
+   </ArchiveAction>
+</Scheme>

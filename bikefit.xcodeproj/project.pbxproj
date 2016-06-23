@@ -1,0 +1,1528 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		002733A81BD06EA700EDA7BC /* Bike_tri_diagram_ABCDEF.png in Resources */ = {isa = PBXBuildFile; fileRef = 002733A71BD06EA700EDA7BC /* Bike_tri_diagram_ABCDEF.png */; };
+		002733B21BD070C600EDA7BC /* 1_wedge_Left_varus.png in Resources */ = {isa = PBXBuildFile; fileRef = 002733A91BD070C600EDA7BC /* 1_wedge_Left_varus.png */; };
+		002733B31BD070C600EDA7BC /* 1_Wedge_Rght_Varus.png in Resources */ = {isa = PBXBuildFile; fileRef = 002733AA1BD070C600EDA7BC /* 1_Wedge_Rght_Varus.png */; };
+		002733B41BD070C600EDA7BC /* 2_heel_right.png in Resources */ = {isa = PBXBuildFile; fileRef = 002733AB1BD070C600EDA7BC /* 2_heel_right.png */; };
+		002733B51BD070C600EDA7BC /* 2_heels_left.png in Resources */ = {isa = PBXBuildFile; fileRef = 002733AC1BD070C600EDA7BC /* 2_heels_left.png */; };
+		002733B61BD070C600EDA7BC /* 2_heels.png in Resources */ = {isa = PBXBuildFile; fileRef = 002733AD1BD070C600EDA7BC /* 2_heels.png */; };
+		002733B71BD070C600EDA7BC /* 2_wedge_left_varus.png in Resources */ = {isa = PBXBuildFile; fileRef = 002733AE1BD070C600EDA7BC /* 2_wedge_left_varus.png */; };
+		002733B81BD070C600EDA7BC /* 2_Wedge_RGHT_varus.png in Resources */ = {isa = PBXBuildFile; fileRef = 002733AF1BD070C600EDA7BC /* 2_Wedge_RGHT_varus.png */; };
+		002733B91BD070C600EDA7BC /* 3_wedge_left_varus.png in Resources */ = {isa = PBXBuildFile; fileRef = 002733B01BD070C600EDA7BC /* 3_wedge_left_varus.png */; };
+		002733BA1BD070C600EDA7BC /* 3_Wedge_Rght_Varus.png in Resources */ = {isa = PBXBuildFile; fileRef = 002733B11BD070C600EDA7BC /* 3_Wedge_Rght_Varus.png */; };
+		002733C21BD1B13200EDA7BC /* bikefitUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 002733C11BD1B13200EDA7BC /* bikefitUITests.m */; };
+		00286C161BD0455000CC0C08 /* bikefitModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00286C151BD0455000CC0C08 /* bikefitModelTests.m */; };
+		00286C221BD05B2300CC0C08 /* bikefit.app in Resources */ = {isa = PBXBuildFile; fileRef = 5D8531C61759CD6600934E68 /* bikefit.app */; };
+		00286C231BD05B2300CC0C08 /* bikefit.app in Resources */ = {isa = PBXBuildFile; fileRef = 5D8531C61759CD6600934E68 /* bikefit.app */; };
+		00286C251BD06AD600CC0C08 /* LoginWithAmazon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00286C241BD06AD600CC0C08 /* LoginWithAmazon.framework */; };
+		004D02911BEB02AB001BD665 /* CreateAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 004D02901BEB02AB001BD665 /* CreateAccountViewController.m */; };
+		005E3EB31B950026003911DE /* HomeScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 005E3EB21B950026003911DE /* HomeScreenViewController.m */; };
+		005E3EBA1B952F1E003911DE /* FitHome.m in Sources */ = {isa = PBXBuildFile; fileRef = 005E3EB91B952F1E003911DE /* FitHome.m */; };
+		008755721B40D61F00BB67BE /* LoadinSpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 008755711B40D61F00BB67BE /* LoadinSpinnerView.m */; };
+		009D55801AB393A4008A8A74 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 009D557F1AB393A4008A8A74 /* MainStoryboard_iPhone.storyboard */; };
+		00A29FB41B431C3B00589788 /* DrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A29FB31B431C3B00589788 /* DrawingView.m */; };
+		00A382F71A3B710100791FEE /* BikeFitTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A382F61A3B710100791FEE /* BikeFitTableViewCell.m */; };
+		00F1996F1B82D71A00467F26 /* SaddleTiltNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F1996E1B82D71A00467F26 /* SaddleTiltNoteViewController.m */; };
+		00F199721B82D8CE00467F26 /* SaddleTiltNote.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F199711B82D8CE00467F26 /* SaddleTiltNote.m */; };
+		00F813541A2ADE1300F1EA6D /* LegAngleViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F813531A2ADE1300F1EA6D /* LegAngleViewViewController.m */; };
+		00FBB9C61B3B811700873AAA /* AthleteInfoTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00FBB9C51B3B811700873AAA /* AthleteInfoTableCell.m */; };
+		00FEDCBB1BE5966300FF7A5C /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00FEDCBA1BE5966300FF7A5C /* LoginViewController.m */; };
+		00FF371A1A36302E00FD1E45 /* KW_front_laser_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 00FF37191A36302E00FD1E45 /* KW_front_laser_2.png */; };
+		00FF371C1A3630CE00FD1E45 /* measurementIcon-new-29x29.png in Resources */ = {isa = PBXBuildFile; fileRef = 00FF371B1A3630CE00FD1E45 /* measurementIcon-new-29x29.png */; };
+		00FF371E1A36310300FD1E45 /* Bike_road_diagram_ABCD.png in Resources */ = {isa = PBXBuildFile; fileRef = 00FF371D1A36310300FD1E45 /* Bike_road_diagram_ABCD.png */; };
+		5D003774195CF0B800BC9BBA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D003773195CF0B800BC9BBA /* Images.xcassets */; };
+		5D135A4519A7FACD00273076 /* plus-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D135A4419A7FACD00273076 /* plus-icon.png */; };
+		5D192BBA17FE55ED0046CC16 /* GoniometerDrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D192BB917FE55ED0046CC16 /* GoniometerDrawingView.m */; };
+		5D1AD208196B735900700F3E /* VarusViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D1AD207196B735900700F3E /* VarusViewerViewController.m */; };
+		5D32380D1986F8BB008DA71D /* Ho_foot_Arches_left.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D32380C1986F8BB008DA71D /* Ho_foot_Arches_left.png */; };
+		5D32380F1986FA92008DA71D /* Ho_foot_Arches_right.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D32380E1986FA92008DA71D /* Ho_foot_Arches_right.png */; };
+		5D3B1E7917F76045004EB913 /* KneeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3B1E7817F76045004EB913 /* KneeViewController.m */; };
+		5D3B1E7C17F76187004EB913 /* KneeDrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3B1E7B17F76186004EB913 /* KneeDrawingView.m */; };
+		5D3BC32D190881FD003E8613 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3BC32C190881FD003E8613 /* SettingsViewController.m */; };
+		5D3BC330190AB41B003E8613 /* GlobalOperationQueueManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3BC32F190AB41B003E8613 /* GlobalOperationQueueManager.m */; };
+		5D3BC333190AB605003E8613 /* ImageNote.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3BC332190AB605003E8613 /* ImageNote.m */; };
+		5D4BE6C81841414F009289CB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D4BE6C71841414F009289CB /* Security.framework */; };
+		5D549A411862A53A00B61A83 /* img_thumb_383809223.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5D549A401862A53A00B61A83 /* img_thumb_383809223.jpg */; };
+		5D57674D17F4F9720017CF87 /* BikeFitNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D57674C17F4F9720017CF87 /* BikeFitNavigationController.m */; };
+		5D57675017F5028E0017CF87 /* AthletePropertyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D57674F17F5028E0017CF87 /* AthletePropertyModel.m */; };
+		5D6F3A9118145FAC001BD897 /* BikeFitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D6F3A9018145FAC001BD897 /* BikeFitViewController.m */; };
+		5D6F3A9318146C1F001BD897 /* BikeFitIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D6F3A9218146C1F001BD897 /* BikeFitIcon.png */; };
+		5D6F99CB190B448600558C99 /* arrowleft.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D6F99C9190B448600558C99 /* arrowleft.png */; };
+		5D6F99CC190B448600558C99 /* arrowright.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D6F99CA190B448600558C99 /* arrowright.png */; };
+		5D6F99CE190B44BB00558C99 /* recordButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D6F99CD190B44BB00558C99 /* recordButton.png */; };
+		5D6F99D0190B453700558C99 /* BikeFitBadge.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D6F99CF190B453700558C99 /* BikeFitBadge.png */; };
+		5D6F99D3190B4D4D00558C99 /* AmazonClientManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D6F99D2190B4D4D00558C99 /* AmazonClientManager.m */; };
+		5D7E1F4418BBE42B00689276 /* VarusNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D7E1F4318BBE42B00689276 /* VarusNoteViewController.m */; };
+		5D7E1F4718BBE46E00689276 /* VarusDrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D7E1F4618BBE46E00689276 /* VarusDrawingView.m */; };
+		5D7E1F4A18BC0F1500689276 /* VarusNote.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D7E1F4918BC0F1500689276 /* VarusNote.m */; };
+		5D8531CA1759CD6600934E68 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D8531C91759CD6600934E68 /* UIKit.framework */; };
+		5D8531CC1759CD6600934E68 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D8531CB1759CD6600934E68 /* Foundation.framework */; };
+		5D8531CE1759CD6600934E68 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D8531CD1759CD6600934E68 /* CoreGraphics.framework */; };
+		5D8531D41759CD6600934E68 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5D8531D21759CD6600934E68 /* InfoPlist.strings */; };
+		5D8531D61759CD6600934E68 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8531D51759CD6600934E68 /* main.m */; };
+		5D8531DA1759CD6600934E68 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8531D91759CD6600934E68 /* AppDelegate.m */; };
+		5D8531DC1759CD6600934E68 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D8531DB1759CD6600934E68 /* Default.png */; };
+		5D8531DE1759CD6600934E68 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D8531DD1759CD6600934E68 /* Default@2x.png */; };
+		5D8531E01759CD6600934E68 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D8531DF1759CD6600934E68 /* Default-568h@2x.png */; };
+		5D8531E61759CD6600934E68 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D8531E41759CD6600934E68 /* MainStoryboard_iPad.storyboard */; };
+		5D8531E91759CD6600934E68 /* AthleteInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8531E81759CD6600934E68 /* AthleteInfoController.m */; };
+		5D8531EB1759CD6600934E68 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D8531EA1759CD6600934E68 /* first.png */; };
+		5D8531ED1759CD6600934E68 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D8531EC1759CD6600934E68 /* first@2x.png */; };
+		5D8531F21759CD6600934E68 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D8531F11759CD6600934E68 /* second.png */; };
+		5D8531F41759CD6600934E68 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D8531F31759CD6600934E68 /* second@2x.png */; };
+		5D8531FD1759CD6600934E68 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D8531C91759CD6600934E68 /* UIKit.framework */; };
+		5D8531FE1759CD6600934E68 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D8531CB1759CD6600934E68 /* Foundation.framework */; };
+		5D9904B118ECD52500FE5765 /* AngleImageViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9904B018ECD52500FE5765 /* AngleImageViewerViewController.m */; };
+		5D9E2155185BE370006BA0B3 /* AngleNote.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9E2154185BE370006BA0B3 /* AngleNote.m */; };
+		5D9E215A185CE8EE006BA0B3 /* KneeViewNote.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9E2159185CE8EE006BA0B3 /* KneeViewNote.m */; };
+		5D9E215E185FE7F2006BA0B3 /* FootBottomNote.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9E215D185FE7F2006BA0B3 /* FootBottomNote.m */; };
+		5D9E2161185FE897006BA0B3 /* FootBottomNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9E2160185FE897006BA0B3 /* FootBottomNoteViewController.m */; };
+		5D9E2164185FEC46006BA0B3 /* FootBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9E2163185FEC46006BA0B3 /* FootBottomView.m */; };
+		5D9EA2371857EA2100E63682 /* FitNote.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9EA2361857EA2100E63682 /* FitNote.m */; };
+		5D9EA23A1859400300E63682 /* TextFitNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9EA2391859400300E63682 /* TextFitNoteViewController.m */; };
+		5DA7AE5418BEC45B00CA0DEB /* SpindleNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA7AE5318BEC45B00CA0DEB /* SpindleNoteViewController.m */; };
+		5DA7AE5618BEC79B00CA0DEB /* foot_fore_aft_measure.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DA7AE5518BEC79B00CA0DEB /* foot_fore_aft_measure.png */; };
+		5DA7AE5918BEC8A400CA0DEB /* NoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA7AE5818BEC8A400CA0DEB /* NoteViewController.m */; };
+		5DA7AE5D18BECCC800CA0DEB /* SpindleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA7AE5C18BECCC800CA0DEB /* SpindleView.m */; };
+		5DA7AE6018BED17300CA0DEB /* SpindleNote.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA7AE5F18BED17300CA0DEB /* SpindleNote.m */; };
+		5DABBE0B184EC3A900309BAB /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DABBE0A184EC3A800309BAB /* CoreMotion.framework */; };
+		5DAC945B18CE7A6A00EFEDC7 /* ShoulderAngleNote.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DAC945A18CE7A6A00EFEDC7 /* ShoulderAngleNote.m */; };
+		5DB3607518C694DA00191385 /* KopsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DB3607418C694DA00191385 /* KopsViewController.m */; };
+		5DB3607818C6A28F00191385 /* KopsNote.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DB3607718C6A28F00191385 /* KopsNote.m */; };
+		5DB3AEE619D0C9A200604666 /* FinalNotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DB3AEE519D0C9A200604666 /* FinalNotesViewController.m */; };
+		5DB3AEE819D0CADD00604666 /* Bike_diagram_APP.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DB3AEE719D0CADD00604666 /* Bike_diagram_APP.png */; };
+		5DBC20C418E4E24900BF5957 /* ImageViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DBC20C318E4E24900BF5957 /* ImageViewerViewController.m */; };
+		5DC304AB199E7A3700F0AECE /* up_down_arrows.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DC304AA199E7A3700F0AECE /* up_down_arrows.png */; };
+		5DC304AD199E7E8200F0AECE /* curved_arrows.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DC304AC199E7E8200F0AECE /* curved_arrows.png */; };
+		5DC3140A19D8C7C400625E50 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DC3140919D8C7C400625E50 /* MessageUI.framework */; };
+		5DC9303C1918288E00EB733C /* CredentialProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC9303B1918288E00EB733C /* CredentialProvider.m */; };
+		5DC9305B19200D2000EB733C /* AMZNAuthorizeUserDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC9304619200D2000EB733C /* AMZNAuthorizeUserDelegate.m */; };
+		5DC9305C19200D2000EB733C /* AMZNGetAccessTokenDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC9304819200D2000EB733C /* AMZNGetAccessTokenDelegate.m */; };
+		5DC9305D19200D2000EB733C /* AMZNGetProfileDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC9304A19200D2000EB733C /* AMZNGetProfileDelegate.m */; };
+		5DC9305E19200D2000EB733C /* AMZNLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC9304C19200D2000EB733C /* AMZNLoginController.m */; };
+		5DC9305F19200D2000EB733C /* AMZNLogoutDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DC9304E19200D2000EB733C /* AMZNLogoutDelegate.m */; };
+		5DC9306019200D2000EB733C /* btnLWA_gold_209x48.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DC9304F19200D2000EB733C /* btnLWA_gold_209x48.png */; };
+		5DC9306119200D2000EB733C /* btnLWA_gold_209x48_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DC9305019200D2000EB733C /* btnLWA_gold_209x48_pressed.png */; };
+		5DD1837919D878AB00A5B6CE /* Bike_road_diagram_APPP.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DD1837819D878AB00A5B6CE /* Bike_road_diagram_APPP.png */; };
+		5DD2940D17FA8276005E707D /* ClientListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD2940C17FA8276005E707D /* ClientListViewController.m */; };
+		5DD2941417FBBD7F005E707D /* GoniometerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DD2941317FBBD7F005E707D /* GoniometerViewController.m */; };
+		5DD68EE2197473D300BCCCD9 /* FrontCameraIcon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5DD68EE1197473D300BCCCD9 /* FrontCameraIcon.jpg */; };
+		5DD68EE41974747D00BCCCD9 /* FrontCameraIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DD68EE31974747D00BCCCD9 /* FrontCameraIcon.png */; };
+		5DD68EE6198083C600BCCCD9 /* BikeFit_verticle_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DD68EE5198083C600BCCCD9 /* BikeFit_verticle_logo.png */; };
+		5DD68EE81980862B00BCCCD9 /* BikeFit_logo_Horiz.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DD68EE71980862B00BCCCD9 /* BikeFit_logo_Horiz.png */; };
+		5DD68EEA198086EA00BCCCD9 /* info_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DD68EE9198086EA00BCCCD9 /* info_button.png */; };
+		5DD68EEC1980884400BCCCD9 /* info_button_29x29.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DD68EEB1980884400BCCCD9 /* info_button_29x29.png */; };
+		5DD68EEE198089A300BCCCD9 /* info_button_29x29_no_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DD68EED198089A300BCCCD9 /* info_button_29x29_no_white.png */; };
+		5DD68EF019808B3300BCCCD9 /* Cog_15t.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DD68EEF19808B3300BCCCD9 /* Cog_15t.png */; };
+		5DD68EF219808B8300BCCCD9 /* Cog_15t_29x29.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DD68EF119808B8300BCCCD9 /* Cog_15t_29x29.png */; };
+		5DD68EF419808E0400BCCCD9 /* 2_heel_right.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DD68EF319808E0400BCCCD9 /* 2_heel_right.png */; };
+		5DD68EF619808E0F00BCCCD9 /* 2_heels_left.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DD68EF519808E0F00BCCCD9 /* 2_heels_left.png */; };
+		5DD68EF819818DD200BCCCD9 /* FFMD_Dial_only.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DD68EF719818DD200BCCCD9 /* FFMD_Dial_only.png */; };
+		5DD68EFA19818F9E00BCCCD9 /* FFMD_Dial_only-200.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DD68EF919818F9E00BCCCD9 /* FFMD_Dial_only-200.png */; };
+		5DEA4BD51997E6830024C220 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 5DEA4BD31997E6830024C220 /* iTunesArtwork */; };
+		5DEA4BD61997E6830024C220 /* iTunesArtwork@2x in Resources */ = {isa = PBXBuildFile; fileRef = 5DEA4BD41997E6830024C220 /* iTunesArtwork@2x */; };
+		5DEA4BD81997EA3A0024C220 /* BikeFitIcon-29x29.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DEA4BD71997EA3A0024C220 /* BikeFitIcon-29x29.png */; };
+		5DED8DFB17F8EA66004947FD /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DED8DFA17F8EA66004947FD /* AVFoundation.framework */; };
+		5DED8DFD17F8F331004947FD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DED8DFC17F8F331004947FD /* QuartzCore.framework */; };
+		5DED8DFF17F8F347004947FD /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DED8DFE17F8F347004947FD /* CoreVideo.framework */; };
+		5DED8E0117F8F484004947FD /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DED8E0017F8F484004947FD /* CoreMedia.framework */; };
+		5DF59D3718B2C73E0065A8D1 /* VideoNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF59D3618B2C73E0065A8D1 /* VideoNoteViewController.m */; };
+		5DF59D3A18B569030065A8D1 /* NoteImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF59D3918B569030065A8D1 /* NoteImageView.m */; };
+		B2374D65E690B283FCFC96DB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21428C59B206D9E67FA803AC /* libPods.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		002733C41BD1B13200EDA7BC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5D8531BE1759CD6600934E68 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5D8531C51759CD6600934E68;
+			remoteInfo = bikefit;
+		};
+		00286C181BD0455000CC0C08 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5D8531BE1759CD6600934E68 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5D8531C51759CD6600934E68;
+			remoteInfo = bikefit;
+		};
+		5D8531FF1759CD6600934E68 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5D8531BE1759CD6600934E68 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5D8531C51759CD6600934E68;
+			remoteInfo = "Tabbed Bikefit";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		002733A71BD06EA700EDA7BC /* Bike_tri_diagram_ABCDEF.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bike_tri_diagram_ABCDEF.png; sourceTree = "<group>"; };
+		002733A91BD070C600EDA7BC /* 1_wedge_Left_varus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1_wedge_Left_varus.png; sourceTree = "<group>"; };
+		002733AA1BD070C600EDA7BC /* 1_Wedge_Rght_Varus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1_Wedge_Rght_Varus.png; sourceTree = "<group>"; };
+		002733AB1BD070C600EDA7BC /* 2_heel_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2_heel_right.png; sourceTree = "<group>"; };
+		002733AC1BD070C600EDA7BC /* 2_heels_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2_heels_left.png; sourceTree = "<group>"; };
+		002733AD1BD070C600EDA7BC /* 2_heels.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2_heels.png; sourceTree = "<group>"; };
+		002733AE1BD070C600EDA7BC /* 2_wedge_left_varus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2_wedge_left_varus.png; sourceTree = "<group>"; };
+		002733AF1BD070C600EDA7BC /* 2_Wedge_RGHT_varus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2_Wedge_RGHT_varus.png; sourceTree = "<group>"; };
+		002733B01BD070C600EDA7BC /* 3_wedge_left_varus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3_wedge_left_varus.png; sourceTree = "<group>"; };
+		002733B11BD070C600EDA7BC /* 3_Wedge_Rght_Varus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3_Wedge_Rght_Varus.png; sourceTree = "<group>"; };
+		002733BF1BD1B13200EDA7BC /* bikefitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bikefitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		002733C11BD1B13200EDA7BC /* bikefitUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = bikefitUITests.m; sourceTree = "<group>"; };
+		002733C31BD1B13200EDA7BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		00286C131BD0455000CC0C08 /* bikefitModelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bikefitModelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00286C151BD0455000CC0C08 /* bikefitModelTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = bikefitModelTests.m; sourceTree = "<group>"; };
+		00286C171BD0455000CC0C08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		00286C241BD06AD600CC0C08 /* LoginWithAmazon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LoginWithAmazon.framework; path = "../tmp/velopez-bikefit-app/LoginWithAmazon/LoginWithAmazon.framework"; sourceTree = "<group>"; };
+		004D028F1BEB02AB001BD665 /* CreateAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateAccountViewController.h; sourceTree = "<group>"; };
+		004D02901BEB02AB001BD665 /* CreateAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateAccountViewController.m; sourceTree = "<group>"; };
+		004D02921BED982F001BD665 /* LoginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginDelegate.h; sourceTree = "<group>"; };
+		005E3EB11B950026003911DE /* HomeScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeScreenViewController.h; sourceTree = "<group>"; };
+		005E3EB21B950026003911DE /* HomeScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeScreenViewController.m; sourceTree = "<group>"; };
+		005E3EB81B952F1E003911DE /* FitHome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FitHome.h; sourceTree = "<group>"; };
+		005E3EB91B952F1E003911DE /* FitHome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FitHome.m; sourceTree = "<group>"; };
+		008755701B40D61F00BB67BE /* LoadinSpinnerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadinSpinnerView.h; sourceTree = "<group>"; };
+		008755711B40D61F00BB67BE /* LoadinSpinnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadinSpinnerView.m; sourceTree = "<group>"; };
+		009D557F1AB393A4008A8A74 /* MainStoryboard_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		00A29FB21B431C3B00589788 /* DrawingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawingView.h; sourceTree = "<group>"; };
+		00A29FB31B431C3B00589788 /* DrawingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawingView.m; sourceTree = "<group>"; };
+		00A382F51A3B710100791FEE /* BikeFitTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BikeFitTableViewCell.h; sourceTree = "<group>"; };
+		00A382F61A3B710100791FEE /* BikeFitTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BikeFitTableViewCell.m; sourceTree = "<group>"; };
+		00F1996D1B82D71A00467F26 /* SaddleTiltNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaddleTiltNoteViewController.h; sourceTree = "<group>"; };
+		00F1996E1B82D71A00467F26 /* SaddleTiltNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaddleTiltNoteViewController.m; sourceTree = "<group>"; };
+		00F199701B82D8CE00467F26 /* SaddleTiltNote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaddleTiltNote.h; sourceTree = "<group>"; };
+		00F199711B82D8CE00467F26 /* SaddleTiltNote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaddleTiltNote.m; sourceTree = "<group>"; };
+		00F813521A2ADE1300F1EA6D /* LegAngleViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LegAngleViewViewController.h; sourceTree = "<group>"; };
+		00F813531A2ADE1300F1EA6D /* LegAngleViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LegAngleViewViewController.m; sourceTree = "<group>"; };
+		00FBB9C41B3B811700873AAA /* AthleteInfoTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AthleteInfoTableCell.h; sourceTree = "<group>"; };
+		00FBB9C51B3B811700873AAA /* AthleteInfoTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AthleteInfoTableCell.m; sourceTree = "<group>"; };
+		00FEDCB91BE5966300FF7A5C /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		00FEDCBA1BE5966300FF7A5C /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		00FF37191A36302E00FD1E45 /* KW_front_laser_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KW_front_laser_2.png; sourceTree = "<group>"; };
+		00FF371B1A3630CE00FD1E45 /* measurementIcon-new-29x29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "measurementIcon-new-29x29.png"; sourceTree = "<group>"; };
+		00FF371D1A36310300FD1E45 /* Bike_road_diagram_ABCD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bike_road_diagram_ABCD.png; sourceTree = "<group>"; };
+		2010E01299865D20785CF17A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		21428C59B206D9E67FA803AC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D003773195CF0B800BC9BBA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = bikefit/Images.xcassets; sourceTree = "<group>"; };
+		5D135A4419A7FACD00273076 /* plus-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-icon.png"; sourceTree = "<group>"; };
+		5D192BB817FE55ED0046CC16 /* GoniometerDrawingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoniometerDrawingView.h; sourceTree = "<group>"; };
+		5D192BB917FE55ED0046CC16 /* GoniometerDrawingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoniometerDrawingView.m; sourceTree = "<group>"; };
+		5D1AD206196B735900700F3E /* VarusViewerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VarusViewerViewController.h; sourceTree = "<group>"; };
+		5D1AD207196B735900700F3E /* VarusViewerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VarusViewerViewController.m; sourceTree = "<group>"; };
+		5D32380C1986F8BB008DA71D /* Ho_foot_Arches_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Ho_foot_Arches_left.png; path = ../Ho_foot_Arches_left.png; sourceTree = "<group>"; };
+		5D32380E1986FA92008DA71D /* Ho_foot_Arches_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Ho_foot_Arches_right.png; path = ../Ho_foot_Arches_right.png; sourceTree = "<group>"; };
+		5D3B1E7717F76045004EB913 /* KneeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KneeViewController.h; sourceTree = "<group>"; };
+		5D3B1E7817F76045004EB913 /* KneeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KneeViewController.m; sourceTree = "<group>"; };
+		5D3B1E7A17F76186004EB913 /* KneeDrawingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KneeDrawingView.h; sourceTree = "<group>"; };
+		5D3B1E7B17F76186004EB913 /* KneeDrawingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KneeDrawingView.m; sourceTree = "<group>"; };
+		5D3BC32B190881FD003E8613 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		5D3BC32C190881FD003E8613 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		5D3BC32E190AB41B003E8613 /* GlobalOperationQueueManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalOperationQueueManager.h; sourceTree = "<group>"; };
+		5D3BC32F190AB41B003E8613 /* GlobalOperationQueueManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalOperationQueueManager.m; sourceTree = "<group>"; };
+		5D3BC331190AB605003E8613 /* ImageNote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageNote.h; sourceTree = "<group>"; };
+		5D3BC332190AB605003E8613 /* ImageNote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageNote.m; sourceTree = "<group>"; };
+		5D3BC334190AD9AB003E8613 /* BikefitConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BikefitConstants.h; sourceTree = "<group>"; };
+		5D4BE6C518414117009289CB /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		5D4BE6C71841414F009289CB /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		5D549A401862A53A00B61A83 /* img_thumb_383809223.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img_thumb_383809223.jpg; sourceTree = "<group>"; };
+		5D57674B17F4F9720017CF87 /* BikeFitNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BikeFitNavigationController.h; sourceTree = "<group>"; };
+		5D57674C17F4F9720017CF87 /* BikeFitNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BikeFitNavigationController.m; sourceTree = "<group>"; };
+		5D57674E17F5028E0017CF87 /* AthletePropertyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AthletePropertyModel.h; sourceTree = "<group>"; };
+		5D57674F17F5028E0017CF87 /* AthletePropertyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AthletePropertyModel.m; sourceTree = "<group>"; };
+		5D6F3A8F18145FAC001BD897 /* BikeFitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BikeFitViewController.h; sourceTree = "<group>"; };
+		5D6F3A9018145FAC001BD897 /* BikeFitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BikeFitViewController.m; sourceTree = "<group>"; };
+		5D6F3A9218146C1F001BD897 /* BikeFitIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BikeFitIcon.png; path = ../BikeFitIcon.png; sourceTree = "<group>"; };
+		5D6F99C9190B448600558C99 /* arrowleft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrowleft.png; sourceTree = SOURCE_ROOT; };
+		5D6F99CA190B448600558C99 /* arrowright.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrowright.png; sourceTree = SOURCE_ROOT; };
+		5D6F99CD190B44BB00558C99 /* recordButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recordButton.png; sourceTree = SOURCE_ROOT; };
+		5D6F99CF190B453700558C99 /* BikeFitBadge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BikeFitBadge.png; sourceTree = SOURCE_ROOT; };
+		5D6F99D1190B4D4D00558C99 /* AmazonClientManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmazonClientManager.h; sourceTree = "<group>"; };
+		5D6F99D2190B4D4D00558C99 /* AmazonClientManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmazonClientManager.m; sourceTree = "<group>"; };
+		5D7E1F4218BBE42B00689276 /* VarusNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VarusNoteViewController.h; sourceTree = "<group>"; };
+		5D7E1F4318BBE42B00689276 /* VarusNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VarusNoteViewController.m; sourceTree = "<group>"; };
+		5D7E1F4518BBE46E00689276 /* VarusDrawingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VarusDrawingView.h; sourceTree = "<group>"; };
+		5D7E1F4618BBE46E00689276 /* VarusDrawingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VarusDrawingView.m; sourceTree = "<group>"; };
+		5D7E1F4818BC0F1500689276 /* VarusNote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VarusNote.h; sourceTree = "<group>"; };
+		5D7E1F4918BC0F1500689276 /* VarusNote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VarusNote.m; sourceTree = "<group>"; };
+		5D8531C61759CD6600934E68 /* bikefit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bikefit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D8531C91759CD6600934E68 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		5D8531CB1759CD6600934E68 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		5D8531CD1759CD6600934E68 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		5D8531D11759CD6600934E68 /* bikefit-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "bikefit-Info.plist"; sourceTree = "<group>"; };
+		5D8531D31759CD6600934E68 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5D8531D51759CD6600934E68 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5D8531D71759CD6600934E68 /* bikefit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "bikefit-Prefix.pch"; sourceTree = "<group>"; };
+		5D8531D81759CD6600934E68 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		5D8531D91759CD6600934E68 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		5D8531DB1759CD6600934E68 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		5D8531DD1759CD6600934E68 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		5D8531DF1759CD6600934E68 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		5D8531E51759CD6600934E68 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		5D8531E71759CD6600934E68 /* AthleteInfoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AthleteInfoController.h; sourceTree = "<group>"; };
+		5D8531E81759CD6600934E68 /* AthleteInfoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AthleteInfoController.m; sourceTree = "<group>"; };
+		5D8531EA1759CD6600934E68 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
+		5D8531EC1759CD6600934E68 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
+		5D8531F11759CD6600934E68 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
+		5D8531F31759CD6600934E68 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
+		5D8531FA1759CD6600934E68 /* bikefitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bikefitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D9904AF18ECD52500FE5765 /* AngleImageViewerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AngleImageViewerViewController.h; sourceTree = "<group>"; };
+		5D9904B018ECD52500FE5765 /* AngleImageViewerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AngleImageViewerViewController.m; sourceTree = "<group>"; };
+		5D9E2153185BE370006BA0B3 /* AngleNote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AngleNote.h; sourceTree = "<group>"; };
+		5D9E2154185BE370006BA0B3 /* AngleNote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AngleNote.m; sourceTree = "<group>"; };
+		5D9E2158185CE8EE006BA0B3 /* KneeViewNote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KneeViewNote.h; sourceTree = "<group>"; };
+		5D9E2159185CE8EE006BA0B3 /* KneeViewNote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KneeViewNote.m; sourceTree = "<group>"; };
+		5D9E215C185FE7F2006BA0B3 /* FootBottomNote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FootBottomNote.h; sourceTree = "<group>"; };
+		5D9E215D185FE7F2006BA0B3 /* FootBottomNote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FootBottomNote.m; sourceTree = "<group>"; };
+		5D9E215F185FE897006BA0B3 /* FootBottomNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FootBottomNoteViewController.h; sourceTree = "<group>"; };
+		5D9E2160185FE897006BA0B3 /* FootBottomNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FootBottomNoteViewController.m; sourceTree = "<group>"; };
+		5D9E2162185FEC46006BA0B3 /* FootBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FootBottomView.h; sourceTree = "<group>"; };
+		5D9E2163185FEC46006BA0B3 /* FootBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FootBottomView.m; sourceTree = "<group>"; };
+		5D9EA2351857EA2100E63682 /* FitNote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FitNote.h; sourceTree = "<group>"; };
+		5D9EA2361857EA2100E63682 /* FitNote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FitNote.m; sourceTree = "<group>"; };
+		5D9EA2381859400300E63682 /* TextFitNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFitNoteViewController.h; sourceTree = "<group>"; };
+		5D9EA2391859400300E63682 /* TextFitNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFitNoteViewController.m; sourceTree = "<group>"; };
+		5DA7AE5218BEC45B00CA0DEB /* SpindleNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpindleNoteViewController.h; sourceTree = "<group>"; };
+		5DA7AE5318BEC45B00CA0DEB /* SpindleNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpindleNoteViewController.m; sourceTree = "<group>"; };
+		5DA7AE5518BEC79B00CA0DEB /* foot_fore_aft_measure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = foot_fore_aft_measure.png; sourceTree = SOURCE_ROOT; };
+		5DA7AE5718BEC8A400CA0DEB /* NoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteViewController.h; sourceTree = "<group>"; };
+		5DA7AE5818BEC8A400CA0DEB /* NoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteViewController.m; sourceTree = "<group>"; };
+		5DA7AE5B18BECCC800CA0DEB /* SpindleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpindleView.h; sourceTree = "<group>"; };
+		5DA7AE5C18BECCC800CA0DEB /* SpindleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpindleView.m; sourceTree = "<group>"; };
+		5DA7AE5E18BED17300CA0DEB /* SpindleNote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpindleNote.h; sourceTree = "<group>"; };
+		5DA7AE5F18BED17300CA0DEB /* SpindleNote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpindleNote.m; sourceTree = "<group>"; };
+		5DABBE0A184EC3A800309BAB /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		5DAC945918CE7A6A00EFEDC7 /* ShoulderAngleNote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoulderAngleNote.h; sourceTree = "<group>"; };
+		5DAC945A18CE7A6A00EFEDC7 /* ShoulderAngleNote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoulderAngleNote.m; sourceTree = "<group>"; };
+		5DB3607318C694DA00191385 /* KopsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KopsViewController.h; sourceTree = "<group>"; };
+		5DB3607418C694DA00191385 /* KopsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KopsViewController.m; sourceTree = "<group>"; };
+		5DB3607618C6A28F00191385 /* KopsNote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KopsNote.h; sourceTree = "<group>"; };
+		5DB3607718C6A28F00191385 /* KopsNote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KopsNote.m; sourceTree = "<group>"; };
+		5DB3AEE419D0C9A200604666 /* FinalNotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinalNotesViewController.h; sourceTree = "<group>"; };
+		5DB3AEE519D0C9A200604666 /* FinalNotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinalNotesViewController.m; sourceTree = "<group>"; };
+		5DB3AEE719D0CADD00604666 /* Bike_diagram_APP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bike_diagram_APP.png; sourceTree = "<group>"; };
+		5DBC20C218E4E24900BF5957 /* ImageViewerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewerViewController.h; sourceTree = "<group>"; };
+		5DBC20C318E4E24900BF5957 /* ImageViewerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewerViewController.m; sourceTree = "<group>"; };
+		5DC304AA199E7A3700F0AECE /* up_down_arrows.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = up_down_arrows.png; sourceTree = "<group>"; };
+		5DC304AC199E7E8200F0AECE /* curved_arrows.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = curved_arrows.png; sourceTree = "<group>"; };
+		5DC3140919D8C7C400625E50 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		5DC9303A1918288E00EB733C /* CredentialProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CredentialProvider.h; sourceTree = "<group>"; };
+		5DC9303B1918288E00EB733C /* CredentialProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CredentialProvider.m; sourceTree = "<group>"; };
+		5DC9304519200D2000EB733C /* AMZNAuthorizeUserDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMZNAuthorizeUserDelegate.h; sourceTree = "<group>"; };
+		5DC9304619200D2000EB733C /* AMZNAuthorizeUserDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMZNAuthorizeUserDelegate.m; sourceTree = "<group>"; };
+		5DC9304719200D2000EB733C /* AMZNGetAccessTokenDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMZNGetAccessTokenDelegate.h; sourceTree = "<group>"; };
+		5DC9304819200D2000EB733C /* AMZNGetAccessTokenDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMZNGetAccessTokenDelegate.m; sourceTree = "<group>"; };
+		5DC9304919200D2000EB733C /* AMZNGetProfileDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMZNGetProfileDelegate.h; sourceTree = "<group>"; };
+		5DC9304A19200D2000EB733C /* AMZNGetProfileDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMZNGetProfileDelegate.m; sourceTree = "<group>"; };
+		5DC9304B19200D2000EB733C /* AMZNLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMZNLoginController.h; sourceTree = "<group>"; };
+		5DC9304C19200D2000EB733C /* AMZNLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMZNLoginController.m; sourceTree = "<group>"; };
+		5DC9304D19200D2000EB733C /* AMZNLogoutDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMZNLogoutDelegate.h; sourceTree = "<group>"; };
+		5DC9304E19200D2000EB733C /* AMZNLogoutDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMZNLogoutDelegate.m; sourceTree = "<group>"; };
+		5DC9304F19200D2000EB733C /* btnLWA_gold_209x48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnLWA_gold_209x48.png; sourceTree = "<group>"; };
+		5DC9305019200D2000EB733C /* btnLWA_gold_209x48_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btnLWA_gold_209x48_pressed.png; sourceTree = "<group>"; };
+		5DD1837819D878AB00A5B6CE /* Bike_road_diagram_APPP.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bike_road_diagram_APPP.png; sourceTree = "<group>"; };
+		5DD2940B17FA8276005E707D /* ClientListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientListViewController.h; sourceTree = "<group>"; };
+		5DD2940C17FA8276005E707D /* ClientListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientListViewController.m; sourceTree = "<group>"; };
+		5DD2941217FBBD7F005E707D /* GoniometerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoniometerViewController.h; sourceTree = "<group>"; };
+		5DD2941317FBBD7F005E707D /* GoniometerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoniometerViewController.m; sourceTree = "<group>"; };
+		5DD68EE1197473D300BCCCD9 /* FrontCameraIcon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FrontCameraIcon.jpg; sourceTree = "<group>"; };
+		5DD68EE31974747D00BCCCD9 /* FrontCameraIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FrontCameraIcon.png; sourceTree = "<group>"; };
+		5DD68EE5198083C600BCCCD9 /* BikeFit_verticle_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BikeFit_verticle_logo.png; sourceTree = "<group>"; };
+		5DD68EE71980862B00BCCCD9 /* BikeFit_logo_Horiz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BikeFit_logo_Horiz.png; sourceTree = "<group>"; };
+		5DD68EE9198086EA00BCCCD9 /* info_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info_button.png; sourceTree = "<group>"; };
+		5DD68EEB1980884400BCCCD9 /* info_button_29x29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info_button_29x29.png; sourceTree = "<group>"; };
+		5DD68EED198089A300BCCCD9 /* info_button_29x29_no_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info_button_29x29_no_white.png; sourceTree = "<group>"; };
+		5DD68EEF19808B3300BCCCD9 /* Cog_15t.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cog_15t.png; sourceTree = "<group>"; };
+		5DD68EF119808B8300BCCCD9 /* Cog_15t_29x29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cog_15t_29x29.png; sourceTree = "<group>"; };
+		5DD68EF319808E0400BCCCD9 /* 2_heel_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2_heel_right.png; sourceTree = "<group>"; };
+		5DD68EF519808E0F00BCCCD9 /* 2_heels_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2_heels_left.png; sourceTree = "<group>"; };
+		5DD68EF719818DD200BCCCD9 /* FFMD_Dial_only.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FFMD_Dial_only.png; sourceTree = "<group>"; };
+		5DD68EF919818F9E00BCCCD9 /* FFMD_Dial_only-200.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FFMD_Dial_only-200.png"; sourceTree = "<group>"; };
+		5DEA4BCD1997E4E20024C220 /* 76x76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 76x76.png; path = ../76x76.png; sourceTree = "<group>"; };
+		5DEA4BCE1997E4FA0024C220 /* 152x152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 152x152.png; path = ../152x152.png; sourceTree = "<group>"; };
+		5DEA4BCF1997E5190024C220 /* 40x40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 40x40.png; path = ../40x40.png; sourceTree = "<group>"; };
+		5DEA4BD01997E53E0024C220 /* 80x80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 80x80.png; path = ../80x80.png; sourceTree = "<group>"; };
+		5DEA4BD11997E5680024C220 /* 29x29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 29x29.png; path = ../29x29.png; sourceTree = "<group>"; };
+		5DEA4BD21997E5880024C220 /* 58x58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 58x58.png; path = ../58x58.png; sourceTree = "<group>"; };
+		5DEA4BD31997E6830024C220 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = ../iTunesArtwork; sourceTree = "<group>"; };
+		5DEA4BD41997E6830024C220 /* iTunesArtwork@2x */ = {isa = PBXFileReference; lastKnownFileType = file; name = "iTunesArtwork@2x"; path = "../iTunesArtwork@2x"; sourceTree = "<group>"; };
+		5DEA4BD71997EA3A0024C220 /* BikeFitIcon-29x29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "BikeFitIcon-29x29.png"; path = "../BikeFitIcon-29x29.png"; sourceTree = "<group>"; };
+		5DED8DFA17F8EA66004947FD /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		5DED8DFC17F8F331004947FD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		5DED8DFE17F8F347004947FD /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		5DED8E0017F8F484004947FD /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		5DF59D3518B2C73E0065A8D1 /* VideoNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoNoteViewController.h; sourceTree = "<group>"; };
+		5DF59D3618B2C73E0065A8D1 /* VideoNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoNoteViewController.m; sourceTree = "<group>"; };
+		5DF59D3818B569030065A8D1 /* NoteImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteImageView.h; sourceTree = "<group>"; };
+		5DF59D3918B569030065A8D1 /* NoteImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteImageView.m; sourceTree = "<group>"; };
+		A011F97476B99F47FD651F26 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		002733BC1BD1B13200EDA7BC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		00286C101BD0455000CC0C08 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5D8531C31759CD6600934E68 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00286C251BD06AD600CC0C08 /* LoginWithAmazon.framework in Frameworks */,
+				5DC3140A19D8C7C400625E50 /* MessageUI.framework in Frameworks */,
+				5DABBE0B184EC3A900309BAB /* CoreMotion.framework in Frameworks */,
+				5D4BE6C81841414F009289CB /* Security.framework in Frameworks */,
+				5D8531CC1759CD6600934E68 /* Foundation.framework in Frameworks */,
+				5DED8E0117F8F484004947FD /* CoreMedia.framework in Frameworks */,
+				5DED8DFF17F8F347004947FD /* CoreVideo.framework in Frameworks */,
+				5DED8DFD17F8F331004947FD /* QuartzCore.framework in Frameworks */,
+				5DED8DFB17F8EA66004947FD /* AVFoundation.framework in Frameworks */,
+				5D8531CA1759CD6600934E68 /* UIKit.framework in Frameworks */,
+				5D8531CE1759CD6600934E68 /* CoreGraphics.framework in Frameworks */,
+				B2374D65E690B283FCFC96DB /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5D8531F61759CD6600934E68 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D8531FD1759CD6600934E68 /* UIKit.framework in Frameworks */,
+				5D8531FE1759CD6600934E68 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		002733C01BD1B13200EDA7BC /* bikefitUITests */ = {
+			isa = PBXGroup;
+			children = (
+				002733C11BD1B13200EDA7BC /* bikefitUITests.m */,
+				002733C31BD1B13200EDA7BC /* Info.plist */,
+			);
+			path = bikefitUITests;
+			sourceTree = "<group>";
+		};
+		00286C141BD0455000CC0C08 /* bikefitModelTests */ = {
+			isa = PBXGroup;
+			children = (
+				00286C151BD0455000CC0C08 /* bikefitModelTests.m */,
+				00286C171BD0455000CC0C08 /* Info.plist */,
+			);
+			path = bikefitModelTests;
+			sourceTree = "<group>";
+		};
+		5D57675517F516B40017CF87 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				005E3EB11B950026003911DE /* HomeScreenViewController.h */,
+				005E3EB21B950026003911DE /* HomeScreenViewController.m */,
+				5D57674B17F4F9720017CF87 /* BikeFitNavigationController.h */,
+				5D57674C17F4F9720017CF87 /* BikeFitNavigationController.m */,
+				5D3BC32B190881FD003E8613 /* SettingsViewController.h */,
+				5D3BC32C190881FD003E8613 /* SettingsViewController.m */,
+				5DB3AEE419D0C9A200604666 /* FinalNotesViewController.h */,
+				5DB3AEE519D0C9A200604666 /* FinalNotesViewController.m */,
+				5D6F3A8F18145FAC001BD897 /* BikeFitViewController.h */,
+				5D6F3A9018145FAC001BD897 /* BikeFitViewController.m */,
+				00A382F51A3B710100791FEE /* BikeFitTableViewCell.h */,
+				00A382F61A3B710100791FEE /* BikeFitTableViewCell.m */,
+				005E3EB81B952F1E003911DE /* FitHome.h */,
+				005E3EB91B952F1E003911DE /* FitHome.m */,
+				5DD2940B17FA8276005E707D /* ClientListViewController.h */,
+				5DD2940C17FA8276005E707D /* ClientListViewController.m */,
+				00FEDCB91BE5966300FF7A5C /* LoginViewController.h */,
+				00FEDCBA1BE5966300FF7A5C /* LoginViewController.m */,
+				004D028F1BEB02AB001BD665 /* CreateAccountViewController.h */,
+				004D02901BEB02AB001BD665 /* CreateAccountViewController.m */,
+				5DD2940E17FA8291005E707D /* AthleteInfo */,
+				5D9E215B185D0614006BA0B3 /* Note View Controllers */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		5D57675617F516E60017CF87 /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				5D8531E41759CD6600934E68 /* MainStoryboard_iPad.storyboard */,
+				009D557F1AB393A4008A8A74 /* MainStoryboard_iPhone.storyboard */,
+				5DD68EF919818F9E00BCCCD9 /* FFMD_Dial_only-200.png */,
+				5DD68EF119808B8300BCCCD9 /* Cog_15t_29x29.png */,
+				5DD68EEF19808B3300BCCCD9 /* Cog_15t.png */,
+				5DD68EED198089A300BCCCD9 /* info_button_29x29_no_white.png */,
+				5DD68EEB1980884400BCCCD9 /* info_button_29x29.png */,
+				5DD68EE9198086EA00BCCCD9 /* info_button.png */,
+				5DD68EE71980862B00BCCCD9 /* BikeFit_logo_Horiz.png */,
+				5DD68EE5198083C600BCCCD9 /* BikeFit_verticle_logo.png */,
+				5DD68EE31974747D00BCCCD9 /* FrontCameraIcon.png */,
+				5DD68EE1197473D300BCCCD9 /* FrontCameraIcon.jpg */,
+				5DA7AE5518BEC79B00CA0DEB /* foot_fore_aft_measure.png */,
+				5D549A401862A53A00B61A83 /* img_thumb_383809223.jpg */,
+				008755701B40D61F00BB67BE /* LoadinSpinnerView.h */,
+				008755711B40D61F00BB67BE /* LoadinSpinnerView.m */,
+			);
+			name = Interface;
+			sourceTree = "<group>";
+		};
+		5D57675717F5172B0017CF87 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5D9E2157185CE8A0006BA0B3 /* Note Classes */,
+				5D57674E17F5028E0017CF87 /* AthletePropertyModel.h */,
+				5D57674F17F5028E0017CF87 /* AthletePropertyModel.m */,
+				5D3BC32E190AB41B003E8613 /* GlobalOperationQueueManager.h */,
+				5D3BC32F190AB41B003E8613 /* GlobalOperationQueueManager.m */,
+				5D6F99D1190B4D4D00558C99 /* AmazonClientManager.h */,
+				5D6F99D2190B4D4D00558C99 /* AmazonClientManager.m */,
+				5DC9303A1918288E00EB733C /* CredentialProvider.h */,
+				5DC9303B1918288E00EB733C /* CredentialProvider.m */,
+				004D02921BED982F001BD665 /* LoginDelegate.h */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		5D8531BD1759CD6600934E68 = {
+			isa = PBXGroup;
+			children = (
+				5D003773195CF0B800BC9BBA /* Images.xcassets */,
+				5D8531CF1759CD6600934E68 /* Tabbed Bikefit */,
+				00286C141BD0455000CC0C08 /* bikefitModelTests */,
+				002733C01BD1B13200EDA7BC /* bikefitUITests */,
+				5D8531C81759CD6600934E68 /* Frameworks */,
+				5D8531C71759CD6600934E68 /* Products */,
+				FBC8E09C9B730E295F1D27B8 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		5D8531C71759CD6600934E68 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5D8531C61759CD6600934E68 /* bikefit.app */,
+				5D8531FA1759CD6600934E68 /* bikefitTests.octest */,
+				00286C131BD0455000CC0C08 /* bikefitModelTests.xctest */,
+				002733BF1BD1B13200EDA7BC /* bikefitUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5D8531C81759CD6600934E68 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				00286C241BD06AD600CC0C08 /* LoginWithAmazon.framework */,
+				5DC3140919D8C7C400625E50 /* MessageUI.framework */,
+				5DABBE0A184EC3A800309BAB /* CoreMotion.framework */,
+				5DED8E0017F8F484004947FD /* CoreMedia.framework */,
+				5DED8DFE17F8F347004947FD /* CoreVideo.framework */,
+				5DED8DFC17F8F331004947FD /* QuartzCore.framework */,
+				5DED8DFA17F8EA66004947FD /* AVFoundation.framework */,
+				5D4BE6C71841414F009289CB /* Security.framework */,
+				5D4BE6C518414117009289CB /* CoreFoundation.framework */,
+				5D8531C91759CD6600934E68 /* UIKit.framework */,
+				5D8531CB1759CD6600934E68 /* Foundation.framework */,
+				5D8531CD1759CD6600934E68 /* CoreGraphics.framework */,
+				21428C59B206D9E67FA803AC /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5D8531CF1759CD6600934E68 /* Tabbed Bikefit */ = {
+			isa = PBXGroup;
+			children = (
+				5D3BC334190AD9AB003E8613 /* BikefitConstants.h */,
+				5D8531D81759CD6600934E68 /* AppDelegate.h */,
+				5D8531D91759CD6600934E68 /* AppDelegate.m */,
+				5D57675517F516B40017CF87 /* ViewControllers */,
+				5D57675717F5172B0017CF87 /* Model */,
+				5DC9304219200D2000EB733C /* LoginWithAmazonSample */,
+				5D57675617F516E60017CF87 /* Interface */,
+				5D8531D01759CD6600934E68 /* Supporting Files */,
+			);
+			path = "Tabbed Bikefit";
+			sourceTree = "<group>";
+		};
+		5D8531D01759CD6600934E68 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				002733A91BD070C600EDA7BC /* 1_wedge_Left_varus.png */,
+				002733AA1BD070C600EDA7BC /* 1_Wedge_Rght_Varus.png */,
+				002733AB1BD070C600EDA7BC /* 2_heel_right.png */,
+				002733AC1BD070C600EDA7BC /* 2_heels_left.png */,
+				002733AD1BD070C600EDA7BC /* 2_heels.png */,
+				002733AE1BD070C600EDA7BC /* 2_wedge_left_varus.png */,
+				002733AF1BD070C600EDA7BC /* 2_Wedge_RGHT_varus.png */,
+				002733B01BD070C600EDA7BC /* 3_wedge_left_varus.png */,
+				002733B11BD070C600EDA7BC /* 3_Wedge_Rght_Varus.png */,
+				002733A71BD06EA700EDA7BC /* Bike_tri_diagram_ABCDEF.png */,
+				00FF371D1A36310300FD1E45 /* Bike_road_diagram_ABCD.png */,
+				00FF371B1A3630CE00FD1E45 /* measurementIcon-new-29x29.png */,
+				00FF37191A36302E00FD1E45 /* KW_front_laser_2.png */,
+				5DD1837819D878AB00A5B6CE /* Bike_road_diagram_APPP.png */,
+				5D135A4419A7FACD00273076 /* plus-icon.png */,
+				5DB3AEE719D0CADD00604666 /* Bike_diagram_APP.png */,
+				5DEA4BD21997E5880024C220 /* 58x58.png */,
+				5DEA4BD71997EA3A0024C220 /* BikeFitIcon-29x29.png */,
+				5DEA4BD31997E6830024C220 /* iTunesArtwork */,
+				5DEA4BD41997E6830024C220 /* iTunesArtwork@2x */,
+				5DEA4BD11997E5680024C220 /* 29x29.png */,
+				5DEA4BD01997E53E0024C220 /* 80x80.png */,
+				5DEA4BCF1997E5190024C220 /* 40x40.png */,
+				5DEA4BCE1997E4FA0024C220 /* 152x152.png */,
+				5DEA4BCD1997E4E20024C220 /* 76x76.png */,
+				5D32380C1986F8BB008DA71D /* Ho_foot_Arches_left.png */,
+				5D32380E1986FA92008DA71D /* Ho_foot_Arches_right.png */,
+				5DD68EF719818DD200BCCCD9 /* FFMD_Dial_only.png */,
+				5DD68EF519808E0F00BCCCD9 /* 2_heels_left.png */,
+				5DD68EF319808E0400BCCCD9 /* 2_heel_right.png */,
+				5DC304AC199E7E8200F0AECE /* curved_arrows.png */,
+				5DC304AA199E7A3700F0AECE /* up_down_arrows.png */,
+				5D6F3A9218146C1F001BD897 /* BikeFitIcon.png */,
+				5D6F99CF190B453700558C99 /* BikeFitBadge.png */,
+				5D6F99CD190B44BB00558C99 /* recordButton.png */,
+				5D6F99C9190B448600558C99 /* arrowleft.png */,
+				5D6F99CA190B448600558C99 /* arrowright.png */,
+				5D8531EA1759CD6600934E68 /* first.png */,
+				5D8531EC1759CD6600934E68 /* first@2x.png */,
+				5D8531F11759CD6600934E68 /* second.png */,
+				5D8531F31759CD6600934E68 /* second@2x.png */,
+				5D8531D11759CD6600934E68 /* bikefit-Info.plist */,
+				5D8531D21759CD6600934E68 /* InfoPlist.strings */,
+				5D8531D51759CD6600934E68 /* main.m */,
+				5D8531D71759CD6600934E68 /* bikefit-Prefix.pch */,
+				5D8531DB1759CD6600934E68 /* Default.png */,
+				5D8531DD1759CD6600934E68 /* Default@2x.png */,
+				5D8531DF1759CD6600934E68 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5D9E2157185CE8A0006BA0B3 /* Note Classes */ = {
+			isa = PBXGroup;
+			children = (
+				00F199701B82D8CE00467F26 /* SaddleTiltNote.h */,
+				00F199711B82D8CE00467F26 /* SaddleTiltNote.m */,
+				5D9EA2351857EA2100E63682 /* FitNote.h */,
+				5D9EA2361857EA2100E63682 /* FitNote.m */,
+				5D3BC331190AB605003E8613 /* ImageNote.h */,
+				5D3BC332190AB605003E8613 /* ImageNote.m */,
+				5D9E2158185CE8EE006BA0B3 /* KneeViewNote.h */,
+				5D9E2159185CE8EE006BA0B3 /* KneeViewNote.m */,
+				5D9E2153185BE370006BA0B3 /* AngleNote.h */,
+				5D9E2154185BE370006BA0B3 /* AngleNote.m */,
+				5D9E215C185FE7F2006BA0B3 /* FootBottomNote.h */,
+				5D9E215D185FE7F2006BA0B3 /* FootBottomNote.m */,
+				5DAC945918CE7A6A00EFEDC7 /* ShoulderAngleNote.h */,
+				5DAC945A18CE7A6A00EFEDC7 /* ShoulderAngleNote.m */,
+				5D7E1F4818BC0F1500689276 /* VarusNote.h */,
+				5D7E1F4918BC0F1500689276 /* VarusNote.m */,
+				5DA7AE5E18BED17300CA0DEB /* SpindleNote.h */,
+				5DA7AE5F18BED17300CA0DEB /* SpindleNote.m */,
+				5DB3607618C6A28F00191385 /* KopsNote.h */,
+				5DB3607718C6A28F00191385 /* KopsNote.m */,
+			);
+			name = "Note Classes";
+			sourceTree = "<group>";
+		};
+		5D9E215B185D0614006BA0B3 /* Note View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5DF59D3B18B56F750065A8D1 /* ViewControllers */,
+				5DF59D3C18B56F910065A8D1 /* Views */,
+			);
+			name = "Note View Controllers";
+			sourceTree = "<group>";
+		};
+		5DA7AE5A18BECC8100CA0DEB /* Base Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5DA7AE5718BEC8A400CA0DEB /* NoteViewController.h */,
+				5DA7AE5818BEC8A400CA0DEB /* NoteViewController.m */,
+				5DF59D3518B2C73E0065A8D1 /* VideoNoteViewController.h */,
+				5DF59D3618B2C73E0065A8D1 /* VideoNoteViewController.m */,
+				5DD2941217FBBD7F005E707D /* GoniometerViewController.h */,
+				5DD2941317FBBD7F005E707D /* GoniometerViewController.m */,
+				5D3B1E7717F76045004EB913 /* KneeViewController.h */,
+				5D3B1E7817F76045004EB913 /* KneeViewController.m */,
+			);
+			name = "Base Controllers";
+			sourceTree = "<group>";
+		};
+		5DBC20C118E4E20D00BF5957 /* Viewers */ = {
+			isa = PBXGroup;
+			children = (
+				5DBC20C218E4E24900BF5957 /* ImageViewerViewController.h */,
+				5DBC20C318E4E24900BF5957 /* ImageViewerViewController.m */,
+				5D9904AF18ECD52500FE5765 /* AngleImageViewerViewController.h */,
+				5D9904B018ECD52500FE5765 /* AngleImageViewerViewController.m */,
+				5D1AD206196B735900700F3E /* VarusViewerViewController.h */,
+				5D1AD207196B735900700F3E /* VarusViewerViewController.m */,
+			);
+			name = Viewers;
+			sourceTree = "<group>";
+		};
+		5DC9304219200D2000EB733C /* LoginWithAmazonSample */ = {
+			isa = PBXGroup;
+			children = (
+				5DC9304519200D2000EB733C /* AMZNAuthorizeUserDelegate.h */,
+				5DC9304619200D2000EB733C /* AMZNAuthorizeUserDelegate.m */,
+				5DC9304719200D2000EB733C /* AMZNGetAccessTokenDelegate.h */,
+				5DC9304819200D2000EB733C /* AMZNGetAccessTokenDelegate.m */,
+				5DC9304919200D2000EB733C /* AMZNGetProfileDelegate.h */,
+				5DC9304A19200D2000EB733C /* AMZNGetProfileDelegate.m */,
+				5DC9304B19200D2000EB733C /* AMZNLoginController.h */,
+				5DC9304C19200D2000EB733C /* AMZNLoginController.m */,
+				5DC9304D19200D2000EB733C /* AMZNLogoutDelegate.h */,
+				5DC9304E19200D2000EB733C /* AMZNLogoutDelegate.m */,
+				5DC9304F19200D2000EB733C /* btnLWA_gold_209x48.png */,
+				5DC9305019200D2000EB733C /* btnLWA_gold_209x48_pressed.png */,
+			);
+			path = LoginWithAmazonSample;
+			sourceTree = SOURCE_ROOT;
+		};
+		5DD2940E17FA8291005E707D /* AthleteInfo */ = {
+			isa = PBXGroup;
+			children = (
+				5D8531E71759CD6600934E68 /* AthleteInfoController.h */,
+				5D8531E81759CD6600934E68 /* AthleteInfoController.m */,
+				00FBB9C41B3B811700873AAA /* AthleteInfoTableCell.h */,
+				00FBB9C51B3B811700873AAA /* AthleteInfoTableCell.m */,
+			);
+			name = AthleteInfo;
+			sourceTree = "<group>";
+		};
+		5DF59D3B18B56F750065A8D1 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				5DBC20C118E4E20D00BF5957 /* Viewers */,
+				5DA7AE5A18BECC8100CA0DEB /* Base Controllers */,
+				5D9EA2381859400300E63682 /* TextFitNoteViewController.h */,
+				5D9EA2391859400300E63682 /* TextFitNoteViewController.m */,
+				5D9E215F185FE897006BA0B3 /* FootBottomNoteViewController.h */,
+				5D9E2160185FE897006BA0B3 /* FootBottomNoteViewController.m */,
+				5D7E1F4218BBE42B00689276 /* VarusNoteViewController.h */,
+				5D7E1F4318BBE42B00689276 /* VarusNoteViewController.m */,
+				5DA7AE5218BEC45B00CA0DEB /* SpindleNoteViewController.h */,
+				5DA7AE5318BEC45B00CA0DEB /* SpindleNoteViewController.m */,
+				00F813521A2ADE1300F1EA6D /* LegAngleViewViewController.h */,
+				00F813531A2ADE1300F1EA6D /* LegAngleViewViewController.m */,
+				5DB3607318C694DA00191385 /* KopsViewController.h */,
+				5DB3607418C694DA00191385 /* KopsViewController.m */,
+				00F1996D1B82D71A00467F26 /* SaddleTiltNoteViewController.h */,
+				00F1996E1B82D71A00467F26 /* SaddleTiltNoteViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		5DF59D3C18B56F910065A8D1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5DF59D3818B569030065A8D1 /* NoteImageView.h */,
+				5DF59D3918B569030065A8D1 /* NoteImageView.m */,
+				5D3B1E7A17F76186004EB913 /* KneeDrawingView.h */,
+				5D3B1E7B17F76186004EB913 /* KneeDrawingView.m */,
+				5D192BB817FE55ED0046CC16 /* GoniometerDrawingView.h */,
+				5D192BB917FE55ED0046CC16 /* GoniometerDrawingView.m */,
+				5D9E2162185FEC46006BA0B3 /* FootBottomView.h */,
+				5D9E2163185FEC46006BA0B3 /* FootBottomView.m */,
+				5D7E1F4518BBE46E00689276 /* VarusDrawingView.h */,
+				5D7E1F4618BBE46E00689276 /* VarusDrawingView.m */,
+				5DA7AE5B18BECCC800CA0DEB /* SpindleView.h */,
+				5DA7AE5C18BECCC800CA0DEB /* SpindleView.m */,
+				00A29FB21B431C3B00589788 /* DrawingView.h */,
+				00A29FB31B431C3B00589788 /* DrawingView.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		FBC8E09C9B730E295F1D27B8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A011F97476B99F47FD651F26 /* Pods.debug.xcconfig */,
+				2010E01299865D20785CF17A /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		002733BE1BD1B13200EDA7BC /* bikefitUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 002733C61BD1B13200EDA7BC /* Build configuration list for PBXNativeTarget "bikefitUITests" */;
+			buildPhases = (
+				002733BB1BD1B13200EDA7BC /* Sources */,
+				002733BC1BD1B13200EDA7BC /* Frameworks */,
+				002733BD1BD1B13200EDA7BC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				002733C51BD1B13200EDA7BC /* PBXTargetDependency */,
+			);
+			name = bikefitUITests;
+			productName = bikefitUITests;
+			productReference = 002733BF1BD1B13200EDA7BC /* bikefitUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		00286C121BD0455000CC0C08 /* bikefitModelTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 00286C1C1BD0455000CC0C08 /* Build configuration list for PBXNativeTarget "bikefitModelTests" */;
+			buildPhases = (
+				00286C0F1BD0455000CC0C08 /* Sources */,
+				00286C101BD0455000CC0C08 /* Frameworks */,
+				00286C111BD0455000CC0C08 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				00286C191BD0455000CC0C08 /* PBXTargetDependency */,
+			);
+			name = bikefitModelTests;
+			productName = bikefitModelTests;
+			productReference = 00286C131BD0455000CC0C08 /* bikefitModelTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5D8531C51759CD6600934E68 /* bikefit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5D85320C1759CD6600934E68 /* Build configuration list for PBXNativeTarget "bikefit" */;
+			buildPhases = (
+				CA739BF15001E094A541C40C /* Check Pods Manifest.lock */,
+				5D8531C21759CD6600934E68 /* Sources */,
+				5D8531C31759CD6600934E68 /* Frameworks */,
+				5D8531C41759CD6600934E68 /* Resources */,
+				BB5D023C3FAF6AB73F8E7CC6 /* Copy Pods Resources */,
+				F6A215789249BD8E0B162171 /* Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = bikefit;
+			productName = "Tabbed Bikefit";
+			productReference = 5D8531C61759CD6600934E68 /* bikefit.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5D8531F91759CD6600934E68 /* bikefitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5D85320F1759CD6600934E68 /* Build configuration list for PBXNativeTarget "bikefitTests" */;
+			buildPhases = (
+				5D8531F51759CD6600934E68 /* Sources */,
+				5D8531F61759CD6600934E68 /* Frameworks */,
+				5D8531F71759CD6600934E68 /* Resources */,
+				5D8531F81759CD6600934E68 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5D8532001759CD6600934E68 /* PBXTargetDependency */,
+			);
+			name = bikefitTests;
+			productName = "Tabbed BikefitTests";
+			productReference = 5D8531FA1759CD6600934E68 /* bikefitTests.octest */;
+			productType = "com.apple.product-type.bundle.ocunit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5D8531BE1759CD6600934E68 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastTestingUpgradeCheck = 0610;
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "Alfonso Lopez";
+				TargetAttributes = {
+					002733BE1BD1B13200EDA7BC = {
+						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = 2M3455ALB5;
+						TestTargetID = 5D8531C51759CD6600934E68;
+					};
+					00286C121BD0455000CC0C08 = {
+						CreatedOnToolsVersion = 7.0.1;
+						TestTargetID = 5D8531C51759CD6600934E68;
+					};
+					5D8531C51759CD6600934E68 = {
+						DevelopmentTeam = 2M3455ALB5;
+					};
+				};
+			};
+			buildConfigurationList = 5D8531C11759CD6600934E68 /* Build configuration list for PBXProject "bikefit" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 5D8531BD1759CD6600934E68;
+			productRefGroup = 5D8531C71759CD6600934E68 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5D8531C51759CD6600934E68 /* bikefit */,
+				5D8531F91759CD6600934E68 /* bikefitTests */,
+				00286C121BD0455000CC0C08 /* bikefitModelTests */,
+				002733BE1BD1B13200EDA7BC /* bikefitUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		002733BD1BD1B13200EDA7BC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		00286C111BD0455000CC0C08 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00286C231BD05B2300CC0C08 /* bikefit.app in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5D8531C41759CD6600934E68 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D6F99D0190B453700558C99 /* BikeFitBadge.png in Resources */,
+				5D8531D41759CD6600934E68 /* InfoPlist.strings in Resources */,
+				5DEA4BD81997EA3A0024C220 /* BikeFitIcon-29x29.png in Resources */,
+				5DD1837919D878AB00A5B6CE /* Bike_road_diagram_APPP.png in Resources */,
+				5DD68EEC1980884400BCCCD9 /* info_button_29x29.png in Resources */,
+				5D8531DC1759CD6600934E68 /* Default.png in Resources */,
+				5D135A4519A7FACD00273076 /* plus-icon.png in Resources */,
+				5DEA4BD51997E6830024C220 /* iTunesArtwork in Resources */,
+				002733B61BD070C600EDA7BC /* 2_heels.png in Resources */,
+				002733B31BD070C600EDA7BC /* 1_Wedge_Rght_Varus.png in Resources */,
+				5DD68EF419808E0400BCCCD9 /* 2_heel_right.png in Resources */,
+				002733BA1BD070C600EDA7BC /* 3_Wedge_Rght_Varus.png in Resources */,
+				5D8531DE1759CD6600934E68 /* Default@2x.png in Resources */,
+				5D8531E01759CD6600934E68 /* Default-568h@2x.png in Resources */,
+				5DD68EEA198086EA00BCCCD9 /* info_button.png in Resources */,
+				5D8531E61759CD6600934E68 /* MainStoryboard_iPad.storyboard in Resources */,
+				5DD68EE81980862B00BCCCD9 /* BikeFit_logo_Horiz.png in Resources */,
+				00FF371C1A3630CE00FD1E45 /* measurementIcon-new-29x29.png in Resources */,
+				002733B21BD070C600EDA7BC /* 1_wedge_Left_varus.png in Resources */,
+				002733B41BD070C600EDA7BC /* 2_heel_right.png in Resources */,
+				5DC9306019200D2000EB733C /* btnLWA_gold_209x48.png in Resources */,
+				5DD68EFA19818F9E00BCCCD9 /* FFMD_Dial_only-200.png in Resources */,
+				00FF371A1A36302E00FD1E45 /* KW_front_laser_2.png in Resources */,
+				5D6F99CC190B448600558C99 /* arrowright.png in Resources */,
+				5D003774195CF0B800BC9BBA /* Images.xcassets in Resources */,
+				5D549A411862A53A00B61A83 /* img_thumb_383809223.jpg in Resources */,
+				009D55801AB393A4008A8A74 /* MainStoryboard_iPhone.storyboard in Resources */,
+				5D8531EB1759CD6600934E68 /* first.png in Resources */,
+				002733B91BD070C600EDA7BC /* 3_wedge_left_varus.png in Resources */,
+				5D6F99CB190B448600558C99 /* arrowleft.png in Resources */,
+				5DA7AE5618BEC79B00CA0DEB /* foot_fore_aft_measure.png in Resources */,
+				5DD68EF819818DD200BCCCD9 /* FFMD_Dial_only.png in Resources */,
+				5D32380F1986FA92008DA71D /* Ho_foot_Arches_right.png in Resources */,
+				5DD68EE41974747D00BCCCD9 /* FrontCameraIcon.png in Resources */,
+				5DD68EE2197473D300BCCCD9 /* FrontCameraIcon.jpg in Resources */,
+				002733A81BD06EA700EDA7BC /* Bike_tri_diagram_ABCDEF.png in Resources */,
+				5DC9306119200D2000EB733C /* btnLWA_gold_209x48_pressed.png in Resources */,
+				5D8531ED1759CD6600934E68 /* first@2x.png in Resources */,
+				5D8531F21759CD6600934E68 /* second.png in Resources */,
+				5D8531F41759CD6600934E68 /* second@2x.png in Resources */,
+				5DC304AB199E7A3700F0AECE /* up_down_arrows.png in Resources */,
+				5DD68EE6198083C600BCCCD9 /* BikeFit_verticle_logo.png in Resources */,
+				5DD68EF019808B3300BCCCD9 /* Cog_15t.png in Resources */,
+				5D6F99CE190B44BB00558C99 /* recordButton.png in Resources */,
+				5DD68EF219808B8300BCCCD9 /* Cog_15t_29x29.png in Resources */,
+				002733B71BD070C600EDA7BC /* 2_wedge_left_varus.png in Resources */,
+				5DB3AEE819D0CADD00604666 /* Bike_diagram_APP.png in Resources */,
+				5DEA4BD61997E6830024C220 /* iTunesArtwork@2x in Resources */,
+				002733B51BD070C600EDA7BC /* 2_heels_left.png in Resources */,
+				00FF371E1A36310300FD1E45 /* Bike_road_diagram_ABCD.png in Resources */,
+				5D6F3A9318146C1F001BD897 /* BikeFitIcon.png in Resources */,
+				5DD68EF619808E0F00BCCCD9 /* 2_heels_left.png in Resources */,
+				002733B81BD070C600EDA7BC /* 2_Wedge_RGHT_varus.png in Resources */,
+				5D32380D1986F8BB008DA71D /* Ho_foot_Arches_left.png in Resources */,
+				5DC304AD199E7E8200F0AECE /* curved_arrows.png in Resources */,
+				5DD68EEE198089A300BCCCD9 /* info_button_29x29_no_white.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5D8531F71759CD6600934E68 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00286C221BD05B2300CC0C08 /* bikefit.app in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5D8531F81759CD6600934E68 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		BB5D023C3FAF6AB73F8E7CC6 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CA739BF15001E094A541C40C /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F6A215789249BD8E0B162171 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		002733BB1BD1B13200EDA7BC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				002733C21BD1B13200EDA7BC /* bikefitUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		00286C0F1BD0455000CC0C08 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00286C161BD0455000CC0C08 /* bikefitModelTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5D8531C21759CD6600934E68 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D3BC330190AB41B003E8613 /* GlobalOperationQueueManager.m in Sources */,
+				5D8531D61759CD6600934E68 /* main.m in Sources */,
+				5D6F99D3190B4D4D00558C99 /* AmazonClientManager.m in Sources */,
+				5DC9305C19200D2000EB733C /* AMZNGetAccessTokenDelegate.m in Sources */,
+				5D3BC32D190881FD003E8613 /* SettingsViewController.m in Sources */,
+				5D8531DA1759CD6600934E68 /* AppDelegate.m in Sources */,
+				5DC9305D19200D2000EB733C /* AMZNGetProfileDelegate.m in Sources */,
+				00FBB9C61B3B811700873AAA /* AthleteInfoTableCell.m in Sources */,
+				5DC9305E19200D2000EB733C /* AMZNLoginController.m in Sources */,
+				5D8531E91759CD6600934E68 /* AthleteInfoController.m in Sources */,
+				5D57674D17F4F9720017CF87 /* BikeFitNavigationController.m in Sources */,
+				5D57675017F5028E0017CF87 /* AthletePropertyModel.m in Sources */,
+				5DF59D3A18B569030065A8D1 /* NoteImageView.m in Sources */,
+				5D1AD208196B735900700F3E /* VarusViewerViewController.m in Sources */,
+				5DC9303C1918288E00EB733C /* CredentialProvider.m in Sources */,
+				5DC9305B19200D2000EB733C /* AMZNAuthorizeUserDelegate.m in Sources */,
+				5DB3AEE619D0C9A200604666 /* FinalNotesViewController.m in Sources */,
+				005E3EB31B950026003911DE /* HomeScreenViewController.m in Sources */,
+				5D3B1E7917F76045004EB913 /* KneeViewController.m in Sources */,
+				5D3B1E7C17F76187004EB913 /* KneeDrawingView.m in Sources */,
+				5DD2940D17FA8276005E707D /* ClientListViewController.m in Sources */,
+				5DD2941417FBBD7F005E707D /* GoniometerViewController.m in Sources */,
+				5D192BBA17FE55ED0046CC16 /* GoniometerDrawingView.m in Sources */,
+				5D6F3A9118145FAC001BD897 /* BikeFitViewController.m in Sources */,
+				5DB3607818C6A28F00191385 /* KopsNote.m in Sources */,
+				5D9EA2371857EA2100E63682 /* FitNote.m in Sources */,
+				5D7E1F4A18BC0F1500689276 /* VarusNote.m in Sources */,
+				004D02911BEB02AB001BD665 /* CreateAccountViewController.m in Sources */,
+				5D9904B118ECD52500FE5765 /* AngleImageViewerViewController.m in Sources */,
+				5DB3607518C694DA00191385 /* KopsViewController.m in Sources */,
+				5DA7AE6018BED17300CA0DEB /* SpindleNote.m in Sources */,
+				5D9E2161185FE897006BA0B3 /* FootBottomNoteViewController.m in Sources */,
+				00F1996F1B82D71A00467F26 /* SaddleTiltNoteViewController.m in Sources */,
+				00FEDCBB1BE5966300FF7A5C /* LoginViewController.m in Sources */,
+				00F813541A2ADE1300F1EA6D /* LegAngleViewViewController.m in Sources */,
+				008755721B40D61F00BB67BE /* LoadinSpinnerView.m in Sources */,
+				5DBC20C418E4E24900BF5957 /* ImageViewerViewController.m in Sources */,
+				5D9E215A185CE8EE006BA0B3 /* KneeViewNote.m in Sources */,
+				5DC9305F19200D2000EB733C /* AMZNLogoutDelegate.m in Sources */,
+				5D9EA23A1859400300E63682 /* TextFitNoteViewController.m in Sources */,
+				00A382F71A3B710100791FEE /* BikeFitTableViewCell.m in Sources */,
+				5D7E1F4718BBE46E00689276 /* VarusDrawingView.m in Sources */,
+				5D7E1F4418BBE42B00689276 /* VarusNoteViewController.m in Sources */,
+				5D3BC333190AB605003E8613 /* ImageNote.m in Sources */,
+				5DA7AE5918BEC8A400CA0DEB /* NoteViewController.m in Sources */,
+				5DAC945B18CE7A6A00EFEDC7 /* ShoulderAngleNote.m in Sources */,
+				5DA7AE5418BEC45B00CA0DEB /* SpindleNoteViewController.m in Sources */,
+				5D9E2164185FEC46006BA0B3 /* FootBottomView.m in Sources */,
+				5D9E2155185BE370006BA0B3 /* AngleNote.m in Sources */,
+				5DF59D3718B2C73E0065A8D1 /* VideoNoteViewController.m in Sources */,
+				5D9E215E185FE7F2006BA0B3 /* FootBottomNote.m in Sources */,
+				5DA7AE5D18BECCC800CA0DEB /* SpindleView.m in Sources */,
+				005E3EBA1B952F1E003911DE /* FitHome.m in Sources */,
+				00A29FB41B431C3B00589788 /* DrawingView.m in Sources */,
+				00F199721B82D8CE00467F26 /* SaddleTiltNote.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5D8531F51759CD6600934E68 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		002733C51BD1B13200EDA7BC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5D8531C51759CD6600934E68 /* bikefit */;
+			targetProxy = 002733C41BD1B13200EDA7BC /* PBXContainerItemProxy */;
+		};
+		00286C191BD0455000CC0C08 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5D8531C51759CD6600934E68 /* bikefit */;
+			targetProxy = 00286C181BD0455000CC0C08 /* PBXContainerItemProxy */;
+		};
+		5D8532001759CD6600934E68 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5D8531C51759CD6600934E68 /* bikefit */;
+			targetProxy = 5D8531FF1759CD6600934E68 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5D8531D21759CD6600934E68 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5D8531D31759CD6600934E68 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		5D8531E41759CD6600934E68 /* MainStoryboard_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5D8531E51759CD6600934E68 /* en */,
+			);
+			name = MainStoryboard_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		002733C71BD1B13200EDA7BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = bikefitUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "Velopez-Digital.bikefitUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TEST_TARGET_NAME = bikefit;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		002733C81BD1B13200EDA7BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = bikefitUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "Velopez-Digital.bikefitUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TEST_TARGET_NAME = bikefit;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+		00286C1A1BD0455000CC0C08 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = bikefitModelTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "Velopez-Digital.bikefitModelTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bikefit.app/bikefit";
+			};
+			name = Debug;
+		};
+		00286C1B1BD0455000CC0C08 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = bikefitModelTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "Velopez-Digital.bikefitModelTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bikefit.app/bikefit";
+			};
+			name = Release;
+		};
+		5D85320A1759CD6600934E68 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5D85320B1759CD6600934E68 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = "";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5D85320D1759CD6600934E68 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A011F97476B99F47FD651F26 /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				"CODE_SIGN_ENTITLEMENTS[sdk=*]" = "";
+				CODE_SIGN_IDENTITY = "iOS Development: Alfonso Lopez (67GDG2Q592)";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iOS Development: Alfonso Lopez (67GDG2Q592)";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/LoginWithAmazon",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Tabbed Bikefit/bikefit-Prefix.pch";
+				INFOPLIST_FILE = "Tabbed Bikefit/bikefit-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"AWSCloudWatch\"",
+					"-l\"AWSCore\"",
+					"-l\"AWSDynamoDB\"",
+					"-l\"AWSEC2\"",
+					"-l\"AWSElasticLoadBalancing\"",
+					"-l\"AWSKinesis\"",
+					"-l\"AWSMobileAnalytics\"",
+					"-l\"AWSS3\"",
+					"-l\"AWSSES\"",
+					"-l\"AWSSNS\"",
+					"-l\"AWSSQS\"",
+					"-l\"AWSSimpleDB\"",
+					"-l\"Bolts\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.velopez.bikefit;
+				PRODUCT_NAME = bikefit;
+				PROVISIONING_PROFILE = "229011f6-5180-41f4-b69f-ef9914d984e5";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "armv7 armv7s arm64";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		5D85320E1759CD6600934E68 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2010E01299865D20785CF17A /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Alfonso Lopez";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Alfonso Lopez";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/LoginWithAmazon",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Tabbed Bikefit/bikefit-Prefix.pch";
+				INFOPLIST_FILE = "Tabbed Bikefit/bikefit-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"AWSCloudWatch\"",
+					"-l\"AWSCore\"",
+					"-l\"AWSDynamoDB\"",
+					"-l\"AWSEC2\"",
+					"-l\"AWSElasticLoadBalancing\"",
+					"-l\"AWSKinesis\"",
+					"-l\"AWSMobileAnalytics\"",
+					"-l\"AWSS3\"",
+					"-l\"AWSSES\"",
+					"-l\"AWSSNS\"",
+					"-l\"AWSSQS\"",
+					"-l\"AWSSimpleDB\"",
+					"-l\"Bolts\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.velopez.bikefit;
+				PRODUCT_NAME = bikefit;
+				PROVISIONING_PROFILE = "d6678383-24a9-453f-b129-0a91c9be6085";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "armv7 armv7s arm64";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		5D8532101759CD6600934E68 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Tabbed Bikefit/bikefit-Prefix.pch";
+				INFOPLIST_FILE = "Tabbed BikefitTests/bikefitTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "Velopez.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = bikefitTests;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		5D8532111759CD6600934E68 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Tabbed Bikefit/bikefit-Prefix.pch";
+				INFOPLIST_FILE = "Tabbed BikefitTests/bikefitTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "Velopez.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = bikefitTests;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		002733C61BD1B13200EDA7BC /* Build configuration list for PBXNativeTarget "bikefitUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				002733C71BD1B13200EDA7BC /* Debug */,
+				002733C81BD1B13200EDA7BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		00286C1C1BD0455000CC0C08 /* Build configuration list for PBXNativeTarget "bikefitModelTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00286C1A1BD0455000CC0C08 /* Debug */,
+				00286C1B1BD0455000CC0C08 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5D8531C11759CD6600934E68 /* Build configuration list for PBXProject "bikefit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5D85320A1759CD6600934E68 /* Debug */,
+				5D85320B1759CD6600934E68 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5D85320C1759CD6600934E68 /* Build configuration list for PBXNativeTarget "bikefit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5D85320D1759CD6600934E68 /* Debug */,
+				5D85320E1759CD6600934E68 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5D85320F1759CD6600934E68 /* Build configuration list for PBXNativeTarget "bikefitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5D8532101759CD6600934E68 /* Debug */,
+				5D8532111759CD6600934E68 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5D8531BE1759CD6600934E68 /* Project object */;
+}

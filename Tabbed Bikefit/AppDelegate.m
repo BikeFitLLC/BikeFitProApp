@@ -28,8 +28,8 @@
     [AthletePropertyModel newAthlete];
     
     //Setup AWS configuration
-    AWSServiceConfiguration *configuration = [AWSServiceConfiguration
-                                              configurationWithRegion:AWSRegionUSWest2
+    AWSServiceConfiguration *configuration = [[AWSServiceConfiguration alloc]
+                                              initWithRegion:AWSRegionUSWest2
                                               credentialsProvider:[AmazonClientManager credProvider]];
     
     [AWSServiceManager defaultServiceManager].defaultServiceConfiguration = configuration;

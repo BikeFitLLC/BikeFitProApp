@@ -302,6 +302,7 @@
        
         //[previewLayer removeFromSuperlayer];
         [session stopRunning];
+        [self photoCaptured];
         //previewLayer = nil;
         //session = nil;
         
@@ -322,6 +323,11 @@
         NSLog(@"Exception Loading Frame: %@", [e description]);
     }
     return;
+}
+
+- (void)photoCaptured
+{
+    //method to be overridden
 }
 
 /////////////////////////////////////////////////////////////////

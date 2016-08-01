@@ -21,6 +21,8 @@
     UIImageView *suggestedWedgesOne;
     UIImageView *suggestedWedgesTwo;
     UIImageView *suggestedWedgesThree;
+
+    UIView *_overlayView;
 }
 
 @end
@@ -68,7 +70,7 @@
     
     angleLabel.font = [UIFont fontWithName:@"Helvetica" size:100.0];
     
-    barYPosition = self.view.frame.size.height *.8;
+    barYPosition = self.view.frame.size.height * .7;
     startPointLocation = CGPointMake(0, barYPosition);
     
     previewImage =[[VarusDrawingView alloc] initWithFrame:self.view.frame];
@@ -78,12 +80,9 @@
     [self.view addSubview:previewImage];
     
     takePhotoButton.hidden = false;
-    
-    [self.view  bringSubviewToFront:videoToolBarView];
-    [self.view bringSubviewToFront:takePhotoButton];
-    [self.view bringSubviewToFront:saveButton];
-    [self.view bringSubviewToFront:reverseCameraButton];
-    
+
+    [self.view bringSubviewToFront:videoToolBarView];
+
     //
     //Create Image View for Suggestions
     //
@@ -117,21 +116,25 @@
     [self.view addSubview:suggestedWedgesOne];
     [self.view addSubview:suggestedWedgesThree];
 
-    
+    _overlayView = [[UIView alloc] initWithFrame:self.view.bounds];
+    _overlayView.backgroundColor = [UIColor clearColor];
+    _overlayView.userInteractionEnabled = false;
+    [self.view addSubview:_overlayView];
+
     //Add images for dragbar
     upDownImageView =[[UIImageView alloc] initWithFrame:CGRectMake(250,
                                                                    0,
                                                                    self.view.frame.size.width *.1,
                                                                    self.view.frame.size.width * .2)];
     upDownImageView.image=[UIImage imageNamed:@"up_down_arrows.png"];
-    [self.view addSubview:upDownImageView];
+    [_overlayView addSubview:upDownImageView];
     
     rotateArrowsImageView =[[UIImageView alloc] initWithFrame:CGRectMake(0,
                                                                          0,
                                                                          self.view.frame.size.width *.1,
                                                                          self.view.frame.size.width * .2)];
     rotateArrowsImageView.image=[UIImage imageNamed:@"curved_arrows.png"];
-    [self.view addSubview:rotateArrowsImageView];
+    [_overlayView addSubview:rotateArrowsImageView];
     
     ffmdImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,
                                                                   0,
@@ -139,7 +142,8 @@
                                                                   self.view.frame.size.width *.3/1.74)];
     ffmdImageView.image = [UIImage imageNamed:@"FFMD_Dial_only-200.png"];
     ffmdImageView.layer.anchorPoint = CGPointMake(0.5, 0.15);
-    [self.view addSubview:ffmdImageView];
+    ffmdImageView.hidden = true;
+    [_overlayView addSubview:ffmdImageView];
     
     endPointLocation = CGPointMake(self.view.frame.size.width, barYPosition);
     [(VarusDrawingView *)previewImage setEndPointLocation:endPointLocation];
@@ -160,6 +164,9 @@
     
     [saveButton addTarget:self action:@selector(saveAngle) forControlEvents:UIControlEventTouchUpInside];
 
+    [self.view bringSubviewToFront:takePhotoButton];
+    [self.view bringSubviewToFront:saveButton];
+    [self.view bringSubviewToFront:reverseCameraButton];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -339,6 +346,12 @@
     [self.navigationController popToViewController:bikeInfo animated:YES];
 }
 
+- (void)photoCaptured
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        ffmdImageView.hidden = false;
+    });
+}
 
 
 @end

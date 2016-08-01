@@ -208,8 +208,7 @@
     NSError *error;
 	
 	session = [AVCaptureSession new];
-    [session setSessionPreset:AVCaptureSessionPreset1280x720];
-	
+
     // Select a video device, make an input
 	AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
 	AVCaptureDeviceInput *deviceInput = [AVCaptureDeviceInput deviceInputWithDevice:device error:&error];
@@ -291,10 +290,6 @@
         {
             NSLog(@"Dropped Frame");
         }
-        else
-        {
-            NSLog(@"Frame Loaded");
-        };
     }
     else if(takingPhoto)
     {
@@ -412,6 +407,20 @@
     {
         NSLog(@"Error creating AssetWriter: %@", [error description]);
     }
+
+    int captureHeight = 1280;
+    int captureWidth = 720;
+
+    for (AVCaptureInput *input in session.inputs) {
+        if ([input isKindOfClass:([AVCaptureDeviceInput class])]) {
+            AVCaptureDeviceInput *deviceInput = (AVCaptureDeviceInput *) input;
+
+            CMVideoDimensions dimens = CMVideoFormatDescriptionGetDimensions(deviceInput.device.activeFormat.formatDescription);
+            captureWidth = MIN(dimens.height, dimens.width);
+            captureHeight = MAX(dimens.width, dimens.height);
+
+        }// AVCaptureDeviceInput
+    }
     
     NSDictionary* settings = [NSDictionary dictionaryWithObjectsAndKeys:
                               AVVideoCodecH264, AVVideoCodecKey,
@@ -419,11 +428,10 @@
                                //AVVideoProfileLevelH264Main31, AVVideoProfileLevelKey,
                                //[NSNumber numberWithInt: 640], AVVideoMaxKeyFrameIntervalKey,nil],
                               //AVVideoCompressionPropertiesKey,
-                              [NSNumber numberWithInt:720], AVVideoWidthKey,
-                              [NSNumber numberWithInt:1280], AVVideoHeightKey,
+                              [NSNumber numberWithInt:captureWidth], AVVideoWidthKey,
+                              [NSNumber numberWithInt:captureHeight], AVVideoHeightKey,
                               nil];
     
-    //AVAssetWriterInput *assInput = [[AVAssetWriterInput alloc] initWithMediaType:AVMediaTypeVideo outputSettings:settings];
     assetInput = [[AVAssetWriterInput alloc] initWithMediaType:AVMediaTypeVideo outputSettings:settings];
     assetInput.expectsMediaDataInRealTime = YES;
     [assetWriter addInput:assetInput];
@@ -458,8 +466,6 @@
             
             player = [AVPlayer playerWithURL:videoUrl];
             [player.currentItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
-
-            
         }
     }];
 }
@@ -600,17 +606,24 @@
 //////////////////////////////////////////
 - (IBAction)nextImage
 {
-    CMTime newTime = CMTimeConvertScale([player currentTime], 1200,  kCMTimeRoundingMethod_QuickTime);
-    newTime.value = newTime.value + 50;
-    [player seekToTime:newTime toleranceBefore:kCMTimeZero toleranceAfter:kCMTimeZero];
+    if ([player.currentItem canStepForward]) {
+        [player.currentItem stepByCount:1];
+    } else {
+        CMTime newTime = CMTimeConvertScale([player currentTime], 1200,  kCMTimeRoundingMethod_QuickTime);
+        newTime.value = newTime.value + 30;
+        [player seekToTime:newTime toleranceBefore:kCMTimeZero toleranceAfter:kCMTimeZero];
+    }
 }
 
 - (IBAction)prevImage
 {
-    CMTime newTime = CMTimeConvertScale([player currentTime], 1200,  kCMTimeRoundingMethod_QuickTime);
-    newTime.value = newTime.value - 50;
-    [player seekToTime:newTime toleranceBefore:kCMTimeZero toleranceAfter:kCMTimeZero];
-    
+    if ([player.currentItem canStepBackward]) {
+        [player.currentItem stepByCount:-1];
+    } else {
+        CMTime newTime = CMTimeConvertScale([player currentTime], 1200,  kCMTimeRoundingMethod_QuickTime);
+        newTime.value = newTime.value - 30;
+        [player seekToTime:newTime toleranceBefore:kCMTimeZero toleranceAfter:kCMTimeZero];
+    }
 }
 
 - (IBAction)play

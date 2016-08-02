@@ -39,6 +39,10 @@
 
 -(bool) isTokenValid;
 
-- (void) createNewAccountWithEmail:(NSString *)email andPassword:(NSString *)password andName:(NSString *)name;
+- (void) createNewAccountWithEmail:(NSString *)email
+                          password:(NSString *)password
+                          shopName:(NSString *)shopName
+                         firstName:(NSString *)firstName
+                          lastName:(NSString *)lastName;
 
 @end

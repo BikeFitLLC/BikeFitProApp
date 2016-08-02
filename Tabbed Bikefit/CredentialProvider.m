@@ -220,9 +220,13 @@
     }
 }
 
-- (void) createNewAccountWithEmail:(NSString *)email andPassword:(NSString *)password andName: (NSString *)name
+- (void) createNewAccountWithEmail:(NSString *)email
+                          password:(NSString *)password
+                          shopName:(NSString *)shopName
+                         firstName:(NSString *)firstName
+                          lastName:(NSString *)lastName;
 {
-    NSString *urlQueryString = [NSString stringWithFormat:TVM_CREATE_ACCOUNT_PATH, email, password, name];
+    NSString *urlQueryString = [NSString stringWithFormat:TVM_CREATE_ACCOUNT_PATH, email, password, shopName,firstName,lastName];
     urlQueryString = [urlQueryString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     
     NSURL *tvmUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", TVM_HOSTNAME, urlQueryString]];
@@ -248,6 +252,12 @@
                                                delegate:nil
                                       cancelButtonTitle:@"OK"otherButtonTitles:nil
                       ] show];
+                } else {
+                    [[NSUserDefaults standardUserDefaults] setObject:email forKey:USER_DEFAULTS_USERNAME_KEY];
+                    [[NSUserDefaults standardUserDefaults] setObject:shopName forKey:USER_DEFAULTS_FITTERNAME_KEY];
+                    [[NSUserDefaults standardUserDefaults] setObject:password forKey:USER_DEFAULTS_PASSWORD_KEY];
+                    [[NSUserDefaults standardUserDefaults] synchronize];
+                    [self refresh];
                 }
             });
         }];

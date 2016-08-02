@@ -25,31 +25,35 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
      self.view.backgroundColor = [UIColor colorWithRed:0x7/255.0 green:0x31/255.0 blue:0x54/255.0 alpha:1.0];
-    
+
+    float width = CGRectGetWidth(self.view.frame);
+    float margin = CGRectGetWidth(self.view.frame) * 0.033;
+    float bottomOfNavBar = CGRectGetMaxY(self.navigationController.navigationBar.frame);
+    float fieldHeight = 50;
+
     // Do any additional setup after loading the view.
-    emailField = [[UITextField alloc] initWithFrame:CGRectMake(0,
-                                                               0,
-                                                               self.view.frame.size.width * .8,
-                                                               self.view.frame.size.width * .15)];
-    emailField.center = CGPointMake(self.view.center.x, self.view.center.y - self.view.frame.size.width * .1);
+    emailField = [[UITextField alloc] initWithFrame:CGRectMake(margin,
+                                                               bottomOfNavBar + margin,
+                                                               width - (margin * 2),
+                                                               fieldHeight)];
     emailField.borderStyle = UITextBorderStyleRoundedRect;
     emailField.backgroundColor = [UIColor whiteColor];
     emailField.font = [UIFont systemFontOfSize:15];
     emailField.placeholder = @"Email";
+    emailField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     emailField.autocorrectionType = UITextAutocorrectionTypeNo;
-    emailField.keyboardType = UIKeyboardTypeDefault;
-    emailField.returnKeyType = UIReturnKeyDone;
+    emailField.keyboardType = UIKeyboardTypeEmailAddress;
+    emailField.returnKeyType = UIReturnKeyNext;
     emailField.clearButtonMode = UITextFieldViewModeWhileEditing;
     emailField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     emailField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     [emailField setDelegate:self];
     [self.view addSubview:emailField];
     
-    passwordField = [[UITextField alloc] initWithFrame:CGRectMake(0,
-                                                                  0,
-                                                                  self.view.frame.size.width * .8,
-                                                                  self.view.frame.size.width * .15)];
-    passwordField.center = CGPointMake(self.view.center.x, self.view.center.y + self.view.frame.size.width * .1);
+    passwordField = [[UITextField alloc] initWithFrame:CGRectMake(margin,
+                                                                   CGRectGetMaxY(emailField.frame) + margin,
+                                                                   width - (margin * 2),
+                                                                   fieldHeight)];
     passwordField.borderStyle = UITextBorderStyleRoundedRect;
     passwordField.backgroundColor = [UIColor whiteColor];
     passwordField.font = [UIFont systemFontOfSize:15];
@@ -65,17 +69,21 @@
     [self.view addSubview:passwordField];
     
     loginButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    loginButton.frame = CGRectMake(0,0,self.view.frame.size.width, self.view.frame.size.width * .1);
+    loginButton.frame = CGRectMake(0,
+                                   CGRectGetMaxY(passwordField.frame) + (margin * 2),
+                                   CGRectGetWidth(self.view.frame),
+                                   fieldHeight);
     loginButton.backgroundColor = [UIColor colorWithRed:0x7/255.0 green:0x45/255.0 blue:0x54/255.0 alpha:1.0];
-    loginButton.center = CGPointMake(self.view.center.x, self.view.center.y + self.view.frame.size.height *.2);
     [loginButton setTitle:@"Log In" forState:UIControlStateNormal];
     [loginButton addTarget:self action:@selector(login:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:loginButton];
     
     newAccountButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    newAccountButton.frame = CGRectMake(0,0,self.view.frame.size.width, self.view.frame.size.width * .1);
+    newAccountButton.frame = CGRectMake(0,
+                                        CGRectGetMaxY(loginButton.frame) + margin,
+                                        CGRectGetWidth(self.view.frame),
+                                        fieldHeight);
     newAccountButton.backgroundColor = [UIColor colorWithRed:0x7/255.0 green:0x45/255.0 blue:0x54/255.0 alpha:1.0];
-    newAccountButton.center = CGPointMake(self.view.center.x, self.view.center.y + self.view.frame.size.height *.3);
     newAccountButton.hidden = NO;
     [newAccountButton setTitle:@"Create Account" forState:UIControlStateNormal];
     [newAccountButton addTarget:self action:@selector(onCreateAccountClicked:) forControlEvents:UIControlEventTouchUpInside];
@@ -83,9 +91,8 @@
     
     loginWithAmazonButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     loginWithAmazonButton.hidden = YES;
-    loginWithAmazonButton.frame = CGRectMake(0,0,self.view.frame.size.width, self.view.frame.size.width * .1);
+    loginWithAmazonButton.frame = loginButton.frame;
     loginWithAmazonButton.backgroundColor = [UIColor colorWithRed:0x7/255.0 green:0x45/255.0 blue:0x54/255.0 alpha:1.0];
-    loginWithAmazonButton.center = loginButton.center;
     [loginWithAmazonButton setTitle:@"Log In With Amazon" forState:UIControlStateNormal];
     [loginWithAmazonButton addTarget:self action:@selector(loginWithAmazon:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:loginWithAmazonButton];
@@ -142,7 +149,11 @@
 }
 
 -(BOOL) textFieldShouldReturn: (UITextField *) textField {
-    [textField resignFirstResponder];
+    if (textField == emailField) {
+        [passwordField becomeFirstResponder];
+    } else {
+        [textField resignFirstResponder];
+    }
     return YES;
 }
 
@@ -163,7 +174,6 @@
     {
         [AmazonClientManager isAmazonAccount:emailField.text andDelegate:self];
     }
-    
 }
 
 /*

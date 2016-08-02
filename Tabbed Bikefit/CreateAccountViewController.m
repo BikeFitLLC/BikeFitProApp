@@ -24,44 +24,56 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithRed:0x7/255.0 green:0x31/255.0 blue:0x54/255.0 alpha:1.0];
-    
-    emailField = [[UITextField alloc] initWithFrame:CGRectMake(0,300,400,50)];
-    emailField.center = CGPointMake(self.view.center.x, self.view.center.y - 150);
+
+    float width = CGRectGetWidth(self.view.frame);
+    float margin = CGRectGetWidth(self.view.frame) * 0.033;
+    float bottomOfNavBar = CGRectGetMaxY(self.navigationController.navigationBar.frame);
+    float fieldHeight = 50;
+
+    emailField = [[UITextField alloc] initWithFrame:CGRectMake(margin,
+                                                               bottomOfNavBar + margin,
+                                                               width - (margin * 2),
+                                                               fieldHeight)];
     emailField.borderStyle = UITextBorderStyleRoundedRect;
     emailField.backgroundColor = [UIColor whiteColor];
     emailField.font = [UIFont systemFontOfSize:15];
     emailField.placeholder = @"Email";
     emailField.autocorrectionType = UITextAutocorrectionTypeNo;
-    emailField.keyboardType = UIKeyboardTypeDefault;
-    emailField.returnKeyType = UIReturnKeyDone;
+    emailField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    emailField.keyboardType = UIKeyboardTypeEmailAddress;
+    emailField.returnKeyType = UIReturnKeyNext;
     emailField.clearButtonMode = UITextFieldViewModeWhileEditing;
     emailField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     [emailField setDelegate:self];
     [self.view addSubview:emailField];
     
-    shopNameField = [[UITextField alloc] initWithFrame:CGRectMake(0,300,400,50)];
-    shopNameField.center = CGPointMake(self.view.center.x, self.view.center.y - 50);
+    shopNameField = [[UITextField alloc] initWithFrame:CGRectMake(margin,
+                                                                  CGRectGetMaxY(emailField.frame) + margin,
+                                                                  width - (margin * 2),
+                                                                  fieldHeight)];
     shopNameField.borderStyle = UITextBorderStyleRoundedRect;
     shopNameField.backgroundColor = [UIColor whiteColor];
     shopNameField.font = [UIFont systemFontOfSize:15];
     shopNameField.placeholder = @"Shop Name";
     shopNameField.autocorrectionType = UITextAutocorrectionTypeNo;
     shopNameField.keyboardType = UIKeyboardTypeDefault;
-    shopNameField.returnKeyType = UIReturnKeyDone;
+    shopNameField.returnKeyType = UIReturnKeyNext;
     shopNameField.clearButtonMode = UITextFieldViewModeWhileEditing;
     shopNameField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
     [shopNameField setDelegate:self];
     [self.view addSubview:shopNameField];
     
-    passwordFieldOne = [[UITextField alloc] initWithFrame:CGRectMake(0,360,400,50)];
-    passwordFieldOne.center = CGPointMake(self.view.center.x, self.view.center.y + 50);
+    passwordFieldOne = [[UITextField alloc] initWithFrame:CGRectMake(margin,
+                                                                     CGRectGetMaxY(shopNameField.frame) + margin,
+                                                                     width - (margin * 2),
+                                                                     fieldHeight)];
     passwordFieldOne.borderStyle = UITextBorderStyleRoundedRect;
     passwordFieldOne.backgroundColor = [UIColor whiteColor];
     passwordFieldOne.font = [UIFont systemFontOfSize:15];
     passwordFieldOne.placeholder = @"Password";
     passwordFieldOne.autocorrectionType = UITextAutocorrectionTypeNo;
     passwordFieldOne.keyboardType = UIKeyboardTypeDefault;
-    passwordFieldOne.returnKeyType = UIReturnKeyDone;
+    passwordFieldOne.returnKeyType = UIReturnKeyNext;
     passwordFieldOne.secureTextEntry = TRUE;
     passwordFieldOne.clearButtonMode = UITextFieldViewModeWhileEditing;
     passwordFieldOne.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
@@ -70,8 +82,10 @@
         forControlEvents:UIControlEventEditingChanged];
     [self.view addSubview:passwordFieldOne];
     
-    passwordFieldTwo = [[UITextField alloc] initWithFrame:CGRectMake(0,360,400,50)];
-    passwordFieldTwo.center = CGPointMake(self.view.center.x, self.view.center.y + 150);
+    passwordFieldTwo = [[UITextField alloc] initWithFrame:CGRectMake(margin,
+                                                                     CGRectGetMaxY(passwordFieldOne.frame) + margin,
+                                                                     width - (margin * 2),
+                                                                     fieldHeight)];
     passwordFieldTwo.secureTextEntry = YES;
     passwordFieldTwo.borderStyle = UITextBorderStyleRoundedRect;
     passwordFieldTwo.backgroundColor = [UIColor whiteColor];
@@ -87,10 +101,11 @@
     [self.view addSubview:passwordFieldTwo];
     
     createButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    createButton.frame = CGRectMake(0,0,self.view.frame.size.width, self.view.frame.size.width * .1);
+    createButton.frame = CGRectMake(0,
+                                    CGRectGetMaxY(passwordFieldTwo.frame) + (margin * 2),
+                                    CGRectGetWidth(self.view.frame),
+                                    fieldHeight);
     createButton.backgroundColor = [UIColor colorWithRed:0x7/255.0 green:0x45/255.0 blue:0x54/255.0 alpha:1.0];
-    createButton.center = CGPointMake(self.view.center.x, self.view.center.y + self.view.frame.size.height *.3);
-    createButton.hidden = NO;
     createButton.enabled = NO;
     [createButton setTitle:@"Create Account" forState:UIControlStateNormal];
     [createButton addTarget:self action:@selector(createAccount:) forControlEvents:UIControlEventTouchUpInside];
@@ -124,17 +139,20 @@
             createButton.enabled = NO;
         }
     }
-    
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if (textField == emailField) {
+        [shopNameField becomeFirstResponder];
+    } else if (textField == shopNameField) {
+        [passwordFieldOne becomeFirstResponder];
+    } else if (textField == passwordFieldOne) {
+        [passwordFieldTwo becomeFirstResponder];
+    } else {
+        [textField resignFirstResponder];
+    }
+    return true;
 }
-*/
 
 @end

@@ -93,6 +93,7 @@
 {
     [[NSUserDefaults standardUserDefaults] setObject:password forKey:USER_DEFAULTS_PASSWORD_KEY];
     [[NSUserDefaults standardUserDefaults] setObject:email forKey:USER_DEFAULTS_USERNAME_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     
     [[AmazonClientManager credProvider] refresh];
     [delegate onUserSignedIn];

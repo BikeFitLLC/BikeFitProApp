@@ -96,12 +96,14 @@ void HandleException(NSException *exception) {
     NSLog(@"App crashing with exception: %@", exception);
     //Save somewhere that your app has crashed.
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:true]  forKey:@"crashRecovery"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 void HandleSignal(int signal) {
     NSLog(@"We received a signal: %d", signal);
     //Save somewhere that your app has crashed.
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:true] forKey:@"crashRecovery"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end

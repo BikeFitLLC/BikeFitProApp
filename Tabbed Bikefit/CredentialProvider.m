@@ -81,7 +81,7 @@
     
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:tvmUrl];
     NSURLResponse *response;
-    
+
     //Get token information from the token vending machine
     tvmData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     if(error)
@@ -103,7 +103,7 @@
                                    delegate:nil
                           cancelButtonTitle:@"OK"otherButtonTitles:nil
           ] show];
-        
+        [[NSUserDefaults standardUserDefaults] synchronize];
         AMZNLogoutDelegate *delegate = [[AMZNLogoutDelegate alloc] init];
         [AIMobileLib clearAuthorizationState:delegate];
         return nil;
@@ -127,8 +127,7 @@
     [[NSUserDefaults standardUserDefaults] setBool:true forKey:USER_DEFAULTS_ACCOUNT_ACTIVE_KEY];
     [[NSUserDefaults standardUserDefaults] setBool:[[json objectForKey:@"trial"] boolValue] forKey:USER_DEFAULTS_IS_TRIAL_ACCOUNT];
     [[NSUserDefaults standardUserDefaults] setObject:[json objectForKey:@"fittername"] forKey:USER_DEFAULTS_FITTERNAME_KEY];
-    
-    
+
     _accessKey = [json objectForKey:@"accesskey"];
     _secretKey = [json objectForKey:@"secretkey"];
     _sessionKey = [json objectForKey:@"token"];
@@ -148,7 +147,7 @@
     
     //Now we have a good response from the TVM.  Populate credentials and Fitterid
     [[NSUserDefaults standardUserDefaults] setObject:[json objectForKey:@"fitterid"] forKey:USER_DEFAULTS_FITTERID_KEY];
-    
+    [[NSUserDefaults standardUserDefaults] synchronize];
     return nil;
 }
 
@@ -243,6 +242,7 @@
                 if(errorMessage)
                 {
                     [[NSUserDefaults standardUserDefaults] setBool:false forKey:USER_DEFAULTS_ACCOUNT_ACTIVE_KEY];
+                    [[NSUserDefaults standardUserDefaults] synchronize];
                     [[[UIAlertView alloc] initWithTitle:@""
                                                 message:[NSString stringWithFormat:@"Create Account Failed With Message: %@",errorMessage]
                                                delegate:nil

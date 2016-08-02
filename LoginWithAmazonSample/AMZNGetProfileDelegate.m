@@ -35,6 +35,7 @@
     
     [[NSUserDefaults standardUserDefaults] setObject:[[userProfile objectForKey:@"email"] lowercaseString] forKey:USER_DEFAULTS_USERNAME_KEY];
     [[NSUserDefaults standardUserDefaults] setObject:[userProfile objectForKey:@"name"] forKey:USER_DEFAULTS_FITTERNAME_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     
     //We have the profile, now lets get the access token
     [AIMobileLib getAccessTokenForScopes:[NSArray arrayWithObject:@"profile"]

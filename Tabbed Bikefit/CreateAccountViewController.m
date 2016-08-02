@@ -120,12 +120,16 @@
 -(void)createAccount:(id)sender
 {
     if ([self textsFieldsValid]) {
-    [[AmazonClientManager credProvider] createNewAccountWithEmail:emailField.text
-                                                         password:passwordFieldOne.text
-                                                         shopName:shopNameField.text
-                                                        firstName:firstNameField.text
-                                                         lastName:lastNameField.text];
-    [self.navigationController popViewControllerAnimated:YES];
+        [[AmazonClientManager credProvider] createNewAccountWithEmail:emailField.text
+                                                             password:passwordFieldOne.text
+                                                             shopName:shopNameField.text
+                                                            firstName:firstNameField.text
+                                                             lastName:lastNameField.text
+                                                             callback:^(BOOL success) {
+                                                                 if (success) {
+                                                                     [self.navigationController popToRootViewControllerAnimated:true];
+                                                                 }
+                                                             }];
     } else {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
                                                         message:@"All fields must be filled out"

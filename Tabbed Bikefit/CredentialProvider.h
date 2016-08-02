@@ -43,6 +43,7 @@
                           password:(NSString *)password
                           shopName:(NSString *)shopName
                          firstName:(NSString *)firstName
-                          lastName:(NSString *)lastName;
+                          lastName:(NSString *)lastName
+                          callback:(void(^)(BOOL))callback;
 
 @end

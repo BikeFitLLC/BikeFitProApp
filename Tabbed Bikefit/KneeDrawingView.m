@@ -9,8 +9,6 @@
 //#import <UIKit/UIKit.h>
 #import "KneeDrawingVIew.h"
 
-
-
 @implementation KneeDrawingView
 {
     UIColor *brushPattern;
@@ -84,16 +82,4 @@
     startPoint.x  = startPoint.x + numPixels;
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-
-}
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;
-{
-        return;
-}
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
-{
-    return;
-}
 @end

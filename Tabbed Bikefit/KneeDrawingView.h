@@ -27,13 +27,7 @@
 @property CGPoint endPoint;
 @property bool drawingEnabled;
 
-- (void) moveLazer:(int)numPixels;
--(void) stopLazer;
-
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;
- 
+- (void)moveLazer:(int)numPixels;
+- (void)stopLazer;
 
 @end

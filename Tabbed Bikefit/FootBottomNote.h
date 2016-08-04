@@ -9,13 +9,15 @@
 #import <Foundation/Foundation.h>
 #import "FitNote.h"
 
-@interface FootBottomNote : FitNote
-{
-    CGPoint centerOfPressure;
-    UIBezierPath *footBoxPath;
-}
+typedef enum : NSUInteger {
+    FootPressureIdeal,
+    FootPressureSlight,
+    FootPressureModest,
+    FootPressureExtreme
+} FootPressure;
 
-@property CGPoint centerOfPressure;
-@property UIBezierPath *footBoxPath;
+@interface FootBottomNote : FitNote
+
+@property (nonatomic, assign) FootPressure footPressure;
 
 @end

@@ -137,6 +137,7 @@
 		5DF59D3A18B569030065A8D1 /* NoteImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF59D3918B569030065A8D1 /* NoteImageView.m */; };
 		8BA642FC1D4FC28E00EC5C2E /* GUIKneeTouchInterceptorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA642FB1D4FC28E00EC5C2E /* GUIKneeTouchInterceptorView.m */; };
 		8B7406DA1D53B86600C0F67B /* GUIFootPressureImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7406D81D53B86600C0F67B /* GUIFootPressureImageViewController.m */; };
+		8B7406DE1D53BC5D00C0F67B /* UIColor+CustomColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7406DD1D53BC5D00C0F67B /* UIColor+CustomColor.m */; };
 		B2374D65E690B283FCFC96DB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21428C59B206D9E67FA803AC /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -366,6 +367,8 @@
 		8BA642FB1D4FC28E00EC5C2E /* GUIKneeTouchInterceptorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GUIKneeTouchInterceptorView.m; sourceTree = "<group>"; };
 		8B7406D71D53B86600C0F67B /* GUIFootPressureImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUIFootPressureImageViewController.h; sourceTree = "<group>"; };
 		8B7406D81D53B86600C0F67B /* GUIFootPressureImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GUIFootPressureImageViewController.m; sourceTree = "<group>"; };
+		8B7406DC1D53BC5D00C0F67B /* UIColor+CustomColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+CustomColor.h"; sourceTree = "<group>"; };
+		8B7406DD1D53BC5D00C0F67B /* UIColor+CustomColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CustomColor.m"; sourceTree = "<group>"; };
 		A011F97476B99F47FD651F26 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -552,6 +555,8 @@
 				5D3BC334190AD9AB003E8613 /* BikefitConstants.h */,
 				5D8531D81759CD6600934E68 /* AppDelegate.h */,
 				5D8531D91759CD6600934E68 /* AppDelegate.m */,
+				8B7406DC1D53BC5D00C0F67B /* UIColor+CustomColor.h */,
+				8B7406DD1D53BC5D00C0F67B /* UIColor+CustomColor.m */,
 				5D57675517F516B40017CF87 /* ViewControllers */,
 				5D57675717F5172B0017CF87 /* Model */,
 				5DC9304219200D2000EB733C /* LoginWithAmazonSample */,
@@ -1061,6 +1066,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D3BC330190AB41B003E8613 /* GlobalOperationQueueManager.m in Sources */,
+				8B7406DE1D53BC5D00C0F67B /* UIColor+CustomColor.m in Sources */,
 				5D8531D61759CD6600934E68 /* main.m in Sources */,
 				5D6F99D3190B4D4D00558C99 /* AmazonClientManager.m in Sources */,
 				5DC9305C19200D2000EB733C /* AMZNGetAccessTokenDelegate.m in Sources */,

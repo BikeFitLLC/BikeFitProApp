@@ -136,6 +136,7 @@
 		5DF59D3718B2C73E0065A8D1 /* VideoNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF59D3618B2C73E0065A8D1 /* VideoNoteViewController.m */; };
 		5DF59D3A18B569030065A8D1 /* NoteImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF59D3918B569030065A8D1 /* NoteImageView.m */; };
 		8BA642FC1D4FC28E00EC5C2E /* GUIKneeTouchInterceptorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA642FB1D4FC28E00EC5C2E /* GUIKneeTouchInterceptorView.m */; };
+		8B7406DA1D53B86600C0F67B /* GUIFootPressureImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7406D81D53B86600C0F67B /* GUIFootPressureImageViewController.m */; };
 		B2374D65E690B283FCFC96DB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21428C59B206D9E67FA803AC /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -363,6 +364,8 @@
 		5DF59D3918B569030065A8D1 /* NoteImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteImageView.m; sourceTree = "<group>"; };
 		8BA642FA1D4FC28E00EC5C2E /* GUIKneeTouchInterceptorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUIKneeTouchInterceptorView.h; sourceTree = "<group>"; };
 		8BA642FB1D4FC28E00EC5C2E /* GUIKneeTouchInterceptorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GUIKneeTouchInterceptorView.m; sourceTree = "<group>"; };
+		8B7406D71D53B86600C0F67B /* GUIFootPressureImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUIFootPressureImageViewController.h; sourceTree = "<group>"; };
+		8B7406D81D53B86600C0F67B /* GUIFootPressureImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GUIFootPressureImageViewController.m; sourceTree = "<group>"; };
 		A011F97476B99F47FD651F26 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -653,6 +656,8 @@
 			isa = PBXGroup;
 			children = (
 				5DA7AE5718BEC8A400CA0DEB /* NoteViewController.h */,
+				8B7406D71D53B86600C0F67B /* GUIFootPressureImageViewController.h */,
+				8B7406D81D53B86600C0F67B /* GUIFootPressureImageViewController.m */,
 				5DA7AE5818BEC8A400CA0DEB /* NoteViewController.m */,
 				5DF59D3518B2C73E0065A8D1 /* VideoNoteViewController.h */,
 				5DF59D3618B2C73E0065A8D1 /* VideoNoteViewController.m */,
@@ -1111,6 +1116,7 @@
 				005E3EBA1B952F1E003911DE /* FitHome.m in Sources */,
 				00A29FB41B431C3B00589788 /* DrawingView.m in Sources */,
 				00F199721B82D8CE00467F26 /* SaddleTiltNote.m in Sources */,
+				8B7406DA1D53B86600C0F67B /* GUIFootPressureImageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

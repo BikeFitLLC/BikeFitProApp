@@ -9,7 +9,7 @@
 
 @interface GUIFootPressureImageViewController : UIViewController
 
-@property (nonatomic, assign) NSUInteger index;
+@property NSUInteger index;
 
 - (void)setImage:(UIImage *)image;
 

@@ -11,6 +11,7 @@
 #import "AMZNLogoutDelegate.h"
 #import "BikefitConstants.h"
 #import "LoadinSpinnerView.h"
+#import "UIColor+CustomColor.h"
 
 @interface HomeScreenViewController ()
 {
@@ -31,10 +32,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:0x7/255.0 green:0x31/255.0 blue:0x54/255.0 alpha:1.0];
+    self.navigationController.navigationBar.barTintColor = [UIColor bikeFitBlue];
     
     
-    self.view.backgroundColor = [UIColor colorWithRed:0x7/255.0 green:0x31/255.0 blue:0x54/255.0 alpha:1.0];
+    self.view.backgroundColor = [UIColor bikeFitBlue];
     
     bool loggedIn = [AmazonClientManager verifyLoggedInActive];
     

@@ -12,6 +12,7 @@
 #import "AmazonClientManager.h"
 #import "BikefitConstants.h"
 #import "AthleteInfoTableCell.h"
+#import "UIColor+CustomColor.h"
 
 
 @interface AthleteInfoController ()
@@ -256,7 +257,7 @@
     }
     
     UIButton *downloadButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [downloadButton setBackgroundColor:[UIColor colorWithRed:0x7/255.0 green:0x31/255.0 blue:0x54/255.0 alpha:1.0]];
+    [downloadButton setBackgroundColor:[UIColor bikeFitBlue]];
     [downloadButton setTitle:@"Done" forState:UIControlStateNormal];
     [downloadButton setFrame:CGRectMake(0, 0, 100, 35)];
     [downloadButton addTarget:self action:@selector(endEditing:) forControlEvents:UIControlEventTouchUpInside];

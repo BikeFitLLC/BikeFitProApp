@@ -8,6 +8,7 @@
 
 #import "FitHome.h"
 #import "BikefitConstants.h"
+#import "UIColor+CustomColor.h"
 
 @interface FitHome ()
 {
@@ -25,7 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor colorWithRed:0x7/255.0 green:0x31/255.0 blue:0x54/255.0 alpha:1.0];
+    self.view.backgroundColor = [UIColor bikeFitBlue];
     
     
     CGRect namelabelframe = CGRectMake(0,

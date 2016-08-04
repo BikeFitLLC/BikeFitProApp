@@ -89,6 +89,8 @@
 
     GUIFootPressureImageViewController *childViewController = [[GUIFootPressureImageViewController alloc] init];
     childViewController.index = index;
+    NSString *imageName = [NSString stringWithFormat:@"%ld_foot_pressure.png",index];
+    [childViewController setImageName:imageName];
     return childViewController;
 }
 

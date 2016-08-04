@@ -20,12 +20,8 @@
     _imageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
     _imageView.backgroundColor = [UIColor whiteColor];
     _imageView.contentMode = UIViewContentModeScaleAspectFit;
+    _imageView.image = [UIImage imageNamed:self.imageName];
     self.view = _imageView;
-}
-
-- (void)setImage:(UIImage *)image
-{
-    _imageView.image = image;
 }
 
 @end

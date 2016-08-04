@@ -10,7 +10,6 @@
 @interface GUIFootPressureImageViewController : UIViewController
 
 @property NSUInteger index;
-
-- (void)setImage:(UIImage *)image;
+@property NSString *imageName;
 
 @end

@@ -29,13 +29,13 @@
     [super viewDidLoad];
     
     UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(moveSpindleY:)];
-    leftFootGraphic = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Ho_foot_Arches_left.png"]];
+    leftFootGraphic = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cleat_fa_left.png"]];
     leftFootGraphic.contentMode = UIViewContentModeScaleAspectFit;
     leftFootGraphic.frame = self.view.frame;
     leftFootGraphic.hidden = YES;
     [self.view addSubview:leftFootGraphic];
     
-    rightFootGraphic = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Ho_foot_Arches_right.png"]];
+    rightFootGraphic = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cleat_fa_left.png"]];
     rightFootGraphic.frame = self.view.frame;
     rightFootGraphic.hidden = YES;
     rightFootGraphic.contentMode = UIViewContentModeScaleAspectFit;
@@ -44,7 +44,7 @@
     spindleView = [[SpindleView alloc] initWithFrame:self.view.frame];
     spindleView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:spindleView];
-    
+
     UIButton *saveButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     saveButton.frame = CGRectMake(self.view.frame.size.width * .8,
                                   self.view.frame.size.height * .9,
@@ -99,12 +99,27 @@
     [spindleView setNeedsDisplay];
 }
 
+- (float)calculateMidpoint
+{
+    float scale = MIN(CGRectGetWidth(leftFootGraphic.frame)/leftFootGraphic.image.size.width,
+                      CGRectGetHeight(leftFootGraphic.frame)/leftFootGraphic.image.size.height);
+    float scaledHeight = leftFootGraphic.image.size.height * scale;
+    //the marks for the spindle range are at 25% and 37% of height of image
+    float spacing = (CGRectGetHeight(leftFootGraphic.frame) - scaledHeight) * 0.5;
+    float minYOfBox = (scaledHeight * 0.244) + spacing;
+    float maxYOfBox = (scaledHeight * 0.376) + spacing;
+    float spindlePosition = spindleView.spindleYPosition;
+
+    float percent = (spindlePosition - minYOfBox) / (maxYOfBox - minYOfBox);
+    return percent;
+}
+
 - (IBAction)saveNote:(id)sender
 {
     SpindleNote *note = [[SpindleNote alloc]init];
-    [note setPath:[spindleView boxPath]];
+    [note setYPositionAsPercent:[self calculateMidpoint]];
     [ bikeInfo addNote:note];
     [self.navigationController popToViewController:bikeInfo animated:YES];
-    
+
 }
 @end

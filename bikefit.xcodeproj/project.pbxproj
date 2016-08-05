@@ -146,6 +146,8 @@
 		8B7406E41D53D6B200C0F67B /* 2_foot_pressure.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B7406E01D53D6B200C0F67B /* 2_foot_pressure.png */; };
 		8B7406E51D53D6B200C0F67B /* 1_foot_pressure.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B7406E11D53D6B200C0F67B /* 1_foot_pressure.png */; };
 		8B7406E61D53D6B200C0F67B /* 0_foot_pressure.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B7406E21D53D6B200C0F67B /* 0_foot_pressure.png */; };
+		8B7406E91D53EC5700C0F67B /* cleat_fa_left.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B7406E71D53EC5700C0F67B /* cleat_fa_left.png */; };
+		8B7406EA1D53EC5700C0F67B /* cleat_fa_right.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B7406E81D53EC5700C0F67B /* cleat_fa_right.png */; };
 		B2374D65E690B283FCFC96DB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21428C59B206D9E67FA803AC /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -385,6 +387,8 @@
 		8B7406E01D53D6B200C0F67B /* 2_foot_pressure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2_foot_pressure.png; sourceTree = "<group>"; };
 		8B7406E11D53D6B200C0F67B /* 1_foot_pressure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1_foot_pressure.png; sourceTree = "<group>"; };
 		8B7406E21D53D6B200C0F67B /* 0_foot_pressure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0_foot_pressure.png; sourceTree = "<group>"; };
+		8B7406E71D53EC5700C0F67B /* cleat_fa_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cleat_fa_left.png; sourceTree = "<group>"; };
+		8B7406E81D53EC5700C0F67B /* cleat_fa_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cleat_fa_right.png; sourceTree = "<group>"; };
 		A011F97476B99F47FD651F26 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -608,6 +612,8 @@
 				00FF37191A36302E00FD1E45 /* KW_front_laser_2.png */,
 				5DD1837819D878AB00A5B6CE /* Bike_road_diagram_APPP.png */,
 				5D135A4419A7FACD00273076 /* plus-icon.png */,
+				8B7406E71D53EC5700C0F67B /* cleat_fa_left.png */,
+				8B7406E81D53EC5700C0F67B /* cleat_fa_right.png */,
 				5DB3AEE719D0CADD00604666 /* Bike_diagram_APP.png */,
 				5DEA4BD21997E5880024C220 /* 58x58.png */,
 				5DEA4BD71997EA3A0024C220 /* BikeFitIcon-29x29.png */,
@@ -947,6 +953,7 @@
 				8B7406E61D53D6B200C0F67B /* 0_foot_pressure.png in Resources */,
 				5D8531DC1759CD6600934E68 /* Default.png in Resources */,
 				5D135A4519A7FACD00273076 /* plus-icon.png in Resources */,
+				8B7406E91D53EC5700C0F67B /* cleat_fa_left.png in Resources */,
 				5DEA4BD51997E6830024C220 /* iTunesArtwork in Resources */,
 				002733B61BD070C600EDA7BC /* 2_heels.png in Resources */,
 				002733B31BD070C600EDA7BC /* 1_Wedge_Rght_Varus.png in Resources */,
@@ -978,6 +985,7 @@
 				5DD68EE41974747D00BCCCD9 /* FrontCameraIcon.png in Resources */,
 				5DD68EE2197473D300BCCCD9 /* FrontCameraIcon.jpg in Resources */,
 				002733A81BD06EA700EDA7BC /* Bike_tri_diagram_ABCDEF.png in Resources */,
+				8B7406EA1D53EC5700C0F67B /* cleat_fa_right.png in Resources */,
 				5DC9306119200D2000EB733C /* btnLWA_gold_209x48_pressed.png in Resources */,
 				8B7406E31D53D6B200C0F67B /* 3_foot_pressure.png in Resources */,
 				5D8531ED1759CD6600934E68 /* first@2x.png in Resources */,

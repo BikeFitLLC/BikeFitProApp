@@ -12,10 +12,11 @@
 
 - (UITableViewCell *) populateTableCell:(UITableViewCell *)cell
 {
-    cell.imageView.image = nil;
-    cell.textLabel.text = [NSString stringWithFormat:@"Center of Pressure: %d", self.footPressure];
+    NSString *imageName = [NSString stringWithFormat:@"%ld_foot_pressure_bw.png", self.footPressure];
+    cell.imageView.image = [UIImage imageNamed:imageName];
+    cell.textLabel.numberOfLines = 2;
+    cell.textLabel.text = @"Center of Pressure";
     return cell;
-    
 }
 
 #pragma mark - NSCoding support

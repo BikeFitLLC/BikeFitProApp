@@ -86,7 +86,8 @@
 
 - (void) updateTilt:(NSTimer *) timer
 {
-    tilteAngleLabel.text = [NSString stringWithFormat:@"%.02f°", tiltAngle];
+    float displayAngle = roundf(tiltAngle * 10) * 0.1;
+    tilteAngleLabel.text = [NSString stringWithFormat:@"%.01f°", displayAngle];
 }
 
 - (void)didReceiveMemoryWarning {

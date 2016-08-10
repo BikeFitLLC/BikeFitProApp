@@ -13,7 +13,9 @@
 
 - (UITableViewCell *) populateTableCell:(UITableViewCell *)cell
 {
-    cell.textLabel.text = [NSString stringWithFormat:@"Saddle Tilt: %.02f°", (90 - tiltAngle)];;
+    float roundedAngle = roundf(tiltAngle * 10) * 0.1;
+    float displayAngle = round(90 - roundedAngle);
+    cell.textLabel.text = [NSString stringWithFormat:@"Saddle Tilt: %.01f°", displayAngle];
     cell.imageView.image = nil;
     
     return cell;

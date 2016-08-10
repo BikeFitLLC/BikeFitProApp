@@ -135,6 +135,7 @@
 		5DED8E0117F8F484004947FD /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DED8E0017F8F484004947FD /* CoreMedia.framework */; };
 		5DF59D3718B2C73E0065A8D1 /* VideoNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF59D3618B2C73E0065A8D1 /* VideoNoteViewController.m */; };
 		5DF59D3A18B569030065A8D1 /* NoteImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF59D3918B569030065A8D1 /* NoteImageView.m */; };
+		8BA642FC1D4FC28E00EC5C2E /* GUIKneeTouchInterceptorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA642FB1D4FC28E00EC5C2E /* GUIKneeTouchInterceptorView.m */; };
 		B2374D65E690B283FCFC96DB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21428C59B206D9E67FA803AC /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -360,6 +361,8 @@
 		5DF59D3618B2C73E0065A8D1 /* VideoNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoNoteViewController.m; sourceTree = "<group>"; };
 		5DF59D3818B569030065A8D1 /* NoteImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteImageView.h; sourceTree = "<group>"; };
 		5DF59D3918B569030065A8D1 /* NoteImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteImageView.m; sourceTree = "<group>"; };
+		8BA642FA1D4FC28E00EC5C2E /* GUIKneeTouchInterceptorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUIKneeTouchInterceptorView.h; sourceTree = "<group>"; };
+		8BA642FB1D4FC28E00EC5C2E /* GUIKneeTouchInterceptorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GUIKneeTouchInterceptorView.m; sourceTree = "<group>"; };
 		A011F97476B99F47FD651F26 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -734,6 +737,8 @@
 				5DF59D3918B569030065A8D1 /* NoteImageView.m */,
 				5D3B1E7A17F76186004EB913 /* KneeDrawingView.h */,
 				5D3B1E7B17F76186004EB913 /* KneeDrawingView.m */,
+				8BA642FA1D4FC28E00EC5C2E /* GUIKneeTouchInterceptorView.h */,
+				8BA642FB1D4FC28E00EC5C2E /* GUIKneeTouchInterceptorView.m */,
 				5D192BB817FE55ED0046CC16 /* GoniometerDrawingView.h */,
 				5D192BB917FE55ED0046CC16 /* GoniometerDrawingView.m */,
 				5D9E2162185FEC46006BA0B3 /* FootBottomView.h */,
@@ -1095,6 +1100,7 @@
 				5D7E1F4418BBE42B00689276 /* VarusNoteViewController.m in Sources */,
 				5D3BC333190AB605003E8613 /* ImageNote.m in Sources */,
 				5DA7AE5918BEC8A400CA0DEB /* NoteViewController.m in Sources */,
+				8BA642FC1D4FC28E00EC5C2E /* GUIKneeTouchInterceptorView.m in Sources */,
 				5DAC945B18CE7A6A00EFEDC7 /* ShoulderAngleNote.m in Sources */,
 				5DA7AE5418BEC45B00CA0DEB /* SpindleNoteViewController.m in Sources */,
 				5D9E2164185FEC46006BA0B3 /* FootBottomView.m in Sources */,
@@ -1344,7 +1350,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_ENTITLEMENTS[sdk=*]" = "";
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1383,7 +1389,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.velopez.bikefit;
 				PRODUCT_NAME = bikefit;
-				PROVISIONING_PROFILE = "5f80bacf-d726-440d-b9e0-c9cbad675b01";
+				PROVISIONING_PROFILE = "6b7f9bc4-db89-4014-bea6-c98515c337fe";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
@@ -1396,7 +1402,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1435,7 +1441,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.velopez.bikefit;
 				PRODUCT_NAME = bikefit;
-				PROVISIONING_PROFILE = "5f80bacf-d726-440d-b9e0-c9cbad675b01";
+				PROVISIONING_PROFILE = "6b7f9bc4-db89-4014-bea6-c98515c337fe";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;

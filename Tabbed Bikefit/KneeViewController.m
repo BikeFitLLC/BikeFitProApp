@@ -9,9 +9,10 @@
 #import "KneeViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import "AthletePropertyModel.h"
+#import "GUIKneeTouchInterceptorView.h"
 #import <CoreMotion/CoreMotion.h>
 
-@interface KneeViewController ()
+@interface KneeViewController () <GUIKneeTouchInterceptorViewDelegate>
 {
     UIImageView *lazerDragCircle;
     NSOperationQueue *deviceQueue;
@@ -20,6 +21,11 @@
     CGFloat angle;
     CGPoint oldStartPointLocation;
     CGPoint oldEndPointLocation;
+    GUIKneeTouchInterceptorView *_kneeInterceptionView;
+    BOOL _hasCaptured;
+    UITouch *_currentTouch;
+    BOOL _dragging;
+    CGPoint _touchStartPoint;
 }
 
 @end
@@ -41,7 +47,10 @@
     
     previewImage = [[KneeDrawingView alloc] initWithFrame:self.view.frame];
     previewImage.backgroundColor = [UIColor clearColor];
+    _kneeInterceptionView = [[GUIKneeTouchInterceptorView alloc] initWithFrame:self.view.bounds];
+    _kneeInterceptionView.delegate = self;
     [self.view insertSubview:previewImage aboveSubview:cameraPreviewView];
+    [self.view insertSubview:_kneeInterceptionView aboveSubview:previewImage];
     [self.view bringSubviewToFront:videoToolBarView];
     [self.view bringSubviewToFront:recordButton];
     [self.view bringSubviewToFront:saveButton];
@@ -88,59 +97,7 @@
 }
 
 - (IBAction)moveLazerLeft:(id)sender
-{
-    UIPanGestureRecognizer *recog = (UIPanGestureRecognizer *)sender;
-    KneeDrawingView *kneeView = (KneeDrawingView *)previewImage;
-
-    if(recog.state == UIGestureRecognizerStateBegan)
-    {
-        if(CGRectContainsPoint(lazerDragCircle.frame,[recog locationInView:self.view]))
-        {
-            oldStartPointLocation = kneeView.startPoint;
-            oldEndPointLocation = kneeView.endPoint;
-            
-        }
-        else
-        {
-            if(kneeView.drawingEnabled)
-            {
-                if(!kneeView.path)
-                {
-                    kneeView.path = [[UIBezierPath alloc]init];
-                }
-                
-                [kneeView.path removeAllPoints];
-                [kneeView.path moveToPoint:[recog locationInView:self.view]];
-            }
-            return;
-            
-        }
-    }
-    if(recog.state == UIGestureRecognizerStateChanged)
-    {
-        if(CGRectContainsPoint(lazerDragCircle.frame,[recog locationInView:self.view]))
-        {   
-            CGPoint translation = [sender translationInView:[self view]];
-            
-            CGPoint startPointLocation = CGPointMake(oldStartPointLocation.x + translation.x, 0);
-            kneeView.startPoint = startPointLocation;
-            
-            CGPoint endPointLocation = CGPointMake(oldEndPointLocation.x + translation.x, oldEndPointLocation.y);
-            kneeView.endPoint = endPointLocation;
-        }
-        else
-        {
-            if(kneeView.drawingEnabled)
-            {
-                [kneeView.path addLineToPoint:[recog locationInView:self.view]];
-            }
-        }
-        
-    }
-
-        lazerDragCircle.center = [self calculatePointAlongLazerVectorForLength:self.view.frame.size.height * .2 andStartPoint:kneeView.startPoint];
-        [kneeView setNeedsDisplay];
-    
+{   
 }
 
 - (IBAction)keepLine:(id)sender
@@ -169,12 +126,9 @@
     
     lazerDragCircle = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"RecordIcon"]];
     lazerDragCircle.center = [self calculatePointAlongLazerVectorForLength:self.view.frame.size.height * .2 andStartPoint:[(KneeDrawingView *)previewImage startPoint]];
-    UIPanGestureRecognizer *panRecog = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(moveLazerLeft:)];
-    [panRecog setMinimumNumberOfTouches:1];
-    [panRecog setMaximumNumberOfTouches:1];
-    [panRecog setDelegate:self];
-    [self.view addGestureRecognizer:panRecog];
+    lazerDragCircle.alpha = 0.3;
     [self.view addSubview:lazerDragCircle];
+    _hasCaptured = true;
     
 }
 
@@ -185,4 +139,80 @@
     newPoint.y = sinf(angle - 1.57079633) * length;
     return newPoint;
 }
+
+#pragma mark -  KneeTouchViewDelegate
+
+- (void)kneeViewTouchesBegan:(NSSet *)touches
+{
+    KneeDrawingView *kneeView = (KneeDrawingView *)previewImage;
+    if (_hasCaptured) {
+        if (!_currentTouch) {
+            _currentTouch = touches.anyObject;
+            _touchStartPoint = [_currentTouch locationInView:self.view];
+            if (CGRectContainsPoint(lazerDragCircle.frame, _touchStartPoint)) {
+                _dragging = true;
+                oldStartPointLocation = kneeView.startPoint;
+                oldEndPointLocation = kneeView.endPoint;
+            } else {
+                if(kneeView.drawingEnabled)
+                {
+                    if(!kneeView.path)
+                    {
+                        kneeView.path = [[UIBezierPath alloc]init];
+                    }
+
+                    [kneeView.path removeAllPoints];
+                    [kneeView.path moveToPoint:_touchStartPoint];
+                }
+            }
+        }
+    }
+}
+
+- (void)kneeViewTouchesMoved:(NSSet *)touches
+{
+    KneeDrawingView *kneeView = (KneeDrawingView *)previewImage;
+    if (_hasCaptured && _currentTouch) {
+        CGPoint currentPoint = [_currentTouch locationInView:self.view];
+        if(_dragging)
+        {
+            CGPoint translation = CGPointMake(currentPoint.x - _touchStartPoint.x, 0);
+
+            CGPoint startPointLocation = CGPointMake(oldStartPointLocation.x + translation.x, 0);
+            kneeView.startPoint = startPointLocation;
+
+            CGPoint endPointLocation = CGPointMake(oldEndPointLocation.x + translation.x, oldEndPointLocation.y);
+            kneeView.endPoint = endPointLocation;
+            lazerDragCircle.center = [self calculatePointAlongLazerVectorForLength:[self calculateYForLazerDragCircle:currentPoint]
+                                                                     andStartPoint:kneeView.startPoint];
+
+        }
+        else
+        {
+            if(kneeView.drawingEnabled)
+            {
+                [kneeView.path addLineToPoint:[_currentTouch locationInView:self.view]];
+            }
+        }
+    }
+
+}
+
+- (float)calculateYForLazerDragCircle:(CGPoint)point
+{
+    float y = point.y;
+    float top = CGRectGetMaxY(self.navigationController.navigationBar.frame) + (CGRectGetHeight(lazerDragCircle.bounds) * 0.5);
+    float bottom = CGRectGetMinY(videoToolBarView.frame) - (CGRectGetHeight(lazerDragCircle.bounds) * 0.5);
+
+    return MAX(top, MIN(bottom, y));
+}
+
+- (void)kneeViewTouchesEnded:(NSSet *)touches
+{
+    if (_hasCaptured) {
+        _currentTouch = nil;
+        _dragging = false;
+    }
+}
+
 @end

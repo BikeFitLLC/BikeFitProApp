@@ -393,29 +393,9 @@
                     <view key="view" contentMode="scaleToFill" id="vMa-0g-Roo">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OW3-gJ-e5B" customClass="FootBottomView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eub-nW-O1M">
-                                        <rect key="frame" x="276" y="771" width="98" height="30"/>
-                                        <state key="normal" title="Save Location">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="saveLocation:" destination="s7G-SM-Ri0" eventType="touchUpInside" id="TrU-aM-TH4"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="yra-Pp-5pe"/>
-                    <connections>
-                        <outlet property="footBottomView" destination="OW3-gJ-e5B" id="hXy-e0-3z7"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T6G-92-skw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

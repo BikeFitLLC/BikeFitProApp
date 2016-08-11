@@ -136,6 +136,16 @@
 		5DF59D3718B2C73E0065A8D1 /* VideoNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF59D3618B2C73E0065A8D1 /* VideoNoteViewController.m */; };
 		5DF59D3A18B569030065A8D1 /* NoteImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DF59D3918B569030065A8D1 /* NoteImageView.m */; };
 		8BA642FC1D4FC28E00EC5C2E /* GUIKneeTouchInterceptorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BA642FB1D4FC28E00EC5C2E /* GUIKneeTouchInterceptorView.m */; };
+		8B55D2EF1D5A39570075F719 /* 0_foot_pressure_bw.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B55D2EB1D5A39570075F719 /* 0_foot_pressure_bw.png */; };
+		8B55D2F01D5A39570075F719 /* 1_foot_pressure_bw.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B55D2EC1D5A39570075F719 /* 1_foot_pressure_bw.png */; };
+		8B55D2F11D5A39570075F719 /* 2_foot_pressure_bw.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B55D2ED1D5A39570075F719 /* 2_foot_pressure_bw.png */; };
+		8B55D2F21D5A39570075F719 /* 3_foot_pressure_bw.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B55D2EE1D5A39570075F719 /* 3_foot_pressure_bw.png */; };
+		8B7406DA1D53B86600C0F67B /* GUIFootPressureImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7406D81D53B86600C0F67B /* GUIFootPressureImageViewController.m */; };
+		8B7406DE1D53BC5D00C0F67B /* UIColor+CustomColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7406DD1D53BC5D00C0F67B /* UIColor+CustomColor.m */; };
+		8B7406E31D53D6B200C0F67B /* 3_foot_pressure.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B7406DF1D53D6B200C0F67B /* 3_foot_pressure.png */; };
+		8B7406E41D53D6B200C0F67B /* 2_foot_pressure.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B7406E01D53D6B200C0F67B /* 2_foot_pressure.png */; };
+		8B7406E51D53D6B200C0F67B /* 1_foot_pressure.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B7406E11D53D6B200C0F67B /* 1_foot_pressure.png */; };
+		8B7406E61D53D6B200C0F67B /* 0_foot_pressure.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B7406E21D53D6B200C0F67B /* 0_foot_pressure.png */; };
 		B2374D65E690B283FCFC96DB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21428C59B206D9E67FA803AC /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -363,6 +373,18 @@
 		5DF59D3918B569030065A8D1 /* NoteImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteImageView.m; sourceTree = "<group>"; };
 		8BA642FA1D4FC28E00EC5C2E /* GUIKneeTouchInterceptorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUIKneeTouchInterceptorView.h; sourceTree = "<group>"; };
 		8BA642FB1D4FC28E00EC5C2E /* GUIKneeTouchInterceptorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GUIKneeTouchInterceptorView.m; sourceTree = "<group>"; };
+		8B55D2EB1D5A39570075F719 /* 0_foot_pressure_bw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0_foot_pressure_bw.png; sourceTree = "<group>"; };
+		8B55D2EC1D5A39570075F719 /* 1_foot_pressure_bw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1_foot_pressure_bw.png; sourceTree = "<group>"; };
+		8B55D2ED1D5A39570075F719 /* 2_foot_pressure_bw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2_foot_pressure_bw.png; sourceTree = "<group>"; };
+		8B55D2EE1D5A39570075F719 /* 3_foot_pressure_bw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3_foot_pressure_bw.png; sourceTree = "<group>"; };
+		8B7406D71D53B86600C0F67B /* GUIFootPressureImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUIFootPressureImageViewController.h; sourceTree = "<group>"; };
+		8B7406D81D53B86600C0F67B /* GUIFootPressureImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GUIFootPressureImageViewController.m; sourceTree = "<group>"; };
+		8B7406DC1D53BC5D00C0F67B /* UIColor+CustomColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+CustomColor.h"; sourceTree = "<group>"; };
+		8B7406DD1D53BC5D00C0F67B /* UIColor+CustomColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+CustomColor.m"; sourceTree = "<group>"; };
+		8B7406DF1D53D6B200C0F67B /* 3_foot_pressure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3_foot_pressure.png; sourceTree = "<group>"; };
+		8B7406E01D53D6B200C0F67B /* 2_foot_pressure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2_foot_pressure.png; sourceTree = "<group>"; };
+		8B7406E11D53D6B200C0F67B /* 1_foot_pressure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1_foot_pressure.png; sourceTree = "<group>"; };
+		8B7406E21D53D6B200C0F67B /* 0_foot_pressure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0_foot_pressure.png; sourceTree = "<group>"; };
 		A011F97476B99F47FD651F26 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -549,6 +571,8 @@
 				5D3BC334190AD9AB003E8613 /* BikefitConstants.h */,
 				5D8531D81759CD6600934E68 /* AppDelegate.h */,
 				5D8531D91759CD6600934E68 /* AppDelegate.m */,
+				8B7406DC1D53BC5D00C0F67B /* UIColor+CustomColor.h */,
+				8B7406DD1D53BC5D00C0F67B /* UIColor+CustomColor.m */,
 				5D57675517F516B40017CF87 /* ViewControllers */,
 				5D57675717F5172B0017CF87 /* Model */,
 				5DC9304219200D2000EB733C /* LoginWithAmazonSample */,
@@ -561,6 +585,14 @@
 		5D8531D01759CD6600934E68 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8B7406DF1D53D6B200C0F67B /* 3_foot_pressure.png */,
+				8B7406E01D53D6B200C0F67B /* 2_foot_pressure.png */,
+				8B7406E11D53D6B200C0F67B /* 1_foot_pressure.png */,
+				8B7406E21D53D6B200C0F67B /* 0_foot_pressure.png */,
+				8B55D2EB1D5A39570075F719 /* 0_foot_pressure_bw.png */,
+				8B55D2EC1D5A39570075F719 /* 1_foot_pressure_bw.png */,
+				8B55D2ED1D5A39570075F719 /* 2_foot_pressure_bw.png */,
+				8B55D2EE1D5A39570075F719 /* 3_foot_pressure_bw.png */,
 				002733A91BD070C600EDA7BC /* 1_wedge_Left_varus.png */,
 				002733AA1BD070C600EDA7BC /* 1_Wedge_Rght_Varus.png */,
 				002733AB1BD070C600EDA7BC /* 2_heel_right.png */,
@@ -653,6 +685,8 @@
 			isa = PBXGroup;
 			children = (
 				5DA7AE5718BEC8A400CA0DEB /* NoteViewController.h */,
+				8B7406D71D53B86600C0F67B /* GUIFootPressureImageViewController.h */,
+				8B7406D81D53B86600C0F67B /* GUIFootPressureImageViewController.m */,
 				5DA7AE5818BEC8A400CA0DEB /* NoteViewController.m */,
 				5DF59D3518B2C73E0065A8D1 /* VideoNoteViewController.h */,
 				5DF59D3618B2C73E0065A8D1 /* VideoNoteViewController.m */,
@@ -909,6 +943,8 @@
 				5DEA4BD81997EA3A0024C220 /* BikeFitIcon-29x29.png in Resources */,
 				5DD1837919D878AB00A5B6CE /* Bike_road_diagram_APPP.png in Resources */,
 				5DD68EEC1980884400BCCCD9 /* info_button_29x29.png in Resources */,
+				8B55D2F11D5A39570075F719 /* 2_foot_pressure_bw.png in Resources */,
+				8B7406E61D53D6B200C0F67B /* 0_foot_pressure.png in Resources */,
 				5D8531DC1759CD6600934E68 /* Default.png in Resources */,
 				5D135A4519A7FACD00273076 /* plus-icon.png in Resources */,
 				5DEA4BD51997E6830024C220 /* iTunesArtwork in Resources */,
@@ -931,17 +967,21 @@
 				5D003774195CF0B800BC9BBA /* Images.xcassets in Resources */,
 				5D549A411862A53A00B61A83 /* img_thumb_383809223.jpg in Resources */,
 				009D55801AB393A4008A8A74 /* MainStoryboard_iPhone.storyboard in Resources */,
+				8B55D2EF1D5A39570075F719 /* 0_foot_pressure_bw.png in Resources */,
 				5D8531EB1759CD6600934E68 /* first.png in Resources */,
 				002733B91BD070C600EDA7BC /* 3_wedge_left_varus.png in Resources */,
 				5D6F99CB190B448600558C99 /* arrowleft.png in Resources */,
 				5DA7AE5618BEC79B00CA0DEB /* foot_fore_aft_measure.png in Resources */,
 				5DD68EF819818DD200BCCCD9 /* FFMD_Dial_only.png in Resources */,
+				8B55D2F21D5A39570075F719 /* 3_foot_pressure_bw.png in Resources */,
 				5D32380F1986FA92008DA71D /* Ho_foot_Arches_right.png in Resources */,
 				5DD68EE41974747D00BCCCD9 /* FrontCameraIcon.png in Resources */,
 				5DD68EE2197473D300BCCCD9 /* FrontCameraIcon.jpg in Resources */,
 				002733A81BD06EA700EDA7BC /* Bike_tri_diagram_ABCDEF.png in Resources */,
 				5DC9306119200D2000EB733C /* btnLWA_gold_209x48_pressed.png in Resources */,
+				8B7406E31D53D6B200C0F67B /* 3_foot_pressure.png in Resources */,
 				5D8531ED1759CD6600934E68 /* first@2x.png in Resources */,
+				8B55D2F01D5A39570075F719 /* 1_foot_pressure_bw.png in Resources */,
 				5D8531F21759CD6600934E68 /* second.png in Resources */,
 				5D8531F41759CD6600934E68 /* second@2x.png in Resources */,
 				5DC304AB199E7A3700F0AECE /* up_down_arrows.png in Resources */,
@@ -958,8 +998,10 @@
 				5DD68EF619808E0F00BCCCD9 /* 2_heels_left.png in Resources */,
 				002733B81BD070C600EDA7BC /* 2_Wedge_RGHT_varus.png in Resources */,
 				5D32380D1986F8BB008DA71D /* Ho_foot_Arches_left.png in Resources */,
+				8B7406E41D53D6B200C0F67B /* 2_foot_pressure.png in Resources */,
 				5DC304AD199E7E8200F0AECE /* curved_arrows.png in Resources */,
 				5DD68EEE198089A300BCCCD9 /* info_button_29x29_no_white.png in Resources */,
+				8B7406E51D53D6B200C0F67B /* 1_foot_pressure.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1056,6 +1098,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D3BC330190AB41B003E8613 /* GlobalOperationQueueManager.m in Sources */,
+				8B7406DE1D53BC5D00C0F67B /* UIColor+CustomColor.m in Sources */,
 				5D8531D61759CD6600934E68 /* main.m in Sources */,
 				5D6F99D3190B4D4D00558C99 /* AmazonClientManager.m in Sources */,
 				5DC9305C19200D2000EB733C /* AMZNGetAccessTokenDelegate.m in Sources */,
@@ -1111,6 +1154,7 @@
 				005E3EBA1B952F1E003911DE /* FitHome.m in Sources */,
 				00A29FB41B431C3B00589788 /* DrawingView.m in Sources */,
 				00F199721B82D8CE00467F26 /* SaddleTiltNote.m in Sources */,
+				8B7406DA1D53B86600C0F67B /* GUIFootPressureImageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

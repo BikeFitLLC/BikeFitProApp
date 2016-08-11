@@ -7,42 +7,42 @@
 //
 
 #import "FootBottomNoteViewController.h"
-#import "FootBottomView.h"
+#import "GUIFootPressureImageViewController.h"
+#import "UIColor+CustomColor.h"
 
-@interface FootBottomNoteViewController ()
+@interface FootBottomNoteViewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource>
+{
+    UIPageViewController *_pageViewController;
+}
 
 @end
 
 @implementation FootBottomNoteViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    leftFootImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Ho_foot_Arches_left.png"]];
-    leftFootImage.contentMode = UIViewContentModeScaleAspectFit;
-    leftFootImage.frame = self.view.frame;
-    leftFootImage.hidden = YES;
-    [self.view addSubview:leftFootImage];
-    
-    rightFootImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Ho_foot_Arches_right.png"]];
-    rightFootImage.frame = self.view.frame;
-    rightFootImage.hidden = YES;
-    rightFootImage.contentMode = UIViewContentModeScaleAspectFit;
-    [self.view addSubview:rightFootImage];
-    
-    footBottomView = [[FootBottomView alloc] initWithFrame:self.view.frame];
-    footBottomView.backgroundColor = [UIColor clearColor];
-    [self.view addSubview:footBottomView];
-    
+    self.view.backgroundColor = [UIColor bikeFitBlue];
+
+    _pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
+
+    _pageViewController.dataSource = self;
+    float navHeight = CGRectGetMaxY(self.navigationController.navigationBar.frame);
+    [_pageViewController.view setFrame:CGRectMake(0, navHeight, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - navHeight)];
+
+    GUIFootPressureImageViewController *initialViewController = [self viewControllerAtIndex:0];
+
+    NSArray *viewControllers = [NSArray arrayWithObject:initialViewController];
+
+    [_pageViewController setViewControllers:viewControllers
+                                  direction:UIPageViewControllerNavigationDirectionForward
+                                   animated:NO
+                                 completion:nil];
+
+    [self addChildViewController:_pageViewController];
+    [self.view addSubview:[_pageViewController view]];
+    [_pageViewController didMoveToParentViewController:self];
+
     UIButton *saveButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     saveButton.frame = CGRectMake(self.view.frame.size.width * .8,
                                     self.view.frame.size.height * .9,
@@ -50,46 +50,66 @@
                                     self.view.frame.size.width * .1);
     saveButton.titleLabel.font = [UIFont systemFontOfSize:24];
     saveButton.titleLabel.adjustsFontSizeToFitWidth = YES;
-    saveButton.backgroundColor = [UIColor blackColor];
-    saveButton.alpha = .5;
+    saveButton.backgroundColor = [UIColor bikeFitBlue];
+    saveButton.layer.cornerRadius = 4;
+    saveButton.alpha = .75;
     saveButton.titleLabel.numberOfLines = 2;
     saveButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-    [saveButton setTitle:@"Save Location" forState:UIControlStateNormal];
+    [saveButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [saveButton setTitle:@"Save" forState:UIControlStateNormal];
     [saveButton setCenter:CGPointMake(self.view.bounds.size.width * .85,
                                         self.view.bounds.size.height *.75)];
     [saveButton addTarget:self action:@selector(saveLocation:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:saveButton];
-    
-}
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (void) viewWillAppear:(BOOL)animated
-{
-    if([bikeInfo leftNotesSelected])
-    {
-        [leftFootImage setHidden:false];
-        [rightFootImage setHidden:true];
-    }
-    else
-    {
-        [leftFootImage setHidden:true];
-        [rightFootImage setHidden:false];
-    }
 }
 
 - (IBAction) saveLocation:(id)sender
 {
+    GUIFootPressureImageViewController *currentVC = (GUIFootPressureImageViewController *)_pageViewController.viewControllers.firstObject;
+
     FootBottomNote *note = [[FootBottomNote alloc] init];
-    [note setCenterOfPressure:footBottomView.lastTouchLocation];
-    [note setFootBoxPath:footBottomView.footBoxPath];
+    [note setFootPressure:currentVC.index];
     [bikeInfo addNote:note];
-    
+
     [self.navigationController popToViewController:bikeInfo animated:YES];
+}
+
+#pragma mark - UIPageViewController delegate/datasource
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
+
+    NSUInteger index = [(GUIFootPressureImageViewController *)viewController index];
+
+    index = index == 0 ? 3 : index - 1;
+    return [self viewControllerAtIndex:index];
+}
+
+- (GUIFootPressureImageViewController *)viewControllerAtIndex:(NSUInteger)index {
+
+    GUIFootPressureImageViewController *childViewController = [[GUIFootPressureImageViewController alloc] init];
+    childViewController.index = index;
+    NSString *imageName = [NSString stringWithFormat:@"%ld_foot_pressure.png",index];
+    [childViewController setImageName:imageName];
+    return childViewController;
+}
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
+
+    NSUInteger index = [(GUIFootPressureImageViewController *)viewController index];
+
+    index = index == 3 ? 0 : index + 1;
+    return [self viewControllerAtIndex:index];
+}
+
+- (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController {
+    // The number of items reflected in the page indicator.
+    return 4;
+}
+
+- (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController {
+    // The selected item reflected in the page indicator.
+    return 0;
 }
 
 @end

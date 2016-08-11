@@ -16,6 +16,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        
     }
     return self;
 }
@@ -25,19 +26,14 @@
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
-    //spindleYPosition = 300.0;
     // Drawing code
-    boxPath = [UIBezierPath bezierPathWithRect:CGRectMake(0,
-                                                          self.frame.size.height * .25,
-                                                          self.frame.size.width,
-                                                          self.frame.size.height * .12 )];
+    boxPath = [[UIBezierPath alloc] init];
     [boxPath moveToPoint:CGPointMake(0, spindleYPosition)];
-    [boxPath addLineToPoint:CGPointMake(770, spindleYPosition)];
-    
+    [boxPath addLineToPoint:CGPointMake(CGRectGetWidth(self.bounds), spindleYPosition)];
     UIColor *brushPattern = [UIColor redColor];
     [brushPattern setStroke];
     [boxPath stroke];
+    
 }
-
 
 @end

@@ -9,49 +9,33 @@
 #import "SpindleNote.h"
 
 @implementation SpindleNote
-@synthesize path;
 
 - (UITableViewCell *) populateTableCell:(UITableViewCell *)cell
 {
     cell.textLabel.text = @"Cleat Fore-Aft";
     
-    CGRect rect = CGRectMake(0.0, 0.0, 50.0, 50.0);
-    
+    CGRect rect = CGRectMake(0.0, 0.0, 50.0, 25.0);
+    UIGraphicsBeginImageContext(rect.size);
     UIBezierPath *border = [UIBezierPath bezierPathWithRect:rect];
     //Draw a border
-    [border setLineWidth:3.0];
-    [border setLineJoinStyle:kCGLineJoinBevel];
+    [border setLineWidth:1.0];
+    [[UIColor grayColor] setStroke];
     [border stroke];
 
-    UIGraphicsBeginImageContext(rect.size);
-    UIBezierPath *scaledPath = [[UIBezierPath alloc]init];
-    
-    //Set the scale we will transorm too
-    CGFloat scaleX = .05;
-    CGFloat scaleY = .13;
-    
-    CGAffineTransform transform = CGAffineTransformMakeScale(scaleX, scaleY);
-    CGAffineTransform translation = CGAffineTransformMakeTranslation(100, -300);
+    UIBezierPath *yPositionPath = [[UIBezierPath alloc]init];
 
-    
-    //Move the path to the right
-    CGPathRef intermediatePath = CGPathCreateCopyByTransformingPath(path.CGPath, &translation);
-    scaledPath.CGPath = intermediatePath;
-
-    intermediatePath = CGPathCreateCopyByTransformingPath(scaledPath.CGPath, &transform);
-    scaledPath.CGPath = intermediatePath;
-    
-    [scaledPath setLineWidth:3.0];
-    [scaledPath setLineJoinStyle:kCGLineJoinBevel];
-    [scaledPath stroke];
+    CGFloat height = 25 * self.yPositionAsPercent;
+    [yPositionPath moveToPoint:CGPointMake(0, height)];
+    [yPositionPath addLineToPoint:CGPointMake(50, height)];
+    [[UIColor blackColor] setStroke];
+    [yPositionPath setLineWidth:3.0];
+    [yPositionPath stroke];
     
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsPopContext();
     UIGraphicsEndImageContext();
     cell.imageView.image = image;
-    
-    //append the foot box path
-    
+
     return cell;
     
 }
@@ -59,20 +43,18 @@
 #pragma mark - NSCoding support
 -(void)encodeWithCoder:(NSCoder*)encoder
 {
-    [encoder encodeObject:self.path forKey:@"path"];
+    [encoder encodeFloat:self.yPositionAsPercent forKey:@"yPos"];
 }
 
 -(id)initWithCoder:(NSCoder*)decoder
 {
-    self.path = [decoder decodeObjectForKey:@"path"];
-    
+    self.yPositionAsPercent = [decoder decodeFloatForKey:@"yPos"];
     return self;
 }
--(NSMutableDictionary *) getDictionary
+
+- (NSDictionary *)getDictionary
 {
-    NSMutableDictionary *dictionary = [super getDictionary];
-    return dictionary;
-    
+    return [super getDictionary];
 }
 
 @end

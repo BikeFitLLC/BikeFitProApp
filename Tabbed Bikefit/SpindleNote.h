@@ -10,11 +10,10 @@
 
 @interface SpindleNote : FitNote
 {
-    UIBezierPath *path;
 }
 
 -(NSMutableDictionary *) getDictionary;
 
-@property UIBezierPath *path;
+@property CGFloat yPositionAsPercent;
 
 @end

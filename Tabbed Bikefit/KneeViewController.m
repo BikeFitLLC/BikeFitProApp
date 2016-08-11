@@ -70,7 +70,9 @@
     {
         KneeDrawingView *kneeDrawingView = (KneeDrawingView *)previewImage;
         angle =  atan2( motion.gravity.x, motion.gravity.y );
-        kneeDrawingView.endPoint = [self calculatePointAlongLazerVectorForLength:1500 andStartPoint:[kneeDrawingView startPoint]];
+        float length = CGRectGetHeight(kneeDrawingView.bounds) - [kneeDrawingView startPoint].y;
+        kneeDrawingView.endPoint = [self calculatePointAlongLazerVectorForLength:length
+                                                                   andStartPoint:[kneeDrawingView startPoint]];
     }];
 }
 
@@ -135,8 +137,8 @@
 - (CGPoint) calculatePointAlongLazerVectorForLength:(int)length andStartPoint:(CGPoint) startPoint
 {
     CGPoint newPoint;
-    newPoint.x = (cosf(angle - 1.57079633) * length) + startPoint.x;
-    newPoint.y = sinf(angle - 1.57079633) * length;
+    newPoint.x = (cosf(angle - M_PI_2) * length) + startPoint.x;
+    newPoint.y = sinf(angle - M_PI_2) * length;
     return newPoint;
 }
 

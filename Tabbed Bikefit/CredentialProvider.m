@@ -81,7 +81,7 @@
     
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:tvmUrl];
     NSURLResponse *response;
-    
+
     //Get token information from the token vending machine
     tvmData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     if(error)
@@ -103,7 +103,7 @@
                                    delegate:nil
                           cancelButtonTitle:@"OK"otherButtonTitles:nil
           ] show];
-        
+        [[NSUserDefaults standardUserDefaults] synchronize];
         AMZNLogoutDelegate *delegate = [[AMZNLogoutDelegate alloc] init];
         [AIMobileLib clearAuthorizationState:delegate];
         return nil;
@@ -127,8 +127,7 @@
     [[NSUserDefaults standardUserDefaults] setBool:true forKey:USER_DEFAULTS_ACCOUNT_ACTIVE_KEY];
     [[NSUserDefaults standardUserDefaults] setBool:[[json objectForKey:@"trial"] boolValue] forKey:USER_DEFAULTS_IS_TRIAL_ACCOUNT];
     [[NSUserDefaults standardUserDefaults] setObject:[json objectForKey:@"fittername"] forKey:USER_DEFAULTS_FITTERNAME_KEY];
-    
-    
+
     _accessKey = [json objectForKey:@"accesskey"];
     _secretKey = [json objectForKey:@"secretkey"];
     _sessionKey = [json objectForKey:@"token"];
@@ -148,7 +147,7 @@
     
     //Now we have a good response from the TVM.  Populate credentials and Fitterid
     [[NSUserDefaults standardUserDefaults] setObject:[json objectForKey:@"fitterid"] forKey:USER_DEFAULTS_FITTERID_KEY];
-    
+    [[NSUserDefaults standardUserDefaults] synchronize];
     return nil;
 }
 
@@ -221,9 +220,14 @@
     }
 }
 
-- (void) createNewAccountWithEmail:(NSString *)email andPassword:(NSString *)password andName: (NSString *)name
+- (void) createNewAccountWithEmail:(NSString *)email
+                          password:(NSString *)password
+                          shopName:(NSString *)shopName
+                         firstName:(NSString *)firstName
+                          lastName:(NSString *)lastName
+                          callback:(void(^)(BOOL))callback;
 {
-    NSString *urlQueryString = [NSString stringWithFormat:TVM_CREATE_ACCOUNT_PATH, email, password, name];
+    NSString *urlQueryString = [NSString stringWithFormat:TVM_CREATE_ACCOUNT_PATH, email, password, shopName,firstName,lastName];
     urlQueryString = [urlQueryString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     
     NSURL *tvmUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", TVM_HOSTNAME, urlQueryString]];
@@ -237,17 +241,34 @@
                 if(error)
                 {
                     NSLog(@"Error Contacting TVM to create account %@", [error description]);
+                    if (callback) {
+                        callback(false);
+                    }
+                    return;
                 }
                 NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
                 NSString *errorMessage =  [json objectForKey:@"error"];
                 if(errorMessage)
                 {
                     [[NSUserDefaults standardUserDefaults] setBool:false forKey:USER_DEFAULTS_ACCOUNT_ACTIVE_KEY];
+                    [[NSUserDefaults standardUserDefaults] synchronize];
                     [[[UIAlertView alloc] initWithTitle:@""
                                                 message:[NSString stringWithFormat:@"Create Account Failed With Message: %@",errorMessage]
                                                delegate:nil
                                       cancelButtonTitle:@"OK"otherButtonTitles:nil
                       ] show];
+                    if (callback) {
+                        callback(false);
+                    }
+                } else {
+                    [[NSUserDefaults standardUserDefaults] setObject:email forKey:USER_DEFAULTS_USERNAME_KEY];
+                    [[NSUserDefaults standardUserDefaults] setObject:shopName forKey:USER_DEFAULTS_FITTERNAME_KEY];
+                    [[NSUserDefaults standardUserDefaults] setObject:password forKey:USER_DEFAULTS_PASSWORD_KEY];
+                    [[NSUserDefaults standardUserDefaults] synchronize];
+                    [self refresh];
+                    if (callback) {
+                        callback(true);
+                    }
                 }
             });
         }];

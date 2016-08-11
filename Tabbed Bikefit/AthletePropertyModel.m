@@ -328,6 +328,7 @@ static NSDictionary *lastEvaluatedKey;
     {
         //otherwise, just use the same file.
         [[NSUserDefaults standardUserDefaults] setObject:LOCAL_FITTER_ID forKey:USER_DEFAULTS_FITTERID_KEY];
+        [[NSUserDefaults standardUserDefaults] synchronize];
         [athleteProperties setObject:LOCAL_FILE_ID forKey:AWS_FIT_ATTRIBUTE_FITID];
     }
     [athleteProperties setObject:@"" forKey:@"Concerns"];
@@ -383,9 +384,8 @@ static NSDictionary *lastEvaluatedKey;
     {
         [[NSUserDefaults standardUserDefaults] setObject:LOCAL_FILE_ID forKey:AWS_FIT_ATTRIBUTE_FITID];
         [[NSUserDefaults standardUserDefaults] setObject:LOCAL_FITTER_ID forKey:USER_DEFAULTS_FITTERID_KEY];
+        [[NSUserDefaults standardUserDefaults] synchronize];
     }
-    
-    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 + (void)addJSONNotes

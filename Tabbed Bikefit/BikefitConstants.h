@@ -39,7 +39,7 @@
 //#define TVM_HOSTNAME @"http://127.0.0.1:8000"
 #define TVM_GET_CREDENTIALS_OAUTH_PATH @"/?Email=%@&Name=%@&Token=%@"
 #define TVM_GET_CREDENTIALS_PATH @"/getToken?Email=%@&Password=%@"
-#define TVM_CREATE_ACCOUNT_PATH @"/createAccount?Email=%@&Password=%@&Name=%@"
+#define TVM_CREATE_ACCOUNT_PATH @"/createAccount?Email=%@&Password=%@&Name=%@&FirstName=%@&LastName=%@"
 #define TVM_IS_AMAZON_PATH @"/isAmazonAccount?Email=%@"
 
 //#define TOKEN_VENDING_MACHINE_URL_FORMAT @"https://tvm.velopezdigital.com/?Email=%@&Name=%@&Token=%@"

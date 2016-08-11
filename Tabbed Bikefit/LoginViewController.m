@@ -96,6 +96,17 @@
     [loginWithAmazonButton setTitle:@"Log In With Amazon" forState:UIControlStateNormal];
     [loginWithAmazonButton addTarget:self action:@selector(loginWithAmazon:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:loginWithAmazonButton];
+
+    NSString *emailString = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_USERNAME_KEY];
+
+    if (emailString) {
+        emailField.text = emailString;
+    }
+
+    NSString *passwordString = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_PASSWORD_KEY];
+    if (passwordString) {
+        passwordField.text = passwordString;
+    }
 }
 
 - (void) login:(id)sender {

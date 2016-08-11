@@ -10,6 +10,8 @@
 
 @interface CreateAccountViewController ()
 {
+    UITextField *firstNameField;
+    UITextField *lastNameField;
     UITextField *emailField;
     UITextField *shopNameField;
     UITextField *passwordFieldOne;
@@ -30,54 +32,47 @@
     float bottomOfNavBar = CGRectGetMaxY(self.navigationController.navigationBar.frame);
     float fieldHeight = 50;
 
-    emailField = [[UITextField alloc] initWithFrame:CGRectMake(margin,
-                                                               bottomOfNavBar + margin,
+    firstNameField = [[UITextField alloc] initWithFrame:CGRectMake(margin,
+                                                                  bottomOfNavBar + margin,
+                                                                  width - (margin * 2),
+                                                                  fieldHeight)];
+    firstNameField.placeholder = @"First Name";
+    [self applyTextFieldDefaults:firstNameField];
+    [self.view addSubview:firstNameField];
+
+    lastNameField = [[UITextField alloc] initWithFrame:CGRectMake(margin,
+                                                               CGRectGetMaxY(firstNameField.frame) + margin,
                                                                width - (margin * 2),
                                                                fieldHeight)];
-    emailField.borderStyle = UITextBorderStyleRoundedRect;
-    emailField.backgroundColor = [UIColor whiteColor];
-    emailField.font = [UIFont systemFontOfSize:15];
+    lastNameField.placeholder = @"Last Name";
+    [self applyTextFieldDefaults:lastNameField];
+    [self.view addSubview:lastNameField];
+
+    emailField = [[UITextField alloc] initWithFrame:CGRectMake(margin,
+                                                               CGRectGetMaxY(lastNameField.frame) + margin,
+                                                               width - (margin * 2),
+                                                               fieldHeight)];
     emailField.placeholder = @"Email";
-    emailField.autocorrectionType = UITextAutocorrectionTypeNo;
+    [self applyTextFieldDefaults:emailField];
     emailField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     emailField.keyboardType = UIKeyboardTypeEmailAddress;
-    emailField.returnKeyType = UIReturnKeyNext;
-    emailField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    emailField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-    [emailField setDelegate:self];
     [self.view addSubview:emailField];
     
     shopNameField = [[UITextField alloc] initWithFrame:CGRectMake(margin,
                                                                   CGRectGetMaxY(emailField.frame) + margin,
                                                                   width - (margin * 2),
                                                                   fieldHeight)];
-    shopNameField.borderStyle = UITextBorderStyleRoundedRect;
-    shopNameField.backgroundColor = [UIColor whiteColor];
-    shopNameField.font = [UIFont systemFontOfSize:15];
     shopNameField.placeholder = @"Shop Name";
-    shopNameField.autocorrectionType = UITextAutocorrectionTypeNo;
-    shopNameField.keyboardType = UIKeyboardTypeDefault;
-    shopNameField.returnKeyType = UIReturnKeyNext;
-    shopNameField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    shopNameField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-    [shopNameField setDelegate:self];
+    [self applyTextFieldDefaults:shopNameField];
     [self.view addSubview:shopNameField];
     
     passwordFieldOne = [[UITextField alloc] initWithFrame:CGRectMake(margin,
                                                                      CGRectGetMaxY(shopNameField.frame) + margin,
                                                                      width - (margin * 2),
                                                                      fieldHeight)];
-    passwordFieldOne.borderStyle = UITextBorderStyleRoundedRect;
-    passwordFieldOne.backgroundColor = [UIColor whiteColor];
-    passwordFieldOne.font = [UIFont systemFontOfSize:15];
     passwordFieldOne.placeholder = @"Password";
-    passwordFieldOne.autocorrectionType = UITextAutocorrectionTypeNo;
-    passwordFieldOne.keyboardType = UIKeyboardTypeDefault;
-    passwordFieldOne.returnKeyType = UIReturnKeyNext;
     passwordFieldOne.secureTextEntry = TRUE;
-    passwordFieldOne.clearButtonMode = UITextFieldViewModeWhileEditing;
-    passwordFieldOne.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-    [passwordFieldOne setDelegate:self];
+    [self applyTextFieldDefaults:passwordFieldOne];
     [passwordFieldOne addTarget:self action:@selector(textFieldDidEndEditing:)
         forControlEvents:UIControlEventEditingChanged];
     [self.view addSubview:passwordFieldOne];
@@ -87,16 +82,9 @@
                                                                      width - (margin * 2),
                                                                      fieldHeight)];
     passwordFieldTwo.secureTextEntry = YES;
-    passwordFieldTwo.borderStyle = UITextBorderStyleRoundedRect;
-    passwordFieldTwo.backgroundColor = [UIColor whiteColor];
-    passwordFieldTwo.font = [UIFont systemFontOfSize:15];
     passwordFieldTwo.placeholder = @"Password";
-    passwordFieldTwo.autocorrectionType = UITextAutocorrectionTypeNo;
-    passwordFieldTwo.keyboardType = UIKeyboardTypeDefault;
+    [self applyTextFieldDefaults:passwordFieldTwo];
     passwordFieldTwo.returnKeyType = UIReturnKeyDone;
-    passwordFieldTwo.clearButtonMode = UITextFieldViewModeWhileEditing;
-    passwordFieldTwo.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-    [passwordFieldTwo setDelegate:self];
     [passwordFieldTwo addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingChanged];
     [self.view addSubview:passwordFieldTwo];
     
@@ -116,10 +104,40 @@
     
 }
 
+- (void)applyTextFieldDefaults:(UITextField *)textField
+{
+    textField.borderStyle = UITextBorderStyleRoundedRect;
+    textField.backgroundColor = [UIColor whiteColor];
+    textField.font = [UIFont systemFontOfSize:15];
+    textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    textField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+    textField.autocorrectionType = UITextAutocorrectionTypeNo;
+    textField.keyboardType = UIKeyboardTypeDefault;
+    textField.returnKeyType = UIReturnKeyNext;
+    textField.delegate = self;
+}
+
 -(void)createAccount:(id)sender
 {
-    [[AmazonClientManager credProvider] createNewAccountWithEmail:emailField.text andPassword:passwordFieldOne.text andName:shopNameField.text];
-    [self.navigationController popViewControllerAnimated:YES];
+    if ([self textsFieldsValid]) {
+        [[AmazonClientManager credProvider] createNewAccountWithEmail:emailField.text
+                                                             password:passwordFieldOne.text
+                                                             shopName:shopNameField.text
+                                                            firstName:firstNameField.text
+                                                             lastName:lastNameField.text
+                                                             callback:^(BOOL success) {
+                                                                 if (success) {
+                                                                     [self.navigationController popToRootViewControllerAnimated:true];
+                                                                 }
+                                                             }];
+    } else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
+                                                        message:@"All fields must be filled out"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"Ok"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -141,9 +159,28 @@
     }
 }
 
+- (BOOL)textsFieldsValid
+{
+    return [self textFieldHasText:firstNameField]
+        && [self textFieldHasText:lastNameField]
+        && [self textFieldHasText:emailField]
+        && [self textFieldHasText:shopNameField]
+        && [self textFieldHasText:passwordFieldOne]
+    && [self textFieldHasText:passwordFieldTwo];
+}
+
+- (BOOL)textFieldHasText:(UITextField *)textField
+{
+    return [textField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]].length > 0;
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    if (textField == emailField) {
+    if (textField == firstNameField) {
+        [lastNameField becomeFirstResponder];
+    } else if (textField == lastNameField) {
+        [emailField becomeFirstResponder];
+    } else if (textField == emailField) {
         [shopNameField becomeFirstResponder];
     } else if (textField == shopNameField) {
         [passwordFieldOne becomeFirstResponder];

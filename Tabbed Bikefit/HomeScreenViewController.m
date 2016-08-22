@@ -18,7 +18,7 @@
     LoadinSpinnerView *loadingView;
     
     UIButton *clientsButton;
-    UIButton *settingsButton;
+    UIButton *storeButton;
     UIButton *sendEmail;
     UIButton *loginButton;
     UIButton *welcomButton;
@@ -54,14 +54,14 @@
     [clientsButton setEnabled:loggedIn];
     [self.view addSubview:clientsButton];
     
-    settingsButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [settingsButton setImage:[UIImage imageNamed:@"Customize" ] forState:UIControlStateNormal];
-    settingsButton.frame = CGRectMake(self.view.frame.size.width * .5,
+    storeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [storeButton addTarget:self action:@selector(storeButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+    [storeButton setImage:[UIImage imageNamed:@"Settings" ] forState:UIControlStateNormal];
+    storeButton.frame = CGRectMake(self.view.frame.size.width * .5,
                                       self.view.frame.size.height *.5,
-                                      settingsButton.imageView.image.size.width,
-                                      settingsButton.imageView.image.size.height);
-    settingsButton.enabled = NO; //[AmazonClientManager verifyLoggedInActive];
-    [self.view addSubview:settingsButton];
+                                      storeButton.imageView.image.size.width,
+                                      storeButton.imageView.image.size.height);
+    [self.view addSubview:storeButton];
     
     UIButton *newFitButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [newFitButton setImage:[UIImage imageNamed:@"New-Fit" ] forState:UIControlStateNormal];
@@ -117,7 +117,6 @@
         [self.view addSubview:loginButton];
         sendEmail.enabled = NO ;
         clientsButton.enabled= NO ;
-        settingsButton.enabled = NO;
     }
     else
     {
@@ -152,8 +151,6 @@
         
         sendEmail.enabled = YES ;
         clientsButton.enabled= YES ;
-        settingsButton.enabled = YES;
-        
     }
 }
 
@@ -199,6 +196,13 @@
     [self performSegueWithIdentifier:@"showclientlist" sender:sender];
 }
 
+- (void)storeButtonPressed
+{
+    //open up weblink
+    NSString *storeLink = @"http://www.bikefit.com/c-1-cleat-wedges.aspx";
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:storeLink]];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -227,7 +231,6 @@
 {
     if([AmazonClientManager verifyLoggedInActive])
     {
-        //settingsButton.enabled = YES;
         sendEmail.enabled = YES;
         clientsButton.enabled = YES;
     }
@@ -258,16 +261,5 @@
 {
     [controller dismissViewControllerAnimated:YES completion:NULL];
 }
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

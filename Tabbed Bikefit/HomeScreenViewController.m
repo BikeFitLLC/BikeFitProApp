@@ -12,17 +12,20 @@
 #import "BikefitConstants.h"
 #import "LoadinSpinnerView.h"
 #import "UIColor+CustomColor.h"
+#import "HomeViewButton.h"
 
 @interface HomeScreenViewController ()
 {
     LoadinSpinnerView *loadingView;
     
-    UIButton *clientsButton;
-    UIButton *settingsButton;
-    UIButton *sendEmail;
     UIButton *loginButton;
     UIButton *welcomButton;
     UIButton *logoutButton;
+    
+    HomeViewButton *clientsButton;
+    HomeViewButton *storeButton;
+    HomeViewButton *sendEmail;
+    HomeViewButton *newFitButton;
 }
 
 @end
@@ -43,44 +46,46 @@
     logoImageView.center = CGPointMake(self.view.center.x, self.view.frame.size.height * .1);
     [self.view addSubview:logoImageView];
     
-    clientsButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [clientsButton setImage:[UIImage imageNamed:@"Clients" ] forState:UIControlStateNormal];
-    clientsButton.frame = CGRectMake(0,
-                                     self.view.frame.size.height *.5,
-                                     clientsButton.imageView.image.size.width,
-                                     clientsButton.imageView.image.size.height);
-
-    [clientsButton addTarget:self action:@selector(segueToClientPage:) forControlEvents:UIControlEventTouchUpInside];
-    [clientsButton setEnabled:loggedIn];
-    [self.view addSubview:clientsButton];
+    CGFloat buttonEdge = CGRectGetWidth(self.view.bounds) * 0.5;
     
-    settingsButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [settingsButton setImage:[UIImage imageNamed:@"Customize" ] forState:UIControlStateNormal];
-    settingsButton.frame = CGRectMake(self.view.frame.size.width * .5,
-                                      self.view.frame.size.height *.5,
-                                      settingsButton.imageView.image.size.width,
-                                      settingsButton.imageView.image.size.height);
-    settingsButton.enabled = NO; //[AmazonClientManager verifyLoggedInActive];
-    [self.view addSubview:settingsButton];
-    
-    UIButton *newFitButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [newFitButton setImage:[UIImage imageNamed:@"New-Fit" ] forState:UIControlStateNormal];
-    newFitButton.frame = CGRectMake(0,
-                                    self.view.frame.size.height *.5 - newFitButton.imageView.image.size.height,
-                                    newFitButton.imageView.image.size.width,
-                                    newFitButton.imageView.image.size.height);
-    [newFitButton addTarget:self action:@selector(segueToNewFitPage:) forControlEvents:UIControlEventTouchUpInside];
+    newFitButton = [[HomeViewButton alloc] initWithFrame:CGRectMake(0,
+                                                                    self.view.center.y - buttonEdge,
+                                                                    buttonEdge, buttonEdge)
+                                                  target:self
+                                                selector:@selector(segueToNewFitPage:)
+                                                   title:@"NEW FIT"
+                                                   image:[UIImage imageNamed:@"home_bike"]];
     [self.view addSubview:newFitButton];
     
-    sendEmail = [UIButton buttonWithType:UIButtonTypeCustom];
-    [sendEmail setImage:[UIImage imageNamed:@"Email" ] forState:UIControlStateNormal];
-    sendEmail.frame = CGRectMake(self.view.frame.size.width * .5,
-                                 self.view.frame.size.height *.5 - newFitButton.imageView.image.size.height,
-                                 sendEmail.imageView.image.size.width,
-                                 sendEmail.imageView.image.size.height);
-    [sendEmail addTarget:self action:@selector(emailIntakeUrl) forControlEvents:UIControlEventTouchUpInside];
-    sendEmail.enabled = loggedIn;
+    sendEmail = [[HomeViewButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(newFitButton.frame),
+                                                                 CGRectGetMinY(newFitButton.frame),
+                                                                 buttonEdge, buttonEdge)
+                                               target:self
+                                             selector:@selector(emailIntakeUrl)
+                                                title:@"SEND EMAIL"
+                                                image:[UIImage imageNamed:@"home_email"]];
+    [sendEmail enable:loggedIn];
     [self.view addSubview:sendEmail];
+
+    
+    clientsButton = [[HomeViewButton alloc] initWithFrame:CGRectMake(0,
+                                                                     CGRectGetMaxY(newFitButton.frame),
+                                                                     buttonEdge, buttonEdge)
+                                                   target:self
+                                                 selector:@selector(segueToClientPage:)
+                                                    title:@"CLIENTS"
+                                                    image:[UIImage imageNamed:@"home_clients"]];
+    [clientsButton enable:loggedIn];
+    [self.view addSubview:clientsButton];
+    
+    storeButton = [[HomeViewButton alloc] initWithFrame:CGRectMake(CGRectGetMaxX(clientsButton.frame),
+                                                                   CGRectGetMaxY(sendEmail.frame),
+                                                                   buttonEdge, buttonEdge)
+                                               target:self
+                                             selector:@selector(storeButtonPressed)
+                                                title:@"STORE"
+                                                image:[UIImage imageNamed:@"home_store"]];
+    [self.view addSubview:storeButton];
     
     [self refreshLoginButtons];
 
@@ -115,9 +120,8 @@
         [loginButton setTitle:@"Please Log In" forState:UIControlStateNormal];
         [loginButton addTarget:self action:@selector(onLogInButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:loginButton];
-        sendEmail.enabled = NO ;
-        clientsButton.enabled= NO ;
-        settingsButton.enabled = NO;
+        [sendEmail enable:NO];
+        [clientsButton enable:NO] ;
     }
     else
     {
@@ -149,11 +153,8 @@
         [logoutButton addTarget:self action:@selector(logoutButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:logoutButton];
         [self.view addSubview:welcomButton];
-        
-        sendEmail.enabled = YES ;
-        clientsButton.enabled= YES ;
-        settingsButton.enabled = YES;
-        
+        [sendEmail enable:YES];
+        [clientsButton enable:YES];
     }
 }
 
@@ -199,6 +200,13 @@
     [self performSegueWithIdentifier:@"showclientlist" sender:sender];
 }
 
+- (void)storeButtonPressed
+{
+    //open up weblink
+    NSString *storeLink = @"http://www.bikefit.com/c-1-cleat-wedges.aspx";
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:storeLink]];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -227,9 +235,8 @@
 {
     if([AmazonClientManager verifyLoggedInActive])
     {
-        //settingsButton.enabled = YES;
-        sendEmail.enabled = YES;
-        clientsButton.enabled = YES;
+        [sendEmail enable:YES];
+        [clientsButton enable:YES];
     }
     [self refreshLoginButtons];
 }
@@ -258,16 +265,5 @@
 {
     [controller dismissViewControllerAnimated:YES completion:NULL];
 }
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

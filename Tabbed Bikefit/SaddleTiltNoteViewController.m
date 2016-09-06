@@ -17,6 +17,8 @@
     CMMotionManager *motionManager;
     CGFloat tiltAngle;
     UIImageView *saddleImage;
+    UILabel *upArrow;
+    UILabel *downArrow;
 }
 
 @end
@@ -57,15 +59,27 @@
     CGFloat navHeight = CGRectGetHeight(self.navigationController.navigationBar.frame);
     CGFloat imageHeight = (CGRectGetMinY(tilteAngleLabel.frame) - navHeight) * 0.75;
     CGFloat imageY = navHeight + (imageHeight / 6);
-    saddleImage = [[UIImageView alloc] initWithImage:nil];
+    saddleImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"saddle_silhouette_60.png"]];
     saddleImage.frame = CGRectMake(0,
                                    imageY,
                                    self.view.frame.size.width,
                                    imageHeight);
     saddleImage.contentMode = UIViewContentModeScaleAspectFit;
-    saddleImage.backgroundColor = [UIColor redColor];
     [self.view addSubview:saddleImage];
     
+    float arrowEdge = CGRectGetHeight(saddleImage.frame) * 0.5;
+    upArrow = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMinY(saddleImage.frame), arrowEdge, arrowEdge)];
+    upArrow.text = @"▲";
+    upArrow.textAlignment = NSTextAlignmentCenter;
+    upArrow.font = [UIFont systemFontOfSize:arrowEdge];
+    [self.view addSubview:upArrow];
+
+    downArrow = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(upArrow.frame), arrowEdge, arrowEdge)];
+    downArrow.text = @"▼";
+    downArrow.textAlignment = NSTextAlignmentCenter;
+    downArrow.font = [UIFont systemFontOfSize:arrowEdge];
+    [self.view addSubview:downArrow];
+
     tilteAngleLabel.text = @"TILT!";
     
     //
@@ -105,6 +119,8 @@
     tilteAngleLabel.text = [NSString stringWithFormat:@"%.01f°", displayAngle];
     CGAffineTransform t = CGAffineTransformMakeRotation(displayAngle * M_PI / 180);
     saddleImage.layer.transform = CATransform3DMakeAffineTransform(t);
+    upArrow.alpha = displayAngle > 0 ? 1 : 0.25;
+    downArrow.alpha = displayAngle < 0 ? 1 : 0.25;
 }
 
 - (void)didReceiveMemoryWarning {

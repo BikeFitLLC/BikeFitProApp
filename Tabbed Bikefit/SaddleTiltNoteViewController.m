@@ -16,7 +16,9 @@
     NSOperationQueue *deviceQueue;
     CMMotionManager *motionManager;
     CGFloat tiltAngle;
-    
+    UIImageView *saddleImage;
+    UILabel *upArrow;
+    UILabel *downArrow;
 }
 
 @end
@@ -39,7 +41,7 @@
     [saveButton setHidden:NO];
     [saveButton addTarget:self action:@selector(saveTiltAngle:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:saveButton];
-
+    
     tilteAngleLabel = [[UILabel alloc] init];
     tilteAngleLabel.frame = CGRectMake(0,0,
                                        self.view.frame.size.width,
@@ -54,9 +56,32 @@
     tilteAngleLabel.adjustsFontSizeToFitWidth = true;
     [self.view addSubview:tilteAngleLabel];
     
+    CGFloat navHeight = CGRectGetHeight(self.navigationController.navigationBar.frame);
+    CGFloat imageHeight = (CGRectGetMinY(tilteAngleLabel.frame) - navHeight) * 0.75;
+    CGFloat imageY = navHeight + (imageHeight / 6);
+    saddleImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"saddle_silhouette_60.png"]];
+    saddleImage.frame = CGRectMake(0,
+                                   imageY,
+                                   self.view.frame.size.width,
+                                   imageHeight);
+    saddleImage.contentMode = UIViewContentModeScaleAspectFit;
+    [self.view addSubview:saddleImage];
+    
+    float arrowEdge = CGRectGetHeight(saddleImage.frame) * 0.5;
+    upArrow = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMinY(saddleImage.frame), arrowEdge, arrowEdge)];
+    upArrow.text = @"▲";
+    upArrow.textAlignment = NSTextAlignmentCenter;
+    upArrow.font = [UIFont systemFontOfSize:arrowEdge];
+    [self.view addSubview:upArrow];
+
+    downArrow = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(upArrow.frame), arrowEdge, arrowEdge)];
+    downArrow.text = @"▼";
+    downArrow.textAlignment = NSTextAlignmentCenter;
+    downArrow.font = [UIFont systemFontOfSize:arrowEdge];
+    [self.view addSubview:downArrow];
+
     tilteAngleLabel.text = @"TILT!";
     
-
     //
     // Setup motion structures
     //
@@ -70,9 +95,7 @@
                                                        toQueue:deviceQueue
                                                    withHandler:
      ^(CMDeviceMotion* motion, NSError* error){
-         CGFloat r = sqrtf(motion.gravity.x*motion.gravity.x + motion.gravity.y*motion.gravity.y + motion.gravity.z*motion.gravity.z);
-         CGFloat tiltForwardBackward = acosf(motion.gravity.z/r) * 180.0f / M_PI - 90.0f;
-         tiltAngle = (90 - tiltForwardBackward);
+         [self motionUpdated:motion];
      }];
     
     //
@@ -84,10 +107,20 @@
                                     repeats: YES];
 }
 
+- (void)motionUpdated:(CMDeviceMotion *)motion {
+    CGFloat r = sqrtf(motion.gravity.y * motion.gravity.y + motion.gravity.z * motion.gravity.z);
+    CGFloat tiltForwardBackward = acosf(motion.gravity.z/r) * 180.0f / M_PI - 90.0f;
+    tiltAngle = (90 - tiltForwardBackward) * (motion.gravity.y < 0 ? -1 : 1);
+}
+
 - (void) updateTilt:(NSTimer *) timer
 {
     float displayAngle = roundf(tiltAngle * 10) * 0.1;
     tilteAngleLabel.text = [NSString stringWithFormat:@"%.01f°", displayAngle];
+    CGAffineTransform t = CGAffineTransformMakeRotation(displayAngle * M_PI / 180);
+    saddleImage.layer.transform = CATransform3DMakeAffineTransform(t);
+    upArrow.alpha = displayAngle > 0 ? 1 : 0.25;
+    downArrow.alpha = displayAngle < 0 ? 1 : 0.25;
 }
 
 - (void)didReceiveMemoryWarning {

@@ -52,6 +52,7 @@
 		34E759161D7F381100D0F95D /* cleat_right_spindle.png in Resources */ = {isa = PBXBuildFile; fileRef = 34E759141D7F381100D0F95D /* cleat_right_spindle.png */; };
 		34E759181D7F456A00D0F95D /* cleat_fa_left_text.png in Resources */ = {isa = PBXBuildFile; fileRef = 34E759171D7F456A00D0F95D /* cleat_fa_left_text.png */; };
 		34E7591A1D7F456E00D0F95D /* cleat_fa_right_text.png in Resources */ = {isa = PBXBuildFile; fileRef = 34E759191D7F456E00D0F95D /* cleat_fa_right_text.png */; };
+		3467BEFD1D7F462D00BD308A /* saddle_silhouette_60.png in Resources */ = {isa = PBXBuildFile; fileRef = 3467BEFC1D7F462D00BD308A /* saddle_silhouette_60.png */; };
 		5D003774195CF0B800BC9BBA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D003773195CF0B800BC9BBA /* Images.xcassets */; };
 		5D135A4519A7FACD00273076 /* plus-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D135A4419A7FACD00273076 /* plus-icon.png */; };
 		5D192BBA17FE55ED0046CC16 /* GoniometerDrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D192BB917FE55ED0046CC16 /* GoniometerDrawingView.m */; };
@@ -253,6 +254,7 @@
 		34E759141D7F381100D0F95D /* cleat_right_spindle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cleat_right_spindle.png; sourceTree = "<group>"; };
 		34E759171D7F456A00D0F95D /* cleat_fa_left_text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cleat_fa_left_text.png; sourceTree = "<group>"; };
 		34E759191D7F456E00D0F95D /* cleat_fa_right_text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cleat_fa_right_text.png; sourceTree = "<group>"; };
+		3467BEFC1D7F462D00BD308A /* saddle_silhouette_60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = saddle_silhouette_60.png; sourceTree = "<group>"; };
 		5D003773195CF0B800BC9BBA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = bikefit/Images.xcassets; sourceTree = "<group>"; };
 		5D135A4419A7FACD00273076 /* plus-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-icon.png"; sourceTree = "<group>"; };
 		5D192BB817FE55ED0046CC16 /* GoniometerDrawingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoniometerDrawingView.h; sourceTree = "<group>"; };
@@ -648,6 +650,7 @@
 				002733AE1BD070C600EDA7BC /* 2_wedge_left_varus.png */,
 				002733AF1BD070C600EDA7BC /* 2_Wedge_RGHT_varus.png */,
 				002733B01BD070C600EDA7BC /* 3_wedge_left_varus.png */,
+				3467BEFC1D7F462D00BD308A /* saddle_silhouette_60.png */,
 				002733B11BD070C600EDA7BC /* 3_Wedge_Rght_Varus.png */,
 				002733A71BD06EA700EDA7BC /* Bike_tri_diagram_ABCDEF.png */,
 				00FF371D1A36310300FD1E45 /* Bike_road_diagram_ABCD.png */,
@@ -992,6 +995,7 @@
 				5D8531D41759CD6600934E68 /* InfoPlist.strings in Resources */,
 				34E759181D7F456A00D0F95D /* cleat_fa_left_text.png in Resources */,
 				5DEA4BD81997EA3A0024C220 /* BikeFitIcon-29x29.png in Resources */,
+				3467BEFD1D7F462D00BD308A /* saddle_silhouette_60.png in Resources */,
 				5DD1837919D878AB00A5B6CE /* Bike_road_diagram_APPP.png in Resources */,
 				5DD68EEC1980884400BCCCD9 /* info_button_29x29.png in Resources */,
 				8B55D2F11D5A39570075F719 /* 2_foot_pressure_bw.png in Resources */,

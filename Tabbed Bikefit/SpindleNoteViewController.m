@@ -9,11 +9,14 @@
 #import "SpindleNoteViewController.h"
 #import "SpindleNote.h"
 
+
+
 @interface SpindleNoteViewController ()
 
 @end
 
 @implementation SpindleNoteViewController
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,16 +38,43 @@
     leftFootGraphic.hidden = YES;
     [self.view addSubview:leftFootGraphic];
     
-    rightFootGraphic = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cleat_fa_left.png"]];
+    rightFootGraphic = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cleat_fa_right.png"]];
     rightFootGraphic.frame = self.view.frame;
     rightFootGraphic.hidden = YES;
     rightFootGraphic.contentMode = UIViewContentModeScaleAspectFit;
     [self.view addSubview:rightFootGraphic];
     
+    leftFootTextImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cleat_fa_left_text.png"]];
+    leftFootTextImageView.contentMode = UIViewContentModeScaleAspectFit;
+    leftFootTextImageView.frame = self.view.frame;
+    leftFootTextImageView.hidden = YES;
+    [self.view addSubview:leftFootTextImageView];
+
+    rightFootTextImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cleat_fa_right_text.png"]];
+    rightFootTextImageView.contentMode = UIViewContentModeScaleAspectFit;
+    rightFootTextImageView.frame = self.view.frame;
+    rightFootTextImageView.hidden = YES;
+    [self.view addSubview:rightFootTextImageView];
+    
     spindleView = [[SpindleView alloc] initWithFrame:self.view.frame];
     spindleView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:spindleView];
-
+    
+    UIImage *spindleImage = [UIImage imageNamed:@"cleat_left_spindle.png"];
+    spindleImageView = [[UIImageView alloc] initWithImage:spindleImage];
+    
+    spindleImageView.frame = CGRectMake(0,
+                                        0,
+                                        CGRectGetWidth(self.view.frame),
+                                        spindleImage.size.height);
+    
+    spindleImageView.contentMode = UIViewContentModeScaleAspectFit;
+    [self centerSpindle];
+    [self.view addSubview:spindleImageView];
+    
+    [self.view bringSubviewToFront:rightFootTextImageView];
+    [self.view bringSubviewToFront:leftFootTextImageView];
+    
     UIButton *saveButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     saveButton.frame = CGRectMake(self.view.frame.size.width * .8,
                                   self.view.frame.size.height * .9,
@@ -78,11 +108,17 @@
     {
         [leftFootGraphic setHidden:false];
         [rightFootGraphic setHidden:true];
+        [leftFootTextImageView setHidden:false];
+        [rightFootTextImageView setHidden:true];
+        spindleImageView.image = [UIImage imageNamed:@"cleat_left_spindle.png"];
     }
     else
     {
         [leftFootGraphic setHidden:true];
         [rightFootGraphic setHidden:false];
+        [leftFootTextImageView setHidden:true];
+        [rightFootTextImageView setHidden:false];
+        spindleImageView.image = [UIImage imageNamed:@"cleat_right_spindle.png"];
     }
 }
 
@@ -95,8 +131,26 @@
 - (void) moveSpindleY:(UIPanGestureRecognizer *)sender
 {
     CGPoint location = [sender locationInView:[self view]];
-    [spindleView setSpindleYPosition:location.y];
-    [spindleView setNeedsDisplay];
+    [self setSpindlePosition:location.y];
+}
+
+- (void)setSpindlePosition:(CGFloat)y
+{
+    [spindleView setSpindleYPosition:y];
+    spindleImageView.center = CGPointMake(spindleImageView.center.x, y);
+}
+
+- (void)centerSpindle
+{
+    float scale = MIN(CGRectGetWidth(leftFootGraphic.frame)/leftFootGraphic.image.size.width,
+                      CGRectGetHeight(leftFootGraphic.frame)/leftFootGraphic.image.size.height);
+    float scaledHeight = leftFootGraphic.image.size.height * scale;
+    //the marks for the spindle range are at 25% and 37% of height of image
+    float spacing = (CGRectGetHeight(leftFootGraphic.frame) - scaledHeight) * 0.5;
+    float minYOfBox = (scaledHeight * 0.244) + spacing;
+    float maxYOfBox = (scaledHeight * 0.376) + spacing;
+    float center = (minYOfBox + maxYOfBox) * 0.5;
+    [self setSpindlePosition:center];
 }
 
 - (float)calculateMidpoint

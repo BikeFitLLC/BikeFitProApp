@@ -6,3 +6,9 @@ build/
 **/*.perspectivev*
 
 Podfile.lock
+
+Pods/Pods.xcodeproj/xcuserdata/*
+bikefit.xcodeproj/xcuserdata/*
+bikefit.xcworkspace/xcshareddata/*
+bikefit.xcworkspace/xcuserdata/*
+

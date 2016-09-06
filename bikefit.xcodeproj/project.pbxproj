@@ -48,6 +48,10 @@
 		3467BF101D7F5AC700BD308A /* home_settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3467BF061D7F5AC700BD308A /* home_settings@2x.png */; };
 		3467BF111D7F5AC700BD308A /* home_store@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3467BF071D7F5AC700BD308A /* home_store@2x.png */; };
 		3467BF141D7F5B1700BD308A /* HomeViewButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3467BF131D7F5B1700BD308A /* HomeViewButton.m */; };
+		34E759151D7F381100D0F95D /* cleat_left_spindle.png in Resources */ = {isa = PBXBuildFile; fileRef = 34E759131D7F381100D0F95D /* cleat_left_spindle.png */; };
+		34E759161D7F381100D0F95D /* cleat_right_spindle.png in Resources */ = {isa = PBXBuildFile; fileRef = 34E759141D7F381100D0F95D /* cleat_right_spindle.png */; };
+		34E759181D7F456A00D0F95D /* cleat_fa_left_text.png in Resources */ = {isa = PBXBuildFile; fileRef = 34E759171D7F456A00D0F95D /* cleat_fa_left_text.png */; };
+		34E7591A1D7F456E00D0F95D /* cleat_fa_right_text.png in Resources */ = {isa = PBXBuildFile; fileRef = 34E759191D7F456E00D0F95D /* cleat_fa_right_text.png */; };
 		5D003774195CF0B800BC9BBA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D003773195CF0B800BC9BBA /* Images.xcassets */; };
 		5D135A4519A7FACD00273076 /* plus-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D135A4419A7FACD00273076 /* plus-icon.png */; };
 		5D192BBA17FE55ED0046CC16 /* GoniometerDrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D192BB917FE55ED0046CC16 /* GoniometerDrawingView.m */; };
@@ -245,6 +249,10 @@
 		3467BF071D7F5AC700BD308A /* home_store@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_store@2x.png"; sourceTree = "<group>"; };
 		3467BF121D7F5B1700BD308A /* HomeViewButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewButton.h; sourceTree = "<group>"; };
 		3467BF131D7F5B1700BD308A /* HomeViewButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewButton.m; sourceTree = "<group>"; };
+		34E759131D7F381100D0F95D /* cleat_left_spindle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cleat_left_spindle.png; sourceTree = "<group>"; };
+		34E759141D7F381100D0F95D /* cleat_right_spindle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cleat_right_spindle.png; sourceTree = "<group>"; };
+		34E759171D7F456A00D0F95D /* cleat_fa_left_text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cleat_fa_left_text.png; sourceTree = "<group>"; };
+		34E759191D7F456E00D0F95D /* cleat_fa_right_text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cleat_fa_right_text.png; sourceTree = "<group>"; };
 		5D003773195CF0B800BC9BBA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = bikefit/Images.xcassets; sourceTree = "<group>"; };
 		5D135A4419A7FACD00273076 /* plus-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-icon.png"; sourceTree = "<group>"; };
 		5D192BB817FE55ED0046CC16 /* GoniometerDrawingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoniometerDrawingView.h; sourceTree = "<group>"; };
@@ -649,6 +657,10 @@
 				5D135A4419A7FACD00273076 /* plus-icon.png */,
 				8B7406E71D53EC5700C0F67B /* cleat_fa_left.png */,
 				8B7406E81D53EC5700C0F67B /* cleat_fa_right.png */,
+				34E759171D7F456A00D0F95D /* cleat_fa_left_text.png */,
+				34E759191D7F456E00D0F95D /* cleat_fa_right_text.png */,
+				34E759131D7F381100D0F95D /* cleat_left_spindle.png */,
+				34E759141D7F381100D0F95D /* cleat_right_spindle.png */,
 				5DB3AEE719D0CADD00604666 /* Bike_diagram_APP.png */,
 				5DEA4BD21997E5880024C220 /* 58x58.png */,
 				5DEA4BD71997EA3A0024C220 /* BikeFitIcon-29x29.png */,
@@ -978,6 +990,7 @@
 			files = (
 				5D6F99D0190B453700558C99 /* BikeFitBadge.png in Resources */,
 				5D8531D41759CD6600934E68 /* InfoPlist.strings in Resources */,
+				34E759181D7F456A00D0F95D /* cleat_fa_left_text.png in Resources */,
 				5DEA4BD81997EA3A0024C220 /* BikeFitIcon-29x29.png in Resources */,
 				5DD1837919D878AB00A5B6CE /* Bike_road_diagram_APPP.png in Resources */,
 				5DD68EEC1980884400BCCCD9 /* info_button_29x29.png in Resources */,
@@ -1007,7 +1020,9 @@
 				5D6F99CC190B448600558C99 /* arrowright.png in Resources */,
 				5D003774195CF0B800BC9BBA /* Images.xcassets in Resources */,
 				5D549A411862A53A00B61A83 /* img_thumb_383809223.jpg in Resources */,
+				34E7591A1D7F456E00D0F95D /* cleat_fa_right_text.png in Resources */,
 				009D55801AB393A4008A8A74 /* MainStoryboard_iPhone.storyboard in Resources */,
+				34E759161D7F381100D0F95D /* cleat_right_spindle.png in Resources */,
 				8B55D2EF1D5A39570075F719 /* 0_foot_pressure_bw.png in Resources */,
 				5D8531EB1759CD6600934E68 /* first.png in Resources */,
 				002733B91BD070C600EDA7BC /* 3_wedge_left_varus.png in Resources */,
@@ -1025,6 +1040,7 @@
 				8B7406E31D53D6B200C0F67B /* 3_foot_pressure.png in Resources */,
 				5D8531ED1759CD6600934E68 /* first@2x.png in Resources */,
 				8B55D2F01D5A39570075F719 /* 1_foot_pressure_bw.png in Resources */,
+				34E759151D7F381100D0F95D /* cleat_left_spindle.png in Resources */,
 				5D8531F21759CD6600934E68 /* second.png in Resources */,
 				5D8531F41759CD6600934E68 /* second@2x.png in Resources */,
 				3467BF091D7F5AC700BD308A /* home_clients.png in Resources */,

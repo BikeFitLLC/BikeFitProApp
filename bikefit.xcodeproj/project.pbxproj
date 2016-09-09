@@ -37,6 +37,7 @@
 		00FF371A1A36302E00FD1E45 /* KW_front_laser_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 00FF37191A36302E00FD1E45 /* KW_front_laser_2.png */; };
 		00FF371C1A3630CE00FD1E45 /* measurementIcon-new-29x29.png in Resources */ = {isa = PBXBuildFile; fileRef = 00FF371B1A3630CE00FD1E45 /* measurementIcon-new-29x29.png */; };
 		00FF371E1A36310300FD1E45 /* Bike_road_diagram_ABCD.png in Resources */ = {isa = PBXBuildFile; fileRef = 00FF371D1A36310300FD1E45 /* Bike_road_diagram_ABCD.png */; };
+		3467BEFD1D7F462D00BD308A /* saddle_silhouette_60.png in Resources */ = {isa = PBXBuildFile; fileRef = 3467BEFC1D7F462D00BD308A /* saddle_silhouette_60.png */; };
 		3467BF081D7F5AC700BD308A /* home_bike.png in Resources */ = {isa = PBXBuildFile; fileRef = 3467BEFE1D7F5AC700BD308A /* home_bike.png */; };
 		3467BF091D7F5AC700BD308A /* home_clients.png in Resources */ = {isa = PBXBuildFile; fileRef = 3467BEFF1D7F5AC700BD308A /* home_clients.png */; };
 		3467BF0A1D7F5AC700BD308A /* home_email.png in Resources */ = {isa = PBXBuildFile; fileRef = 3467BF001D7F5AC700BD308A /* home_email.png */; };
@@ -52,7 +53,6 @@
 		34E759161D7F381100D0F95D /* cleat_right_spindle.png in Resources */ = {isa = PBXBuildFile; fileRef = 34E759141D7F381100D0F95D /* cleat_right_spindle.png */; };
 		34E759181D7F456A00D0F95D /* cleat_fa_left_text.png in Resources */ = {isa = PBXBuildFile; fileRef = 34E759171D7F456A00D0F95D /* cleat_fa_left_text.png */; };
 		34E7591A1D7F456E00D0F95D /* cleat_fa_right_text.png in Resources */ = {isa = PBXBuildFile; fileRef = 34E759191D7F456E00D0F95D /* cleat_fa_right_text.png */; };
-		3467BEFD1D7F462D00BD308A /* saddle_silhouette_60.png in Resources */ = {isa = PBXBuildFile; fileRef = 3467BEFC1D7F462D00BD308A /* saddle_silhouette_60.png */; };
 		5D003774195CF0B800BC9BBA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D003773195CF0B800BC9BBA /* Images.xcassets */; };
 		5D135A4519A7FACD00273076 /* plus-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D135A4419A7FACD00273076 /* plus-icon.png */; };
 		5D192BBA17FE55ED0046CC16 /* GoniometerDrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D192BB917FE55ED0046CC16 /* GoniometerDrawingView.m */; };
@@ -155,6 +155,11 @@
 		8B55D2F01D5A39570075F719 /* 1_foot_pressure_bw.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B55D2EC1D5A39570075F719 /* 1_foot_pressure_bw.png */; };
 		8B55D2F11D5A39570075F719 /* 2_foot_pressure_bw.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B55D2ED1D5A39570075F719 /* 2_foot_pressure_bw.png */; };
 		8B55D2F21D5A39570075F719 /* 3_foot_pressure_bw.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B55D2EE1D5A39570075F719 /* 3_foot_pressure_bw.png */; };
+		8B6CA9521D8335AA0005443A /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6CA9491D8335AA0005443A /* SVIndefiniteAnimatedView.m */; };
+		8B6CA9531D8335AA0005443A /* SVProgressAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6CA94B1D8335AA0005443A /* SVProgressAnimatedView.m */; };
+		8B6CA9541D8335AA0005443A /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8B6CA94D1D8335AA0005443A /* SVProgressHUD.bundle */; };
+		8B6CA9551D8335AA0005443A /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6CA94F1D8335AA0005443A /* SVProgressHUD.m */; };
+		8B6CA9561D8335AA0005443A /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6CA9511D8335AA0005443A /* SVRadialGradientLayer.m */; };
 		8B7406DA1D53B86600C0F67B /* GUIFootPressureImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7406D81D53B86600C0F67B /* GUIFootPressureImageViewController.m */; };
 		8B7406DE1D53BC5D00C0F67B /* UIColor+CustomColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7406DD1D53BC5D00C0F67B /* UIColor+CustomColor.m */; };
 		8B7406E31D53D6B200C0F67B /* 3_foot_pressure.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B7406DF1D53D6B200C0F67B /* 3_foot_pressure.png */; };
@@ -238,6 +243,7 @@
 		00FF371D1A36310300FD1E45 /* Bike_road_diagram_ABCD.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bike_road_diagram_ABCD.png; sourceTree = "<group>"; };
 		2010E01299865D20785CF17A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		21428C59B206D9E67FA803AC /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3467BEFC1D7F462D00BD308A /* saddle_silhouette_60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = saddle_silhouette_60.png; sourceTree = "<group>"; };
 		3467BEFE1D7F5AC700BD308A /* home_bike.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_bike.png; sourceTree = "<group>"; };
 		3467BEFF1D7F5AC700BD308A /* home_clients.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_clients.png; sourceTree = "<group>"; };
 		3467BF001D7F5AC700BD308A /* home_email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home_email.png; sourceTree = "<group>"; };
@@ -254,7 +260,6 @@
 		34E759141D7F381100D0F95D /* cleat_right_spindle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cleat_right_spindle.png; sourceTree = "<group>"; };
 		34E759171D7F456A00D0F95D /* cleat_fa_left_text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cleat_fa_left_text.png; sourceTree = "<group>"; };
 		34E759191D7F456E00D0F95D /* cleat_fa_right_text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cleat_fa_right_text.png; sourceTree = "<group>"; };
-		3467BEFC1D7F462D00BD308A /* saddle_silhouette_60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = saddle_silhouette_60.png; sourceTree = "<group>"; };
 		5D003773195CF0B800BC9BBA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = bikefit/Images.xcassets; sourceTree = "<group>"; };
 		5D135A4419A7FACD00273076 /* plus-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-icon.png"; sourceTree = "<group>"; };
 		5D192BB817FE55ED0046CC16 /* GoniometerDrawingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoniometerDrawingView.h; sourceTree = "<group>"; };
@@ -410,6 +415,16 @@
 		8B55D2EC1D5A39570075F719 /* 1_foot_pressure_bw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1_foot_pressure_bw.png; sourceTree = "<group>"; };
 		8B55D2ED1D5A39570075F719 /* 2_foot_pressure_bw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2_foot_pressure_bw.png; sourceTree = "<group>"; };
 		8B55D2EE1D5A39570075F719 /* 3_foot_pressure_bw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3_foot_pressure_bw.png; sourceTree = "<group>"; };
+		8B6CA9481D8335AA0005443A /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
+		8B6CA9491D8335AA0005443A /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
+		8B6CA94A1D8335AA0005443A /* SVProgressAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressAnimatedView.h; sourceTree = "<group>"; };
+		8B6CA94B1D8335AA0005443A /* SVProgressAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressAnimatedView.m; sourceTree = "<group>"; };
+		8B6CA94C1D8335AA0005443A /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		8B6CA94D1D8335AA0005443A /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		8B6CA94E1D8335AA0005443A /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		8B6CA94F1D8335AA0005443A /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		8B6CA9501D8335AA0005443A /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
+		8B6CA9511D8335AA0005443A /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
 		8B7406D71D53B86600C0F67B /* GUIFootPressureImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUIFootPressureImageViewController.h; sourceTree = "<group>"; };
 		8B7406D81D53B86600C0F67B /* GUIFootPressureImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GUIFootPressureImageViewController.m; sourceTree = "<group>"; };
 		8B7406DC1D53BC5D00C0F67B /* UIColor+CustomColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+CustomColor.h"; sourceTree = "<group>"; };
@@ -607,6 +622,7 @@
 		5D8531CF1759CD6600934E68 /* Tabbed Bikefit */ = {
 			isa = PBXGroup;
 			children = (
+				8B6CA9471D8335AA0005443A /* SVProgressHUD */,
 				5D3BC334190AD9AB003E8613 /* BikefitConstants.h */,
 				5D8531D81759CD6600934E68 /* AppDelegate.h */,
 				5D8531D91759CD6600934E68 /* AppDelegate.m */,
@@ -843,6 +859,23 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		8B6CA9471D8335AA0005443A /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				8B6CA9481D8335AA0005443A /* SVIndefiniteAnimatedView.h */,
+				8B6CA9491D8335AA0005443A /* SVIndefiniteAnimatedView.m */,
+				8B6CA94A1D8335AA0005443A /* SVProgressAnimatedView.h */,
+				8B6CA94B1D8335AA0005443A /* SVProgressAnimatedView.m */,
+				8B6CA94C1D8335AA0005443A /* SVProgressHUD-Prefix.pch */,
+				8B6CA94D1D8335AA0005443A /* SVProgressHUD.bundle */,
+				8B6CA94E1D8335AA0005443A /* SVProgressHUD.h */,
+				8B6CA94F1D8335AA0005443A /* SVProgressHUD.m */,
+				8B6CA9501D8335AA0005443A /* SVRadialGradientLayer.h */,
+				8B6CA9511D8335AA0005443A /* SVRadialGradientLayer.m */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
 		FBC8E09C9B730E295F1D27B8 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -949,6 +982,9 @@
 						CreatedOnToolsVersion = 7.0.1;
 						TestTargetID = 5D8531C51759CD6600934E68;
 					};
+					5D8531C51759CD6600934E68 = {
+						DevelopmentTeam = MJLARYDQWH;
+					};
 				};
 			};
 			buildConfigurationList = 5D8531C11759CD6600934E68 /* Build configuration list for PBXProject "bikefit" */;
@@ -996,6 +1032,7 @@
 				34E759181D7F456A00D0F95D /* cleat_fa_left_text.png in Resources */,
 				5DEA4BD81997EA3A0024C220 /* BikeFitIcon-29x29.png in Resources */,
 				3467BEFD1D7F462D00BD308A /* saddle_silhouette_60.png in Resources */,
+				8B6CA9541D8335AA0005443A /* SVProgressHUD.bundle in Resources */,
 				5DD1837919D878AB00A5B6CE /* Bike_road_diagram_APPP.png in Resources */,
 				5DD68EEC1980884400BCCCD9 /* info_button_29x29.png in Resources */,
 				8B55D2F11D5A39570075F719 /* 2_foot_pressure_bw.png in Resources */,
@@ -1194,7 +1231,10 @@
 				5D6F3A9118145FAC001BD897 /* BikeFitViewController.m in Sources */,
 				5DB3607818C6A28F00191385 /* KopsNote.m in Sources */,
 				5D9EA2371857EA2100E63682 /* FitNote.m in Sources */,
+				8B6CA9531D8335AA0005443A /* SVProgressAnimatedView.m in Sources */,
+				8B6CA9561D8335AA0005443A /* SVRadialGradientLayer.m in Sources */,
 				5D7E1F4A18BC0F1500689276 /* VarusNote.m in Sources */,
+				8B6CA9551D8335AA0005443A /* SVProgressHUD.m in Sources */,
 				004D02911BEB02AB001BD665 /* CreateAccountViewController.m in Sources */,
 				5D9904B118ECD52500FE5765 /* AngleImageViewerViewController.m in Sources */,
 				5DB3607518C694DA00191385 /* KopsViewController.m in Sources */,
@@ -1202,6 +1242,7 @@
 				5D9E2161185FE897006BA0B3 /* FootBottomNoteViewController.m in Sources */,
 				00F1996F1B82D71A00467F26 /* SaddleTiltNoteViewController.m in Sources */,
 				00FEDCBB1BE5966300FF7A5C /* LoginViewController.m in Sources */,
+				8B6CA9521D8335AA0005443A /* SVIndefiniteAnimatedView.m in Sources */,
 				00F813541A2ADE1300F1EA6D /* LegAngleViewViewController.m in Sources */,
 				008755721B40D61F00BB67BE /* LoadinSpinnerView.m in Sources */,
 				5DBC20C418E4E24900BF5957 /* ImageViewerViewController.m in Sources */,
@@ -1466,7 +1507,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				"CODE_SIGN_ENTITLEMENTS[sdk=*]" = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1504,7 +1546,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.velopez.bikefit;
 				PRODUCT_NAME = bikefit;
-				PROVISIONING_PROFILE = "6fa7438c-d897-4734-b7f1-ecad1c99892c";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
@@ -1518,7 +1560,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1556,7 +1598,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.velopez.bikefit;
 				PRODUCT_NAME = bikefit;
-				PROVISIONING_PROFILE = "6fa7438c-d897-4734-b7f1-ecad1c99892c";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;

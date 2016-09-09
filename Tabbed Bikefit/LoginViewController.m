@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "BikefitConstants.h"
 #import "UIColor+CustomColor.h"
+#import "SVProgressHUD.h"
 
 @interface LoginViewController ()
 {
@@ -111,17 +112,20 @@
 }
 
 - (void) login:(id)sender {
+    [SVProgressHUD show];
     [AmazonClientManager loginWithEmail:emailField.text andPassword:passwordField.text andDelegate:self];
 }
 
 - (void) loginWithAmazon:(id)sender
 {
+    [SVProgressHUD show];
     [AmazonClientManager loginWithAmazon:self];
     
 }
 
 - (void) onUserSignedIn
 {
+    [SVProgressHUD dismiss];
     if([AmazonClientManager verifyLoggedIn])
     {
         [self.navigationController popViewControllerAnimated:YES];
@@ -187,15 +191,5 @@
         [AmazonClientManager isAmazonAccount:emailField.text andDelegate:self];
     }
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

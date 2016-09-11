@@ -59,6 +59,27 @@
     CGFloat navHeight = CGRectGetHeight(self.navigationController.navigationBar.frame);
     CGFloat imageHeight = (CGRectGetMinY(tilteAngleLabel.frame) - navHeight) * 0.75;
     CGFloat imageY = navHeight + (imageHeight / 6);
+
+    UILabel *towardsNose = [[UILabel alloc] initWithFrame:CGRectMake(0,
+                                                                     navHeight,
+                                                                     CGRectGetWidth(self.view.bounds),
+                                                                     imageY - navHeight)];
+    towardsNose.font = [UIFont systemFontOfSize:CGRectGetHeight(towardsNose.frame)];
+    towardsNose.text = @"THIS SIDE TOWARDS NOSE";
+    towardsNose.textAlignment = NSTextAlignmentCenter;
+    towardsNose.textColor = [UIColor lightGrayColor];
+    [self.view addSubview:towardsNose];
+
+    UILabel *towardsRear = [[UILabel alloc] initWithFrame:CGRectMake(0,
+                                                                     CGRectGetMinY(saveButton.frame) - CGRectGetHeight(towardsNose.frame),
+                                                                     CGRectGetWidth(towardsNose.frame),
+                                                                     CGRectGetHeight(towardsNose.frame))];
+    towardsRear.font = [UIFont systemFontOfSize:CGRectGetHeight(towardsRear.frame)];
+    towardsRear.text = @"THIS SIDE TOWARDS REAR";
+    towardsRear.textColor = [UIColor lightGrayColor];
+    towardsRear.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:towardsRear];
+
     saddleImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"saddle_silhouette_60.png"]];
     saddleImage.frame = CGRectMake(0,
                                    imageY,
@@ -68,16 +89,23 @@
     [self.view addSubview:saddleImage];
     
     float arrowEdge = CGRectGetHeight(saddleImage.frame) * 0.5;
-    upArrow = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMinY(saddleImage.frame), arrowEdge, arrowEdge)];
+    upArrow = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.view.bounds) - arrowEdge - 5,
+                                                        CGRectGetMinY(saddleImage.frame),
+                                                        arrowEdge, arrowEdge)];
     upArrow.text = @"▲";
     upArrow.textAlignment = NSTextAlignmentCenter;
     upArrow.font = [UIFont systemFontOfSize:arrowEdge];
+    upArrow.textColor = [UIColor colorWithRed:1 green:0.3 blue:0 alpha:1];
     [self.view addSubview:upArrow];
 
-    downArrow = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(upArrow.frame), arrowEdge, arrowEdge)];
+    downArrow = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetWidth(self.view.bounds) - arrowEdge - 5,
+                                                          CGRectGetMaxY(upArrow.frame),
+                                                          arrowEdge, arrowEdge)];
     downArrow.text = @"▼";
     downArrow.textAlignment = NSTextAlignmentCenter;
     downArrow.font = [UIFont systemFontOfSize:arrowEdge];
+    downArrow.textColor = [UIColor colorWithRed:1 green:0.3 blue:0 alpha:1];
+
     [self.view addSubview:downArrow];
 
     tilteAngleLabel.text = @"TILT!";

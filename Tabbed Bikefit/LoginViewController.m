@@ -32,9 +32,13 @@
     float bottomOfNavBar = CGRectGetMaxY(self.navigationController.navigationBar.frame);
     float fieldHeight = 50;
 
+    UIImageView *logoImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BF-Logo"]];
+    logoImageView.center = CGPointMake(self.view.center.x, self.view.frame.size.height * .1);
+    [self.view addSubview:logoImageView];
+
     // Do any additional setup after loading the view.
     emailField = [[UITextField alloc] initWithFrame:CGRectMake(margin,
-                                                               bottomOfNavBar + margin,
+                                                               CGRectGetMaxY(logoImageView.frame) + margin,
                                                                width - (margin * 2),
                                                                fieldHeight)];
     emailField.borderStyle = UITextBorderStyleRoundedRect;

@@ -1,4 +1,6 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
-pod 'Bolts'
-pod "AWSiOSSDKv2"
+target "bikefit" do
+	pod 'Bolts'
+	pod "AWSiOSSDKv2"
+end

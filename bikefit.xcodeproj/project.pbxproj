@@ -426,20 +426,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		C19EC42D41455B88DF787ECF5822F12D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A32284153E9FA5DD1F280AA32BD92060 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		1EB6271140FD34A89643E8E8F1874688 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -469,9 +455,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A32284153E9FA5DD1F280AA32BD92060 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C19EC42D41455B88DF787ECF5822F12D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		05AF5AC383ED9A58D63265AA41EA23ED /* AthleteInfo */ = {
+			isa = PBXGroup;
+			children = (
+				D756DC17AB0658DDFBC0790B0274EB0F /* AthleteInfoController.h */,
+				7D37C73B57793B6B87F066F108A0DE83 /* AthleteInfoController.m */,
+				D7F1FA4FCCE8A3B2BCA4AF0EAD570B75 /* AthleteInfoTableCell.h */,
+				6E5F029CFCF0E4448D2E84993AFCFFDB /* AthleteInfoTableCell.m */,
+			);
+			name = AthleteInfo;
+			sourceTree = "<group>";
+		};
 		16BA1D3D846B5E33B10FFB9C72AC888D /* bikefitUITests */ = {
 			isa = PBXGroup;
 			children = (
@@ -481,13 +492,40 @@
 			path = bikefitUITests;
 			sourceTree = "<group>";
 		};
-		9FC6206D15D265224545C63E495C3255 /* bikefitModelTests */ = {
+		2DDDA5AE207B225F847C3952C48F3CE6 /* Viewers */ = {
 			isa = PBXGroup;
 			children = (
-				F0B413CC392B57BE2D93BC6A34DD788A /* Info.plist */,
-				C56C895A8B01B8D5ABC0C2EDD61BE70F /* bikefitModelTests.m */,
+				373096D0F24B180FDD754E7F62030D1A /* AngleImageViewerViewController.h */,
+				CD9C95ACDA0F7860A7F7BADEFF5340E1 /* AngleImageViewerViewController.m */,
+				83C61DC942C4EA19ABAAD6CFF698A9A9 /* ImageViewerViewController.h */,
+				BDE8232A94883706119FAA30C72ED56A /* ImageViewerViewController.m */,
+				22509FCF427591B83F4C76F0E386CD79 /* VarusViewerViewController.h */,
+				7FF565EB6DB5F061409063A371C28E70 /* VarusViewerViewController.m */,
 			);
-			path = bikefitModelTests;
+			name = Viewers;
+			sourceTree = "<group>";
+		};
+		325046D4F546770BD2CE323BC861B2AC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				88E3DFF134AC5EA474B17922319DE3DF /* DrawingView.h */,
+				F82C0DEFE6DD21073593A1C536D0BBC7 /* DrawingView.m */,
+				2136DBD5370CDBA857649CB39AB2F33C /* FootBottomView.h */,
+				4B1D3B532AE59870EADB72C69A71AFC9 /* FootBottomView.m */,
+				E4F8BB95050E794F6C3A0C3B6CA98B25 /* GUIKneeTouchInterceptorView.h */,
+				88A50D002CED9D10DFCAE7F69147FE41 /* GUIKneeTouchInterceptorView.m */,
+				27B8C40D087DE72194FAFCA2227E9A00 /* GoniometerDrawingView.h */,
+				F2D0B85F1661E43F46B800FC8069CE3E /* GoniometerDrawingView.m */,
+				4BEC968FC913B63350C74D79E653B16A /* KneeDrawingView.h */,
+				B4BA6BD016194C21D0D68977F35A9568 /* KneeDrawingView.m */,
+				76AD29E058D252E9089666BD083B9942 /* NoteImageView.h */,
+				1DE7151D498913AB0C4F0E9B26126CF6 /* NoteImageView.m */,
+				3A1D7AEE31464CD751C1452AA5CF26A8 /* SpindleView.h */,
+				90DD9DD9C2D7572AF3B42BDCA5C4841D /* SpindleView.m */,
+				285A2EFC5616EC2835B8635B57F4C2F1 /* VarusDrawingView.h */,
+				7CA9839BE5AFCF8C9588898C2E870013 /* VarusDrawingView.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		4216D9D7127EB9BB94B7CE4E9CE58E8B /* ViewControllers */ = {
@@ -544,84 +582,35 @@
 			name = Interface;
 			sourceTree = "<group>";
 		};
-		701A97C06E4319DB4FEC5C7BE4183261 /* Model */ = {
+		48BF0A69CCD0CDF009C5358DAFA8D086 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B084789AED572B82BD0313B20FF18FD2 /* Note Classes */,
-				E223275C6D8B7EFA42B72128C0901B16 /* AmazonClientManager.h */,
-				F89184FFBC86A360DD7EC3E8D408F833 /* AmazonClientManager.m */,
-				8A388A251D4341D10B10339E81FDFDB5 /* AthletePropertyModel.h */,
-				6F5F56C0CD76ECA319015A252A1A56F4 /* AthletePropertyModel.m */,
-				7EA91930075EB1CD3F42522BF5F98896 /* CredentialProvider.h */,
-				114DAD7CA240309A7C661A93B55A268E /* CredentialProvider.m */,
-				FE7B2CBB597C4D8B8CEC2F02DC81B3C3 /* GlobalOperationQueueManager.h */,
-				C979BFD3715E2C29344809E76523DDB9 /* GlobalOperationQueueManager.m */,
-				A7AE5F0F9E65435324D53ABE982B9BCB /* LoginDelegate.h */,
+				E2837847E34D03F6B913B4F29710F99E /* Pods-bikefit.debug.xcconfig */,
+				4540CE322B8ACC19B6C87C4E2A4A7315 /* Pods-bikefit.release.xcconfig */,
+				20B9BF535B98E09DAC36641D2BD1E170 /* Pods.debug.xcconfig */,
+				F3163F869ED8CAB1660C99B82A3CFB0A /* Pods.release.xcconfig */,
 			);
-			name = Model;
+			name = Pods;
 			sourceTree = "<group>";
 		};
-		E1200D9AFFCF1DD90D2A3BF1CDF1B817 = {
+		5124D843BB8DED155F1EAF0CAC9D2C67 /* LoginWithAmazonSample */ = {
 			isa = PBXGroup;
 			children = (
-				DC52848FD8199899B2F6A533F35D9490 /* Frameworks */,
-				48BF0A69CCD0CDF009C5358DAFA8D086 /* Pods */,
-				6C359757A78EECB15B2CA1328B8960E9 /* Products */,
-				C31E081360FC7E649644216555AEE588 /* Tabbed Bikefit */,
-				9FC6206D15D265224545C63E495C3255 /* bikefitModelTests */,
-				16BA1D3D846B5E33B10FFB9C72AC888D /* bikefitUITests */,
-				1B1603B36DF5A106DE337E25D61E1631 /* Images.xcassets */,
+				D857160BABCFAE3A4CB862A00736245B /* AMZNAuthorizeUserDelegate.h */,
+				DE0628149186558241ACD687595108D9 /* AMZNAuthorizeUserDelegate.m */,
+				EF670B709657410DC8BE0BC5713E72FC /* AMZNGetAccessTokenDelegate.h */,
+				578F306C8F2E9FB90BBA82E39CB2ECD8 /* AMZNGetAccessTokenDelegate.m */,
+				4B8ACA449179C833221C41052C497903 /* AMZNGetProfileDelegate.h */,
+				CD88645B6604D2B04703B51E73119B0E /* AMZNGetProfileDelegate.m */,
+				C7FB0819DB15B0CF76FB9CAF673342C7 /* AMZNLoginController.h */,
+				2B31586E118EA68C7EA64B988C627C3C /* AMZNLoginController.m */,
+				17824F40A8E117F34AB647A031CE3FDD /* AMZNLogoutDelegate.h */,
+				AF08DE6BD39163C68B551C968C00FB4A /* AMZNLogoutDelegate.m */,
+				7261DEDBCE16961CC6A9DC0B3B0103E8 /* btnLWA_gold_209x48.png */,
+				1A89588E34E36DF92CAFF6E95740EA83 /* btnLWA_gold_209x48_pressed.png */,
 			);
-			sourceTree = "<group>";
-		};
-		6C359757A78EECB15B2CA1328B8960E9 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				871743ED11BAD408E5FB7613D9D0F0C3 /* bikefit.app */,
-				2E4D2D5539337E75D3B44BC36B9AC434 /* bikefitModelTests.xctest */,
-				3D130C7375704E521C162D19438664D5 /* bikefitTests.octest */,
-				D4C8D147C521286612138A3B7B1368DD /* bikefitUITests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		DC52848FD8199899B2F6A533F35D9490 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				654EC64BE42330768DFCF53E8F37057E /* AVFoundation.framework */,
-				A282920090BEAD875A451260FECF9364 /* CoreFoundation.framework */,
-				CBF3463D2C2DE9FE1894572D364AA186 /* CoreGraphics.framework */,
-				7618BC55F8AB4A851F0DD7DF1A4B344B /* CoreMedia.framework */,
-				09BDCE21BB92C9314BED6D3AAD389FA8 /* CoreMotion.framework */,
-				48079637CDA4A135AA203F291215FBBB /* CoreVideo.framework */,
-				DF445BB09E8A9CFB4365452116FCA979 /* Foundation.framework */,
-				CBFA2C104E0CD16150F65A4F76AADF45 /* LoginWithAmazon.framework */,
-				300A358622E2F60C993C90ED577C94D6 /* MessageUI.framework */,
-				CE88FF737B031789650CD12FE14D687A /* QuartzCore.framework */,
-				CAB67BD2DDA17557A46AF97F5E9AD3FF /* Security.framework */,
-				B25C4D1BDB8F0E27C7C886819F582681 /* UIKit.framework */,
-				9A0C879C1ADB6FE24F5D133838F94F55 /* libPods-bikefit.a */,
-				21F24A53ADE1E55B9196EF73EF6DC743 /* libPods.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		C31E081360FC7E649644216555AEE588 /* Tabbed Bikefit */ = {
-			isa = PBXGroup;
-			children = (
-				48BBAF17C4C3D139EBD7FB74124A96EA /* Interface */,
-				5124D843BB8DED155F1EAF0CAC9D2C67 /* LoginWithAmazonSample */,
-				701A97C06E4319DB4FEC5C7BE4183261 /* Model */,
-				5ED08B29261EA702F7DBA4BAE68C8EA1 /* Supporting Files */,
-				4216D9D7127EB9BB94B7CE4E9CE58E8B /* ViewControllers */,
-				C686ADC5FA521ABB0399AEE3C0F6A821 /* AppDelegate.h */,
-				4112B1605AAFE607D2AEB4B7E383A490 /* AppDelegate.m */,
-				3B878B0217C6FA9A35C2EE309E041AAF /* BikefitConstants.h */,
-				29ADCD2D7FC0BE2B4F4CC22E191BB2A6 /* UIColor+CustomColor.h */,
-				D29B81F1724D50426EAB3BD4DB04AAB7 /* UIColor+CustomColor.m */,
-			);
-			path = "Tabbed Bikefit";
-			sourceTree = "<group>";
+			path = LoginWithAmazonSample;
+			sourceTree = SOURCE_ROOT;
 		};
 		5ED08B29261EA702F7DBA4BAE68C8EA1 /* Supporting Files */ = {
 			isa = PBXGroup;
@@ -701,6 +690,75 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		6C359757A78EECB15B2CA1328B8960E9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				871743ED11BAD408E5FB7613D9D0F0C3 /* bikefit.app */,
+				2E4D2D5539337E75D3B44BC36B9AC434 /* bikefitModelTests.xctest */,
+				3D130C7375704E521C162D19438664D5 /* bikefitTests.octest */,
+				D4C8D147C521286612138A3B7B1368DD /* bikefitUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		701A97C06E4319DB4FEC5C7BE4183261 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B084789AED572B82BD0313B20FF18FD2 /* Note Classes */,
+				E223275C6D8B7EFA42B72128C0901B16 /* AmazonClientManager.h */,
+				F89184FFBC86A360DD7EC3E8D408F833 /* AmazonClientManager.m */,
+				8A388A251D4341D10B10339E81FDFDB5 /* AthletePropertyModel.h */,
+				6F5F56C0CD76ECA319015A252A1A56F4 /* AthletePropertyModel.m */,
+				7EA91930075EB1CD3F42522BF5F98896 /* CredentialProvider.h */,
+				114DAD7CA240309A7C661A93B55A268E /* CredentialProvider.m */,
+				FE7B2CBB597C4D8B8CEC2F02DC81B3C3 /* GlobalOperationQueueManager.h */,
+				C979BFD3715E2C29344809E76523DDB9 /* GlobalOperationQueueManager.m */,
+				A7AE5F0F9E65435324D53ABE982B9BCB /* LoginDelegate.h */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		70CD094DA159FFFE08F01B5CAE8AC1D8 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D64DC019827D8BC218A580CA4A670816 /* Base Controllers */,
+				2DDDA5AE207B225F847C3952C48F3CE6 /* Viewers */,
+				97BE87D36EACEEC5ABA79A863107597B /* FootBottomNoteViewController.h */,
+				CE07D84489178348A013308A09805F17 /* FootBottomNoteViewController.m */,
+				A84E82959E4F3009965E758C6AF9E5D4 /* KopsViewController.h */,
+				D75E933DD6DDB19BF34BD8D9F51300B4 /* KopsViewController.m */,
+				8F40E639798CC812AEF6785EB62530AA /* LegAngleViewViewController.h */,
+				C3876B3EF2B607FA87EC75AF3AA761EA /* LegAngleViewViewController.m */,
+				846B043E8F777914A55251D905E35E3F /* SaddleTiltNoteViewController.h */,
+				FEE4602BB84D4F00485567AA2315CA81 /* SaddleTiltNoteViewController.m */,
+				3ED6BEF93EBCD781EFA59157649EBB30 /* SpindleNoteViewController.h */,
+				7A5E017C8EB4213BD623B19D784A38C1 /* SpindleNoteViewController.m */,
+				D99C5385CD9B8C44FE6CBCFB2047D51D /* TextFitNoteViewController.h */,
+				A58E82DF9DFF6536672E4E9D778E2958 /* TextFitNoteViewController.m */,
+				18DB242345DB4D16E2457CBD5F1DBDD6 /* VarusNoteViewController.h */,
+				9C444501D9FABF88BE82B7A803752BF4 /* VarusNoteViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		8C11B5E7E34AA42419ADCD273DC59CA0 /* Note View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				70CD094DA159FFFE08F01B5CAE8AC1D8 /* ViewControllers */,
+				325046D4F546770BD2CE323BC861B2AC /* Views */,
+			);
+			name = "Note View Controllers";
+			sourceTree = "<group>";
+		};
+		9FC6206D15D265224545C63E495C3255 /* bikefitModelTests */ = {
+			isa = PBXGroup;
+			children = (
+				F0B413CC392B57BE2D93BC6A34DD788A /* Info.plist */,
+				C56C895A8B01B8D5ABC0C2EDD61BE70F /* bikefitModelTests.m */,
+			);
+			path = bikefitModelTests;
+			sourceTree = "<group>";
+		};
 		B084789AED572B82BD0313B20FF18FD2 /* Note Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -728,13 +786,21 @@
 			name = "Note Classes";
 			sourceTree = "<group>";
 		};
-		8C11B5E7E34AA42419ADCD273DC59CA0 /* Note View Controllers */ = {
+		C31E081360FC7E649644216555AEE588 /* Tabbed Bikefit */ = {
 			isa = PBXGroup;
 			children = (
-				70CD094DA159FFFE08F01B5CAE8AC1D8 /* ViewControllers */,
-				325046D4F546770BD2CE323BC861B2AC /* Views */,
+				48BBAF17C4C3D139EBD7FB74124A96EA /* Interface */,
+				5124D843BB8DED155F1EAF0CAC9D2C67 /* LoginWithAmazonSample */,
+				701A97C06E4319DB4FEC5C7BE4183261 /* Model */,
+				5ED08B29261EA702F7DBA4BAE68C8EA1 /* Supporting Files */,
+				4216D9D7127EB9BB94B7CE4E9CE58E8B /* ViewControllers */,
+				C686ADC5FA521ABB0399AEE3C0F6A821 /* AppDelegate.h */,
+				4112B1605AAFE607D2AEB4B7E383A490 /* AppDelegate.m */,
+				3B878B0217C6FA9A35C2EE309E041AAF /* BikefitConstants.h */,
+				29ADCD2D7FC0BE2B4F4CC22E191BB2A6 /* UIColor+CustomColor.h */,
+				D29B81F1724D50426EAB3BD4DB04AAB7 /* UIColor+CustomColor.m */,
 			);
-			name = "Note View Controllers";
+			path = "Tabbed Bikefit";
 			sourceTree = "<group>";
 		};
 		D64DC019827D8BC218A580CA4A670816 /* Base Controllers */ = {
@@ -754,109 +820,62 @@
 			name = "Base Controllers";
 			sourceTree = "<group>";
 		};
-		2DDDA5AE207B225F847C3952C48F3CE6 /* Viewers */ = {
+		DC52848FD8199899B2F6A533F35D9490 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				373096D0F24B180FDD754E7F62030D1A /* AngleImageViewerViewController.h */,
-				CD9C95ACDA0F7860A7F7BADEFF5340E1 /* AngleImageViewerViewController.m */,
-				83C61DC942C4EA19ABAAD6CFF698A9A9 /* ImageViewerViewController.h */,
-				BDE8232A94883706119FAA30C72ED56A /* ImageViewerViewController.m */,
-				22509FCF427591B83F4C76F0E386CD79 /* VarusViewerViewController.h */,
-				7FF565EB6DB5F061409063A371C28E70 /* VarusViewerViewController.m */,
+				654EC64BE42330768DFCF53E8F37057E /* AVFoundation.framework */,
+				A282920090BEAD875A451260FECF9364 /* CoreFoundation.framework */,
+				CBF3463D2C2DE9FE1894572D364AA186 /* CoreGraphics.framework */,
+				7618BC55F8AB4A851F0DD7DF1A4B344B /* CoreMedia.framework */,
+				09BDCE21BB92C9314BED6D3AAD389FA8 /* CoreMotion.framework */,
+				48079637CDA4A135AA203F291215FBBB /* CoreVideo.framework */,
+				DF445BB09E8A9CFB4365452116FCA979 /* Foundation.framework */,
+				CBFA2C104E0CD16150F65A4F76AADF45 /* LoginWithAmazon.framework */,
+				300A358622E2F60C993C90ED577C94D6 /* MessageUI.framework */,
+				CE88FF737B031789650CD12FE14D687A /* QuartzCore.framework */,
+				CAB67BD2DDA17557A46AF97F5E9AD3FF /* Security.framework */,
+				B25C4D1BDB8F0E27C7C886819F582681 /* UIKit.framework */,
+				9A0C879C1ADB6FE24F5D133838F94F55 /* libPods-bikefit.a */,
+				21F24A53ADE1E55B9196EF73EF6DC743 /* libPods.a */,
 			);
-			name = Viewers;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		5124D843BB8DED155F1EAF0CAC9D2C67 /* LoginWithAmazonSample */ = {
+		E1200D9AFFCF1DD90D2A3BF1CDF1B817 = {
 			isa = PBXGroup;
 			children = (
-				D857160BABCFAE3A4CB862A00736245B /* AMZNAuthorizeUserDelegate.h */,
-				DE0628149186558241ACD687595108D9 /* AMZNAuthorizeUserDelegate.m */,
-				EF670B709657410DC8BE0BC5713E72FC /* AMZNGetAccessTokenDelegate.h */,
-				578F306C8F2E9FB90BBA82E39CB2ECD8 /* AMZNGetAccessTokenDelegate.m */,
-				4B8ACA449179C833221C41052C497903 /* AMZNGetProfileDelegate.h */,
-				CD88645B6604D2B04703B51E73119B0E /* AMZNGetProfileDelegate.m */,
-				C7FB0819DB15B0CF76FB9CAF673342C7 /* AMZNLoginController.h */,
-				2B31586E118EA68C7EA64B988C627C3C /* AMZNLoginController.m */,
-				17824F40A8E117F34AB647A031CE3FDD /* AMZNLogoutDelegate.h */,
-				AF08DE6BD39163C68B551C968C00FB4A /* AMZNLogoutDelegate.m */,
-				7261DEDBCE16961CC6A9DC0B3B0103E8 /* btnLWA_gold_209x48.png */,
-				1A89588E34E36DF92CAFF6E95740EA83 /* btnLWA_gold_209x48_pressed.png */,
+				DC52848FD8199899B2F6A533F35D9490 /* Frameworks */,
+				48BF0A69CCD0CDF009C5358DAFA8D086 /* Pods */,
+				6C359757A78EECB15B2CA1328B8960E9 /* Products */,
+				C31E081360FC7E649644216555AEE588 /* Tabbed Bikefit */,
+				9FC6206D15D265224545C63E495C3255 /* bikefitModelTests */,
+				16BA1D3D846B5E33B10FFB9C72AC888D /* bikefitUITests */,
+				1B1603B36DF5A106DE337E25D61E1631 /* Images.xcassets */,
 			);
-			path = LoginWithAmazonSample;
-			sourceTree = SOURCE_ROOT;
-		};
-		05AF5AC383ED9A58D63265AA41EA23ED /* AthleteInfo */ = {
-			isa = PBXGroup;
-			children = (
-				D756DC17AB0658DDFBC0790B0274EB0F /* AthleteInfoController.h */,
-				7D37C73B57793B6B87F066F108A0DE83 /* AthleteInfoController.m */,
-				D7F1FA4FCCE8A3B2BCA4AF0EAD570B75 /* AthleteInfoTableCell.h */,
-				6E5F029CFCF0E4448D2E84993AFCFFDB /* AthleteInfoTableCell.m */,
-			);
-			name = AthleteInfo;
-			sourceTree = "<group>";
-		};
-		70CD094DA159FFFE08F01B5CAE8AC1D8 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				D64DC019827D8BC218A580CA4A670816 /* Base Controllers */,
-				2DDDA5AE207B225F847C3952C48F3CE6 /* Viewers */,
-				97BE87D36EACEEC5ABA79A863107597B /* FootBottomNoteViewController.h */,
-				CE07D84489178348A013308A09805F17 /* FootBottomNoteViewController.m */,
-				A84E82959E4F3009965E758C6AF9E5D4 /* KopsViewController.h */,
-				D75E933DD6DDB19BF34BD8D9F51300B4 /* KopsViewController.m */,
-				8F40E639798CC812AEF6785EB62530AA /* LegAngleViewViewController.h */,
-				C3876B3EF2B607FA87EC75AF3AA761EA /* LegAngleViewViewController.m */,
-				846B043E8F777914A55251D905E35E3F /* SaddleTiltNoteViewController.h */,
-				FEE4602BB84D4F00485567AA2315CA81 /* SaddleTiltNoteViewController.m */,
-				3ED6BEF93EBCD781EFA59157649EBB30 /* SpindleNoteViewController.h */,
-				7A5E017C8EB4213BD623B19D784A38C1 /* SpindleNoteViewController.m */,
-				D99C5385CD9B8C44FE6CBCFB2047D51D /* TextFitNoteViewController.h */,
-				A58E82DF9DFF6536672E4E9D778E2958 /* TextFitNoteViewController.m */,
-				18DB242345DB4D16E2457CBD5F1DBDD6 /* VarusNoteViewController.h */,
-				9C444501D9FABF88BE82B7A803752BF4 /* VarusNoteViewController.m */,
-			);
-			name = ViewControllers;
-			sourceTree = "<group>";
-		};
-		325046D4F546770BD2CE323BC861B2AC /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				88E3DFF134AC5EA474B17922319DE3DF /* DrawingView.h */,
-				F82C0DEFE6DD21073593A1C536D0BBC7 /* DrawingView.m */,
-				2136DBD5370CDBA857649CB39AB2F33C /* FootBottomView.h */,
-				4B1D3B532AE59870EADB72C69A71AFC9 /* FootBottomView.m */,
-				E4F8BB95050E794F6C3A0C3B6CA98B25 /* GUIKneeTouchInterceptorView.h */,
-				88A50D002CED9D10DFCAE7F69147FE41 /* GUIKneeTouchInterceptorView.m */,
-				27B8C40D087DE72194FAFCA2227E9A00 /* GoniometerDrawingView.h */,
-				F2D0B85F1661E43F46B800FC8069CE3E /* GoniometerDrawingView.m */,
-				4BEC968FC913B63350C74D79E653B16A /* KneeDrawingView.h */,
-				B4BA6BD016194C21D0D68977F35A9568 /* KneeDrawingView.m */,
-				76AD29E058D252E9089666BD083B9942 /* NoteImageView.h */,
-				1DE7151D498913AB0C4F0E9B26126CF6 /* NoteImageView.m */,
-				3A1D7AEE31464CD751C1452AA5CF26A8 /* SpindleView.h */,
-				90DD9DD9C2D7572AF3B42BDCA5C4841D /* SpindleView.m */,
-				285A2EFC5616EC2835B8635B57F4C2F1 /* VarusDrawingView.h */,
-				7CA9839BE5AFCF8C9588898C2E870013 /* VarusDrawingView.m */,
-			);
-			name = Views;
-			sourceTree = "<group>";
-		};
-		48BF0A69CCD0CDF009C5358DAFA8D086 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				E2837847E34D03F6B913B4F29710F99E /* Pods-bikefit.debug.xcconfig */,
-				4540CE322B8ACC19B6C87C4E2A4A7315 /* Pods-bikefit.release.xcconfig */,
-				20B9BF535B98E09DAC36641D2BD1E170 /* Pods.debug.xcconfig */,
-				F3163F869ED8CAB1660C99B82A3CFB0A /* Pods.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		57BBC668CD454F927DE9C5AB8ED01B6B /* bikefitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 615787483603D6168623E5410542D648 /* Build configuration list for PBXNativeTarget "bikefitTests" */;
+			buildPhases = (
+				03121311287D213594D36566748CB2FC /* Sources */,
+				941609CB8D9A1671B7116E76098A8F5F /* Frameworks */,
+				5A96F4A50DB7F2D7AD6515CDD54525AC /* Resources */,
+				8E375F7BE74442B601404E5740629738 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EA9C28765FA9563B24E04A1A8B0FD88D /* PBXTargetDependency */,
+			);
+			name = bikefitTests;
+			productName = "Tabbed BikefitTests";
+			productReference = 3D130C7375704E521C162D19438664D5 /* bikefitTests.octest */;
+			productType = "com.apple.product-type.bundle.ocunit-test";
+		};
 		7A81DD30FD7F7BD24F40C658FDF0E3CD /* bikefitUITests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 307D2896CB50069B80EAD46FA9742384 /* Build configuration list for PBXNativeTarget "bikefitUITests" */;
@@ -897,7 +916,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 79AF482F5CE41DC9CADD54BD0FDAD530 /* Build configuration list for PBXNativeTarget "bikefit" */;
 			buildPhases = (
-				EE1BFB29169953366D6A78803A0722F4 /* [CP] Check Pods Manifest.lock */,
+				CBEE9A863AF0CE6D4448DD78F4757D36 /* [CP] Check Pods Manifest.lock */,
 				C4409092F1C48937FEFED54494BBEC2F /* Sources */,
 				1EB6271140FD34A89643E8E8F1874688 /* Frameworks */,
 				BA8424EA5850094125F0DD1E7200B9EC /* Resources */,
@@ -912,25 +931,6 @@
 			productName = "Tabbed Bikefit";
 			productReference = 871743ED11BAD408E5FB7613D9D0F0C3 /* bikefit.app */;
 			productType = "com.apple.product-type.application";
-		};
-		57BBC668CD454F927DE9C5AB8ED01B6B /* bikefitTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 615787483603D6168623E5410542D648 /* Build configuration list for PBXNativeTarget "bikefitTests" */;
-			buildPhases = (
-				03121311287D213594D36566748CB2FC /* Sources */,
-				941609CB8D9A1671B7116E76098A8F5F /* Frameworks */,
-				5A96F4A50DB7F2D7AD6515CDD54525AC /* Resources */,
-				8E375F7BE74442B601404E5740629738 /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				EA9C28765FA9563B24E04A1A8B0FD88D /* PBXTargetDependency */,
-			);
-			name = bikefitTests;
-			productName = "Tabbed BikefitTests";
-			productReference = 3D130C7375704E521C162D19438664D5 /* bikefitTests.octest */;
-			productType = "com.apple.product-type.bundle.ocunit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -974,18 +974,19 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		FA0FDCDD9C787D4A2CF932E6420E48EB /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		23CC626B95EFDD98B1A24A25C0FE5FB5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				64851C70F90D8AAFF956DC5D774CC23A /* bikefit.app in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5A96F4A50DB7F2D7AD6515CDD54525AC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2ACE0CA10D1F4125C3E9056950A57C29 /* bikefit.app in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1075,30 +1076,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5A96F4A50DB7F2D7AD6515CDD54525AC /* Resources */ = {
+		FA0FDCDD9C787D4A2CF932E6420E48EB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2ACE0CA10D1F4125C3E9056950A57C29 /* bikefit.app in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		8E375F7BE74442B601404E5740629738 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n#\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
-		};
 		736E7A437450AF42E4411FE4F89084B4 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1114,20 +1101,18 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-bikefit/Pods-bikefit-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EE1BFB29169953366D6A78803A0722F4 /* [CP] Check Pods Manifest.lock */ = {
+		8E375F7BE74442B601404E5740629738 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\ncat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\nexit 1\nfi";
-			showEnvVarsInLog = 0;
+			shellScript = "# Run the unit tests in this test bundle.\n#\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
 		99E14426CEE8CF539109BDB15472B1DB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1144,14 +1129,28 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-bikefit/Pods-bikefit-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		CBEE9A863AF0CE6D4448DD78F4757D36 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		73C2BD669428B0635FC2C18BCEF6BA22 /* Sources */ = {
+		03121311287D213594D36566748CB2FC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBA132EE68629723E7180A006BDBDA5C /* bikefitUITests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1160,6 +1159,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F12245D867DAC40D75AFF069D670991 /* bikefitModelTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		73C2BD669428B0635FC2C18BCEF6BA22 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBA132EE68629723E7180A006BDBDA5C /* bikefitUITests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1229,25 +1236,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		03121311287D213594D36566748CB2FC /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		54DBF0D32ECA9699700F14BD95D69AE5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D7DADE16974C2165F91D66EF15438A94 /* bikefit */;
-			targetProxy = 15B5E61FF2DE19A01C44844F07EB246B /* PBXContainerItemProxy */;
-		};
 		076FC36F6FE43E39CF04174E5E584DB1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D7DADE16974C2165F91D66EF15438A94 /* bikefit */;
 			targetProxy = EB129FDC5187BE7FB844FCCE944AE553 /* PBXContainerItemProxy */;
+		};
+		54DBF0D32ECA9699700F14BD95D69AE5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D7DADE16974C2165F91D66EF15438A94 /* bikefit */;
+			targetProxy = 15B5E61FF2DE19A01C44844F07EB246B /* PBXContainerItemProxy */;
 		};
 		EA9C28765FA9563B24E04A1A8B0FD88D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1257,14 +1257,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		3F55987C15939C7A51CC3C2309AAA16E /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5A43F5A206BFA10C4B7D5EC816B1A671 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		1DC158A11FF5F524E9BCFF29508C72E2 /* MainStoryboard_iPad.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1273,49 +1265,26 @@
 			name = MainStoryboard_iPad.storyboard;
 			sourceTree = "<group>";
 		};
+		3F55987C15939C7A51CC3C2309AAA16E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5A43F5A206BFA10C4B7D5EC816B1A671 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		32859764005C53B69AB02B1AA5C01FE4 /* Debug */ = {
+		0E71AA53AA800D031DE36B3420FFE461 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				INFOPLIST_FILE = bikefitUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "Velopez-Digital.bikefitUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				TEST_TARGET_NAME = bikefit;
-				USES_XCTRUNNER = YES;
-			};
-			name = Debug;
-		};
-		AA5FF02CAF13E453C7740D6BA9BB9F39 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1326,15 +1295,13 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
-				INFOPLIST_FILE = bikefitUITests/Info.plist;
+				INFOPLIST_FILE = bikefitModelTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "Velopez-Digital.bikefitUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = "Velopez-Digital.bikefitModelTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				TEST_TARGET_NAME = bikefit;
-				USES_XCTRUNNER = YES;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bikefit.app/bikefit";
 			};
 			name = Release;
 		};
@@ -1366,18 +1333,17 @@
 			};
 			name = Debug;
 		};
-		0E71AA53AA800D031DE36B3420FFE461 /* Release */ = {
+		32859764005C53B69AB02B1AA5C01FE4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1385,48 +1351,15 @@
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
-				INFOPLIST_FILE = bikefitModelTests/Info.plist;
+				INFOPLIST_FILE = bikefitUITests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = "Velopez-Digital.bikefitModelTests";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "Velopez-Digital.bikefitUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bikefit.app/bikefit";
-			};
-			name = Release;
-		};
-		BE72F249A0D53344E00FB8D2736F5CB3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
-				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = "";
 				PROVISIONING_PROFILE = "";
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = bikefit;
+				USES_XCTRUNNER = YES;
 			};
 			name = Debug;
 		};
@@ -1511,6 +1444,105 @@
 			};
 			name = Debug;
 		};
+		5641E3B675322436F14D717D4045BE27 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Tabbed Bikefit/bikefit-Prefix.pch";
+				INFOPLIST_FILE = "Tabbed BikefitTests/bikefitTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "Velopez.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = bikefitTests;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+		94EF4FCFB7BE0B097884FA5603EE1CE9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Tabbed Bikefit/bikefit-Prefix.pch";
+				INFOPLIST_FILE = "Tabbed BikefitTests/bikefitTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "Velopez.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = bikefitTests;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		AA5FF02CAF13E453C7740D6BA9BB9F39 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = bikefitUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "Velopez-Digital.bikefitUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TEST_TARGET_NAME = bikefit;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+		BE72F249A0D53344E00FB8D2736F5CB3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
 		F35460269A28C258E9D99AAFC31FBCC4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4540CE322B8ACC19B6C87C4E2A4A7315 /* Pods-bikefit.release.xcconfig */;
@@ -1563,38 +1595,6 @@
 			};
 			name = Release;
 		};
-		94EF4FCFB7BE0B097884FA5603EE1CE9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Tabbed Bikefit/bikefit-Prefix.pch";
-				INFOPLIST_FILE = "Tabbed BikefitTests/bikefitTests-Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "Velopez.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = bikefitTests;
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Debug;
-		};
-		5641E3B675322436F14D717D4045BE27 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Tabbed Bikefit/bikefit-Prefix.pch";
-				INFOPLIST_FILE = "Tabbed BikefitTests/bikefitTests-Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = "Velopez.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = bikefitTests;
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1603,15 +1603,6 @@
 			buildConfigurations = (
 				32859764005C53B69AB02B1AA5C01FE4 /* Debug */,
 				AA5FF02CAF13E453C7740D6BA9BB9F39 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		63F06660270A4F1E06683602697E27D4 /* Build configuration list for PBXNativeTarget "bikefitModelTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				1D37FBF97A14DE4E87F46A5296B14715 /* Debug */,
-				0E71AA53AA800D031DE36B3420FFE461 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1625,20 +1616,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		79AF482F5CE41DC9CADD54BD0FDAD530 /* Build configuration list for PBXNativeTarget "bikefit" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				51C41C2A6DAFC2992B8A214B63A9901C /* Debug */,
-				F35460269A28C258E9D99AAFC31FBCC4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		615787483603D6168623E5410542D648 /* Build configuration list for PBXNativeTarget "bikefitTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				94EF4FCFB7BE0B097884FA5603EE1CE9 /* Debug */,
 				5641E3B675322436F14D717D4045BE27 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		63F06660270A4F1E06683602697E27D4 /* Build configuration list for PBXNativeTarget "bikefitModelTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D37FBF97A14DE4E87F46A5296B14715 /* Debug */,
+				0E71AA53AA800D031DE36B3420FFE461 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		79AF482F5CE41DC9CADD54BD0FDAD530 /* Build configuration list for PBXNativeTarget "bikefit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				51C41C2A6DAFC2992B8A214B63A9901C /* Debug */,
+				F35460269A28C258E9D99AAFC31FBCC4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

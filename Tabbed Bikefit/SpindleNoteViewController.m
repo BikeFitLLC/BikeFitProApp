@@ -32,6 +32,7 @@
     [super viewDidLoad];
     
     UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(moveSpindleY:)];
+    
     leftFootGraphic = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cleat_fa_left.png"]];
     leftFootGraphic.contentMode = UIViewContentModeScaleAspectFit;
     leftFootGraphic.frame = self.view.frame;
@@ -92,6 +93,17 @@
     [saveButton addTarget:self action:@selector(saveNote:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:saveButton];
 
+    /* "Left" or "Right" text label */
+    CGRect rect = CGRectMake(self.view.frame.size.width * .8,
+                             self.view.frame.size.height * .9,
+                             self.view.frame.size.width * .2,
+                             self.view.frame.size.width * .15); // A little taller than the button to accomodate the 'g''s descender
+    textView = [[UITextView alloc] initWithFrame:rect];
+    textView.font = [UIFont systemFontOfSize:24];
+    [textView setCenter:CGPointMake(self.view.bounds.size.width * .85,
+                                    self.view.bounds.size.height *.65)]; // A little higher on the screen than the button
+    textView.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:textView];
     
     panGesture.minimumNumberOfTouches = 1;
     panGesture.maximumNumberOfTouches = 2;
@@ -110,6 +122,7 @@
         [rightFootGraphic setHidden:true];
         [leftFootTextImageView setHidden:false];
         [rightFootTextImageView setHidden:true];
+        [textView setText:@"Left"];
         spindleImageView.image = [UIImage imageNamed:@"cleat_left_spindle.png"];
     }
     else
@@ -118,6 +131,7 @@
         [rightFootGraphic setHidden:false];
         [leftFootTextImageView setHidden:true];
         [rightFootTextImageView setHidden:false];
+        [textView setText:@"Right"];
         spindleImageView.image = [UIImage imageNamed:@"cleat_right_spindle.png"];
     }
 }

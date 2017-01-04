@@ -26,6 +26,7 @@
 		16E8C10B72A63D764A92A466C6370108 /* BikeFitIcon-29x29.png in Resources */ = {isa = PBXBuildFile; fileRef = 434AB811F0225FCF0E2C677C78C5D181 /* BikeFitIcon-29x29.png */; };
 		173FF1951FED30A5D13F956D106A1028 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B25C4D1BDB8F0E27C7C886819F582681 /* UIKit.framework */; };
 		186D069E181B86C546592A30F3E08E6E /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 784212B385EDD69A5C9B4966CC6A206C /* first@2x.png */; };
+		1CA3F6CD9AC0F98B19CB5EAFBF76BF51 /* Bike_road_diagram_ABCD_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 819A05940D27F81716D982A6553C3AA2 /* Bike_road_diagram_ABCD_2.png */; };
 		1D4BE75E7890AF464378CB6FDC7DC303 /* btnLWA_gold_209x48_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A89588E34E36DF92CAFF6E95740EA83 /* btnLWA_gold_209x48_pressed.png */; };
 		1E55FEC8547353E27B4CCC08D8A4A3A5 /* FFMD_Dial_only-200.png in Resources */ = {isa = PBXBuildFile; fileRef = D78278052F8342B086151825218645B5 /* FFMD_Dial_only-200.png */; };
 		1F646A844B62582E36AEE7B8C6C0F9B0 /* recordButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 14F3AC02B684450E75922AF6969067E2 /* recordButton.png */; };
@@ -92,6 +93,7 @@
 		8C4FAF8F5D5C328A9A8BCE4885F073EB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAB67BD2DDA17557A46AF97F5E9AD3FF /* Security.framework */; };
 		8D972219434CB90DD0DF782CC758A5E2 /* cleat_fa_right.png in Resources */ = {isa = PBXBuildFile; fileRef = 27E46D234C2797E5C6D512E1D986842B /* cleat_fa_right.png */; };
 		8FB039B4A6E492749C53FECA8CEE164F /* KopsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D75E933DD6DDB19BF34BD8D9F51300B4 /* KopsViewController.m */; };
+		900E64E9E7F3B045E46837DDD93F4AF1 /* Bike_tri_diagram_ABCDEF_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BDA0F4CC6BE48C61BA62DB3191CE85A /* Bike_tri_diagram_ABCDEF_2.png */; };
 		91C9C20E041016E7FD91484759522F7B /* plus-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D4394918EAB85611C86940D10305068 /* plus-icon.png */; };
 		930355C3963A8412B7D37376EA7C325D /* FrontCameraIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 444534A071C1EF0832D409AFA650BF12 /* FrontCameraIcon.png */; };
 		937FE6AF9EDA52173535890E97E3A644 /* 0_foot_pressure_bw.png in Resources */ = {isa = PBXBuildFile; fileRef = E9D3FB88727F56294270EDE7A31EA61A /* 0_foot_pressure_bw.png */; };
@@ -312,6 +314,7 @@
 		80886A782A746B11D9BEBD67C4C8287C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		809502BE2CC54F6B0456073FEC35B1E7 /* FootBottomNote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FootBottomNote.h; sourceTree = "<group>"; };
 		816FB7D81BDEEA2EB8A77C9BD4A5D2C1 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		819A05940D27F81716D982A6553C3AA2 /* Bike_road_diagram_ABCD_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bike_road_diagram_ABCD_2.png; sourceTree = "<group>"; };
 		82177CE07285AD3DCB31B9C148888F87 /* BikeFit_logo_Horiz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BikeFit_logo_Horiz.png; sourceTree = "<group>"; };
 		83C61DC942C4EA19ABAAD6CFF698A9A9 /* ImageViewerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewerViewController.h; sourceTree = "<group>"; };
 		846B043E8F777914A55251D905E35E3F /* SaddleTiltNoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaddleTiltNoteViewController.h; sourceTree = "<group>"; };
@@ -321,6 +324,7 @@
 		88A50D002CED9D10DFCAE7F69147FE41 /* GUIKneeTouchInterceptorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GUIKneeTouchInterceptorView.m; sourceTree = "<group>"; };
 		88E3DFF134AC5EA474B17922319DE3DF /* DrawingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawingView.h; sourceTree = "<group>"; };
 		8A388A251D4341D10B10339E81FDFDB5 /* AthletePropertyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AthletePropertyModel.h; sourceTree = "<group>"; };
+		8BDA0F4CC6BE48C61BA62DB3191CE85A /* Bike_tri_diagram_ABCDEF_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bike_tri_diagram_ABCDEF_2.png; sourceTree = "<group>"; };
 		8C289AC9B32734E019AE679E3B5FD665 /* measurementIcon-new-29x29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "measurementIcon-new-29x29.png"; sourceTree = "<group>"; };
 		8D0E7DAB48A11C51EAB7C25FB13A2B19 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		8D32911E16D1ECB8507D1A38171E8A2F /* FrontCameraIcon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FrontCameraIcon.jpg; sourceTree = "<group>"; };
@@ -645,8 +649,10 @@
 				4C392865E5D81AED8AB10276E85C21BC /* BikeFitIcon.png */,
 				5FF1694D3A10CC492A1012453D69FE81 /* Bike_diagram_APP.png */,
 				FDB62071CB340357F86B1C3BC1CC0B59 /* Bike_road_diagram_ABCD.png */,
+				819A05940D27F81716D982A6553C3AA2 /* Bike_road_diagram_ABCD_2.png */,
 				15CD0D4D37234599B3DFD3C34EFAB31C /* Bike_road_diagram_APPP.png */,
 				2987B06062F560777E5B5B53AAF2932D /* Bike_tri_diagram_ABCDEF.png */,
+				8BDA0F4CC6BE48C61BA62DB3191CE85A /* Bike_tri_diagram_ABCDEF_2.png */,
 				095B95E1700B5412FB85BE1CEEAF32AC /* Default-568h@2x.png */,
 				5997CB9B605E6F5DAB60507ECDB47D57 /* Default.png */,
 				2CD243E25412308F40FD49B708AB849B /* Default@2x.png */,
@@ -1018,8 +1024,10 @@
 				D41ADE32E32DA782692F69230EF727AD /* BikeFit_verticle_logo.png in Resources */,
 				0CFC622A0D404DC4559CBA59C0D6D0DF /* Bike_diagram_APP.png in Resources */,
 				B4B6C237F11CE5DD8F53BB290AAF6ECD /* Bike_road_diagram_ABCD.png in Resources */,
+				1CA3F6CD9AC0F98B19CB5EAFBF76BF51 /* Bike_road_diagram_ABCD_2.png in Resources */,
 				E54D64EA2EDE778D428A0B41C84CA3D8 /* Bike_road_diagram_APPP.png in Resources */,
 				A9BF9E7C86716A44AE8E121245942296 /* Bike_tri_diagram_ABCDEF.png in Resources */,
+				900E64E9E7F3B045E46837DDD93F4AF1 /* Bike_tri_diagram_ABCDEF_2.png in Resources */,
 				079B5B3158DB938B072885B2F94C462F /* Cog_15t.png in Resources */,
 				2287FD756011219DAAB3B1E234A92046 /* Cog_15t_29x29.png in Resources */,
 				BB83342969CAB1F7A0286D91779154F0 /* Default-568h@2x.png in Resources */,

@@ -5,9 +5,7 @@ build/
 *.mode1v3
 **/*.perspectivev*
 
-Podfile.lock
-
-Pods/Pods.xcodeproj/xcuserdata/*
+Pods/*
 bikefit.xcodeproj/xcuserdata/*
 bikefit.xcworkspace/xcshareddata/*
 bikefit.xcworkspace/xcuserdata/*

@@ -276,7 +276,7 @@
     /*save the index path for segue use TODO: i don't know if I like this method*/
     selectedIndexPath = indexPath;
     
-    /*figur out which column (left leg notes, or right leg notes) was chose*/
+    /*figure out which column (left leg notes, or right leg notes) was chosen*/
     if(tableView == leftNotesTable)
     {
         selectedNotes = leftNotes;
@@ -286,13 +286,19 @@
         selectedNotes = rightNotes;
     }
     
- 
     if([indexPath row] >= [selectedNotes count])
     {
+        // Set title of dialog
+        NSString *actionSheetTitle = @"Note Type (Left)";
+        if (tableView == rightNotesTable)
+        {
+            actionSheetTitle = @"Note Type (Right)";
+        }
+        
         /*if the user selected the table cell at the end of the notes, open a dialog to
          start a new note
          */
-        UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:@"Note Type" delegate:self
+        UIActionSheet *actionSheet = [[UIActionSheet alloc]initWithTitle:actionSheetTitle delegate:self
                                         cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil
                                         otherButtonTitles:
                                             @"Text Note",

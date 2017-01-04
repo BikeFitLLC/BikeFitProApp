@@ -22,6 +22,8 @@
     UITextField *propertyValueField;
     
     NSMutableArray *dimensionsFieldNames;
+    NSMutableArray *dimensionsFieldNames1;
+    NSMutableArray *dimensionsFieldNames2;
     NSArray *hardwareFieldNames;
     
     NSMutableDictionary *fieldNameDict;

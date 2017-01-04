@@ -19,6 +19,8 @@
     IBOutlet UIImageView *leftFootTextImageView;
     IBOutlet UIImageView *rightFootTextImageView;
     IBOutlet UIImageView *spindleImageView;
+
+    IBOutlet UITextView *textView;
 }
 
 @end

@@ -19,8 +19,8 @@
 - (void) viewDidLoad
 {
 
-    UIImage *roadBikeImage = [UIImage imageNamed:@"Bike_road_diagram_ABCD"];
-    UIImage *triBikeImage = [UIImage imageNamed:@"Bike_tri_diagram_ABCDEF.png"];
+    UIImage *roadBikeImage = [UIImage imageNamed:@"Bike_road_diagram_ABCD_2"];
+    UIImage *triBikeImage = [UIImage imageNamed:@"Bike_tri_diagram_ABCDEF_2"];
     
     bikeDimensionsImages = [NSArray arrayWithObjects:roadBikeImage, triBikeImage, nil];
     
@@ -41,7 +41,8 @@
     [bikeDimensionsImageView addGestureRecognizer:swipeLeft];
     [bikeDimensionsImageView addGestureRecognizer:swipeRight];
     
-    dimensionsFieldNames = [[NSMutableArray alloc] initWithObjects:@"A: Saddle Height",
+    // TODO: Move these field names into a constant
+    dimensionsFieldNames1 = [[NSMutableArray alloc] initWithObjects:@"A: Saddle Height",
                                                                     @"B: Saddle Setback",
                                                                     @"C: Cockpit Distance",
                                                                     @"D: Handlebar Drop",
@@ -49,12 +50,33 @@
                                                                     @"F: Elbow Pad Distance",
                                                                     @"G: Elbow Pad Width",
                                                                     @"Stack",
-                                                                    @"Reach",
+                                                                    @"X: Reach",
+                                                                    @"HX: Reach",
+                                                                    @"Y: Height",
+                                                                    @"HY: Height",
                                                                     @"Saddle Tilt",
                                                                     @"Stem Length",
                                                                     @"Stem Angle",
                                                                     @"Crank Length",
                                                                     nil];
+    
+    // SAME AS dimensionsFieldNames1, but missing E, F, and G options, which are only for Tri bikes
+    dimensionsFieldNames2 = [[NSMutableArray alloc] initWithObjects:@"A: Saddle Height",
+                            @"B: Saddle Setback",
+                            @"C: Cockpit Distance",
+                            @"D: Handlebar Drop",
+                            @"Stack",
+                            @"X: Reach",
+                            @"HX: Reach",
+                            @"Y: Height",
+                            @"HY: Height",
+                            @"Saddle Tilt",
+                            @"Stem Length",
+                            @"Stem Angle",
+                            @"Crank Length",
+                            nil];
+    dimensionsFieldNames = dimensionsFieldNames2;
+  
     hardwareFieldNames = [[NSMutableArray alloc] initWithObjects:@"Left Pedal Spacers",
                                                                   @"Right Pedal Spacers",
                                                                   @"Left Foot Wedges",
@@ -64,20 +86,22 @@
                                                                   nil];
     
     fieldNameDict = [[NSMutableDictionary alloc] init];
-    [fieldNameDict setObject:@"SaddleHeight" forKey:[dimensionsFieldNames objectAtIndex:0]];
-    [fieldNameDict setObject:@"SaddleSetback" forKey:[dimensionsFieldNames objectAtIndex:1]];
-    [fieldNameDict setObject:@"CockpitDistance" forKey:[dimensionsFieldNames objectAtIndex:2]];
-    [fieldNameDict setObject:@"HandlebarDrop" forKey:[dimensionsFieldNames objectAtIndex:3]];
-    [fieldNameDict setObject:@"ElbowPadDrop" forKey:[dimensionsFieldNames objectAtIndex:4]];
-    [fieldNameDict setObject:@"ElbowPadDistance" forKey:[dimensionsFieldNames objectAtIndex:5]];
-    [fieldNameDict setObject:@"ElbowPadWidth" forKey:[dimensionsFieldNames objectAtIndex:6]];
-    [fieldNameDict setObject:@"Stack" forKey:[dimensionsFieldNames objectAtIndex:7]];
-    [fieldNameDict setObject:@"Reach" forKey:[dimensionsFieldNames objectAtIndex:8]];
-    [fieldNameDict setObject:@"SaddleTilt" forKey:[dimensionsFieldNames objectAtIndex:9]];
-    [fieldNameDict setObject:@"StemLength" forKey:[dimensionsFieldNames objectAtIndex:10]];
-    [fieldNameDict setObject:@"StemAngle" forKey:[dimensionsFieldNames objectAtIndex:11]];
-    [fieldNameDict setObject:@"CrankLength" forKey:[dimensionsFieldNames objectAtIndex:12]];
-    
+    [fieldNameDict setObject:@"SaddleHeight" forKey:[dimensionsFieldNames1 objectAtIndex:0]];
+    [fieldNameDict setObject:@"SaddleSetback" forKey:[dimensionsFieldNames1 objectAtIndex:1]];
+    [fieldNameDict setObject:@"CockpitDistance" forKey:[dimensionsFieldNames1 objectAtIndex:2]];
+    [fieldNameDict setObject:@"HandlebarDrop" forKey:[dimensionsFieldNames1 objectAtIndex:3]];
+    [fieldNameDict setObject:@"ElbowPadDrop" forKey:[dimensionsFieldNames1 objectAtIndex:4]];
+    [fieldNameDict setObject:@"ElbowPadDistance" forKey:[dimensionsFieldNames1 objectAtIndex:5]];
+    [fieldNameDict setObject:@"ElbowPadWidth" forKey:[dimensionsFieldNames1 objectAtIndex:6]];
+    [fieldNameDict setObject:@"Stack" forKey:[dimensionsFieldNames1 objectAtIndex:7]];
+    [fieldNameDict setObject:@"X: Reach" forKey:[dimensionsFieldNames1 objectAtIndex:8]];
+    [fieldNameDict setObject:@"HX: Reach" forKey:[dimensionsFieldNames1 objectAtIndex:9]];
+    [fieldNameDict setObject:@"Y: Reach" forKey:[dimensionsFieldNames1 objectAtIndex:10]];
+    [fieldNameDict setObject:@"HY: Reach" forKey:[dimensionsFieldNames1 objectAtIndex:11]];
+    [fieldNameDict setObject:@"SaddleTilt" forKey:[dimensionsFieldNames1 objectAtIndex:12]];
+    [fieldNameDict setObject:@"StemLength" forKey:[dimensionsFieldNames1 objectAtIndex:13]];
+    [fieldNameDict setObject:@"StemAngle" forKey:[dimensionsFieldNames1 objectAtIndex:14]];
+    [fieldNameDict setObject:@"CrankLength" forKey:[dimensionsFieldNames1 objectAtIndex:15]];
     
     [fieldNameDict setObject:@"LeftPedalSpacers" forKey:[hardwareFieldNames objectAtIndex:0]];
     [fieldNameDict setObject:@"RightPedalSpacers" forKey:[hardwareFieldNames objectAtIndex:1]];
@@ -85,7 +109,6 @@
     [fieldNameDict setObject:@"RightWedges" forKey:[hardwareFieldNames objectAtIndex:3]];
     [fieldNameDict setObject:@"LeftShimming" forKey:[hardwareFieldNames objectAtIndex:4]];
     [fieldNameDict setObject:@"RightShimming" forKey:[hardwareFieldNames objectAtIndex:5]];
-
 
     dimensionsTable = [self makeDimensionTableView];
     [self.view addSubview:dimensionsTable];
@@ -215,7 +238,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([indexPath row] == 9 )
+    // HACK TODO: move to an instance variable
+    int saddleTiltRow = 12;
+    if ([dimensionsFieldNames[9] isEqualToString:@"Saddle Tilt"]) {
+        saddleTiltRow = 9;
+    }
+    
+    if ([indexPath row] == saddleTiltRow )
     {
         [self performSegueWithIdentifier:@"saddletiltsegue" sender:self];
         return;
@@ -298,7 +327,6 @@
     {
         millimeterLabel.text = @"Millimeters";
     }
-    
 }
 
 - (void) hideInputView
@@ -316,12 +344,24 @@
     
 }
 
+- (void)showEFG:(BOOL)show {
+    if (show) {
+        dimensionsFieldNames = dimensionsFieldNames1;
+    }
+    else {
+        dimensionsFieldNames = dimensionsFieldNames2;
+    }
+    [dimensionsTable reloadData];
+}
+
 - (void)handleSwipe:(UISwipeGestureRecognizer *)swipe {
     
     if (swipe.direction == UISwipeGestureRecognizerDirectionLeft)
     {
         if(activeBikeImageIndex != [bikeDimensionsImages count] - 1)
         {
+            [self showEFG:YES];
+            
             activeBikeImageIndex = activeBikeImageIndex + 1;
             [AthletePropertyModel setProperty:AWS_FIT_ATTRIBUTE_BIKE_TYPE value:[NSString stringWithFormat:@"%d",activeBikeImageIndex]];
             [UIView transitionWithView:bikeDimensionsImageView
@@ -339,6 +379,8 @@
     {
         if(activeBikeImageIndex != 0)
         {
+            [self showEFG:NO];
+
             activeBikeImageIndex = activeBikeImageIndex - 1;
             bikeDimensionsImageView.image = [bikeDimensionsImages objectAtIndex:activeBikeImageIndex];
             [AthletePropertyModel setProperty:AWS_FIT_ATTRIBUTE_BIKE_TYPE value:[NSString stringWithFormat:@"%d",activeBikeImageIndex]];
@@ -352,7 +394,6 @@
         }
         NSLog(@"Right Swipe");
     }
-    
 }
 
 @end

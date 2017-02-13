@@ -12,12 +12,17 @@ Password: password
 FYI see Gemfile in the root of the project.  Also see: https://guides.cocoapods.org/using/a-gemfile.html
 
 (This is instead of running pod install, etc.)
+
+(Note: you might have to remove Podfile.lock before doing these steps)
+
 ```
 bundle install
 bundle exec pod install
 bundle exec pod update    (...?  haven't tried this)
 open bikefit.xcworkspace/
 ```
+
+(Note: this will create Gemfile.lock)
 
 ## If you are NOT running bundler
 

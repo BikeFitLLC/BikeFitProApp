@@ -36,3 +36,23 @@ pod install
 pod update
 open bikefit.xcworkspace/
 ```
+
+## Project Sorting
+
+Xcode reorders the contents of the project file anytime something is added or removed to the project.  This makes merging a nightmare.
+The solution is to use xUnique, a small utility written in python.
+
+Install xUnique like so:
+
+`pip install xUnique`
+
+Once installed you can use xUnique to ensure the project file stays sorted alphabetically.
+This will make merging commits as painless as possible.  Please do not push any commits with an unsorted project file.
+
+To sort the project file execute:
+
+``
+xUnique -s -p bikefit.xcodeproj/
+``
+
+Then commit and push.

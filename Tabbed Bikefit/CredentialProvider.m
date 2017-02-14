@@ -176,12 +176,25 @@
     NSDate *now = [NSDate date];
     int interval = [now timeIntervalSinceDate:tokenExpiration];
     
-    if(abs(interval)/60 < 10)
+    if(abs(interval)/60 < 120)
     {
-        //if the token expires in fewer than 10 minutes, refresh it.
-        [AIMobileLib getAccessTokenForScopes:[NSArray arrayWithObject:@"profile"]
-                                                withOverrideParams:nil
-                                                delegate:self];
+        //
+        // If this user is logged in via amazon OAuth, refresh that
+        // token first (the callback will call CredentialProvider:Refresh
+        // on successful renewal
+        //
+        if(amznTokenString) {
+            //if the token expires in fewer than 10 minutes, refresh it.
+            [AIMobileLib getAccessTokenForScopes:[NSArray arrayWithObject:@"profile"]
+                              withOverrideParams:nil
+                                        delegate:self];
+        } else {
+            //
+            // Refresh the Bikefit Token w/ username
+            // and password instead of Amazon Oauth token
+            //
+            [self refresh];
+        }
     }
 }
 

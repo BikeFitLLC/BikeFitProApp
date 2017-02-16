@@ -6,15 +6,17 @@
 //  Copyright (c) 2013 Alfonso Lopez. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "FootBottomNote.h"
 #import "FootBottomView.h"
 #import "NoteViewController.h"
 
+#import <UIKit/UIKit.h>
+
 @interface FootBottomNoteViewController : NoteViewController
 {
-    
+    IBOutlet UITextView *textView;
 }
 
 - (IBAction) saveLocation:(id)sender;
+
 @end

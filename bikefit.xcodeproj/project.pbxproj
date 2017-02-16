@@ -64,6 +64,9 @@
 		4B139308BF15E844C82647B3ABF4C845 /* FinalNotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF65CBF412974D23DEAEC2BD8EED9920 /* FinalNotesViewController.m */; };
 		4BA879B58BDF394792CF36A84D30ED41 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09BDCE21BB92C9314BED6D3AAD389FA8 /* CoreMotion.framework */; };
 		50BB157D1E552FA600E28E3F /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 50BB157C1E552FA600E28E3F /* Util.m */; };
+		50BB15861E562B2800E28E3F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 50BB15801E562B2800E28E3F /* InfoPlist.strings */; };
+		50BB15871E562B2800E28E3F /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50BB15821E562B2800E28E3F /* MainStoryboard_iPad.storyboard */; };
+		50BB15881E562B2800E28E3F /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50BB15841E562B2800E28E3F /* MainStoryboard_iPhone.storyboard */; };
 		537A9726E797B29220AAF05B3E19013E /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 06FF7C0A17784703DDBEC48A82610F09 /* first.png */; };
 		5381559C81704786F655CFC446F71142 /* home_settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B81B30596A32225B138FADBCA3265AE /* home_settings@2x.png */; };
 		57A0ABFD7DB8325E971E10E442B7FDE9 /* cleat_fa_left.png in Resources */ = {isa = PBXBuildFile; fileRef = 076C856BAD2BE1E41972C3B6249F1A45 /* cleat_fa_left.png */; };
@@ -277,6 +280,9 @@
 		4C392865E5D81AED8AB10276E85C21BC /* BikeFitIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BikeFitIcon.png; path = ../BikeFitIcon.png; sourceTree = "<group>"; };
 		50BB157A1E552F9600E28E3F /* Util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		50BB157C1E552FA600E28E3F /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
+		50BB15811E562B2800E28E3F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
+		50BB15831E562B2800E28E3F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		50BB15851E562B2800E28E3F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		52DE749EC24670EA1BBA29CEE1AE2AC2 /* LoadinSpinnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadinSpinnerView.m; sourceTree = "<group>"; };
 		5308991D7ED9B5BADE4B513E0AF5D2FC /* CreateAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateAccountViewController.h; sourceTree = "<group>"; };
 		55946B6BDAE5706383A30CA3FED4C51C /* 1_foot_pressure_bw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1_foot_pressure_bw.png; sourceTree = "<group>"; };
@@ -598,6 +604,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		50BB157F1E562B2800E28E3F /* en.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				50BB15801E562B2800E28E3F /* InfoPlist.strings */,
+				50BB15821E562B2800E28E3F /* MainStoryboard_iPad.storyboard */,
+				50BB15841E562B2800E28E3F /* MainStoryboard_iPhone.storyboard */,
+			);
+			path = en.lproj;
+			sourceTree = "<group>";
+		};
 		5124D843BB8DED155F1EAF0CAC9D2C67 /* LoginWithAmazonSample */ = {
 			isa = PBXGroup;
 			children = (
@@ -796,6 +812,7 @@
 		C31E081360FC7E649644216555AEE588 /* Tabbed Bikefit */ = {
 			isa = PBXGroup;
 			children = (
+				50BB157F1E562B2800E28E3F /* en.lproj */,
 				48BBAF17C4C3D139EBD7FB74124A96EA /* Interface */,
 				5124D843BB8DED155F1EAF0CAC9D2C67 /* LoginWithAmazonSample */,
 				701A97C06E4319DB4FEC5C7BE4183261 /* Model */,
@@ -1036,6 +1053,7 @@
 				A9BF9E7C86716A44AE8E121245942296 /* Bike_tri_diagram_ABCDEF.png in Resources */,
 				900E64E9E7F3B045E46837DDD93F4AF1 /* Bike_tri_diagram_ABCDEF_2.png in Resources */,
 				079B5B3158DB938B072885B2F94C462F /* Cog_15t.png in Resources */,
+				50BB15861E562B2800E28E3F /* InfoPlist.strings in Resources */,
 				2287FD756011219DAAB3B1E234A92046 /* Cog_15t_29x29.png in Resources */,
 				BB83342969CAB1F7A0286D91779154F0 /* Default-568h@2x.png in Resources */,
 				6AD1B64A3EBC05DECD731941786DA22F /* Default.png in Resources */,
@@ -1051,6 +1069,7 @@
 				9D679503B57E472A174F6539E8374387 /* KW_front_laser_2.png in Resources */,
 				CCC1434AE8789B3529E8F0F4A6AE1A91 /* MainStoryboard_iPad.storyboard in Resources */,
 				E280DDFB2E88D39DF71D0B92F689372E /* MainStoryboard_iPhone.storyboard in Resources */,
+				50BB15871E562B2800E28E3F /* MainStoryboard_iPad.storyboard in Resources */,
 				C93C22126445642D5E0F9FB54DB6DC21 /* arrowleft.png in Resources */,
 				088F17322EDEBDBB44488EDBC8D1E806 /* arrowright.png in Resources */,
 				DB16C4500E4855906A06DD930765D370 /* btnLWA_gold_209x48.png in Resources */,
@@ -1071,6 +1090,7 @@
 				961DFB11B86EB4D21CB3C0EBB0F9B1E3 /* home_clients@2x.png in Resources */,
 				05A89554CE7BF5050F58F9F53ABAD9ED /* home_email.png in Resources */,
 				F8B0E70203EF00AF6323A6D6C423BA4E /* home_email@2x.png in Resources */,
+				50BB15881E562B2800E28E3F /* MainStoryboard_iPhone.storyboard in Resources */,
 				97E9958F9E161E0D7290536592C02AC1 /* home_settings.png in Resources */,
 				5381559C81704786F655CFC446F71142 /* home_settings@2x.png in Resources */,
 				B409A5D993E522336129F52CB762ADB3 /* home_store.png in Resources */,
@@ -1287,6 +1307,30 @@
 				5A43F5A206BFA10C4B7D5EC816B1A671 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		50BB15801E562B2800E28E3F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				50BB15811E562B2800E28E3F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		50BB15821E562B2800E28E3F /* MainStoryboard_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				50BB15831E562B2800E28E3F /* en */,
+			);
+			name = MainStoryboard_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		50BB15841E562B2800E28E3F /* MainStoryboard_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				50BB15851E562B2800E28E3F /* en */,
+			);
+			name = MainStoryboard_iPhone.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

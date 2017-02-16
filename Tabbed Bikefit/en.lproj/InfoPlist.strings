@@ -1,2 +1,6 @@
 /* Localized versions of Info.plist keys */
 
+"String_Left" = "Left";
+"String_Right" = "Right";
+
+"ScreenTitle_TextNote" = "Text Note";

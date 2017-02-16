@@ -8,6 +8,7 @@
 
 @interface Util : NSObject
 
++ (NSString*)getLocalizedString:(NSString*)key;
 + (void)setTitle:(UIViewController*)viewController title:(NSString*)text;
 
 @end

@@ -43,7 +43,9 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [Util setTitle:self title:@""]; // TODO: set to "left" or "right"
+    NSString* baseTitle = [Util getLocalizedString:@"ScreenTitle_TextNote"];
+    NSString* leftOrRight = [bikeInfo leftNotesSelected] ? [Util getLocalizedString:@"String_Left"] : [Util getLocalizedString:@"String_Right"];
+    [Util setTitle:self title:[NSString stringWithFormat:@"%@: %@", baseTitle, leftOrRight]];
 }
 
 - (void)didReceiveMemoryWarning

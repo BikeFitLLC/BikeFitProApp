@@ -10,6 +10,10 @@
 
 @implementation Util
 
++ (NSString*)getLocalizedString:(NSString*)key {
+    return [[[NSBundle mainBundle] localizedInfoDictionary] objectForKey:key];
+}
+
 + (void)setTitle:(UIViewController*)viewController title:(NSString*)text {
     NSDictionary *navbarTitleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
                                                [UIColor whiteColor], NSForegroundColorAttributeName,

@@ -7,6 +7,7 @@
 //
 
 #import "TextFitNoteViewController.h"
+#import "Util.h"
 
 @interface TextFitNoteViewController ()
 {
@@ -39,6 +40,10 @@
     [automaticNotesList addObject:@"Foot Lateral"];
     [automaticNotesList addObject:@"Foot Medial"];
 	// Do any additional setup after loading the view.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [Util setTitle:self title:@""]; // TODO: set to "left" or "right"
 }
 
 - (void)didReceiveMemoryWarning

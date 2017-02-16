@@ -63,6 +63,7 @@
 		4A85010CA27B422FC91DD88BECBEE1FE /* ImageViewerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDE8232A94883706119FAA30C72ED56A /* ImageViewerViewController.m */; };
 		4B139308BF15E844C82647B3ABF4C845 /* FinalNotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FF65CBF412974D23DEAEC2BD8EED9920 /* FinalNotesViewController.m */; };
 		4BA879B58BDF394792CF36A84D30ED41 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09BDCE21BB92C9314BED6D3AAD389FA8 /* CoreMotion.framework */; };
+		50BB157D1E552FA600E28E3F /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 50BB157C1E552FA600E28E3F /* Util.m */; };
 		537A9726E797B29220AAF05B3E19013E /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 06FF7C0A17784703DDBEC48A82610F09 /* first.png */; };
 		5381559C81704786F655CFC446F71142 /* home_settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B81B30596A32225B138FADBCA3265AE /* home_settings@2x.png */; };
 		57A0ABFD7DB8325E971E10E442B7FDE9 /* cleat_fa_left.png in Resources */ = {isa = PBXBuildFile; fileRef = 076C856BAD2BE1E41972C3B6249F1A45 /* cleat_fa_left.png */; };
@@ -274,6 +275,8 @@
 		4B8ACA449179C833221C41052C497903 /* AMZNGetProfileDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMZNGetProfileDelegate.h; sourceTree = "<group>"; };
 		4BEC968FC913B63350C74D79E653B16A /* KneeDrawingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KneeDrawingView.h; sourceTree = "<group>"; };
 		4C392865E5D81AED8AB10276E85C21BC /* BikeFitIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BikeFitIcon.png; path = ../BikeFitIcon.png; sourceTree = "<group>"; };
+		50BB157A1E552F9600E28E3F /* Util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
+		50BB157C1E552FA600E28E3F /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
 		52DE749EC24670EA1BBA29CEE1AE2AC2 /* LoadinSpinnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadinSpinnerView.m; sourceTree = "<group>"; };
 		5308991D7ED9B5BADE4B513E0AF5D2FC /* CreateAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateAccountViewController.h; sourceTree = "<group>"; };
 		55946B6BDAE5706383A30CA3FED4C51C /* 1_foot_pressure_bw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1_foot_pressure_bw.png; sourceTree = "<group>"; };
@@ -803,6 +806,8 @@
 				3B878B0217C6FA9A35C2EE309E041AAF /* BikefitConstants.h */,
 				29ADCD2D7FC0BE2B4F4CC22E191BB2A6 /* UIColor+CustomColor.h */,
 				D29B81F1724D50426EAB3BD4DB04AAB7 /* UIColor+CustomColor.m */,
+				50BB157A1E552F9600E28E3F /* Util.h */,
+				50BB157C1E552FA600E28E3F /* Util.m */,
 			);
 			path = "Tabbed Bikefit";
 			sourceTree = "<group>";
@@ -1201,6 +1206,7 @@
 				D21058BD45CE8ACB5477F1FF5250E045 /* BikeFitViewController.m in Sources */,
 				06D34BC428A3A0AF0F6BF854523DAF3D /* ClientListViewController.m in Sources */,
 				DBDB62D932A45E7C95499B01F0A9A0B4 /* CreateAccountViewController.m in Sources */,
+				50BB157D1E552FA600E28E3F /* Util.m in Sources */,
 				B2B886703AB3D78DA184F7704921C49C /* CredentialProvider.m in Sources */,
 				CE6004BE79C38676B702A146E57AE14B /* DrawingView.m in Sources */,
 				4B139308BF15E844C82647B3ABF4C845 /* FinalNotesViewController.m in Sources */,

@@ -9,6 +9,7 @@
 #import "FootBottomNoteViewController.h"
 #import "GUIFootPressureImageViewController.h"
 #import "UIColor+CustomColor.h"
+#import "Util.h"
 
 @interface FootBottomNoteViewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource>
 {
@@ -78,6 +79,8 @@
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [Util setScreenLeftRightTitle:self leftSelected:[bikeInfo leftNotesSelected] key:@"ScreenTitle_FootPressure"];
     
     if([bikeInfo leftNotesSelected])
     {

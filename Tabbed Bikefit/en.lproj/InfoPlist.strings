@@ -3,4 +3,8 @@
 "String_Left" = "Left";
 "String_Right" = "Right";
 
+"ScreenTitle_CleatForeAft" = "Cleat Fore/Aft";
+"ScreenTitle_CleatMedialLateralStanceWidth" = "Cleat Medial/Lateral (Stance Width)";
+"ScreenTitle_Goniometer" = "Goniometer";
+"ScreenTitle_SaddleForeAft" = "Saddle Fore/Aft";
 "ScreenTitle_TextNote" = "Text Note";

@@ -6,10 +6,12 @@
 //  Copyright (c) 2013 Alfonso Lopez. All rights reserved.
 //
 
-#import "KneeViewController.h"
-#import <AVFoundation/AVFoundation.h>
 #import "AthletePropertyModel.h"
 #import "GUIKneeTouchInterceptorView.h"
+#import "KneeViewController.h"
+#import "Util.h"
+
+#import <AVFoundation/AVFoundation.h>
 #import <CoreMotion/CoreMotion.h>
 
 @interface KneeViewController () <GUIKneeTouchInterceptorViewDelegate>
@@ -78,7 +80,6 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    
     [super viewDidAppear:animated];
     
     if(videoUrl)
@@ -90,6 +91,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [Util setScreenLeftRightTitle:self leftSelected:[bikeInfo leftNotesSelected] key:@"ScreenTitle_CleatMedialLateralStanceWidth"];
 }
 
 - (void)didReceiveMemoryWarning

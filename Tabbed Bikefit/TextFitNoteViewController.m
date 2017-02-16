@@ -42,10 +42,11 @@
 	// Do any additional setup after loading the view.
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    NSString* baseTitle = [Util getLocalizedString:@"ScreenTitle_TextNote"];
-    NSString* leftOrRight = [bikeInfo leftNotesSelected] ? [Util getLocalizedString:@"String_Left"] : [Util getLocalizedString:@"String_Right"];
-    [Util setTitle:self title:[NSString stringWithFormat:@"%@: %@", baseTitle, leftOrRight]];
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+    [Util setScreenLeftRightTitle:self leftSelected:[bikeInfo leftNotesSelected] key:@"ScreenTitle_TextNote"];
 }
 
 - (void)didReceiveMemoryWarning

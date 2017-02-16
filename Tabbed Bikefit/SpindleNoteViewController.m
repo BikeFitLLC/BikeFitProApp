@@ -8,15 +8,13 @@
 
 #import "SpindleNoteViewController.h"
 #import "SpindleNote.h"
-
-
+#import "Util.h"
 
 @interface SpindleNoteViewController ()
 
 @end
 
 @implementation SpindleNoteViewController
-
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -116,6 +114,9 @@
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [Util setScreenLeftRightTitle:self leftSelected:[bikeInfo leftNotesSelected] key:@"ScreenTitle_CleatForeAft"];
+
     if([bikeInfo leftNotesSelected])
     {
         [leftFootGraphic setHidden:false];

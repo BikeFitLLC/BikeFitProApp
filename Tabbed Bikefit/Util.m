@@ -1,5 +1,5 @@
 //
-//  UIColor+Util_m.m
+//  Util.m
 //  bikefit
 //
 //  Created by Max on 2/15/17.
@@ -12,6 +12,12 @@
 
 + (NSString*)getLocalizedString:(NSString*)key {
     return [[[NSBundle mainBundle] localizedInfoDictionary] objectForKey:key];
+}
+
++ (void)setScreenLeftRightTitle:(UIViewController*)viewController leftSelected:(BOOL)leftSelected key:(NSString*)key {
+    NSString* baseTitle = [Util getLocalizedString:key];
+    NSString* leftOrRight = leftSelected ? [Util getLocalizedString:@"String_Left"] : [Util getLocalizedString:@"String_Right"];
+    [Util setTitle:viewController title:[NSString stringWithFormat:@"%@: %@", baseTitle, leftOrRight]];
 }
 
 + (void)setTitle:(UIViewController*)viewController title:(NSString*)text {

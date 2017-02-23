@@ -138,15 +138,18 @@
 - (void)motionUpdated:(CMDeviceMotion *)motion {
     CGFloat r = sqrtf(motion.gravity.y * motion.gravity.y + motion.gravity.z * motion.gravity.z);
     CGFloat tiltForwardBackward = acosf(motion.gravity.z/r) * 180.0f / M_PI - 90.0f;
-    tiltAngle = (90 - tiltForwardBackward) * (motion.gravity.y < 0 ? -1 : 1);
+    tiltAngle = 0 - ((90 - tiltForwardBackward) * (motion.gravity.y < 0 ? -1 : 1));
 }
 
-- (void) updateTilt:(NSTimer *) timer
+- (void)updateTilt:(NSTimer*)timer
 {
     float displayAngle = roundf(tiltAngle * 10) * 0.1;
     tilteAngleLabel.text = [NSString stringWithFormat:@"%.01f°", displayAngle];
-    CGAffineTransform t = CGAffineTransformMakeRotation(displayAngle * M_PI / 180);
+
+    float saddleDisplayAngle = 0 - displayAngle;
+    CGAffineTransform t = CGAffineTransformMakeRotation(saddleDisplayAngle * M_PI / 180);
     saddleImage.layer.transform = CATransform3DMakeAffineTransform(t);
+
     upArrow.alpha = displayAngle > 0 ? 1 : 0.25;
     downArrow.alpha = displayAngle < 0 ? 1 : 0.25;
 }

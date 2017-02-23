@@ -12,6 +12,8 @@
 #import <LoginWithAmazon/LoginWithAmazon.h>
 #import "AMZNLogoutDelegate.h"
 
+const int AUTHENTICATED_TIMEOUT_MINUTES = 60 * 24; // 24 hours
+
 @implementation CredentialProvider
 @synthesize isLoggingIn;
 
@@ -176,7 +178,7 @@
     NSDate *now = [NSDate date];
     int interval = [now timeIntervalSinceDate:tokenExpiration];
     
-    if(abs(interval)/60 < 120)
+    if(abs(interval)/60 < AUTHENTICATED_TIMEOUT_MINUTES)
     {
         //
         // If this user is logged in via amazon OAuth, refresh that

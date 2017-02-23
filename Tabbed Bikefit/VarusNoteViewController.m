@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Alfonso Lopez. All rights reserved.
 //
 
+#import "Util.h"
 #import "VarusNoteViewController.h"
 #import "VarusNote.h"
 
@@ -169,9 +170,12 @@
     [self.view bringSubviewToFront:reverseCameraButton];
 }
 
-- (void) viewWillAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [Util setScreenLeftRightTitle:self leftSelected:[bikeInfo leftNotesSelected] key:@"ScreenTitle_FootTilt"];
+    
     if( [bikeInfo leftNotesSelected])
     {
         [leftLegImageView setHidden:false];
@@ -182,14 +186,11 @@
         [leftLegImageView setHidden:true];
         [rightLegImageView setHidden:false];
     }
-    
 }
 
-- (void) viewDidAppear:(BOOL)animated
+- (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
-    
 }
 
 - (void)didReceiveMemoryWarning

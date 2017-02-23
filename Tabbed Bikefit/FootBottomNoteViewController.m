@@ -9,6 +9,7 @@
 #import "FootBottomNoteViewController.h"
 #import "GUIFootPressureImageViewController.h"
 #import "UIColor+CustomColor.h"
+#import "Util.h"
 
 @interface FootBottomNoteViewController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource>
 {
@@ -61,7 +62,34 @@
                                         self.view.bounds.size.height *.75)];
     [saveButton addTarget:self action:@selector(saveLocation:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:saveButton];
+    
+    /* "Left" or "Right" text label */
+    CGRect rect = CGRectMake(self.view.frame.size.width * .8,
+                             self.view.frame.size.height * .9,
+                             self.view.frame.size.width * .2,
+                             self.view.frame.size.width * .15); // A little taller than the button to accomodate the 'g''s descender
+    textView = [[UITextView alloc] initWithFrame:rect];
+    textView.font = [UIFont systemFontOfSize:24];
+    [textView setCenter:CGPointMake(self.view.bounds.size.width * .85,
+                                    self.view.bounds.size.height *.65)]; // A little higher on the screen than the button
+    textView.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:textView];
+}
 
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [Util setScreenLeftRightTitle:self leftSelected:[bikeInfo leftNotesSelected] key:@"ScreenTitle_FootPressure"];
+    
+    if([bikeInfo leftNotesSelected])
+    {
+        [textView setText:@"Left"];
+    }
+    else
+    {
+        [textView setText:@"Right"];
+    }
 }
 
 - (IBAction) saveLocation:(id)sender

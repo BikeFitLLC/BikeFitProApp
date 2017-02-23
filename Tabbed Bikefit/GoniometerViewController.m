@@ -6,10 +6,12 @@
 //  Copyright (c) 2013 Alfonso Lopez. All rights reserved.
 //
 
-#import "GoniometerViewController.h"
 #import "AthletePropertyModel.h"
-#import <QuartzCore/QuartzCore.h>
+#import "GoniometerViewController.h"
+#import "Util.h"
+
 #import <math.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface GoniometerViewController (){
     int vertexIndex;
@@ -110,6 +112,13 @@
 
     [self.view addGestureRecognizer:panGesture];
 
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+    [Util setScreenLeftRightTitle:self leftSelected:[bikeInfo leftNotesSelected] key:@"ScreenTitle_Goniometer"];
 }
 
 - (void)enableAngle:(id)sender

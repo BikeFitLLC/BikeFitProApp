@@ -1,4 +1,6 @@
 //
+//  Saddle Fore/Aft
+//
 //  KopsViewController.m
 //  bikefit
 //
@@ -6,9 +8,10 @@
 //  Copyright (c) 2014 Alfonso Lopez. All rights reserved.
 //
 
-#import "KopsViewController.h"
-#import "KopsNote.h"
 #import "AthletePropertyModel.h"
+#import "KopsNote.h"
+#import "KopsViewController.h"
+#import "Util.h"
 
 @interface KopsViewController ()
 
@@ -31,6 +34,13 @@
     [saveButton addTarget:self action:@selector(keepLine:) forControlEvents:UIControlEventTouchUpInside];
 	// Do any additional setup after loading the view.
     
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [Util setScreenLeftRightTitle:self leftSelected:[bikeInfo leftNotesSelected] key:@"ScreenTitle_SaddleForeAft"];
 }
 
 - (void)didReceiveMemoryWarning

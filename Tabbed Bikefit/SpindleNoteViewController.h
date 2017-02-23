@@ -6,9 +6,10 @@
 //  Copyright (c) 2014 Alfonso Lopez. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "NoteViewController.h"
 #import "SpindleView.h"
+
+#import <UIKit/UIKit.h>
 
 @interface SpindleNoteViewController : NoteViewController <UIGestureRecognizerDelegate>
 {
@@ -19,8 +20,6 @@
     IBOutlet UIImageView *leftFootTextImageView;
     IBOutlet UIImageView *rightFootTextImageView;
     IBOutlet UIImageView *spindleImageView;
-
-    IBOutlet UITextView *textView;
 }
 
 @end

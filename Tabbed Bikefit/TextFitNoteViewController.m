@@ -7,6 +7,7 @@
 //
 
 #import "TextFitNoteViewController.h"
+#import "Util.h"
 
 @interface TextFitNoteViewController ()
 {
@@ -39,6 +40,13 @@
     [automaticNotesList addObject:@"Foot Lateral"];
     [automaticNotesList addObject:@"Foot Medial"];
 	// Do any additional setup after loading the view.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+    [Util setScreenLeftRightTitle:self leftSelected:[bikeInfo leftNotesSelected] key:@"ScreenTitle_TextNote"];
 }
 
 - (void)didReceiveMemoryWarning

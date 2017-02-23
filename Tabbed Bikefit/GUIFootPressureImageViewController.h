@@ -12,4 +12,6 @@
 @property NSUInteger index;
 @property NSString *imageName;
 
+- (void)flipImage;
+
 @end

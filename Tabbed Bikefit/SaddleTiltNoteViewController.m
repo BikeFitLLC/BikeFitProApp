@@ -6,9 +6,10 @@
 //  Copyright (c) 2015 Alfonso Lopez. All rights reserved.
 //
 
+#import "AthletePropertyModel.h"
 #import "SaddleTiltNoteViewController.h"
 #import "SaddleTiltView.h"
-#import "AthletePropertyModel.h"
+
 #import <CoreMotion/CoreMotion.h>
 
 @interface SaddleTiltNoteViewController ()
@@ -146,12 +147,12 @@
     float displayAngle = roundf(tiltAngle * 10) * 0.1;
     tilteAngleLabel.text = [NSString stringWithFormat:@"%.01f°", displayAngle];
 
+    upArrow.alpha = displayAngle > 0 ? 1 : 0.25;
+    downArrow.alpha = displayAngle < 0 ? 1 : 0.25;
+
     float saddleDisplayAngle = 0 - displayAngle;
     CGAffineTransform t = CGAffineTransformMakeRotation(saddleDisplayAngle * M_PI / 180);
     saddleImage.layer.transform = CATransform3DMakeAffineTransform(t);
-
-    upArrow.alpha = displayAngle > 0 ? 1 : 0.25;
-    downArrow.alpha = displayAngle < 0 ? 1 : 0.25;
 }
 
 - (void)didReceiveMemoryWarning {

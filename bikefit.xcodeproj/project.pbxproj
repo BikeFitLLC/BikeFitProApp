@@ -968,6 +968,10 @@
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Alfonso Lopez";
 				TargetAttributes = {
+					57BBC668CD454F927DE9C5AB8ED01B6B = {
+						DevelopmentTeam = 5C6SQ8E39E;
+						ProvisioningStyle = Automatic;
+					};
 					7A81DD30FD7F7BD24F40C658FDF0E3CD = {
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = 2M3455ALB5;
@@ -978,7 +982,7 @@
 						TestTargetID = D7DADE16974C2165F91D66EF15438A94;
 					};
 					D7DADE16974C2165F91D66EF15438A94 = {
-						DevelopmentTeam = 2M3455ALB5;
+						DevelopmentTeam = 5C6SQ8E39E;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -1445,8 +1449,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "";
-				PROVISIONING_PROFILE = "f1b946db-b74d-4825-95a2-13ce9b4554da";
-				PROVISIONING_PROFILE_SPECIFIER = "BikeFit New Provisioning Profile";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1463,7 +1467,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 2M3455ALB5;
+				DEVELOPMENT_TEAM = 5C6SQ8E39E;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1512,6 +1516,8 @@
 		5641E3B675322436F14D717D4045BE27 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 5C6SQ8E39E;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
@@ -1521,6 +1527,7 @@
 				INFOPLIST_FILE = "Tabbed BikefitTests/bikefitTests-Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "Velopez.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = bikefitTests;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
@@ -1528,6 +1535,8 @@
 		94EF4FCFB7BE0B097884FA5603EE1CE9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 5C6SQ8E39E;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
@@ -1537,6 +1546,7 @@
 				INFOPLIST_FILE = "Tabbed BikefitTests/bikefitTests-Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "Velopez.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = bikefitTests;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -1602,8 +1612,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "";
-				PROVISIONING_PROFILE = "f1b946db-b74d-4825-95a2-13ce9b4554da";
-				PROVISIONING_PROFILE_SPECIFIER = "BikeFit New Provisioning Profile";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1617,7 +1627,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 2M3455ALB5;
+				DEVELOPMENT_TEAM = 5C6SQ8E39E;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

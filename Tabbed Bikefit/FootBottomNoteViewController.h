@@ -14,7 +14,6 @@
 
 @interface FootBottomNoteViewController : NoteViewController
 {
-    IBOutlet UITextView *textView;
 }
 
 - (IBAction) saveLocation:(id)sender;

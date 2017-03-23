@@ -35,7 +35,7 @@
 #define S3_BUCKET @"8190ba10-d310-11e3-9c1a-0800200c9a66"
 
 //#define TVM_HOSTNAME @"http://tvm-env-test.elasticbeanstalk.com"
-#define TVM_HOSTNAME @"https://tvm.velopezdigital.com/"
+#define TVM_HOSTNAME @"https://tvm.velopezdigital.com"
 //#define TVM_HOSTNAME @"http://127.0.0.1:8000"
 #define TVM_GET_CREDENTIALS_OAUTH_PATH @"/?Email=%@&Name=%@&Token=%@"
 #define TVM_GET_CREDENTIALS_PATH @"/getToken?Email=%@&Password=%@"

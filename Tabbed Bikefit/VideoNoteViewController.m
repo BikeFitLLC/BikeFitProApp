@@ -390,6 +390,10 @@
 ////////////////////////////////////////////////
 - (IBAction)capture
 {
+    if (capture) {
+        return;
+    }
+    
     [recordButton setEnabled:false];
     timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(stopCapturing)
                                            userInfo:nil repeats:NO];

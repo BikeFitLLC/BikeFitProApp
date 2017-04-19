@@ -95,15 +95,17 @@
     s3Key =  [[NSUUID UUID] UUIDString];
     s3Bucket = S3_BUCKET;
     
-    NSError *error = [[NSError alloc] init];
+    NSError *error;
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *filepath = [paths objectAtIndex:0];
     NSString *fitPath = [filepath stringByAppendingString:[NSString stringWithFormat:@"/%@",self.s3Key]];
     
     bool success = [image writeToFile:fitPath options:NSDataWritingAtomic error:&error];
-    if(!success)
+    if(!success && error != nil)
     {
         NSLog(@"Error Saving to File System: %@", [error description]);
+    } else {
+        NSLog(@"other error");
     }
 
     //kick off upload to aws s3 or save to filesystem

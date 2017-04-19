@@ -98,7 +98,7 @@
         //por.delegate    = self; // Don't need this line if you don't care about hearing a response.
         
         // Put the image data into the specified s3 bucket and object.
-        [[[AmazonClientManager s3TransferManager] upload:uploadRequest] continueWithExecutor:[BFExecutor mainThreadExecutor]
+        [[[AmazonClientManager s3TransferManager] upload:uploadRequest] continueWithExecutor:[AWSExecutor mainThreadExecutor]
                                                                                    withBlock:^id(AWSTask *task)
         {
             if (task.error)

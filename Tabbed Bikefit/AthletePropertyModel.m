@@ -102,7 +102,7 @@ static NSDictionary *lastEvaluatedKey;
         
         [[[AmazonClientManager ddb] putItem:putInput]
          
-         continueWithExecutor:[BFExecutor mainThreadExecutor] withBlock:^id(AWSTask *task) {
+         continueWithExecutor:[AWSExecutor mainThreadExecutor] withBlock:^id(AWSTask *task) {
             if(task.error)
             {
                  NSLog(@"Error Saving Athlete File to Cloud: %@", task.error);
@@ -136,13 +136,13 @@ static NSDictionary *lastEvaluatedKey;
     }
 }
 
-+ (BFTask *) removeAthleteFromAWS: (NSString*) fitID
++ (AWSTask *) removeAthleteFromAWS: (NSString*) fitID
 {
-    return [[[AthletePropertyModel loadAthleteFromAWS:fitID] continueWithBlock:^id(BFTask *task)
+    return [[[AthletePropertyModel loadAthleteFromAWS:fitID] continueWithBlock:^id(AWSTask *task)
     {
         [AthletePropertyModel setProperty:AWS_FIT_ATTRIBUTE_HIDDEN value:@"YES"];
         return task;
-    }] continueWithBlock:^id(BFTask *task)
+    }] continueWithBlock:^id(AWSTask *task)
     {
         [AthletePropertyModel saveAthleteToAWS];
         return task;
@@ -154,12 +154,12 @@ static NSDictionary *lastEvaluatedKey;
 ////////////////////////////////////////////////////
 //Gets a list of Athletes form AWS
 ////////////////////////////////////////////////////
-+ (BFTask *) getAthletesFromAws
++ (AWSTask *) getAthletesFromAws
 {
     return [AthletePropertyModel loadFitPageWithExclusiveStartKey:lastEvaluatedKey];
 }
 
-+ (BFTask *) loadFitPageWithExclusiveStartKey:(NSDictionary *)exclusiveStartKey
++ (AWSTask *) loadFitPageWithExclusiveStartKey:(NSDictionary *)exclusiveStartKey
 {
     AWSDynamoDB *ddb = [AmazonClientManager ddb];
     
@@ -236,7 +236,7 @@ static NSDictionary *lastEvaluatedKey;
 //Loads the model with the athlete info at the given
 //aws item (DDB)
 ////////////////////////////////////////////////////
-+ (BFTask *) loadAthleteFromAWS:(NSString*) fitID
++ (AWSTask *) loadAthleteFromAWS:(NSString*) fitID
 {
     [athleteProperties setObject:fitID forKey:AWS_FIT_ATTRIBUTE_FITID];
     

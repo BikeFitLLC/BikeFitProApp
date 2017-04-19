@@ -118,7 +118,7 @@
         por.ACL   = AWSS3ObjectCannedACLPublicRead;
         por.body  = [NSURL fileURLWithPath:fitPath];
     
-        [[[AmazonClientManager s3TransferManager] upload:por] continueWithExecutor:[BFExecutor mainThreadExecutor]
+        [[[AmazonClientManager s3TransferManager] upload:por] continueWithExecutor:[AWSExecutor mainThreadExecutor]
                                                                          withBlock:^id(AWSTask *task) {
             if (task.error)
             {

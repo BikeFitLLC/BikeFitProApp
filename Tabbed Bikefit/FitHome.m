@@ -189,6 +189,10 @@
     } else {
         //hide
         syncButton.hidden = true;
+        
+        if (![[AmazonClientManager credProvider] isTokenValid]) {
+            [self showLoginError];
+        }
     }
 }
 
@@ -202,11 +206,7 @@
         } else {
             if (loginError) {
                 // do login thing
-                UIAlertAction *retryAction = [UIAlertAction actionWithTitle:@"Login" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                    [self startLogin];
-                }];
-                [self amazonUploadErrorAlertController:@"You are not logged in"
-                                           retryAction:retryAction];
+                [self showLoginError];
             } else {
                 // show sync error
                 UIAlertAction *retryAction = [UIAlertAction actionWithTitle:@"Retry" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -217,6 +217,15 @@
             }
         }
     }];
+}
+
+- (void)showLoginError
+{
+    UIAlertAction *retryAction = [UIAlertAction actionWithTitle:@"Login" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self startLogin];
+    }];
+    [self amazonUploadErrorAlertController:@"You are not logged in"
+                               retryAction:retryAction];
 }
 
 - (void)amazonUploadErrorAlertController:(NSString *)errorMessage retryAction:(UIAlertAction *)retryAction

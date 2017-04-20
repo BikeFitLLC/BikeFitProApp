@@ -13,7 +13,6 @@
 
 @implementation KneeViewNote
 @synthesize path;
-@synthesize videoUrl;
 @synthesize lazerPath;
 @synthesize selectedFrameIndex;
 @synthesize startingPoint;
@@ -68,23 +67,12 @@
     return cell;
 }
 
-//////////////////////////////////////
-//Queues an operation for uploading this note's image to S3
-//This will happen asynchronously
-///////////////////////////////////////
--(void)queueVideoUpload
+- (void)setVideoURL:(NSURL *)url callback:(void (^)(BOOL))callback
 {
-    GlobalOperationQueueManager *goqp = [GlobalOperationQueueManager queueManager];
+    localVideoUrl = url;
+    s3Key = [[NSUUID UUID] UUIDString];
+    s3Bucket = S3_BUCKET;
     
-    NSInvocationOperation *uploadOperation =
-    [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(uploadVideoToAWS) object:nil];
-    
-    [[goqp queue] addOperation:uploadOperation];
-
-}
-
--(void)uploadVideoToAWS
-{
     if([AmazonClientManager verifyLoggedInActive])
     {
         // Upload image data.  Remember to set the content type.
@@ -94,41 +82,35 @@
         uploadRequest.contentType = @"video/quicktime"; // use "image/png" here if you are uploading a png
         uploadRequest.body        = localVideoUrl;
         uploadRequest.ACL  = AWSS3ObjectCannedACLPublicRead;
-
+        
         //por.delegate    = self; // Don't need this line if you don't care about hearing a response.
         
         // Put the image data into the specified s3 bucket and object.
         [[[AmazonClientManager s3TransferManager] upload:uploadRequest] continueWithExecutor:[AWSExecutor mainThreadExecutor]
                                                                                    withBlock:^id(AWSTask *task)
-        {
-            if (task.error)
-            {
-                NSLog(@"Error: %@", task.error);
-                return nil;
-            }
-            videoUrl= [[NSURL alloc] initWithString:
-                       [NSString stringWithFormat:S3_IMAGE_URL_FORMAT,
-                        s3Bucket,
-                        s3Key
-                        ]];
-            NSLog(@"Uploaded Video to AWS: %@", videoUrl);
-            [AthletePropertyModel saveAthleteToAWS];
-            return task;
-        }];
+         {
+             if (task.error)
+             {
+                 NSLog(@"Error: %@", task.error);
+                 callback(false);
+                 return nil;
+             }
+             videoUrl= [[NSURL alloc] initWithString:
+                        [NSString stringWithFormat:S3_IMAGE_URL_FORMAT,
+                         s3Bucket,
+                         s3Key
+                         ]];
+             NSLog(@"Uploaded Video to AWS: %@", videoUrl);
+             [AthletePropertyModel saveAthleteToAWS];
+             callback(true);
+             return task;
+         }];
         
-       
+        
     }
 }
--(void)setVideoUrl:(NSURL *)url
-{
-    localVideoUrl = url;
-    s3Key = [[NSUUID UUID] UUIDString];
-    s3Bucket = S3_BUCKET;
-    
-    [self uploadVideoToAWS];
-}
 
--(NSURL *)getVideoUrl
+-(NSURL *)getVideoURL
 {
     NSError *err;
     if ([localVideoUrl checkResourceIsReachableAndReturnError:&err] == NO)

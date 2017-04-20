@@ -10,6 +10,7 @@
 #import "GUIKneeTouchInterceptorView.h"
 #import "KneeViewController.h"
 #import "Util.h"
+#import "SVProgressHUD.h"
 
 #import <AVFoundation/AVFoundation.h>
 #import <CoreMotion/CoreMotion.h>
@@ -107,15 +108,59 @@
 
 - (IBAction)keepLine:(id)sender
 {
+    [self uploadNote];
+}
+
+- (void)uploadNote
+{
+    [SVProgressHUD showWithStatus:@"Uploading..."];
     KneeViewNote *note = [[KneeViewNote alloc] init];
     
     [note setPath:[(KneeDrawingView *)previewImage path]];
     [note setLazerPath:[(KneeDrawingView *)previewImage lazerPath]];
-    [note setVideoUrl:videoUrl];
     
-    [bikeInfo addNote:note];
-    [self.navigationController popToViewController:bikeInfo animated:YES];
+    __weak KneeViewController *weakSelf = self;
+    
+    [self setVideoUrl:videoUrl onNote:note callback:^(BOOL success) {
+        [SVProgressHUD dismiss];
+        NSLog(@"😴upload %@",success ? @"success" : @"failed");
+        if (!success) {
+            [weakSelf amazonUploadError];
+        } else {
+            [weakSelf addNoteAndDismiss:note];
+        }
+    }];
 }
+
+- (void)amazonUploadError
+{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"An upload error has occurred"
+                                                                             message:@"We're sorry, we could not sync the data with the server.  Please make sure you have a stable internet connection and try again"
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *retryAction = [UIAlertAction actionWithTitle:@"Retry" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self uploadNote];
+    }];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    
+    [alertController addAction:cancelAction];
+    [alertController addAction:retryAction];
+    [self presentViewController:alertController animated:true completion:nil];
+}
+
+- (void)addNoteAndDismiss:(KneeViewNote *)note
+{
+    [self.bikeInfo addNote:note];
+    [self.navigationController popToViewController:self.bikeInfo animated:YES];
+}
+
+- (void)setVideoUrl:(NSURL *)localVideoUrl onNote:(KneeViewNote *)note callback:(void (^)(BOOL))callback
+{
+    [note setVideoURL:localVideoUrl callback:callback];
+}
+
 - (void) stopCapturing
 {
     [super stopCapturing];

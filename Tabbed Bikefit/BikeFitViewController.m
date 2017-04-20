@@ -487,7 +487,7 @@
     {
         VideoNoteViewController *vc = [segue destinationViewController];
         KneeViewNote *noteToView = [selectedNotes objectAtIndex:[selectedIndexPath row]];
-        [vc setVideoUrl:[noteToView getVideoUrl]];
+        [vc setVideoUrl:[noteToView getVideoURL]];
         [vc setOverlayPath:[noteToView path]];
     }
     else if([ident isEqualToString:@"ViewAngleNote"])

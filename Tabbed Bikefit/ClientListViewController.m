@@ -81,7 +81,7 @@
     //put up loading view before getting athletes
     LoadinSpinnerView *loadingView = [[LoadinSpinnerView alloc] initWithFrame:self.view.frame];
     [self.view addSubview:loadingView];
-    [[AthletePropertyModel getAthletesFromAws] continueWithBlock:^id(BFTask *task)
+    [[AthletePropertyModel getAthletesFromAws] continueWithBlock:^id(AWSTask *task)
     {
         fits = [AthletePropertyModel fits];
         fitIds = [self sortedFitIds:fits];
@@ -249,7 +249,7 @@
     LoadinSpinnerView *loadingView = [[LoadinSpinnerView alloc] initWithFrame:self.parentViewController.view.frame];
     [self.view addSubview:loadingView];
     [[AthletePropertyModel loadAthleteFromAWS:key]
-     continueWithExecutor:[BFExecutor mainThreadExecutor] withBlock:^id(BFTask *task)
+     continueWithExecutor:[AWSExecutor mainThreadExecutor] withBlock:^id(AWSTask *task)
      {
          [self performSegueWithIdentifier:@"showfithome" sender:self];
          //[self.navigationController popViewControllerAnimated:YES];

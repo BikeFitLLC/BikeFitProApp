@@ -8,7 +8,6 @@
 
 
 #import <Foundation/Foundation.h>
-#import <Bolts/Bolts.h>
 #import "AmazonClientManager.h"
 
 @interface AthletePropertyModel : NSObject
@@ -31,9 +30,9 @@
 + (void)newAthlete;
 
 + (void)saveAthleteToAWS;
-+ (BFTask *)loadAthleteFromAWS:(NSString*)fitID;
-+ (BFTask *) getAthletesFromAws;
++ (AWSTask *)loadAthleteFromAWS:(NSString*)fitID;
++ (AWSTask *) getAthletesFromAws;
 + (void) setOfflineMode:(bool)offlineMode;
-+ (BFTask *) removeAthleteFromAWS: (NSString*) fitID;
++ (AWSTask *) removeAthleteFromAWS: (NSString*) fitID;
 
 @end

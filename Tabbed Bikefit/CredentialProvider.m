@@ -44,7 +44,7 @@
     return self;
 }
 
-- (BFTask *)refresh
+- (AWSTask *)refresh
 {
     NSString *email = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_USERNAME_KEY];
     NSString *name = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITTERNAME_KEY];

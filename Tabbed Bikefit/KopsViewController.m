@@ -40,7 +40,7 @@
 {
     [super viewWillAppear:animated];
     
-    [Util setScreenLeftRightTitle:self leftSelected:[bikeInfo leftNotesSelected] key:@"ScreenTitle_SaddleForeAft"];
+    [Util setScreenLeftRightTitle:self leftSelected:[self.bikeInfo leftNotesSelected] key:@"ScreenTitle_SaddleForeAft"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -56,8 +56,8 @@
     [note setPath:[(KneeDrawingView *)previewImage lazerPath]];
     [note setImage:UIImageJPEGRepresentation([self imageFromCurrentTime], 1)];
     
-    [bikeInfo addNote:note];
-    [self.navigationController popToViewController:bikeInfo animated:YES];
+    [self.bikeInfo addNote:note];
+    [self.navigationController popToViewController:self.bikeInfo animated:YES];
 }
 
 - (void) stopCapturing

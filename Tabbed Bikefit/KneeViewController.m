@@ -92,7 +92,7 @@
 {
     [super viewWillAppear:animated];
     
-    [Util setScreenLeftRightTitle:self leftSelected:[bikeInfo leftNotesSelected] key:@"ScreenTitle_CleatMedialLateralStanceWidth"];
+    [Util setScreenLeftRightTitle:self leftSelected:[self.bikeInfo leftNotesSelected] key:@"ScreenTitle_CleatMedialLateralStanceWidth"];
 }
 
 - (void)didReceiveMemoryWarning

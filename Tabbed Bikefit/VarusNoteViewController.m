@@ -87,7 +87,7 @@
     //
     //Create Image View for Suggestions
     //
-    if([bikeInfo leftNotesSelected])
+    if([self.bikeInfo leftNotesSelected])
     {
         suggestedWedgesOne = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"1_wedge_Left_varus.png"]];
         suggestedWedgesTwo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"2_wedge_left_varus.png"]];
@@ -174,9 +174,9 @@
 {
     [super viewWillAppear:animated];
     
-    [Util setScreenLeftRightTitle:self leftSelected:[bikeInfo leftNotesSelected] key:@"ScreenTitle_FootTilt"];
+    [Util setScreenLeftRightTitle:self leftSelected:[self.bikeInfo leftNotesSelected] key:@"ScreenTitle_FootTilt"];
     
-    if( [bikeInfo leftNotesSelected])
+    if( [self.bikeInfo leftNotesSelected])
     {
         [leftLegImageView setHidden:false];
         [rightLegImageView setHidden:true];
@@ -296,7 +296,7 @@
     angle = atanf((startPointLocation.y - endPointLocation.y)/(endPointLocation.x - startPointLocation.x));
     int wholeAngle = (int)(angle*57.2957795);
     int absoluteAngle = abs(wholeAngle);
-    bool varus = ((wholeAngle < 0 && ![bikeInfo leftNotesSelected]) || (wholeAngle >= 0 && [bikeInfo leftNotesSelected]));
+    bool varus = ((wholeAngle < 0 && ![self.bikeInfo leftNotesSelected]) || (wholeAngle >= 0 && [self.bikeInfo leftNotesSelected]));
     if(absoluteAngle <= 4)
     {
         suggestedWedgesOne.hidden = YES;
@@ -336,7 +336,7 @@
 - (IBAction)saveAngle
 {
     VarusNote *note = [[VarusNote alloc] init];
-    [note setLeftFoot:[bikeInfo leftNotesSelected]];
+    [note setLeftFoot:[self.bikeInfo leftNotesSelected]];
 
     [note setAngle:angle];
     [note setImage:UIImageJPEGRepresentation(photo,.1)];
@@ -344,7 +344,7 @@
     
     [self.bikeInfo addNote:note];
      
-    [self.navigationController popToViewController:bikeInfo animated:YES];
+    [self.navigationController popToViewController:self.bikeInfo animated:YES];
 }
 
 - (void)photoCaptured

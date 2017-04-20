@@ -118,7 +118,7 @@
 {
     [super viewWillAppear:animated];
 
-    [Util setScreenLeftRightTitle:self leftSelected:[bikeInfo leftNotesSelected] key:@"ScreenTitle_Goniometer"];
+    [Util setScreenLeftRightTitle:self leftSelected:[self.bikeInfo leftNotesSelected] key:@"ScreenTitle_Goniometer"];
 }
 
 - (void)enableAngle:(id)sender
@@ -365,9 +365,9 @@
 
     //[note setPath:[(LegAngleImageView *)previewImage kneePath]];
     [note setImage:UIImageJPEGRepresentation([self imageFromCurrentTime], 1)];
-    [bikeInfo addNote:note];
+    [self.bikeInfo addNote:note];
     
-    [self.navigationController popToViewController:bikeInfo animated:YES];
+    [self.navigationController popToViewController:self.bikeInfo animated:YES];
 }
 
 - (void)setVertices:(NSMutableArray *)vertices;

@@ -68,7 +68,7 @@
 {
     [super viewWillAppear:animated];
     
-    [Util setScreenLeftRightTitle:self leftSelected:[bikeInfo leftNotesSelected] key:@"ScreenTitle_FootPressure"];
+    [Util setScreenLeftRightTitle:self leftSelected:[self.bikeInfo leftNotesSelected] key:@"ScreenTitle_FootPressure"];
 }
 
 - (IBAction)saveLocation:(id)sender
@@ -77,9 +77,9 @@
 
     FootBottomNote *note = [[FootBottomNote alloc] init];
     [note setFootPressure:currentVC.index];
-    [bikeInfo addNote:note];
+    [self.bikeInfo addNote:note];
 
-    [self.navigationController popToViewController:bikeInfo animated:YES];
+    [self.navigationController popToViewController:self.bikeInfo animated:YES];
 }
 
 #pragma mark - UIPageViewController delegate/datasource

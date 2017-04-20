@@ -10,9 +10,6 @@
 #import "BikeFitViewController.h"
 
 @interface NoteViewController : UIViewController
-{
-    BikeFitViewController * bikeInfo;
-}
 @property BikeFitViewController *bikeInfo;
 
 @end

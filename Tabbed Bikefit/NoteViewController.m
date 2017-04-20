@@ -13,7 +13,6 @@
 @end
 
 @implementation NoteViewController
-@synthesize bikeInfo;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

@@ -9,6 +9,7 @@
 #import "AthletePropertyModel.h"
 #import "GoniometerViewController.h"
 #import "Util.h"
+#import "SVProgressHUD.h"
 
 #import <math.h>
 #import <QuartzCore/QuartzCore.h>
@@ -340,10 +341,15 @@
 
 - (IBAction)saveAngle
 {
-    //For the note
+    [self uploadNote];
+}
+
+- (void)uploadNote
+{
+    [SVProgressHUD showWithStatus:@"Uploading..."];
     AngleNote *note = [[AngleNote alloc] init];
     GoniometerDrawingView *imageView = (GoniometerDrawingView *)previewImage;
-
+    
     if(imageView.drawKneePath)
     {
         [note setKneeAngle:imageView.kneeAngle];
@@ -361,13 +367,30 @@
         [note setHipAngle:imageView.hipAngle];
         [note setHipVertices:imageView.hipVertices];
     }
-    
 
-    //[note setPath:[(LegAngleImageView *)previewImage kneePath]];
-    [note setImage:UIImageJPEGRepresentation([self imageFromCurrentTime], 1)];
-    [self.bikeInfo addNote:note];
     
-    [self.navigationController popToViewController:self.bikeInfo animated:YES];
+    __weak GoniometerViewController *weakSelf = self;
+    
+    [note uploadImageData:UIImageJPEGRepresentation([self imageFromCurrentTime],1) callback:^(BOOL success, NSString *errorMessage) {
+        [SVProgressHUD dismiss];
+        NSLog(@"😴upload %@",success ? @"success" : @"failed");
+        if (!success) {
+            [weakSelf amazonUploadError:errorMessage];
+        } else {
+            [weakSelf addNoteAndDismiss:note];
+        }
+    }];
+}
+
+- (void)amazonUploadError:(NSString *)message
+{
+    UIAlertController *alertController = [self amazonUploadErrorAlertController:nil];
+    UIAlertAction *retryAction = [UIAlertAction actionWithTitle:@"Retry" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self uploadNote];
+    }];
+    
+    [alertController addAction:retryAction];
+    [self presentViewController:alertController animated:true completion:nil];
 }
 
 - (void)setVertices:(NSMutableArray *)vertices;

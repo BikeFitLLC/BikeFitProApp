@@ -9,6 +9,7 @@
 #import "Util.h"
 #import "VarusNoteViewController.h"
 #import "VarusNote.h"
+#import "SVProgressHUD.h"
 
 @interface VarusNoteViewController ()
 {
@@ -335,16 +336,40 @@
 
 - (IBAction)saveAngle
 {
+    [self uploadNote];
+}
+
+- (void)uploadNote
+{
+    [SVProgressHUD showWithStatus:@"Uploading..."];
     VarusNote *note = [[VarusNote alloc] init];
     [note setLeftFoot:[self.bikeInfo leftNotesSelected]];
-
+    
     [note setAngle:angle];
-    [note setImage:UIImageJPEGRepresentation(photo,.1)];
     [note setPath:[(VarusDrawingView *)previewImage overlayPath]];
     
-    [self.bikeInfo addNote:note];
-     
-    [self.navigationController popToViewController:self.bikeInfo animated:YES];
+    __weak VarusNoteViewController *weakSelf = self;
+    
+    [note uploadImageData:UIImageJPEGRepresentation(photo,.1) callback:^(BOOL success, NSString *errorMessage) {
+        [SVProgressHUD dismiss];
+        NSLog(@"😴upload %@",success ? @"success" : @"failed");
+        if (!success) {
+            [weakSelf amazonUploadError:errorMessage];
+        } else {
+            [weakSelf addNoteAndDismiss:note];
+        }
+    }];
+}
+
+- (void)amazonUploadError:(NSString *)message
+{
+    UIAlertController *alertController = [self amazonUploadErrorAlertController:nil];
+    UIAlertAction *retryAction = [UIAlertAction actionWithTitle:@"Retry" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self uploadNote];
+    }];
+    
+    [alertController addAction:retryAction];
+    [self presentViewController:alertController animated:true completion:nil];
 }
 
 - (void)photoCaptured

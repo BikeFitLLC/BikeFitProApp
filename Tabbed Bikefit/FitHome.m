@@ -9,8 +9,10 @@
 #import "FitHome.h"
 #import "BikefitConstants.h"
 #import "UIColor+CustomColor.h"
+#import "AWSSyncErrorManager.h"
+#import "SVProgressHUD.h"
 
-@interface FitHome ()
+@interface FitHome () <LoginDelegate>
 {
     UIButton *athleteInfoButton;
     UIButton *bikeFitButton;
@@ -18,11 +20,30 @@
     UIButton *emailFitButton;
     UIButton *viewFitButton;
     MFMailComposeViewController* emailController;
+    UIButton *syncButton;
 }
 
 @end
 
 @implementation FitHome
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateErrorState)
+                                                 name:kNotificationAWSSync
+                                               object:nil];
+    [self updateErrorState];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:kNotificationAWSSync
+                                                  object:nil];
+    [super viewWillDisappear:animated];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -93,8 +114,18 @@
     
     [viewFitButton addTarget:self action:@selector(emailFit:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:viewFitButton];
-
-
+    
+    syncButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    syncButton.frame = CGRectMake(viewFitButton.frame.origin.x,
+                                  CGRectGetMaxY(viewFitButton.frame),
+                                  viewFitButton.imageView.image.size.width,
+                                  self.view.bounds.size.height - CGRectGetMaxY(viewFitButton.frame));
+    syncButton.backgroundColor = [UIColor colorWithRed:0.8 green:0 blue:0.5 alpha:1];
+    [syncButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [syncButton setTitle:@"Press to sync with server" forState:UIControlStateNormal];
+    [syncButton addTarget:self action:@selector(sync) forControlEvents:UIControlEventTouchUpInside];
+    syncButton.hidden = true;
+    [self.view addSubview:syncButton];
 }
 
 -(void)segueToAthleteInfo:(id)sender
@@ -146,14 +177,121 @@
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - error state
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)updateErrorState
+{
+    //yay
+    NSString *athleteWithError = [AWSSyncErrorManager athleteWithError];
+    if (athleteWithError && [athleteWithError isEqualToString:[AthletePropertyModel athleteIdentifier]]) {
+        //show sync button
+        syncButton.hidden = false;
+    } else {
+        //hide
+        syncButton.hidden = true;
+    }
 }
-*/
+
+- (void)sync
+{
+    [SVProgressHUD showWithStatus:@"Syncing with server..."];
+    [AthletePropertyModel saveAthleteToAWS:^(BOOL success, BOOL loginError) {
+        [SVProgressHUD dismiss];
+        if (success) {
+            [self updateErrorState];
+        } else {
+            if (loginError) {
+                // do login thing
+                UIAlertAction *retryAction = [UIAlertAction actionWithTitle:@"Login" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    [self startLogin];
+                }];
+                [self amazonUploadErrorAlertController:@"You are not logged in"
+                                           retryAction:retryAction];
+            } else {
+                // show sync error
+                UIAlertAction *retryAction = [UIAlertAction actionWithTitle:@"Retry" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    [self sync];
+                }];
+                [self amazonUploadErrorAlertController:nil
+                                           retryAction:retryAction];
+            }
+        }
+    }];
+}
+
+- (void)amazonUploadErrorAlertController:(NSString *)errorMessage retryAction:(UIAlertAction *)retryAction
+{
+    if (!errorMessage) {
+        errorMessage = @"We're sorry, we could not sync the data with the server.  Please make sure you have a stable internet connection and try again";
+    }
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"An upload error has occurred"
+                                                                             message:errorMessage
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    
+    [alertController addAction:cancelAction];
+    [alertController addAction:retryAction];
+    [self.navigationController presentViewController:alertController
+                                            animated:true
+                                          completion:nil];
+}
+
+- (void)startLogin
+{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Please confirm your login credentials"
+                                                                             message:nil
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.text = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_USERNAME_KEY];
+        textField.placeholder = @"Email";
+        textField.keyboardType = UIKeyboardTypeEmailAddress;
+        textField.secureTextEntry = NO;
+    }];
+    
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.text = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_PASSWORD_KEY];
+        textField.placeholder = @"Password";
+        textField.secureTextEntry = YES;
+    }];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel"
+                                                           style:UIAlertActionStyleDestructive
+                                                         handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    
+    UIAlertAction *loginAction = [UIAlertAction actionWithTitle:@"Login"
+                                                          style:UIAlertActionStyleDefault
+                                                        handler:^(UIAlertAction * _Nonnull action) {
+                                                            [self loginWithCredentials:[[alertController textFields][0] text]
+                                                                              password:[[alertController textFields][1] text]];
+    }];
+    
+    [alertController addAction:cancelAction];
+    [alertController addAction:loginAction];
+    
+    [self.navigationController presentViewController:alertController
+                                            animated:true
+                                          completion:nil];
+}
+
+- (void)loginWithCredentials:(NSString *)email password:(NSString *)password
+{
+    [SVProgressHUD showWithStatus:@"Logging in..."];
+    [AmazonClientManager loginWithEmail:email
+                            andPassword:password
+                            andDelegate:self];
+}
+
+- (void)onUserSignedIn
+{
+    [SVProgressHUD dismiss];
+    [self sync];
+}
 
 @end

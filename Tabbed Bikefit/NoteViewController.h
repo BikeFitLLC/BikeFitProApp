@@ -12,4 +12,8 @@
 @interface NoteViewController : UIViewController
 @property BikeFitViewController *bikeInfo;
 
+- (void)addNoteAndDismiss:(FitNote *)note;
+
+- (UIAlertController *)amazonUploadErrorAlertController:(NSString *)errorMessage;
+
 @end

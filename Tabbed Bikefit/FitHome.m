@@ -34,7 +34,11 @@
                                              selector:@selector(updateErrorState)
                                                  name:kNotificationAWSSync
                                                object:nil];
-    [self updateErrorState];
+    if (![[AmazonClientManager credProvider] isTokenValid]) {
+        [self autologin];
+    }else {
+        [self updateErrorState];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -287,6 +291,19 @@
     [self.navigationController presentViewController:alertController
                                             animated:true
                                           completion:nil];
+}
+
+- (void)autologin
+{
+    NSString *username = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_USERNAME_KEY];
+    NSString *password = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_PASSWORD_KEY];
+    
+    if (username && password) {
+        [self loginWithCredentials:username
+                          password:password];
+    } else {
+        [self showLoginError];
+    }
 }
 
 - (void)loginWithCredentials:(NSString *)email password:(NSString *)password

@@ -171,17 +171,32 @@
     return [tokenExpiration compare:now] != NSOrderedAscending;
 }
 
+/*
+ * Called on a timer every 10 minutes, will check how much
+ * time is left on the authorization and refresh the tokens
+ * if they expire in 15 minutes or sooner
+ */
 - (void) checkTokenExpirationAndRefresh
 {
     NSDate *now = [NSDate date];
     int interval = [now timeIntervalSinceDate:tokenExpiration];
     
-    if(abs(interval)/60 < 10)
+    if(interval > -890) //Just under 15 minutes
     {
+        //
         //if the token expires in fewer than 10 minutes, refresh it.
-        [AIMobileLib getAccessTokenForScopes:[NSArray arrayWithObject:@"profile"]
-                                                withOverrideParams:nil
-                                                delegate:self];
+        //
+        if(amznTokenString)
+        {
+            //If this account is logged in through Amazon Oauth, reresh the amazon token
+            [AIMobileLib getAccessTokenForScopes:[NSArray arrayWithObject:@"profile"]
+                                                        withOverrideParams:nil
+                                                        delegate:self];
+        }
+        else {
+            //Otherwise, just call refresh.  it will use username/password.
+            [self refresh];
+        }
     }
 }
 

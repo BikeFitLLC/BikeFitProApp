@@ -30,19 +30,18 @@
 #define AWS_FITTER_ATTRIBUTE_FITTERKEY @"FitterKey"
 #define AWS_FITTER_ATTRIBUTE_FITTERID @"FitterID"
 
-#define AWS_FIT_TABLE_NAME_FORMAT @"%@-fits"
+//#define AWS_FIT_TABLE_NAME_FORMAT @"%@-fits"
 
 #define S3_BUCKET @"8190ba10-d310-11e3-9c1a-0800200c9a66"
 
-//#define TVM_HOSTNAME @"http://tvm-env-test.elasticbeanstalk.com"
+#ifdef DEBUG
+#define TVM_HOSTNAME @"https://cbdq0x3ku5.execute-api.us-west-2.amazonaws.com/Test"
+#else
 #define TVM_HOSTNAME @"https://tvm.velopezdigital.com"
-//#define TVM_HOSTNAME @"http://127.0.0.1:8000"
+#endif
+
 #define TVM_GET_CREDENTIALS_OAUTH_PATH @"/?Email=%@&Name=%@&Token=%@"
 #define TVM_GET_CREDENTIALS_PATH @"/getToken?Email=%@&Password=%@"
 #define TVM_CREATE_ACCOUNT_PATH @"/createAccount?Email=%@&Password=%@&Name=%@&FirstName=%@&LastName=%@"
 #define TVM_IS_AMAZON_PATH @"/isAmazonAccount?Email=%@"
-
-//#define TOKEN_VENDING_MACHINE_URL_FORMAT @"https://tvm.velopezdigital.com/?Email=%@&Name=%@&Token=%@"
-//#define TOKEN_VENDING_MACHINE_URL_FORMAT @"http://127.0.0.1:8000/?Email=%@&Name=%@&Token=%@"
-//#define TOKEN_VENDING_MACHINE_URL_FORMAT @"http://tvm-env-test.elasticbeanstalk.com/?Email=%@&Name=%@&Token=%@"
 

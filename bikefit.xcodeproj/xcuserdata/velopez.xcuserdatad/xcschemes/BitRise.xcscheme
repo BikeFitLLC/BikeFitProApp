@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5D8531C51759CD6600934E68"
+               BlueprintIdentifier = "D7DADE16974C2165F91D66EF15438A94"
                BuildableName = "bikefit.app"
                BlueprintName = "bikefit"
                ReferencedContainer = "container:bikefit.xcodeproj">
@@ -28,7 +28,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5D8531F91759CD6600934E68"
+               BlueprintIdentifier = "57BBC668CD454F927DE9C5AB8ED01B6B"
                BuildableName = "bikefitTests.octest"
                BlueprintName = "bikefitTests"
                ReferencedContainer = "container:bikefit.xcodeproj">
@@ -56,7 +56,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "5D8531F91759CD6600934E68"
+               BlueprintIdentifier = "57BBC668CD454F927DE9C5AB8ED01B6B"
                BuildableName = "bikefitTests.octest"
                BlueprintName = "bikefitTests"
                ReferencedContainer = "container:bikefit.xcodeproj">
@@ -70,9 +70,19 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "00286C121BD0455000CC0C08"
+               BlueprintIdentifier = "B00E898214B806702901A3D7430003AE"
                BuildableName = "bikefitModelTests.xctest"
                BlueprintName = "bikefitModelTests"
+               ReferencedContainer = "container:bikefit.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "00B5AE8C1EBAE7F6000E0650"
+               BuildableName = "bikefitTests2.xctest"
+               BlueprintName = "bikefitTests2"
                ReferencedContainer = "container:bikefit.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -80,7 +90,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5D8531C51759CD6600934E68"
+            BlueprintIdentifier = "D7DADE16974C2165F91D66EF15438A94"
             BuildableName = "bikefit.app"
             BlueprintName = "bikefit"
             ReferencedContainer = "container:bikefit.xcodeproj">
@@ -103,7 +113,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5D8531C51759CD6600934E68"
+            BlueprintIdentifier = "D7DADE16974C2165F91D66EF15438A94"
             BuildableName = "bikefit.app"
             BlueprintName = "bikefit"
             ReferencedContainer = "container:bikefit.xcodeproj">
@@ -122,7 +132,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "5D8531C51759CD6600934E68"
+            BlueprintIdentifier = "D7DADE16974C2165F91D66EF15438A94"
             BuildableName = "bikefit.app"
             BlueprintName = "bikefit"
             ReferencedContainer = "container:bikefit.xcodeproj">

@@ -9,9 +9,8 @@
 #import "AppDelegate.h"
 #import "AthletePropertyModel.h"
 #import "BikefitConstants.h"
-
-//#import "AMZNGetAccessTokenDelegate.h"
 #import "AmazonClientManager.h"
+#import "SubcriptionManager.h"
 
 #import <LoginWithAmazon/LoginWithAmazon.h>
 
@@ -19,12 +18,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-    
-    //[AIMobileLib getAccessTokenForScopes:[NSArray arrayWithObject:@"profile"]
-    //                  withOverrideParams:nil
-    //                            delegate:[AmazonClientManager credProvider]];
-    
+    //
+    // Store Kit Transaction Observer
+     [[SKPaymentQueue defaultQueue] addTransactionObserver:[SubcriptionManager sharedManager]];
+    //
     [AthletePropertyModel newAthlete];
     
     //Setup AWS configuration

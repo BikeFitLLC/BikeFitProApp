@@ -1,18 +1,19 @@
 //
-//  bikefitTests2.m
-//  bikefitTests2
+//  SubscriptionTests.m
+//  bikefit
 //
 //  Created by Alfonso Lopez on 5/3/17.
 //  Copyright © 2017 Alfonso Lopez. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
+#import "SubcriptionManager.h"
 
-@interface bikefitTests2 : XCTestCase
+@interface SubscriptionTests : XCTestCase
 
 @end
 
-@implementation bikefitTests2
+@implementation SubscriptionTests
 
 - (void)setUp {
     [super setUp];
@@ -24,16 +25,45 @@
     [super tearDown];
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
+- (void)testRetrieveProducts {
+    SubcriptionManager *sm = [SubcriptionManager sharedManager];
+    
+    XCTestExpectation *retrieveReturned = [self expectationWithDescription:@"Retreive has come."];
+    
+    [sm retrieveAvailableProducts:^{
+        [retrieveReturned fulfill];
+    }];
+    
+    [self waitForExpectationsWithTimeout:1 handler:^(NSError *error) {
+        if (error) {
+            NSLog(@"Server Timeout Error: %@", error);
+        }
+        XCTAssertTrue([sm.products count] == 1);
+        SKProduct* product = sm.products[0];
+        XCTAssertTrue([product.productIdentifier isEqualToString:@"pro_subscription"]);
+    }];
+    
 }
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
+- (void)testPurchaseSubscription {
+    
+    XCTestExpectation *retrieveReturned = [self expectationWithDescription:@"Retreive has come."];
+    
+    SubcriptionManager *sm = [SubcriptionManager sharedManager];
+    
+    [sm retrieveAvailableProducts:^{
+        [retrieveReturned fulfill];
+    }];
+    
+    [self waitForExpectationsWithTimeout:1 handler:^(NSError *error) {
+        if (error) {
+            NSLog(@"Server Timeout Error: %@", error);
+        }
+        [sm purchaseNewSubscription:sm.products[0]];
     }];
 }
+
+
+
 
 @end

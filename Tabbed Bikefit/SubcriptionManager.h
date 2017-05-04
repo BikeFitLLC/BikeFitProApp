@@ -9,9 +9,18 @@
 #import <Foundation/Foundation.h>
 #import <Storekit/Storekit.h>
 
-@interface SubcriptionManager : NSObject <SKProductsRequestDelegate>
+@interface SubcriptionManager : NSObject <SKProductsRequestDelegate, SKPaymentTransactionObserver>
 
+
+
+@property SKMutablePayment* payment;
 @property SKProductsRequest *request;
 @property NSArray *products;
+@property (nonatomic, copy) void (^success)();
+
++ (id)sharedManager;
+- (void)retrieveAvailableProducts:(void (^)())success;
+- (void) purchaseNewSubscription:(nonnull SKProduct*)product;
+
 
 @end

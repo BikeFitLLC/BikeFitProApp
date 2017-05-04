@@ -53,7 +53,7 @@
       </PreActions>
       <Testables>
          <TestableReference
-            skipped = "NO">
+            skipped = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "57BBC668CD454F927DE9C5AB8ED01B6B"
@@ -70,19 +70,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B00E898214B806702901A3D7430003AE"
-               BuildableName = "bikefitModelTests.xctest"
-               BlueprintName = "bikefitModelTests"
-               ReferencedContainer = "container:bikefit.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7A81DD30FD7F7BD24F40C658FDF0E3CD"
-               BuildableName = "bikefitUITests.xctest"
-               BlueprintName = "bikefitUITests"
+               BlueprintIdentifier = "00B5AE8C1EBAE7F6000E0650"
+               BuildableName = "bikefitTests2.xctest"
+               BlueprintName = "bikefitTests2"
                ReferencedContainer = "container:bikefit.xcodeproj">
             </BuildableReference>
          </TestableReference>

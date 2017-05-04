@@ -1,5 +1,5 @@
 //
-//  SubscriptionManagerTests.m
+//  SubscriptionTests.m
 //  bikefit
 //
 //  Created by Alfonso Lopez on 5/3/17.
@@ -7,12 +7,13 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "SubcriptionManager.h"
 
-@interface SubscriptionManagerTests : XCTestCase
+@interface SubscriptionTests : XCTestCase
 
 @end
 
-@implementation SubscriptionManagerTests
+@implementation SubscriptionTests
 
 - (void)setUp {
     [super setUp];
@@ -30,10 +31,10 @@
 }
 
 - (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+    SubcriptionManager *sm = [[SubcriptionManager alloc] init];
+    [sm validateProductIdentifiers];
 }
+
+
 
 @end

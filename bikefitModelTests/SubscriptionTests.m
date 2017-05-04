@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "SubcriptionManager.h"
 
 @interface SubscriptionTests : XCTestCase
 
@@ -30,10 +31,10 @@
 }
 
 - (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+    SubcriptionManager *sm = [[SubcriptionManager alloc] init];
+    [sm validateProductIdentifiers];
 }
+
+
 
 @end

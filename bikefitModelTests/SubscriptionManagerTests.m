@@ -1,18 +1,18 @@
 //
-//  bikefitModelTests.m
-//  bikefitModelTests
+//  SubscriptionManagerTests.m
+//  bikefit
 //
-//  Created by Alfonso Lopez on 10/15/15.
-//  Copyright © 2015 Alfonso Lopez. All rights reserved.
+//  Created by Alfonso Lopez on 5/3/17.
+//  Copyright © 2017 Alfonso Lopez. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
 
-@interface bikefitModelTests : XCTestCase
+@interface SubscriptionManagerTests : XCTestCase
 
 @end
 
-@implementation bikefitModelTests
+@implementation SubscriptionManagerTests
 
 - (void)setUp {
     [super setUp];

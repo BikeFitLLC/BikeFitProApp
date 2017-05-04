@@ -10,6 +10,8 @@
 #import "BikefitConstants.h"
 #import "UIColor+CustomColor.h"
 
+#import <StoreKit/StoreKit.h>
+
 @interface LoginViewController ()
 {
     UIButton *loginButton;
@@ -18,7 +20,6 @@
     UITextField *emailField;
     UITextField *passwordField;
 }
-
 @end
 
 @implementation LoginViewController
@@ -191,6 +192,17 @@
         [AmazonClientManager isAmazonAccount:emailField.text andDelegate:self];
     }
 }
+
+
+# pragma mark Store Kit
+
+- (IBAction) subscribe:(id)sender
+{
+//    SKProduct * product = SKProduct;
+//    product.productIdentifier = @"pro_subscription";
+    
+}
+
 
 /*
 #pragma mark - Navigation

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Storekit/Storekit.h>
 #import "LoginDelegate.h"
 
 @interface LoginViewController : UIViewController <UITextFieldDelegate, LoginDelegate>

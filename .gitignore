@@ -8,5 +8,4 @@ build/
 Pods/*
 bikefit.xcodeproj/xcuserdata/*
 bikefit.xcworkspace/xcshareddata/*
-bikefit.xcworkspace/xcuserdata/*
-
+bikefit.xcworkspace/xcuserdata/**

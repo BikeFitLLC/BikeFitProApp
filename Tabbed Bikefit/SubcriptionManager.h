@@ -13,6 +13,8 @@
 
 @required
 - (void) productsReturned:(NSArray* _Nullable)products;
+- (void) purchaseComplete:(NSError* _Nullable) error;
+//- (void) restoreComplete:(NSError* _Nullable) error;
 
 @end
 

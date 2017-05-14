@@ -89,12 +89,24 @@
 //                [self failedTransaction:transaction];
                 break;
             case SKPaymentTransactionStatePurchased:
-//               //TODO: Create Account on Backend
+            {
+                [[AmazonClientManager credProvider] createNewAccountWithEmail:self.email
+                            password:self.password
+                            shopName:@"SubMan Test"
+                            firstName:@"SubMan Test"
+                            lastName:@"SubMan Test"
+                            callback:^(BOOL success) {
+                                if(success) {
+                                    [_delegate purchaseComplete:nil];
+                                } else {
+                                    NSError* error = [NSError errorWithDomain:@"SubscriptionManager" code:1 userInfo:@{@"description":@"Failed to create new acccount on bikefit backend"}];
+                                    [_delegate purchaseComplete:error];
+                                }
+                            }];
                 break;
+            }
             case SKPaymentTransactionStateRestored:
-                [AmazonClientManager loginWithEmail:self.email
-                                        andPassword:self.password
-                                        andDelegate:nil];
+                //[_delegate restoreComplete:nil];
                 break;
             default:
                 // For debugging

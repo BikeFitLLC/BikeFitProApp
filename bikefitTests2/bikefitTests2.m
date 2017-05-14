@@ -11,6 +11,7 @@
 #import "SubcriptionManager.h"
 
 #import <objc/runtime.h>
+#include <stdlib.h>
 
 #import "AmazonClientManager.h"
 
@@ -20,13 +21,15 @@
 
 @end
 
-@interface SubscriptionTests : XCTestCase <SubscriptionManagerDelegate>
+@interface SubscriptionTests : XCTestCase <SubscriptionManagerDelegate, LoginDelegate>
 
 @end
 
 @implementation SubscriptionTests
 
 XCTestExpectation *productsReturnedExpection;
+XCTestExpectation *purchaseCompleteExpection;
+XCTestExpectation *accountExistsExpection;
 
 - (void)setUp {
     [super setUp];
@@ -52,34 +55,73 @@ XCTestExpectation *productsReturnedExpection;
     }];
 }
 
-- (void) testSuccessfulRestored {
-    SubcriptionManager *sm = [SubcriptionManager sharedManager];
-    sm.delegate = self;
-    SKPaymentTransaction *transaction = [[SKPaymentTransaction alloc] init];
-    
-    Method swizzledMethod = class_getInstanceMethod([self class], @selector(replaced_getTransactionState));
-    Method originalMethod = class_getInstanceMethod([transaction class], @selector(transactionState));
-    
-    method_exchangeImplementations(originalMethod, swizzledMethod);
-    
-    NSArray *transactions = [NSArray arrayWithObjects:transaction, nil];
-    [sm paymentQueue:nil updatedTransactions:transactions];
-    
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isLoggedIn == True"];
-    [self expectationForPredicate:predicate evaluatedWithObject:[AmazonClientManager credProvider]  handler:^BOOL{
-        return true;
-    }];
-    [self waitForExpectationsWithTimeout:5 handler:^(NSError * _Nullable error) {
-        return;
-    }];
-}
-    
+//- (void) testSuccessfulRestored {
+//    SubcriptionManager *sm = [SubcriptionManager sharedManager];
+//    sm.delegate = self;
+//    SKPaymentTransaction *transaction = [[SKPaymentTransaction alloc] init];
+//    
+//    Method swizzledMethod = class_getInstanceMethod([self class], @selector(replaced_getTransactionState));
+//    Method originalMethod = class_getInstanceMethod([transaction class], @selector(transactionState));
+//    
+//    method_exchangeImplementations(originalMethod, swizzledMethod);
+//    
+//    NSArray *transactions = [NSArray arrayWithObjects:transaction, nil];
+//    sm.email = @"test@test.com";
+//    sm.password = @"test";
+//    [sm paymentQueue:nil updatedTransactions:transactions];
+//    
+//    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(id  _Nullable evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
+//        return [AmazonClientManager verifyLoggedInActive];
+//    }];
+//    
+//    [self expectationForPredicate:predicate evaluatedWithObject:self  handler:^BOOL{
+//        return true;
+//    }];
+//    [self waitForExpectationsWithTimeout:5 handler:^(NSError * _Nullable error) {
+//        return;
+//    }];
+//}
+
 - (SKPaymentTransactionState)replaced_getTransactionState
 {
     return SKPaymentTransactionStateRestored;
 }
 
-#pragma Delegate Methods
+- (void) testSuccessfulPurchased {
+    SubcriptionManager *sm = [SubcriptionManager sharedManager];
+    sm.delegate = self;
+    SKPaymentTransaction *transaction = [[SKPaymentTransaction alloc] init];
+    
+    Method swizzledMethod = class_getInstanceMethod([self class], @selector(replaced_getTransactionStatePurchased));
+    Method originalMethod = class_getInstanceMethod([transaction class], @selector(transactionState));
+    
+    method_exchangeImplementations(originalMethod, swizzledMethod);
+    
+    NSArray *transactions = [NSArray arrayWithObjects:transaction, nil];
+    int r = arc4random_uniform(200);
+    sm.email = [NSString stringWithFormat:@"test-%d@test.com", r];
+    sm.password = @"test";
+    [sm paymentQueue:nil updatedTransactions:transactions];
+    
+    purchaseCompleteExpection = [self expectationWithDescription:@"Purchase Completed"];
+    [self waitForExpectationsWithTimeout:5 handler:^(NSError * _Nullable error) {
+        return;
+    }];
+    
+    accountExistsExpection  = [self expectationWithDescription:@"Account does exists"];
+    [AmazonClientManager isAmazonAccount:sm.email andDelegate:self];
+    [self waitForExpectationsWithTimeout:5 handler:^(NSError * _Nullable error) {
+        return;
+    }];
+}
+
+- (SKPaymentTransactionState)replaced_getTransactionStatePurchased
+{
+    return SKPaymentTransactionStatePurchased;
+}
+
+
+#pragma mark SubscriptionManager Delegate Methods
 
 - (void) productsReturned:(NSArray* _Nullable)products
 {
@@ -90,5 +132,19 @@ XCTestExpectation *productsReturnedExpection;
     [productsReturnedExpection fulfill];
 }
 
+- (void) purchaseComplete:(NSError *)error {
+    [purchaseCompleteExpection fulfill];
+}
+
+#pragma mark Login Delegate
+- (void)amazonCheckResult:(BOOL)isAmazonAccount accountExists:(BOOL)exists {
+    if(exists) {
+        [accountExistsExpection fulfill];
+    }
+}
+
+- (void) onUserSignedIn {
+    return;
+}
 
 @end

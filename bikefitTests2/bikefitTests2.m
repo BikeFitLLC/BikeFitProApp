@@ -7,13 +7,26 @@
 //
 
 #import <XCTest/XCTest.h>
+#import <Storekit/Storekit.h>
 #import "SubcriptionManager.h"
 
-@interface SubscriptionTests : XCTestCase
+#import <objc/runtime.h>
+
+#import "AmazonClientManager.h"
+
+@interface SubcriptionManager (viewable)
+
+- (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions;
+
+@end
+
+@interface SubscriptionTests : XCTestCase <SubscriptionManagerDelegate>
 
 @end
 
 @implementation SubscriptionTests
+
+XCTestExpectation *productsReturnedExpection;
 
 - (void)setUp {
     [super setUp];
@@ -25,45 +38,57 @@
     [super tearDown];
 }
 
-- (void)testRetrieveProducts {
+- (void)testGetProducts {
     SubcriptionManager *sm = [SubcriptionManager sharedManager];
+    productsReturnedExpection = [self expectationWithDescription:@"Expected Products to be returned"];
     
-    XCTestExpectation *retrieveReturned = [self expectationWithDescription:@"Retreive has come."];
+    sm.delegate = self;
+    [sm retrieveAvailableProducts];
     
-    [sm retrieveAvailableProducts:^{
-        [retrieveReturned fulfill];
-    }];
-    
-    [self waitForExpectationsWithTimeout:1 handler:^(NSError *error) {
-        if (error) {
-            NSLog(@"Server Timeout Error: %@", error);
+    [self waitForExpectationsWithTimeout:5 handler:^(NSError * _Nullable error) {
+        if(error){
+            XCTFail(@"Failed to get products");
         }
-        XCTAssertTrue([sm.products count] == 1);
-        SKProduct* product = sm.products[0];
-        XCTAssertTrue([product.productIdentifier isEqualToString:@"pro_subscription"]);
-    }];
-    
-}
-
-- (void)testPurchaseSubscription {
-    
-    XCTestExpectation *retrieveReturned = [self expectationWithDescription:@"Retreive has come."];
-    
-    SubcriptionManager *sm = [SubcriptionManager sharedManager];
-    
-    [sm retrieveAvailableProducts:^{
-        [retrieveReturned fulfill];
-    }];
-    
-    [self waitForExpectationsWithTimeout:1 handler:^(NSError *error) {
-        if (error) {
-            NSLog(@"Server Timeout Error: %@", error);
-        }
-        [sm purchaseNewSubscription:sm.products[0]];
     }];
 }
 
+- (void) testSuccessfulRestored {
+    SubcriptionManager *sm = [SubcriptionManager sharedManager];
+    sm.delegate = self;
+    SKPaymentTransaction *transaction = [[SKPaymentTransaction alloc] init];
+    
+    Method swizzledMethod = class_getInstanceMethod([self class], @selector(replaced_getTransactionState));
+    Method originalMethod = class_getInstanceMethod([transaction class], @selector(transactionState));
+    
+    method_exchangeImplementations(originalMethod, swizzledMethod);
+    
+    NSArray *transactions = [NSArray arrayWithObjects:transaction, nil];
+    [sm paymentQueue:nil updatedTransactions:transactions];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isLoggedIn == True"];
+    [self expectationForPredicate:predicate evaluatedWithObject:[AmazonClientManager credProvider]  handler:^BOOL{
+        return true;
+    }];
+    [self waitForExpectationsWithTimeout:5 handler:^(NSError * _Nullable error) {
+        return;
+    }];
+}
+    
+- (SKPaymentTransactionState)replaced_getTransactionState
+{
+    return SKPaymentTransactionStateRestored;
+}
 
+#pragma Delegate Methods
+
+- (void) productsReturned:(NSArray* _Nullable)products
+{
+    XCTAssertTrue([products count] > 0);
+    SKProduct *product= products[0];
+    XCTAssertTrue([[product productIdentifier] isEqualToString:@"pro_subscription"]);
+    
+    [productsReturnedExpection fulfill];
+}
 
 
 @end

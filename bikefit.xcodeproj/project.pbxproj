@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0060778E1EC7DD2600766422 /* LoginWithAmazon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0060778D1EC7DD2600766422 /* LoginWithAmazon.framework */; };
 		006988F41EBAD74600BC0CF6 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 006988F31EBAD74600BC0CF6 /* StoreKit.framework */; };
 		006988FA1EBAE22100BC0CF6 /* SubscriptionManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 006988F91EBAE22100BC0CF6 /* SubscriptionManagerTests.m */; };
 		006988FB1EBAE30800BC0CF6 /* SubcriptionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 006988F11EBAD69B00BC0CF6 /* SubcriptionManager.m */; };
 		00B5AE901EBAE7F6000E0650 /* bikefitTests2.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B5AE8F1EBAE7F6000E0650 /* bikefitTests2.m */; };
+		00F0882D1EC8192D003DF297 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B1603B36DF5A106DE337E25D61E1631 /* Images.xcassets */; };
 		021A6842D0E03ECC955319137B19C9A5 /* measurementIcon-new-29x29.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C289AC9B32734E019AE679E3B5FD665 /* measurementIcon-new-29x29.png */; };
 		02E409901A221D008DF09AEF27BBF85A /* iTunesArtwork@2x in Resources */ = {isa = PBXBuildFile; fileRef = F3D7A904FAFA3929F6AC326A6EFDCA7E /* iTunesArtwork@2x */; };
 		03B9F1D237F9CF481E5192EC36852BB3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B1603B36DF5A106DE337E25D61E1631 /* Images.xcassets */; };
@@ -117,7 +119,6 @@
 		AA3A2E6C436A5DCD8F88B81D74058FD0 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CD243E25412308F40FD49B708AB849B /* Default@2x.png */; };
 		AC6E1E91E5230D3E878151442970FA3D /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7618BC55F8AB4A851F0DD7DF1A4B344B /* CoreMedia.framework */; };
 		AE49ED00E1B8DF5984CB4104527863BB /* 2_foot_pressure.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D5D2808FD13108F46846F761ADF065F /* 2_foot_pressure.png */; };
-		B06365E25501DEF3C36020F4ABEBD0CD /* LoginWithAmazon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBFA2C104E0CD16150F65A4F76AADF45 /* LoginWithAmazon.framework */; };
 		B0C173AC4CACE725F3D000295C19404F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF445BB09E8A9CFB4365452116FCA979 /* Foundation.framework */; };
 		B2B886703AB3D78DA184F7704921C49C /* CredentialProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 114DAD7CA240309A7C661A93B55A268E /* CredentialProvider.m */; };
 		B37BF7F20B18B2D7654955E71A8150F9 /* AmazonClientManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F89184FFBC86A360DD7EC3E8D408F833 /* AmazonClientManager.m */; };
@@ -130,7 +131,6 @@
 		BD2898CE4EF3C1F38E71DDCB1E420C55 /* VarusNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C444501D9FABF88BE82B7A803752BF4 /* VarusNoteViewController.m */; };
 		BE1E1EA09CCD395D8A2F7AF56743317E /* LoadinSpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52DE749EC24670EA1BBA29CEE1AE2AC2 /* LoadinSpinnerView.m */; };
 		BEFBEC3DB040DFB4DC9993E6460B7DB7 /* home_store@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 45F9DADB191E426AC45186FACD1FAE54 /* home_store@2x.png */; };
-		C18D58E861CBA71764DDDD530560F686 /* img_thumb_383809223.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C2DE22F5107C31C09ED84D0B7BF837E2 /* img_thumb_383809223.jpg */; };
 		C2E9C36543E02C2A408DD7AAB8C7852E /* 3_foot_pressure_bw.png in Resources */ = {isa = PBXBuildFile; fileRef = D08247639CE26FDD1E30815D2127807B /* 3_foot_pressure_bw.png */; };
 		C32EB9828977B95BAC690672A509FF8E /* home_bike@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C544F610E37551BB414E0005701D3B0 /* home_bike@2x.png */; };
 		C7CDD8D1E9C616191CCFE804CDD4DD15 /* home_clients.png in Resources */ = {isa = PBXBuildFile; fileRef = 7C31040F2D184F9FE409CC3F5C4ED20D /* home_clients.png */; };
@@ -160,6 +160,7 @@
 		EB6B146DAE6F57770275C5402A886995 /* BikeFitTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8890D5ECCD154AC15D1796808CC745CE /* BikeFitTableViewCell.m */; };
 		EB8EC8CE93DACE19BD9EC2FEC569E613 /* FFMD_Dial_only.png in Resources */ = {isa = PBXBuildFile; fileRef = E5141E4BBF65287EC6F9F506D3E6C5F8 /* FFMD_Dial_only.png */; };
 		EC004CEAEDE47B7089118F598656C5EA /* 3_Wedge_Rght_Varus.png in Resources */ = {isa = PBXBuildFile; fileRef = 76041CBD13A6EBDFDA36C226FFAA64E1 /* 3_Wedge_Rght_Varus.png */; };
+		F095536824650E0926FC6007 /* libPods-bikefitTests2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BE945879EA0A2F0746B7F0E /* libPods-bikefitTests2.a */; };
 		F3AE32A13BF6E249B6EE732A5AAD97C0 /* SaddleTiltNote.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBE255C18241BBA43455E786629B468 /* SaddleTiltNote.m */; };
 		F4F12668A0B1965B07C0FEAA53AEA8B0 /* 1_wedge_Left_varus.png in Resources */ = {isa = PBXBuildFile; fileRef = 862DE2F8710CEDADB8A6E08D64B1FF77 /* 1_wedge_Left_varus.png */; };
 		F5F380FAF8E4CDC62AF7C5BC0880EC6C /* 2_heels_left.png in Resources */ = {isa = PBXBuildFile; fileRef = CB5F68A2D2F74B7F1D054ADBC0B56E31 /* 2_heels_left.png */; };
@@ -172,6 +173,118 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		006077301EC7D61900766422 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0060771E1EC7D61900766422 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4E68857D046E7EE456A6158DFF176D5B;
+			remoteInfo = AWSAutoScaling;
+		};
+		006077321EC7D61900766422 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0060771E1EC7D61900766422 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 641FD6670DFADC9C0056A2602B914507;
+			remoteInfo = AWSCloudWatch;
+		};
+		006077341EC7D61900766422 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0060771E1EC7D61900766422 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4CF413771A66E8E627C4BB46B30FBA95;
+			remoteInfo = AWSCore;
+		};
+		006077361EC7D61900766422 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0060771E1EC7D61900766422 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 57CD0483DE54BBB5E66BABDE14A672CC;
+			remoteInfo = AWSDynamoDB;
+		};
+		006077381EC7D61900766422 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0060771E1EC7D61900766422 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 79A64524271CB9F9229F63D2CAC0A3BF;
+			remoteInfo = AWSEC2;
+		};
+		0060773A1EC7D61900766422 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0060771E1EC7D61900766422 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AEAA6175DAB97E17A131F19A38E1DD21;
+			remoteInfo = AWSElasticLoadBalancing;
+		};
+		0060773C1EC7D61900766422 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0060771E1EC7D61900766422 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D3DB5D2D5DF0CA4631F816017FBCA1F2;
+			remoteInfo = AWSKinesis;
+		};
+		0060773E1EC7D61900766422 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0060771E1EC7D61900766422 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3F16BD29A90A487CBFC681B335E02AED;
+			remoteInfo = AWSMobileAnalytics;
+		};
+		006077401EC7D61900766422 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0060771E1EC7D61900766422 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E3326DF511D80F5417CE2591F6543627;
+			remoteInfo = AWSS3;
+		};
+		006077421EC7D61900766422 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0060771E1EC7D61900766422 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F57885DC031E9CB16A18D067149B6B13;
+			remoteInfo = AWSSES;
+		};
+		006077441EC7D61900766422 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0060771E1EC7D61900766422 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E723C946977AD6EA95DFBDB16393F944;
+			remoteInfo = AWSSimpleDB;
+		};
+		006077461EC7D61900766422 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0060771E1EC7D61900766422 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 35C232A0D48E54A7E98C9A84B0750213;
+			remoteInfo = AWSSNS;
+		};
+		006077481EC7D61900766422 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0060771E1EC7D61900766422 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B030E970FC9DA06739F11CA3AA08C84B;
+			remoteInfo = AWSSQS;
+		};
+		0060774A1EC7D61900766422 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0060771E1EC7D61900766422 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 891DE5CF11BF5DFC1E944F46AA073AF8;
+			remoteInfo = Bolts;
+		};
+		0060774C1EC7D61900766422 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0060771E1EC7D61900766422 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5218215DE80816070BDFA6DC977D7736;
+			remoteInfo = "Pods-bikefit";
+		};
+		006077871EC7DB3800766422 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0060771E1EC7D61900766422 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = AC7EDE6656F1949F01236DCE243C121F;
+			remoteInfo = "Pods-bikefitTests2";
+		};
 		00B5AE921EBAE7F6000E0650 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EC9259B9845784F56DBD7FB5A168D401 /* Project object */;
@@ -203,6 +316,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0060771E1EC7D61900766422 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
+		0060778D1EC7DD2600766422 /* LoginWithAmazon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LoginWithAmazon.framework; path = LoginWithAmazon/LoginWithAmazon.framework; sourceTree = SOURCE_ROOT; };
 		006988F01EBAD69B00BC0CF6 /* SubcriptionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubcriptionManager.h; sourceTree = "<group>"; };
 		006988F11EBAD69B00BC0CF6 /* SubcriptionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubcriptionManager.m; sourceTree = "<group>"; };
 		006988F31EBAD74600BC0CF6 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -289,6 +404,7 @@
 		4B1D3B532AE59870EADB72C69A71AFC9 /* FootBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FootBottomView.m; sourceTree = "<group>"; };
 		4B81B30596A32225B138FADBCA3265AE /* home_settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_settings@2x.png"; sourceTree = "<group>"; };
 		4B8ACA449179C833221C41052C497903 /* AMZNGetProfileDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMZNGetProfileDelegate.h; sourceTree = "<group>"; };
+		4BE945879EA0A2F0746B7F0E /* libPods-bikefitTests2.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-bikefitTests2.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BEC968FC913B63350C74D79E653B16A /* KneeDrawingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KneeDrawingView.h; sourceTree = "<group>"; };
 		4C392865E5D81AED8AB10276E85C21BC /* BikeFitIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BikeFitIcon.png; path = ../BikeFitIcon.png; sourceTree = "<group>"; };
 		50BB157A1E552F9600E28E3F /* Util.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
@@ -369,6 +485,7 @@
 		A61B9EF5EDEC29313089F09021070971 /* 2_wedge_left_varus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2_wedge_left_varus.png; sourceTree = "<group>"; };
 		A7AE5F0F9E65435324D53ABE982B9BCB /* LoginDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginDelegate.h; sourceTree = "<group>"; };
 		A84E82959E4F3009965E758C6AF9E5D4 /* KopsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KopsViewController.h; sourceTree = "<group>"; };
+		A8FF07D100D8F952D084CC2A /* Pods-bikefitTests2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bikefitTests2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-bikefitTests2/Pods-bikefitTests2.debug.xcconfig"; sourceTree = "<group>"; };
 		AA104F4BA4B54E41AFC2C319390ADC86 /* 76x76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 76x76.png; path = ../76x76.png; sourceTree = "<group>"; };
 		AB021CE5653651818A3DB2FA6EB239E3 /* VarusNote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VarusNote.h; sourceTree = "<group>"; };
 		AF08DE6BD39163C68B551C968C00FB4A /* AMZNLogoutDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMZNLogoutDelegate.m; sourceTree = "<group>"; };
@@ -382,7 +499,7 @@
 		BD35512379485E27C5C206C588E02393 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BDE8232A94883706119FAA30C72ED56A /* ImageViewerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewerViewController.m; sourceTree = "<group>"; };
 		C0627DC642C7445E91062E76CD1F02D9 /* CreateAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateAccountViewController.m; sourceTree = "<group>"; };
-		C2DE22F5107C31C09ED84D0B7BF837E2 /* img_thumb_383809223.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img_thumb_383809223.jpg; sourceTree = "<group>"; };
+		C23ABC0E71454B678F037E9B /* Pods-bikefitTests2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bikefitTests2.release.xcconfig"; path = "Pods/Target Support Files/Pods-bikefitTests2/Pods-bikefitTests2.release.xcconfig"; sourceTree = "<group>"; };
 		C3876B3EF2B607FA87EC75AF3AA761EA /* LegAngleViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LegAngleViewViewController.m; sourceTree = "<group>"; };
 		C44952FD9D488F5FE0DF3012FD7DD133 /* cleat_right_spindle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cleat_right_spindle.png; sourceTree = "<group>"; };
 		C686ADC5FA521ABB0399AEE3C0F6A821 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -394,7 +511,6 @@
 		CAB67BD2DDA17557A46AF97F5E9AD3FF /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		CB5F68A2D2F74B7F1D054ADBC0B56E31 /* 2_heels_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2_heels_left.png; sourceTree = "<group>"; };
 		CBF3463D2C2DE9FE1894572D364AA186 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		CBFA2C104E0CD16150F65A4F76AADF45 /* LoginWithAmazon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LoginWithAmazon.framework; path = "../tmp/velopez-bikefit-app/LoginWithAmazon/LoginWithAmazon.framework"; sourceTree = "<group>"; };
 		CD88645B6604D2B04703B51E73119B0E /* AMZNGetProfileDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMZNGetProfileDelegate.m; sourceTree = "<group>"; };
 		CD9C95ACDA0F7860A7F7BADEFF5340E1 /* AngleImageViewerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AngleImageViewerViewController.m; sourceTree = "<group>"; };
 		CE07D84489178348A013308A09805F17 /* FootBottomNoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FootBottomNoteViewController.m; sourceTree = "<group>"; };
@@ -454,6 +570,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F095536824650E0926FC6007 /* libPods-bikefitTests2.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,8 +584,8 @@
 				4BA879B58BDF394792CF36A84D30ED41 /* CoreMotion.framework in Frameworks */,
 				D4891FA92E39C78FF16907E5193FF919 /* CoreVideo.framework in Frameworks */,
 				B0C173AC4CACE725F3D000295C19404F /* Foundation.framework in Frameworks */,
-				B06365E25501DEF3C36020F4ABEBD0CD /* LoginWithAmazon.framework in Frameworks */,
 				CF95E6E76670C0A3356980ABD6F10D72 /* MessageUI.framework in Frameworks */,
+				0060778E1EC7DD2600766422 /* LoginWithAmazon.framework in Frameworks */,
 				A70A1706691B59E7B027AA5CD13A8401 /* QuartzCore.framework in Frameworks */,
 				8C4FAF8F5D5C328A9A8BCE4885F073EB /* Security.framework in Frameworks */,
 				FE30280A2C8297C1C7416C3104FFC91C /* UIKit.framework in Frameworks */,
@@ -503,6 +620,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0060771F1EC7D61900766422 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				006077311EC7D61900766422 /* libAWSAutoScaling.a */,
+				006077331EC7D61900766422 /* libAWSCloudWatch.a */,
+				006077351EC7D61900766422 /* libAWSCore.a */,
+				006077371EC7D61900766422 /* libAWSDynamoDB.a */,
+				006077391EC7D61900766422 /* libAWSEC2.a */,
+				0060773B1EC7D61900766422 /* libAWSElasticLoadBalancing.a */,
+				0060773D1EC7D61900766422 /* libAWSKinesis.a */,
+				0060773F1EC7D61900766422 /* libAWSMobileAnalytics.a */,
+				006077411EC7D61900766422 /* libAWSS3.a */,
+				006077431EC7D61900766422 /* libAWSSES.a */,
+				006077451EC7D61900766422 /* libAWSSimpleDB.a */,
+				006077471EC7D61900766422 /* libAWSSNS.a */,
+				006077491EC7D61900766422 /* libAWSSQS.a */,
+				0060774B1EC7D61900766422 /* libBolts.a */,
+				0060774D1EC7D61900766422 /* libPods-bikefit.a */,
+				006077881EC7DB3800766422 /* libPods-bikefitTests2.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		006988EF1EBAD66400BC0CF6 /* Store */ = {
 			isa = PBXGroup;
 			children = (
@@ -622,7 +762,6 @@
 				52DE749EC24670EA1BBA29CEE1AE2AC2 /* LoadinSpinnerView.m */,
 				1DC158A11FF5F524E9BCFF29508C72E2 /* MainStoryboard_iPad.storyboard */,
 				DAAE276ADDC7D350105112641ACD6821 /* foot_fore_aft_measure.png */,
-				C2DE22F5107C31C09ED84D0B7BF837E2 /* img_thumb_383809223.jpg */,
 				5762645964239F625939CEE9365CBB23 /* info_button.png */,
 				6B687377B25C223D6ECB9ADAC9EB5B5A /* info_button_29x29.png */,
 				EB2402D6BE4271BFBACA4B18CCFA2B2D /* info_button_29x29_no_white.png */,
@@ -637,6 +776,8 @@
 				4540CE322B8ACC19B6C87C4E2A4A7315 /* Pods-bikefit.release.xcconfig */,
 				20B9BF535B98E09DAC36641D2BD1E170 /* Pods.debug.xcconfig */,
 				F3163F869ED8CAB1660C99B82A3CFB0A /* Pods.release.xcconfig */,
+				A8FF07D100D8F952D084CC2A /* Pods-bikefitTests2.debug.xcconfig */,
+				C23ABC0E71454B678F037E9B /* Pods-bikefitTests2.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -888,6 +1029,8 @@
 		DC52848FD8199899B2F6A533F35D9490 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0060771E1EC7D61900766422 /* Pods.xcodeproj */,
+				0060778D1EC7DD2600766422 /* LoginWithAmazon.framework */,
 				006988F31EBAD74600BC0CF6 /* StoreKit.framework */,
 				654EC64BE42330768DFCF53E8F37057E /* AVFoundation.framework */,
 				A282920090BEAD875A451260FECF9364 /* CoreFoundation.framework */,
@@ -896,13 +1039,13 @@
 				09BDCE21BB92C9314BED6D3AAD389FA8 /* CoreMotion.framework */,
 				48079637CDA4A135AA203F291215FBBB /* CoreVideo.framework */,
 				DF445BB09E8A9CFB4365452116FCA979 /* Foundation.framework */,
-				CBFA2C104E0CD16150F65A4F76AADF45 /* LoginWithAmazon.framework */,
 				300A358622E2F60C993C90ED577C94D6 /* MessageUI.framework */,
 				CE88FF737B031789650CD12FE14D687A /* QuartzCore.framework */,
 				CAB67BD2DDA17557A46AF97F5E9AD3FF /* Security.framework */,
 				B25C4D1BDB8F0E27C7C886819F582681 /* UIKit.framework */,
 				9A0C879C1ADB6FE24F5D133838F94F55 /* libPods-bikefit.a */,
 				21F24A53ADE1E55B9196EF73EF6DC743 /* libPods.a */,
+				4BE945879EA0A2F0746B7F0E /* libPods-bikefitTests2.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -928,9 +1071,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00B5AE961EBAE7F6000E0650 /* Build configuration list for PBXNativeTarget "bikefitTests2" */;
 			buildPhases = (
+				C5F61DB6A27322424F7AF340 /* [CP] Check Pods Manifest.lock */,
 				00B5AE891EBAE7F6000E0650 /* Sources */,
 				00B5AE8A1EBAE7F6000E0650 /* Frameworks */,
 				00B5AE8B1EBAE7F6000E0650 /* Resources */,
+				189F4F38B86C9C086B3C6327 /* [CP] Embed Pods Frameworks */,
+				04FCC54E230056DB42E920EA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1066,6 +1212,12 @@
 			mainGroup = E1200D9AFFCF1DD90D2A3BF1CDF1B817;
 			productRefGroup = 6C359757A78EECB15B2CA1328B8960E9 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 0060771F1EC7D61900766422 /* Products */;
+					ProjectRef = 0060771E1EC7D61900766422 /* Pods.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				D7DADE16974C2165F91D66EF15438A94 /* bikefit */,
@@ -1077,11 +1229,127 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		006077311EC7D61900766422 /* libAWSAutoScaling.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libAWSAutoScaling.a;
+			remoteRef = 006077301EC7D61900766422 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		006077331EC7D61900766422 /* libAWSCloudWatch.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libAWSCloudWatch.a;
+			remoteRef = 006077321EC7D61900766422 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		006077351EC7D61900766422 /* libAWSCore.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libAWSCore.a;
+			remoteRef = 006077341EC7D61900766422 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		006077371EC7D61900766422 /* libAWSDynamoDB.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libAWSDynamoDB.a;
+			remoteRef = 006077361EC7D61900766422 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		006077391EC7D61900766422 /* libAWSEC2.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libAWSEC2.a;
+			remoteRef = 006077381EC7D61900766422 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0060773B1EC7D61900766422 /* libAWSElasticLoadBalancing.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libAWSElasticLoadBalancing.a;
+			remoteRef = 0060773A1EC7D61900766422 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0060773D1EC7D61900766422 /* libAWSKinesis.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libAWSKinesis.a;
+			remoteRef = 0060773C1EC7D61900766422 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0060773F1EC7D61900766422 /* libAWSMobileAnalytics.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libAWSMobileAnalytics.a;
+			remoteRef = 0060773E1EC7D61900766422 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		006077411EC7D61900766422 /* libAWSS3.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libAWSS3.a;
+			remoteRef = 006077401EC7D61900766422 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		006077431EC7D61900766422 /* libAWSSES.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libAWSSES.a;
+			remoteRef = 006077421EC7D61900766422 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		006077451EC7D61900766422 /* libAWSSimpleDB.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libAWSSimpleDB.a;
+			remoteRef = 006077441EC7D61900766422 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		006077471EC7D61900766422 /* libAWSSNS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libAWSSNS.a;
+			remoteRef = 006077461EC7D61900766422 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		006077491EC7D61900766422 /* libAWSSQS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libAWSSQS.a;
+			remoteRef = 006077481EC7D61900766422 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0060774B1EC7D61900766422 /* libBolts.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libBolts.a;
+			remoteRef = 0060774A1EC7D61900766422 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0060774D1EC7D61900766422 /* libPods-bikefit.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libPods-bikefit.a";
+			remoteRef = 0060774C1EC7D61900766422 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		006077881EC7DB3800766422 /* libPods-bikefitTests2.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libPods-bikefitTests2.a";
+			remoteRef = 006077871EC7DB3800766422 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		00B5AE8B1EBAE7F6000E0650 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00F0882D1EC8192D003DF297 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1175,7 +1443,6 @@
 				BEFBEC3DB040DFB4DC9993E6460B7DB7 /* home_store@2x.png in Resources */,
 				795EE4698C6F71753DB6ECC2D3B72188 /* iTunesArtwork in Resources */,
 				02E409901A221D008DF09AEF27BBF85A /* iTunesArtwork@2x in Resources */,
-				C18D58E861CBA71764DDDD530560F686 /* img_thumb_383809223.jpg in Resources */,
 				354776EDF46FDBBBA57DA96DF7F0D338 /* info_button.png in Resources */,
 				43D9E40F59E1DCB242CC7F7B9321B9D1 /* info_button_29x29.png in Resources */,
 				49AE0F5F1A058DF78B294A0DD540BE47 /* info_button_29x29_no_white.png in Resources */,
@@ -1199,6 +1466,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		04FCC54E230056DB42E920EA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-bikefitTests2/Pods-bikefitTests2-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		189F4F38B86C9C086B3C6327 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-bikefitTests2/Pods-bikefitTests2-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		736E7A437450AF42E4411FE4F89084B4 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1240,6 +1537,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-bikefit/Pods-bikefit-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C5F61DB6A27322424F7AF340 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		CBEE9A863AF0CE6D4448DD78F4757D36 /* [CP] Check Pods Manifest.lock */ = {
@@ -1430,6 +1742,7 @@
 /* Begin XCBuildConfiguration section */
 		00B5AE941EBAE7F6000E0650 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A8FF07D100D8F952D084CC2A /* Pods-bikefitTests2.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1443,6 +1756,10 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/LoginWithAmazon",
+				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -1461,6 +1778,7 @@
 		};
 		00B5AE951EBAE7F6000E0650 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C23ABC0E71454B678F037E9B /* Pods-bikefitTests2.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1477,6 +1795,10 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/LoginWithAmazon",
+				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -1834,6 +2156,7 @@
 				00B5AE951EBAE7F6000E0650 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		307D2896CB50069B80EAD46FA9742384 /* Build configuration list for PBXNativeTarget "bikefitUITests" */ = {
 			isa = XCConfigurationList;

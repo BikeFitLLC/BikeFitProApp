@@ -9,11 +9,13 @@
 #import <XCTest/XCTest.h>
 #import "SubcriptionManager.h"
 
-@interface SubscriptionTests : XCTestCase
+@interface SubscriptionTests : XCTestCase <SubscriptionManagerDelegate>
 
 @end
 
 @implementation SubscriptionTests
+
+XCTestExpectation *productsReturnedExpection;
 
 - (void)setUp {
     [super setUp];
@@ -25,16 +27,28 @@
     [super tearDown];
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
+- (void)testGetProducts {
+    SubcriptionManager *sm = [SubcriptionManager sharedManager];
+    productsReturnedExpection = [self expectationWithDescription:@"Expected Products to be returned"];
+    
+    sm.delegate = self;
+    [sm retrieveAvailableProducts];
+    
+    [self waitForExpectationsWithTimeout:5 handler:^(NSError * _Nullable error) {
+        if(error){
+            XCTFail(@"Failed to get products");
+        }
+    }];
 }
 
-- (void)testPerformanceExample {
-    SubcriptionManager *sm = [[SubcriptionManager alloc] init];
-    [sm validateProductIdentifiers];
-}
 
+#pragma Delegate Methods
+
+- (void) productsReturned:(NSArray* _Nullable)products
+{
+    XCTAssertTrue([products count] > 0);
+    [productsReturnedExpection fulfill];
+}
 
 
 @end

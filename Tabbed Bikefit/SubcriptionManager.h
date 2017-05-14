@@ -9,18 +9,23 @@
 #import <Foundation/Foundation.h>
 #import <Storekit/Storekit.h>
 
+@protocol SubscriptionManagerDelegate <NSObject>
+
+@required
+- (void) productsReturned:(NSArray* _Nullable)products;
+
+@end
+
 @interface SubcriptionManager : NSObject <SKProductsRequestDelegate, SKPaymentTransactionObserver>
 
+@property (nonnull, strong) NSArray *products;
+@property (nonnull, strong) NSString *email;
+@property (nonnull, strong) NSString *password;
 
+@property (atomic, strong) id<SubscriptionManagerDelegate> _Nullable delegate;
 
-@property SKMutablePayment* payment;
-@property SKProductsRequest *request;
-@property NSArray *products;
-@property (nonatomic, copy) void (^success)();
-
-+ (id)sharedManager;
-- (void)retrieveAvailableProducts:(void (^)())success;
++ (SubcriptionManager* _Nonnull)sharedManager;
+- (void) retrieveAvailableProducts;
 - (void) purchaseNewSubscription:(nonnull SKProduct*)product;
-
 
 @end

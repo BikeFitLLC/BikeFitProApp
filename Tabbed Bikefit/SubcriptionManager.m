@@ -7,6 +7,14 @@
 //
 
 #import "SubcriptionManager.h"
+#import "AmazonClientManager.h"
+
+@interface SubcriptionManager()
+
+@property (nonnull, strong) SKMutablePayment* payment;
+@property (nonnull, strong) SKProductsRequest *request;
+
+@end
 
 @implementation SubcriptionManager
 
@@ -21,21 +29,19 @@
 }
 
 #pragma mark subscription calls
--(void) purchaseNewSubscription:(nonnull SKProduct*)product
+-(void) purchaseNewSubscription:(nonnull SKProduct*) product
 {
     self.payment = [SKMutablePayment paymentWithProduct:product];
     [[SKPaymentQueue defaultQueue] addPayment:self.payment];
 }
 
-- (void)retrieveAvailableProducts:(void (^)())success
+- (void)retrieveAvailableProducts
 {
-    if(self.products)
+    if(self.products && [self.delegate respondsToSelector:@selector(productsReturned)])
     {
-        success();
-        return;
+        [self.delegate productsReturned:self.products];
     }
     
-    self.success = success;
     NSArray *productIdentifiers = [NSArray arrayWithObjects:@"pro_subscription", nil];
     SKProductsRequest *productsRequest = [[SKProductsRequest alloc]
                                           initWithProductIdentifiers:[NSSet setWithArray:productIdentifiers]];
@@ -58,7 +64,11 @@
     for (NSString *invalidIdentifier in response.invalidProductIdentifiers) {
         NSLog(@"StoreKit: Invalid product found: %@", invalidIdentifier);
     }
-    self.success();
+    
+    if([self.delegate respondsToSelector:@selector(productsReturned:)])
+    {
+        [self.delegate productsReturned:self.products];
+    }
     return;
 }
 
@@ -79,10 +89,12 @@
 //                [self failedTransaction:transaction];
                 break;
             case SKPaymentTransactionStatePurchased:
-//                [self completeTransaction:transaction];
+//               //TODO: Create Account on Backend
                 break;
             case SKPaymentTransactionStateRestored:
-//                [self restoreTransaction:transaction];
+                [AmazonClientManager loginWithEmail:self.email
+                                        andPassword:self.password
+                                        andDelegate:nil];
                 break;
             default:
                 // For debugging

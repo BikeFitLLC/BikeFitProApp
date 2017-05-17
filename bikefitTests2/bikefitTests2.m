@@ -41,6 +41,29 @@ XCTestExpectation *accountExistsExpection;
     [super tearDown];
 }
 
+- (void) testMakePurchase {
+    SubcriptionManager *sm = [SubcriptionManager sharedManager];
+    productsReturnedExpection = [self expectationWithDescription:@"Expected Products to be returned"];
+    
+    sm.delegate = self;
+    [sm retrieveAvailableProducts];
+    
+    [self waitForExpectationsWithTimeout:5 handler:^(NSError * _Nullable error) {
+        if(error){
+            XCTFail(@"Failed to get products");
+        }
+    }];
+    
+    purchaseCompleteExpection = [self expectationWithDescription:@"Purchase Returned"];
+    [sm purchaseNewSubscription:sm.products[0]];
+    [self waitForExpectationsWithTimeout:30 handler:^(NSError * _Nullable error) {
+        if(error){
+            XCTFail(@"Failed to get products");
+        }
+    }];
+    
+}
+
 - (void)testGetProducts {
     SubcriptionManager *sm = [SubcriptionManager sharedManager];
     productsReturnedExpection = [self expectationWithDescription:@"Expected Products to be returned"];
@@ -90,6 +113,7 @@ XCTestExpectation *accountExistsExpection;
 - (void) testSuccessfulPurchased {
     SubcriptionManager *sm = [SubcriptionManager sharedManager];
     sm.delegate = self;
+    
     SKPaymentTransaction *transaction = [[SKPaymentTransaction alloc] init];
     
     Method swizzledMethod = class_getInstanceMethod([self class], @selector(replaced_getTransactionStatePurchased));
@@ -99,6 +123,7 @@ XCTestExpectation *accountExistsExpection;
     
     NSArray *transactions = [NSArray arrayWithObjects:transaction, nil];
     int r = arc4random_uniform(200);
+    
     sm.email = [NSString stringWithFormat:@"test-%d@test.com", r];
     sm.password = @"test";
     [sm paymentQueue:nil updatedTransactions:transactions];

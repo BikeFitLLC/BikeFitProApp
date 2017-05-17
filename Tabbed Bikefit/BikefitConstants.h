@@ -35,7 +35,7 @@
 #define S3_BUCKET @"8190ba10-d310-11e3-9c1a-0800200c9a66"
 
 #ifdef DEBUG
-#define TVM_HOSTNAME @"https://cbdq0x3ku5.execute-api.us-west-2.amazonaws.com/Test"
+#define TVM_HOSTNAME @"https://test.tvm.velopezdigital.com"
 #else
 #define TVM_HOSTNAME @"https://tvm.velopezdigital.com"
 #endif

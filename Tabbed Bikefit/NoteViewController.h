@@ -10,9 +10,10 @@
 #import "BikeFitViewController.h"
 
 @interface NoteViewController : UIViewController
-{
-    BikeFitViewController * bikeInfo;
-}
 @property BikeFitViewController *bikeInfo;
+
+- (void)addNoteAndDismiss:(FitNote *)note;
+
+- (UIAlertController *)amazonUploadErrorAlertController:(NSString *)errorMessage;
 
 @end

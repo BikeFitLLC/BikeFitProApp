@@ -17,12 +17,14 @@
     NSString *s3Key;
     NSString *s3Bucket;
 }
-@property(setter = setImage:, getter = getImage) NSData *image;
+//@property(setter = setImage:, getter = getImage) NSData *image;
 @property NSString *s3Key;
 @property NSString *s3Bucket;
 
 @property UIBezierPath *path;
 
+- (void)uploadImageData:(NSData *)imageData callback:(void (^)(BOOL, NSString *))callback;
+- (NSData *)getImageData;
 
 -(NSMutableDictionary *) getDictionary;
 

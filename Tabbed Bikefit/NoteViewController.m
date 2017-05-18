@@ -13,7 +13,6 @@
 @end
 
 @implementation NoteViewController
-@synthesize bikeInfo;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -24,16 +23,28 @@
     return self;
 }
 
-- (void)viewDidLoad
+- (void)addNoteAndDismiss:(FitNote *)note
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    [self.bikeInfo addNote:note];
+    [self.navigationController popToViewController:self.bikeInfo animated:YES];
 }
 
-- (void)didReceiveMemoryWarning
+- (UIAlertController *)amazonUploadErrorAlertController:(NSString *)errorMessage
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    if (!errorMessage) {
+        errorMessage = @"We're sorry, we could not sync the data with the server.  Please make sure you have a stable internet connection and try again";
+    }
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"An upload error has occurred"
+                                                                             message:errorMessage
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    
+    [alertController addAction:cancelAction];
+    return alertController;
 }
 
 @end

@@ -10,6 +10,7 @@
 #import "GUIKneeTouchInterceptorView.h"
 #import "KneeViewController.h"
 #import "Util.h"
+#import "SVProgressHUD.h"
 
 #import <AVFoundation/AVFoundation.h>
 #import <CoreMotion/CoreMotion.h>
@@ -92,7 +93,7 @@
 {
     [super viewWillAppear:animated];
     
-    [Util setScreenLeftRightTitle:self leftSelected:[bikeInfo leftNotesSelected] key:@"ScreenTitle_CleatMedialLateralStanceWidth"];
+    [Util setScreenLeftRightTitle:self leftSelected:[self.bikeInfo leftNotesSelected] key:@"ScreenTitle_CleatMedialLateralStanceWidth"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -107,15 +108,46 @@
 
 - (IBAction)keepLine:(id)sender
 {
+    [self uploadNote];
+}
+
+- (void)uploadNote
+{
+    [SVProgressHUD showWithStatus:@"Uploading..."];
     KneeViewNote *note = [[KneeViewNote alloc] init];
     
     [note setPath:[(KneeDrawingView *)previewImage path]];
     [note setLazerPath:[(KneeDrawingView *)previewImage lazerPath]];
-    [note setVideoUrl:videoUrl];
     
-    [bikeInfo addNote:note];
-    [self.navigationController popToViewController:bikeInfo animated:YES];
+    __weak KneeViewController *weakSelf = self;
+    
+    [self setVideoUrl:videoUrl onNote:note callback:^(BOOL success) {
+        [SVProgressHUD dismiss];
+        NSLog(@"😴upload %@",success ? @"success" : @"failed");
+        if (!success) {
+            [weakSelf amazonUploadError];
+        } else {
+            [weakSelf addNoteAndDismiss:note];
+        }
+    }];
 }
+
+- (void)amazonUploadError
+{
+    UIAlertController *alertController = [self amazonUploadErrorAlertController:nil];
+    UIAlertAction *retryAction = [UIAlertAction actionWithTitle:@"Retry" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self uploadNote];
+    }];
+    
+    [alertController addAction:retryAction];
+    [self presentViewController:alertController animated:true completion:nil];
+}
+
+- (void)setVideoUrl:(NSURL *)localVideoUrl onNote:(KneeViewNote *)note callback:(void (^)(BOOL))callback
+{
+    [note setVideoURL:localVideoUrl callback:callback];
+}
+
 - (void) stopCapturing
 {
     [super stopCapturing];

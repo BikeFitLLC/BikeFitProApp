@@ -15,6 +15,7 @@
 
 #import "AngleNote.h"
 #import "ShoulderAngleNote.h"
+#import "AWSSyncErrorManager.h"
 
 //////////////////////////////////////////////////
 //Delegate Protocol for loadAthlete
@@ -52,7 +53,13 @@ static NSDictionary *lastEvaluatedKey;
     return true;
 }
 
-+ (void)saveAthleteToAWS{
++ (void)saveAthleteToAWS
+{
+    [AthletePropertyModel saveAthleteToAWS:nil];
+}
+
++ (void)saveAthleteToAWS:(AWSSaveCallback)callback
+{
     if([AmazonClientManager verifyLoggedInActive])
     {
         [AthletePropertyModel addJSONNotes];
@@ -103,15 +110,32 @@ static NSDictionary *lastEvaluatedKey;
         [[[AmazonClientManager ddb] putItem:putInput]
          
          continueWithExecutor:[AWSExecutor mainThreadExecutor] withBlock:^id(AWSTask *task) {
+             
             if(task.error)
             {
                  NSLog(@"Error Saving Athlete File to Cloud: %@", task.error);
+                if (callback) {
+                    callback(false,false);
+                }
+                [AWSSyncErrorManager setAthlete:[self athleteIdentifier]
+                                   hadSyncError:true];
+                return nil;
             }
             NSLog(@"Saved Athlete to Cloud");
+             if (callback) {
+                 callback(true,false);
+             }
+             [AWSSyncErrorManager setAthlete:[self athleteIdentifier]
+                                hadSyncError:false];
             return nil;
         }];
+    } else {
+        if (callback) {
+            callback(false,true);
+        }
+        [AWSSyncErrorManager setAthlete:[self athleteIdentifier]
+                           hadSyncError:true];
     }
-    return;
 }
 
 
@@ -350,6 +374,15 @@ static NSDictionary *lastEvaluatedKey;
     //NSString *fitterKey = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITTER_KEY_KEY];
     //[athleteProperties setObject:fitterKey forKey:AWS_FIT_ATTRIBUTE_FITTERKEY];
     
+}
+
++ (NSString *)athleteIdentifier
+{
+    if(athleteProperties)
+    {
+        return [athleteProperties objectForKey:AWS_FIT_ATTRIBUTE_FITID];
+    }
+    return nil;
 }
 
 + (id)getProperty:(NSString*)propertyName;

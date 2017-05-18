@@ -9,9 +9,15 @@
 #import "ImageNote.h"
 #import "GlobalOperationQueueManager.h"
 #import "BikeFitConstants.h"
+#import "SVProgressHUD.h"
+
+@interface ImageNote()
+{
+    NSData *image;
+}
+@end
 
 @implementation ImageNote
-@synthesize image;
 @synthesize path;
 @synthesize s3Bucket;
 @synthesize s3Key;
@@ -87,7 +93,7 @@
 //Custom setter for the image property.  It queues an s3
 //upload in addition to setting the image
 ///////////////////////////////////////////////////////
--(void)setImage:(NSData*)imageData
+-(void)uploadImageData:(NSData*)imageData callback:(void (^)(BOOL, NSString *))callback
 {
     image = imageData;
     
@@ -103,9 +109,14 @@
     bool success = [image writeToFile:fitPath options:NSDataWritingAtomic error:&error];
     if(!success && error != nil)
     {
-        NSLog(@"Error Saving to File System: %@", [error description]);
-    } else {
-        NSLog(@"other error");
+        if (error) {
+            NSLog(@"Error Saving to File System: %@", [error description]);
+        } else {
+            NSLog(@"other error");
+        }
+        
+        callback(false, @"The image could not be saved locally");
+        return;
     }
 
     //kick off upload to aws s3 or save to filesystem
@@ -117,27 +128,24 @@
         por.contentType = @"image/jpeg"; // use "image/png" here if you are uploading a png
         por.ACL   = AWSS3ObjectCannedACLPublicRead;
         por.body  = [NSURL fileURLWithPath:fitPath];
-    
+        
         [[[AmazonClientManager s3TransferManager] upload:por] continueWithExecutor:[AWSExecutor mainThreadExecutor]
                                                                          withBlock:^id(AWSTask *task) {
-            if (task.error)
-            {
-                NSLog(@"Error: %@", task.error);
-            }
-            [[NSFileManager defaultManager] removeItemAtPath:fitPath error:NULL];
-            [AthletePropertyModel saveAthleteToAWS];
-            return nil;
-        }];
+                                                                             if (task.error)
+                                                                             {
+                                                                                 NSLog(@"Error: %@", task.error);
+                                                                                 callback(false, @"We're sorry, we could not sync the data with the server.  Please make sure you have a stable internet connection and try again");
+                                                                                 return nil;
+                                                                             }
+                                                                             [[NSFileManager defaultManager] removeItemAtPath:fitPath error:NULL];
+                                                                             [AthletePropertyModel saveAthleteToAWS];
+                                                                             callback(true, nil);
+                                                                             return task;
+                                                                         }];
     }
-    else
-    {
-
-
-    }
-
 }
 
--(NSData*)getImage
+-(NSData*)getImageData
 {
     return image;
 }

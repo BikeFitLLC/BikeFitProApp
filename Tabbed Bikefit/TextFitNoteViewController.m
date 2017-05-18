@@ -46,7 +46,7 @@
 {
     [super viewWillAppear:animated];
 
-    [Util setScreenLeftRightTitle:self leftSelected:[bikeInfo leftNotesSelected] key:@"ScreenTitle_TextNote"];
+    [Util setScreenLeftRightTitle:self leftSelected:[self.bikeInfo leftNotesSelected] key:@"ScreenTitle_TextNote"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -58,7 +58,7 @@
 {
     FitNote *note = [[FitNote alloc] init];
     [note setText:textField.text];
-    [bikeInfo addNote:note];
+    [self.bikeInfo addNote:note];
     
     [self.navigationController popViewControllerAnimated:YES];
 }

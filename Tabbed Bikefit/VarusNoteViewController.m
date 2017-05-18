@@ -9,6 +9,7 @@
 #import "Util.h"
 #import "VarusNoteViewController.h"
 #import "VarusNote.h"
+#import "SVProgressHUD.h"
 
 @interface VarusNoteViewController ()
 {
@@ -87,7 +88,7 @@
     //
     //Create Image View for Suggestions
     //
-    if([bikeInfo leftNotesSelected])
+    if([self.bikeInfo leftNotesSelected])
     {
         suggestedWedgesOne = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"1_wedge_Left_varus.png"]];
         suggestedWedgesTwo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"2_wedge_left_varus.png"]];
@@ -174,9 +175,9 @@
 {
     [super viewWillAppear:animated];
     
-    [Util setScreenLeftRightTitle:self leftSelected:[bikeInfo leftNotesSelected] key:@"ScreenTitle_FootTilt"];
+    [Util setScreenLeftRightTitle:self leftSelected:[self.bikeInfo leftNotesSelected] key:@"ScreenTitle_FootTilt"];
     
-    if( [bikeInfo leftNotesSelected])
+    if( [self.bikeInfo leftNotesSelected])
     {
         [leftLegImageView setHidden:false];
         [rightLegImageView setHidden:true];
@@ -296,7 +297,7 @@
     angle = atanf((startPointLocation.y - endPointLocation.y)/(endPointLocation.x - startPointLocation.x));
     int wholeAngle = (int)(angle*57.2957795);
     int absoluteAngle = abs(wholeAngle);
-    bool varus = ((wholeAngle < 0 && ![bikeInfo leftNotesSelected]) || (wholeAngle >= 0 && [bikeInfo leftNotesSelected]));
+    bool varus = ((wholeAngle < 0 && ![self.bikeInfo leftNotesSelected]) || (wholeAngle >= 0 && [self.bikeInfo leftNotesSelected]));
     if(absoluteAngle <= 4)
     {
         suggestedWedgesOne.hidden = YES;
@@ -335,16 +336,40 @@
 
 - (IBAction)saveAngle
 {
-    VarusNote *note = [[VarusNote alloc] init];
-    [note setLeftFoot:[bikeInfo leftNotesSelected]];
+    [self uploadNote];
+}
 
+- (void)uploadNote
+{
+    [SVProgressHUD showWithStatus:@"Uploading..."];
+    VarusNote *note = [[VarusNote alloc] init];
+    [note setLeftFoot:[self.bikeInfo leftNotesSelected]];
+    
     [note setAngle:angle];
-    [note setImage:UIImageJPEGRepresentation(photo,.1)];
     [note setPath:[(VarusDrawingView *)previewImage overlayPath]];
     
-    [self.bikeInfo addNote:note];
-     
-    [self.navigationController popToViewController:bikeInfo animated:YES];
+    __weak VarusNoteViewController *weakSelf = self;
+    
+    [note uploadImageData:UIImageJPEGRepresentation(photo,.1) callback:^(BOOL success, NSString *errorMessage) {
+        [SVProgressHUD dismiss];
+        NSLog(@"😴upload %@",success ? @"success" : @"failed");
+        if (!success) {
+            [weakSelf amazonUploadError:errorMessage];
+        } else {
+            [weakSelf addNoteAndDismiss:note];
+        }
+    }];
+}
+
+- (void)amazonUploadError:(NSString *)message
+{
+    UIAlertController *alertController = [self amazonUploadErrorAlertController:nil];
+    UIAlertAction *retryAction = [UIAlertAction actionWithTitle:@"Retry" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self uploadNote];
+    }];
+    
+    [alertController addAction:retryAction];
+    [self presentViewController:alertController animated:true completion:nil];
 }
 
 - (void)photoCaptured

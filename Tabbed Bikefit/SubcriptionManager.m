@@ -34,10 +34,24 @@
 #pragma mark subscription calls
 -(void) purchaseNewSubscription:(nonnull SKProduct*) product
 {
-    self.payment = [SKMutablePayment paymentWithProduct:product];
-    [[SKPaymentQueue defaultQueue] addPayment:self.payment];
+    [self validateReceipt:^(BOOL valid) {
+        if(valid) {
+            NSLog(@"Purchase attempted for account that already has a reciept");
+        } else {
+            self.payment = [SKMutablePayment paymentWithProduct:product];
+            [[SKPaymentQueue defaultQueue] addPayment:self.payment];
+        }
+    } failure:^(NSError *error) {
+        //TODO: Go ahead and make the purchase?
+        NSLog(@"Error validateing reciept");
+    }];
+
 }
 
+/*
+ * Loads and Returns available products
+ * TODO: Add validation?
+ */
 - (void)retrieveAvailableProducts
 {
     if(self.products && [self.delegate respondsToSelector:@selector(productsReturned)])
@@ -56,6 +70,52 @@
     NSLog(@"Sending productsRequest to Apple");
     [productsRequest start];
 }
+
+#pragma mark private
+/*
+ * Find the current reciept and trys to validate it
+ */
+- (void) validateReceipt:(void (^)(BOOL valid))success failure:(void (^)(NSError *error))failure {
+    
+    NSURL* url = [[NSBundle mainBundle] appStoreReceiptURL];
+    NSData *receiptData = [NSData dataWithContentsOfURL:url];
+    NSString *receipt = [receiptData base64EncodedStringWithOptions:0];
+    
+    if( receipt == nil ) {
+        NSLog(@"No Reciept Found, returning invalid");
+        success(NO);
+        return;
+    }
+    
+    //
+    // Send Reciept to the TVM for validation
+    //
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    
+    
+    
+    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:receipt, @"receipt-data", nil];
+    NSURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST"
+                                                                          URLString:[NSString stringWithFormat:@"%@/validateReciept", TVM_HOSTNAME]
+                                                                         parameters:parameters
+                                                                              error:nil];
+    
+    
+    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request
+                                                completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+                                                    if( error ) {
+                                                        NSLog(@"Error: %@", error);
+                                                        failure(error);
+                                                    } else {
+                                                        NSLog(@"Successfully validated reciept with TVM");
+                                                        // TODO: do more validation of the returned reciept
+                                                        NSDictionary* responseDict = responseObject;
+                                                        success([responseDict[@"status"] integerValue] == 0);
+                                                    }}];
+    [dataTask resume];
+}
+
 
 // SKProductsRequestDelegate protocol method
 - (void)productsRequest:(SKProductsRequest *)request
@@ -94,71 +154,30 @@
                 break;
             case SKPaymentTransactionStatePurchased:
             {
-                NSData *receiptData = [NSData dataWithContentsOfURL:[[NSBundle mainBundle] appStoreReceiptURL]];
-                NSString *receipt = [receiptData base64EncodedStringWithOptions:0];
-                //
-                // Send Reciept to the TVM for validation
-                //
-                NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-                AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
-                
-
-                
-                NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:receipt, @"receipt-data", nil];
-                NSURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST"
-                                                                                      URLString:[NSString stringWithFormat:@"%@/validateReciept", TVM_HOSTNAME]
-                                                                                     parameters:parameters
-                                                                                          error:nil];
-                
-                
-                NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request
-                                                            completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
-                    if (error) {
-                        //
-                        // Request from TVM came back with an Error
-                        //
-                        NSLog(@"Error: %@", error);
-                        [_delegate purchaseComplete:error];
+                [self validateReceipt:^(BOOL valid) {
+                    if(valid) {
+                        [[AmazonClientManager credProvider] createNewAccountWithEmail:self.email
+                                                                         password:self.password
+                                                                         shopName:@"SubMan Test"
+                                                                        firstName:@"SubMan Test"
+                                                                         lastName:@"SubMan Test"
+                                                                         callback:^(BOOL success) {
+                                                                             if(success) {
+                                                                                 [_delegate purchaseComplete:nil];
+                                                                             } else {
+                                                                                 NSError* error = [NSError errorWithDomain:@"SubscriptionManager" code:1 userInfo:@{@"description":@"Failed to create new acccount on bikefit backend"}];
+                                                                                 [_delegate purchaseComplete:error];
+                                                                             }
+                                                                         }];
                     } else {
-                        //
-                        // Validation request succeeded, check status
-                        // TODO: receipt checking?
-                        //
-                        NSLog(@"%@ %@", response, responseObject);
-                        NSDictionary* responseDict = responseObject;
-                        
-                        if([responseDict[@"status"] integerValue] == 0) {
-                            //
-                            // Reciept Valid, Create a new account
-                            //
-                            [[AmazonClientManager credProvider] createNewAccountWithEmail:self.email
-                                                                             password:self.password
-                                                                             shopName:@"SubMan Test"
-                                                                            firstName:@"SubMan Test"
-                                                                             lastName:@"SubMan Test"
-                                                                             callback:^(BOOL success) {
-                                                                                 if(success) {
-                                                                                     [_delegate purchaseComplete:nil];
-                                                                                 } else {
-                                                                                     NSError* error = [NSError errorWithDomain:@"SubscriptionManager" code:1 userInfo:@{@"description":@"Failed to create new acccount on bikefit backend"}];
-                                                                                     [_delegate purchaseComplete:error];
-                                                                                 }
-                                                                             }];
-                        } else {
-                            //
-                            // Reciept not valid, error!
-                            //
-                            NSError* error = [NSError errorWithDomain:@"SubscriptionManager"
-                                                                 code:1
-                                                             userInfo:@{@"description":@"Reciept Didn't Validate"}];
-                            [_delegate purchaseComplete:error];
-                        }
+                        NSError *error = [NSError errorWithDomain:@"SubscriptionManager" code:1 userInfo:@{@"description":@"Apple Reciept Failed to Validate"}];
+                        [_delegate purchaseComplete:error];
                     }
+
+                } failure:^(NSError *error) {
+                    NSLog(@"Error: %@", error);
+                    [_delegate purchaseComplete:error];
                 }];
-                [dataTask resume];
-                
-                
-               
                 break;
             }
             case SKPaymentTransactionStateRestored:

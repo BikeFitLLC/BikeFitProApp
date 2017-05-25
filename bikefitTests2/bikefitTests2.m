@@ -18,6 +18,7 @@
 @interface SubcriptionManager (viewable)
 
 - (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions;
+- (void) validateReceipt:(void (^)(BOOL valid))success failure:(void (^)(NSError *error))failure;
 
 @end
 
@@ -138,6 +139,44 @@ XCTestExpectation *accountExistsExpection;
     [self waitForExpectationsWithTimeout:5 handler:^(NSError * _Nullable error) {
         return;
     }];
+}
+
+- (void) testValidateReceipt {
+    SubcriptionManager *sm = [SubcriptionManager sharedManager];
+    sm.delegate = self;
+    
+    Method swizzledMethod = class_getInstanceMethod([self class], @selector(appStoreReceiptURL));
+    Method originalMethod = class_getInstanceMethod([NSBundle class], @selector(appStoreReceiptURL));
+    method_exchangeImplementations(originalMethod, swizzledMethod);
+    
+    NSError *error;
+    NSURL *url = [[NSBundle mainBundle] appStoreReceiptURL];
+    NSString *receiptString = @"test reciept";
+    NSData *receipt =  [receiptString dataUsingEncoding:NSUTF8StringEncoding];
+    [receipt writeToURL:url options:NSDataWritingFileProtectionNone error:&error];
+    
+    
+    
+    XCTestExpectation *validateSuccessful= [self expectationWithDescription:@"Reciept Validated Successfully"];
+    [sm validateReceipt:^(BOOL valid) {
+        [validateSuccessful fulfill];
+        return;
+    } failure:^(NSError *error) {
+        return;
+    }];
+    
+    [self waitForExpectationsWithTimeout:5 handler:^(NSError * _Nullable error) {
+        return;
+    }];
+}
+
+- (NSURL*) appStoreReceiptURL {
+    NSError *error;
+    NSURL *applicationSupport = [[NSFileManager defaultManager] URLForDirectory:NSApplicationSupportDirectory
+                                                                       inDomain:NSUserDomainMask
+                                                              appropriateForURL:nil create:false
+                                                                          error:&error];
+    return applicationSupport;// URLByAppendingPathComponent:@"receipt" isDirectory:NO];
 }
 
 - (SKPaymentTransactionState)replaced_getTransactionStatePurchased

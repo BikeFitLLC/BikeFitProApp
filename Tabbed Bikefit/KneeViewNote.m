@@ -105,8 +105,8 @@
              callback(true);
              return task;
          }];
-        
-        
+    } else {
+        callback(false);
     }
 }
 

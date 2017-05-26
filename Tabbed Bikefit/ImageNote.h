@@ -23,7 +23,7 @@
 
 @property UIBezierPath *path;
 
-- (void)uploadImageData:(NSData *)imageData callback:(void (^)(BOOL, NSString *))callback;
+-(void)uploadImageData:(NSData*)imageData callback:(void (^)(BOOL cloudSaved, BOOL fileSaved, NSError* error))callback;
 - (NSData *)getImageData;
 
 -(NSMutableDictionary *) getDictionary;

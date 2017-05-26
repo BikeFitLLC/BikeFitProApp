@@ -371,20 +371,23 @@
     
     __weak GoniometerViewController *weakSelf = self;
     
-    [note uploadImageData:UIImageJPEGRepresentation([self imageFromCurrentTime],1) callback:^(BOOL success, NSString *errorMessage) {
+    [note uploadImageData:UIImageJPEGRepresentation([self imageFromCurrentTime],1) callback:^(BOOL cloudSaved, BOOL fileSaved, NSError* error) {
         [SVProgressHUD dismiss];
-        NSLog(@"😴upload %@",success ? @"success" : @"failed");
-        if (!success) {
-            [weakSelf amazonUploadError:errorMessage];
-        } else {
-            [weakSelf addNoteAndDismiss:note];
+        NSLog(@"😴upload %@",cloudSaved ? @"success" : @"failed");
+        if(!fileSaved) {
+            NSLog(@"Failed to Save Image to File");
         }
+        
+        if (!cloudSaved && [AmazonClientManager verifyLoggedInActive] ) {
+            [weakSelf amazonUploadError:@"We're sorry, we could not sync the data with the server.  Please make sure you have a stable internet connection and try again"];
+        }
+        [weakSelf addNoteAndDismiss:note];
     }];
 }
 
 - (void)amazonUploadError:(NSString *)message
 {
-    UIAlertController *alertController = [self amazonUploadErrorAlertController:nil];
+    UIAlertController *alertController = [self amazonUploadErrorAlertController:message];
     UIAlertAction *retryAction = [UIAlertAction actionWithTitle:@"Retry" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self uploadNote];
     }];

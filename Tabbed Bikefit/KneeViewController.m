@@ -124,11 +124,11 @@
     [self setVideoUrl:videoUrl onNote:note callback:^(BOOL success) {
         [SVProgressHUD dismiss];
         NSLog(@"😴upload %@",success ? @"success" : @"failed");
-        if (!success) {
+        if (!success && [AmazonClientManager verifyLoggedInActive]) {
             [weakSelf amazonUploadError];
-        } else {
-            [weakSelf addNoteAndDismiss:note];
+            return;
         }
+        [weakSelf addNoteAndDismiss:note];
     }];
 }
 

@@ -93,7 +93,7 @@
 //Custom setter for the image property.  It queues an s3
 //upload in addition to setting the image
 ///////////////////////////////////////////////////////
--(void)uploadImageData:(NSData*)imageData callback:(void (^)(BOOL, NSString *))callback
+-(void)uploadImageData:(NSData*)imageData callback:(void (^)(BOOL cloudSaved, BOOL fileSaved, NSError* error))callback
 {
     image = imageData;
     
@@ -106,18 +106,16 @@
     NSString *filepath = [paths objectAtIndex:0];
     NSString *fitPath = [filepath stringByAppendingString:[NSString stringWithFormat:@"/%@",self.s3Key]];
     
-    bool success = [image writeToFile:fitPath options:NSDataWritingAtomic error:&error];
-    if(!success && error != nil)
-    {
-        if (error) {
-            NSLog(@"Error Saving to File System: %@", [error description]);
-        } else {
-            NSLog(@"other error");
-        }
-        
-        callback(false, @"The image could not be saved locally");
+    __block BOOL savedToFile = false;
+    
+    [image writeToFile:fitPath options:NSDataWritingAtomic error:&error];
+
+    if ( error ) {
+        NSLog(@"Error Saving to File System: %@", [error description]);
+        callback(false, false, error);
         return;
     }
+    savedToFile = true;
 
     //kick off upload to aws s3 or save to filesystem
     if([AmazonClientManager verifyLoggedInActive])
@@ -134,14 +132,17 @@
                                                                              if (task.error)
                                                                              {
                                                                                  NSLog(@"Error: %@", task.error);
-                                                                                 callback(false, @"We're sorry, we could not sync the data with the server.  Please make sure you have a stable internet connection and try again");
+                                                                                 callback(false, savedToFile, task.error);
                                                                                  return nil;
                                                                              }
                                                                              [[NSFileManager defaultManager] removeItemAtPath:fitPath error:NULL];
                                                                              [AthletePropertyModel saveAthleteToAWS];
-                                                                             callback(true, nil);
+                                                                             callback(true, savedToFile, nil);
                                                                              return task;
                                                                          }];
+    } else {
+        NSError *error = [NSError errorWithDomain:@"Bikefit" code:1 userInfo:@{@"description":@"You are not logged in to an active account."}];
+        callback(false, savedToFile, error);
     }
 }
 

@@ -11,6 +11,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <CoreFoundation/CoreFoundation.h>
 #import "KneeDrawingView.h"
+#import "SVProgressHUD.h"
 
 @interface VideoNoteViewController ()
 {
@@ -157,6 +158,7 @@
     {
         if(videoUrl)
         {
+            [SVProgressHUD showWithStatus:@"Loading"];
             drawingView = [[DrawingView alloc] initWithFrame:self.view.frame];
             drawingView.backgroundColor = [UIColor clearColor];
             [self.view insertSubview:drawingView aboveSubview:cameraPreviewView];
@@ -499,6 +501,7 @@
     [rootLayer setMasksToBounds:YES];
     [rootLayer insertSublayer:playerLayer atIndex:0];
     [player seekToTime:CMTimeMakeWithSeconds(0,1)];
+    [SVProgressHUD dismiss];
     
    
 }

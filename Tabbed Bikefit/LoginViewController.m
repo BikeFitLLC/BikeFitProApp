@@ -30,7 +30,7 @@
 
     float width = CGRectGetWidth(self.view.frame);
     float margin = CGRectGetWidth(self.view.frame) * 0.033;
-    float bottomOfNavBar = CGRectGetMaxY(self.navigationController.navigationBar.frame);
+    //float bottomOfNavBar = CGRectGetMaxY(self.navigationController.navigationBar.frame);
     float fieldHeight = 50;
 
     UIImageView *logoImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BF-Logo"]];
@@ -93,7 +93,13 @@
     newAccountButton.hidden = NO;
     [newAccountButton setTitle:@"Create Account" forState:UIControlStateNormal];
     [newAccountButton addTarget:self action:@selector(onCreateAccountClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:newAccountButton];
+    //[self.view addSubview:newAccountButton];
+    
+    UILabel *supportEmailLabel = [[UILabel alloc] initWithFrame:newAccountButton.frame];
+    supportEmailLabel.textAlignment = NSTextAlignmentCenter;
+    supportEmailLabel.text = @"support@bikefit.com";
+    supportEmailLabel.textColor = [UIColor grayColor];
+    [self.view addSubview:supportEmailLabel];
     
     loginWithAmazonButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     loginWithAmazonButton.hidden = YES;

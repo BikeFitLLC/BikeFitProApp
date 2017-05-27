@@ -9,9 +9,15 @@
 #import "ImageNote.h"
 #import "GlobalOperationQueueManager.h"
 #import "BikeFitConstants.h"
+#import "SVProgressHUD.h"
+
+@interface ImageNote()
+{
+    NSData *image;
+}
+@end
 
 @implementation ImageNote
-@synthesize image;
 @synthesize path;
 @synthesize s3Bucket;
 @synthesize s3Key;
@@ -87,7 +93,7 @@
 //Custom setter for the image property.  It queues an s3
 //upload in addition to setting the image
 ///////////////////////////////////////////////////////
--(void)setImage:(NSData*)imageData
+-(void)uploadImageData:(NSData*)imageData callback:(void (^)(BOOL cloudSaved, BOOL fileSaved, NSError* error))callback
 {
     image = imageData;
     
@@ -100,13 +106,16 @@
     NSString *filepath = [paths objectAtIndex:0];
     NSString *fitPath = [filepath stringByAppendingString:[NSString stringWithFormat:@"/%@",self.s3Key]];
     
-    bool success = [image writeToFile:fitPath options:NSDataWritingAtomic error:&error];
-    if(!success && error != nil)
-    {
+    __block BOOL savedToFile = false;
+    
+    [image writeToFile:fitPath options:NSDataWritingAtomic error:&error];
+
+    if ( error ) {
         NSLog(@"Error Saving to File System: %@", [error description]);
-    } else {
-        NSLog(@"other error");
+        callback(false, false, error);
+        return;
     }
+    savedToFile = true;
 
     //kick off upload to aws s3 or save to filesystem
     if([AmazonClientManager verifyLoggedInActive])
@@ -117,27 +126,27 @@
         por.contentType = @"image/jpeg"; // use "image/png" here if you are uploading a png
         por.ACL   = AWSS3ObjectCannedACLPublicRead;
         por.body  = [NSURL fileURLWithPath:fitPath];
-    
+        
         [[[AmazonClientManager s3TransferManager] upload:por] continueWithExecutor:[AWSExecutor mainThreadExecutor]
                                                                          withBlock:^id(AWSTask *task) {
-            if (task.error)
-            {
-                NSLog(@"Error: %@", task.error);
-            }
-            [[NSFileManager defaultManager] removeItemAtPath:fitPath error:NULL];
-            [AthletePropertyModel saveAthleteToAWS];
-            return nil;
-        }];
+                                                                             if (task.error)
+                                                                             {
+                                                                                 NSLog(@"Error: %@", task.error);
+                                                                                 callback(false, savedToFile, task.error);
+                                                                                 return nil;
+                                                                             }
+                                                                             [[NSFileManager defaultManager] removeItemAtPath:fitPath error:NULL];
+                                                                             [AthletePropertyModel saveAthleteToAWS];
+                                                                             callback(true, savedToFile, nil);
+                                                                             return task;
+                                                                         }];
+    } else {
+        NSError *error = [NSError errorWithDomain:@"Bikefit" code:1 userInfo:@{@"description":@"You are not logged in to an active account."}];
+        callback(false, savedToFile, error);
     }
-    else
-    {
-
-
-    }
-
 }
 
--(NSData*)getImage
+-(NSData*)getImageData
 {
     return image;
 }

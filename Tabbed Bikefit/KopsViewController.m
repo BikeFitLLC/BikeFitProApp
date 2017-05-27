@@ -12,6 +12,7 @@
 #import "KopsNote.h"
 #import "KopsViewController.h"
 #import "Util.h"
+#import "SVProgressHUD.h"
 
 @interface KopsViewController ()
 
@@ -40,7 +41,7 @@
 {
     [super viewWillAppear:animated];
     
-    [Util setScreenLeftRightTitle:self leftSelected:[bikeInfo leftNotesSelected] key:@"ScreenTitle_SaddleForeAft"];
+    [Util setScreenLeftRightTitle:self leftSelected:[self.bikeInfo leftNotesSelected] key:@"ScreenTitle_SaddleForeAft"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -51,13 +52,43 @@
 
 - (IBAction)keepLine:(id)sender
 {
-    KopsNote *note = [[KopsNote alloc] init];
+    [self uploadNote];
+}
 
-    [note setPath:[(KneeDrawingView *)previewImage lazerPath]];
-    [note setImage:UIImageJPEGRepresentation([self imageFromCurrentTime], 1)];
+- (void)uploadNote
+{
+    [SVProgressHUD showWithStatus:@"Uploading..."];
+    KopsNote *note = [[KopsNote alloc] init];
     
-    [bikeInfo addNote:note];
-    [self.navigationController popToViewController:bikeInfo animated:YES];
+    [note setPath:[(KneeDrawingView *)previewImage lazerPath]];
+    
+    __weak KopsViewController *weakSelf = self;
+    
+    [note uploadImageData:UIImageJPEGRepresentation([self imageFromCurrentTime],1) callback:^(BOOL cloudSaved, BOOL fileSaved, NSError *error) {
+        [SVProgressHUD dismiss];
+        NSLog(@"😴upload %@",cloudSaved ? @"success" : @"failed");
+        if(!fileSaved) {
+            NSLog(@"Failed to Save Image to File");
+        }
+
+        if (!cloudSaved && [AmazonClientManager verifyLoggedInActive] ) {
+            [weakSelf amazonUploadError:@"We're sorry, we could not sync the data with the server.  Please make sure you have a stable internet connection and try again"];
+        }
+        [weakSelf addNoteAndDismiss:note];
+    }];
+}
+
+- (void)amazonUploadError:(NSString *)message
+{
+    __weak KopsViewController *weakSelf = self;
+    
+    UIAlertController *alertController = [self amazonUploadErrorAlertController:nil];
+    UIAlertAction *retryAction = [UIAlertAction actionWithTitle:@"Retry" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [weakSelf uploadNote];
+    }];
+    [alertController addAction:retryAction];
+    
+    [self presentViewController:alertController animated:true completion:nil];
 }
 
 - (void) stopCapturing

@@ -103,9 +103,9 @@
 {
     [super viewWillAppear:animated];
     
-    [Util setScreenLeftRightTitle:self leftSelected:[bikeInfo leftNotesSelected] key:@"ScreenTitle_CleatForeAft"];
+    [Util setScreenLeftRightTitle:self leftSelected:[self.bikeInfo leftNotesSelected] key:@"ScreenTitle_CleatForeAft"];
 
-    if([bikeInfo leftNotesSelected])
+    if([self.bikeInfo leftNotesSelected])
     {
         [leftFootGraphic setHidden:false];
         [rightFootGraphic setHidden:true];
@@ -173,8 +173,8 @@
 {
     SpindleNote *note = [[SpindleNote alloc]init];
     [note setYPositionAsPercent:[self calculateMidpoint]];
-    [ bikeInfo addNote:note];
-    [self.navigationController popToViewController:bikeInfo animated:YES];
+    [self.bikeInfo addNote:note];
+    [self.navigationController popToViewController:self.bikeInfo animated:YES];
 
 }
 @end

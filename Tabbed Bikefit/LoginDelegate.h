@@ -11,6 +11,8 @@
 @protocol LoginDelegate<NSObject>
 
 - (void)onUserSignedIn;
+
+@optional
 - (void)amazonCheckResult:(BOOL)isAmazonAccount accountExists:(BOOL)exists;
 
 @end

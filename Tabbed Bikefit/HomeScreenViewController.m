@@ -85,7 +85,7 @@
                                              selector:@selector(storeButtonPressed)
                                                 title:@"STORE"
                                                 image:[UIImage imageNamed:@"home_store"]];
-    [self.view addSubview:storeButton];
+    //[self.view addSubview:storeButton];
     
     [self refreshLoginButtons];
 

@@ -487,7 +487,7 @@
     {
         VideoNoteViewController *vc = [segue destinationViewController];
         KneeViewNote *noteToView = [selectedNotes objectAtIndex:[selectedIndexPath row]];
-        [vc setVideoUrl:[noteToView getVideoUrl]];
+        [vc setVideoUrl:[noteToView getVideoURL]];
         [vc setOverlayPath:[noteToView path]];
     }
     else if([ident isEqualToString:@"ViewAngleNote"])
@@ -495,7 +495,7 @@
         AngleImageViewerViewController *vc = [segue destinationViewController];
         AngleNote *noteToView = [selectedNotes objectAtIndex:[selectedIndexPath row]];
         
-        [vc setImage:[UIImage imageWithData:[noteToView getImage]]];
+        [vc setImage:[UIImage imageWithData:[noteToView getImageData]]];
         [vc setKneeVertices:noteToView.kneeVertices];
         [vc setShoulderVertices:noteToView.shoulderVertices];
         [vc setHipVertices:noteToView.hipVertices];
@@ -509,7 +509,7 @@
         VarusViewerViewController *vc = [segue destinationViewController];
         VarusNote *noteToView = [selectedNotes objectAtIndex:[selectedIndexPath row]];
 
-        [vc setImage:[UIImage imageWithData:[noteToView getImage]]];
+        [vc setImage:[UIImage imageWithData:[noteToView getImageData]]];
         [vc setOverlayPath:[noteToView path]];
         [vc setVarusAngle:[noteToView angle]];
 
@@ -520,7 +520,7 @@
         KopsNote *noteToView = [selectedNotes objectAtIndex:[selectedIndexPath row]];
     
         [vc setOverlayPath:[noteToView path]];
-        [vc setImage:[UIImage imageWithData:[noteToView getImage]]];
+        [vc setImage:[UIImage imageWithData:[noteToView getImageData]]];
     }
 }
 

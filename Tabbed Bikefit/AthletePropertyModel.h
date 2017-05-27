@@ -10,6 +10,8 @@
 #import <Foundation/Foundation.h>
 #import "AmazonClientManager.h"
 
+typedef void (^AWSSaveCallback)(BOOL success, BOOL loginError);
+
 @interface AthletePropertyModel : NSObject
 {
 }
@@ -28,8 +30,10 @@
 
 
 + (void)newAthlete;
++ (NSString *)athleteIdentifier;
 
 + (void)saveAthleteToAWS;
++ (void)saveAthleteToAWS:(AWSSaveCallback)callback;
 + (AWSTask *)loadAthleteFromAWS:(NSString*)fitID;
 + (AWSTask *) getAthletesFromAws;
 + (void) setOfflineMode:(bool)offlineMode;

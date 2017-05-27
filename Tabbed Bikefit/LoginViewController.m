@@ -96,7 +96,7 @@
     
     UILabel *supportEmailLabel = [[UILabel alloc] initWithFrame:newAccountButton.frame];
     supportEmailLabel.textAlignment = NSTextAlignmentCenter;
-    supportEmailLabel.text = @"info@bikefit.com";
+    supportEmailLabel.text = @"support@bikefit.com";
     supportEmailLabel.textColor = [UIColor grayColor];
     [self.view addSubview:supportEmailLabel];
     

@@ -24,15 +24,15 @@
 }
 +(NSString *)labelText;
 
-@property (setter = setVideoUrl:, getter = getVideoUrl) NSURL *videoUrl;
 @property UIBezierPath *path;
 @property UIBezierPath *lazerPath;
 @property CGPoint startingPoint;
 @property NSString *s3Key;
 @property NSString *s3Bucket;
 
-
 @property int selectedFrameIndex;
 
 - (UITableViewCell *) populateTableCell:(UITableViewCell *)cell;
+- (void)setVideoURL:(NSURL *)url callback:(void (^)(BOOL))callback;
+- (NSURL *)getVideoURL;
 @end

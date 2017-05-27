@@ -67,6 +67,7 @@
 		50BB15861E562B2800E28E3F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 50BB15801E562B2800E28E3F /* InfoPlist.strings */; };
 		50BB15871E562B2800E28E3F /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50BB15821E562B2800E28E3F /* MainStoryboard_iPad.storyboard */; };
 		50BB15881E562B2800E28E3F /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50BB15841E562B2800E28E3F /* MainStoryboard_iPhone.storyboard */; };
+		50CEF1301EA943FC00CFAC6C /* AWSSyncErrorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 50CEF12F1EA943FC00CFAC6C /* AWSSyncErrorManager.m */; };
 		537A9726E797B29220AAF05B3E19013E /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 06FF7C0A17784703DDBEC48A82610F09 /* first.png */; };
 		5381559C81704786F655CFC446F71142 /* home_settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B81B30596A32225B138FADBCA3265AE /* home_settings@2x.png */; };
 		57A0ABFD7DB8325E971E10E442B7FDE9 /* cleat_fa_left.png in Resources */ = {isa = PBXBuildFile; fileRef = 076C856BAD2BE1E41972C3B6249F1A45 /* cleat_fa_left.png */; };
@@ -281,6 +282,8 @@
 		50BB15811E562B2800E28E3F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
 		50BB15831E562B2800E28E3F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		50BB15851E562B2800E28E3F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		50CEF12E1EA943FC00CFAC6C /* AWSSyncErrorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSSyncErrorManager.h; sourceTree = "<group>"; };
+		50CEF12F1EA943FC00CFAC6C /* AWSSyncErrorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSSyncErrorManager.m; sourceTree = "<group>"; };
 		52DE749EC24670EA1BBA29CEE1AE2AC2 /* LoadinSpinnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadinSpinnerView.m; sourceTree = "<group>"; };
 		5308991D7ED9B5BADE4B513E0AF5D2FC /* CreateAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateAccountViewController.h; sourceTree = "<group>"; };
 		55946B6BDAE5706383A30CA3FED4C51C /* 1_foot_pressure_bw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1_foot_pressure_bw.png; sourceTree = "<group>"; };
@@ -821,6 +824,8 @@
 				D29B81F1724D50426EAB3BD4DB04AAB7 /* UIColor+CustomColor.m */,
 				50BB157A1E552F9600E28E3F /* Util.h */,
 				50BB157C1E552FA600E28E3F /* Util.m */,
+				50CEF12E1EA943FC00CFAC6C /* AWSSyncErrorManager.h */,
+				50CEF12F1EA943FC00CFAC6C /* AWSSyncErrorManager.m */,
 				50BB157F1E562B2800E28E3F /* en.lproj */,
 			);
 			path = "Tabbed Bikefit";
@@ -1210,6 +1215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A43C78846B3FA34AC7515D9322F1C7AD /* AMZNAuthorizeUserDelegate.m in Sources */,
+				50CEF1301EA943FC00CFAC6C /* AWSSyncErrorManager.m in Sources */,
 				5D2C6F1B83B6E40ED855DB66CA7B4180 /* AMZNGetAccessTokenDelegate.m in Sources */,
 				35E99B5B2F549870B5C7C5601319FF04 /* AMZNGetProfileDelegate.m in Sources */,
 				33B5CCA2B3DDD2FEA750DC3044A675DD /* AMZNLoginController.m in Sources */,
@@ -1472,7 +1478,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tabbed Bikefit/bikefit-Prefix.pch";
 				INFOPLIST_FILE = "Tabbed Bikefit/bikefit-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1631,7 +1637,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Tabbed Bikefit/bikefit-Prefix.pch";
 				INFOPLIST_FILE = "Tabbed Bikefit/bikefit-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"$(inherited)",

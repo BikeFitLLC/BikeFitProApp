@@ -85,11 +85,13 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
+  - SVProgressHUD (2.1.2)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
   - AWSiOSSDKv2 (= 2.3.6)
   - Bolts
+  - SVProgressHUD
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -108,7 +110,8 @@ SPEC CHECKSUMS:
   AWSSNS: 37c7f4c80657a621fbabccf7d0f352e3c018fbd0
   AWSSQS: aa53b836c21a10611120e8bf361feef54fd73ae1
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
 
-PODFILE CHECKSUM: 52fee620b55303303af93b78bcd16a90565ee1e7
+PODFILE CHECKSUM: ea6b88a77b4d30560ad2c3732617c0429194ac84
 
 COCOAPODS: 1.1.1

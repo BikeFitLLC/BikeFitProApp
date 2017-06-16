@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SubcriptionManager.h"
 
-@interface CreateAccountViewController : UIViewController <UITextFieldDelegate>
+@interface CreateAccountViewController : UIViewController <UITextFieldDelegate, SubscriptionManagerDelegate, LoginDelegate>
 
 @end

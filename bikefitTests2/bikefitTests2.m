@@ -19,6 +19,7 @@
 
 - (void)paymentQueue:(SKPaymentQueue *)queue updatedTransactions:(NSArray *)transactions;
 - (void) validateReceipt:(void (^)(BOOL valid))success failure:(void (^)(NSError *error))failure;
+- (NSString*)getReceipt;
 
 @end
 
@@ -111,51 +112,31 @@ XCTestExpectation *accountExistsExpection;
     return SKPaymentTransactionStateRestored;
 }
 
-- (void) testSuccessfulPurchased {
-    SubcriptionManager *sm = [SubcriptionManager sharedManager];
-    sm.delegate = self;
-    
-    SKPaymentTransaction *transaction = [[SKPaymentTransaction alloc] init];
-    
-    Method swizzledMethod = class_getInstanceMethod([self class], @selector(replaced_getTransactionStatePurchased));
-    Method originalMethod = class_getInstanceMethod([transaction class], @selector(transactionState));
-    
-    method_exchangeImplementations(originalMethod, swizzledMethod);
-    
-    NSArray *transactions = [NSArray arrayWithObjects:transaction, nil];
-    int r = arc4random_uniform(200);
-    
-    sm.email = [NSString stringWithFormat:@"test-%d@test.com", r];
-    sm.password = @"test";
-    [sm paymentQueue:nil updatedTransactions:transactions];
-    
-    purchaseCompleteExpection = [self expectationWithDescription:@"Purchase Completed"];
-    [self waitForExpectationsWithTimeout:5 handler:^(NSError * _Nullable error) {
-        return;
-    }];
-    
-    accountExistsExpection  = [self expectationWithDescription:@"Account does exists"];
-    [AmazonClientManager isAmazonAccount:sm.email andDelegate:self];
-    [self waitForExpectationsWithTimeout:5 handler:^(NSError * _Nullable error) {
-        return;
-    }];
-}
+//- (void) testSuccessfulPurchased {
+//    SubcriptionManager *sm = [SubcriptionManager sharedManager];
+//    sm.delegate = self;
+//    
+//    int r = arc4random_uniform(200);
+//    
+//    sm.email = [NSString stringWithFormat:@"test-%d@test.com", r];
+//    sm.password = @"test";
+//    [sm purchaseNewSubscription:]
+//    
+//    purchaseCompleteExpection = [self expectationWithDescription:@"Purchase Completed"];
+//    [self waitForExpectationsWithTimeout:5 handler:^(NSError * _Nullable error) {
+//        return;
+//    }];
+//    
+//    accountExistsExpection  = [self expectationWithDescription:@"Account does exists"];
+//    [AmazonClientManager isAmazonAccount:sm.email andDelegate:self];
+//    [self waitForExpectationsWithTimeout:5 handler:^(NSError * _Nullable error) {
+//        return;
+//    }];
+//}
 
 - (void) testValidateReceipt {
     SubcriptionManager *sm = [SubcriptionManager sharedManager];
     sm.delegate = self;
-    
-    Method swizzledMethod = class_getInstanceMethod([self class], @selector(appStoreReceiptURL));
-    Method originalMethod = class_getInstanceMethod([NSBundle class], @selector(appStoreReceiptURL));
-    method_exchangeImplementations(originalMethod, swizzledMethod);
-    
-    NSError *error;
-    NSURL *url = [[NSBundle mainBundle] appStoreReceiptURL];
-    NSString *receiptString = @"test reciept";
-    NSData *receipt =  [receiptString dataUsingEncoding:NSUTF8StringEncoding];
-    [receipt writeToURL:url options:NSDataWritingFileProtectionNone error:&error];
-    
-    
     
     XCTestExpectation *validateSuccessful= [self expectationWithDescription:@"Reciept Validated Successfully"];
     [sm validateReceipt:^(BOOL valid) {
@@ -170,14 +151,6 @@ XCTestExpectation *accountExistsExpection;
     }];
 }
 
-- (NSURL*) appStoreReceiptURL {
-    NSError *error;
-    NSURL *applicationSupport = [[NSFileManager defaultManager] URLForDirectory:NSApplicationSupportDirectory
-                                                                       inDomain:NSUserDomainMask
-                                                              appropriateForURL:nil create:false
-                                                                          error:&error];
-    return applicationSupport;// URLByAppendingPathComponent:@"receipt" isDirectory:NO];
-}
 
 - (SKPaymentTransactionState)replaced_getTransactionStatePurchased
 {

@@ -10,16 +10,21 @@
 #import "AmazonClientManager.h"
 #import "BikefitConstants.h"
 
+
 #import "AFNetworking.h"
+
+#define BF_IN_APP_COMPLETE @"inAppPurchaseValid"
 
 @interface SubcriptionManager()
 
 @property (nonnull, strong) SKMutablePayment* payment;
 @property (nonnull, strong) SKProductsRequest *request;
+@property (nonatomic, strong) UserInfo* userInfo;
 
 @end
 
 @implementation SubcriptionManager
+@synthesize products;
 
 #pragma mark Singleton
 + (id)sharedManager {
@@ -32,13 +37,29 @@
 }
 
 #pragma mark subscription calls
+/*
+ * Calls in-app purchase to subscribe and  will eventually create a new account
+ * on success.
+ */
 -(void) purchaseNewSubscription:(nonnull SKProduct*) product
 {
+    __weak __typeof__(self) weakSelf = self;
+    if( ![AmazonClientManager verifyLoggedIn] ) {
+        //TODO: we only allow purchases for logged in accounts.
+        //send an error or do something..the UI should not allow this.
+        NSLog(@"Cannot purchase new subscription if you aren't logged in");
+    }
+    
     [self validateReceipt:^(BOOL valid) {
         if(valid) {
             NSLog(@"Purchase attempted for account that already has a reciept");
+            //TODO link this reciept and the logged in user.
         } else {
+            //TODO: expired receipt should probably not trigger a new purchase...
             self.payment = [SKMutablePayment paymentWithProduct:product];
+            //TODO: HASH the user name.
+            self.payment.applicationUsername = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_USERNAME_KEY];
+            NSLog(@"Adding payment to storekit queue");
             [[SKPaymentQueue defaultQueue] addPayment:self.payment];
         }
     } failure:^(NSError *error) {
@@ -73,14 +94,24 @@
 
 #pragma mark private
 /*
+ * Get the reciept.  This is broken out for testing purposes
+ */
+
+- (NSString*) getReceipt {
+    NSURL* url = [[NSBundle mainBundle] appStoreReceiptURL];
+    NSData *receiptData = [NSData dataWithContentsOfURL:url];
+    return [receiptData base64EncodedStringWithOptions:0];
+}
+
+/*
  * Find the current reciept and trys to validate it
  */
 - (void) validateReceipt:(void (^)(BOOL valid))success failure:(void (^)(NSError *error))failure {
     
-    NSURL* url = [[NSBundle mainBundle] appStoreReceiptURL];
-    NSData *receiptData = [NSData dataWithContentsOfURL:url];
-    NSString *receipt = [receiptData base64EncodedStringWithOptions:0];
-    
+    //
+    // Get and decode Receipt data
+    //
+    NSString* receipt = [self getReceipt];
     if( receipt == nil ) {
         NSLog(@"No Reciept Found, returning invalid");
         success(NO);
@@ -92,26 +123,50 @@
     //
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
-    
-    
-    
     NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:receipt, @"receipt-data", nil];
     NSURLRequest *request = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST"
                                                                           URLString:[NSString stringWithFormat:@"%@/validateReciept", TVM_HOSTNAME]
                                                                          parameters:parameters
                                                                               error:nil];
     
-    
     NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request
                                                 completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
                                                     if( error ) {
                                                         NSLog(@"Error: %@", error);
+                                                        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:false] forKey:BF_IN_APP_COMPLETE];
                                                         failure(error);
                                                     } else {
                                                         NSLog(@"Successfully validated reciept with TVM");
-                                                        // TODO: do more validation of the returned reciept
                                                         NSDictionary* responseDict = responseObject;
-                                                        success([responseDict[@"status"] integerValue] == 0);
+                                                        //
+                                                        // Iterate through all the purchases returned by apple
+                                                        // if an expiration date is later than today, we are vood
+                                                        // to enable subscription features
+                                                        //
+                                                        for( NSDictionary* purchase in responseDict[@"latest_receipt_info"]) {
+                                                            //Create an expiration date from the string returne by apple
+                                                            NSString* expiresDateString =[purchase[@"expires_date"] stringByReplacingOccurrencesOfString:@"Etc/GMT" withString:@"GMT"];
+                                                            NSDateFormatter *df = [[NSDateFormatter alloc] init];
+                                                            [df setDateFormat:@"yyyy-MM-dd HH:mm:ss z"];
+                                                            NSDate* expirationDate = [df dateFromString:expiresDateString];
+                                                            
+                                                            // If Now is later than the date, this is not an unexpired purchase,
+                                                            // SO keep going, otherwise the receipt is up to date and we are done.
+                                                            if( [expirationDate timeIntervalSinceNow] > 0 ) {
+                                                                NSLog(@"Receipt is up to date");
+                                                                [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:true] forKey:BF_IN_APP_COMPLETE];
+                                                                success(true);
+                                                                return;
+                                                            }
+                                                        }
+                                                        // Nothing in the currently validate receipt has an unexpired
+                                                        // so call failure.
+                                                        NSError* error = [NSError errorWithDomain:@"Bikefit Error"
+                                                                                            code:1
+                                                                                         userInfo:@{@"description":@"No Active Renewals"}];
+                                                        NSLog(@"Error with tvm-validated reciept: %@", error);
+                                                        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:false] forKey:BF_IN_APP_COMPLETE];
+                                                        success(false);
                                                     }}];
     [dataTask resume];
 }
@@ -150,38 +205,14 @@
                 break;
             case SKPaymentTransactionStateFailed:
                 NSLog(@"Transaction Failed: %@", [transaction.error localizedDescription]);
-//                [self failedTransaction:transaction];
+                [queue finishTransaction:transaction];
                 break;
             case SKPaymentTransactionStatePurchased:
-            {
-                [self validateReceipt:^(BOOL valid) {
-                    if(valid) {
-                        [[AmazonClientManager credProvider] createNewAccountWithEmail:self.email
-                                                                         password:self.password
-                                                                         shopName:@"SubMan Test"
-                                                                        firstName:@"SubMan Test"
-                                                                         lastName:@"SubMan Test"
-                                                                         callback:^(BOOL success) {
-                                                                             if(success) {
-                                                                                 [_delegate purchaseComplete:nil];
-                                                                             } else {
-                                                                                 NSError* error = [NSError errorWithDomain:@"SubscriptionManager" code:1 userInfo:@{@"description":@"Failed to create new acccount on bikefit backend"}];
-                                                                                 [_delegate purchaseComplete:error];
-                                                                             }
-                                                                         }];
-                    } else {
-                        NSError *error = [NSError errorWithDomain:@"SubscriptionManager" code:1 userInfo:@{@"description":@"Apple Reciept Failed to Validate"}];
-                        [_delegate purchaseComplete:error];
-                    }
-
-                } failure:^(NSError *error) {
-                    NSLog(@"Error: %@", error);
-                    [_delegate purchaseComplete:error];
-                }];
+                [self handleTransactionStatePurchased:transaction];
+                [queue finishTransaction:transaction];
                 break;
-            }
             case SKPaymentTransactionStateRestored:
-                //[_delegate restoreComplete:nil];
+                [queue finishTransaction:transaction];
                 break;
             default:
                 // For debugging
@@ -189,6 +220,20 @@
                 break;
         }
     }
+}
+
+
+- (void) handleTransactionStatePurchased:(SKPaymentTransaction*)transaction {
+    NSLog(@"Purchase completed for user %@", transaction.payment.applicationUsername);
+    if(! [transaction.payment.applicationUsername isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_USERNAME_KEY]] ) {
+        //if this transaction is not for the currently logged in user, do nothing.
+        //TODO: call delegate?  I thhink so...
+        return;
+    }
+    
+    //TODO: add original transaction ID to teh database.
+    [_delegate purchaseComplete:nil];
+    
 }
 
 @end

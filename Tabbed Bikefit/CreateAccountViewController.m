@@ -8,6 +8,7 @@
 
 #import "CreateAccountViewController.h"
 #import "UIColor+CustomColor.h"
+#import "SVProgressHUD.h"
 
 @interface CreateAccountViewController ()
 {
@@ -39,6 +40,7 @@
                                                                   fieldHeight)];
     firstNameField.placeholder = @"First Name";
     [self applyTextFieldDefaults:firstNameField];
+    firstNameField.hidden = YES;
     [self.view addSubview:firstNameField];
 
     lastNameField = [[UITextField alloc] initWithFrame:CGRectMake(margin,
@@ -47,6 +49,7 @@
                                                                fieldHeight)];
     lastNameField.placeholder = @"Last Name";
     [self applyTextFieldDefaults:lastNameField];
+    lastNameField.hidden = YES;
     [self.view addSubview:lastNameField];
 
     emailField = [[UITextField alloc] initWithFrame:CGRectMake(margin,
@@ -65,6 +68,7 @@
                                                                   fieldHeight)];
     shopNameField.placeholder = @"Shop Name";
     [self applyTextFieldDefaults:shopNameField];
+    shopNameField.hidden = YES;
     [self.view addSubview:shopNameField];
     
     passwordFieldOne = [[UITextField alloc] initWithFrame:CGRectMake(margin,
@@ -76,6 +80,7 @@
     [self applyTextFieldDefaults:passwordFieldOne];
     [passwordFieldOne addTarget:self action:@selector(textFieldDidEndEditing:)
         forControlEvents:UIControlEventEditingChanged];
+    passwordFieldOne.hidden = YES;
     [self.view addSubview:passwordFieldOne];
     
     passwordFieldTwo = [[UITextField alloc] initWithFrame:CGRectMake(margin,
@@ -87,6 +92,7 @@
     [self applyTextFieldDefaults:passwordFieldTwo];
     passwordFieldTwo.returnKeyType = UIReturnKeyDone;
     [passwordFieldTwo addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingChanged];
+    passwordFieldTwo.hidden = YES;
     [self.view addSubview:passwordFieldTwo];
     
     createButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -95,13 +101,20 @@
                                     CGRectGetWidth(self.view.frame),
                                     fieldHeight);
     createButton.backgroundColor = [UIColor colorWithRed:0x7/255.0 green:0x45/255.0 blue:0x54/255.0 alpha:1.0];
-    createButton.enabled = NO;
+    createButton.hidden = YES;
     [createButton setTitle:@"Create Account" forState:UIControlStateNormal];
     [createButton addTarget:self action:@selector(createAccount:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:createButton];
 
 
     // Do any additional setup after loading the view.
+    
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    [SVProgressHUD showWithStatus:@"Initializing"];
+    [[SubcriptionManager sharedManager] setDelegate:self];
+    [[SubcriptionManager sharedManager] retrieveAvailableProducts];
     
 }
 
@@ -121,16 +134,33 @@
 -(void)createAccount:(id)sender
 {
     if ([self textsFieldsValid]) {
-        [[AmazonClientManager credProvider] createNewAccountWithEmail:emailField.text
-                                                             password:passwordFieldOne.text
-                                                             shopName:shopNameField.text
-                                                            firstName:firstNameField.text
-                                                             lastName:lastNameField.text
-                                                             callback:^(BOOL success) {
-                                                                 if (success) {
-                                                                     [self.navigationController popToRootViewControllerAnimated:true];
-                                                                 }
-                                                             }];
+        [SVProgressHUD showWithStatus:@"Creating account"];
+        //
+        // Create New Account on Bikefit Backend (this will be a trial account)
+        //
+        UserInfo *userInfo = [UserInfo userInfoWithEmail:emailField.text
+                                               firstName:firstNameField.text
+                                                lastName:lastNameField.text
+                                                password:passwordFieldOne.text
+                                                shopName:shopNameField.text];
+        //TODO Refactor createNewAccount to take userinfo
+        __weak __typeof__(self) weakSelf = self;
+        [[AmazonClientManager credProvider] createNewAccountWithEmail:userInfo.email
+                                                             password:userInfo.password
+                                                             shopName:userInfo.shopName
+                                                            firstName:userInfo.firstname
+                                                             lastName:userInfo.lastName
+             callback:^(BOOL success) {
+                 if ( success ) {
+                     NSLog(@"Created Account for %@, logging in", userInfo.email);
+                     [AmazonClientManager loginWithEmail:userInfo.email andPassword:userInfo.password andDelegate:weakSelf];
+                
+                 } else {
+                     NSError *error = [NSError errorWithDomain:@"Bikefit"
+                                                          code:1
+                                                      userInfo:@{@"description":@"Failed to create bikefit account"}];
+                 }
+             }];
     } else {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
                                                         message:@"All fields must be filled out"
@@ -157,6 +187,11 @@
         else{
             createButton.enabled = NO;
         }
+    }
+    if( textField == emailField )
+    {
+        [SVProgressHUD showWithStatus:@"Checking..."];
+        [AmazonClientManager isAmazonAccount:emailField.text andDelegate:self];
     }
 }
 
@@ -191,6 +226,52 @@
         [textField resignFirstResponder];
     }
     return true;
+}
+
+#pragma mark SubscriptionManagerDelegate
+- (void) purchaseComplete:(NSError* _Nullable) error {
+    
+    return;
+}
+
+- (void) productsReturned:(NSArray* _Nullable)products {
+    [SVProgressHUD dismiss];
+    if( [products count] == 0 ) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"In-App Purchase Didn't Initialize"
+                                                                                 message:@"An Error Occured, Unable to Create An Account Right Now"
+                                                                          preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *OKAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {}];
+        [alertController addAction:OKAction];
+        [self presentViewController:alertController animated:true completion:nil];
+    } else {
+        
+    }
+}
+
+#pragma mark LoginDelegate
+- (void)amazonCheckResult:(BOOL)isAmazonAccount accountExists:(BOOL)exists {
+    [SVProgressHUD dismiss];
+    if(exists) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Account Exists"
+                                                                                 message:@"An account with this email address already exists"
+                                                                          preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *OKAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {}];
+        [alertController addAction:OKAction];
+        [self presentViewController:alertController animated:true completion:nil];
+    } else {
+        firstNameField.hidden = NO;
+        lastNameField.hidden = NO;
+        shopNameField.hidden = NO;
+        passwordFieldOne.hidden = NO;
+        passwordFieldTwo.hidden = NO;
+        createButton.hidden = NO;
+    }
+}
+
+- (void)onUserSignedIn {
+    NSLog(@"Log in Successful, calling apple for subscription purchase");
+    SubcriptionManager* manager = [SubcriptionManager sharedManager];
+    [manager purchaseNewSubscription:[manager.products objectAtIndex:0]];
 }
 
 @end

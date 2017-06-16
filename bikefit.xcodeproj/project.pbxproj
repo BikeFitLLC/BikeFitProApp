@@ -11,6 +11,7 @@
 		006988F41EBAD74600BC0CF6 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 006988F31EBAD74600BC0CF6 /* StoreKit.framework */; };
 		006988FA1EBAE22100BC0CF6 /* SubscriptionManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 006988F91EBAE22100BC0CF6 /* SubscriptionManagerTests.m */; };
 		006988FB1EBAE30800BC0CF6 /* SubcriptionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 006988F11EBAD69B00BC0CF6 /* SubcriptionManager.m */; };
+		008EFB3C1EE4668700492C89 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 008EFB3B1EE4668700492C89 /* UserInfo.m */; };
 		00B5AE901EBAE7F6000E0650 /* bikefitTests2.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B5AE8F1EBAE7F6000E0650 /* bikefitTests2.m */; };
 		00F0882D1EC8192D003DF297 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B1603B36DF5A106DE337E25D61E1631 /* Images.xcassets */; };
 		021A6842D0E03ECC955319137B19C9A5 /* measurementIcon-new-29x29.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C289AC9B32734E019AE679E3B5FD665 /* measurementIcon-new-29x29.png */; };
@@ -288,6 +289,13 @@
 			remoteGlobalIDString = AC7EDE6656F1949F01236DCE243C121F;
 			remoteInfo = "Pods-bikefitTests2";
 		};
+		008EFB4F1EE4668800492C89 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0060771E1EC7D61900766422 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9EAFB823F2B9C137FDA9C9BBEEA7089A;
+			remoteInfo = SVProgressHUD;
+		};
 		00B5AE921EBAE7F6000E0650 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EC9259B9845784F56DBD7FB5A168D401 /* Project object */;
@@ -332,6 +340,8 @@
 		006988F11EBAD69B00BC0CF6 /* SubcriptionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubcriptionManager.m; sourceTree = "<group>"; };
 		006988F31EBAD74600BC0CF6 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		006988F91EBAE22100BC0CF6 /* SubscriptionManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubscriptionManagerTests.m; sourceTree = "<group>"; };
+		008EFB3A1EE4668700492C89 /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
+		008EFB3B1EE4668700492C89 /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
 		00B5AE8D1EBAE7F6000E0650 /* bikefitTests2.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bikefitTests2.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00B5AE8F1EBAE7F6000E0650 /* bikefitTests2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = bikefitTests2.m; sourceTree = "<group>"; };
 		00B5AE911EBAE7F6000E0650 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -652,6 +662,7 @@
 				0060774B1EC7D61900766422 /* libBolts.a */,
 				0060774D1EC7D61900766422 /* libPods-bikefit.a */,
 				006077881EC7DB3800766422 /* libPods-bikefitTests2.a */,
+				008EFB501EE4668800492C89 /* libSVProgressHUD.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -929,6 +940,8 @@
 				FE7B2CBB597C4D8B8CEC2F02DC81B3C3 /* GlobalOperationQueueManager.h */,
 				C979BFD3715E2C29344809E76523DDB9 /* GlobalOperationQueueManager.m */,
 				A7AE5F0F9E65435324D53ABE982B9BCB /* LoginDelegate.h */,
+				008EFB3A1EE4668700492C89 /* UserInfo.h */,
+				008EFB3B1EE4668700492C89 /* UserInfo.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1357,6 +1370,13 @@
 			remoteRef = 006077871EC7DB3800766422 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		008EFB501EE4668800492C89 /* libSVProgressHUD.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSVProgressHUD.a;
+			remoteRef = 008EFB4F1EE4668800492C89 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		00F088511EC8E238003DF297 /* libAFNetworking.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1686,6 +1706,7 @@
 				CBBCF8070913AC2DE8154F044BC028B9 /* SpindleView.m in Sources */,
 				6C6C9FFFEF01D94B5137620AA98D43B9 /* TextFitNoteViewController.m in Sources */,
 				B6B36225CE1213F1244ADE3419303228 /* UIColor+CustomColor.m in Sources */,
+				008EFB3C1EE4668700492C89 /* UserInfo.m in Sources */,
 				50BB157D1E552FA600E28E3F /* Util.m in Sources */,
 				6597946108CC52FC5DDED77B8EE4BE89 /* VarusDrawingView.m in Sources */,
 				740490152837649773D32B351415AE0E /* VarusNote.m in Sources */,
@@ -2163,8 +2184,6 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.velopez.bikefit;
 				PRODUCT_NAME = bikefit;
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				PROVISIONING_PROFILE = "b522bf71-423e-4ca6-a16b-c8997c76f325";
 				PROVISIONING_PROFILE_SPECIFIER = "Bikefit Distribution Profile";
 				TARGETED_DEVICE_FAMILY = "1,2";

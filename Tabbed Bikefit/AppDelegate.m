@@ -18,7 +18,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    //
     // Store Kit Transaction Observer
      [[SKPaymentQueue defaultQueue] addTransactionObserver:[SubcriptionManager sharedManager]];
     //

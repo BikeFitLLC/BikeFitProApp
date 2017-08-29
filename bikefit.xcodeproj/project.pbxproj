@@ -13,6 +13,7 @@
 		006988FB1EBAE30800BC0CF6 /* SubcriptionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 006988F11EBAD69B00BC0CF6 /* SubcriptionManager.m */; };
 		008EFB3C1EE4668700492C89 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 008EFB3B1EE4668700492C89 /* UserInfo.m */; };
 		00B5AE901EBAE7F6000E0650 /* bikefitTests2.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B5AE8F1EBAE7F6000E0650 /* bikefitTests2.m */; };
+		00DF1E2D1EFB2DFA004FD427 /* FitterEndpointClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DF1E2C1EFB2DFA004FD427 /* FitterEndpointClient.m */; };
 		00F0882D1EC8192D003DF297 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B1603B36DF5A106DE337E25D61E1631 /* Images.xcassets */; };
 		021A6842D0E03ECC955319137B19C9A5 /* measurementIcon-new-29x29.png in Resources */ = {isa = PBXBuildFile; fileRef = 8C289AC9B32734E019AE679E3B5FD665 /* measurementIcon-new-29x29.png */; };
 		02E409901A221D008DF09AEF27BBF85A /* iTunesArtwork@2x in Resources */ = {isa = PBXBuildFile; fileRef = F3D7A904FAFA3929F6AC326A6EFDCA7E /* iTunesArtwork@2x */; };
@@ -345,6 +346,8 @@
 		00B5AE8D1EBAE7F6000E0650 /* bikefitTests2.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bikefitTests2.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00B5AE8F1EBAE7F6000E0650 /* bikefitTests2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = bikefitTests2.m; sourceTree = "<group>"; };
 		00B5AE911EBAE7F6000E0650 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		00DF1E2B1EFB2DFA004FD427 /* FitterEndpointClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FitterEndpointClient.h; sourceTree = "<group>"; };
+		00DF1E2C1EFB2DFA004FD427 /* FitterEndpointClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FitterEndpointClient.m; sourceTree = "<group>"; };
 		01CAECC783B181C4A9FB2E39D0F2FC64 /* curved_arrows.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = curved_arrows.png; sourceTree = "<group>"; };
 		0229F5599D1F4FADEBDA9828AC28F08F /* Cog_15t.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cog_15t.png; sourceTree = "<group>"; };
 		05397BF7D802D67ADE8986A668910006 /* KneeViewNote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KneeViewNote.m; sourceTree = "<group>"; };
@@ -942,6 +945,8 @@
 				A7AE5F0F9E65435324D53ABE982B9BCB /* LoginDelegate.h */,
 				008EFB3A1EE4668700492C89 /* UserInfo.h */,
 				008EFB3B1EE4668700492C89 /* UserInfo.m */,
+				00DF1E2B1EFB2DFA004FD427 /* FitterEndpointClient.h */,
+				00DF1E2C1EFB2DFA004FD427 /* FitterEndpointClient.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1714,6 +1719,7 @@
 				5D8BC43B2E6AE480E42B0D1D42054101 /* VarusViewerViewController.m in Sources */,
 				6FC931F92B91D2B31C27B3D39F9E483F /* VideoNoteViewController.m in Sources */,
 				15521544A3114CE26DFBBC63EF633401 /* main.m in Sources */,
+				00DF1E2D1EFB2DFA004FD427 /* FitterEndpointClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1988,7 +1994,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: BikeFit Systems LLC (5C6SQ8E39E)";
 				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution: BikeFit Systems LLC (5C6SQ8E39E)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5C6SQ8E39E;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2147,7 +2153,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5C6SQ8E39E;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2184,8 +2190,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.velopez.bikefit;
 				PRODUCT_NAME = bikefit;
-				PROVISIONING_PROFILE = "b522bf71-423e-4ca6-a16b-c8997c76f325";
-				PROVISIONING_PROFILE_SPECIFIER = "Bikefit Distribution Profile";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;

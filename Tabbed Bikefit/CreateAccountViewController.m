@@ -142,7 +142,10 @@
                                                firstName:firstNameField.text
                                                 lastName:lastNameField.text
                                                 password:passwordFieldOne.text
-                                                shopName:shopNameField.text];
+                                                shopName:shopNameField.text
+                                                fitterid:nil
+                                           transactionid:nil];
+        
         //TODO Refactor createNewAccount to take userinfo
         __weak __typeof__(self) weakSelf = self;
         [[AmazonClientManager credProvider] createNewAccountWithEmail:userInfo.email
@@ -230,7 +233,12 @@
 
 #pragma mark SubscriptionManagerDelegate
 - (void) purchaseComplete:(NSError* _Nullable) error {
-    
+    //TODO manage error
+    [SVProgressHUD dismiss];
+    if([AmazonClientManager verifyLoggedIn])
+    {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
     return;
 }
 

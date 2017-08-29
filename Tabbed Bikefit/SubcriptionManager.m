@@ -9,6 +9,7 @@
 #import "SubcriptionManager.h"
 #import "AmazonClientManager.h"
 #import "BikefitConstants.h"
+#import "FitterEndpointClient.h"
 
 
 #import "AFNetworking.h"
@@ -21,6 +22,11 @@
 @property (nonnull, strong) SKProductsRequest *request;
 @property (nonatomic, strong) UserInfo* userInfo;
 
+//
+// Completed Transactions that came back while the app is
+// not logged in.  This will be checked on future logins.
+//
+@property (atomic, strong) NSMutableArray* completedTransactions;
 @end
 
 @implementation SubcriptionManager
@@ -43,7 +49,6 @@
  */
 -(void) purchaseNewSubscription:(nonnull SKProduct*) product
 {
-    __weak __typeof__(self) weakSelf = self;
     if( ![AmazonClientManager verifyLoggedIn] ) {
         //TODO: we only allow purchases for logged in accounts.
         //send an error or do something..the UI should not allow this.
@@ -54,6 +59,7 @@
         if(valid) {
             NSLog(@"Purchase attempted for account that already has a reciept");
             //TODO link this reciept and the logged in user.
+            // Or, this can happen for someone creating a new account?
         } else {
             //TODO: expired receipt should probably not trigger a new purchase...
             self.payment = [SKMutablePayment paymentWithProduct:product];
@@ -190,6 +196,54 @@
     return;
 }
 
+/*
+ * Checks to see if there is a completed transaction for the logged in user.  Meant to be
+ * called after a new login, but technically could be called whenever.
+ */
+- (void) checkForCompletedTransaction {
+    //TODO: check for logged in?
+    //TODO: Verify the logged in account doesn't already have a transaction id
+    NSString *fitterEmail = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_USERNAME_KEY];
+    NSString *fitterid = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITTERID_KEY];
+    
+    if( self.completedTransactions ) {
+        for( SKPaymentTransaction *transaction in self.completedTransactions ) {
+            if( [transaction.payment.applicationUsername isEqualToString:fitterEmail] ) {
+                //
+                //  Here we want to get the user info from the backend.  SO we do.  Then
+                // we check for the transaction id and if it's not there, we add this transactions
+                // id to the user on the DB.
+                //
+                // TODO: The credential provider should have already gotten the user info, addd that to
+                // credential provider.
+                //
+                [[FitterEndpointClient sharedClient] getFitterInfo:fitterid completionBlock:^(UserInfo *userInfo, NSError *error) {
+                    if( error ) {
+                        NSLog(@"Error getting Fitter Info from backend: %@", error);
+                    } else {
+                        //TODO implement success!
+                        if( userInfo.transactionid ) {
+                            //TODO: this is a weird case...we alrady ahve a transaction id
+                            // on the database, but a new completed purchase came through?
+                            // This should not happen as it means we did multiple purchases for
+                            // a single bikefit account.
+                        } else {
+                            //OK! Complete this transaction!
+                            NSLog(@"Found completed transaction for the logged user. Email:%@", fitterEmail);
+                            [self handleTransactionStatePurchased:transaction withPaymentQueue:[SKPaymentQueue defaultQueue]];
+                        }
+                        return;
+                    }
+                }];
+            }
+        }
+    }
+    
+    if( fitterid ) {
+        
+    }
+}
+
 #pragma Mark Transaction Observer
 - (void)paymentQueue:(SKPaymentQueue *)queue
  updatedTransactions:(NSArray *)transactions
@@ -208,8 +262,7 @@
                 [queue finishTransaction:transaction];
                 break;
             case SKPaymentTransactionStatePurchased:
-                [self handleTransactionStatePurchased:transaction];
-                [queue finishTransaction:transaction];
+                [self handleTransactionStatePurchased:transaction withPaymentQueue:(SKPaymentQueue*)queue];
                 break;
             case SKPaymentTransactionStateRestored:
                 [queue finishTransaction:transaction];
@@ -223,17 +276,41 @@
 }
 
 
-- (void) handleTransactionStatePurchased:(SKPaymentTransaction*)transaction {
+- (void) handleTransactionStatePurchased:(SKPaymentTransaction*)transaction withPaymentQueue:(SKPaymentQueue*)queue {
+    
+    //TODO no point in doing this if we arent logged in?
+    
     NSLog(@"Purchase completed for user %@", transaction.payment.applicationUsername);
+    
+    //TODO: IS this sufficient to know this user is ther right user?
     if(! [transaction.payment.applicationUsername isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_USERNAME_KEY]] ) {
-        //if this transaction is not for the currently logged in user, do nothing.
         //TODO: call delegate?  I thhink so...
+        NSLog(@"got completed trasnaction for user that is not logged in, saving for later logins");
+        if( !self.completedTransactions ) {
+            self.completedTransactions = [[NSMutableArray alloc] init];
+        }
+        [self.completedTransactions addObject:transaction];
         return;
     }
+    NSString *fitterID = [[NSUserDefaults standardUserDefaults] objectForKey:USER_DEFAULTS_FITTERID_KEY];
+    //
+    // Update the user record on the db with transaction id
+    //
     
-    //TODO: add original transaction ID to teh database.
-    [_delegate purchaseComplete:nil];
-    
+    // TODO: The below just takes the transaction id, for restored state we
+    // might need to get original transaction id...but maybe not, now that I think about it...
+    // Since this is not called for restore.  Make this comment justify the use of transactionidentifier.
+    UserInfo* fitterInfo = [UserInfo userInfoWithEmail:nil
+                                              firstName:nil
+                                               lastName:nil
+                                               password:nil
+                                               shopName:nil
+                                               fitterid:fitterID
+                                          transactionid:transaction.transactionIdentifier];
+    [[FitterEndpointClient sharedClient] putFitterInfo:fitterID fitterInfo:fitterInfo completionBlock:^(UserInfo *fitterInfo, NSError *error) {
+        [queue finishTransaction:transaction];
+        [_delegate purchaseComplete:error];
+    }];
 }
 
 @end

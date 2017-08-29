@@ -36,12 +36,14 @@
 
 #ifdef DEBUG
 #define TVM_HOSTNAME @"https://test.tvm.velopezdigital.com"
+#define BF_WEB_API_HOSTNAME @"https://73idz8eppb.execute-api.us-west-2.amazonaws.com/test"
 #else
 #define TVM_HOSTNAME @"https://tvm.velopezdigital.com"
+#define BF_WEB_API_HOSTNAME @"https://73idz8eppb.execute-api.us-west-2.amazonaws.com/prod" //TODO make this a real dns name
 #endif
 
 #define TVM_GET_CREDENTIALS_OAUTH_PATH @"/?Email=%@&Name=%@&Token=%@"
 #define TVM_GET_CREDENTIALS_PATH @"/getToken?Email=%@&Password=%@"
-#define TVM_CREATE_ACCOUNT_PATH @"/createAccount?Email=%@&Password=%@&Name=%@&FirstName=%@&LastName=%@"
+#define TVM_CREATE_ACCOUNT_PATH @"/createAccount?Email=%@&Password=%@&Password2=%@&Name=%@&FirstName=%@&LastName=%@"
 #define TVM_IS_AMAZON_PATH @"/isAmazonAccount?Email=%@"
 

@@ -11,6 +11,7 @@
 
 #import <LoginWithAmazon/LoginWithAmazon.h>
 #import "AMZNLogoutDelegate.h"
+#import "SubcriptionManager.h"
 
 @implementation CredentialProvider
 @synthesize isLoggingIn;
@@ -148,6 +149,8 @@
     //Now we have a good response from the TVM.  Populate credentials and Fitterid
     [[NSUserDefaults standardUserDefaults] setObject:[json objectForKey:@"fitterid"] forKey:USER_DEFAULTS_FITTERID_KEY];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    // Check for completed transactions that ahven't been assocaited with abikefit account
+    [[SubcriptionManager sharedManager] checkForCompletedTransaction];
     return nil;
 }
 
@@ -242,7 +245,7 @@
                           lastName:(NSString *)lastName
                           callback:(void(^)(BOOL))callback;
 {
-    NSString *urlQueryString = [NSString stringWithFormat:TVM_CREATE_ACCOUNT_PATH, email, password, shopName,firstName,lastName];
+    NSString *urlQueryString = [NSString stringWithFormat:TVM_CREATE_ACCOUNT_PATH, email, password, password, shopName,firstName,lastName];
     urlQueryString = [urlQueryString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     
     NSURL *tvmUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", TVM_HOSTNAME, urlQueryString]];

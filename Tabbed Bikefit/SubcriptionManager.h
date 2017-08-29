@@ -26,6 +26,7 @@
 
 + (SubcriptionManager* _Nonnull)sharedManager;
 - (void) retrieveAvailableProducts;
--(void) purchaseNewSubscription:(nonnull SKProduct*)product;
+- (void) purchaseNewSubscription:(nonnull SKProduct*)product;
+- (void) checkForCompletedTransaction;
 
 @end

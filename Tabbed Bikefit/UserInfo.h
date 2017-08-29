@@ -10,15 +10,21 @@
 
 @interface UserInfo : NSObject
 
+@property (readonly) NSString* fitterid;
 @property (readonly) NSString* email;
 @property (readonly) NSString* firstname;
 @property (readonly) NSString* lastName;
 @property (readonly) NSString* password;
 @property (readonly) NSString* shopName;
+@property (readonly) NSString* transactionid;
 
 + (UserInfo*) userInfoWithEmail:(NSString*)email
                       firstName:(NSString*)firstname
                        lastName:(NSString*)lastName
                        password:(NSString*)password
-                       shopName:(NSString*)shopName;
+                       shopName:(NSString*)shopName
+                       fitterid:(NSString*)fitterid
+                  transactionid:(NSString*)transactionid;
+
+- (NSDictionary*) getPropertyDictionary;
 @end

@@ -53,13 +53,24 @@
         //TODO: we only allow purchases for logged in accounts.
         //send an error or do something..the UI should not allow this.
         NSLog(@"Cannot purchase new subscription if you aren't logged in");
+        return;
     }
     
-    [self validateReceipt:^(BOOL valid) {
+    [self validateReceipt:^( BOOL valid, NSDictionary* purchase ) {
         if(valid) {
             NSLog(@"Purchase attempted for account that already has a reciept");
             //TODO link this reciept and the logged in user.
-            // Or, this can happen for someone creating a new account?
+            
+            //1. Get user from fitter endpoint that has the same original transactionid
+            //2. Us they fitter info to message to the user?
+            
+            
+            NSError* error = [NSError errorWithDomain:@"Bikefit Error"
+                                                 code:1
+                                             userInfo:@{@"description":@"AppleID Already Has BikeFit Account"}];
+            [AmazonClientManager.credProvider clear]; //Logout the user...is this right?
+            [_delegate purchaseComplete:error];
+            return;
         } else {
             //TODO: expired receipt should probably not trigger a new purchase...
             self.payment = [SKMutablePayment paymentWithProduct:product];
@@ -112,7 +123,7 @@
 /*
  * Find the current reciept and trys to validate it
  */
-- (void) validateReceipt:(void (^)(BOOL valid))success failure:(void (^)(NSError *error))failure {
+- (void) validateReceipt:(void (^)(BOOL valid, NSDictionary* mostRecentPurchase))success failure:(void (^)(NSError *error))failure {
     
     //
     // Get and decode Receipt data
@@ -120,7 +131,7 @@
     NSString* receipt = [self getReceipt];
     if( receipt == nil ) {
         NSLog(@"No Reciept Found, returning invalid");
-        success(NO);
+        success(NO, nil);
         return;
     }
     
@@ -161,7 +172,7 @@
                                                             if( [expirationDate timeIntervalSinceNow] > 0 ) {
                                                                 NSLog(@"Receipt is up to date");
                                                                 [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:true] forKey:BF_IN_APP_COMPLETE];
-                                                                success(true);
+                                                                success(true, purchase);
                                                                 return;
                                                             }
                                                         }
@@ -172,7 +183,7 @@
                                                                                          userInfo:@{@"description":@"No Active Renewals"}];
                                                         NSLog(@"Error with tvm-validated reciept: %@", error);
                                                         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:false] forKey:BF_IN_APP_COMPLETE];
-                                                        success(false);
+                                                        success(false, nil);
                                                     }}];
     [dataTask resume];
 }
@@ -260,6 +271,7 @@
             case SKPaymentTransactionStateFailed:
                 NSLog(@"Transaction Failed: %@", [transaction.error localizedDescription]);
                 [queue finishTransaction:transaction];
+                [_delegate purchaseComplete:transaction.error];
                 break;
             case SKPaymentTransactionStatePurchased:
                 [self handleTransactionStatePurchased:transaction withPaymentQueue:(SKPaymentQueue*)queue];
@@ -306,7 +318,7 @@
                                                password:nil
                                                shopName:nil
                                                fitterid:fitterID
-                                          transactionid:transaction.transactionIdentifier];
+                                          transactionid:transaction.originalTransaction.transactionIdentifier];
     [[FitterEndpointClient sharedClient] putFitterInfo:fitterID fitterInfo:fitterInfo completionBlock:^(UserInfo *fitterInfo, NSError *error) {
         [queue finishTransaction:transaction];
         [_delegate purchaseComplete:error];

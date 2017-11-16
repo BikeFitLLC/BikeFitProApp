@@ -208,6 +208,12 @@
     _accessKey = nil;
     _secretKey = nil;
     _sessionKey = nil;
+    
+    // Your additional logic after the user authorization state is cleared.
+    [AthletePropertyModel newAthlete];
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:USER_DEFAULTS_USERNAME_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    //[[NSUserDefaults standardUserDefaults] setObject:nil forKey:USER_DEFAULTS_AMZN_TOKEN_KEY];
 }
 
 #pragma mark Implementation of getAccessTokenForScopes:withOverrideParams:delegate: delegates.

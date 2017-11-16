@@ -235,9 +235,17 @@
 - (void) purchaseComplete:(NSError* _Nullable) error {
     //TODO manage error
     [SVProgressHUD dismiss];
+    if(error) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Failed to Activate Account"
+                                                                                 message:error.description
+                                                                          preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *OKAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {}];
+        [alertController addAction:OKAction];
+        [self presentViewController:alertController animated:true completion:nil];
+    }
     if([AmazonClientManager verifyLoggedIn])
     {
-        [self.navigationController popViewControllerAnimated:YES];
+        [self.navigationController popToRootViewControllerAnimated:YES];
     }
     return;
 }

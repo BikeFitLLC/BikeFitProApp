@@ -17,5 +17,6 @@ typedef void (^GetFitterCompletion)(UserInfo*, NSError*);
 
 - (void) getFitterInfo:(NSString*)fitterid completionBlock:(GetFitterCompletion)completion;
 - (void) putFitterInfo:(NSString*)fitterid fitterInfo:(UserInfo*)fitterInfo completionBlock:(GetFitterCompletion)completion;
+- (void) getFitterIDForOriginalTransactionID:(NSString*)originalTransactionID;
 
 @end

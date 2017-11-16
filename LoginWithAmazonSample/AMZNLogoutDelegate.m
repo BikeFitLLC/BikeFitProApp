@@ -39,12 +39,7 @@
  This delegate method that gets a call when the SDK fails to clear the authorization state of the user. Show user the failure message and let user to retry.
  */
 - (void)requestDidSucceed:(APIResult *)apiResult {
-    // Your additional logic after the user authorization state is cleared.
-    [[AmazonClientManager credProvider] clear];
-    [AthletePropertyModel newAthlete];
-    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:USER_DEFAULTS_USERNAME_KEY];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    //[[NSUserDefaults standardUserDefaults] setObject:nil forKey:USER_DEFAULTS_AMZN_TOKEN_KEY];
+    [AmazonClientManager.credProvider clear];
     if(parentViewController)
     {
         [parentViewController refreshLoginButtons];

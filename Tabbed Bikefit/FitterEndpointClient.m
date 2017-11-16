@@ -23,6 +23,7 @@
     return sharedClient;
 }
 
+
 - (void) getFitterInfo:(NSString*)fitterid completionBlock:(GetFitterCompletion)completion {
     //TODO: make this a static class variable
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -75,5 +76,10 @@
                                                     completion(nil, error);
                                                 }];
     [dataTask resume];
+}
+
+
+- (void) getFitterIDForOriginalTransactionID:(NSString*)originalTransactionID {
+    //Need implement the endpoint for this.
 }
 @end
